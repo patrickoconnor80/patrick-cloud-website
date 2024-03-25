@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Elements Reference - Massively by HTML5 UP</title>
+		<title>Kubernetes</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -25,9 +25,9 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index.html">Stock Market</a></li>
+							<li><a href="index.html">Patrick Cloud</a></li>
 							<li><a href="snowplow.html">Snowplow tracking</a></li>
-							<li class="active"><a href="elements.html">Elements Reference</a></li>
+							<li class="active"><a href="kubernetes.html">Kubernetes</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
@@ -41,9 +41,91 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<h1>Elements<br />
-									Reference</h1>
+									<h1>Kubernetes<br />
+									Architecture</h1>
 								</header>
+								<div class="col-6 col-12-small">
+									<h2>Architecture Decisions</h2>
+									<ul>
+										<li>Secuirty - AWS Certificate Manager was used to encrypt traffice from the client to the Application Load Balancer. A self-signed certificate was used to encrypt traffic from the ALB to the  Istio Gateway Ingress. For all traffic inside the cluster, I used Istio's built-in Mutual TLS between all services.</li>
+										<li>Metrics Collecting - Prometheus scrapes metrics from Kubernetes, Grafana, Istio and Itself</li>
+										<li>Alerting - Prometheus sends alerts to my Slack for any alerts</li>
+										<li>Storage - AWS EBS volumes were attached to Grafana, Prometheus Server and Prometheus Alert Manager</li>
+										<li>Credentials - External Secrets was used to retreive Grafana Admin Credentials from AWS Secrets Manager</li>
+										<li>Ingress - Root URL had to be changed for Grafana, Prometheus, Kiali and Argo CD to kubernetes.patrick-cloud.com/{service}/</li>
+										<ul>
+											<li>https://kubernetes.patrick-cloud.com/grafana/ --> Grafana</li>
+											<li>https://kubernetes.patrick-cloud.com/prometheus/ --> Prometheus</li>
+											<li>https://kubernetes.patrick-cloud.com/kiali/ --> Kiali</li>
+											<li>https://kubernetes.patrick-cloud.com/argocd/ --> Argo CD</li>
+										</ul>
+										<li>Service Accounts - A Cloudwatch service account was attached to the Grafana pod so it could retreive metrics from AWS Cloudwatch</li>
+									</ul>
+								</div>
+								<div class="col-6 col-12-small">
+									<h2>Consoles</h2>
+									<ul>
+										<li><a href="https://kubernetes.patrick-cloud.com/grafana/">Grafana</a> - Open-source platform for data visualization and monitoring.</li>
+										<li><a href="https://kubernetes.patrick-cloud.com/kiali/">Kiali</a> - Console for the Istio Service Mesh.</li>
+										<li><a href="https://kubernetes.patrick-cloud.com/prometheus/">Prometheus</a> -  Open-source tool that collects metrics from infrastructure and applications and stores them in a time-series database.</li>
+										<li><a href="https://kubernetes.patrick-cloud.com/argocd/">Argocd</a> - Declarative continuous delivery tool for Kubernetes</li>
+									</ul>
+								</div>
+								<h2>Services I used</h2>
+								<dl>
+									<dt><h3>Istio</h3></dt>
+									<dd>
+										<span class="image fit"><img src="images/istio.png" alt="" /></span>
+										<p><a href="https://istio.io/">Istio</a> is an open-source service mesh platform that helps organizations manage, secure, and connect microservices. Here are the reasons why I used it:</p>
+										<ul>
+											<li>Security capabilities - I used Mutual TLS to secures service-to-service communication for all traffic on the service mesh. Istio provides a key management system to automate key and certificate generation, distribution, and rotation. Also, Istio is compatible with OpenID Connect providers like AuthO and Goolgle Auth so I can incoporate them later if needed</li>
+											<li>Observability - I used Kiali for a dashboard to vizualize the pods and services across the service mesh. </li>
+											<li>Traffic management - I used the Gateway as an ingress for all incoming traffic into the Kubernetes cluster. Istio’s traffic routing rules let you easily control the flow of traffic and API calls between services. Istio simplifies configuration of service-level properties like circuit breakers, timeouts, and retries, and makes it easy to set up important tasks like A/B testing, canary deployments, and staged rollouts with percentage-based traffic splits.</li>
+											<li>More info on the Istio Service Mesh <a href="https://istio.io/latest/about/service-mesh/">here</a></li>
+										</ul>
+										<h5>Other Solution looked at - Linkerd</h5>
+											<p>Istio seemed to be a more all-inclusive and simpler solution. Linkerd did not support Ingresses like Istio did. Istio egress was much simpler with Gateways and Virtual Service objects compared to DNS and Delegation Tables. The big downside I see is that Istio is a much more heavyweight solution.</p>
+									</dd>
+									<dt><h3>Prometheus and Grafana Stack</h3></dt>
+									<dd>
+										<span class="image fit"><img src="images/prometheus.png" alt="" /></span>
+										<h4>Prometheus</h4>
+										<p><a href="https://prometheus.io/">Prometheus</a> is an open-source tool that collects metrics from infrastructure and applications and stores them in a time-series database. Here are the reasons why I used it:</p>
+										<ul>
+											<li>Alerting - This component evaluates user-defined rules and sends alerts to various channels, including integrations such as email, PagerDuty, and Slack. It offers various functionalities like deduplication, grouping, routing, silencing, and inhibition of alerts.</li>
+											<li>Service discovery - This component is used to discover targets automatically and monitor new service instances. Prometheus supports service discovery mechanisms such as Kubernetes service discovery, DNS, and file_sd.</li>
+											<li>Realiable metris - This component collects time-series data from exporters or scrapes data from target systems and stores it in a time-series database.</li>
+											<li>More info on Prometheus <a href="https://prometheus.io/docs/introduction/overview/">here</a></li>
+										</ul>
+										<h4>Grafana</h4>
+										<p><a href="https://grafana.com/">Grafana</a> is an open-source platform for data visualization and monitoring. Here are the reasons why I used it:</p>
+										<ul>
+											<li>Database support - Grafana supports a wide range of databases. Some Databases I am using are Prometheus, AWS Cloudwatch and Postgres.</li>
+											<li>Monitoring - Grafana can help users troubleshoot any IoT device issue including kubernetes cluster issues like pods or nodes.</li>
+											<li>Ease of use - Grafana has a long list of pre-made dashboards that can easily be imported from the most commmon data sources.</li>
+											<li>More info on Grafana <a href="https://grafana.com/docs/grafana-cloud/introduction/">here</a></li>
+										</ul>
+										<h5>Other Solution: Elastic Stack</h5>
+										<p>With this proejct, my focus isn't on analyzing logs but analyzing metrics and visualizing real-monitoirng so Prometheus and Grafana Stack was the easy choice.</p>
+									</dd>
+									<dt>Argo CD</dt>
+									<dd>
+										<span class="image fit"><img src="images/argocd.png" alt="" /></span>
+										<p><a href="https://argo-cd.readthedocs.io/en/stable/">Argo CD</a> declarative, GitOps continuous delivery tool for Kubernetes. 3 Reasons why I used it: </p>
+										<ul>
+											<li>Easy Roll Back - ArgoCD pulls any changes and applies that to the cluster. If something breaks or a new application version fails to start, you can reverse to the previous working state in the git history.</li>
+											<li>User Interface - ArgoCD has a convenient web-based UI that simplifies working with the tool.</li>
+											<li>Dynamic - You can use any declarative configuration tool from YAML, Helm charts, Kustomize etc.</li>
+											<li>More info on Grafana <a href="https://argo-cd.readthedocs.io/en/stable/">here</a></li>
+										</ul>
+										<h5>Other Solution: Flux</h5>
+										<p>Argo CD having an easy to use UI was a big advantage vs. no UI with Flux.</p>
+									</dd>
+									<dt>External Secrets</dt>
+									<dd>
+										<p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+									</dd>
+								</dl>
 
 								<!-- Text stuff -->
 									<h2>Text</h2>

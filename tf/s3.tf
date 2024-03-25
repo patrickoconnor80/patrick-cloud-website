@@ -56,10 +56,11 @@ resource "aws_s3_bucket_policy" "website" {
 
 resource "null_resource" "remove_and_upload_to_s3" {
   provisioner "local-exec" {
-    command = "aws s3 sync ${path.module}/src s3://${aws_s3_bucket.website.id}"
+    command = "aws s3 sync ../src s3://${aws_s3_bucket.website.id}"
   }
 
   triggers = {
-    html_css_files = sha1(join("", [for f in fileset("./src/", "*") : filesha1("./src/${f}")]))
+    html_css_files = sha1(join("", [for f in fileset("../src/", "*") : filesha1("../src/${f}")]))
+    always_run = timestamp()
   }
 }

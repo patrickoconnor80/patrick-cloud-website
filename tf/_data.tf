@@ -32,13 +32,13 @@ data "aws_subnet" "private" {
   id       = each.value
 }
 
-data "aws_alb" "collector" {
-  name = "${local.prefix}-collector-lb"
-}
+# data "aws_alb" "collector" {
+#   name = "${local.prefix}-collector-lb"
+# }
 
-data "aws_alb" "iglu" {
-  name = "${local.prefix}-iglu-lb"
-}
+# data "aws_alb" "iglu" {
+#   name = "${local.prefix}-iglu-lb"
+# }
 
 data "aws_route53_zone" "this" {
   name = "patrick-cloud.com"
