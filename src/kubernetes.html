@@ -28,6 +28,7 @@
 							<li><a href="index.html">Patrick Cloud</a></li>
 							<li><a href="snowplow.html">Snowplow tracking</a></li>
 							<li class="active"><a href="kubernetes.html">Kubernetes</a></li>
+							<li><a href="website.html">Website</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
@@ -44,6 +45,7 @@
 									<h1>Kubernetes<br />
 									Architecture</h1>
 								</header>
+                                <span class="image fit"><img src="images/patrick-cloud-kubernetes-architecture.svg" alt="" /></span>
 								<div class="col-6 col-12-small">
 									<h2>Architecture Decisions</h2>
 									<ul>
@@ -124,6 +126,22 @@
 									<dt>External Secrets</dt>
 									<dd>
 										<p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+									</dd>
+
+
+									<dt>Other Considerations</dt>
+									<dd>
+										<h4>AWS ALB managed by Terrafrom vs. <a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/">AWS Load Balancer Controller</a> managed by kubernetes</h4>
+										<ul>
+											<li>Can use the ALB as the center point to all my services(EKS + EC2)</li>
+											<li>Customize the ALB for security(least privilege)</li>
+											<li>Downside is I have to figure out the exposed port by Istio Gateway and cofigure it with the ALB and security groups</li>
+										</ul>
+										<h4><a href="https://external-secrets.io/latest/">External Secrets</a> vs. <a href="https://secrets-store-csi-driver.sigs.k8s.io/">AWS Secrets Store CSI Driver</a> managed by kubernetes</h4>
+										<ul>
+											<li>AWS CSI driver was limited to injecting secrets into pods, I wanted to inject secrets into manifest files</li>
+											<li>External Secrets stored the secret in the Kubernetes Secrets resource making it very accessible</li>
+										</ul>
 									</dd>
 								</dl>
 

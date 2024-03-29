@@ -43,5 +43,5 @@ resource "aws_cloudfront_distribution" "this" {
     acm_certificate_arn = "arn:aws:acm:us-east-1:948065143262:certificate/e8287206-84d2-470f-8843-c6d344cbf8e2"
   }
 
-  tags = var.tags
+  tags = local.tags
 }
