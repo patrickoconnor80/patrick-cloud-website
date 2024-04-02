@@ -11,15 +11,9 @@ resource "aws_lb_listener_rule" "https_snowplow_collector" {
 
     condition {
         host_header {
-            values = ["snowplow.patrick-cloud.com"]
+            values = ["snowplow-collector.patrick-cloud.com"]
         }
     }
-
-    condition {
-        path_pattern {
-            values = ["/collector*"]
-        }
-  }
 }
 
 resource "aws_alb_target_group" "snowplow_collector" {
@@ -57,15 +51,10 @@ resource "aws_lb_listener_rule" "https_snowplow_iglu" {
 
     condition {
         host_header {
-            values = ["snowplow.patrick-cloud.com"]
+            values = ["snowplow-iglu.patrick-cloud.com"]
         }
     }
 
-    condition {
-        path_pattern {
-            values = ["/iglu*"]
-        }
-  }
 }
 
 resource "aws_alb_target_group" "snowplow_iglu" {
