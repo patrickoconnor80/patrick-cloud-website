@@ -1,18 +1,18 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-data "aws_vpc" "golden_vpc" {
-  filter {
-    name   = "tag:Name"
-    values = ["golden-vpc"]
-  }
+data "aws_vpc" "this" {
+    filter {
+        name = "tag:Name"
+        values = ["${local.prefix}-vpc"]
+    }
 }
 
 data "aws_subnets" "public" {
-  filter {
-    name   = "tag:Name"
-    values = ["golden-vpc-public-us-east-1*"]
-  }
+    filter {
+        name = "tag:Name"
+        values = ["${local.prefix}-public-us-east-1*"]
+    }
 }
 
 data "aws_subnet" "public" {
@@ -21,10 +21,10 @@ data "aws_subnet" "public" {
 }
 
 data "aws_subnets" "private" {
-  filter {
-    name   = "tag:Name"
-    values = ["golden-vpc-private-us-east-1*"]
-  }
+    filter {
+        name = "tag:Name"
+        values = ["${local.prefix}-private-us-east-1*"]
+    }
 }
 
 data "aws_subnet" "private" {
@@ -67,22 +67,22 @@ data "aws_instance" "jenkins" {
   }
 }
 
-# data "aws_instance" "snowplow_collector" {
-
-#   filter {
-#     name   = "tag:Name"
-#     values = ["${local.prefix}-snowplow-collector-ec2"]
-#   }
-# }
-
-# data "aws_instance" "snowplow_iglu" {
-
-#   filter {
-#     name   = "tag:Name"
-#     values = ["${local.prefix}-snowplow-iglu-ec2"]
-#   }
-# }
-
 data "aws_security_group" "alb_sg" {
   name = "${local.prefix}-alb-sg"
+}
+
+data "aws_security_group" "snowplow_collector" {
+  name = "${local.prefix}-snowplow-collector-sg"
+}
+
+data "aws_security_group" "snowplow_iglu" {
+  name = "${local.prefix}-snowplow-iglu-sg"
+}
+
+data "aws_security_group" "jenkins" {
+  name = "${local.prefix}-jenkins-sg"
+}
+
+data "aws_sns_topic" "email" {
+  name = "${local.prefix}-email-sns"
 }

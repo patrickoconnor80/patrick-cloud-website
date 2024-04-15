@@ -19,7 +19,7 @@
 #     port = data.aws_ssm_parameter.kubernetes_istio_gateway_https_nodeport.value
 #     protocol = "HTTPS"
 #     target_type = "instance"
-#     vpc_id = data.aws_vpc.golden_vpc.id
+#     vpc_id = data.aws_vpc.this.id
 
 #     health_check {
 #         port = data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value
@@ -84,4 +84,29 @@
 #   from_port         = data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value
 #   to_port           = data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value
 #   source_security_group_id       = aws_security_group.this.id
+# }
+
+
+# ## ALARMS ##
+
+# resource "aws_cloudwatch_metric_alarm" "HealthyHostCountKubernetes" {
+#   alarm_name          = "${local.prefix}-alb-kubernetes-healthy-host-count-alarm"
+#   comparison_operator = "GreaterThanThreshold"
+#   evaluation_periods  = 5
+#   metric_name         = "HealthyHostCount"
+#   namespace           = "AWS/ApplicationELB"
+#   period              = 60
+#   statistic           = "Average"
+#   threshold           = 1
+#   datapoints_to_alarm = 5
+#   alarm_description   = "This alarm can detect when the ALB can't connect to EKS."
+#   alarm_actions       = [data.aws_sns_topic.email.arn]
+#   treat_missing_data  = "notBreaching"
+
+#   dimensions = {
+#     LoadBalancer = aws_alb.this.arn_suffix,
+#     TargetGroup = aws_alb_target_group.kubernetes.arn_suffix
+#   }
+
+#   tags = local.tags
 # }

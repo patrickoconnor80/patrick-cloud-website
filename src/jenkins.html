@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Website</title>
+		<title>Jenkins</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -29,9 +29,9 @@
 							<li><a href="index.html">Patrick Cloud</a></li>
 							<li><a href="snowplow.html">Snowplow</a></li>
 							<li><a href="kubernetes.html">Kubernetes</a></li>
-							<li class="active"><a href="website.html">Website</a></li>
+							<li><a href="website.html">Website</a></li>
 							<li><a href="databricks.html">Databricks</a></li>
-							<li><a href="jenkins.html">Jenkins</a></li>
+							<li class="active"><a href="jenkins.html">Jenkins</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
@@ -45,40 +45,17 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<h1>Website<br />
+									<h1>Jenkins<br />
 									Architecture</h1>
 								</header>
-                                <span class="image fit"><img src="images/patrick-cloud-website-architecture.svg" alt="" /></span>
+                                <span class="image fit"><img src="images/patrick-cloud-kubernetes-architecture.svg" alt="" /></span>
 								<div class="col-6 col-12-small">
 									<h2>Architecture Decisions</h2>
 									<ul>
-										<li>Storage - S3 Bucket is a cheap and simple spot to store HTML, CSS and Javascript</li>
-										<li>Encryption - Cloudfront allows me to secure my website with AWS Certificate Manager</li>
-										<li>Performance - Cloudfront accelerates caches content at edge locations around the world reducing latency and improving load times</li>
-                                        <li>Design - I used a template from HTML5UP called <a href="https://html5up.net/massively">Massively</a></li>
-										<li>Alarms - The standard AWS alarms are applied to ALB and Target Groups. These alarms will also send an email when triggered.</li>
+										<li>Secuirty - Sits behind ALB in private subnet.</li>
+										<li>Alarms - The standard AWS alarms are applied to EC2. These alarms will also send an email when triggered.</li>
 											<ul>
-												<li>ALB - 4XX errors, 5XX errors</li>
-												<li>Target Group - Healthy Host Count</li>
-												<li>SQS - Age of oldest message, Number of messages visisble, number of messages invisible</li>
-												<li>S3 - None, the bucket is public so there is no need to encrypt it</li>
-											</ul>
-									</ul>
-								</div>
-
-                                <!-- Preformatted Code -->
-									<h2>Preformatted</h2>
-									<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';
-</code></pre>
-
+												<li>EC2 - Error log detection, High CPU, Low CPU</li>
 							</section>
 
 					</div>

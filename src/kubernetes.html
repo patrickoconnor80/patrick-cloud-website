@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="shortcut icon" href="images/favicon.ico" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -26,9 +27,11 @@
 					<nav id="nav">
 						<ul class="links">
 							<li><a href="index.html">Patrick Cloud</a></li>
-							<li><a href="snowplow.html">Snowplow tracking</a></li>
+							<li><a href="snowplow.html">Snowplow</a></li>
 							<li class="active"><a href="kubernetes.html">Kubernetes</a></li>
 							<li><a href="website.html">Website</a></li>
+							<li><a href="databricks.html">Databricks</a></li>
+							<li><a href="jenkins.html">Jenkins</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
@@ -78,7 +81,7 @@
 									<dt><h3>Istio</h3></dt>
 									<dd>
 										<span class="image fit"><img src="images/istio.png" alt="" /></span>
-										<p><a href="https://istio.io/">Istio</a> is an open-source service mesh platform that helps organizations manage, secure, and connect microservices. Here are the reasons why I used it:</p>
+										<p><a href="https://istio.io/">Istio</a> is an open-source service mesh platform that helps organizations manage, secure, and connect microservices. Here are the reasons why I used it.</p>
 										<ul>
 											<li>Security capabilities - I used Mutual TLS to secures service-to-service communication for all traffic on the service mesh. Istio provides a key management system to automate key and certificate generation, distribution, and rotation. Also, Istio is compatible with OpenID Connect providers like AuthO and Goolgle Auth so I can incoporate them later if needed</li>
 											<li>Observability - I used Kiali for a dashboard to vizualize the pods and services across the service mesh. </li>
@@ -123,12 +126,6 @@
 										<h5>Other Solution: Flux</h5>
 										<p>Argo CD having an easy to use UI was a big advantage vs. no UI with Flux.</p>
 									</dd>
-									<dt>External Secrets</dt>
-									<dd>
-										<p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-									</dd>
-
-
 									<dt>Other Considerations</dt>
 									<dd>
 										<h4>AWS ALB managed by Terrafrom vs. <a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/">AWS Load Balancer Controller</a> managed by kubernetes</h4>
@@ -591,6 +588,8 @@ print 'It took ' + i + ' iterations to sort the deck.';
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/snowplow_init.js"></script>
+			<script src="assets/js/snowplow_trakcer.js"></script>
 
 	</body>
 </html>

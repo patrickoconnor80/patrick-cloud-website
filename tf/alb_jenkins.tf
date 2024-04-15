@@ -22,7 +22,7 @@ resource "aws_alb_target_group" "jenkins" {
     protocol = "HTTPS"
     protocol_version = "HTTP1" # Nginx only support HTTP1
     target_type = "instance"
-    vpc_id = data.aws_vpc.golden_vpc.id
+    vpc_id = data.aws_vpc.this.id
 
     health_check {
         healthy_threshold = 3
@@ -40,4 +40,29 @@ resource "aws_alb_target_group" "jenkins" {
 resource "aws_lb_target_group_attachment" "jenkins" {
   target_group_arn = aws_alb_target_group.jenkins.arn
   target_id        = data.aws_instance.jenkins.id
+}
+
+
+## ALARMS ##
+
+resource "aws_cloudwatch_metric_alarm" "HealthyHostCountJenkins" {
+  alarm_name          = "${local.prefix}-alb-jenkins-healthy-host-count-alarm"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 5
+  metric_name         = "HealthyHostCount"
+  namespace           = "AWS/ApplicationELB"
+  period              = 60
+  statistic           = "Average"
+  threshold           = 1
+  datapoints_to_alarm = 5
+  alarm_description   = "This alarm can detect when ALB can't connect to Jenkins EC2 instance."
+  alarm_actions       = [data.aws_sns_topic.email.arn]
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    LoadBalancer = aws_alb.this.arn_suffix,
+    TargetGroup = aws_alb_target_group.jenkins.arn_suffix
+  }
+
+  tags = local.tags
 }

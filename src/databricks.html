@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Databricks</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Patrick O'Connor</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Patrick Cloud</a></li>
+							<li><a href="snowplow.html">Snowplow</a></li>
+							<li><a href="kubernetes.html">Kubernetes</a></li>
+							<li><a href="website.html">Website</a></li>
+							<li class="active"><a href="databricks.html">Databricks</a></li>
+							<li><a href="jenkins.html">Jenkins</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/patrickoconnor80/stock_market" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Databricks<br />
+									Architecture</h1>
+								</header>
+                                <span class="image fit"><img src="images/patrick-cloud-databricks-architecture.png" alt="" /></span>
+								<div class="col-6 col-12-small">
+									<h2>Architecture Decisions</h2>
+                                    <h3>Security</h3>
+									<ul>
+										<li>Privatelink - enables private connection between control plane and data plane. Privatelink also redirects traffic from the Data Plane to Control Plane using the NAT Gateway to VPC Endpoints.</li>
+										<li>Endpoints - enables traffic to be routed privately from the Databricks cluster to AWS hosted services like S3, Kinesis and STS. This reduces the cost for the data processed by Nat Gateway while making the connection more secure nver reaching the public internet. See an explannation of the endpoints below:</li>
+                                        <ul>
+											<li>S3 endpoint - needed not only for EC2 to reach the root bucket but also for S3 buckets that contain your data. It will save you money and add another layer of security by keeping traffic to S3 on the AWS backbone.</li>
+											<li>Kinesis endpoint - is for internal logs that are collected from the cluster, including important security information, auditing information, and more.</li>
+											<li>STS endpoint - is for temporary credentials that can be passed to the EC2 instance.</li>
+										</ul>
+                                        <li>Security Groups - Datbricks cluster with least privelege security groups</li><ul>
+											<li>Inbound - Only traffic from within the cluster itself .</li>
+											<li>Outbound -  Traffic to the custer itself on any port. Traffic to any IP through port 443(Databricks API, AWS API, Library repositories), 3306(Metastore) and 6666(Privatelink)</li>
+										</ul>
+                                        <li>Security Groups - Datbricks VPC Endpoints with least privelege security groups</li>
+                                        <ul>
+											<li>Inbound - Only Traffic from any Databricks Cluster node using port 443(Databricks API, AWS API, Library repositories), 2443(Fips) and 6666(Privatelink)</li>
+											<li>Outbound -  Only Traffic to any Databricks Cluster node using port 443(Databricks API, AWS API, Library repositories), 2443(Fips) and 6666(Privatelink)</li>
+										</ul>
+                                        <li>Encryption - Customer Managed Keys(AWS KMS) will encrypt all Databricks resources on the Data Plane. This ensures the Databricks AWS Account will be the only user with access(And my Terraform Deployer AWS Account).</li>
+                                        <ul>
+											<li>Managed Services Key - Encrypt the workspace’s managed services data in the control plane, including notebooks, secrets, Databricks SQL queries, and Databricks SQL query history with a CMK.</li>
+											<li>Workspace Storage Key-  Encrypt the workspace's root S3 bucket and clusters' EBS volumes with a CMK.</li>
+										</ul>
+                                        <li>Data Governance - All Roles and Permissions are managed through terraform. Easy to keep track of who has what access.</li>
+                                    </ul>
+									<header class="major">
+										<h2>DBT - Tranformation Layer</h2>
+									</header>
+                                    <span class="image fit"><img src="images/patrick-cloud-dbt.png" alt="" /></span>
+                                    <li>I picked DBT for many reasons including </li>
+                                    <ul>
+                                        <li>Package Library - DBT has many packages to pick from to make including macros that make SQL coding even easier. The Snowplow package allows me to create standard Snoplow data models.</li>
+                                        <li>Incremental Loading - DBT only processes new data so sql queries are much faster</li>
+                                        <li>Snapshots - Very easy to set up a macro for snapshots, almost no boilerplate code.</li>
+                                        <li>Unit Testing - Its very easy to add in unit testing(column unique or not null)</li>
+                                        <li>Dependency Management - DBT keeps track of all table dependencies so you don't have to worry about the correct orchestration of tables/views</li>
+                                        <li>Open Source - DBT can be used on top of any SQL Database making it very versatile.</li>
+                                        <li>Environment Awareness - DBT makes moving between environments pretty effortless.</li>
+                                        <li>Documentation - Self generated documentation in a clean and concise format.</li>
+                                    </ul>
+							</section>
+							<p>Future reccomendations: set up firewall, set up Authentication</p>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>1234 Somewhere Road #87257<br />
+								Nashville, TN 00000-0000</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(000) 000-0000</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">info@untitled.tld</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/snowplow_init.js"></script>
+			<script src="assets/js/snowplow_trakcer.js"></script>
+
+	</body>
+</html>

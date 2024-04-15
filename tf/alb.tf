@@ -45,32 +45,108 @@ resource "aws_alb_listener" "https" {
     tags = local.tags
 }
 
-resource "aws_security_group_rule" "egress_443" {
+
+## SECURITY GROUP RULES ##
+
+resource "aws_security_group_rule" "ingress_80" {
   security_group_id = data.aws_security_group.alb_sg.id
-  description       = "Allow all outgoing traffic port 443"
-  type              = "egress"
+  description       = "Allow all incoming traffic on port 80"
+  type              = "ingress"
+  protocol          = "tcp"
+  from_port         = 80
+  to_port           = 80
+  cidr_blocks       = local.ssh_ip_allowlist
+}
+
+resource "aws_security_group_rule" "ingress_443" {
+  security_group_id = data.aws_security_group.alb_sg.id
+  description       = "Allow all incoming traffic on port 443"
+  type              = "ingress"
   protocol          = "tcp"
   from_port         = 443
   to_port           = 443
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-resource "aws_security_group_rule" "ingress_443" {
+resource "aws_security_group_rule" "egress_443_snowplow_collector" {
   security_group_id = data.aws_security_group.alb_sg.id
-  type              = "ingress"
-  description       = "Allow all incoming traffic port 443"
+  description       = "Allow outgoing traffic to snowplow collector sg on port 443"
+  type              = "egress"
   protocol          = "tcp"
   from_port         = 443
   to_port           = 443
-  cidr_blocks       = local.ssh_ip_allowlist
+  source_security_group_id = data.aws_security_group.snowplow_collector.id
 }
 
-resource "aws_security_group_rule" "ingress_80" {
+resource "aws_security_group_rule" "egress_443_snowplow_iglu" {
   security_group_id = data.aws_security_group.alb_sg.id
-  description       = "Allow all incoming traffic port 80"
-  type              = "ingress"
+  description       = "Allow outgoing traffic to snowplow iglu sg on port 443"
+  type              = "egress"
   protocol          = "tcp"
-  from_port         = 80
-  to_port           = 80
-  cidr_blocks       = local.ssh_ip_allowlist
+  from_port         = 443
+  to_port           = 443
+  source_security_group_id = data.aws_security_group.snowplow_iglu.id
+}
+
+resource "aws_security_group_rule" "egress_443_jenkins" {
+  security_group_id = data.aws_security_group.alb_sg.id
+  description       = "Allow outgoing traffic to jenkins sg on port 443"
+  type              = "egress"
+  protocol          = "tcp"
+  from_port         = 443
+  to_port           = 443
+  source_security_group_id = data.aws_security_group.jenkins.id
+}
+
+# resource "aws_security_group_rule" "egress_443_kubernetes" {
+#   security_group_id = data.aws_security_group.alb_sg.id
+#   description       = "Allow outgoing traffic to kubernetes sg on port 443"
+#   type              = "egress"
+#   protocol          = "tcp"
+#   from_port         = 443
+#   to_port           = 443
+#   source_security_group_id = data.aws_security_group.kubernetes.id
+# }
+
+
+## ALARMS ##
+
+resource "aws_cloudwatch_metric_alarm" "httpCodeTarget4xxCount" {
+  alarm_name          = "${local.prefix}-alb-http-4xx-count-alarm"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 5
+  metric_name         = "HTTPCode_Target_4XX_Count"
+  namespace           = "AWS/ApplicationELB"
+  period              = 60
+  statistic           = "Maximum"
+  threshold           = 5
+  alarm_description   = "This alarm helps us report the total number of 4xx error status codes that are made in response to client requests. 403 error codes might indicate an incorrect IAM policy, and 404 error codes might indicate mis-behaving client application"
+  alarm_actions       = [data.aws_sns_topic.email.arn]
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    LoadBalancer = aws_alb.this.arn_suffix
+  }
+
+  tags = local.tags
+}
+
+resource "aws_cloudwatch_metric_alarm" "httpCodeTarget5xxCount" {
+  alarm_name          = "${local.prefix}-alb-http-5xx-count-alarm"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 5
+  metric_name         = "HTTPCode_Target_5XX_Count"
+  namespace           = "AWS/ApplicationELB"
+  period              = 60
+  statistic           = "Maximum"
+  threshold           = 5
+  alarm_description   = "This alarm helps you detect a high number of server-side errors. These errors indicate that a client made a request that the server couldn’t complete."
+  alarm_actions       = [data.aws_sns_topic.email.arn]
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    LoadBalancer = aws_alb.this.arn_suffix
+  }
+
+  tags = local.tags
 }

@@ -6,10 +6,11 @@
 -->
 <html>
 	<head>
-		<title>Generic Page - Massively by HTML5 UP</title>
+		<title>Snowplow</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="shortcut icon" href="images/favicon.ico" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -25,10 +26,12 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index.html">Stock Market</a></li>
-							<li class="active"><a href="snowplow.html">Snowplow tracking</a></li>
+							<li><a href="index.html">Patrick Cloud</a></li>
+							<li class="active"><a href="snowplow.html">Snowplow</a></li>
 							<li><a href="kubernetes.html">Kubernetes</a></li>
 							<li><a href="website.html">Website</a></li>
+							<li><a href="databricks.html">Databricks</a></li>
+							<li><a href="jenkins.html">Jenkins</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
@@ -42,18 +45,70 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h1>This is the<br />
-									Snowplow Page!!</h1>
-									<p>Here is the Collector ec2:  <a href="https://snowplow-collector.patrick-cloud.com/">snowplow-collector.patrick-cloud.com</a><br />
-									   Here is the Iglu ec2:  <a href="https://snowplow-iglu.patrick-cloud.com/">snowplow-iglu.patrick-cloud.com/</a></p>
+									<h1>Snowplow Architecture</h1>
 								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
-							</section>
-
+								<div class="image main"><img src="images/patrick-cloud-snoplow-architrecture.svg" alt="" /></div><div class="image main">
+								<h2>Architecture Decisions</h2>
+									<ul>
+										<li>Terraform - I customized the <a href="https://registry.terraform.io/modules/snowplow-devops/collector-kinesis-ec2/aws/latest">Collector</a> and <a href="https://registry.terraform.io/modules/snowplow-devops/iglu-server-ec2/aws/latest">Iglu</a> terraform modules so there was one ALB for all patrick-cloud.com traffic. Also, I ran Nginx on the server to allow ssl traffic from the ALB to the EC2 via self-signed certificates. Nginx listens on port 443(also 80 but redirects traffic to 443) and forwards the traffic to 0.0.0.0:8080 which the Snowplow application is listening on.</li>
+										<li>Security - All EC2's are in private subnets so only access to them is through the ALB. Kinesis, SQS, SNS and Secrets Manager are all encrypted with a CMK for fine grain IAM. SQS and Kinesis have access policies defined for further IAM.</li>
+										<li>Metrics Collecting - Prometheus scrapes metrics from the Collector application I exposed on port 8125.</li>
+										<li>Monitoring - Each application is sending logs to Cloudwatch. A Cloudwatch Metric Filter is set up on each log group to look for the pattern 'ERROR' with an attached Cloudwatch Alarm that will send an emai when triggered.</li>
+										<li>Alarms - The standard AWS alarms are applied to EC2, Kinesis, SQS, SNS and RDS. These alarms will also send an email when triggered.</li>
+											<ul>
+												<li>EC2 - Error log detection, High CPU, Low CPU</li>
+												<li>Kinesis - Put records success rate, Get records success rate, Age of message in stream</li>
+												<li>SQS - Age of oldest message, Number of messages visisble, number of messages invisible</li>
+												<li>S3 - 4XX errors, 5XX errors</li>
+											</ul>
+										<li>Loader - Data is loaded into the Databricks warehouse where DBT is set up to run and process the event data. A Dashboard is produced below based on a Databricks notebook.</li>
+									</ul>
+								<div class="image main"><img src="images/patrick-cloud-snoplow-dbt-dbx-dashboard.png" alt="" /></div><div class="image main">
+								<div class="col-6 col-12-small">
+									<h2>Consoles</h2>
+									<ul>
+										<li><a href="https://snowplow-collector.patrick-cloud.com/index.html">Snoplow Collector EC2</a> - Nginx directs traffic to index.html</li>
+										<li><a href="https://snowplow-iglu.patrick-cloud.com/index.html">Snoplow Iglu EC2</a> - Nginx directs traffic to index.html</li>
+									</ul>
+								</div>
+								<br>
+								<div class="col-6 col-12-small">
+									<h2>Event Customization</h2>
+									<p>I created a custom snowplow event "Sample Input" that reads data from an input from the text box below. I had to add a custom schema to my Iglu Registry so the event could be validated.</p>
+								</div>
+								<textarea id="sample_input" rows="4" cols="50">This is sample text. Please add something fun!</textarea><br>
+								<ul class="actions special">
+									<li><button type="button" onclick="send_to_snowplow_collector()"> Send data to Snowplow! </button></li>
+								</ul>
+								<br>
+								<div class="col-6 col-12-small">
+									<h2>Events Tracked</h2>
+									<p>The following <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/web-tracker/tracking-events/">events</a> are collected by the JavaScript Tracker.</p>
+									<ul>
+										<li>Page Views</li>
+										<li>Activity(Page pings)</li>
+										<li>Sessions</li>
+										<li>Link clicks</li>
+										<li>Forms</li>
+										<li>Browser</li>
+										<li>Geo Location</li>
+										<li>Client Hints</li>
+										<li>Sample Input - Custom metric I created to track input into the message box. </li>
+									</ul>
+								</div>
+								<div class="col-6 col-12-small">
+									<h2>Enrichments</h2>
+									<ul>
+										<li><a href="https://docs.snowplow.io/docs/enriching-your-data/available-enrichments/ua-parser-enrichment/">UA parser</a> - This enrichment uses the ua-parser library to parse the user agent and provide information about the user's device.</li>
+										<li><a href="https://docs.snowplow.io/docs/enriching-your-data/available-enrichments/yauaa-enrichment/">YAUAA</a> - It uses YAUAA API to parse and analyze all user agent information of an HTTP request and extract as many relevant information as possible about the user's device and browser, like for instance the device class (Phone, Tablet, etc.).</li>
+										<li><a href="https://docs.snowplow.io/docs/enriching-your-data/available-enrichments/event-fingerprint-enrichment/">Event fingerprint</a> - This enrichment computes the fingerprint of an event using the query string parameters.</li>
+										<li><a href="https://docs.snowplow.io/docs/enriching-your-data/available-enrichments/campaign-attribution-enrichment/">Campaign attribution</a> - This enrichment can be used to link events to marketing campaigns, using the query string parameters.</li>
+										<li><a href="https://docs.snowplow.io/docs/enriching-your-data/available-enrichments/referrer-parser-enrichment/">Referer parser</a> - This enrichment uses snowplow referer-parser library to extract attribution data from referer URLs.</li>
+									</ul>
+								</div>
+						</section>
 					</div>
+					
 
 				<!-- Footer -->
 					<footer id="footer">
@@ -119,6 +174,9 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/snowplow_init.js"></script>
+			<script src="assets/js/snowplow_trakcer.js"></script>
+			<script src="assets/js/snowplow_sample_input.js"></script>
 
 	</body>
 </html>

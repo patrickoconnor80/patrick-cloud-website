@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<title>Patrick O'Connor's Website</title>
-		<script type="text/javascript" async=1>
+		<!-- <script type="text/javascript" async=1>
             ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
             p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
             };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
@@ -17,39 +17,44 @@
 
         <script>
            // Instantiate new Snowplow tracker with your Snowplow collector DNS host name
-            snowplow("newTracker", "sp", "snowplow.patrick-cloud.com", {
-                appId: "sample-app",
+            snowplow("newTracker", "sp", "snowplow-collector.patrick-cloud.com", {
+                appId: "patrick-cloud.com",
                 platform: "web",
                 eventMethod: "post",
                 contexts: {
                     webPage: true,
-                    performanceTiming: true
+                    performanceTiming: true,
+					geolocation: true,
+					session: true,
+					browser: true
                 }
             });
-        </script>
 
-        <script>
-            // Track Page View
+			snowplow('enableActivityTracking',30,10);
+
+            // Track Page View, Forms, and links clicked
             snowplow('trackPageView');
+			snowplow('enableFormTracking');
+			snowplow('enableLinkClickTracking');
 
-            // Track Custom Event (Self Describing Event) - Create Case    
+            // Track Custom Event (Self Describing Event) - Sample Input
             function send_to_snowplow_collector() {
                 console.log("send_to_snowplow_collector function called");
-                let caseDescription = document.getElementById("case_description_area").value;
-                console.log(caseDescription);
+                let sampleInput = document.getElementById("sample_input").value;
+                console.log(sampleInput);
                 snowplow('trackSelfDescribingEvent', {
-                        schema: 'iglu:com.company/create_case/jsonschema/1-0-0',
+                        schema: 'iglu:com.patrick-cloud/sample_input/jsonschema/1-0-0',
                         data: {
-                            caseDescription: caseDescription
+                            sampleInput: sampleInput
                         }
                     }
                 );
             }
-        </script>
+        </script> -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="shortcut icon" href="data:;base64,iVBORw0KGgo=">
+		<link rel="shortcut icon" href="images/favicon.ico" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -75,10 +80,12 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">Stock Market</a></li>
-							<li><a href="snowplow.html">Snowplow tracking</a></li>
+							<li class="active"><a href="index.html">Patrick Cloud</a></li>
+							<li><a href="snowplow.html">Snowplow</a></li>
 							<li><a href="kubernetes.html">Kubernetes</a></li>
 							<li><a href="website.html">Website</a></li>
+							<li><a href="databricks.html">Databricks</a></li>
+							<li><a href="jenkins.html">Jenkins</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
@@ -88,116 +95,91 @@
 
 				<!-- Main -->
 					<div id="main">
-
+						<span class="image fit"><img src="images/patrick-cloud-architecture.svg" alt="" /></span>
 						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									
-									<textarea id="case_description_area" rows="4" cols="50">This is test case creation description</textarea><br>
-									<button type="button" onclick="send_to_snowplow_collector()"> Create Case </button>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<a href="#" class="image main"><img src="images/diagram.png" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
-							</article>
-
+						<section class="post">
+							<header>
+								<h2>Applications</h2>
+							</header>
+							<ul>
+								<li>ALB - Application Load Balancer is the gateway to all the applications.</li>
+								<li>Jenkins - CI/CD Server responsible for testing and deploying all the infrastructure.</li>
+								<li>Snoplow - Analytics tracker</li>
+								<li>Databricks - Lakehouse to store and transform data, also visualize it.</li>
+								<li>DBT - Transformation layer to transform raw data into production-grade tables.</li>
+								<li>EKS - Managed Kuberenetes service.</li>
+								<li>Istio - Service Mesh encapsiliting the Kubernetes Cluster</li>
+								<li>Kiali - Dashboard for Service Mesh</li>
+								<li>Prometheus - Metrics collector</li>
+								<li>Grafana - Dashboard for metrics and Cloudwatch</li>
+								<li>ArgoCD - GitOps continuous delivery tool</li>
+							</ul>
+						</section>
 						<!-- Posts -->
 							<section class="posts">
+								
 								<article>
 									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
+										<h2>Github Repositories</h2>
 									</header>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
+									<ul>
+										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-base-infra">patrick-cloud-base-infra</a></p>
+										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-website">patrick-cloud-website</a></p>
+										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-jenkins">patrick-cloud-jenkins</a></p>
+										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-snowplow">patrick-cloud-snowplow</a></p>
+										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-kubernetes">patrick-cloud-kubernetes</a></p>
+										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-databricks">patrick-cloud-databricks</a></p>
+										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-dbt">patrick-cloud-dbt</a></p>
 									</ul>
 								</article>
 								<article>
 									<header>
-										<span class="date">April 22, 2017</span>
-										<h2><a href="#">Primis eget<br />
-										imperdiet lorem</a></h2>
+										<h2>Consoles</h2>
 									</header>
-									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
+									<p><a href="https://jenkins.patrick-cloud.com/">Jenkins</a></p>
+									<p><a href="https://snowplow-collector.patrick-cloud.com/index.html">Snowplow Collector Nginx index.html</a></p>
+									<p><a href="https://snowplow-iglu.patrick-cloud.com/index.html">Snowplow Iglu Nginx index.html</a></p>
+									<p><a href="https://kubernetes.patrick-cloud.com/grafana">Grafana</a></p>
+									<p><a href="https://kubernetes.patrick-cloud.com/prometheus/">Prometheus</a></p>
+									<p><a href="https://kubernetes.patrick-cloud.com/kiali">Kiali</a></p>
+									<p><a href=">https://kubernetes.patrick-cloud.com/argocd/">Argo CD</a></p>
 								</article>
 								<article>
 									<header>
-										<span class="date">April 18, 2017</span>
-										<h2><a href="#">Ante mattis<br />
-										interdum dolor</a></h2>
+										<h2>Best Practices used throughout this project</h2>
 									</header>
-									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
+									<h3>AWS</h3>
+										<p>Least Privilege IAM roles and policies<br />
+										<p>Least Privilege Security Groups<br />
+										<p>Encrypt all AWS resources with KMS<br />
+										<p>Set up alarms for common problems<br />
+										<p>Keep communication within the AWS private network as much as possible with endpoints<br />
+										<p>Everything should be in the private subnet except the ALB<br />
+									<h3>General</h3>
+										<p>Encrypt all traffic with SSL</p>
 								</article>
 								<article>
 									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										nulla imperdiet</a></h2>
+										<h2>Skills</h2>
 									</header>
-									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										sed consectetur</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										primis vestibulum</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
+										<h3>AWS</h3>
+											<p>Security - IAM, KMS, Endpoints<br />
+											Applications - EC2, ECS, EKS, ECR, ALB<br />
+											Functions - Lambda, Glue</p>
+										<h3>Languages</h3>
+											<p>Python, SQL, Linux</p>
+										<h3>Open Source Frameworks</h3>
+											<p>Terraform, Docker, Kubernetes</p>
+										<h3>Open Source Libraries</h3>
+											<p>Snowplow, DBT, Nginx,Kubernetes(Istio,Prometheus, Grafana, ArgoCD)</p>
+										<h3>CI/CD</h3>
+											<p>Github Actions, AWS Codepipeline, Jenkins</p>
+										<h3>Orchestration</h3>
+											<p>Airflow, Prefect, AWS Eventbridge</p>
+										<h3>Datawarehouse/Databases</h3>
+											<p>Databricks, Snowflake, Postgres</p>
 								</article>
 							</section>
-
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer>
 
 					</div>
 
@@ -265,6 +247,8 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/snowplow_init.js"></script>
+			<script src="assets/js/snowplow_trakcer.js"></script>
 
 	</body>
 </html>

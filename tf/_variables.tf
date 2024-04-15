@@ -1,1 +1,4 @@
-variable "env" {}
+variable "env" {
+    description = "Environment"
+    type = string
+}
