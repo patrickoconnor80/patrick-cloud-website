@@ -9,8 +9,6 @@ node {
             cd tf
             export CHECKOV_OUTPUT_CODE_LINE_LIMIT=100
             SKIPS=$(cat '.checkovignore.json' | jq -r 'keys[]' | sed 's/$/,/' | tr -d '\n' | sed 's/.$//')
-            pip install --user pipenv
-            pipenv run pip install checkov
             pipenv run checkov -d . --skip-check $SKIPS --use-enforcement-rules -o cli -o junitxml --output-file-path console,results.xml --branch main
         '''
     }
