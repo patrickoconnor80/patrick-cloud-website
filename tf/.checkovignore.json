@@ -1,0 +1,92 @@
+{
+"CKV2_AWS_6": {
+  "Name": "",
+  "Reason": "A Public Website needs a public S3 bucket",
+  "Severity": "LOW"
+},
+  "CKV_AWS_18": {
+    "Name": "Ensure the S3 bucket has access logging enabled",
+    "Reason": "Access logging not necessary",
+    "Severity": "MEDIUM"
+  },
+  "CKV_AWS_19": {
+    "Name": "Ensure all data stored in the S3 bucket is securely encrypted at rest",
+    "Reason": "Amazon S3 managed keys (SSE-S3) is used. KMS is not possible",
+    "Severity": "LOW"
+  },
+  "CKV2_AWS_28": {
+    "Name": "Ensure public facing ALB are protected by WAF",
+    "Reason": "Website needs access from all IPs, so no WAF needed",
+    "Severity": "MEDIUM"
+  },
+  "CKV2_AWS_31": {
+    "Name": "Ensure WAF2 has a Logging Configuration",
+    "Reason": "Logging waf logs not necessary for this project",
+    "Severity": "LOW"
+  },
+  "CKV2_AWS_32": {
+    "Name": "Ensure CloudFront distribution has a response headers policy attached",
+    "Reason": "Ensure CloudFront distribution has a response headers policy attached not necessary for this project",
+    "Severity": "LOW"
+  },
+  "CKV2_AWS_46": {
+    "Name": "Ensure AWS CloudFront Distribution with S3 have Origin Access set to enabled",
+    "Reason": "S3 have Origin Access set to enabled not necessary for this project",
+    "Severity": "LOW"
+  },
+  "CKV_AWS_53": {
+    "Name": "Ensure S3 bucket has block public ACLS enabled",
+    "Reason": "A Public Website needs a public S3 bucket",
+    "Severity": "MEDIUM"
+  },
+  "CKV_AWS_54": {
+    "Name": "Ensure S3 bucket has block public policy enabled",
+    "Reason": "A Public Website needs a public S3 bucket",
+    "Severity": "MEDIUM"
+  },
+  "CKV_AWS_55": {
+    "Name": "Ensure S3 bucket has ignore public ACLs enabled",
+    "Reason": "A Public Website needs a public S3 bucket",
+    "Severity": "MEDIUM"
+  },
+  "CKV_AWS_56": {
+    "Name": "Ensure S3 bucket has ‘restrict_public_buckets’ enabled",
+    "Reason": "A Public Website needs a public S3 bucket",
+    "Severity": "MEDIUM"
+  },
+  "CKV2_AWS_61": {
+    "Name": "",
+    "Reason": "Lifecycle configuration not needed. Data should not be deleted",
+    "Severity": "MEDIUM"
+  },
+  "CKV2_AWS_62": {
+    "Name": "",
+    "Reason": "Event Notification not necessary",
+    "Severity": "LOW"
+  },
+  "CKV2_AWS_65": {
+    "Name": "Ensure access control lists for S3 buckets are disabled",
+    "Reason": "ACL needed for Cloudfront access to S3 Bucket",
+    "Severity": "LOW"
+  },
+  "CKV_AWS_70": {
+    "Name": "Ensure S3 bucket does not allow an action with any Principal",
+    "Reason": "A Public Website needs any user to have GetObject access",
+    "Severity": "MEDIUM"
+  },
+  "CKV_AWS_144": {
+    "Name": "Ensure that S3 bucket has cross-region replication enabled",
+    "Reason": "Cross region replication not needed",
+    "Severity": "LOW"
+  },
+  "CKV_AWS_145": {
+    "Name": "Ensure that S3 buckets are encrypted with KMS by default",
+    "Reason": "AWS does not allow KMS encryption on S3 bucket for ALB logs - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/enable-access-logging.html#bucket-permissions-troubleshooting",
+    "Severity": "LOW"
+  },
+  "CKV_AWS_310": {
+    "Name": "Ensure CloudFront distributions should have origin failover configured",
+    "Reason": "Failover not necessary for this project",
+    "Severity": "MEDIUM"
+  }
+}

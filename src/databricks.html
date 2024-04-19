@@ -51,7 +51,6 @@
                                 <span class="image fit"><img src="images/patrick-cloud-databricks-architecture.png" alt="" /></span>
 								<div class="col-6 col-12-small">
 									<h2>Architecture Decisions</h2>
-                                    <h3>Security</h3>
 									<ul>
 										<li>Privatelink - enables private connection between control plane and data plane. Privatelink also redirects traffic from the Data Plane to Control Plane using the NAT Gateway to VPC Endpoints.</li>
 										<li>Endpoints - enables traffic to be routed privately from the Databricks cluster to AWS hosted services like S3, Kinesis and STS. This reduces the cost for the data processed by Nat Gateway while making the connection more secure nver reaching the public internet. See an explannation of the endpoints below:</li>
@@ -60,13 +59,13 @@
 											<li>Kinesis endpoint - is for internal logs that are collected from the cluster, including important security information, auditing information, and more.</li>
 											<li>STS endpoint - is for temporary credentials that can be passed to the EC2 instance.</li>
 										</ul>
-                                        <li>Security Groups - Datbricks cluster with least privelege security groups</li><ul>
+                                        <li>Security Groups - Datbricks cluster with least privilege security groups</li><ul>
 											<li>Inbound - Only traffic from within the cluster itself .</li>
-											<li>Outbound -  Traffic to the custer itself on any port. Traffic to any IP through port 443(Databricks API, AWS API, Library repositories), 3306(Metastore) and 6666(Privatelink)</li>
+											<li>Outbound -  Traffic to the custer itself on any port. Traffic to any IP through port 443(Databricks API, AWS API, Library repositories), 80(HTTP requests), 3306(Metastore) and 6666(Privatelink)</li>
 										</ul>
-                                        <li>Security Groups - Datbricks VPC Endpoints with least privelege security groups</li>
+                                        <li>Security Groups - Datbricks VPC Endpoints with least privilege security groups</li>
                                         <ul>
-											<li>Inbound - Only Traffic from any Databricks Cluster node using port 443(Databricks API, AWS API, Library repositories), 2443(Fips) and 6666(Privatelink)</li>
+											<li>Inbound - Only Traffic from any Databricks Cluster node using port 443(Databricks API, AWS API, Library repositories), 2443(Fips) and 6666(Privatelink). Also, traffic from the EC2 - Snowplow Databricks Loader on port 443.</li>
 											<li>Outbound -  Only Traffic to any Databricks Cluster node using port 443(Databricks API, AWS API, Library repositories), 2443(Fips) and 6666(Privatelink)</li>
 										</ul>
                                         <li>Encryption - Customer Managed Keys(AWS KMS) will encrypt all Databricks resources on the Data Plane. This ensures the Databricks AWS Account will be the only user with access(And my Terraform Deployer AWS Account).</li>
@@ -80,7 +79,7 @@
 										<h2>DBT - Tranformation Layer</h2>
 									</header>
                                     <span class="image fit"><img src="images/patrick-cloud-dbt.png" alt="" /></span>
-                                    <li>I picked DBT for many reasons including </li>
+									<h2>Benefits of DBT</h2>
                                     <ul>
                                         <li>Package Library - DBT has many packages to pick from to make including macros that make SQL coding even easier. The Snowplow package allows me to create standard Snoplow data models.</li>
                                         <li>Incremental Loading - DBT only processes new data so sql queries are much faster</li>

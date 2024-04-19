@@ -1,5 +1,8 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
+data "aws_elb_service_account" "main" {}
+
+## VPC ## 
 
 data "aws_vpc" "this" {
     filter {
@@ -40,25 +43,6 @@ data "external" "whatismyip" {
   program = ["/bin/bash", "../bin/whatismyip.sh"]
 }
 
-# data "aws_eks_node_group" "this" {
-#   cluster_name    = "${local.prefix}-eks-cluster"
-#   node_group_name = "${local.prefix}-node-group"
-# }
-
-data "aws_ssm_parameter" "kubernetes_istio_gateway_https_nodeport" {
-  name = "KUBERNETES_ISTIO_GATEWAY_HTTPS_NODEPORT"
-}
-
-data "aws_ssm_parameter" "kubernetes_istio_gateway_statusport" {
-  name = "KUBERNETES_ISTIO_GATEWAY_STATUSPORT"
-}
-
-# data "aws_security_group" "kubernetes_sg" {
-#   tags = {
-#     "kubernetes.io/cluster/patrick-cloud-eks-cluster" = "owned"
-#   }
-# }
-
 data "aws_instance" "jenkins" {
 
   filter {
@@ -85,4 +69,25 @@ data "aws_security_group" "jenkins" {
 
 data "aws_sns_topic" "email" {
   name = "${local.prefix}-email-sns"
+}
+
+## EKS ##
+
+data "aws_ssm_parameter" "kubernetes_istio_gateway_https_nodeport" {
+  name = "KUBERNETES_ISTIO_GATEWAY_HTTPS_NODEPORT"
+}
+
+data "aws_ssm_parameter" "kubernetes_istio_gateway_statusport" {
+  name = "KUBERNETES_ISTIO_GATEWAY_STATUSPORT"
+}
+
+# data "aws_eks_node_group" "this" {
+#   cluster_name    = "${local.prefix}-eks-cluster"
+#   node_group_name = "${local.prefix}-node-group"
+# }
+
+data "aws_security_group" "kubernetes" {
+  tags = {
+    "kubernetes.io/cluster/${local.prefix}-eks-cluster" = "owned"
+  }
 }

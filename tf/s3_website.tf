@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "website" {
   bucket = "patrick-cloud.com"
-
   tags = local.tags
 }
 
@@ -18,7 +17,6 @@ resource "aws_s3_bucket_website_configuration" "website" {
 
 resource "aws_s3_bucket_public_access_block" "website" {
   bucket = aws_s3_bucket.website.id
-
   block_public_acls   = false
   block_public_policy = false
 }
@@ -33,6 +31,17 @@ resource "aws_s3_bucket_cors_configuration" "website" {
     max_age_seconds = 3000
   }
 }
+
+resource "aws_s3_bucket_versioning" "website" {
+  bucket = aws_s3_bucket.website.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+
+## BUCKET POLICY ##
 
 resource "aws_s3_bucket_policy" "website" {
   bucket = aws_s3_bucket.website.id

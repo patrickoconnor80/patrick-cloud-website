@@ -2,11 +2,15 @@ resource "aws_alb" "this" {
     name = "${local.prefix}-alb"
     subnets = local.public_subnet_ids
     security_groups = [data.aws_security_group.alb_sg.id]
-    # access_logs {
-    #     bucket = "patrick-cloud-infra"
-    #     prefix = "alb_logs/logs"
-    #     enabled = true
-    # }
+    enable_deletion_protection = true
+    drop_invalid_header_fields = true
+
+    access_logs {
+      bucket  = aws_s3_bucket.website_logs.bucket
+      prefix  = "alb"
+      enabled = true
+    }
+
     tags = local.tags
 }
 
@@ -98,15 +102,15 @@ resource "aws_security_group_rule" "egress_443_jenkins" {
   source_security_group_id = data.aws_security_group.jenkins.id
 }
 
-# resource "aws_security_group_rule" "egress_443_kubernetes" {
-#   security_group_id = data.aws_security_group.alb_sg.id
-#   description       = "Allow outgoing traffic to kubernetes sg on port 443"
-#   type              = "egress"
-#   protocol          = "tcp"
-#   from_port         = 443
-#   to_port           = 443
-#   source_security_group_id = data.aws_security_group.kubernetes.id
-# }
+resource "aws_security_group_rule" "egress_443_kubernetes" {
+  security_group_id = data.aws_security_group.alb_sg.id
+  description       = "Allow outgoing traffic to kubernetes sg on port 443"
+  type              = "egress"
+  protocol          = "tcp"
+  from_port         = 443
+  to_port           = 443
+  source_security_group_id = data.aws_security_group.kubernetes.id
+}
 
 
 ## ALARMS ##

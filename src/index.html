@@ -7,50 +7,6 @@
 <html>
 	<head>
 		<title>Patrick O'Connor's Website</title>
-		<!-- <script type="text/javascript" async=1>
-            ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
-            p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
-            };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
-            n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//d1fc8wv8zag5ca.cloudfront.net/2.10.2/sp.js","snowplow"));
-        </script>
-
-
-        <script>
-           // Instantiate new Snowplow tracker with your Snowplow collector DNS host name
-            snowplow("newTracker", "sp", "snowplow-collector.patrick-cloud.com", {
-                appId: "patrick-cloud.com",
-                platform: "web",
-                eventMethod: "post",
-                contexts: {
-                    webPage: true,
-                    performanceTiming: true,
-					geolocation: true,
-					session: true,
-					browser: true
-                }
-            });
-
-			snowplow('enableActivityTracking',30,10);
-
-            // Track Page View, Forms, and links clicked
-            snowplow('trackPageView');
-			snowplow('enableFormTracking');
-			snowplow('enableLinkClickTracking');
-
-            // Track Custom Event (Self Describing Event) - Sample Input
-            function send_to_snowplow_collector() {
-                console.log("send_to_snowplow_collector function called");
-                let sampleInput = document.getElementById("sample_input").value;
-                console.log(sampleInput);
-                snowplow('trackSelfDescribingEvent', {
-                        schema: 'iglu:com.patrick-cloud/sample_input/jsonschema/1-0-0',
-                        data: {
-                            sampleInput: sampleInput
-                        }
-                    }
-                );
-            }
-        </script> -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -143,6 +99,7 @@
 									<p><a href="https://kubernetes.patrick-cloud.com/prometheus/">Prometheus</a></p>
 									<p><a href="https://kubernetes.patrick-cloud.com/kiali">Kiali</a></p>
 									<p><a href=">https://kubernetes.patrick-cloud.com/argocd/">Argo CD</a></p>
+									<p><a href=">https://kubernetes.patrick-cloud.com/dbt-docs/">DBT Docs</a></p>
 								</article>
 								<article>
 									<header>
@@ -163,15 +120,13 @@
 										<h2>Skills</h2>
 									</header>
 										<h3>AWS</h3>
-											<p>Security - IAM, KMS, Endpoints<br />
-											Applications - EC2, ECS, EKS, ECR, ALB<br />
-											Functions - Lambda, Glue</p>
+											<p>EC2, ECS, EKS, ECR, ALB, Lambda, Glue, RDS, SQS, SNS, Kinesis, Cloudwatch, IAM, KMS, Endpoints, Route53, Security Groups</p>
 										<h3>Languages</h3>
 											<p>Python, SQL, Linux</p>
 										<h3>Open Source Frameworks</h3>
 											<p>Terraform, Docker, Kubernetes</p>
 										<h3>Open Source Libraries</h3>
-											<p>Snowplow, DBT, Nginx,Kubernetes(Istio,Prometheus, Grafana, ArgoCD)</p>
+											<p>Snowplow, DBT, Nginx, Istio, Prometheus, Grafana, ArgoCD, Jenkins</p>
 										<h3>CI/CD</h3>
 											<p>Github Actions, AWS Codepipeline, Jenkins</p>
 										<h3>Orchestration</h3>
