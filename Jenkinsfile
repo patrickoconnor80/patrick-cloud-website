@@ -6,7 +6,7 @@ node {
 
     stage('Checkov Scan') {
        sh "export CHECKOV_OUTPUT_CODE_LINE_LIMIT=100"
-       sh "SKIPS=$(cat '.checkovignore.json' | jq -r 'keys[]' | sed 's/$/,/' | tr -d '\n' | sed 's/.$//')"
+       sh "SKIPS=\$(cat '.checkovignore.json' | jq -r 'keys[]' | sed 's/$/,/' | tr -d '\n' | sed 's/.$//')"
        sh "pipenv run pip install checkov"
        sh "pipenv run checkov -d . --skip-check $SKIPS --use-enforcement-rules -o cli -o junitxml --output-file-path console,results.xml --branch main"
     }
