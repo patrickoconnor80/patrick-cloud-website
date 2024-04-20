@@ -100,6 +100,23 @@ data "aws_iam_policy_document" "website_logs_bucket_policy" {
       }
 
       statement {
+        sid = "TerraformDeployer"
+        effect    = "Allow"
+        principals {
+          type ="AWS"
+          identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.prefix}-jenkins-ec2-role"]
+        }
+        actions = [
+          "s3:ListBucket",
+          "s3:GetBucketPolicy",
+          "s3:GetBucketAcl"
+        ]
+        resources = [
+          "${aws_s3_bucket.website_logs.arn}"
+        ]
+      }
+
+      statement {
         sid    = "WriteToBucket"
         effect = "Allow"
         principals {
