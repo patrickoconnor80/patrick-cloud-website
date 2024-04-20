@@ -21,7 +21,7 @@ node {
             cd tf
             terraform init -backend-config=./env/dev/backend.config -reconfigure
             terraform apply -var-file=./env/dev/dev.tfvars -lock=false -auto-approve
-            terraform output -json > ../../config/terraform_outputs/tf_outputs_network.json
+            terraform output -json > ../config/terraform_outputs/tf_outputs_website.json
         '''
     }
 
