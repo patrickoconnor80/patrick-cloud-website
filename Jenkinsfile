@@ -10,8 +10,10 @@ node {
             python3 -m site
             export CHECKOV_OUTPUT_CODE_LINE_LIMIT=100
             SKIPS=$(cat '.checkovignore.json' | jq -r 'keys[]' | sed 's/$/,/' | tr -d '\n' | sed 's/.$//')
+            virtualenv python_env
+            source python_env/bin/activate
             pip3 install checkov
-            checkov -d . --skip-check $SKIPS --use-enforcement-rules -o cli -o junitxml --output-file-path console,results.xml --branch main
+            checkov -d . --skip-check $SKIPS -o cli -o junitxml --output-file-path console,results.xml
         '''
     }
 
