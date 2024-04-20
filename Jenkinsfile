@@ -6,14 +6,13 @@ node {
 
     stage('Checkov Scan') {
        sh '''
-            cd tf
             export CHECKOV_OUTPUT_CODE_LINE_LIMIT=100
-            SKIPS=$(cat '.checkovignore.json' | jq -r 'keys[]' | sed 's/$/,/' | tr -d '\n' | sed 's/.$//')
+            SKIPS=$(cat 'tf/.checkovignore.json' | jq -r 'keys[]' | sed 's/$/,/' | tr -d '\n' | sed 's/.$//')
             python3 -m venv checkov_venv
             . checkov_venv/bin/activate
             pip install checkov
             pip list
-            checkov -d . --skip-check $SKIPS -o cli -o junitxml --output-file-path console,results.xml
+            checkov -d ./tf --skip-check $SKIPS -o cli -o junitxml --output-file-path console,results.xml
         '''
     }
 
