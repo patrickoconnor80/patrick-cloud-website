@@ -1,9 +1,9 @@
 {
-"CKV2_AWS_6": {
-  "Name": "",
-  "Reason": "A Public Website needs a public S3 bucket",
-  "Severity": "LOW"
-},
+  "CKV2_AWS_6": {
+    "Name": "",
+    "Reason": "A Public Website needs a public S3 bucket",
+    "Severity": "LOW"
+  },
   "CKV_AWS_18": {
     "Name": "Ensure the S3 bucket has access logging enabled",
     "Reason": "Access logging not necessary",

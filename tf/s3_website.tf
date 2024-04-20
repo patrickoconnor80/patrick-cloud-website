@@ -58,6 +58,18 @@ resource "aws_s3_bucket_policy" "website" {
         Resource = [
           "${aws_s3_bucket.website.arn}/*"
         ]
+      },
+      {
+        Effect    = "Allow"
+        Principal = {
+          "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.prefix}-jenkins-ec2-role"
+        }
+        Action = [
+          "s3:ListBucket"
+        ]
+        Resource = [
+          "${aws_s3_bucket.website.arn}"
+        ]
       }
     ]
   })
