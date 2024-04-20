@@ -7,6 +7,7 @@ node {
     stage('Checkov Scan') {
        sh '''
             cd tf
+            python3 -m site
             export CHECKOV_OUTPUT_CODE_LINE_LIMIT=100
             SKIPS=$(cat '.checkovignore.json' | jq -r 'keys[]' | sed 's/$/,/' | tr -d '\n' | sed 's/.$//')
             pip3 install checkov
