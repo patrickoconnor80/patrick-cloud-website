@@ -88,5 +88,10 @@
     "Name": "Ensure CloudFront distributions should have origin failover configured",
     "Reason": "Failover not necessary for this project",
     "Severity": "MEDIUM"
+  },
+  "CKV_AWS_260": {
+    "Name": "Ensure no security groups allow ingress from 0.0.0.0:0 to port 80",
+    "Reason": "ALB redirects all traffic to HTTPS so this is okay",
+    "Severity": "LOW"
   }
 }
