@@ -1,6 +1,6 @@
 {
   "CKV2_AWS_6": {
-    "Name": "",
+    "Name": "Ensure that S3 bucket has a Public Access block",
     "Reason": "A Public Website needs a public S3 bucket",
     "Severity": "LOW"
   },
