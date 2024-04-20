@@ -59,7 +59,7 @@ resource "aws_security_group_rule" "ingress_80" {
   protocol          = "tcp"
   from_port         = 80
   to_port           = 80
-  cidr_blocks       = local.ssh_ip_allowlist
+  cidr_blocks       = ["0.0.0.0/0"]
 }
 
 resource "aws_security_group_rule" "ingress_443" {
