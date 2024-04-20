@@ -11,8 +11,8 @@ node {
             export CHECKOV_OUTPUT_CODE_LINE_LIMIT=100
             SKIPS=$(cat '.checkovignore.json' | jq -r 'keys[]' | sed 's/$/,/' | tr -d '\n' | sed 's/.$//')
             python3 -c 'import sys;print(sys.path)'
-            pip3 install checkov --target .
-            pip3 show checkov
+            pip install checkov
+            pip show checkov
             checkov -d . --skip-check $SKIPS -o cli -o junitxml --output-file-path console,results.xml
         '''
     }
