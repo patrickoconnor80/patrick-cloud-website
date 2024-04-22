@@ -54,7 +54,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "website_logs" {
   bucket = aws_s3_bucket.website_logs.id
 
   rule {
-    id = "log"
+    id     = "log"
     status = "Enabled"
     abort_incomplete_multipart_upload {
       days_after_initiation = 7
@@ -86,60 +86,60 @@ resource "aws_s3_bucket_policy" "website_logs" {
 }
 
 data "aws_iam_policy_document" "website_logs_bucket_policy" {
-      statement {
-        sid    = "ReadBucketMetadata"
-        effect = "Allow"
-        principals {
-          type        = "AWS"
-          identifiers = [data.aws_elb_service_account.main.arn]
-        }
-        actions = [
-          "s3:ListBucket"
-        ]
-        resources = [aws_s3_bucket.website_logs.arn]
-      }
+  statement {
+    sid    = "ReadBucketMetadata"
+    effect = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = [data.aws_elb_service_account.main.arn]
+    }
+    actions = [
+      "s3:ListBucket"
+    ]
+    resources = [aws_s3_bucket.website_logs.arn]
+  }
 
-      statement {
-        sid = "TerraformDeployer"
-        effect    = "Allow"
-        principals {
-          type ="AWS"
-          identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.prefix}-jenkins-ec2-role"]
-        }
-        actions = [
-          "s3:ListBucket",
-          "s3:GetBucketPolicy",
-          "s3:GetBucketAcl"
-        ]
-        resources = [
-          "${aws_s3_bucket.website_logs.arn}"
-        ]
-      }
+  statement {
+    sid    = "TerraformDeployer"
+    effect = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.prefix}-jenkins-ec2-role"]
+    }
+    actions = [
+      "s3:ListBucket",
+      "s3:GetBucketPolicy",
+      "s3:GetBucketAcl"
+    ]
+    resources = [
+      "${aws_s3_bucket.website_logs.arn}"
+    ]
+  }
 
-      statement {
-        sid    = "WriteToBucket"
-        effect = "Allow"
-        principals {
-          type        = "AWS"
-          identifiers = [data.aws_elb_service_account.main.arn]
-        }
-        actions = [
-          "s3:PutObject",
-          "s3:PutObjectAcl"
-        ]
-        resources = ["${aws_s3_bucket.website_logs.arn}/alb/*"]
-      }
+  statement {
+    sid    = "WriteToBucket"
+    effect = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = [data.aws_elb_service_account.main.arn]
+    }
+    actions = [
+      "s3:PutObject",
+      "s3:PutObjectAcl"
+    ]
+    resources = ["${aws_s3_bucket.website_logs.arn}/alb/*"]
+  }
 
-      statement {
-        sid    = "AdminAccessToBucket"
-        effect = "Allow"
-        principals {
-          type        = "AWS"
-          identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
-        }
-        actions = ["s3:*"]
-        resources = ["${aws_s3_bucket.website_logs.arn}/*","${aws_s3_bucket.website_logs.arn}"]
-      }
+  statement {
+    sid    = "AdminAccessToBucket"
+    effect = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
+    }
+    actions   = ["s3:*"]
+    resources = ["${aws_s3_bucket.website_logs.arn}/*", "${aws_s3_bucket.website_logs.arn}"]
+  }
 }
 
 

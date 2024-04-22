@@ -1,52 +1,52 @@
 resource "aws_alb" "this" {
-    name = "${local.prefix}-alb"
-    subnets = local.public_subnet_ids
-    security_groups = [data.aws_security_group.alb_sg.id]
-    enable_deletion_protection = true
-    drop_invalid_header_fields = true
+  name                       = "${local.prefix}-alb"
+  subnets                    = local.public_subnet_ids
+  security_groups            = [data.aws_security_group.alb_sg.id]
+  enable_deletion_protection = true
+  drop_invalid_header_fields = true
 
-    access_logs {
-      bucket  = aws_s3_bucket.website_logs.bucket
-      prefix  = "alb"
-      enabled = true
-    }
+  access_logs {
+    bucket  = aws_s3_bucket.website_logs.bucket
+    prefix  = "alb"
+    enabled = true
+  }
 
-    tags = local.tags
+  tags = local.tags
 }
 
 resource "aws_alb_listener" "http" {
-    load_balancer_arn = aws_alb.this.id
-    port = 80
-    protocol = "HTTP"
+  load_balancer_arn = aws_alb.this.id
+  port              = 80
+  protocol          = "HTTP"
 
-    default_action {
-      type = "redirect"
-      redirect {
-        host        = "#{host}"
-        path        = "/#{path}"
-        port        = "443"
-        protocol    = "HTTPS"
-        query       = "#{query}"
-        status_code = "HTTP_301"
-      }
+  default_action {
+    type = "redirect"
+    redirect {
+      host        = "#{host}"
+      path        = "/#{path}"
+      port        = "443"
+      protocol    = "HTTPS"
+      query       = "#{query}"
+      status_code = "HTTP_301"
     }
+  }
 
-    tags = local.tags
+  tags = local.tags
 }
 
 resource "aws_alb_listener" "https" {
-    load_balancer_arn = aws_alb.this.id
-    port = 443
-    protocol = "HTTPS"
-    certificate_arn = "arn:aws:acm:us-east-1:948065143262:certificate/e8287206-84d2-470f-8843-c6d344cbf8e2"
-    ssl_policy = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+  load_balancer_arn = aws_alb.this.id
+  port              = 443
+  protocol          = "HTTPS"
+  certificate_arn   = "arn:aws:acm:us-east-1:948065143262:certificate/e8287206-84d2-470f-8843-c6d344cbf8e2"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
 
-    default_action {
-        type = "forward"
-        target_group_arn = aws_alb_target_group.jenkins.arn
-    }
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_alb_target_group.jenkins.arn
+  }
 
-    tags = local.tags
+  tags = local.tags
 }
 
 
@@ -73,42 +73,42 @@ resource "aws_security_group_rule" "ingress_443" {
 }
 
 resource "aws_security_group_rule" "egress_443_snowplow_collector" {
-  security_group_id = data.aws_security_group.alb_sg.id
-  description       = "Allow outgoing traffic to snowplow collector sg on port 443"
-  type              = "egress"
-  protocol          = "tcp"
-  from_port         = 443
-  to_port           = 443
+  security_group_id        = data.aws_security_group.alb_sg.id
+  description              = "Allow outgoing traffic to snowplow collector sg on port 443"
+  type                     = "egress"
+  protocol                 = "tcp"
+  from_port                = 443
+  to_port                  = 443
   source_security_group_id = data.aws_security_group.snowplow_collector.id
 }
 
 resource "aws_security_group_rule" "egress_443_snowplow_iglu" {
-  security_group_id = data.aws_security_group.alb_sg.id
-  description       = "Allow outgoing traffic to snowplow iglu sg on port 443"
-  type              = "egress"
-  protocol          = "tcp"
-  from_port         = 443
-  to_port           = 443
+  security_group_id        = data.aws_security_group.alb_sg.id
+  description              = "Allow outgoing traffic to snowplow iglu sg on port 443"
+  type                     = "egress"
+  protocol                 = "tcp"
+  from_port                = 443
+  to_port                  = 443
   source_security_group_id = data.aws_security_group.snowplow_iglu.id
 }
 
 resource "aws_security_group_rule" "egress_443_jenkins" {
-  security_group_id = data.aws_security_group.alb_sg.id
-  description       = "Allow outgoing traffic to jenkins sg on port 443"
-  type              = "egress"
-  protocol          = "tcp"
-  from_port         = 443
-  to_port           = 443
+  security_group_id        = data.aws_security_group.alb_sg.id
+  description              = "Allow outgoing traffic to jenkins sg on port 443"
+  type                     = "egress"
+  protocol                 = "tcp"
+  from_port                = 443
+  to_port                  = 443
   source_security_group_id = data.aws_security_group.jenkins.id
 }
 
 resource "aws_security_group_rule" "egress_443_kubernetes" {
-  security_group_id = data.aws_security_group.alb_sg.id
-  description       = "Allow outgoing traffic to kubernetes sg on port 443"
-  type              = "egress"
-  protocol          = "tcp"
-  from_port         = 443
-  to_port           = 443
+  security_group_id        = data.aws_security_group.alb_sg.id
+  description              = "Allow outgoing traffic to kubernetes sg on port 443"
+  type                     = "egress"
+  protocol                 = "tcp"
+  from_port                = 443
+  to_port                  = 443
   source_security_group_id = data.aws_security_group.kubernetes.id
 }
 

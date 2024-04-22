@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "website" {
   bucket = "patrick-cloud.com"
-  tags = local.tags
+  tags   = local.tags
 }
 
 resource "aws_s3_bucket_website_configuration" "website" {
@@ -16,7 +16,7 @@ resource "aws_s3_bucket_website_configuration" "website" {
 }
 
 resource "aws_s3_bucket_public_access_block" "website" {
-  bucket = aws_s3_bucket.website.id
+  bucket              = aws_s3_bucket.website.id
   block_public_acls   = false
   block_public_policy = false
 }
@@ -60,9 +60,9 @@ resource "aws_s3_bucket_policy" "website" {
         ]
       },
       {
-        Effect    = "Allow"
+        Effect = "Allow"
         Principal = {
-          "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.prefix}-jenkins-ec2-role"
+          "AWS" : "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.prefix}-jenkins-ec2-role"
         }
         Action = [
           "s3:ListBucket"
@@ -82,6 +82,6 @@ resource "null_resource" "remove_and_upload_to_s3" {
 
   triggers = {
     html_css_files = sha1(join("", [for f in fileset("../src/", "*") : filesha1("../src/${f}")]))
-    always_run = timestamp()
+    always_run     = timestamp()
   }
 }

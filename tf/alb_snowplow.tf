@@ -9,33 +9,33 @@ resource "aws_lb_listener_rule" "https_snowplow_collector" {
     target_group_arn = aws_alb_target_group.snowplow_collector.arn
   }
 
-    condition {
-        host_header {
-            values = ["snowplow-collector.patrick-cloud.com"]
-        }
+  condition {
+    host_header {
+      values = ["snowplow-collector.patrick-cloud.com"]
     }
+  }
 
-  tags = merge(local.tags, {"Name": "${local.prefix}-snowplow-collector-listener"})
+  tags = merge(local.tags, { "Name" : "${local.prefix}-snowplow-collector-listener" })
 }
 
 resource "aws_alb_target_group" "snowplow_collector" {
-    name = "${local.prefix}-snow-col-tg"
-    port = 443
-    protocol = "HTTPS"
-    target_type = "instance"
-    vpc_id = data.aws_vpc.this.id
+  name        = "${local.prefix}-snow-col-tg"
+  port        = 443
+  protocol    = "HTTPS"
+  target_type = "instance"
+  vpc_id      = data.aws_vpc.this.id
 
-    health_check {
-        healthy_threshold = 3
-        interval = 30
-        protocol = "HTTPS"
-        matcher = "200"
-        timeout = 10
-        path = "/health"
-        unhealthy_threshold = 2
-    }
+  health_check {
+    healthy_threshold   = 3
+    interval            = 30
+    protocol            = "HTTPS"
+    matcher             = "200"
+    timeout             = 10
+    path                = "/health"
+    unhealthy_threshold = 2
+  }
 
-    tags = local.tags
+  tags = local.tags
 }
 
 # resource "aws_autoscaling_attachment" "snowplow_collector" {
@@ -55,35 +55,35 @@ resource "aws_lb_listener_rule" "https_snowplow_iglu" {
     target_group_arn = aws_alb_target_group.snowplow_iglu.arn
   }
 
-    condition {
-        host_header {
-            values = ["snowplow-iglu.patrick-cloud.com"]
-        }
+  condition {
+    host_header {
+      values = ["snowplow-iglu.patrick-cloud.com"]
     }
+  }
 
-  tags = merge(local.tags, {"Name": "${local.prefix}-snowplow-iglu-listener"})
+  tags = merge(local.tags, { "Name" : "${local.prefix}-snowplow-iglu-listener" })
 
 }
 
 resource "aws_alb_target_group" "snowplow_iglu" {
-    name = "${local.prefix}-snow-iglu-tg"
-    port = 443
-    protocol = "HTTPS"
-    target_type = "instance"
-    vpc_id = data.aws_vpc.this.id
-    slow_start = 300
+  name        = "${local.prefix}-snow-iglu-tg"
+  port        = 443
+  protocol    = "HTTPS"
+  target_type = "instance"
+  vpc_id      = data.aws_vpc.this.id
+  slow_start  = 300
 
-    health_check {
-        healthy_threshold = 3
-        interval = 30
-        protocol = "HTTPS"
-        matcher = "200"
-        timeout = 10
-        path = "/api/meta/health"
-        unhealthy_threshold = 2
-    }
+  health_check {
+    healthy_threshold   = 3
+    interval            = 30
+    protocol            = "HTTPS"
+    matcher             = "200"
+    timeout             = 10
+    path                = "/api/meta/health"
+    unhealthy_threshold = 2
+  }
 
-    tags = local.tags
+  tags = local.tags
 }
 
 # resource "aws_autoscaling_attachment" "snowplow_iglu" {
@@ -110,7 +110,7 @@ resource "aws_cloudwatch_metric_alarm" "HealthyHostCountSnowplowCollector" {
 
   dimensions = {
     LoadBalancer = aws_alb.this.arn_suffix,
-    TargetGroup = aws_alb_target_group.snowplow_collector.arn_suffix
+    TargetGroup  = aws_alb_target_group.snowplow_collector.arn_suffix
   }
 
   tags = local.tags
@@ -132,7 +132,7 @@ resource "aws_cloudwatch_metric_alarm" "HealthyHostCountSnowplowIglu" {
 
   dimensions = {
     LoadBalancer = aws_alb.this.arn_suffix,
-    TargetGroup = aws_alb_target_group.snowplow_collector.arn_suffix
+    TargetGroup  = aws_alb_target_group.snowplow_collector.arn_suffix
   }
 
   tags = local.tags

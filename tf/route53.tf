@@ -17,7 +17,7 @@ resource "aws_route53_record" "patirck_cloud" {
 
   alias {
     name                   = aws_cloudfront_distribution.this.domain_name
-    zone_id                   = aws_cloudfront_distribution.this.hosted_zone_id
+    zone_id                = aws_cloudfront_distribution.this.hosted_zone_id
     evaluate_target_health = false
   }
 }

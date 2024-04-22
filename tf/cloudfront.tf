@@ -6,9 +6,9 @@ resource "aws_cloudfront_distribution" "this" {
 
   enabled         = true
   is_ipv6_enabled = false
-  web_acl_id = aws_wafv2_web_acl.cloudfront.arn
+  web_acl_id      = aws_wafv2_web_acl.cloudfront.arn
 
-  aliases = ["patrick-cloud.com"]
+  aliases             = ["patrick-cloud.com"]
   default_root_object = "index.html"
 
   default_cache_behavior {
@@ -41,7 +41,7 @@ resource "aws_cloudfront_distribution" "this" {
     cloudfront_default_certificate = false
     minimum_protocol_version       = "TLSv1.2_2021"
     ssl_support_method             = "sni-only"
-    acm_certificate_arn = "arn:aws:acm:us-east-1:948065143262:certificate/e8287206-84d2-470f-8843-c6d344cbf8e2"
+    acm_certificate_arn            = "arn:aws:acm:us-east-1:948065143262:certificate/e8287206-84d2-470f-8843-c6d344cbf8e2"
   }
 
   logging_config {

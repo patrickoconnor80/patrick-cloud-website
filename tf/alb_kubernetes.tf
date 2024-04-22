@@ -7,38 +7,38 @@ resource "aws_lb_listener_rule" "https_kubernetes" {
     target_group_arn = aws_alb_target_group.kubernetes.arn
   }
 
-    condition {
-        host_header {
-            values = ["kubernetes.patrick-cloud.com"]
-        }
+  condition {
+    host_header {
+      values = ["kubernetes.patrick-cloud.com"]
     }
+  }
 }
 
 resource "aws_alb_target_group" "kubernetes" {
-    name = "${local.prefix}-kubernetes-tg"
-    port = data.aws_ssm_parameter.kubernetes_istio_gateway_https_nodeport.value
-    protocol = "HTTPS"
-    target_type = "instance"
-    vpc_id = data.aws_vpc.this.id
+  name        = "${local.prefix}-kubernetes-tg"
+  port        = data.aws_ssm_parameter.kubernetes_istio_gateway_https_nodeport.value
+  protocol    = "HTTPS"
+  target_type = "instance"
+  vpc_id      = data.aws_vpc.this.id
 
-    health_check {
-        port = data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value
-        healthy_threshold = 3
-        interval = 20
-        protocol = "HTTP"
-        matcher = "200"
-        timeout = 15
-        path = "/healthz/ready"
-        unhealthy_threshold = 2
-    }
+  health_check {
+    port                = data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value
+    healthy_threshold   = 3
+    interval            = 20
+    protocol            = "HTTP"
+    matcher             = "200"
+    timeout             = 15
+    path                = "/healthz/ready"
+    unhealthy_threshold = 2
+  }
 
-    stickiness {
-        enabled = true
-        type = "lb_cookie"
-        cookie_duration = 3600
-    }
+  stickiness {
+    enabled         = true
+    type            = "lb_cookie"
+    cookie_duration = 3600
+  }
 
-    tags = local.tags
+  tags = local.tags
 }
 
 # resource "aws_autoscaling_attachment" "autoscaling_attachment" {
@@ -67,23 +67,23 @@ resource "aws_security_group_rule" "egress_kubernetes_statusport" {
 }
 
 resource "aws_security_group_rule" "ingress_kubernetes_nodeport" {
-  security_group_id = data.aws_security_group.kubernetes.id
-  description       = "Allow incoming traffic on port ${data.aws_ssm_parameter.kubernetes_istio_gateway_https_nodeport.value}(Istio Gateway NodePort) from the ALB to the Kubernetes Cluster"
-  type              = "ingress"
-  protocol          = "tcp"
-  from_port         = data.aws_ssm_parameter.kubernetes_istio_gateway_https_nodeport.value
-  to_port           = data.aws_ssm_parameter.kubernetes_istio_gateway_https_nodeport.value
-  source_security_group_id       = data.aws_security_group.alb_sg.id
+  security_group_id        = data.aws_security_group.kubernetes.id
+  description              = "Allow incoming traffic on port ${data.aws_ssm_parameter.kubernetes_istio_gateway_https_nodeport.value}(Istio Gateway NodePort) from the ALB to the Kubernetes Cluster"
+  type                     = "ingress"
+  protocol                 = "tcp"
+  from_port                = data.aws_ssm_parameter.kubernetes_istio_gateway_https_nodeport.value
+  to_port                  = data.aws_ssm_parameter.kubernetes_istio_gateway_https_nodeport.value
+  source_security_group_id = data.aws_security_group.alb_sg.id
 }
 
 resource "aws_security_group_rule" "ingress_kubernetes_statusport" {
-  security_group_id = data.aws_security_group.kubernetes.id
-  description       = "Allow incoming traffic on port ${data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value}(Istio Gateway StatusPort) from the ALB to the Kubernetes Cluster"
-  type              = "ingress"
-  protocol          = "tcp"
-  from_port         = data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value
-  to_port           = data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value
-  source_security_group_id       = data.aws_security_group.alb_sg.id
+  security_group_id        = data.aws_security_group.kubernetes.id
+  description              = "Allow incoming traffic on port ${data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value}(Istio Gateway StatusPort) from the ALB to the Kubernetes Cluster"
+  type                     = "ingress"
+  protocol                 = "tcp"
+  from_port                = data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value
+  to_port                  = data.aws_ssm_parameter.kubernetes_istio_gateway_statusport.value
+  source_security_group_id = data.aws_security_group.alb_sg.id
 }
 
 
@@ -105,7 +105,7 @@ resource "aws_cloudwatch_metric_alarm" "HealthyHostCountKubernetes" {
 
   dimensions = {
     LoadBalancer = aws_alb.this.arn_suffix,
-    TargetGroup = aws_alb_target_group.kubernetes.arn_suffix
+    TargetGroup  = aws_alb_target_group.kubernetes.arn_suffix
   }
 
   tags = local.tags
