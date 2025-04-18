@@ -37,38 +37,49 @@
 					<nav id="nav">
 						<ul class="links">
 							<li class="active"><a href="index.html">Patrick Cloud</a></li>
-							<li><a href="snowplow.html">Snowplow</a></li>
-							<li><a href="kubernetes.html">Kubernetes</a></li>
 							<li><a href="website.html">Website</a></li>
+							<li><a href="snowplow.html">Snowplow</a></li>
 							<li><a href="databricks.html">Databricks</a></li>
-							<li><a href="jenkins.html">Jenkins</a></li>
+							<li><a href="kubernetes.html">Kubernetes</a></li>
+							<li><a href="ml_platform.html">ML Platform</a></li>
+							<li><a href="devops.html">DevOps</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/patrickoconnor80/stock_market" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://github.com/patrickoconnor80/patrick-cloud-base-infra" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
-						<span class="image fit"><img src="images/patrick-cloud-architecture.svg" alt="" /></span>
 						<!-- Featured Post -->
+						<section class="post">
+							<header>
+								<h2>About Me</h2>
+							</header>
+							<ul>
+								<li>I'm a cloud engineer and I set up this website to showcase my skills and Github repositories. To summarize this project, I have a website that tracks analytics via Snowplow and I use Databricks and dbt for the data modeling. Jenkins is used for CI/CD. Kubernetes is set up for the ML platform with Ray, Jupyther Hub and Mlflow. I tried to follow best practices to build this project, each page I try to explain the decisions I made. Everything is deployed via Terraform so its reproducible. When I'm not working on the project, I destroy the infrastructure to save money so the links will not work unless I spin everything back up.</li>
+							</ul>
+						</section>
 						<section class="post">
 							<header>
 								<h2>Applications</h2>
 							</header>
 							<ul>
-								<li>ALB - Application Load Balancer is the gateway to all the applications.</li>
-								<li>Jenkins - CI/CD Server responsible for testing and deploying all the infrastructure.</li>
+								<li>ALB - Application Load Balancer is the gateway to all the applications</li>
+								<li>Jenkins - CI/CD Server responsible for testing and deploying all the infrastructure</li>
 								<li>Snoplow - Analytics tracker</li>
-								<li>Databricks - Lakehouse to store and transform data, also visualize it.</li>
-								<li>DBT - Transformation layer to transform raw data into production-grade tables.</li>
-								<li>EKS - Managed Kuberenetes service.</li>
-								<li>Istio - Service Mesh encapsiliting the Kubernetes Cluster</li>
+								<li>Databricks - Lakehouse to store and transform data, also visualize it</li>
+								<li>DBT - Transformation layer to transform raw data into production-grade tables</li>
+								<li>EKS - Managed Kubernetes service</li>
+								<li>Istio - Service Mesh encapsulating the Kubernetes Cluster</li>
 								<li>Kiali - Dashboard for Service Mesh</li>
 								<li>Prometheus - Metrics collector</li>
 								<li>Grafana - Dashboard for metrics and Cloudwatch</li>
 								<li>ArgoCD - GitOps continuous delivery tool</li>
+								<li>Ray - Open source unified compute framework</li>
+								<li>Juptyer Hub - Interactive computing across multiple programming languages</li>
+								<li>Mlflow - Platform to streamline machine learning development</li>
 							</ul>
 						</section>
 						<!-- Posts -->
@@ -86,6 +97,7 @@
 										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-kubernetes">patrick-cloud-kubernetes</a></p>
 										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-databricks">patrick-cloud-databricks</a></p>
 										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-dbt">patrick-cloud-dbt</a></p>
+										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-machine-learning">patrick-cloud-machine-learning</a></p>
 									</ul>
 								</article>
 								<article>
@@ -99,21 +111,23 @@
 									<p><a href="https://kubernetes.patrick-cloud.com/prometheus/">Prometheus</a></p>
 									<p><a href="https://kubernetes.patrick-cloud.com/kiali">Kiali</a></p>
 									<p><a href=">https://kubernetes.patrick-cloud.com/argocd/">Argo CD</a></p>
-									<p><a href=">https://kubernetes.patrick-cloud.com/dbt-docs/">DBT Docs</a></p>
+									<p><a href=">https://kubernetes.patrick-cloud.com/dbt-docs/">dbt Docs</a></p>
+									<p><a href="https://kubernetes.patrick-cloud.com/ray-cluster-dashboard/">Ray Cluster Dashboard</a></p>
+									<p><a href="https://kubernetes.patrick-cloud.com/ray-service-serve/">Ray Serve Endpoint</a></p>
+									<p><a href="https://kubernetes.patrick-cloud.com/jupyter/">Jupyter notebook</a></p>
 								</article>
 								<article>
 									<header>
 										<h2>Best Practices used throughout this project</h2>
 									</header>
-									<h3>AWS</h3>
 										<p>Least Privilege IAM roles and policies<br />
 										<p>Least Privilege Security Groups<br />
-										<p>Encrypt all AWS resources with KMS<br />
-										<p>Set up alarms for common problems<br />
-										<p>Keep communication within the AWS private network as much as possible with endpoints<br />
-										<p>Everything should be in the private subnet except the ALB<br />
-									<h3>General</h3>
+										<p>Encrypt all AWS resources with custom KMS keys<br />
+										<p>Set up alarms for monitoring<br />
+										<p>Limit access to the public internet (private subnets, endpoints)<br />
 										<p>Encrypt all traffic with SSL</p>
+										<p>Continuous Integration ensures proper testing before deployment</p>
+										<p>Continuous Development and IaC ensures reproducibility</p>
 								</article>
 								<article>
 									<header>
@@ -124,9 +138,9 @@
 										<h3>Languages</h3>
 											<p>Python, SQL, Linux</p>
 										<h3>Open Source Frameworks</h3>
-											<p>Terraform, Docker, Kubernetes</p>
+											<p>Terraform, Docker, Kubernetes - kubetctl, kustomize, helm, AWS CLI</p>
 										<h3>Open Source Libraries</h3>
-											<p>Snowplow, DBT, Nginx, Istio, Prometheus, Grafana, ArgoCD, Jenkins</p>
+											<p>Snowplow, dbt, Nginx, Istio, Prometheus, Grafana, ArgoCD, Ray, Jupyter, Mlflow</p>
 										<h3>CI/CD</h3>
 											<p>Github Actions, AWS Codepipeline, Jenkins</p>
 										<h3>Orchestration</h3>
@@ -135,63 +149,7 @@
 											<p>Databricks, Snowflake, Postgres</p>
 								</article>
 							</section>
-
 					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
 			</div>
 
 		<!-- Scripts -->
