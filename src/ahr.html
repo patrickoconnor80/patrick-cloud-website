@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Aryl Hydrocarbon Receptor &amp; Metabolic Disease</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:900px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:900px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+/* ---- Figure: SVG diagram ---- */
+.diagram{
+  margin:30px 0;
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:20px 20px 14px;
+}
+.diagram svg{width:100%;height:auto;display:block;}
+.diagram .dcap{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;
+  color:var(--ink-soft);line-height:1.55;margin:14px 0 0;
+  padding-left:14px;border-left:2px solid var(--moss);
+}
+.diagram .dcap b{color:var(--moss-deep);}
+
+/* ---- Definition rows ---- */
+.defrow{
+  display:grid;grid-template-columns:180px 1fr;gap:16px;
+  padding:14px 0;border-top:1px solid var(--rule);
+}
+.defrow:first-of-type{border-top:none;}
+.defrow .term{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
+  color:var(--moss-deep);line-height:1.45;padding-top:2px;
+}
+.defrow .def{margin:0;font-size:16.5px;line-height:1.55;}
+@media (max-width:560px){
+  .defrow{grid-template-columns:1fr;gap:4px;}
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+
+/* ---- Evidence chips ---- */
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mod{background:rgba(61,106,122,.13);color:#2c4f5c;}
+.ev-mod::before{background:var(--sky);}
+.ev-animal{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-animal::before{background:var(--gold);}
+.ev-inf{background:rgba(183,138,46,.09);color:#7a5c14;}
+.ev-inf::before{background:var(--gold);opacity:.55;}
+.ev-cont{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-cont::before{background:var(--rust);}
+.ev-spec{background:rgba(61,69,60,.1);color:var(--ink-soft);}
+.ev-spec::before{background:var(--ink-soft);opacity:.6;}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.deepdive{
+  border-left:3px solid var(--sky);
+  background:linear-gradient(90deg,rgba(61,106,122,.045),rgba(61,106,122,0) 60%);
+  border-radius:0 4px 4px 0;
+  padding:6px 24px 14px 22px;
+  margin:26px 0;
+}
+.deepdive-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;display:flex;align-items:baseline;gap:8px;
+  padding:10px 0 4px;border-bottom:1px dotted var(--rule);margin-bottom:12px;
+}
+.deepdive-tag .dd-skip{
+  font-weight:400;text-transform:none;letter-spacing:.02em;
+  color:var(--ink-soft);font-style:italic;font-size:11px;
+}
+.deepdive-tag::before{content:"\25B7";font-size:12px;color:var(--sky);}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+.chain{
+  font-family:'IBM Plex Mono',monospace;font-size:14px;
+  line-height:1.9;color:var(--ink-soft);
+  background:var(--paper-deep);padding:16px 18px;border-radius:3px;
+  margin:14px 0;overflow-x:auto;
+}
+.chain b{color:var(--moss-deep);}
+.arrow{color:var(--rust);font-weight:600;}
+
+/* ---- Tier blocks ---- */
+.tier{
+  border-left:3px solid var(--rule);
+  padding:4px 0 4px 20px;margin:24px 0;
+}
+.tier-name{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  margin-bottom:6px;
+}
+.tier p{font-size:17px;margin:10px 0;}
+.t-direct{border-left-color:var(--rust);}
+.t-direct .tier-name{color:var(--rust);}
+.t-supply{border-left-color:var(--gold);}
+.t-supply .tier-name{color:#7a5c14;}
+.t-restraint{border-left-color:var(--sky);}
+.t-restraint .tier-name{color:var(--sky);}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Coverage table ---- */
+table.matrix{
+  width:100%;border-collapse:collapse;margin:26px 0;
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+}
+table.matrix th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  font-weight:600;padding:14px 16px;border-bottom:2px solid var(--ink);
+  vertical-align:bottom;
+}
+table.matrix td{
+  padding:14px 16px;border-top:1px solid var(--rule);
+  vertical-align:top;font-size:15.5px;line-height:1.5;color:var(--ink-soft);
+}
+table.matrix td:first-child{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--moss-deep);width:20%;padding-top:16px;
+}
+table.matrix td.tiercell{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  width:14%;padding-top:17px;
+}
+@media (max-width:640px){
+  table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100%;}
+  table.matrix thead{display:none;}
+  table.matrix tr{border-top:1px solid var(--rule);padding:6px 0;}
+  table.matrix td{border-top:none;padding:4px 16px;}
+  table.matrix td:first-child{width:auto;padding-top:14px;}
+  table.matrix td.tiercell{width:auto;}
+}
+
+/* ---- Mitigation / food list ---- */
+ol.mit{list-style:none;counter-reset:m;padding:0;margin:24px 0;}
+ol.mit>li{
+  counter-increment:m;position:relative;
+  padding:18px 0 18px 58px;border-top:1px solid var(--rule);
+}
+ol.mit>li::before{
+  content:counter(m);position:absolute;left:0;top:16px;
+  font-family:'Fraunces',serif;font-weight:600;font-size:30px;
+  color:var(--moss);line-height:1;width:42px;text-align:center;
+}
+ol.mit>li .mit-title{font-weight:600;color:var(--moss-deep);}
+
+/* ---- Pull quote ---- */
+.pull{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+  font-size:25px;line-height:1.32;color:var(--moss-deep);
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  padding:26px 0;margin:38px 0;
+}
+
+/* ---- Limitations / references ---- */
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-h{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;
+  margin:30px 0 0;
+}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+ol.refs{
+  list-style:none;padding:0;margin:24px 0 0;
+  font-family:'Newsreader',Georgia,serif;
+}
+ol.refs li{
+  counter-increment:ref;position:relative;padding:0 0 14px 3.2em;
+  font-size:15px;line-height:1.55;color:var(--ink);
+}
+.refwrap{counter-reset:ref;}
+sup.cite{font-size:11px;line-height:0;vertical-align:super;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+sup.cite a{color:var(--rust);text-decoration:none;padding:0 1px;border-bottom:none;}
+sup.cite a:hover{text-decoration:underline;}
+ol.refs li:target{background:#fbf6ea;outline:2px solid #b78a2e;outline-offset:3px;border-radius:4px;}
+ol.refs li::before{
+  content:"["counter(ref)"]";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--rust);
+}
+ol.refs li .j{font-style:italic;}
+ol.refs li .note{color:var(--ink-soft);font-size:13.5px;}
+.ref-group{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.ref-group:first-of-type{margin-top:8px;}
+.gapflag{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:#7d3d1c;background:rgba(168,86,47,.13);
+  padding:2px 7px;border-radius:2px;font-weight:600;white-space:nowrap;
+}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .byline{flex-direction:column;gap:6px;}
+}
+@media (prefers-reduced-motion:no-preference){
+  section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html">Overview</a>
+  <a href="linoleic-acid.html">Linoleic Acid</a>
+  <a href="ahr.html" class="active">AhR</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Nutritional Biochemistry</p>
+  <h1 class="title">The Aryl Hydrocarbon Receptor &amp; <em>Metabolic Disease</em></h1>
+  <p class="sub">How one transcription factor links gut permeability, tryptophan metabolism, seed-oil oxidation, hyperinsulinaemia and B-vitamin status to the circadian collapse of NAD&#8314;.</p>
+  <div class="byline">
+    <span><b>Draft</b> v6</span>
+    <span><b>Scope</b> mechanism, with a dietary corollary</span>
+    <span><b>Standard</b> evidence graded &amp; loops marked where inferred</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;">Obesity is usually modelled as an energy-balance problem with inflammation as a complication. This paper argues something narrower and more testable: that a single ligand-activated transcription factor, the aryl hydrocarbon receptor (AhR), sits at the point where several independent metabolic insults converge, and that its chronic activation is sufficient to produce the characteristic obese phenotype &mdash; impaired fat oxidation, circadian disruption, NAD&#8314; depletion, and a gut microbiome that extracts more calories from the same food.</p>
+  <p>The causal case does not rest on correlation. AhR inhibition <em>prevents</em> Western-diet obesity in mice<sup class="cite"><a href="#r3">3</a></sup>, <em>reverses</em> established obesity and steatosis<sup class="cite"><a href="#r4">4</a></sup>, and kynurenine-driven AhR signalling alone <em>causes</em> weight gain, liver steatosis and hyperglycaemia<sup class="cite"><a href="#r5">5</a></sup>. What makes AhR unusual as a target is that its inputs are dietary: tryptophan catabolism, gut-barrier integrity, membrane fatty-acid composition, insulin pulse pattern and B-vitamin sufficiency each feed it, and each is modifiable at the plate.</p>
+</div>
+
+<div class="brief">
+  <div class="lbl">The argument in brief</div>
+  <p class="sub">Six steps</p>
+  <ol class="spine">
+    <li>AhR is a <b>promiscuous sensor</b> &mdash; it binds bacterial metabolites, tryptophan products, oxidation products and dietary compounds alike, which makes it an integrator of several unrelated exposures at once.</li>
+    <li>Its obligate partner protein is <b>shared with the circadian clock</b>. AhR competes with CLOCK for BMAL1, which is the structural accident that turns a xenobiotic sensor into a clock disruptor.</li>
+    <li>Chronically active, it produces <b>six outputs</b>: NAD&#8314; depletion via TiPARP, CLOCK displacement, IDO1 induction, methyl-pool drain via PEMT, CYP1B1&ndash;HETE signalling, and a Firmicutes-shifted microbiome.</li>
+    <li>Its inputs fall into <b>three tiers</b> &mdash; direct activation, ligand supply, and loss of restraint &mdash; and they fail in different ways, which determines what kind of intervention works on each.</li>
+    <li>Three of the outputs <b>regenerate their own inputs</b>. That is why the state persists once established rather than resolving with the insult that started it.</li>
+    <li>Each tier has a <b>dietary lever</b>: bile-acid signalling, flavonol NAD&#8314; sparing, B-vitamin repletion, membrane fat composition, and direct NADH reduction.</li>
+  </ol>
+  <p class="bottom">Not that AhR explains obesity &mdash; that it is the node where several partial explanations turn out to be the same explanation.</p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Reader's guide</div>
+  <p style="margin-top:0;">Parts I&ndash;IV build the mechanism: what AhR does when chronically active, what activates it, the loops that make it self-sustaining, and the downstream damage. Parts V&ndash;VI are the intervention half. Caveats are collected in <a href="#limitations">Limitations</a> rather than scattered through the text; where a specific claim is weaker than the prose implies, it carries a grade.</p>
+  <p style="margin-bottom:0;">
+    <span class="ev ev-strong">Strong</span>
+    <span class="ev ev-mod">Moderate</span>
+    <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span>
+    <span class="ev ev-inf">Inferred</span>
+    <span class="ev ev-cont">Contested</span>
+    <span class="ev ev-spec">Speculative</span>
+  </p>
+</div>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PRIMER</div>
+  <h2>What AhR is, and why it is the right place to look</h2>
+</div>
+
+<p>AhR is a ligand-activated transcription factor. At rest it sits in the cytoplasm held by a chaperone complex; when a ligand binds it sheds the chaperones, moves into the nucleus, pairs with a partner protein called ARNT, and switches on a defined set of target genes.</p>
+
+<p>It was discovered as the receptor dioxin binds, which is why most of the literature on it is toxicology rather than metabolism. That history is the reason it is under-appreciated as a metabolic node: for decades it was studied as the thing that makes industrial pollutants harmful, not as something the body operates deliberately.</p>
+
+<div class="defrow">
+  <div class="term">Promiscuous</div>
+  <p class="def">Unlike most receptors, AhR binds a structurally diverse ligand set &mdash; bacterial metabolites, tryptophan breakdown products, dietary compounds, oxidation products, xenobiotics. Usually described as a quirk. Read as a design feature, it makes AhR a single readout of several unrelated exposures at once.</p>
+</div>
+<div class="defrow">
+  <div class="term">Shares a partner<br>with the clock</div>
+  <p class="def">ARNT is AhR's obligate dimerisation partner, and AhR competes directly with CLOCK for BMAL1 &mdash; both are PAS-domain proteins bidding for the same partner. This is the structural accident that turns a xenobiotic sensor into a circadian disruptor.</p>
+</div>
+<div class="defrow">
+  <div class="term">Physiological,<br>not just toxic</div>
+  <p class="def">AhR is switched on after every meal by insulin signalling and switched off in the late fed state by bile-acid signalling<sup class="cite"><a href="#r2">2</a></sup>. It is a normal postprandial pulse. The pathology is not that AhR turns on &mdash; it is that in obesity it never turns off.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;I</div>
+  <h2>What AhR does when it is chronically on</h2>
+</div>
+
+<p>Six outputs matter metabolically. They are worth taking as a set, because the claim of this paper is that the set <em>is</em> the obese phenotype.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 720 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AhR hub diagram: three input tiers, the AhR-ARNT node, six downstream outputs, and two feedback arrows">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#8d9384" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#a8562f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    .bx{fill:#fffefb;stroke:#d9d4c4;stroke-width:1}
+    .lb{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:12px;fill:#1a1f1a}
+    .sm{font-family:'IBM Plex Mono',monospace;font-size:9px;fill:#6d7468}
+    .hd{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:9.5px;letter-spacing:.14em}
+    .ln{stroke:#c8c3b3;stroke-width:1.2;fill:none}
+    .fb{stroke:#a8562f;stroke-width:1.3;fill:none;stroke-dasharray:4 3}
+  </style>
+
+  <text x="14" y="22" class="hd" fill="#a8562f">DIRECT ACTIVATION</text>
+  <rect class="bx" x="14" y="30" width="180" height="36" rx="3"/>
+  <text x="26" y="48" class="lb">Kynurenine</text><text x="26" y="60" class="sm">IDO1-derived &middot; dominant ligand</text>
+  <rect class="bx" x="14" y="72" width="180" height="36" rx="3"/>
+  <text x="26" y="90" class="lb">4-HNE / oxidised &#969;-6</text><text x="26" y="102" class="sm">electrophilic, covalent</text>
+  <rect class="bx" x="14" y="114" width="180" height="36" rx="3"/>
+  <text x="26" y="132" class="lb">Insulin &rarr; PKB/Akt</text><text x="26" y="144" class="sm">ligand-independent</text>
+
+  <text x="14" y="184" class="hd" fill="#7a5c14">LIGAND SUPPLY</text>
+  <rect class="bx" x="14" y="192" width="180" height="30" rx="3"/>
+  <text x="26" y="211" class="lb">LPS &rarr; TLR4 &rarr; NF-&#954;B</text>
+  <rect class="bx" x="14" y="228" width="180" height="30" rx="3"/>
+  <text x="26" y="247" class="lb">Adipose hypoxia &rarr; HIF-1&#945;</text>
+  <rect class="bx" x="14" y="264" width="180" height="30" rx="3"/>
+  <text x="26" y="283" class="lb">IFN-&#947; / inflammation</text>
+  <text x="26" y="307" class="sm">all three converge on IDO1</text>
+
+  <text x="14" y="348" class="hd" fill="#3d6a7a">LOSS OF RESTRAINT</text>
+  <rect class="bx" x="14" y="356" width="180" height="30" rx="3"/>
+  <text x="26" y="375" class="lb">B12 / folate deficiency</text>
+  <rect class="bx" x="14" y="392" width="180" height="30" rx="3"/>
+  <text x="26" y="411" class="lb">B6 deficiency</text>
+  <rect class="bx" x="14" y="428" width="180" height="30" rx="3"/>
+  <text x="26" y="447" class="lb">Blunted FGF19 / SHP</text>
+
+  <path class="ln" d="M194 48 C 244 48, 252 210, 296 226" marker-end="url(#a1)"/>
+  <path class="ln" d="M194 90 C 244 90, 252 215, 296 232" marker-end="url(#a1)"/>
+  <path class="ln" d="M194 132 C 244 132, 252 222, 296 238" marker-end="url(#a1)"/>
+  <path class="ln" d="M194 207 C 238 207, 252 230, 296 248" marker-end="url(#a1)"/>
+  <path class="ln" d="M194 243 C 238 243, 256 246, 296 252" marker-end="url(#a1)"/>
+  <path class="ln" d="M194 279 C 238 279, 256 263, 296 258" marker-end="url(#a1)"/>
+  <path class="ln" d="M194 371 C 248 371, 262 300, 300 272" marker-end="url(#a1)"/>
+  <path class="ln" d="M194 407 C 252 407, 266 305, 302 276" marker-end="url(#a1)"/>
+  <path class="ln" d="M194 443 C 258 443, 272 310, 304 280" marker-end="url(#a1)"/>
+
+  <rect x="298" y="212" width="112" height="76" rx="4" fill="#33421f"/>
+  <text x="354" y="243" text-anchor="middle" fill="#fffefb" style="font-family:'Fraunces',serif;font-weight:600;font-size:19px">AhR</text>
+  <text x="354" y="261" text-anchor="middle" fill="#b9c4ab" style="font-family:'IBM Plex Mono',monospace;font-size:9.5px">+ ARNT</text>
+  <text x="354" y="276" text-anchor="middle" fill="#8d9a80" style="font-family:'IBM Plex Mono',monospace;font-size:8.5px">nuclear, on XREs</text>
+
+  <text x="470" y="22" class="hd" fill="#4a5d3a">OUTPUTS</text>
+  <rect class="bx" x="470" y="30" width="236" height="36" rx="3"/>
+  <text x="482" y="48" class="lb">TiPARP (PARP7)</text><text x="482" y="60" class="sm">consumes NAD&#8314; &rarr; SIRT1/3 starved</text>
+  <rect class="bx" x="470" y="72" width="236" height="36" rx="3"/>
+  <text x="482" y="90" class="lb">Displaces CLOCK from BMAL1</text><text x="482" y="102" class="sm">NAMPT transcription collapses</text>
+  <rect class="bx" x="470" y="114" width="236" height="36" rx="3"/>
+  <text x="482" y="132" class="lb">IDO1</text><text x="482" y="144" class="sm">more kynurenine &mdash; feedforward</text>
+  <rect class="bx" x="470" y="156" width="236" height="36" rx="3"/>
+  <text x="482" y="174" class="lb">PEMT + GNMT</text><text x="482" y="186" class="sm">spends SAM &rarr; homocysteine &uarr;</text>
+  <rect class="bx" x="470" y="198" width="236" height="36" rx="3"/>
+  <text x="482" y="216" class="lb">CYP1B1 &rarr; mid-chain HETEs</text><text x="482" y="228" class="sm">NF-&#954;B &uarr; &middot; PPAR&#947; &rarr; SCD1 &rarr; MUFA</text>
+  <rect class="bx" x="470" y="240" width="236" height="36" rx="3"/>
+  <text x="482" y="258" class="lb">Firmicutes &uarr; / Bacteroidetes &darr;</text><text x="482" y="270" class="sm">more calories from same food</text>
+
+  <path class="ln" d="M410 230 C 440 230, 446 54, 468 48" marker-end="url(#a1)"/>
+  <path class="ln" d="M410 236 C 442 236, 448 96, 468 90" marker-end="url(#a1)"/>
+  <path class="ln" d="M410 242 C 444 242, 450 138, 468 132" marker-end="url(#a1)"/>
+  <path class="ln" d="M410 254 C 444 254, 450 180, 468 174" marker-end="url(#a1)"/>
+  <path class="ln" d="M410 262 C 442 262, 448 222, 468 216" marker-end="url(#a1)"/>
+  <path class="ln" d="M410 272 C 440 272, 446 264, 468 258" marker-end="url(#a1)"/>
+
+  <path class="fb" d="M588 150 C 588 330, 300 342, 120 332 L 106 300" marker-end="url(#a2)"/>
+  <text x="336" y="354" class="sm" fill="#a8562f">IDO1 feedforward &mdash; the output becomes the input</text>
+
+  <path class="fb" d="M706 48 C 718 400, 400 472, 196 462 L 150 462" marker-end="url(#a2)"/>
+  <text x="336" y="480" class="sm" fill="#a8562f">NAD&#8314; loss &rarr; NADH backup &rarr; ROS &rarr; more 4-HNE</text>
+</svg>
+<p class="dcap"><b>How to read it.</b> Left, three tiers of input: things that directly switch AhR on, things that manufacture its dominant ligand, and conditions that remove the brakes. Centre, the activated AhR/ARNT complex on its target genes. Right, the six outputs. The two dashed rust arrows are the reason the system does not settle &mdash; two of the outputs loop back and become inputs.</p>
+</div>
+
+<h3><span class="h3num">I.1</span>NAD&#8314; depletion through TiPARP</h3>
+<p>TiPARP (PARP7) is a canonical AhR target gene<sup class="cite"><a href="#r7">7</a></sup>. PARP enzymes consume NAD&#8314; stoichiometrically while ADP-ribosylating their substrates, so inducing TiPARP is inducing an NAD&#8314; drain. Dioxin exposure measurably lowers NAD&#8314; in liver and thymus and deactivates SIRT3 downstream<sup class="cite"><a href="#r6">6</a></sup>. <span class="ev ev-strong">Strong</span></p>
+
+<h3><span class="h3num">I.2</span>Circadian displacement</h3>
+<p>AhR interacts with BMAL1 and displaces CLOCK from the heterodimer; separately it interferes with CLOCK:BMAL1 already bound at E-boxes; and separately again it displaces the coactivators the complex needs<sup class="cite"><a href="#r8">8</a></sup>. Three mechanisms, one consequence: dampened <em>Per1</em> and a flattened clock. Because there is no single point of failure, partial AhR activation produces disproportionate disruption. <span class="ev ev-strong">Strong</span></p>
+
+<h3><span class="h3num">I.3</span>IDO1 induction &mdash; the output that is also an input</h3>
+<p>AhR transcribes IDO1, the rate-limiting enzyme that makes kynurenine, which is AhR's own dominant endogenous ligand. This is the tightest of the loops in Part III and the reason the system is hard to exit once running. <span class="ev ev-strong">Strong</span></p>
+
+<h3><span class="h3num">I.4</span>PEMT and methyl-group consumption</h3>
+<p>In the fed state AhR induces PEMT and GNMT<sup class="cite"><a href="#r2">2</a></sup>. PEMT spends three SAM molecules per phosphatidylcholine synthesised, each transfer yielding S-adenosylhomocysteine and then homocysteine. A transient postprandial pulse of this is unremarkable. Sustained, it is a continuous drain on the methyl pool that B12 and folate exist to replenish. PEMT, AhR and phosphatidylcholine are all elevated in simple-steatosis patients<sup class="cite"><a href="#r2">2</a></sup>. <span class="ev ev-mod">Moderate</span></p>
+
+<h3><span class="h3num">I.5</span>CYP1B1 and the mid-chain HETEs</h3>
+<p>AhR induces CYP1B1, which converts arachidonic acid into mid-chain HETEs (5-, 12-, 15-HETE). Those HETEs activate NF-&#954;B and MAPK and feed back to induce more CYP1B1<sup class="cite"><a href="#r24">24</a></sup>. One side branch matters here specifically: 12-HETE activates PPAR&#947;, raising SCD1 and monounsaturated-fat synthesis. That is AhR actively pushing membrane composition <em>away</em> from the saturated profile the thermogenic circuit of Part IV depends on &mdash; and SCD1 overexpression lowers NAD&#8314; and AMPK activation while SCD1 ablation raises both<sup class="cite"><a href="#r16">16</a></sup>. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span></p>
+
+<h3><span class="h3num">I.6</span>Microbiome shift</h3>
+<p>AhR activation by dietary and endogenous ligands raises Firmicutes and lowers Bacteroidetes. Firmicutes are the better energy harvesters, extracting more calories from identical intake. The phylum-level ratio is contested as an obesity marker across human cohorts and is reported here as a directional AhR effect, not a diagnostic. <span class="ev ev-cont">Contested</span></p>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;II</div>
+  <h2>What turns it on</h2>
+</div>
+
+<p>The inputs are not parallel switches. They fall into three categories that fail in different ways, and the distinction matters because it determines what kind of intervention works on each.</p>
+
+<div class="tier t-direct">
+  <div class="tier-name">Tier 1 &mdash; Direct activation</div>
+  <p><strong>Kynurenine.</strong> IDO1 in inflamed adipose tissue converts tryptophan to kynurenine, which binds the AhR ligand-binding domain. Adipocyte-specific IDO1 depletion abolishes kynurenine accumulation and protects mice against obesity; adipocyte AhR ablation abolishes the effect of kynurenine entirely<sup class="cite"><a href="#r5">5</a></sup>. The dominant endogenous route. <span class="ev ev-strong">Strong</span></p>
+  <p><strong>4-HNE and oxidised &#969;-6 phospholipids.</strong> Polyunsaturated membrane fatty acids &mdash; linoleic and arachidonic acid &mdash; carry the double bonds that hydroxyl radicals attack. Peroxidation yields 4-hydroxynonenal, an &#945;,&#946;-unsaturated aldehyde that modifies AhR cysteine residues covalently. Oxidised LDL activates AhR and downregulates circadian transcripts<sup class="cite"><a href="#r28">28</a></sup>. Saturated membrane fatty acids have no double bonds and cannot initiate the chain. <span class="ev ev-inf">Inferred</span></p>
+  <p><strong>Insulin via PKB/Akt.</strong> Insulin drives AhR into the nucleus through PI3K/PKB with no ligand involved<sup class="cite"><a href="#r2">2</a></sup>. Physiological and self-limiting in health; its pathological form is Loop 2 in Part III. <span class="ev ev-strong">Strong</span></p>
+</div>
+
+<div class="tier t-supply">
+  <div class="tier-name">Tier 2 &mdash; Ligand supply</div>
+  <p>Three upstream conditions never touch AhR directly. They all raise IDO1, and therefore all act <em>through</em> kynurenine: bacterial LPS crossing a permeable gut barrier and signalling through TLR2/4 to NF-&#954;B<sup class="cite"><a href="#r3">3</a></sup>; hypoxia in expanding adipose tissue outgrowing its blood supply, via HIF-1&#945;; and inflammatory IFN-&#947; via JAK/STAT1.</p>
+  <p>Calling these separate AhR routes would overstate their independence. What they are is three separate reasons the kynurenine tap runs &mdash; which is why gut-barrier repair and anti-inflammatory measures register as AhR interventions at all. <span class="ev ev-strong">Strong</span></p>
+</div>
+
+<div class="tier t-restraint">
+  <div class="tier-name">Tier 3 &mdash; Loss of restraint</div>
+  <p>These are not activators. They are the removal of brakes that would otherwise hold a given level of activation in check &mdash; which is why two people with identical kynurenine can have different AhR activity.</p>
+  <p><strong>B12 and folate</strong> are direct competitive antagonists at the AhR ligand-binding domain, blocking nuclear localisation, XRE binding and target-gene induction. Deficiency in mice induces AhR transcriptional activity on its own<sup class="cite"><a href="#r1">1</a></sup>. <span class="ev ev-strong">Strong</span></p>
+  <p><strong>B6</strong> never touches the receptor. As pyridoxal-5-phosphate it is the cofactor for kynureninase, the enzyme that clears kynurenine downstream<sup class="cite"><a href="#r18">18</a></sup>. Without it the ligand accumulates &mdash; see II.1.</p>
+  <p><strong>A blunted FGF19/SHP shutoff</strong> removes the physiological off-switch for the postprandial insulin pulse. Bile-acid-activated hepatic FXR induces SHP, which binds ARNT and blocks AhR/ARNT<sup class="cite"><a href="#r9">9</a></sup>; SHP occupancy at AhR target promoters is reduced in NAFLD patients and obese mice while AhR occupancy rises<sup class="cite"><a href="#r8">8</a></sup>. <span class="ev ev-strong">Strong</span></p>
+</div>
+
+<h3><span class="h3num">II.1</span>The B6 branch point &mdash; the same molecule as fuel or as poison</h3>
+
+<p>Kynurenine is not intrinsically harmful. It is an intermediate, and what it becomes depends on whether the enzyme that processes it has its cofactor.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The B6 branch point: kynurenine becomes NAD+ when PLP is present, or activates AhR when PLP is absent">
+  <defs>
+    <marker id="b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#4a5d3a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="b2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#a8562f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    .n{fill:#fffefb;stroke:#d9d4c4;stroke-width:1}
+    .t{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:13px;fill:#1a1f1a}
+    .s{font-family:'IBM Plex Mono',monospace;font-size:9px;fill:#6d7468}
+    .good{stroke:#4a5d3a;stroke-width:1.6;fill:none}
+    .bad{stroke:#a8562f;stroke-width:1.6;fill:none}
+  </style>
+
+  <rect class="n" x="16" y="105" width="104" height="40" rx="3"/>
+  <text x="68" y="124" text-anchor="middle" class="t">Tryptophan</text>
+  <text x="68" y="137" text-anchor="middle" class="s">dietary</text>
+
+  <line x1="120" y1="125" x2="164" y2="125" stroke="#c8c3b3" stroke-width="1.3" marker-end="url(#b1)"/>
+  <text x="142" y="117" text-anchor="middle" class="s">IDO1</text>
+
+  <rect x="166" y="103" width="108" height="44" rx="3" fill="#33421f"/>
+  <text x="220" y="123" text-anchor="middle" fill="#fffefb" style="font-family:'Newsreader',serif;font-weight:600;font-size:13px">Kynurenine</text>
+  <text x="220" y="138" text-anchor="middle" fill="#9aa88c" style="font-family:'IBM Plex Mono',monospace;font-size:9px">the fork</text>
+
+  <path class="good" d="M274 116 C 320 116, 330 62, 372 60" marker-end="url(#b1)"/>
+  <rect class="n" x="374" y="32" width="152" height="54" rx="3" stroke="#4a5d3a"/>
+  <text x="386" y="51" class="t" fill="#33421f">Kynureninase active</text>
+  <text x="386" y="66" class="s">PLP (vitamin B6) present</text>
+  <text x="386" y="79" class="s">&rarr; 3-HAA &rarr; quinolinic acid</text>
+
+  <line x1="526" y1="60" x2="562" y2="60" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#b1)"/>
+  <rect class="n" x="564" y="38" width="142" height="44" rx="3" fill="#eaefe2" stroke="#4a5d3a"/>
+  <text x="635" y="58" text-anchor="middle" class="t" fill="#33421f">NAD&#8314;</text>
+  <text x="635" y="72" text-anchor="middle" class="s">de novo synthesis</text>
+
+  <path class="bad" d="M274 134 C 320 134, 330 190, 372 192" marker-end="url(#b2)"/>
+  <rect class="n" x="374" y="164" width="152" height="54" rx="3" stroke="#a8562f"/>
+  <text x="386" y="183" class="t" fill="#8a4526">Kynureninase idle</text>
+  <text x="386" y="198" class="s">PLP deficient</text>
+  <text x="386" y="211" class="s">kynurenine accumulates</text>
+
+  <line x1="526" y1="192" x2="562" y2="192" stroke="#a8562f" stroke-width="1.6" marker-end="url(#b2)"/>
+  <rect class="n" x="564" y="170" width="142" height="44" rx="3" fill="#f6e9e2" stroke="#a8562f"/>
+  <text x="635" y="190" text-anchor="middle" class="t" fill="#8a4526">AhR activation</text>
+  <text x="635" y="204" text-anchor="middle" class="s">&rarr; TiPARP &rarr; NAD&#8314; &darr;</text>
+
+  <text x="360" y="243" text-anchor="middle" class="s">same pathway, opposite outcome &mdash; and the two ends move NAD&#8314; in opposite directions</text>
+</svg>
+<p class="dcap"><b>How to read it.</b> Roughly 60&nbsp;mg of tryptophan yields 1&nbsp;mg of nicotinamide by the upper route, so an intact kynurenine pathway is a genuine NAD&#8314; source. The lower route is the same molecule with the exit blocked. The irony worth noticing: the pathway that <em>makes</em> NAD&#8314; when B6 is sufficient <em>destroys</em> it when B6 is not, because accumulated kynurenine activates AhR and AhR induces an NAD&#8314;-consuming enzyme.</p>
+</div>
+
+<p>Supplementing 80&nbsp;mg pyridoxine for eight weeks in overweight and obese women reduced fat mass, visceral adiposity, fasting insulin, HOMA-IR, triglycerides and leptin, and raised adiponectin against control<sup class="cite"><a href="#r17">17</a></sup>. The trial measured neither kynurenine nor AhR activity, so the mechanism here is inferred from the enzymology rather than demonstrated by the trial. <span class="ev ev-inf">Inferred</span></p>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;III</div>
+  <h2>Why it does not settle</h2>
+</div>
+
+<p>A transcription factor with a working off-switch does not cause chronic disease. What makes AhR different in the obese state is that three of its outputs regenerate its own inputs.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three self-amplifying AhR loops sharing a central AhR node">
+  <defs>
+    <marker id="c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#a49e8c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    .k{fill:#fffefb;stroke:#d9d4c4;stroke-width:1}
+    .kt{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:11.5px;fill:#1a1f1a}
+    .ks{font-family:'IBM Plex Mono',monospace;font-size:8.5px;fill:#6d7468}
+    .kl{stroke:#c8c3b3;stroke-width:1.3;fill:none}
+    .lt{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:9.5px;letter-spacing:.13em}
+  </style>
+
+  <rect x="300" y="180" width="120" height="60" rx="4" fill="#33421f"/>
+  <text x="360" y="207" text-anchor="middle" fill="#fffefb" style="font-family:'Fraunces',serif;font-weight:600;font-size:17px">AhR</text>
+  <text x="360" y="224" text-anchor="middle" fill="#8d9a80" style="font-family:'IBM Plex Mono',monospace;font-size:8.5px">shared by all three</text>
+
+  <text x="20" y="24" class="lt" fill="#a8562f">LOOP 1 &middot; LIGAND FEEDFORWARD</text>
+  <rect class="k" x="20" y="32" width="128" height="38" rx="3" stroke="#ddb9a6"/>
+  <text x="32" y="50" class="kt">IDO1 induced</text><text x="32" y="63" class="ks">AhR target gene</text>
+  <rect class="k" x="196" y="32" width="128" height="38" rx="3" stroke="#ddb9a6"/>
+  <text x="208" y="50" class="kt">Kynurenine &uarr;</text><text x="208" y="63" class="ks">AhR's own ligand</text>
+  <line x1="148" y1="51" x2="192" y2="51" class="kl" marker-end="url(#c1)"/>
+  <path class="kl" d="M324 51 C 358 51, 360 140, 360 176" marker-end="url(#c1)"/>
+  <path class="kl" d="M300 196 C 200 196, 84 130, 84 74" marker-end="url(#c1)"/>
+
+  <text x="440" y="24" class="lt" fill="#7a5c14">LOOP 2 &middot; METHYL DRAIN</text>
+  <rect class="k" x="440" y="32" width="128" height="38" rx="3" stroke="#e2cda1"/>
+  <text x="452" y="50" class="kt">PEMT &uarr; &rarr; SAM &darr;</text><text x="452" y="63" class="ks">3 SAM per PC</text>
+  <rect class="k" x="578" y="88" width="128" height="50" rx="3" stroke="#e2cda1"/>
+  <text x="590" y="106" class="kt">B12 / folate</text><text x="590" y="119" class="ks">drawn down, cannot</text><text x="590" y="130" class="ks">antagonise receptor</text>
+  <path class="kl" d="M420 200 C 470 200, 500 110, 502 74" marker-end="url(#c1)"/>
+  <path class="kl" d="M568 56 C 614 56, 638 72, 640 84" marker-end="url(#c1)"/>
+  <path class="kl" d="M640 138 C 640 202, 500 214, 424 212" marker-end="url(#c1)"/>
+
+  <text x="20" y="300" class="lt" fill="#3d6a7a">LOOP 3 &middot; REDOX</text>
+  <rect class="k" x="20" y="308" width="124" height="38" rx="3" stroke="#b3cbd4"/>
+  <text x="32" y="326" class="kt">TiPARP &rarr; NAD&#8314; &darr;</text><text x="32" y="339" class="ks">SIRT3 starved</text>
+  <rect class="k" x="166" y="352" width="134" height="38" rx="3" stroke="#b3cbd4"/>
+  <text x="178" y="370" class="kt">NADH backs up</text><text x="178" y="383" class="ks">SDH acetylated, RET lost</text>
+  <rect class="k" x="322" y="352" width="134" height="38" rx="3" stroke="#b3cbd4"/>
+  <text x="334" y="370" class="kt">Complex I superoxide</text><text x="334" y="383" class="ks">&rarr; hydroxyl radical</text>
+  <rect class="k" x="478" y="308" width="142" height="38" rx="3" stroke="#b3cbd4"/>
+  <text x="490" y="326" class="kt">&#969;-6 PUFA &rarr; 4-HNE</text><text x="490" y="339" class="ks">electrophilic AhR ligand</text>
+  <path class="kl" d="M312 240 C 250 252, 130 272, 92 304" marker-end="url(#c1)"/>
+  <path class="kl" d="M100 346 C 110 368, 130 371, 162 371" marker-end="url(#c1)"/>
+  <line x1="300" y1="371" x2="318" y2="371" class="kl" marker-end="url(#c1)"/>
+  <path class="kl" d="M456 371 C 512 371, 542 356, 546 346" marker-end="url(#c1)"/>
+  <path class="kl" d="M548 308 C 520 262, 450 244, 412 238" marker-end="url(#c1)"/>
+
+  <text x="360" y="410" text-anchor="middle" class="ks">Loop 3 is the one dietary fat composition breaks &mdash; saturated membranes have no double bonds to peroxidise</text>
+</svg>
+<p class="dcap"><b>How to read it.</b> All three loops pass through the same central node, which is why they compound rather than add. Loop&nbsp;1 regenerates the ligand. Loop&nbsp;2 removes the antagonist. Loop&nbsp;3 manufactures a second, chemically different ligand out of the redox damage the first two cause. Every individual arrow is documented; none of the three rings has been demonstrated end-to-end in a single experiment.</p>
+</div>
+
+<h3><span class="h3num">III.1</span>Loop 1 &mdash; the ligand regenerates itself</h3>
+<p>AhR induces IDO1; IDO1 makes kynurenine; kynurenine activates AhR. The tightest of the three, and the reason kynurenine does not simply decay once the initiating inflammation resolves. <span class="ev ev-strong">Strong</span></p>
+
+<h3><span class="h3num">III.2</span>Loop 2 &mdash; the antagonist is consumed</h3>
+<p>AhR induces PEMT; PEMT spends SAM; regenerating SAM draws on B12 and folate; B12 and folate are the receptor's competitive antagonists. The receptor consumes the molecules that would restrain it. In health this never runs long enough to matter, because FGF19/SHP terminates the pulse. In obesity, with the shutoff blunted and insulin chronically elevated, it runs continuously. <span class="ev ev-inf">Inferred</span></p>
+
+<h3><span class="h3num">III.3</span>Loop 3 &mdash; redox damage makes a second ligand</h3>
+<p>AhR induces TiPARP; TiPARP depletes NAD&#8314;; NAD&#8314;-starved SIRT3 leaves SDH hyperacetylated<sup class="cite"><a href="#r14">14</a></sup>; NADH backs up at Complex&nbsp;I and produces superoxide in the forward direction<sup class="cite"><a href="#r25">25</a></sup>; the hydroxyl radical that follows attacks membrane polyunsaturated fatty acids; 4-HNE results and activates AhR covalently.</p>
+<p>This loop has a dietary lever the other two do not. Its substrate is membrane &#969;-6 content, and a saturated-fat-rich membrane cannot sustain the peroxidation chain at all, because there are no double bonds for the radical to attack. <span class="ev ev-inf">Inferred</span></p>
+
+<div class="flag">
+  <div class="flag-lbl">Where insulin resistance makes this worse rather than better</div>
+  <p style="margin:0;">Hepatic insulin resistance is selective: glucose disposal fails while lipogenic signalling stays intact or amplifies. If the PKB&rarr;AhR arm sits on the preserved side &mdash; and the fed-state mechanism suggests it does &mdash; then AhR activation <em>increases</em> in proportion to how insulin-resistant someone becomes, driven by the compensatory hyperinsulinaemia the resistance itself produces. <span class="ev ev-spec">Speculative</span> The selective-resistance principle is well established; this particular branch has not been quantified in insulin-resistant human liver.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;IV</div>
+  <h2>The damage: two circuits AhR takes down</h2>
+</div>
+
+<h3><span class="h3num">IV.1</span>The circadian NAD&#8314; supply</h3>
+
+<p>NAD&#8314; is not a static pool that happens to be low in obesity. It is manufactured rhythmically. CLOCK:BMAL1 transcribes NAMPT, the rate-limiting enzyme of the salvage pathway; NAMPT makes NMN; NMNAT converts NMN to NAD&#8314;; NAD&#8314; fuels SIRT1; and SIRT1 is recruited back to the NAMPT promoter to sustain synthesis of its own coenzyme<sup class="cite"><a href="#r12">12</a></sup><sup class="cite"><a href="#r13">13</a></sup>. Intracellular NAD&#8314; oscillates on a 24-hour cycle as a result.</p>
+
+<p>This is what makes AhR's displacement of CLOCK more serious than a timing problem. It shuts down NAMPT transcription, which is the rate-limiting step of NAD&#8314; production. The NAD&#8314; deficit in obesity is therefore not only a consumption problem &mdash; TiPARP, PARP1, CD38 &mdash; but a production failure, and the production failure is downstream of AhR.</p>
+
+<p>The human anchor is a monozygotic-twin study: in BMI-discordant identical twins, the heavier co-twin had lower NAD&#8314;/SIRT pathway expression in adipose tissue, tracking with inflammation and insulin resistance<sup class="cite"><a href="#r20">20</a></sup>. Because the twins are genetically identical, the deficit is acquired. The companion study found weight loss raised NAD&#8314;/SIRT1 and lowered PARP activity<sup class="cite"><a href="#r21">21</a></sup>. <span class="ev ev-mod">Moderate</span></p>
+
+<div class="takeaway"><b>One implication worth stating plainly.</b> If the deficit is a broken oscillator rather than a shortage of raw material, then NMN and NR supplementation floods a system that has lost its rhythmic regulation instead of repairing it &mdash; a candidate explanation for why precursor trials read so much better in rodents than in humans. <span class="ev ev-spec">Speculative</span></div>
+
+<p>Sleep is the other input here, and no dietary intervention substitutes for it. Delaying sleep onset progressively &mdash; without reducing total sleep &mdash; collapses circadian transcript expression including CLOCK and BMAL1 severalfold in humans. <span class="gapflag">citation to pin</span></p>
+
+<h3><span class="h3num">IV.2</span>The FADH&#8322; / reverse-electron-transport circuit</h3>
+
+<p>The second casualty is a thermogenic circuit that runs on saturated fat and only works when NAD&#8314; is replete.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The FADH2 reverse electron transport circuit and its three failure points in obesity">
+  <defs>
+    <marker id="d1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#4a5d3a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    .e{fill:#fffefb;stroke:#cbd5c0;stroke-width:1.1}
+    .et{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:12px;fill:#1a1f1a}
+    .es{font-family:'IBM Plex Mono',monospace;font-size:8.5px;fill:#6d7468}
+    .el{stroke:#4a5d3a;stroke-width:1.5;fill:none}
+    .xh{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:9.5px;letter-spacing:.13em;fill:#8a4526}
+  </style>
+
+  <rect class="e" x="16" y="30" width="126" height="44" rx="3"/>
+  <text x="28" y="49" class="et">Saturated fat</text><text x="28" y="63" class="es">18 carbons, no double bonds</text>
+  <line x1="142" y1="52" x2="184" y2="52" class="el" marker-end="url(#d1)"/>
+  <rect class="e" x="186" y="30" width="126" height="44" rx="3"/>
+  <text x="198" y="49" class="et">High FADH&#8322; : NADH</text><text x="198" y="63" class="es">9 FAD cycles via ETF</text>
+  <line x1="312" y1="52" x2="354" y2="52" class="el" marker-end="url(#d1)"/>
+  <rect class="e" x="356" y="30" width="126" height="44" rx="3"/>
+  <text x="368" y="49" class="et">Q pool reduced</text><text x="368" y="63" class="es">SDH feeds it too</text>
+  <line x1="482" y1="52" x2="524" y2="52" class="el" marker-end="url(#d1)"/>
+  <rect class="e" x="526" y="30" width="178" height="44" rx="3"/>
+  <text x="538" y="49" class="et">Reverse electron transport</text><text x="538" y="63" class="es">superoxide at Complex I flavin</text>
+
+  <path class="el" d="M615 74 L 615 122" marker-end="url(#d1)"/>
+  <rect class="e" x="526" y="124" width="178" height="42" rx="3"/>
+  <text x="538" y="143" class="et">SOD &rarr; H&#8322;O&#8322;</text><text x="538" y="157" class="es">the useful signal, not the damage</text>
+
+  <path class="el" d="M526 145 L 488 145" marker-end="url(#d1)"/>
+  <rect class="e" x="336" y="124" width="150" height="42" rx="3"/>
+  <text x="348" y="143" class="et">Glutathione peroxidase</text><text x="348" y="157" class="es">spends NADPH, makes GSSG</text>
+
+  <path class="el" d="M336 145 L 298 145" marker-end="url(#d1)"/>
+  <rect class="e" x="146" y="124" width="150" height="42" rx="3"/>
+  <text x="158" y="143" class="et">NNT</text><text x="158" y="157" class="es">NADH + NADP&#8314; &rarr; NAD&#8314; + NADPH</text>
+
+  <path class="el" d="M221 166 C 221 198, 300 202, 360 202" marker-end="url(#d1)"/>
+  <rect class="e" x="362" y="182" width="202" height="42" rx="3" fill="#eaefe2"/>
+  <text x="374" y="201" class="et" fill="#33421f">NAD&#8314; regenerated, heat produced</text><text x="374" y="215" class="es">energy dissipated without ATP</text>
+  <path class="el" d="M564 202 C 644 202, 702 160, 702 100 C 702 60, 692 50, 670 34" marker-end="url(#d1)"/>
+
+  <text x="16" y="258" class="xh">WHERE OBESITY BREAKS IT</text>
+  <rect x="16" y="266" width="218" height="48" rx="3" fill="#f8efe9" stroke="#e5c8b8"/>
+  <text x="28" y="285" class="et" fill="#8a4526">1 &middot; SDH hyperacetylated</text>
+  <text x="28" y="300" class="es">SIRT3 has no NAD&#8314; &mdash; Q pool not driven, no RET</text>
+  <rect x="246" y="266" width="218" height="48" rx="3" fill="#f8efe9" stroke="#e5c8b8"/>
+  <text x="258" y="285" class="et" fill="#8a4526">2 &middot; NNT suppressed</text>
+  <text x="258" y="300" class="es">palmitate lowers it; NADPH not regenerated</text>
+  <rect x="476" y="266" width="228" height="48" rx="3" fill="#f8efe9" stroke="#e5c8b8"/>
+  <text x="488" y="285" class="et" fill="#8a4526">3 &middot; Membranes are &#969;-6</text>
+  <text x="488" y="300" class="es">SCD1/PUFA give the radical something to hit</text>
+</svg>
+<p class="dcap"><b>How to read it.</b> Follow the top row left to right, then down the right side and back along the bottom &mdash; it is a cycle, and the point of the cycle is that it burns energy without making ATP. The superoxide here is a signal, not damage: small, controlled, immediately buffered. Note that it emerges at <em>Complex&nbsp;I</em> running backwards, not at Complex&nbsp;II. SDH and &#946;-oxidation FADH&#8322; create the conditions; Complex&nbsp;I produces the radical.</p>
+</div>
+
+<p>Saturated fatty acids reduce FAD at every carbon pair during &#946;-oxidation. Polyunsaturated fatty acids cannot &mdash; their double bonds are already oxidised at those positions &mdash; so they yield proportionally less FADH&#8322; and a less reduced Q pool. The in-vivo evidence is the SCD1 line: mice that cannot convert saturated to monounsaturated fat show higher AMP/ATP, higher AMPK activation and higher NAD&#8314; with greater SIRT1 activity, while SCD1 overexpression produces the reverse<sup class="cite"><a href="#r16">16</a></sup>. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span></p>
+
+<p>The same NAD&#8314;/sirtuin gate decides whether the pulse is useful. In an NAD&#8314;-replete cell SIRT3 keeps SDH functional and the burst is a discrete, buffered H&#8322;O&#8322; signal. In an NAD&#8314;-depleted one the circuit is broken at three points at once &mdash; SDH acetylated, NNT suppressed<sup class="cite"><a href="#r23">23</a></sup>, membranes peroxidisable &mdash; and what is produced instead is unbuffered forward-direction superoxide from backed-up NADH. Same organelle, opposite meaning.</p>
+
+<div class="mech">
+  <div class="mech-lbl">Why antioxidant supplements are the wrong tool here</div>
+  <p style="margin-top:0;">Reductive stress is an excess of reducing equivalents, and chronic antioxidant supplementation adds to it. Over-reducing the glutathione couple impairs the redox-sensitive protein chemistry that depends on it, and a reductive-stress &rarr; oxidative-stress &rarr; reductive-stress feedback has been described<sup class="cite"><a href="#r27">27</a></sup>.</p>
+  <p style="margin-bottom:0;">The corrective is to lower the NADH:NAD&#8314; ratio, not to add more reducing capacity on top of it. Alpha-lipoic acid does exactly that &mdash; reduced by lipoamide dehydrogenase in an NADH-dependent reaction, it lowered cellular NADH by about 30% with a smaller and slower effect on NADPH<sup class="cite"><a href="#r26">26</a></sup>. It is an electron acceptor, not a scavenger. <span class="ev ev-mod">Moderate</span></p>
+</div>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;V</div>
+  <h2>The interventions</h2>
+</div>
+
+<p>Each lever below acts on a different tier of Part&nbsp;II. The coverage matrix at V.6 is the single place where the mapping is laid out; these sections explain the mechanisms rather than repeat it.</p>
+
+<h3><span class="h3num">V.1</span>Theabrownin &mdash; the bile-acid lever</h3>
+
+<p>Theabrownin is the dominant bioactive polymer in fermented Pu-erh tea, and its mechanism in humans is unusual: it acts on FXR in two anatomical places with opposite local effects.</p>
+
+<p>In the gut it suppresses bile-salt-hydrolase-active microbes, so conjugated bile acids accumulate in the ileum. These are weak FXR agonists, so intestinal FXR signalling falls and serum FGF19 <em>drops</em> &mdash; which sounds like the wrong direction until you follow it: less FGF19 means CYP7A1 stays active, so bile-acid synthesis and turnover stay high. Meanwhile the bile acids reaching the liver through the portal circulation activate <em>hepatic</em> FXR, which induces SHP<sup class="cite"><a href="#r10">10</a></sup>. SHP binds ARNT and blocks AhR<sup class="cite"><a href="#r9">9</a></sup>.</p>
+
+<p>So theabrownin restores the physiological AhR shutoff &mdash; the same SHP-dependent brake that terminates the postprandial insulin pulse in health. It also inhibits &#945;-glucosidase and &#945;-amylase, blunting the glucose rise and therefore the insulin signal that opens the pulse in the first place. One compound acting on both the trigger and the brake of Tier&nbsp;1's insulin route.</p>
+
+<p>Three further arms: gut <em>Lactobacillus</em> enrichment diverts tryptophan to indoles, competing with IDO1 for substrate<sup class="cite"><a href="#r11">11</a></sup>; <em>Akkermansia muciniphila</em> enrichment tightens the gut barrier and reduces the LPS flux driving Tier&nbsp;2; and cinnabarinic acid, present in Pu-erh, occupies the AhR ligand-binding domain as a partial agonist, competitively displacing kynurenine.</p>
+
+<p>The cholesterol arm is separate and addresses reductive stress rather than AhR. Sustained bile-acid excretion depletes hepatic cholesterol, SREBP-2 responds, and cholesterol synthesis consumes roughly 12&ndash;16 NADPH per molecule across the mevalonate pathway &mdash; a genuine NADPH sink, shown to lower NAD(P)H and improve function in a complex-I-deficient model<sup class="cite"><a href="#r15">15</a></sup>. <span class="ev ev-mod">Moderate</span> for the human FXR/SHP arm; <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span> for the NADPH sink.</p>
+
+<h3><span class="h3num">V.2</span>Quercetin and myricetin &mdash; the NAD&#8314; lever</h3>
+
+<p>Both flavonols competitively inhibit PARP1 at its NAD&#8314; pocket, sparing NAD&#8314; that would otherwise be consumed. This complements rather than duplicates the theabrownin arm: theabrownin reduces TiPARP by suppressing its transcription, flavonols reduce PARP1 by inhibiting the enzyme. Two different PARP family members, two different mechanisms.</p>
+
+<p>What the restored NAD&#8314; buys is SIRT3 activity, and SIRT3's two relevant substrates are exactly the two failure points in the Part&nbsp;IV circuit: SDHA, which it deacetylates at thirteen identified sites<sup class="cite"><a href="#r14">14</a></sup>, and NNT. Restoring both reinstates the RET circuit and &mdash; by preventing the NADH backup that generates hydroxyl radicals &mdash; reduces the 4-HNE production feeding Loop&nbsp;3.</p>
+
+<p>Secondary arms: NRF2 activation raises glutathione, thioredoxin reductase and NQO1, cutting the ROS burden upstream of both PARP activation and lipid peroxidation. Quercetin inhibits PI3K, reducing the PKB arm directly. SIRT1 deacetylates LKB1, activating AMPK, which improves insulin sensitivity and so lowers the chronic insulin driving Tier&nbsp;1. Quercetin also inhibits mTORC1 &mdash; as does AMPK, via TSC2 and Raptor &mdash; promoting mitophagy, and inhibits COMT, slowing catecholamine breakdown and supporting lipolysis. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span> for most arms; see Limitations on bioavailability.</p>
+
+<h3><span class="h3num">V.3</span>Whole-food dairy &mdash; the antagonist lever</h3>
+
+<p>B12 and folate are the only interventions here that act at the receptor itself, and their delivery vehicle matters more than usual. Milk B12 is bound to haptocorrin and related binding proteins that survive gut transit and support cubilin-mediated ileal absorption, and its bioavailability exceeds synthetic cyanocobalamin at equivalent dose<sup class="cite"><a href="#r22b">22b</a></sup>. Milk folate behaves similarly, and milk lowers homocysteine more effectively than matched supplement doses<sup class="cite"><a href="#r22">22</a></sup>. Low serum B12 is inversely associated with BMI in a nationally representative US sample after adjustment<sup class="cite"><a href="#r19">19</a></sup>.</p>
+
+<p>Whey contributes separately: it is the densest dietary tryptophan source per gram of protein, which matters when IDO1 is competing for the same pool &mdash; more substrate reaching tryptophan hydroxylase means more serotonin and melatonin, and melatonin is itself a circadian amplitude signal that the Part&nbsp;IV mechanism erodes. Whey also preserves lean mass during fat loss and blunts postprandial triglycerides. Asparagus and orange juice cover folate outside dairy; orange juice carries a fructose load, so timing relative to meals is worth considering. <span class="ev ev-mod">Moderate</span></p>
+
+<h3><span class="h3num">V.4</span>Dietary saturated fat &mdash; the membrane lever</h3>
+
+<p>Saturated fat does two things nothing else here does. It supplies the high FADH&#8322;:NADH ratio that drives the Part&nbsp;IV thermogenic circuit, and it builds membranes that cannot sustain a peroxidation chain &mdash; closing Loop&nbsp;3 at its substrate rather than downstream of it. Both follow from the same structural fact: no double bonds.</p>
+
+<p>This is where this paper and the linoleic-acid argument meet from opposite directions. That paper's case is that excess &#969;-6 supplies the oxidisable substrate; this one's is that AhR supplies the oxidant and then consumes the product as a ligand. The 12-HETE &rarr; PPAR&#947; &rarr; SCD1 branch of I.5 means AhR is also pushing membrane composition toward monounsaturated and away from saturated &mdash; the direction that keeps the circuit off. <span class="ev ev-inf">Inferred</span></p>
+
+<h3><span class="h3num">V.5</span>Alpha-lipoic acid &mdash; the redox lever</h3>
+
+<p>Covered in the box at the end of Part&nbsp;IV. Its distinguishing property is that it targets the NADH excess directly rather than scavenging the radicals that excess produces, which makes it the one supplement in this framework that does not carry the reductive-stress objection. <span class="ev ev-mod">Moderate</span></p>
+
+<h3><span class="h3num">V.6</span>Coverage matrix</h3>
+
+<table class="matrix">
+<thead>
+<tr><th>Input</th><th>Tier</th><th>What addresses it, and how</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>Kynurenine</td><td class="tiercell">Direct</td>
+  <td>Theabrownin &mdash; SHP blocks AhR/ARNT; <em>Lactobacillus</em> diverts tryptophan; cinnabarinic acid competes at the site. B12/folate &mdash; competitive antagonism. B6 &mdash; clears the ligand downstream.</td>
+</tr>
+<tr>
+  <td>4-HNE /<br>oxidised &#969;-6</td><td class="tiercell">Direct</td>
+  <td>Saturated fat &mdash; removes the peroxidisable substrate (primary). Flavonols &mdash; NRF2 and restored SIRT3/NNT cut radical production. ALA &mdash; lowers the NADH driving it. B12/folate antagonism is <em>not</em> established against covalent modification.</td>
+</tr>
+<tr>
+  <td>Insulin / PKB</td><td class="tiercell">Direct</td>
+  <td>Theabrownin &mdash; &#945;-glucosidase inhibition lowers the trigger, FXR/SHP restores the brake. Quercetin &mdash; PI3K inhibition. Flavonols &mdash; AMPK improves sensitivity, lowering chronic insulin.</td>
+</tr>
+<tr>
+  <td>LPS /<br>gut barrier</td><td class="tiercell">Supply</td>
+  <td>Theabrownin &mdash; <em>Akkermansia</em> enrichment and tight-junction integrity.</td>
+</tr>
+<tr>
+  <td>Adipose hypoxia,<br>IFN-&#947;</td><td class="tiercell">Supply</td>
+  <td>Addressed only indirectly, through fat loss and reduced inflammatory tone. The weakest coverage in the framework.</td>
+</tr>
+<tr>
+  <td>B12 / folate<br>status</td><td class="tiercell">Restraint</td>
+  <td>Milk (superior bioavailability), asparagus, orange juice.</td>
+</tr>
+<tr>
+  <td>B6 status</td><td class="tiercell">Restraint</td>
+  <td>Animal protein, whey.</td>
+</tr>
+<tr>
+  <td>FGF19 / SHP<br>shutoff</td><td class="tiercell">Restraint</td>
+  <td>Theabrownin &mdash; hepatic FXR activation restores SHP induction.</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;VI</div>
+  <h2>What to eat</h2>
+</div>
+
+<p>The framework reduces to a short list. None of it requires supplements, and the food-matrix forms are in several cases better absorbed than the isolated compounds.</p>
+
+<ol class="mit">
+<li><span class="mit-title">Pu-erh tea, daily.</span> The bile-acid and microbiome arms respond to consistent low exposure rather than large doses &mdash; the gut microbiome is entrained by regularity, and the human trial ran four weeks. A cup a day is the realistic form of this.</li>
+<li><span class="mit-title">Blueberries.</span> Quercetin and myricetin in glycoside form, delivered with anthocyanins that carry their own NRF2 and NF-&#954;B effects, in a fibre matrix that extends gut residence.</li>
+<li><span class="mit-title">Whole milk and whey.</span> The B12 and folate delivery vehicle, plus the tryptophan density that keeps the serotonin and melatonin routes supplied while IDO1 competes for the same pool.</li>
+<li><span class="mit-title">Pastured animal protein.</span> B6 for the kynurenine exit; saturated fat for the membrane and the FADH&#8322; ratio.</li>
+<li><span class="mit-title">Asparagus and orange juice.</span> Folate outside dairy.</li>
+<li><span class="mit-title">Less &#969;-6.</span> Not a food to add but a substrate to withdraw &mdash; the one lever that closes Loop&nbsp;3 rather than mitigating it.</li>
+<li><span class="mit-title">Consistent sleep timing.</span> Not a food, and not optional. The circadian arm has no dietary substitute; a flattened CLOCK:BMAL1 oscillation means low NAMPT transcription regardless of what is on the plate.</li>
+</ol>
+</section>
+
+<section>
+<div class="part-head" id="limitations">
+  <div class="part-num">LIMITS</div>
+  <h2>What would weaken this argument</h2>
+</div>
+
+<div class="limits">
+<ul>
+<li><b>No loop has been closed end-to-end.</b> All three rings in Part&nbsp;III are assembled from individually documented arrows. No single experiment traverses any of them, and most constituent work is cell and rodent. This is the central structural weakness and applies to the framework as a whole rather than to particular claims within it.</li>
+
+<li><b>4-HNE as a direct AhR activator is the weakest documented link.</b> Electrophilic cysteine modification of AhR by reactive aldehydes is chemically plausible, supported by the oxidised-LDL/AhR/circadian work<sup class="cite"><a href="#r28">28</a></sup> and by structurally comparable quinones binding AhR directly. A direct 4-HNE binding assay at the ligand-binding domain has not been published. If that link fails, Loop&nbsp;3 still functions through its inflammatory arm &mdash; 4-HNE &rarr; TLR4 &rarr; NF-&#954;B &rarr; IDO1 &rarr; kynurenine &mdash; but becomes a Tier&nbsp;2 supply route rather than a direct activation route.</li>
+
+<li><b>B12/folate antagonism has not been tested against covalent modification.</b> Their competitive antagonism is established against reversible ligand binding<sup class="cite"><a href="#r1">1</a></sup>. 4-HNE modifies cysteines covalently, which is different chemistry. The matrix reflects this: route&nbsp;3 is addressed by preventing 4-HNE formation, not by receptor competition after the fact.</li>
+
+<li><b>Flavonol bioavailability is a real problem.</b> Unformulated oral quercetin produces peak plasma concentrations one to two orders of magnitude below the in-vitro IC&#8325;&#8320; values for PI3K and PARP inhibition. Phytosome and cyclodextrin formulations improve this roughly tenfold to twenty-sevenfold, reaching the low micromolar range at best. Myricetin is worse &mdash; under 10% oral bioavailability in rats, with no comparable human pharmacokinetic data. The defence offered here is that pathway-level signalling may operate below enzyme-inhibition thresholds measured in isolated systems, but that is an argument, not evidence.</li>
+
+<li><b>The theabrownin human dose is not achievable from brewed tea.</b> The four-week human trial used 50&nbsp;mg/kg/day of Pu-erh preparation &mdash; several grams of extract for a 75&nbsp;kg adult. Ordinary tea drinking delivers substantially less. The microbiome and bile-acid arms plausibly respond at lower chronic exposure, but the human FGF19 and bile-acid data were generated at the higher dose.</li>
+
+<li><b>The insulin-resistance branch is the most speculative claim in the paper.</b> That the PKB&rarr;AhR arm sits on the preserved side of selective insulin resistance follows from the fed-state mechanism but has not been measured in insulin-resistant human liver. If it sits on the desensitised side instead, that route weakens considerably in exactly the population the paper is about.</li>
+
+<li><b>The Firmicutes/Bacteroidetes claim is contested.</b> The original mouse and human finding has replicated inconsistently; large human datasets find variation between studies exceeding variation between lean and obese individuals within them. It is included as a directional AhR effect, not an obesity marker. The <em>Akkermansia</em>-specific mechanism is on firmer ground than the phylum ratio.</li>
+
+<li><b>Human quantification is thin throughout.</b> The causal AhR work<sup class="cite"><a href="#r3">3</a></sup><sup class="cite"><a href="#r4">4</a></sup><sup class="cite"><a href="#r5">5</a></sup> is murine. The strongest human anchors are the monozygotic-twin NAD&#8314; data<sup class="cite"><a href="#r20">20</a></sup>, the theabrownin trial<sup class="cite"><a href="#r10">10</a></sup>, the B6 trial<sup class="cite"><a href="#r17">17</a></sup> and the NAFLD promoter-occupancy finding<sup class="cite"><a href="#r8">8</a></sup>. None tests the framework as a whole; each tests one arm.</li>
+
+<li><b>Citation gaps to close.</b> The SHP&ndash;ARNT interaction paper needs its primary reference pinned rather than described. The human forced-desynchrony sleep data in IV.1 needs a specific citation. The 12-HETE &rarr; PPAR&#947; &rarr; SCD1 branch is carried over from the linoleic-acid paper's chain and needs its own reference here.</li>
+</ul>
+
+<p class="lim-close">What would break the argument outright is a demonstration that AhR inhibition improves metabolic outcomes only through one of the six outputs rather than the set &mdash; that would make AhR a proxy for something narrower rather than the integrator this paper claims it is.</p>
+</div>
+</section>
+
+<section class="refwrap">
+<div class="part-head">
+  <div class="part-num">REFS</div>
+  <h2>References</h2>
+</div>
+
+<div class="ref-group">AhR causation &amp; core biology</div>
+<ol class="refs">
+<li id="r1">Kim SY, et al. Vitamin B12 and folic acid alleviate symptoms of nutritional deficiency by antagonizing aryl hydrocarbon receptor. <span class="j">PNAS</span> 2020;117(27):15837&ndash;15845. PMID 32571957. <span class="note">Direct competitive antagonism at the AhR ligand-binding domain; deficiency alone induces AhR activity.</span></li>
+<li id="r2">Bhattacharya S, et al. Aryl hydrocarbon receptor regulates the fed-state one-carbon cycle and hepatic phosphatidylcholine synthesis. <span class="j">Nat Commun</span> 2018;9:540. <span class="note">Insulin/PKB drives AhR nuclear translocation; FGF15/SHP terminates it in the late fed state; PEMT, AhR and PC elevated in steatosis patients.</span></li>
+<li id="r3">Moyer BJ, Rojas IY, Kerley-Hamilton JS, et al. Inhibition of the aryl hydrocarbon receptor prevents Western diet-induced obesity. <span class="j">Toxicol Appl Pharmacol</span> 2016;300:13&ndash;24. <span class="note">Oxidised-LDL &rarr; TLR2/4 &rarr; IDO1 &rarr; kynurenine &rarr; AhR model.</span></li>
+<li id="r4">Rojas IY, Moyer BJ, Ringelberg CS, Tomlinson CR. Reversal of obesity and liver steatosis in mice via inhibition of the aryl hydrocarbon receptor. <span class="j">Int J Obes</span> 2020;44(4):948&ndash;963. <span class="note">Reversal of established disease, not prevention only.</span></li>
+<li id="r5">Rojas IY, et al. Kynurenine-induced aryl hydrocarbon receptor signaling in mice causes body mass gain, liver steatosis and hyperglycemia. <span class="j">Obesity</span> 2021;29(2):337&ndash;349. <span class="note">Kynurenine alone is sufficient; adipocyte AhR ablation abolishes the effect.</span></li>
+<li id="r6">Diani-Moore S, et al. NAD&#8314; loss, a new player in AhR biology: prevention of thymus atrophy and hepatosteatosis by NAD&#8314; repletion. <span class="j">Sci Rep</span> 2017;7:2268. <span class="note">AhR activation lowers NAD&#8314; and deactivates SIRT3.</span></li>
+<li id="r7">MacPherson L, et al. TiPARP (ARTD14) is a mono-ADP-ribosyltransferase and repressor of AhR transactivation. <span class="j">Nucleic Acids Res</span> 2013;41(3):1604&ndash;1621. <span class="note">PARP7 as a canonical AhR target gene.</span></li>
+<li id="r8">Kwon E-K, et al. FXR agonist reduces hepatic miR-802 via SHP-mediated repression of AHR. <span class="j">Diabetes</span> 2021;70(2). PMID 33328206. <span class="note">SHP occupancy reduced and AHR occupancy raised at the miR-802 promoter in NAFLD patients and obese mice; obeticholic acid improves insulin resistance and steatosis.</span></li>
+<li id="r9">Small heterodimer partner inhibits AhR/ARNT transcriptional activity; ARNT interacts directly with SHP. 2001. <span class="gapflag">primary citation to pin</span></li>
+</ol>
+
+<div class="ref-group">Bile acids, theabrownin &amp; the microbiome</div>
+<ol class="refs" start="10">
+<li id="r10">Huang F, et al. Theabrownin from Pu-erh tea attenuates hypercholesterolemia via modulation of gut microbiota and bile acid metabolism. <span class="j">Nat Commun</span> 2019;10:4971. <span class="note">Human arm: intestinal FXR&ndash;FGF15/19 inhibited while hepatic FXR&ndash;SHP is activated; serum FGF19 falls; conjugated bile acids accumulate in the ileum.</span></li>
+<li id="r11">Pu-erh tea modulates tryptophan metabolism via the gut&ndash;liver&ndash;brain axis under circadian disruption. <span class="j">J Agric Food Chem</span> 2022. <span class="note">Indole and 5-HT routes boosted; serum kynurenine, xanthurenic acid and 3-hydroxykynurenine reduced. Cinnabarinic acid identified as a Pu-erh constituent affecting food intake and weight gain in circadian-disrupted mice.</span></li>
+</ol>
+
+<div class="ref-group">Circadian NAD&#8314;, sirtuins &amp; the RET circuit</div>
+<ol class="refs" start="12">
+<li id="r12">Nakahata Y, Sahar S, Astarita G, Kaluzova M, Sassone-Corsi P. Circadian control of the NAD&#8314; salvage pathway by CLOCK-SIRT1. <span class="j">Science</span> 2009;324(5927):654&ndash;657.</li>
+<li id="r13">Ramsey KM, et al. Circadian clock feedback cycle through NAMPT-mediated NAD&#8314; biosynthesis. <span class="j">Science</span> 2009;324(5927):651&ndash;654.</li>
+<li id="r14">Finley LWS, et al. Succinate dehydrogenase is a direct target of sirtuin 3 deacetylase activity. <span class="j">PLoS One</span> 2011;6(8):e23295. PMID 21858060. <span class="note">Thirteen SDHA acetylation sites; SDHA hyperacetylated and SDH activity reduced in SIRT3-null mice.</span></li>
+<li id="r15">Schirris TJJ, et al. Stimulation of cholesterol biosynthesis in mitochondrial complex I deficiency lowers reductive stress and improves motor function and survival in mice. <span class="j">Biochim Biophys Acta Mol Basis Dis</span> 2021;1867(2):166062. PMID 33385517.</li>
+<li id="r16">Dobrzyn P, et al. Stearoyl-CoA desaturase 1 deficiency increases NAD&#8314; levels and AMPK activation in skeletal muscle. 2019. PMID 31241768. <span class="note">SCD1 ablation raises AMP/ATP, AMPK phosphorylation, NAD&#8314; and SIRT1 activity; overexpression reverses all four.</span></li>
+<li id="r25">Nohl H. Generation of superoxide radicals as byproduct of cellular respiration. 1990. PMID 2251677. <span class="note">Foundational: Complex&nbsp;I as a major site, maximal when the NAD pool is highly reduced.</span></li>
+<li id="r26">Alpha-lipoic acid decreases cellular NADH with a smaller and slower effect on NADPH. 2002. PMID 11985536. <span class="note">Roughly 30% NADH reduction; reduced by lipoamide dehydrogenase in an NADH-dependent reaction.</span></li>
+<li id="r27">Reductive stress in redox biology, and the antioxidant paradox. 2012. PMID 22456698; PMC3401201. <span class="note">Chronic reductive stress induces oxidative stress; chronic antioxidant supplementation can be pro-oxidant.</span></li>
+</ol>
+
+<div class="ref-group">B-vitamins, dairy &amp; human anchors</div>
+<ol class="refs" start="17">
+<li id="r17">Effects of pyridoxine supplementation on anthropometric indices, glycaemic control and metabolic markers in overweight and obese women: a randomised controlled trial. 2022. PMID 35715443. <span class="note">80&nbsp;mg/day, 8 weeks; fat mass, visceral adiposity index, fasting insulin, HOMA-IR, triglycerides and leptin down; adiponectin up.</span></li>
+<li id="r18">Mathematical modelling of vitamin B6 and the kynurenine pathway. 2018. PMID 29401505. <span class="note">PLP as cofactor for kynureninase and kynurenine aminotransferase; PLP restriction limits NAD&#8314; production from tryptophan and raises kynurenine, 3-hydroxykynurenine and xanthurenic acid.</span></li>
+<li id="r19">Serum vitamin B12 and obesity in US adults. 2019. PMID 31316466. <span class="note">Inverse association after adjustment for age, sex, ethnicity, socioeconomic status, diet and lifestyle.</span></li>
+<li id="r20">Jukarainen S, et al. Obesity is associated with low NAD&#8314;/SIRT pathway expression in adipose tissue of BMI-discordant monozygotic twins. <span class="j">J Clin Endocrinol Metab</span> 2016;101(1):275&ndash;283. PMID 26574954. <span class="note">Monozygotic design means the deficit is acquired rather than inherited.</span></li>
+<li id="r21">Rappou E, et al. Weight loss is associated with increased NAD&#8314;/SIRT1 expression but reduced PARP activity in white adipose tissue. <span class="j">J Clin Endocrinol Metab</span> 2016;101(3):1263&ndash;1273.</li>
+<li id="r22">Effect of milk consumption on plasma folate, vitamin B12 and homocysteine. 2000. PMID 10952952. <span class="note">Superior absorption and homocysteine reduction versus matched supplement dosing.</span></li>
+<li id="r22b">Vitamin B12 bioavailability from milk exceeds synthetic supplement forms, regardless of thermal or filtration processing. <span class="j">Animal Frontiers</span> 2014.</li>
+<li id="r23">NNT expression in visceral adipose tissue predicts BMI, waist circumference and body-fat percentage; palmitate lowers NNT, NADPH and glutathione in immune cells, and PBMCs from obese subjects show reduced NNT. <span class="gapflag">split into two citations</span></li>
+</ol>
+
+<div class="ref-group">Oxidised lipids &amp; the CYP1B1 arm</div>
+<ol class="refs" start="24">
+<li id="r24">Maayah ZH, El-Kadi AOS. 5-, 12- and 15-hydroxyeicosatetraenoic acids induce cellular hypertrophy in the human ventricular cardiomyocyte RL-14 cell line through MAPK- and NF-&#954;B-dependent mechanism. <span class="j">Arch Toxicol</span> 2015;89(8):1329&ndash;1346; with El-Kadi lab, CYP1B1 &rarr; mid-chain HETEs, <span class="j">Mol Cell Biochem</span> 2017;429:151.</li>
+<li id="r28">Oxidised LDL activates AhR and interferes with circadian rhythm-related transcripts. PMC7700619.</li>
+</ol>
+</section>
+
+<div style="margin-top:44px">
+  <span class="tag">AhR</span><span class="tag">Kynurenine</span><span class="tag">IDO1</span><span class="tag">TiPARP</span><span class="tag">CLOCK:BMAL1</span><span class="tag">NAMPT</span><span class="tag">SIRT3</span><span class="tag">SDH</span><span class="tag">NNT</span><span class="tag">Reverse electron transport</span><span class="tag">4-HNE</span><span class="tag">CYP1B1</span><span class="tag">PEMT</span><span class="tag">FXR/SHP</span><span class="tag">Theabrownin</span><span class="tag">Quercetin</span><span class="tag">Myricetin</span><span class="tag">Vitamin B6</span><span class="tag">Vitamin B12</span><span class="tag">Folate</span><span class="tag">Alpha-lipoic acid</span><span class="tag">SCD1</span>
+</div>
+
+<footer class="end">
+  <p><b>A note on sourcing.</b> The AhR-as-metabolic-hub framing, the reductive-stress/NAD&#8314; arm and the FADH&#8322;/RET thermogenic circuit originate substantially with Brad Marshall (<em>Fire in a Bottle</em>), who built the desaturase-flux and reductive-stress case that this paper develops and in places extends with primary literature. The oxidised-linoleic-acid arm draws on Tucker Goodrich's work on LA peroxidation and 4-HNE. Where this paper goes further than either is in treating AhR itself as the organising node rather than one mechanism among several, and in mapping the intervention set onto a tiered taxonomy of its inputs.</p>
+  <p>The companion paper, <a href="linoleic-acid.html">Linoleic Acid &amp; Metabolic Disease</a>, covers the &#969;-6 substrate side of Loop&nbsp;3 in detail.</p>
+</footer>
+
+</div>
+</body>
+</html>

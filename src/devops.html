@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps &mdash; CI/CD</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-tech.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html" class="active">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="tech.html">Overview</a>
+  <a href="website.html">Website</a>
+  <a href="snowplow.html">Snowplow</a>
+  <a href="databricks.html">Databricks</a>
+  <a href="kubernetes.html">Kubernetes</a>
+  <a href="ml_platform.html">ML Platform</a>
+  <a href="devops.html" class="active">DevOps</a>
+</div></div>
+<div class="shell narrow">
+<div class="hero">
+  <p class="eyebrow">Automation &amp; Delivery</p>
+  <h1>DevOps <em>&mdash; Jenkins</em></h1>
+  <p class="sub">The CI/CD server that tests and deploys every piece of infrastructure in this stack: Terraform plans and applies, and the dbt docs build.</p>
+</div>
+<section class="section">
+  <figure><img src="images/patrick-cloud-jenkins-terraform.svg" alt="Jenkins Terraform pipeline"></figure>
+  <figure><img src="images/patrick-cloud-jenkins-dbt-docs.svg" alt="Jenkins dbt docs pipeline"></figure>
+
+  <div class="section-head"><span class="section-num">01</span><h2>Architecture Decisions</h2></div>
+  <div class="defrow"><div class="term">Security</div><p class="def">Sits behind the ALB in a private subnet &mdash; no direct public exposure.</p></div>
+  <div class="defrow"><div class="term">Alarms</div><div class="def">Standard AWS alarms applied to EC2, emailing on trigger:
+    <ul><li>EC2 &mdash; error log detection, high CPU, low CPU</li></ul></div></div>
+
+  <div class="flag">
+    <div class="flag-lbl">Write-up in progress</div>
+    <p style="margin:0;">The pipeline diagrams are in and the decisions above are what the old page documented &mdash; it cut off mid-list. Send me notes on the two pipelines (stages, approvals, how Terraform state and the dbt docs publish are handled) and I&rsquo;ll finish this out.</p>
+  </div>
+
+  <div class="section-head"><span class="section-num">02</span><h2>Delivery Across the Stack</h2></div>
+  <p class="lead">Jenkins is the execution layer, but delivery spans a few tools.</p>
+  <div class="defrow"><div class="term">Terraform</div><p class="def">Every resource in this environment is declared in code across eight repositories, so the whole stack can be torn down and rebuilt reproducibly.</p></div>
+  <div class="defrow"><div class="term">Jenkins</div><p class="def">Runs the plan/apply pipelines and the dbt docs build. Behind the ALB in a private subnet.</p></div>
+  <div class="defrow"><div class="term">Argo CD</div><p class="def">GitOps continuous delivery for anything running inside the Kubernetes cluster &mdash; see <a href="kubernetes.html">Kubernetes</a>.</p></div>
+  <div class="defrow"><div class="term">GitHub Actions</div><p class="def">Used alongside Jenkins for lighter-weight repository automation.</p></div>
+
+  <div class="section-head"><span class="section-num">03</span><h2>Console</h2></div>
+  <div class="defrow"><div class="term">Jenkins</div><p class="def"><a href="https://jenkins.patrick-cloud.com/">jenkins.patrick-cloud.com</a></p></div>
+</section>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>

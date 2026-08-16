@@ -1,0 +1,45 @@
+/* theme-paper.css — Home + Nutrition.
+   The linoleic-acid paper's look: warm paper, Fraunces / Newsreader / Plex Mono. */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'Newsreader',Georgia,serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --size-body:18px;
+
+  --bg:#f7f5ee;
+  --surface:#fffefb;
+  --surface-hover:#efece1;
+  --ink:#1a1f1a;
+  --ink-strong:#1a1f1a;
+  --muted:#3d453c;
+  --rule:#d9d4c4;
+
+  --accent:#4a5d3a;          /* moss */
+  --accent-strong:#33421f;
+  --accent-2:#a8562f;        /* rust */
+  --accent-3:#3d6a7a;        /* sky */
+  --on-accent:#fffefb;
+
+  --link:#3d6a7a;
+  --link-underline:rgba(61,106,122,.35);
+
+  --warn:#b78a2e;
+  --warn-bg:rgba(183,138,46,.06);
+  --warn-ink:#7a5c14;
+
+  --up:#4a5d3a;
+  --down:#a8562f;
+
+  --radius:5px;
+  --header-bg:rgba(247,245,238,.93);
+  --header-border:2px solid #1a1f1a;
+  --hero-border:2px solid #1a1f1a;
+  --card-hover-shadow:0 6px 18px rgba(26,31,26,.08);
+  --code-bg:#efece1;
+  --logo-tracking:-.01em;
+  --em-style:italic;
+  --sub-style:italic;
+}
+.site-logo{font-style:italic;}
