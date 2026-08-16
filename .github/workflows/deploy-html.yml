@@ -1,0 +1,40 @@
+name: Deploy Website HTML
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  S3_BUCKET: patrick-cloud.com
+  CLOUDFRONT_DISTRIBUTION_ID: E2JPHBOU0JQ3FF
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::948065143262:role/patrick-cloud-dev-terraform-deployer-role
+          aws-region: us-east-1
+
+      - name: Sync src/ to S3
+        # No --delete: the bucket also holds stock-screener/results.json (written by the
+        # Lambda, not part of src/), and the existing Terraform-driven sync doesn't prune
+        # either -- keeping this consistent with that rather than introducing new deletions.
+        run: aws s3 sync src/ "s3://${S3_BUCKET}" --exclude "*.DS_Store"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" \
+            --paths "/*"
