@@ -81,10 +81,10 @@ data "aws_ssm_parameter" "kubernetes_istio_gateway_statusport" {
   name = "KUBERNETES_ISTIO_GATEWAY_STATUSPORT"
 }
 
-# data "aws_eks_node_group" "this" {
-#   cluster_name    = "${local.prefix}-eks-cluster"
-#   node_group_name = "${local.prefix}-node-group"
-# }
+data "aws_eks_node_group" "this" {
+  cluster_name    = "${local.prefix}-eks-cluster"
+  node_group_name = "${local.prefix}-default-node-group"
+}
 
 data "aws_security_group" "kubernetes" {
   tags = {

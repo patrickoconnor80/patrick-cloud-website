@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>ML Platform</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Patrick O'Connor</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Patrick Cloud</a></li>
+							<li><a href="website.html">Website</a></li>
+							<li><a href="snowplow.html">Snowplow</a></li>
+							<li><a href="databricks.html">Databricks</a></li>
+							<li><a href="kubernetes.html">Kubernetes</a></li>
+							<li class="active"><a href="ml_platform.html">ML Platform</a></li>
+							<li><a href="devops.html">DevOps</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/patrickoconnor80/patrick-cloud-machine-learning" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>ML Platform<br />
+									Architecture</h1>
+								</header>
+                                <span class="image fit"><img src="images/patrick-cloud-ml-platform-architecture.svg" alt="" /></span>
+								<div class="col-6 col-12-small">
+									<h2>Architecture Decisions</h2>
+									<ul>
+										<li>Scaling - Karpenter automatically scales up or down depending on the utilization of each node resulting in lower compute costs.</li>
+										<li>Node Optimization - Taints/Tolerations and Node Selectors were used to make sure Ray and Jupyter pods went to the compute heavy/GPU nodes.</li>
+										<li>IP Allocation - Ray and Jupyter Hub were split into seperate subnets so if they were to scale past the allocated IPs given, the whole cluster wouldn't be clogged up.</li>
+										<li>Service Accounts - A Karpenter service account was created to spin up EC2 nodes and a  Mlflow service account was created to interact to the Mlflow database and S3 artifact store.</li>
+									</ul>
+									<p></p>
+								</div>
+								<span class="image fit"><img src="images/patrick-cloud-ml-platform-istio.svg" alt="" /></span>
+								<div class="col-6 col-12-small">
+									<h2>Consoles</h2>
+									<ul>
+										<li><a href="https://kubernetes.patrick-cloud.com/ray-cluster-dashboard/">Ray Cluster Dashboard</a> - Web-based dashboard for monitoring and debugging Ray applications</li>
+										<li><a href="https://kubernetes.patrick-cloud.com/ray-service-dashboard/">Ray Serve Dashboad</a> - Web-based dashboard for monitoring and debugging Ray applications</li>
+										<li><a href="https://kubernetes.patrick-cloud.com/ray-service-serve/">Ray Serve Endpoint</a> - API Endpoint for Ray Serve to turn input data into predictions</li>
+										<li><a href="https://kubernetes.patrick-cloud.com/jupyter/">Jupyter notebook</a> - web-based notebook to write code in multiple languages </li>
+									</ul>
+									<p></p>
+								</div>
+								<h2>Services I used</h2>
+								<dl>
+									<dt><h3>Ray</h3></dt>
+									<dd>
+										<span class="image fit"><img src="images/patrick-cloud-ml-platform-ray.svg" alt="" /></span>
+										<p><a href="https://www.ray.io//">Ray</a> is an open-source unified framework for scaling AI and Python applications like machine learning.</p>
+										<ul>
+											<li>Model Serving - Ray offers a a simple Python API that lets users compose complex inference pipelines and deploy them in real time using YAML</li>
+											<li>Computation - Ray is superior at machine learning workloads than Spark.</li>
+											<li>Libraries - Ray has Scalable libraries for common machine learning tasks such as data preprocessing, distributed training, hyperparameter tuning, reinforcement learning, and model serving.</li>
+											<li>More info on Ray <a href="https://docs.ray.io/en/latest/index.html">here</a></li>
+										</ul>
+									</dd>
+									<dt><h3>Jupyter Hub</h3></dt>
+									<dd>
+										<span class="image fit"><img src="images/patrick-cloud-ml-platform-jupyterhub.webp" alt="" /></span>
+										<p><a href="https://jupyter.org/hub">Jupyter Hub</a> gives users access to computational environments and resources without burdening the users with installation and maintenance tasks. Users can get their work done in their own workspaces on shared resources which can be managed efficiently by system administrators.</p>
+										<ul>
+											<li>Collaboration - Jupyter Hub allows for users to collaborate on the same notebook.</li>
+											<li>Customization - There is an option to design the image deployed for the notebook whether it is for a data engineer(spark) or data scientist (ray).</li>
+										</ul>
+									</dd>
+									<dt><h3>Mlflow</h3></dt>
+									<dd>
+										<span class="image fit"><img src="images/patrick-cloud-ml-platform-mlflow.jpeg" alt="" /></span>
+										<p><a href="https://mlflow.org/">MLflow</a> , at its core, provides a suite of tools aimed at simplifying the ML workflow. It is tailored to assist ML practitioners throughout the various stages of ML development and deployment.</p>
+										<ul>
+											<li>Experiment Management - Mlflow makes it easy to keep track of all the experiments.</li>
+											<li>Model Management - Storing the model in a registry allows for reproudciblity when deploying the model.</li>
+										</ul>
+									</dd>
+								</dl>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/snowplow_init.js"></script>
+			<script src="assets/js/snowplow_trakcer.js"></script>
+
+	</body>
+</html>

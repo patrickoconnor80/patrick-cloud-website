@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Jenkins</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Patrick O'Connor</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Patrick Cloud</a></li>
+							<li><a href="website.html">Website</a></li>
+							<li><a href="snowplow.html">Snowplow</a></li>
+							<li><a href="databricks.html">Databricks</a></li>
+							<li><a href="kubernetes.html">Kubernetes</a></li>
+							<li><a href="ml_platform.html">ML Platform</a></li>
+							<li class="active"><a href="jenkins.html">Jenkins</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/patrickoconnor80/patrick-cloud-jenkins" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>DevOps<br />
+									Architecture</h1>
+								</header>
+								<span class="image fit"><img src="images/patrick-cloud-dev-ops.svg" alt="" /></span>
+								<div class="col-6 col-12-small">
+									<h2>Architecture Decisions</h2>
+									<ul>
+										<li>Plan - Jira and Confluence would be my preffered planning tools</li>
+										<li>Code - Github is where the code is stored</li>
+										<li>Build - Docker is used to build the images</li>
+										<li>Test - Trivy, Checkov, Behave, Unit Testing</li>
+										<ul>
+											<li>Trivy scans the image for vunlerabilities</li>
+											<li>Checkov scans the terraform code for vunlerabilities</li>
+											<li>Behave performs end to end testing(Not used in this project)</li>
+											<li>Unit Testing for SQL in dbt and any python application code(not used in this project)</li>
+										</ul>
+										<li>Release - Jenkins runs the build process for Terraform, Docker and Kubernetes</li>
+										<li>Deploy - Terraform deploys the infrastructure to AWS</li>
+										<li>Operate - Argo CD keeps the kubernetes cluster in sync with github</li>
+										<li>Monitor - Cloudwatch, Prometheus & Grafana</li>
+										<ul>
+											<li>Cloudwatch logs events and has alarms to send emails</li>
+											<li>Prometheus & Grafana provide a dashoboard for monitoring Kubernetes</li>
+										</ul>
+									</ul>
+								</div>
+                                <span class="image fit"><img src="images/patrick-cloud-jenkins-dbt-docs.svg" alt="" /></span>
+								<div class="col-6 col-12-small">
+									<h2>Kubernetes Deployment</h2>
+									<ul>
+										<li>Jenkins Pulls the image repo</li>
+										<li>Docker builds the image</li>
+										<li>Trivy scans the image</li>
+										<li>Jenkins pushs the image to ECR</li>
+										<li>Jenkins pulls the kubernetes manifest repo</li>
+										<li>The manifest's image tag is updated in github</li>
+										<li>Argocd periodically polls the github repo for changes and applies them to the cluster</li>
+									</ul>
+								</div>
+								<span class="image fit"><img src="images/patrick-cloud-jenkins-terraform.svg" alt="" /></span>
+								<div class="col-6 col-12-small">
+									<h2>Terraform Deployment</h2>
+									<ul>
+										<li>Jenkins Pulls the Terraform repo</li>
+										<li>Checkov scans the Terraform code for vulnerablilites</li>
+										<li>Terraform applies the code to AWS</li>
+									</ul>
+								</div>
+								<div class="col-6 col-12-small">
+									<h2>Jenkins Architecture Decisions</h2>
+									<ul>
+										<li>Security - Jenkins EC2 server sits behind ALB in private subnet. Nginx is running on the server so traffic can be encrypted from the ALB to the Jenkins EC2 server.</li>
+										<li>Alarms - The standard AWS alarms are applied to EC2. These alarms will also send an email when triggered.</li>
+											<ul>
+												<li>EC2 - Error log detection, High CPU, Low CPU</li>
+											</ul>
+									</ul>
+								</div>
+							</section>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/snowplow_init.js"></script>
+			<script src="assets/js/snowplow_trakcer.js"></script>
+
+	</body>
+</html>

@@ -41,10 +41,10 @@ resource "aws_alb_target_group" "kubernetes" {
   tags = local.tags
 }
 
-# resource "aws_autoscaling_attachment" "autoscaling_attachment" {
-#   autoscaling_group_name = data.aws_eks_node_group.this.resources[0].autoscaling_groups[0].name
-#   lb_target_group_arn   = aws_alb_target_group.kubernetes.arn
-# }
+resource "aws_autoscaling_attachment" "autoscaling_attachment" {
+  autoscaling_group_name = data.aws_eks_node_group.this.resources[0].autoscaling_groups[0].name
+  lb_target_group_arn   = aws_alb_target_group.kubernetes.arn
+}
 
 resource "aws_security_group_rule" "egress_kubernetes_nodeport" {
   security_group_id = data.aws_security_group.alb_sg.id
@@ -87,7 +87,7 @@ resource "aws_security_group_rule" "ingress_kubernetes_statusport" {
 }
 
 
-## ALARMS ##
+# ALARMS ##
 
 resource "aws_cloudwatch_metric_alarm" "HealthyHostCountKubernetes" {
   alarm_name          = "${local.prefix}-alb-kubernetes-healthy-host-count-alarm"

@@ -17,11 +17,11 @@ node {
     }
 
     stage('Apply Terraform') {
-        sh '''
+        sh """
             cd tf
-            terraform init -backend-config=./env/dev/backend.config -reconfigure
-            terraform apply -var-file=./env/dev/dev.tfvars -lock=false -auto-approve
-        '''
+            terraform init -backend-config=./env/${ENV}/backend.config -reconfigure
+            terraform apply -var-file=./env/${ENV}/${ENV}.tfvars -lock=false -auto-approve
+        """
     }
 
 

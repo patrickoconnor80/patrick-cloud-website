@@ -27,11 +27,12 @@
 					<nav id="nav">
 						<ul class="links">
 							<li><a href="index.html">Patrick Cloud</a></li>
-							<li><a href="snowplow.html">Snowplow</a></li>
-							<li><a href="kubernetes.html">Kubernetes</a></li>
 							<li><a href="website.html">Website</a></li>
+							<li><a href="snowplow.html">Snowplow</a></li>
 							<li class="active"><a href="databricks.html">Databricks</a></li>
-							<li><a href="jenkins.html">Jenkins</a></li>
+							<li><a href="kubernetes.html">Kubernetes</a></li>
+							<li><a href="ml_platform.html">ML Platform</a></li>
+							<li><a href="devops.html">DevOps</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
@@ -52,10 +53,10 @@
 								<div class="col-6 col-12-small">
 									<h2>Architecture Decisions</h2>
 									<ul>
-										<li>Privatelink - enables private connection between control plane and data plane. Privatelink also redirects traffic from the Data Plane to Control Plane using the NAT Gateway to VPC Endpoints.</li>
-										<li>Endpoints - enables traffic to be routed privately from the Databricks cluster to AWS hosted services like S3, Kinesis and STS. This reduces the cost for the data processed by Nat Gateway while making the connection more secure nver reaching the public internet. See an explannation of the endpoints below:</li>
+										<li>Privatelink - enables private connection between control plane and data plane eliminateing exposure to the public interenet.</li>
+										<li>Endpoints - enables traffic to be routed privately from the Databricks cluster to AWS hosted services like S3, Kinesis and STS. This reduces the cost for the data processed by Nat Gateway while making the connection more secure never reaching the public internet. See an explannation of the endpoints below:</li>
                                         <ul>
-											<li>S3 endpoint - needed not only for EC2 to reach the root bucket but also for S3 buckets that contain your data. It will save you money and add another layer of security by keeping traffic to S3 on the AWS backbone.</li>
+											<li>S3 endpoint - needed not only for EC2 to reach the root bucket but also for S3 buckets that contain your data. It will save you money and add another layer of security by keeping traffic to S3 on the AWS private network.</li>
 											<li>Kinesis endpoint - is for internal logs that are collected from the cluster, including important security information, auditing information, and more.</li>
 											<li>STS endpoint - is for temporary credentials that can be passed to the EC2 instance.</li>
 										</ul>
@@ -81,73 +82,17 @@
                                     <span class="image fit"><img src="images/patrick-cloud-dbt.png" alt="" /></span>
 									<h2>Benefits of DBT</h2>
                                     <ul>
-                                        <li>Package Library - DBT has many packages to pick from to make including macros that make SQL coding even easier. The Snowplow package allows me to create standard Snoplow data models.</li>
+                                        <li>Package Library - DBT has many packages to pick from to make including macros that make SQL coding even easier. The Snowplow package allows me to create standard Snoplow data models</li>
                                         <li>Incremental Loading - DBT only processes new data so sql queries are much faster</li>
-                                        <li>Snapshots - Very easy to set up a macro for snapshots, almost no boilerplate code.</li>
+                                        <li>Snapshots - Very easy to set up a macro for snapshots, almost no boilerplate code</li>
                                         <li>Unit Testing - Its very easy to add in unit testing(column unique or not null)</li>
                                         <li>Dependency Management - DBT keeps track of all table dependencies so you don't have to worry about the correct orchestration of tables/views</li>
-                                        <li>Open Source - DBT can be used on top of any SQL Database making it very versatile.</li>
-                                        <li>Environment Awareness - DBT makes moving between environments pretty effortless.</li>
-                                        <li>Documentation - Self generated documentation in a clean and concise format.</li>
+                                        <li>Open Source - DBT can be used on top of any SQL Database making it very versatile</li>
+                                        <li>Environment Awareness - DBT makes moving between environments pretty effortless</li>
+                                        <li>Documentation - Self generated documentation in a clean and concise format</li>
                                     </ul>
 							</section>
-							<p>Future reccomendations: set up firewall, set up Authentication</p>
 					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
 			</div>
 
 		<!-- Scripts -->

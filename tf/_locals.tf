@@ -1,10 +1,10 @@
 locals {
   prefix = "patrick-cloud-${var.env}"
   tags = {
-    env        = var.env
-    project    = "patrick-cloud"
-    deployment = "terraform"
-    repo       = "https://github.com/patrickoconnor80/patrick-cloud-website/tree/main/tf"
+    Env        = var.env
+    Project    = "patrick-cloud"
+    Deployment = "terraform"
+    Repo       = "https://github.com/patrickoconnor80/patrick-cloud-website/tree/main/tf"
   }
   domain_name        = "patrick-cloud.com"
   public_subnet_ids  = [for subnet in data.aws_subnet.public : subnet.id]

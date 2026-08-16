@@ -2,7 +2,7 @@ resource "aws_alb" "this" {
   name                       = "${local.prefix}-alb"
   subnets                    = local.public_subnet_ids
   security_groups            = [data.aws_security_group.alb_sg.id]
-  enable_deletion_protection = true
+  enable_deletion_protection = false # Need to be able to delete to save money
   drop_invalid_header_fields = true
 
   access_logs {
