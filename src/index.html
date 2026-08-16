@@ -1,169 +1,72 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Patrick O'Connor's Website</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="shortcut icon" href="images/favicon.ico" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patrick O'Connor</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-paper.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+<div class="hero">
+  <p class="eyebrow">Cloud Engineering &middot; Nutritional Biochemistry &middot; Markets</p>
+  <h1>Patrick <em>O'Connor</em></h1>
+  <p class="sub">Three things I spend time on, each with its own corner of this site &mdash; the cloud infrastructure I build, the nutrition research I write up, and the positions I model.</p>
+</div>
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>Patrick O'Connor's<br />
-						Website</h1>
-						<p> A Website designed to showcase my skills.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+<section class="section">
+  <div class="grid grid-3">
+    <a class="card linkable" href="tech.html">
+      <div class="card-eyebrow">Section One</div>
+      <h3>Tech</h3>
+      <p>A full AWS stack built and documented from the ground up &mdash; EKS and Istio, Snowplow analytics, Databricks and dbt, Jenkins CI/CD, and an ML platform on Ray, JupyterHub, and MLflow. Every architecture decision explained.</p>
+      <span class="card-more">Explore the stack &rarr;</span>
+    </a>
+    <a class="card linkable" href="nutrition.html">
+      <div class="card-eyebrow">Section Two</div>
+      <h3>Nutrition</h3>
+      <p>Long-form mechanistic write-ups on nutritional biochemistry &mdash; evidence graded, conflicts of interest disclosed, contrary findings engaged rather than smoothed over.</p>
+      <span class="card-more">Read the papers &rarr;</span>
+    </a>
+    <a class="card linkable" href="stocks.html">
+      <div class="card-eyebrow">Section Three</div>
+      <h3>Stocks</h3>
+      <p>My investing criteria, a running watchlist, and models on individual positions built from primary filings rather than headlines &mdash; starting with a live NAV model for the Fundrise Innovation Fund.</p>
+      <span class="card-more">See the watchlist &rarr;</span>
+    </a>
+  </div>
+</section>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Patrick O'Connor</a>
-					</header>
+<section class="section">
+  <div class="section-head"><span class="section-num">&sect; 1</span><h2>About</h2></div>
+  <p>I'm a cloud engineer. This site started as a portfolio for the infrastructure work &mdash; a real AWS stack, deployed entirely through Terraform so it's reproducible, tracking its own analytics through Snowplow and modeling that data in Databricks. It's since become the place I publish everything else too.</p>
+  <p>The infrastructure gets destroyed between demos to keep costs down, so consoles will read as offline unless I've spun the stack back up.</p>
+</section>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">Patrick Cloud</a></li>
-							<li><a href="website.html">Website</a></li>
-							<li><a href="snowplow.html">Snowplow</a></li>
-							<li><a href="databricks.html">Databricks</a></li>
-							<li><a href="kubernetes.html">Kubernetes</a></li>
-							<li><a href="ml_platform.html">ML Platform</a></li>
-							<li><a href="devops.html">DevOps</a></li>
-							<li><a href="stocks.html">Stocks</a></li>
-						<li><a href="stock-screener.html">Stock Screener</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/patrickoconnor80/patrick-cloud-base-infra" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-						<!-- Featured Post -->
-						<section class="post">
-							<header>
-								<h2>About Me</h2>
-							</header>
-							<ul>
-								<li>I'm a cloud engineer and I set up this website to showcase my skills and Github repositories. To summarize this project, I have a website that tracks analytics via Snowplow and I use Databricks and dbt for the data modeling. Jenkins is used for CI/CD. Kubernetes is set up for the ML platform with Ray, Jupyther Hub and Mlflow. I tried to follow best practices to build this project, each page I try to explain the decisions I made. Everything is deployed via Terraform so its reproducible. When I'm not working on the project, I destroy the infrastructure to save money so the links will not work unless I spin everything back up.</li>
-							</ul>
-						</section>
-						<section class="post">
-							<header>
-								<h2>Applications</h2>
-							</header>
-							<ul>
-								<li>ALB - Application Load Balancer is the gateway to all the applications</li>
-								<li>Jenkins - CI/CD Server responsible for testing and deploying all the infrastructure</li>
-								<li>Snoplow - Analytics tracker</li>
-								<li>Databricks - Lakehouse to store and transform data, also visualize it</li>
-								<li>DBT - Transformation layer to transform raw data into production-grade tables</li>
-								<li>EKS - Managed Kubernetes service</li>
-								<li>Istio - Service Mesh encapsulating the Kubernetes Cluster</li>
-								<li>Kiali - Dashboard for Service Mesh</li>
-								<li>Prometheus - Metrics collector</li>
-								<li>Grafana - Dashboard for metrics and Cloudwatch</li>
-								<li>ArgoCD - GitOps continuous delivery tool</li>
-								<li>Ray - Open source unified compute framework</li>
-								<li>Juptyer Hub - Interactive computing across multiple programming languages</li>
-								<li>Mlflow - Platform to streamline machine learning development</li>
-							</ul>
-						</section>
-						<!-- Posts -->
-							<section class="posts">
-								
-								<article>
-									<header>
-										<h2>Github Repositories</h2>
-									</header>
-									<ul>
-										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-base-infra">patrick-cloud-base-infra</a></p>
-										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-website">patrick-cloud-website</a></p>
-										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-jenkins">patrick-cloud-jenkins</a></p>
-										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-snowplow">patrick-cloud-snowplow</a></p>
-										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-kubernetes">patrick-cloud-kubernetes</a></p>
-										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-databricks">patrick-cloud-databricks</a></p>
-										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-dbt">patrick-cloud-dbt</a></p>
-										<p><a href="https://github.com/patrickoconnor80/patrick-cloud-machine-learning">patrick-cloud-machine-learning</a></p>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Consoles</h2>
-									</header>
-									<p><a href="https://jenkins.patrick-cloud.com/">Jenkins</a></p>
-									<p><a href="https://snowplow-collector.patrick-cloud.com/index.html">Snowplow Collector Nginx index.html</a></p>
-									<p><a href="https://snowplow-iglu.patrick-cloud.com/index.html">Snowplow Iglu Nginx index.html</a></p>
-									<p><a href="https://kubernetes.patrick-cloud.com/grafana">Grafana</a></p>
-									<p><a href="https://kubernetes.patrick-cloud.com/prometheus/">Prometheus</a></p>
-									<p><a href="https://kubernetes.patrick-cloud.com/kiali">Kiali</a></p>
-									<p><a href=">https://kubernetes.patrick-cloud.com/argocd/">Argo CD</a></p>
-									<p><a href=">https://kubernetes.patrick-cloud.com/dbt-docs/">dbt Docs</a></p>
-									<p><a href="https://kubernetes.patrick-cloud.com/ray-cluster-dashboard/">Ray Cluster Dashboard</a></p>
-									<p><a href="https://kubernetes.patrick-cloud.com/ray-service-serve/">Ray Serve Endpoint</a></p>
-									<p><a href="https://kubernetes.patrick-cloud.com/jupyter/">Jupyter notebook</a></p>
-								</article>
-								<article>
-									<header>
-										<h2>Best Practices used throughout this project</h2>
-									</header>
-										<p>Least Privilege IAM roles and policies<br />
-										<p>Least Privilege Security Groups<br />
-										<p>Encrypt all AWS resources with custom KMS keys<br />
-										<p>Set up alarms for monitoring<br />
-										<p>Limit access to the public internet (private subnets, endpoints)<br />
-										<p>Encrypt all traffic with SSL</p>
-										<p>Continuous Integration ensures proper testing before deployment</p>
-										<p>Continuous Development and IaC ensures reproducibility</p>
-								</article>
-								<article>
-									<header>
-										<h2>Skills</h2>
-									</header>
-										<h3>AWS</h3>
-											<p>EC2, ECS, EKS, ECR, ALB, Lambda, Glue, RDS, SQS, SNS, Kinesis, Cloudwatch, IAM, KMS, Endpoints, Route53, Security Groups</p>
-										<h3>Languages</h3>
-											<p>Python, SQL, Linux</p>
-										<h3>Open Source Frameworks</h3>
-											<p>Terraform, Docker, Kubernetes - kubetctl, kustomize, helm, AWS CLI</p>
-										<h3>Open Source Libraries</h3>
-											<p>Snowplow, dbt, Nginx, Istio, Prometheus, Grafana, ArgoCD, Ray, Jupyter, Mlflow</p>
-										<h3>CI/CD</h3>
-											<p>Github Actions, AWS Codepipeline, Jenkins</p>
-										<h3>Orchestration</h3>
-											<p>Airflow, Prefect, AWS Eventbridge</p>
-										<h3>Datawarehouse/Databases</h3>
-											<p>Databricks, Snowflake, Postgres</p>
-								</article>
-							</section>
-					</div>
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/snowplow_init.js"></script>
-			<script src="assets/js/snowplow_trakcer.js"></script>
-
-	</body>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
 </html>

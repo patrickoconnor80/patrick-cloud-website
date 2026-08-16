@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Platform</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-tech.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html" class="active">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="tech.html">Overview</a>
+  <a href="website.html">Website</a>
+  <a href="snowplow.html">Snowplow</a>
+  <a href="databricks.html">Databricks</a>
+  <a href="kubernetes.html">Kubernetes</a>
+  <a href="ml_platform.html" class="active">ML Platform</a>
+  <a href="devops.html">DevOps</a>
+</div></div>
+<div class="shell narrow">
+<div class="hero">
+  <p class="eyebrow">Machine Learning Infrastructure</p>
+  <h1>ML Platform <em>Architecture</em></h1>
+  <p class="sub">Ray for distributed compute, JupyterHub for notebooks, and MLflow for tracking &mdash; scheduled onto GPU nodes that Karpenter spins up and tears down on demand.</p>
+</div>
+<section class="section">
+  <figure><img src="images/patrick-cloud-ml-platform-architecture.svg" alt="ML platform architecture diagram"></figure>
+
+  <div class="section-head"><span class="section-num">01</span><h2>Architecture Decisions</h2></div>
+  <div class="defrow"><div class="term">Scaling</div><p class="def">Karpenter automatically scales nodes up or down depending on utilization, resulting in lower compute costs &mdash; important when GPU nodes are involved.</p></div>
+  <div class="defrow"><div class="term">Node optimization</div><p class="def">Taints/tolerations and node selectors make sure Ray and Jupyter pods land on the compute-heavy and GPU nodes rather than general-purpose ones.</p></div>
+  <div class="defrow"><div class="term">IP allocation</div><p class="def">Ray and JupyterHub were split into separate subnets, so if either scales past its allocated IPs the whole cluster doesn't get clogged up.</p></div>
+  <div class="defrow"><div class="term">Service accounts</div><p class="def">A Karpenter service account to spin up EC2 nodes, and an MLflow service account to interact with the MLflow database and the S3 artifact store.</p></div>
+
+  <figure><img src="images/patrick-cloud-ml-platform-istio.svg" alt="ML platform Istio routing"></figure>
+
+  <div class="section-head"><span class="section-num">02</span><h2>Services I Used</h2></div>
+
+  <h3>Ray</h3>
+  <figure><img src="images/patrick-cloud-ml-platform-ray.svg" alt="Ray on the cluster"></figure>
+  <p><a href="https://www.ray.io/">Ray</a> is an open-source unified framework for scaling AI and Python applications like machine learning.</p>
+  <div class="box"><ul>
+    <li><b>Model serving</b> &mdash; a simple Python API that lets users compose complex inference pipelines and deploy them in real time using YAML.</li>
+    <li><b>Computation</b> &mdash; Ray is superior to Spark for machine learning workloads.</li>
+    <li><b>Libraries</b> &mdash; scalable libraries for common ML tasks: data preprocessing, distributed training, hyperparameter tuning, reinforcement learning, and model serving.</li>
+    <li>More info on Ray <a href="https://docs.ray.io/en/latest/index.html">here</a>.</li>
+  </ul></div>
+
+  <h3>JupyterHub</h3>
+  <figure><img src="images/patrick-cloud-ml-platform-jupyterhub.webp" alt="JupyterHub"></figure>
+  <p><a href="https://jupyter.org/hub">JupyterHub</a> gives users access to computational environments and resources without burdening them with installation and maintenance. Users work in their own workspaces on shared resources that administrators can manage efficiently.</p>
+  <div class="box"><ul>
+    <li><b>Collaboration</b> &mdash; multiple users can collaborate on the same notebook.</li>
+    <li><b>Customization</b> &mdash; the deployed notebook image can be designed per role, whether for a data engineer (Spark) or a data scientist (Ray).</li>
+  </ul></div>
+
+  <h3>MLflow</h3>
+  <figure><img src="images/patrick-cloud-ml-platform-mlflow.jpeg" alt="MLflow"></figure>
+  <p><a href="https://mlflow.org/">MLflow</a> provides a suite of tools aimed at simplifying the ML workflow, tailored to assist practitioners throughout the stages of ML development and deployment.</p>
+  <div class="box"><ul>
+    <li><b>Experiment management</b> &mdash; easy to keep track of all experiments.</li>
+    <li><b>Model management</b> &mdash; storing the model in a registry allows for reproducibility when deploying.</li>
+  </ul></div>
+
+  <div class="section-head"><span class="section-num">03</span><h2>Consoles</h2></div>
+  <div class="defrow"><div class="term">Ray Cluster Dashboard</div><p class="def"><a href="https://kubernetes.patrick-cloud.com/ray-cluster-dashboard/">/ray-cluster-dashboard</a> &mdash; web-based dashboard for monitoring and debugging Ray applications.</p></div>
+  <div class="defrow"><div class="term">Ray Serve Dashboard</div><p class="def"><a href="https://kubernetes.patrick-cloud.com/ray-service-dashboard/">/ray-service-dashboard</a> &mdash; monitoring and debugging for the Ray Serve deployment.</p></div>
+  <div class="defrow"><div class="term">Ray Serve Endpoint</div><p class="def"><a href="https://kubernetes.patrick-cloud.com/ray-service-serve/">/ray-service-serve</a> &mdash; API endpoint that turns input data into predictions.</p></div>
+  <div class="defrow"><div class="term">Jupyter</div><p class="def"><a href="https://kubernetes.patrick-cloud.com/jupyter/">/jupyter</a> &mdash; web-based notebook for writing code in multiple languages.</p></div>
+
+  <p class="lead">The cluster underneath &mdash; EKS, Istio mTLS, the Prometheus/Grafana stack, and ArgoCD delivery &mdash; is documented on the <a href="kubernetes.html">Kubernetes</a> page.</p>
+</section>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>

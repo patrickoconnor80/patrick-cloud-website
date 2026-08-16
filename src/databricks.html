@@ -1,165 +1,98 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Databricks</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="shortcut icon" href="images/favicon.ico" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Databricks Architecture</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-tech.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html" class="active">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="tech.html">Overview</a>
+  <a href="website.html">Website</a>
+  <a href="snowplow.html">Snowplow</a>
+  <a href="databricks.html" class="active">Databricks</a>
+  <a href="kubernetes.html">Kubernetes</a>
+  <a href="ml_platform.html">ML Platform</a>
+  <a href="devops.html">DevOps</a>
+</div></div>
+<div class="shell narrow">
+<div class="hero">
+  <p class="eyebrow">Lakehouse &amp; Transformation</p>
+  <h1>Databricks <em>Architecture</em></h1>
+  <p class="sub">PrivateLink between control and data planes, customer-managed keys throughout, and dbt as the transformation layer.</p>
+</div>
+<section class="section">
+  <figure><img src="images/patrick-cloud-databricks-architecture.png" alt="Databricks architecture diagram"></figure>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <div class="section-head"><span class="section-num">01</span><h2>Architecture Decisions</h2></div>
+  <div class="defrow"><div class="term">PrivateLink</div><p class="def">Enables a private connection between the control plane and data plane. PrivateLink also redirects traffic from the data plane to the control plane using the NAT Gateway to VPC endpoints.</p></div>
+  <div class="defrow"><div class="term">Endpoints</div><div class="def">Routes traffic privately from the Databricks cluster to AWS-hosted services like S3, Kinesis, and STS. This reduces NAT Gateway data-processing cost while making the connection more secure by never reaching the public internet.
+    <ul>
+      <li><b>S3</b> &mdash; needed not only for EC2 to reach the root bucket but also for the S3 buckets holding your data. Saves money and adds security by keeping S3 traffic on the AWS backbone.</li>
+      <li><b>Kinesis</b> &mdash; for internal logs collected from the cluster, including security and auditing information.</li>
+      <li><b>STS</b> &mdash; for temporary credentials passed to the EC2 instance.</li>
+    </ul></div></div>
+  <div class="defrow"><div class="term">Security groups &mdash;<br>cluster</div><div class="def">Least privilege:
+    <ul>
+      <li><b>Inbound</b> &mdash; only traffic from within the cluster itself.</li>
+      <li><b>Outbound</b> &mdash; traffic to the cluster itself on any port; traffic to any IP through 443 (Databricks API, AWS API, library repositories), 80 (HTTP), 3306 (metastore), and 6666 (PrivateLink).</li>
+    </ul></div></div>
+  <div class="defrow"><div class="term">Security groups &mdash;<br>VPC endpoints</div><div class="def">Least privilege:
+    <ul>
+      <li><b>Inbound</b> &mdash; only traffic from a Databricks cluster node on 443, 2443 (FIPS), and 6666 (PrivateLink); plus the Snowplow Databricks Loader EC2 on 443.</li>
+      <li><b>Outbound</b> &mdash; only traffic to a Databricks cluster node on 443, 2443, and 6666.</li>
+    </ul></div></div>
+  <div class="defrow"><div class="term">Encryption</div><div class="def">Customer-managed keys (AWS KMS) encrypt all Databricks resources on the data plane, ensuring the Databricks AWS account is the only user with access (alongside my Terraform deployer account).
+    <ul>
+      <li><b>Managed services key</b> &mdash; encrypts the workspace's managed-services data in the control plane: notebooks, secrets, SQL queries, and query history.</li>
+      <li><b>Workspace storage key</b> &mdash; encrypts the workspace's root S3 bucket and the clusters' EBS volumes.</li>
+    </ul></div></div>
+  <div class="defrow"><div class="term">Data governance</div><p class="def">All roles and permissions managed through Terraform &mdash; easy to keep track of who has what access.</p></div>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Patrick O'Connor</a>
-					</header>
-
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">Patrick Cloud</a></li>
-							<li><a href="snowplow.html">Snowplow</a></li>
-							<li><a href="kubernetes.html">Kubernetes</a></li>
-							<li><a href="website.html">Website</a></li>
-							<li class="active"><a href="databricks.html">Databricks</a></li>
-							<li><a href="jenkins.html">Jenkins</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/patrickoconnor80/stock_market" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<h1>Databricks<br />
-									Architecture</h1>
-								</header>
-                                <span class="image fit"><img src="images/patrick-cloud-databricks-architecture.png" alt="" /></span>
-								<div class="col-6 col-12-small">
-									<h2>Architecture Decisions</h2>
-									<ul>
-										<li>Privatelink - enables private connection between control plane and data plane. Privatelink also redirects traffic from the Data Plane to Control Plane using the NAT Gateway to VPC Endpoints.</li>
-										<li>Endpoints - enables traffic to be routed privately from the Databricks cluster to AWS hosted services like S3, Kinesis and STS. This reduces the cost for the data processed by Nat Gateway while making the connection more secure nver reaching the public internet. See an explannation of the endpoints below:</li>
-                                        <ul>
-											<li>S3 endpoint - needed not only for EC2 to reach the root bucket but also for S3 buckets that contain your data. It will save you money and add another layer of security by keeping traffic to S3 on the AWS backbone.</li>
-											<li>Kinesis endpoint - is for internal logs that are collected from the cluster, including important security information, auditing information, and more.</li>
-											<li>STS endpoint - is for temporary credentials that can be passed to the EC2 instance.</li>
-										</ul>
-                                        <li>Security Groups - Datbricks cluster with least privilege security groups</li><ul>
-											<li>Inbound - Only traffic from within the cluster itself .</li>
-											<li>Outbound -  Traffic to the custer itself on any port. Traffic to any IP through port 443(Databricks API, AWS API, Library repositories), 80(HTTP requests), 3306(Metastore) and 6666(Privatelink)</li>
-										</ul>
-                                        <li>Security Groups - Datbricks VPC Endpoints with least privilege security groups</li>
-                                        <ul>
-											<li>Inbound - Only Traffic from any Databricks Cluster node using port 443(Databricks API, AWS API, Library repositories), 2443(Fips) and 6666(Privatelink). Also, traffic from the EC2 - Snowplow Databricks Loader on port 443.</li>
-											<li>Outbound -  Only Traffic to any Databricks Cluster node using port 443(Databricks API, AWS API, Library repositories), 2443(Fips) and 6666(Privatelink)</li>
-										</ul>
-                                        <li>Encryption - Customer Managed Keys(AWS KMS) will encrypt all Databricks resources on the Data Plane. This ensures the Databricks AWS Account will be the only user with access(And my Terraform Deployer AWS Account).</li>
-                                        <ul>
-											<li>Managed Services Key - Encrypt the workspace’s managed services data in the control plane, including notebooks, secrets, Databricks SQL queries, and Databricks SQL query history with a CMK.</li>
-											<li>Workspace Storage Key-  Encrypt the workspace's root S3 bucket and clusters' EBS volumes with a CMK.</li>
-										</ul>
-                                        <li>Data Governance - All Roles and Permissions are managed through terraform. Easy to keep track of who has what access.</li>
-                                    </ul>
-									<header class="major">
-										<h2>DBT - Tranformation Layer</h2>
-									</header>
-                                    <span class="image fit"><img src="images/patrick-cloud-dbt.png" alt="" /></span>
-									<h2>Benefits of DBT</h2>
-                                    <ul>
-                                        <li>Package Library - DBT has many packages to pick from to make including macros that make SQL coding even easier. The Snowplow package allows me to create standard Snoplow data models.</li>
-                                        <li>Incremental Loading - DBT only processes new data so sql queries are much faster</li>
-                                        <li>Snapshots - Very easy to set up a macro for snapshots, almost no boilerplate code.</li>
-                                        <li>Unit Testing - Its very easy to add in unit testing(column unique or not null)</li>
-                                        <li>Dependency Management - DBT keeps track of all table dependencies so you don't have to worry about the correct orchestration of tables/views</li>
-                                        <li>Open Source - DBT can be used on top of any SQL Database making it very versatile.</li>
-                                        <li>Environment Awareness - DBT makes moving between environments pretty effortless.</li>
-                                        <li>Documentation - Self generated documentation in a clean and concise format.</li>
-                                    </ul>
-							</section>
-							<p>Future reccomendations: set up firewall, set up Authentication</p>
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/snowplow_init.js"></script>
-			<script src="assets/js/snowplow_trakcer.js"></script>
-
-	</body>
+  <div class="section-head"><span class="section-num">02</span><h2>dbt &mdash; Transformation Layer</h2></div>
+  <figure><img src="images/patrick-cloud-dbt.png" alt="dbt transformation layer"></figure>
+  <div class="box">
+    <div class="box-lbl">Why dbt</div>
+    <ul>
+      <li><b>Package library</b> &mdash; many packages to choose from, including macros that make SQL easier. The Snowplow package lets me create standard Snowplow data models.</li>
+      <li><b>Incremental loading</b> &mdash; dbt only processes new data, so queries are much faster.</li>
+      <li><b>Snapshots</b> &mdash; very easy to set up as a macro, with almost no boilerplate.</li>
+      <li><b>Unit testing</b> &mdash; trivial to add column-level tests (unique, not null).</li>
+      <li><b>Dependency management</b> &mdash; dbt tracks all table dependencies, so orchestration order is handled for you.</li>
+      <li><b>Open source</b> &mdash; works on top of any SQL database, making it very versatile.</li>
+      <li><b>Environment awareness</b> &mdash; moving between environments is nearly effortless.</li>
+      <li><b>Documentation</b> &mdash; self-generated, in a clean and concise format.</li>
+    </ul>
+  </div>
+  <div class="flag">
+    <div class="flag-lbl">Future recommendations</div>
+    <p style="margin:0;">Set up a firewall; set up authentication.</p>
+  </div>
+</section>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
 </html>

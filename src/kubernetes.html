@@ -1,597 +1,125 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Kubernetes</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="shortcut icon" href="images/favicon.ico" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kubernetes Architecture</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-tech.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html" class="active">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="tech.html">Overview</a>
+  <a href="website.html">Website</a>
+  <a href="snowplow.html">Snowplow</a>
+  <a href="databricks.html">Databricks</a>
+  <a href="kubernetes.html" class="active">Kubernetes</a>
+  <a href="ml_platform.html">ML Platform</a>
+  <a href="devops.html">DevOps</a>
+</div></div>
+<div class="shell narrow">
+<div class="hero">
+  <p class="eyebrow">Container Orchestration &amp; ML</p>
+  <h1>Kubernetes <em>Architecture</em></h1>
+  <p class="sub">EKS wrapped in an Istio service mesh with mutual TLS, running the metrics stack, GitOps delivery, and the ML platform.</p>
+</div>
+<section class="section">
+  <figure><img src="images/patrick-cloud-kubernetes-architecture.svg" alt="Kubernetes architecture diagram"></figure>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <div class="section-head"><span class="section-num">01</span><h2>Architecture Decisions</h2></div>
+  <div class="defrow"><div class="term">Security</div><p class="def">AWS Certificate Manager encrypts traffic from the client to the Application Load Balancer. A self-signed certificate encrypts traffic from the ALB to the Istio Gateway ingress. Inside the cluster, all traffic runs over Istio's built-in mutual TLS between services.</p></div>
+  <div class="defrow"><div class="term">Metrics collecting</div><p class="def">Prometheus scrapes metrics from Kubernetes, Grafana, Istio, and itself.</p></div>
+  <div class="defrow"><div class="term">Alerting</div><p class="def">Prometheus sends alerts to my Slack.</p></div>
+  <div class="defrow"><div class="term">Storage</div><p class="def">AWS EBS volumes attached to Grafana, Prometheus Server, and Prometheus Alertmanager.</p></div>
+  <div class="defrow"><div class="term">Credentials</div><p class="def">External Secrets retrieves Grafana admin credentials from AWS Secrets Manager.</p></div>
+  <div class="defrow"><div class="term">Ingress</div><div class="def">Root URLs changed for Grafana, Prometheus, Kiali, and Argo&nbsp;CD to <code>kubernetes.patrick-cloud.com/{service}/</code>:
+    <ul>
+      <li><a href="https://kubernetes.patrick-cloud.com/grafana/">/grafana/</a> &rarr; Grafana</li>
+      <li><a href="https://kubernetes.patrick-cloud.com/prometheus/">/prometheus/</a> &rarr; Prometheus</li>
+      <li><a href="https://kubernetes.patrick-cloud.com/kiali/">/kiali/</a> &rarr; Kiali</li>
+      <li><a href="https://kubernetes.patrick-cloud.com/argocd/">/argocd/</a> &rarr; Argo&nbsp;CD</li>
+    </ul></div></div>
+  <div class="defrow"><div class="term">Service accounts</div><p class="def">A Cloudwatch service account attached to the Grafana pod so it can retrieve metrics from AWS Cloudwatch.</p></div>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Patrick O'Connor</a>
-					</header>
+  <div class="section-head"><span class="section-num">02</span><h2>Consoles</h2></div>
+  <div class="grid grid-2">
+    <div class="card"><h3 style="font-size:17px;"><a href="https://kubernetes.patrick-cloud.com/grafana/">Grafana</a></h3><p>Open-source platform for data visualization and monitoring.</p></div>
+    <div class="card"><h3 style="font-size:17px;"><a href="https://kubernetes.patrick-cloud.com/kiali/">Kiali</a></h3><p>Console for the Istio service mesh.</p></div>
+    <div class="card"><h3 style="font-size:17px;"><a href="https://kubernetes.patrick-cloud.com/prometheus/">Prometheus</a></h3><p>Collects metrics from infrastructure and applications into a time-series database.</p></div>
+    <div class="card"><h3 style="font-size:17px;"><a href="https://kubernetes.patrick-cloud.com/argocd/">Argo CD</a></h3><p>Declarative, GitOps continuous-delivery tool for Kubernetes.</p></div>
+  </div>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">Patrick Cloud</a></li>
-							<li><a href="snowplow.html">Snowplow</a></li>
-							<li class="active"><a href="kubernetes.html">Kubernetes</a></li>
-							<li><a href="website.html">Website</a></li>
-							<li><a href="databricks.html">Databricks</a></li>
-							<li><a href="jenkins.html">Jenkins</a></li>
-							<li><a href="stocks.html">Stocks</a></li>
-						<li><a href="stock-screener.html">Stock Screener</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/patrickoconnor80/stock_market" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+  <div class="section-head"><span class="section-num">03</span><h2>Services I Used</h2></div>
 
-				<!-- Main -->
-					<div id="main">
+  <h3>Istio</h3>
+  <p><a href="https://istio.io/">Istio</a> is an open-source service mesh platform that helps manage, secure, and connect microservices. Reasons I used it:</p>
+  <div class="box"><ul>
+    <li><b>Security capabilities</b> &mdash; mutual TLS secures service-to-service communication across the mesh. Istio provides a key management system to automate key and certificate generation, distribution, and rotation, and is compatible with OpenID Connect providers like Auth0 and Google Auth so I can incorporate them later if needed.</li>
+    <li><b>Observability</b> &mdash; Kiali gives a dashboard visualizing pods and services across the mesh.</li>
+    <li><b>Traffic management</b> &mdash; the Gateway acts as ingress for all incoming traffic into the cluster. Istio's routing rules make it easy to control the flow of traffic and API calls between services, simplify configuration of circuit breakers, timeouts, and retries, and enable A/B testing, canary deployments, and percentage-based traffic splits.</li>
+  </ul></div>
+  <div class="flag"><div class="flag-lbl">Other solution looked at &mdash; Linkerd</div>
+    <p style="margin:0;">Istio seemed the more all-inclusive and simpler solution. Linkerd did not support Ingresses like Istio did, and Istio egress was much simpler with Gateway and VirtualService objects compared to DNS and delegation tables. The big downside is that Istio is a much more heavyweight solution.</p></div>
 
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<h1>Kubernetes<br />
-									Architecture</h1>
-								</header>
-                                <span class="image fit"><img src="images/patrick-cloud-kubernetes-architecture.svg" alt="" /></span>
-								<div class="col-6 col-12-small">
-									<h2>Architecture Decisions</h2>
-									<ul>
-										<li>Secuirty - AWS Certificate Manager was used to encrypt traffice from the client to the Application Load Balancer. A self-signed certificate was used to encrypt traffic from the ALB to the  Istio Gateway Ingress. For all traffic inside the cluster, I used Istio's built-in Mutual TLS between all services.</li>
-										<li>Metrics Collecting - Prometheus scrapes metrics from Kubernetes, Grafana, Istio and Itself</li>
-										<li>Alerting - Prometheus sends alerts to my Slack for any alerts</li>
-										<li>Storage - AWS EBS volumes were attached to Grafana, Prometheus Server and Prometheus Alert Manager</li>
-										<li>Credentials - External Secrets was used to retreive Grafana Admin Credentials from AWS Secrets Manager</li>
-										<li>Ingress - Root URL had to be changed for Grafana, Prometheus, Kiali and Argo CD to kubernetes.patrick-cloud.com/{service}/</li>
-										<ul>
-											<li>https://kubernetes.patrick-cloud.com/grafana/ --> Grafana</li>
-											<li>https://kubernetes.patrick-cloud.com/prometheus/ --> Prometheus</li>
-											<li>https://kubernetes.patrick-cloud.com/kiali/ --> Kiali</li>
-											<li>https://kubernetes.patrick-cloud.com/argocd/ --> Argo CD</li>
-										</ul>
-										<li>Service Accounts - A Cloudwatch service account was attached to the Grafana pod so it could retreive metrics from AWS Cloudwatch</li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<h2>Consoles</h2>
-									<ul>
-										<li><a href="https://kubernetes.patrick-cloud.com/grafana/">Grafana</a> - Open-source platform for data visualization and monitoring.</li>
-										<li><a href="https://kubernetes.patrick-cloud.com/kiali/">Kiali</a> - Console for the Istio Service Mesh.</li>
-										<li><a href="https://kubernetes.patrick-cloud.com/prometheus/">Prometheus</a> -  Open-source tool that collects metrics from infrastructure and applications and stores them in a time-series database.</li>
-										<li><a href="https://kubernetes.patrick-cloud.com/argocd/">Argocd</a> - Declarative continuous delivery tool for Kubernetes</li>
-									</ul>
-								</div>
-								<h2>Services I used</h2>
-								<dl>
-									<dt><h3>Istio</h3></dt>
-									<dd>
-										<span class="image fit"><img src="images/istio.png" alt="" /></span>
-										<p><a href="https://istio.io/">Istio</a> is an open-source service mesh platform that helps organizations manage, secure, and connect microservices. Here are the reasons why I used it.</p>
-										<ul>
-											<li>Security capabilities - I used Mutual TLS to secures service-to-service communication for all traffic on the service mesh. Istio provides a key management system to automate key and certificate generation, distribution, and rotation. Also, Istio is compatible with OpenID Connect providers like AuthO and Goolgle Auth so I can incoporate them later if needed</li>
-											<li>Observability - I used Kiali for a dashboard to vizualize the pods and services across the service mesh. </li>
-											<li>Traffic management - I used the Gateway as an ingress for all incoming traffic into the Kubernetes cluster. Istio's traffic routing rules let you easily control the flow of traffic and API calls between services. Istio simplifies configuration of service-level properties like circuit breakers, timeouts, and retries, and makes it easy to set up important tasks like A/B testing, canary deployments, and staged rollouts with percentage-based traffic splits.</li>
-											<li>More info on the Istio Service Mesh <a href="https://istio.io/latest/about/service-mesh/">here</a></li>
-										</ul>
-										<h5>Other Solution looked at - Linkerd</h5>
-											<p>Istio seemed to be a more all-inclusive and simpler solution. Linkerd did not support Ingresses like Istio did. Istio egress was much simpler with Gateways and Virtual Service objects compared to DNS and Delegation Tables. The big downside I see is that Istio is a much more heavyweight solution.</p>
-									</dd>
-									<dt><h3>Prometheus and Grafana Stack</h3></dt>
-									<dd>
-										<span class="image fit"><img src="images/prometheus.png" alt="" /></span>
-										<h4>Prometheus</h4>
-										<p><a href="https://prometheus.io/">Prometheus</a> is an open-source tool that collects metrics from infrastructure and applications and stores them in a time-series database. Here are the reasons why I used it:</p>
-										<ul>
-											<li>Alerting - This component evaluates user-defined rules and sends alerts to various channels, including integrations such as email, PagerDuty, and Slack. It offers various functionalities like deduplication, grouping, routing, silencing, and inhibition of alerts.</li>
-											<li>Service discovery - This component is used to discover targets automatically and monitor new service instances. Prometheus supports service discovery mechanisms such as Kubernetes service discovery, DNS, and file_sd.</li>
-											<li>Realiable metris - This component collects time-series data from exporters or scrapes data from target systems and stores it in a time-series database.</li>
-											<li>More info on Prometheus <a href="https://prometheus.io/docs/introduction/overview/">here</a></li>
-										</ul>
-										<h4>Grafana</h4>
-										<p><a href="https://grafana.com/">Grafana</a> is an open-source platform for data visualization and monitoring. Here are the reasons why I used it:</p>
-										<ul>
-											<li>Database support - Grafana supports a wide range of databases. Some Databases I am using are Prometheus, AWS Cloudwatch and Postgres.</li>
-											<li>Monitoring - Grafana can help users troubleshoot any IoT device issue including kubernetes cluster issues like pods or nodes.</li>
-											<li>Ease of use - Grafana has a long list of pre-made dashboards that can easily be imported from the most commmon data sources.</li>
-											<li>More info on Grafana <a href="https://grafana.com/docs/grafana-cloud/introduction/">here</a></li>
-										</ul>
-										<h5>Other Solution: Elastic Stack</h5>
-										<p>With this proejct, my focus isn't on analyzing logs but analyzing metrics and visualizing real-monitoirng so Prometheus and Grafana Stack was the easy choice.</p>
-									</dd>
-									<dt>Argo CD</dt>
-									<dd>
-										<span class="image fit"><img src="images/argocd.png" alt="" /></span>
-										<p><a href="https://argo-cd.readthedocs.io/en/stable/">Argo CD</a> declarative, GitOps continuous delivery tool for Kubernetes. 3 Reasons why I used it: </p>
-										<ul>
-											<li>Easy Roll Back - ArgoCD pulls any changes and applies that to the cluster. If something breaks or a new application version fails to start, you can reverse to the previous working state in the git history.</li>
-											<li>User Interface - ArgoCD has a convenient web-based UI that simplifies working with the tool.</li>
-											<li>Dynamic - You can use any declarative configuration tool from YAML, Helm charts, Kustomize etc.</li>
-											<li>More info on Grafana <a href="https://argo-cd.readthedocs.io/en/stable/">here</a></li>
-										</ul>
-										<h5>Other Solution: Flux</h5>
-										<p>Argo CD having an easy to use UI was a big advantage vs. no UI with Flux.</p>
-									</dd>
-									<dt>Other Considerations</dt>
-									<dd>
-										<h4>AWS ALB managed by Terrafrom vs. <a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/">AWS Load Balancer Controller</a> managed by kubernetes</h4>
-										<ul>
-											<li>Can use the ALB as the center point to all my services(EKS + EC2)</li>
-											<li>Customize the ALB for security(least privilege)</li>
-											<li>Downside is I have to figure out the exposed port by Istio Gateway and cofigure it with the ALB and security groups</li>
-										</ul>
-										<h4><a href="https://external-secrets.io/latest/">External Secrets</a> vs. <a href="https://secrets-store-csi-driver.sigs.k8s.io/">AWS Secrets Store CSI Driver</a> managed by kubernetes</h4>
-										<ul>
-											<li>AWS CSI driver was limited to injecting secrets into pods, I wanted to inject secrets into manifest files</li>
-											<li>External Secrets stored the secret in the Kubernetes Secrets resource making it very accessible</li>
-										</ul>
-									</dd>
-								</dl>
+  <h3>Prometheus &amp; Grafana Stack</h3>
+  <p><a href="https://prometheus.io/">Prometheus</a> collects metrics from infrastructure and applications and stores them in a time-series database. Reasons I used it:</p>
+  <div class="box"><ul>
+    <li><b>Alerting</b> &mdash; evaluates user-defined rules and sends alerts to channels including email, PagerDuty, and Slack, with deduplication, grouping, routing, silencing, and inhibition.</li>
+    <li><b>Service discovery</b> &mdash; discovers targets automatically and monitors new service instances via Kubernetes service discovery, DNS, or file_sd.</li>
+    <li><b>Reliable metrics</b> &mdash; collects time-series data from exporters or scrapes target systems directly.</li>
+  </ul></div>
+  <p><a href="https://grafana.com/">Grafana</a> is the visualization layer on top. Reasons I used it:</p>
+  <div class="box"><ul>
+    <li><b>Database support</b> &mdash; supports a wide range of databases; I'm using Prometheus, AWS Cloudwatch, and Postgres.</li>
+    <li><b>Monitoring</b> &mdash; helps troubleshoot cluster issues down to individual pods or nodes.</li>
+    <li><b>Ease of use</b> &mdash; a long list of pre-made dashboards importable from the most common data sources.</li>
+  </ul></div>
+  <div class="flag"><div class="flag-lbl">Other solution &mdash; Elastic Stack</div>
+    <p style="margin:0;">With this project my focus isn't analyzing logs but analyzing metrics and visualizing real-time monitoring, so the Prometheus and Grafana stack was the easy choice.</p></div>
 
-								<!-- Text stuff -->
-									<h2>Text</h2>
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>.
-									Finally, this is a <a href="#">link</a>.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<h5>Heading Level 5</h5>
-									<h6>Heading Level 6</h6>
-									<hr />
-									<header>
-										<h2>Heading with a Subtitle</h2>
-										<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-									</header>
-									<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-									<header>
-										<h3>Heading with a Subtitle</h3>
-										<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-									</header>
-									<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-									<header>
-										<h4>Heading with a Subtitle</h4>
-										<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-									</header>
-									<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+  <h3>Argo CD</h3>
+  <p><a href="https://argo-cd.readthedocs.io/en/stable/">Argo CD</a> is a declarative, GitOps continuous-delivery tool for Kubernetes. Three reasons I used it:</p>
+  <div class="box"><ul>
+    <li><b>Easy rollback</b> &mdash; ArgoCD pulls changes and applies them to the cluster. If something breaks or a new application version fails to start, you can revert to the previous working state from git history.</li>
+    <li><b>User interface</b> &mdash; a convenient web-based UI simplifies working with the tool.</li>
+    <li><b>Dynamic</b> &mdash; works with any declarative configuration tool: YAML, Helm charts, Kustomize, and more.</li>
+  </ul></div>
+  <div class="flag"><div class="flag-lbl">Other solution &mdash; Flux</div>
+    <p style="margin:0;">Argo CD having an easy-to-use UI was a big advantage versus no UI with Flux.</p></div>
 
-									<hr />
-
-								<!-- Lists -->
-									<h2>Lists</h2>
-									<div class="row">
-										<div class="col-6 col-12-small">
-
-											<h3>Unordered</h3>
-											<ul>
-												<li>Dolor pulvinar etiam.</li>
-												<li>Sagittis lorem eleifend.</li>
-												<li>Felis feugiat dolore viverra.</li>
-												<li>Dolor pulvinar etiam.</li>
-											</ul>
-
-											<h3>Alternate</h3>
-											<ul class="alt">
-												<li>Dolor pulvinar etiam etiam.</li>
-												<li>Sagittis adipiscing eleifend.</li>
-												<li>Felis enim dolore viverra.</li>
-												<li>Dolor pulvinar etiam etiam.</li>
-											</ul>
-
-										</div>
-										<div class="col-6 col-12-small">
-
-											<h3>Ordered</h3>
-											<ol>
-												<li>Dolor pulvinar etiam.</li>
-												<li>Etiam vel felis at viverra.</li>
-												<li>Felis enim feugiat magna.</li>
-												<li>Etiam vel felis nullam.</li>
-												<li>Felis enim et tempus.</li>
-											</ol>
-
-											<h3>Icons</h3>
-											<ul class="icons">
-												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-												<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-											</ul>
-											<ul class="icons alt">
-												<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="icon brands alt fa-github"><span class="label">Github</span></a></li>
-												<li><a href="#" class="icon brands alt fa-dribbble"><span class="label">Dribbble</span></a></li>
-											</ul>
-
-										</div>
-									</div>
-									<h3>Definition</h3>
-									<dl>
-										<dt>Item 1</dt>
-										<dd>
-											<p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-										</dd>
-										<dt>Item 2</dt>
-										<dd>
-											<p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-										</dd>
-										<dt>Item 3</dt>
-										<dd>
-											<p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-										</dd>
-									</dl>
-
-									<h3>Actions</h3>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Primary</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions small">
-										<li><a href="#" class="button primary small">Small</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<div class="row">
-										<div class="col-6 col-12-small">
-											<ul class="actions stacked">
-												<li><a href="#" class="button primary">Default</a></li>
-												<li><a href="#" class="button">Default</a></li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-small">
-											<ul class="actions stacked">
-												<li><a href="#" class="button primary small">Small</a></li>
-												<li><a href="#" class="button small">Small</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-6 col-12-small">
-											<ul class="actions stacked">
-												<li><a href="#" class="button primary fit">Default</a></li>
-												<li><a href="#" class="button fit">Default</a></li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-small">
-											<ul class="actions stacked">
-												<li><a href="#" class="button primary small fit">Small</a></li>
-												<li><a href="#" class="button small fit">Small</a></li>
-											</ul>
-										</div>
-									</div>
-
-									<hr />
-
-								<!-- Blockquote -->
-									<h2>Blockquote</h2>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis.</blockquote>
-
-									<hr />
-
-								<!-- Table -->
-									<h2>Table</h2>
-
-									<h3>Default</h3>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item 1</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item 2</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item 3</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item 4</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item 5</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-
-									<h3>Alternate</h3>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item 1</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item 2</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item 3</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item 4</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item 5</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-
-									<hr />
-
-								<!-- Buttons -->
-									<h2>Buttons</h2>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Primary</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button primary large">Large</a></li>
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions fit">
-										<li><a href="#" class="button primary fit">Fit</a></li>
-										<li><a href="#" class="button fit">Fit</a></li>
-									</ul>
-									<ul class="actions fit small">
-										<li><a href="#" class="button primary fit small">Fit + Small</a></li>
-										<li><a href="#" class="button fit small">Fit + Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button primary icon solid fa-search">Icon</a></li>
-										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button primary disabled">Primary</span></li>
-										<li><span class="button disabled">Default</span></li>
-									</ul>
-
-									<hr />
-
-								<!-- Form -->
-									<h2>Form</h2>
-
-									<form method="post" action="#">
-										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall">
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-											</div>
-											<div class="col-6 col-12-xsmall">
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-											</div>
-											<!-- Break -->
-											<div class="col-12">
-												<select name="demo-category" id="demo-category">
-													<option value="">- Category -</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-											<!-- Break -->
-											<div class="col-4 col-12-small">
-												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-												<label for="demo-priority-low">Low</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="demo-priority-normal" name="demo-priority">
-												<label for="demo-priority-normal">Normal</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="demo-priority-high" name="demo-priority">
-												<label for="demo-priority-high">High</label>
-											</div>
-											<!-- Break -->
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">I am a human</label>
-											</div>
-											<!-- Break -->
-											<div class="col-12">
-												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-											</div>
-											<!-- Break -->
-											<div class="col-12">
-												<ul class="actions">
-													<li><input type="submit" value="Send Message" class="primary" /></li>
-													<li><input type="reset" value="Reset" /></li>
-												</ul>
-											</div>
-										</div>
-									</form>
-
-									<hr />
-
-								<!-- Image -->
-									<h2>Image</h2>
-
-									<h3>Fit</h3>
-									<span class="image fit"><img src="images/pic01.jpg" alt="" /></span>
-									<div class="box alt">
-										<div class="row gtr-50 gtr-uniform">
-											<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-											<!-- Break -->
-											<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-											<!-- Break -->
-											<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-										</div>
-									</div>
-
-									<h3>Left &amp; Right</h3>
-									<p><span class="image left"><img src="images/pic08.jpg" alt="" /></span>Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.</p>
-									<p><span class="image right"><img src="images/pic09.jpg" alt="" /></span>Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.</p>
-
-									<hr />
-
-								<!-- Box -->
-									<h2>Box</h2>
-									<div class="box">
-										<p>Felis sagittis eget tempus primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Magna sed etiam ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus lorem ipsum dolor sit amet nullam. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis volutpat lorem ipsum dolor.</p>
-									</div>
-
-									<hr />
-
-								<!-- Preformatted Code -->
-									<h2>Preformatted</h2>
-									<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';
-</code></pre>
-
-							</section>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/snowplow_init.js"></script>
-			<script src="assets/js/snowplow_trakcer.js"></script>
-
-	</body>
+  <h3>Other Considerations</h3>
+  <div class="defrow"><div class="term">ALB via Terraform vs.<br>AWS Load Balancer<br>Controller</div><div class="def"><ul style="margin:0;">
+    <li>Can use the ALB as the center point to all my services (EKS + EC2)</li>
+    <li>Customize the ALB for security (least privilege)</li>
+    <li>Downside: I have to figure out the port exposed by the Istio Gateway and configure it with the ALB and security groups</li>
+  </ul></div></div>
+  <div class="defrow"><div class="term">External Secrets vs.<br>AWS Secrets Store<br>CSI Driver</div><div class="def"><ul style="margin:0;">
+    <li>The AWS CSI driver was limited to injecting secrets into pods; I wanted to inject secrets into manifest files</li>
+    <li>External Secrets stores the secret in the Kubernetes Secrets resource, making it very accessible</li>
+  </ul></div></div>
+</section>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
 </html>
