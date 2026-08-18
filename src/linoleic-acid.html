@@ -209,6 +209,39 @@ ol.spine>li b{color:var(--moss-deep);font-weight:600;}
   .defrow{grid-template-columns:1fr;gap:4px;}
 }
 
+/* ---- Data table ---- */
+table.matrix{
+  width:100%;border-collapse:collapse;margin:26px 0;
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+}
+table.matrix th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  font-weight:600;padding:14px 16px;border-bottom:2px solid var(--ink);
+  vertical-align:bottom;
+}
+table.matrix td{
+  padding:14px 16px;border-top:1px solid var(--rule);
+  vertical-align:top;font-size:15.5px;line-height:1.5;color:var(--ink-soft);
+}
+table.matrix td:first-child{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--moss-deep);width:26%;padding-top:16px;
+}
+table.matrix td.tiercell{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  width:16%;padding-top:17px;
+}
+@media (max-width:640px){
+  table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100%;}
+  table.matrix thead{display:none;}
+  table.matrix tr{border-top:1px solid var(--rule);padding:6px 0;}
+  table.matrix td{border-top:none;padding:4px 16px;}
+  table.matrix td:first-child{width:auto;padding-top:14px;}
+  table.matrix td.tiercell{width:auto;}
+}
+
 /* ---- Section scaffolding ---- */
 section{padding:18px 0;}
 .part-head{
@@ -1632,6 +1665,31 @@ ectopic fat <span class="arrow">&rarr;</span> lipotoxicity + OXLAM oxidative loa
 
 <p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">as a classification principle &mdash; fatty-acid composition, not plant-vs-animal origin, is what determines oxidative behaviour, and the compositions themselves are straightforward analytical data.</span></p>
 
+<h3><span class="h3num">VI.3a</span>LA content, quantified</h3>
+<p>Typical linoleic acid content of common cooking fats, as a share of total fat and in grams per tablespoon (14&nbsp;g fat). Values are USDA-typical and vary by brand, cultivar, and processing &mdash; treat as ballpark, not lab-grade.</p>
+<table class="matrix">
+<thead>
+<tr><th>Fat / oil</th><th>Tier</th><th>LA, % of fat</th><th>LA per tbsp</th></tr>
+</thead>
+<tbody>
+<tr><td>Safflower oil (high-linoleic types are the exception &mdash; check label)</td><td class="tiercell">Avoid</td><td>~75%</td><td>~10.5&nbsp;g</td></tr>
+<tr><td>Sunflower oil</td><td class="tiercell">Avoid</td><td>~65%</td><td>~9&nbsp;g</td></tr>
+<tr><td>Corn oil</td><td class="tiercell">Avoid</td><td>~54%</td><td>~7.5&nbsp;g</td></tr>
+<tr><td>Cottonseed oil</td><td class="tiercell">Avoid</td><td>~54%</td><td>~7.5&nbsp;g</td></tr>
+<tr><td>Soybean oil (&ldquo;vegetable oil&rdquo;)</td><td class="tiercell">Avoid</td><td>~51%</td><td>~7&nbsp;g</td></tr>
+<tr><td>Sesame oil</td><td class="tiercell">Limit</td><td>~42%</td><td>~5.9&nbsp;g</td></tr>
+<tr><td>Conventional (grain-fed) lard</td><td class="tiercell">Limit</td><td>~10&ndash;20%</td><td>~1.5&ndash;3&nbsp;g</td></tr>
+<tr><td>Peanut oil</td><td class="tiercell">Limit</td><td>~32%</td><td>~4.5&nbsp;g</td></tr>
+<tr><td>Canola oil</td><td class="tiercell">Limit</td><td>~19%</td><td>~2.7&nbsp;g</td></tr>
+<tr><td>Avocado oil</td><td class="tiercell">Use freely</td><td>~13%</td><td>~1.8&nbsp;g</td></tr>
+<tr><td>Extra-virgin olive oil</td><td class="tiercell">Use freely</td><td>~10%</td><td>~1.4&nbsp;g</td></tr>
+<tr><td>Beef tallow / duck fat</td><td class="tiercell">Use freely</td><td>~3&ndash;4%</td><td>&lt;1&nbsp;g</td></tr>
+<tr><td>Butter / ghee</td><td class="tiercell">Use freely</td><td>~2%</td><td>&lt;0.5&nbsp;g</td></tr>
+<tr><td>Coconut oil</td><td class="tiercell">Use freely</td><td>~2%</td><td>&lt;0.5&nbsp;g</td></tr>
+</tbody>
+</table>
+<p class="evline"><span class="ev ev-mixed">Moderate</span><span class="txt">for the exact percentages &mdash; standard analytical ranges from USDA and industry composition data, but any single bottle can fall outside them, and pastured vs. grain-fed lard differ by roughly an order of magnitude.</span></p>
+
 <h3><span class="h3num">VI.3b</span>On saturated fat: not the villain &mdash; and plausibly the better choice</h3>
 <p>A paper that tells people to cut linoleic acid owes them an answer to the obvious question: if not seed oils, then what &mdash; and isn't saturated fat supposed to be worse? The honest answer has two parts, one solid and one reasoned.</p>
 <div class="mech">
@@ -1684,6 +1742,24 @@ ectopic fat <span class="arrow">&rarr;</span> lipotoxicity + OXLAM oxidative loa
   <p class="def"><b>Macadamia</b> (best &mdash; overwhelmingly MUFA), then <b>hazelnuts, almonds, cashews, pistachios.</b> <em>Almonds are mostly monounsaturated oleic acid</em>, so almonds and almond milk are not a significant LA concern &mdash; a common misconception.</p>
 </div>
 <p class="refnote">The realistic risk isn't the nuts &mdash; it's snack mixes and nut butters roasted <em>in</em> seed oils, plus the ease of eating 400 calories of them without noticing.</p>
+
+<table class="matrix">
+<thead>
+<tr><th>Nut / seed</th><th>Tier</th><th>LA, % of fat</th><th>Dominant fat</th></tr>
+</thead>
+<tbody>
+<tr><td>Sunflower seeds</td><td class="tiercell">Limit</td><td>~65%</td><td>PUFA</td></tr>
+<tr><td>Walnuts</td><td class="tiercell">Limit</td><td>~52%</td><td>PUFA (LA &gt; ALA)</td></tr>
+<tr><td>Pine nuts</td><td class="tiercell">Limit</td><td>~46%</td><td>PUFA</td></tr>
+<tr><td>Pecans</td><td class="tiercell">Limit</td><td>~44%</td><td>MUFA / PUFA mix</td></tr>
+<tr><td>Peanuts / peanut butter</td><td class="tiercell">Moderate</td><td>~30&ndash;35%</td><td>MUFA-leaning</td></tr>
+<tr><td>Pistachios</td><td class="tiercell">Moderate</td><td>~32%</td><td>MUFA-leaning</td></tr>
+<tr><td>Almonds</td><td class="tiercell">Good</td><td>~24%</td><td>MUFA (oleic)</td></tr>
+<tr><td>Cashews</td><td class="tiercell">Good</td><td>~18%</td><td>MUFA</td></tr>
+<tr><td>Hazelnuts</td><td class="tiercell">Good</td><td>~10%</td><td>MUFA</td></tr>
+<tr><td>Macadamia</td><td class="tiercell">Good</td><td>~2%</td><td>MUFA (overwhelmingly)</td></tr>
+</tbody>
+</table>
 
 <p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the compositional rankings themselves, including the walnut correction (high ALA but higher LA).</span> <span class="ev ev-mixed">Moderate</span><span class="txt">for translating composition into a recommendation &mdash; whole nuts arrive with fibre, tocopherols, and an intact matrix, and cohort data on nut intake is broadly favourable despite the LA content.</span></p>
 
