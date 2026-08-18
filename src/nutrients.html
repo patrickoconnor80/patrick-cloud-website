@@ -13,8 +13,34 @@
   body {
     background: var(--bg); color: var(--ink);
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 6rem;
+    line-height: 1.6; margin: 0; padding: 0 0 6rem;
   }
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 0; }
+
+  /* ---- Site header / subnav (shared chrome, matches the other Nutrition pages) ---- */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+    border-bottom:2px solid #1a1f1a;margin-bottom:0;
+  }
+  .site-header-inner{
+    max-width:1000px;margin:0 auto;padding:14px 28px;
+    display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+  }
+  .site-logo{
+    font-family:'Fraunces',Georgia,serif;font-weight:600;font-style:italic;font-size:18px;
+    color:#33421f;border-bottom:none;text-decoration:none;
+  }
+  .site-logo:hover{border-bottom:none;color:#4a5d3a;}
+  .tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .tabs a{color:#3d453c;border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+  .tabs a:hover{color:#1a1f1a;background:#efece1;}
+  .tabs a.active{color:#fffefb;background:#4a5d3a;font-weight:600;}
+  .subnav{border-bottom:1px solid #d9d4c4;background:#f7f5ee;}
+  .subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+  .subnav a{color:#3d453c;border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+  .subnav a:hover{color:#4a5d3a;border-bottom-color:#d9d4c4;}
+  .subnav a.active{color:#33421f;border-bottom-color:#4a5d3a;font-weight:600;}
   h1 { font-size: 2rem; margin-bottom: 0.2rem; }
   .subtitle { color: var(--sub); font-style: italic; margin-top: 0; margin-bottom: 2rem; }
   a {
@@ -43,6 +69,24 @@
 </style>
 </head>
 <body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html">Overview</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="linoleic-acid.html">Linoleic Acid</a>
+  <a href="ahr.html">AhR</a>
+  <a href="nutrients.html" class="active">Nutrients</a>
+</div></div>
+<div class="page-wrap">
 
 <div class="crumbs"><a href="metabolic-health.html">← Metabolic Health</a> · companion paper</div>
 <h1>Nutrients — Deep Dives</h1>
@@ -109,5 +153,6 @@
 <p class="todo">TODO — a small number of citations carried over from the source don't obviously match the claim they're attached to (flagged inline on Glycine/Collagen), and the Sodium page has two citations pointing to now-deleted Notion pages (also flagged inline). Worth an audit pass.</p>
 <p>All pages, including this index, sit flat at the site root (no <code>nutrients/</code> subfolder) &mdash; the links above have been updated to match the files as actually deployed.</p>
 
+</div>
 </body>
 </html>

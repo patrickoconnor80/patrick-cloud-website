@@ -6,7 +6,7 @@
   --font-display:'Fraunces',Georgia,serif;
   --font-body:'Newsreader',Georgia,serif;
   --font-mono:'IBM Plex Mono',monospace;
-  --size-body:18px;
+  --size-body:19px;
 
   --bg:#f7f5ee;
   --surface:#fffefb;
@@ -38,7 +38,8 @@
   --hero-border:2px solid #1a1f1a;
   --card-hover-shadow:0 6px 18px rgba(26,31,26,.08);
   --code-bg:#efece1;
-  --logo-tracking:-.01em;
+  --logo:#33421f;
+  --logo-tracking:0em;
   --em-style:italic;
   --sub-style:italic;
 }
