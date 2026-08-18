@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitamin C — Nutrient Deep Dive</title>
+<style>
+  :root {
+    --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9;
+    --accent: #7a3b2e; --tag-bg: #f1ede4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem;
+  }
+  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(122, 59, 46, 0.35);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  a:hover { border-bottom-color: var(--accent); }
+  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
+  .crumbs a { border-bottom: none; }
+  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
+  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
+  h3 { margin-top: 1.6rem; margin-bottom: 0.4rem; color: var(--accent); font-size: 1.05rem; }
+  p { margin: 0.7rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1rem 0 2rem; }
+  th, td { border: 1px solid var(--line); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+  th { background: var(--tag-bg); font-weight: 600; }
+  .grade { font-style: italic; color: var(--sub); font-size: 0.9em; }
+  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
+  .tags { margin: 0.4rem 0 1.2rem; }
+  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
+  sup a { border-bottom: none; }
+  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
+  li { margin: 0.25rem 0; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+  .refs { font-size: 0.85rem; color: var(--sub); }
+  .refs ol { padding-left: 1.5rem; }
+  .refs li { margin: 0.5rem 0; }
+  .refs a { border-bottom-color: rgba(122, 59, 46, 0.25); }
+</style>
+</head>
+<body>
+
+<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<h1>Vitamin C</h1>
+<div class="tags">
+  <span class="tag">Vitamin</span>
+  <span class="tag">Foundational</span>
+  <span class="tag">Antioxidant</span>
+  <span class="tag">Cofactor</span>
+</div>
+
+<div class="callout"><strong>TL;DR:</strong> Water-soluble vitamin that functions as an enzymatic cofactor, an antioxidant, and a regulator of connective tissue synthesis and cellular redox balance.<sup><a href="#ref1">1</a></sup><sup><a href="#ref2">2</a></sup></div>
+
+<h2>Intake</h2>
+<p>RDA ~75 mg/day (women), 90 mg/day (men); smokers +35 mg/day. Upper limit 2,000 mg/day.<sup><a href="#ref3">3</a></sup> Humans lost the capacity to synthesize vitamin C and must obtain it entirely from diet.<sup><a href="#ref3">3</a></sup></p>
+
+<h2>Transport and absorption</h2>
+<p>Absorbed via sodium-dependent transporters — SVCT1 in the gut, SVCT2 in peripheral tissue and brain. Transport is coupled to sodium gradients, which is the mechanistic link back to electrolyte status.<sup><a href="#ref7">7</a></sup></p>
+
+<h2>Collagen synthesis (key mechanism)</h2>
+<p>Maintains iron in its reduced form (Fe²⁺), which enables prolyl and lysyl hydroxylase activity — the step that stabilizes the collagen triple helix. Deficiency produces impaired collagen stability, which is the mechanism behind scurvy.<sup><a href="#ref1">1</a></sup> <span class="grade">(Strong — human evidence)</span></p>
+
+<h2>Systems</h2>
+<p><strong>Oxidative stress.</strong> Acts as a reducing agent that neutralizes reactive oxygen species; protects lipids, proteins, and DNA from oxidative damage; regenerates other antioxidants including vitamin E.<sup><a href="#ref2">2</a></sup> <span class="grade">(Strong)</span></p>
+<p><strong>Brain.</strong> Concentrated in neurons; supports antioxidant defense<sup><a href="#ref2">2</a></sup> and neurotransmitter synthesis, including norepinephrine;<sup><a href="#ref5">5</a></sup> transported in via SVCT2.<sup><a href="#ref7">7</a></sup></p>
+<p><strong>Immune.</strong> Supports leukocyte function and reduces oxidative stress during infection.<sup><a href="#ref6">6</a></sup></p>
+<p><strong>Heart.</strong> Maintains tetrahydrobiopterin (BH4), a cofactor for nitric oxide synthase — supports vascular nitric oxide production and, per the glycine/collagen entry, may help reduce atherosclerotic plaque via this route.<sup><a href="#ref8">8</a></sup><sup><a href="#ref9">9</a></sup> <span class="grade">(Moderate)</span></p>
+<p><strong>Gut.</strong> Enhances non-heme iron absorption by reducing Fe³⁺ to Fe²⁺;<sup><a href="#ref4">4</a></sup> absorbed itself via SVCT1 in the intestinal epithelium.<sup><a href="#ref7">7</a></sup></p>
+
+<h2>Deficiency effects</h2>
+<p>Scurvy: impaired collagen synthesis presenting as bleeding gums, poor wound healing, and fatigue.<sup><a href="#ref1">1</a></sup></p>
+
+<h2>Cross-reference: skin / connective tissue</h2>
+<p>Vitamin C is a documented, high-confidence cofactor for prolyl and lysyl hydroxylase in collagen biosynthesis.<sup><a href="#ref1">1</a></sup> <span class="grade">(Strong — human evidence)</span> See the <a href="glycine-collagen.html">Glycine / Collagen</a> entry for the full synthesis chain this feeds into.</p>
+
+<h2>Top foods</h2>
+<table>
+<thead><tr><th>Food</th><th>Vitamin C (approx.)</th></tr></thead>
+<tbody>
+<tr><td>Black currants</td><td>~200 mg / cup (~222% DV)</td></tr>
+<tr><td>Red bell pepper</td><td>~190 mg / cup raw (~211% DV)</td></tr>
+<tr><td>Kiwi</td><td>~130–170 mg / 2 fruit (~145–189% DV)</td></tr>
+<tr><td>Brussels sprouts</td><td>~95 mg / cup cooked (~106% DV)</td></tr>
+<tr><td>Broccoli</td><td>~80–100 mg / cup cooked (~89–111% DV)</td></tr>
+<tr><td>Strawberries</td><td>~85 mg / cup (~94% DV)</td></tr>
+<tr><td>Orange</td><td>~70–80 mg / medium fruit (~78–89% DV)</td></tr>
+<tr><td>Orange juice</td><td>~60–90 mg / 8 oz (~67–100% DV)</td></tr>
+<tr><td>Tomato</td><td>~17 mg / medium fruit (~19% DV)</td></tr>
+<tr><td>Potato (baked)</td><td>~20 mg / medium (~22% DV)</td></tr>
+</tbody>
+</table>
+
+<hr>
+<h2>References</h2>
+<div class="refs">
+<ol>
+<li id="ref1">Pinnell, 1985 — vitamin C regulates collagen biosynthesis. <a href="https://pubmed.ncbi.nlm.nih.gov/3008449/" target="_blank">PMID 3008449</a></li>
+<li id="ref2">Glutathione metabolism and functions (review). 2004. <a href="https://pubmed.ncbi.nlm.nih.gov/15245925/" target="_blank">PMID 15245925</a></li>
+<li id="ref3">Vitamin C requirements (review). 2012. <a href="https://pubmed.ncbi.nlm.nih.gov/22806044/" target="_blank">PMID 22806044</a></li>
+<li id="ref4">Vitamin C enhances iron absorption. <a href="https://pubmed.ncbi.nlm.nih.gov/6940487/" target="_blank">PMID 6940487</a></li>
+<li id="ref5">Vitamin C & norepinephrine synthesis. <a href="https://pubmed.ncbi.nlm.nih.gov/6139316/" target="_blank">PMID 6139316</a></li>
+<li id="ref6">Vitamin C & immune function (review). 2013. <a href="https://pubmed.ncbi.nlm.nih.gov/23440782/" target="_blank">PMID 23440782</a></li>
+<li id="ref7">Takanaga et al., 2004 — SVCT sodium-dependent vitamin C transport. <a href="https://pubmed.ncbi.nlm.nih.gov/12845532/" target="_blank">PMID 12845532</a></li>
+<li id="ref8">Nitric oxide / BH4. <a href="https://pubmed.ncbi.nlm.nih.gov/10357326/" target="_blank">PMID 10357326</a></li>
+<li id="ref9">Nitric oxide / BH4. <a href="https://pubmed.ncbi.nlm.nih.gov/15178568/" target="_blank">PMID 15178568</a></li>
+</ol>
+</div>
+
+</body>
+</html>
