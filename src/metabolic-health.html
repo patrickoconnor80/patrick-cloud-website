@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metabolic Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+/* ---- Definition rows ---- */
+.defrow{
+  display:grid;grid-template-columns:180px 1fr;gap:16px;
+  padding:14px 0;border-top:1px solid var(--rule);
+}
+.defrow:first-of-type{border-top:none;}
+.defrow .term{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
+  color:var(--moss-deep);line-height:1.45;padding-top:2px;
+}
+.defrow .def{margin:0;font-size:16.5px;line-height:1.55;}
+@media (max-width:560px){
+  .defrow{grid-template-columns:1fr;gap:4px;}
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+code{font-family:'IBM Plex Mono',monospace;font-size:.85em;background:var(--paper-deep);padding:1px 5px;border-radius:3px;color:var(--moss-deep);}
+
+/* ---- Evidence chips ---- */
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mod{background:rgba(61,106,122,.13);color:#2c4f5c;}
+.ev-mod::before{background:var(--sky);}
+.ev-animal{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-animal::before{background:var(--gold);}
+.ev-inf{background:rgba(183,138,46,.09);color:#7a5c14;}
+.ev-inf::before{background:var(--gold);opacity:.55;}
+.ev-cont{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-cont::before{background:var(--rust);}
+.ev-spec{background:rgba(61,69,60,.1);color:var(--ink-soft);}
+.ev-spec::before{background:var(--ink-soft);opacity:.6;}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+
+/* ---- Tier blocks ---- */
+.tier{
+  border-left:3px solid var(--rule);
+  padding:4px 0 4px 20px;margin:24px 0;
+}
+.tier-name{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  margin-bottom:6px;
+}
+.tier p{font-size:17px;margin:10px 0;}
+.t-direct{border-left-color:var(--rust);}
+.t-direct .tier-name{color:var(--rust);}
+.t-supply{border-left-color:var(--gold);}
+.t-supply .tier-name{color:#7a5c14;}
+.t-restraint{border-left-color:var(--sky);}
+.t-restraint .tier-name{color:var(--sky);}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Coverage / intervention table ---- */
+table.matrix{
+  width:100%;border-collapse:collapse;margin:26px 0;
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+}
+table.matrix th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  font-weight:600;padding:14px 16px;border-bottom:2px solid var(--ink);
+  vertical-align:bottom;
+}
+table.matrix td{
+  padding:14px 16px;border-top:1px solid var(--rule);
+  vertical-align:top;font-size:15.5px;line-height:1.5;color:var(--ink-soft);
+}
+table.matrix td:first-child{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--moss-deep);width:26%;padding-top:16px;
+}
+table.matrix td.tiercell{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  width:16%;padding-top:17px;
+}
+@media (max-width:640px){
+  table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100%;}
+  table.matrix thead{display:none;}
+  table.matrix tr{border-top:1px solid var(--rule);padding:6px 0;}
+  table.matrix td{border-top:none;padding:4px 16px;}
+  table.matrix td:first-child{width:auto;padding-top:14px;}
+  table.matrix td.tiercell{width:auto;}
+}
+
+/* ---- Mitigation / numbered list ---- */
+ol.mit{list-style:none;counter-reset:m;padding:0;margin:24px 0;}
+ol.mit>li{
+  counter-increment:m;position:relative;
+  padding:18px 0 18px 58px;border-top:1px solid var(--rule);
+}
+ol.mit>li::before{
+  content:counter(m);position:absolute;left:0;top:16px;
+  font-family:'Fraunces',serif;font-weight:600;font-size:30px;
+  color:var(--moss);line-height:1;width:42px;text-align:center;
+}
+ol.mit>li .mit-title{font-weight:600;color:var(--moss-deep);}
+
+/* ---- Pull quote ---- */
+.pull{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+  font-size:25px;line-height:1.32;color:var(--moss-deep);
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  padding:26px 0;margin:38px 0;
+}
+
+/* ---- Limitations / open questions / references ---- */
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+.gapflag{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:#7d3d1c;background:rgba(168,86,47,.13);
+  padding:2px 7px;border-radius:2px;font-weight:600;white-space:nowrap;
+}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .byline{flex-direction:column;gap:6px;}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html">Overview</a>
+  <a href="metabolic-health.html" class="active">Metabolic Health</a>
+  <a href="linoleic-acid.html">Linoleic Acid</a>
+  <a href="ahr.html">AhR</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Nutritional Biochemistry</p>
+  <h1 class="title">Metabolic <em>Health</em></h1>
+  <p class="sub">What metabolic health actually is, what breaks it, and the order in which to fix it &mdash; the hub paper the mechanism deep-dives link back to.</p>
+  <div class="byline">
+    <span><b>Draft</b> v1 &mdash; structure first, prose second, citations last</span>
+    <span><b>Scope</b> framework &amp; protocol</span>
+    <span><b>Standard</b> evidence graded where grades are used</span>
+  </div>
+</header>
+
+<div class="flag">
+  <div class="flag-lbl">Draft status</div>
+  <p style="margin:0;">This page is a working structural draft, published as-is rather than held back. Sections marked <span class="gapflag">TODO</span> are open decisions, not oversights &mdash; several are flagged explicitly in <a href="#limitations">Limitations</a> and <a href="#open-questions">Open Structural Questions</a> below. It does not yet carry a numbered citation list; claims that need one are noted inline.</p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Reader's guide</div>
+  <p style="margin-top:0;">This paper is the hub. It states what metabolic health is, what breaks it, and the order in which to fix it. Where a mechanism deserves its own treatment, this paper states the conclusion and links out:</p>
+  <div class="defrow">
+    <div class="term">Linoleic acid &amp;<br>seed oils</div>
+    <p class="def">&rarr; <a href="linoleic-acid.html">linoleic-acid.html</a></p>
+  </div>
+  <div class="defrow">
+    <div class="term">AhR as a metabolic<br>disruptor</div>
+    <p class="def">&rarr; <a href="ahr.html">ahr.html</a></p>
+  </div>
+  <div class="defrow">
+    <div class="term">Cold exposure</div>
+    <p class="def"><span class="gapflag">planned</span></p>
+  </div>
+  <div class="defrow">
+    <div class="term">Light: UVA / UVB /<br>full-spectrum / infrared</div>
+    <p class="def"><span class="gapflag">planned</span></p>
+  </div>
+  <div class="defrow">
+    <div class="term">Intermittent fasting &amp;<br>hormetic thresholds</div>
+    <p class="def"><span class="gapflag">planned</span></p>
+  </div>
+  <p style="margin:18px 0 0;">Evidence grades follow the same six-label set used in the linoleic acid paper: <strong>Strong / Moderate / Animal&ndash;in-vitro / Inferred / Contested / Speculative.</strong> Grades attach to specific claims, not sections. Caveats live in <a href="#limitations">Limitations</a> at the end, not scattered through the argument.</p>
+</div>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;I</div>
+  <h2>What We're Actually Optimizing</h2>
+</div>
+
+<p>Body weight is a lagging, low-resolution readout. The thing underneath it is the capacity to move fuel where it belongs, when it belongs there. Four properties define that capacity.</p>
+
+<div class="defrow">
+  <div class="term">1. Insulin<br>sensitivity</div>
+  <p class="def">How much insulin it takes to clear a given glucose load. The target isn't low insulin or low glucose in isolation &mdash; it's a <em>small</em> insulin release producing <em>fast</em> clearance. Those two moving together is the signature.</p>
+</div>
+<div class="defrow">
+  <div class="term">2. Metabolic<br>flexibility</div>
+  <p class="def">The ability to switch cleanly between fat and glucose oxidation as availability changes. Rigidity in either direction is dysfunction. A person locked in fat oxidation who can't handle carbohydrate is not metabolically healthy &mdash; they've adapted around a broken system rather than fixing it.</p>
+</div>
+<div class="defrow">
+  <div class="term">3. Mitochondrial<br>capacity &amp; redox<br>buffering</div>
+  <p class="def">Enough mitochondrial density, and enough NADPH-regenerating capacity downstream, to handle substrate flux without leaking oxidants. Capacity is the variable that determines whether a given fuel load is handled or becomes a stressor.</p>
+</div>
+<div class="defrow">
+  <div class="term">4. Circadian<br>alignment</div>
+  <p class="def">Every one of the above varies across the day. Insulin sensitivity and &beta;-cell responsiveness are highest in the morning and decline into the evening &mdash; an identical meal produces a larger glucose excursion at dinner than at breakfast. A protocol that ignores timing is leaving a real lever unused. <span class="ev ev-mod" style="margin-left:2px;">Moderate</span></p>
+</div>
+
+<div class="pull">The recurring failure mode in metabolic disease is not the presence of a nutrient or stressor, but a mismatch between load and capacity. Nearly every section below is a variation on either lowering the load or raising the capacity.</div>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;II</div>
+  <h2>What Breaks It</h2>
+</div>
+
+<h3><span class="h3num">II.1</span>Dietary linoleic acid</h3>
+<p>The single largest compositional change to the food supply in the last century. High membrane and adipose LA content creates a substrate pool primed for peroxidation, and pushes flux down the desaturase chain toward inflammatory metabolite output. Both routes run together; only the weighting shifts by tissue.</p>
+<p class="takeaway"><b>Full argument:</b> <a href="linoleic-acid.html">linoleic-acid.html</a>. This paper states the conclusion and moves on &mdash; don't re-litigate here.</p>
+
+<h3><span class="h3num">II.2</span>Persistent AhR activation</h3>
+<p>Environmental and dietary ligands hold the aryl hydrocarbon receptor in a chronically activated state, dysregulating adipogenesis, hepatic lipid handling, and inflammatory tone. Several of the same food-supply changes that raised LA intake also raised AhR ligand exposure.</p>
+<p class="takeaway"><b>Full argument:</b> <a href="ahr.html">ahr.html</a>.</p>
+
+<h3><span class="h3num">II.3</span>Chronic carbohydrate exposure in a low-capacity system</h3>
+<p>Not carbohydrate as a class &mdash; carbohydrate <strong>without a break, and without the mitochondrial capacity to oxidize it.</strong> The distinction matters and Part&nbsp;III is built on it.</p>
+<p>The relevant failure is that a large glucose load in someone with reduced insulin sensitivity is disposed of poorly: less enters muscle for oxidation, more remains in circulation or partitions toward de novo lipogenesis and storage. The same load in a sensitive system is largely oxidized, and &mdash; per the PDHC&ndash;NNT literature &mdash; the fraction that <em>is</em> oxidized appears to drive proton-motive-force-consuming redox cycling that dissipates energy as heat rather than storing it.</p>
+<p class="evline"><span class="ev ev-animal">Animal&ndash;in vitro</span><span class="txt">for the NNT circuit.</span> <span class="ev ev-mod">Moderate</span><span class="txt">for the disposal difference itself.</span></p>
+<p>Worth stating plainly because it cuts against the low-carb default: <strong>human overfeeding studies do not show carbohydrate converting efficiently to body fat.</strong> Whole-body de novo lipogenesis stays low even under substantial carbohydrate overfeeding, including in overweight subjects, because glycogen storage absorbs the excess first and the remainder is preferentially oxidized. Carbohydrate is metabolically self-limiting in a way fat is not.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">&mdash; overfeeding studies are short and don't settle habitual free-living intake.</span></p>
+<p>The implication for the protocol: carbohydrate is not the enemy. <strong>Carbohydrate in a system that can't dispose of it</strong> is the enemy, and that's a fixable condition.</p>
+
+<h3><span class="h3num">II.4</span>Circadian disruption</h3>
+<p>Light at night, eating late, irregular sleep. Degrades the same insulin sensitivity rhythm described in Part&nbsp;I, and the effect is independent of diet quality. This is where an otherwise clean diet still fails.</p>
+
+<h3><span class="h3num">II.5</span>Thermal comfort</h3>
+<p>Never being cold. Never being hot. A permanently narrow thermal band removes a stimulus the system evolved to expect, with measurable costs to brown adipose tissue and glucose disposal.</p>
+<p class="takeaway"><b>Full argument:</b> cold exposure paper <span class="gapflag">planned</span></p>
+
+<h3><span class="h3num">II.6</span>Insufficient light exposure</h3>
+<p>Insufficient UVB (vitamin D synthesis), insufficient full-spectrum morning light (circadian anchoring), insufficient infrared. Also a thermal-comfort-shaped problem: modern indoor life removes an expected input.</p>
+<p class="takeaway"><b>Full argument:</b> light paper <span class="gapflag">planned</span></p>
+
+<h3><span class="h3num">II.7</span>Insufficient mechanical loading</h3>
+<p>Skeletal muscle is the largest glucose sink in the body. Resistance training increases both the size of that sink and its insulin-independent glucose uptake. Under-muscled is under-buffered.</p>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;III</div>
+  <h2>The Protocol</h2>
+</div>
+
+<p>The sequencing is the point. Most protocols fail because they apply a step-2 intervention to a step-1 problem.</p>
+
+<h3><span class="h3num">III.1</span>Step 1 &mdash; Restore disposal capacity</h3>
+<p><strong>Goal:</strong> be able to handle a large carbohydrate load without a large insulin excursion. Everything in this step either lowers the load or raises the capacity. Nothing in this step is about weight.</p>
+
+<table class="matrix">
+<thead>
+<tr><th>Intervention</th><th>Mechanism</th><th>Grade</th></tr>
+</thead>
+<tbody>
+<tr><td>Remove seed oils / lower dietary LA</td><td>Reduces peroxidation substrate and desaturase flux</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td>Resistance training, 2&ndash;3&times;/week</td><td>Expands muscle glucose sink; glycogen depletion creates draw</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
+<tr><td>Zone 2 / aerobic base</td><td>Mitochondrial density; intramyocellular lipid clearance</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
+<tr><td>Adequate sleep</td><td>Insulin sensitivity, appetite regulation, GH/autophagy window</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
+<tr><td>Cold exposure</td><td>BAT recruitment, insulin-independent glucose uptake, lowered fasting glucose</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td>Morning light / evening dark</td><td>Anchors the insulin sensitivity rhythm</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td>Post-meal walking (10&ndash;15 min)</td><td>Blunts postprandial excursion directly</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
+<tr><td>Meal sequencing (protein/fiber/veg before starch)</td><td>Slows gastric emptying and absorption</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td>Reduce alcohol</td><td>Consumes NAD&#8314; via ADH/ALDH; acutely worsens insulin sensitivity</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td>Front-load carbohydrate earlier in the day</td><td>Aligns intake with the sensitivity peak</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+</tbody>
+</table>
+
+<div class="flag">
+  <div class="flag-lbl">Exit criteria <span class="gapflag" style="margin-left:6px;">TODO</span></div>
+  <p style="margin:0;">Step 1 needs a measurable endpoint, not a duration. Candidates: fasting insulin, HOMA-IR, a post-load glucose curve, or continuous glucose monitoring showing a tight excursion and fast return. Pick the marker and set the number.</p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Note on cold dosing</div>
+  <p style="margin-top:0;">Two distinct protocols exist in the literature and they serve different purposes. Sustained moderate cold acclimation over ~10 days produced the large insulin-sensitivity improvement in type 2 diabetics &mdash; that's the corrective shape, and it belongs here in Step&nbsp;1. Brief repeated exposure (a few minutes, 2&ndash;3&times; weekly, ending on cold) is the maintenance shape and belongs after. Don't confuse the two.</p>
+  <p style="margin-bottom:0;">The maintenance literature explicitly finds that longer single sessions stop adding benefit.</p>
+</div>
+
+<h3><span class="h3num">III.2</span>Step 2 &mdash; Carb-forward</h3>
+<p>Once disposal capacity is restored, carbohydrate becomes the preferred fuel rather than the liability it was in Step&nbsp;1:</p>
+<ul style="padding-left:20px;">
+  <li>It is metabolically expensive to store as fat (II.3)</li>
+  <li>Its oxidation appears to drive thermogenic redox cycling rather than pure storage</li>
+  <li>It spares protein and supports thyroid conversion and training output</li>
+  <li>It does not require the fat-oxidation machinery that a compromised system can't run well anyway</li>
+</ul>
+<p><strong>Timing rule:</strong> weight carbohydrate toward the earlier part of the day, lighter at dinner. This is the same chronobiology from Part&nbsp;I, applied.</p>
+<p><strong>Source rule:</strong> whole-food carbohydrate, low in LA by construction. The failure mode of &ldquo;carb-forward&rdquo; is that it becomes a license for industrial food. It isn't.</p>
+<p><span class="gapflag">TODO</span> &mdash; define what &ldquo;carb-forward&rdquo; means numerically: a ratio, a floor, or a per-meal target?</p>
+
+<h3><span class="h3num">III.3</span>Step 3 &mdash; Maintenance</h3>
+<p>Seasonal and circadian variation rather than a fixed prescription. Cold in the cold months, light in the light months, carbohydrate weighted toward periods of higher activity and longer days.</p>
+<p><span class="gapflag">TODO</span> &mdash; decide how much seasonality is defensible vs. inherited framing. This is the section most likely to overreach.</p>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;IV</div>
+  <h2>Supplements</h2>
+</div>
+
+<p>Supplements fill identified gaps. They do not substitute for Part&nbsp;III. Ordered by confidence, not popularity.</p>
+
+<h3><span class="h3num">IV.1</span>Tier 1 &mdash; Fill a documented gap</h3>
+<div class="tier t-direct">
+  <p><strong>Magnesium glycinate.</strong> Repletion of a mineral that is genuinely under-consumed on modern diets and involved in hundreds of ATP-dependent reactions. Glycinate form for absorption and GI tolerance; the glycine component is itself useful for sleep and glutathione synthesis. <span class="ev ev-strong">Strong</span> for repletion; <span class="ev ev-mod">Moderate</span> for the downstream metabolic claims.</p>
+  <p><strong>Vitamin D3, October&ndash;March.</strong> Above roughly 37&deg;N, cutaneous synthesis effectively stops in winter. This is a seasonal supplement, not a year-round one &mdash; the summer replacement is sunlight. <span class="ev ev-strong">Strong</span></p>
+  <p><strong>Vitamin K2 (MK-7).</strong> Directs calcium to bone and away from vascular tissue via MGP and osteocalcin carboxylation. Requires daily dosing for consistent activation &mdash; MK-7's long half-life is often overstated as license for intermittent dosing. <span class="ev ev-mod">Moderate</span></p>
+  <p><strong>Freeze-dried oyster.</strong> Excellent whole-food zinc and copper in roughly the ratio the body wants &mdash; the main advantage over isolated zinc supplementation, which can drive copper deficiency at chronic high doses. <span class="ev ev-mod">Moderate</span></p>
+  <p style="margin-bottom:0;"><strong>L-5-MTHF.</strong> Bypasses the MTHFR conversion step. Justified where there's a documented folate gap or known variant; not a default. <span class="ev ev-mod">Moderate</span></p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Correction worth making in the draft</div>
+  <p style="margin-top:0;margin-bottom:0;">Oysters are not a strong iodine source. They're outstanding for zinc and copper and reasonable for selenium and B12, but iodine content is modest and variable. If iodine is a documented gap, the honest source is seaweed (kelp, kombu, nori) or a measured potassium iodide dose &mdash; not oysters. Worth fixing rather than repeating.</p>
+</div>
+<p><strong>Iodine</strong> &mdash; separate from the oyster entry. <span class="gapflag">TODO</span> decide source and dose. Kelp is potent and variable; dosing by &ldquo;a sheet of nori&rdquo; isn't a dose. Consider testing before supplementing.</p>
+
+<h3><span class="h3num">IV.2</span>Tier 2 &mdash; Defensible, situational</h3>
+<div class="tier t-supply">
+  <p><strong>Whole-food vitamin C</strong> (Pure Radiance / VitaCherry). Real advantage: comes with the flavonoid and cofactor matrix rather than isolated ascorbate. Real limitation to state plainly: these products deliver <strong>tens of milligrams</strong>, not grams. If the goal is food-equivalent vitamin C with intact cofactors, they work. If the goal is gram-level ascorbate for a specific pharmacologic effect, they don't &mdash; pretending otherwise is the main way this category is oversold. <span class="ev ev-mod">Moderate</span> for the food-matrix rationale.</p>
+  <p><strong>NAC, episodically before alcohol.</strong> Glutathione precursor ahead of a known oxidative and NAD&#8314;-consuming load. Episodic use avoids the chronic-antioxidant question. <span class="ev ev-inf">Inferred</span></p>
+  <p><strong>Milk thistle</strong> (standardized silymarin). Standalone over blended &ldquo;liver support&rdquo; formulas, where dosing is opaque. <span class="ev ev-mod">Moderate</span></p>
+  <p style="margin-bottom:0;"><strong>Glycine.</strong> Underrated. Collagen-derived amino acid missing from muscle-meat-dominant diets, rate-limiting for glutathione, and useful for sleep onset via core temperature drop. Bone broth or supplemental. <span class="ev ev-mod">Moderate</span></p>
+</div>
+
+<h3><span class="h3num">IV.3</span>Tier 3 &mdash; Interesting, not established</h3>
+<div class="tier t-restraint">
+  <p style="margin-bottom:0;">Black seed (whole, ground fresh), dandelion root, taurine, creatine.</p>
+</div>
+<p><span class="gapflag">TODO</span> &mdash; creatine probably deserves promotion to Tier 1. The muscle and cognitive evidence is stronger than everything else in Tier 3. Decide.</p>
+
+<h3><span class="h3num">IV.4</span>What's deliberately not here</h3>
+<p>Anything whose claimed benefit is already delivered by Part&nbsp;III. Metabolic health is not a supplement problem, and a long stack is usually a sign that a foundation is being worked around rather than fixed.</p>
+</section>
+
+<section>
+<div class="part-head">
+  <div class="part-num">PART&nbsp;V</div>
+  <h2>Measurement</h2>
+</div>
+<p>Without markers, this is belief. Minimum useful panel:</p>
+<ul style="padding-left:20px;">
+  <li><strong>Fasting insulin</strong> and <strong>HOMA-IR</strong> &mdash; the actual Step&nbsp;1 endpoint. More informative early than fasting glucose, which stays normal long after insulin sensitivity has degraded.</li>
+  <li><strong>HbA1c</strong> &mdash; with the caveat that it's distorted by red cell turnover.</li>
+  <li><strong>Continuous glucose monitoring</strong> &mdash; the highest-resolution tool for testing the timing hypotheses in this paper personally. Same meal at 8am and 8pm is a clean n=1.</li>
+  <li><strong>Triglyceride:HDL ratio</strong> &mdash; cheap proxy, on standard panels.</li>
+  <li><strong>hs-CRP</strong> &mdash; inflammatory tone.</li>
+  <li><strong>25(OH)D</strong> &mdash; seasonal, drives the D3 decision.</li>
+  <li><strong>Omega-6:omega-3 index</strong> &mdash; the direct readout on II.1.</li>
+  <li><strong>Waist-to-height</strong> over BMI.</li>
+</ul>
+<p><span class="gapflag">TODO</span> &mdash; add target ranges. Decide whether to state &ldquo;optimal&rdquo; ranges vs. lab reference ranges &mdash; the gap between them is a point worth making.</p>
+</section>
+
+<div class="part-head" id="limitations">
+  <div class="part-num">LIMITS</div>
+  <h2>Limitations</h2>
+</div>
+<section>
+<div class="limits">
+<ul>
+<li><b>Sequencing is a hypothesis, not a finding.</b> No trial has tested &ldquo;restore insulin sensitivity, then increase carbohydrate&rdquo; against the alternatives. The components have support; the order is reasoned.</li>
+<li><b>The NNT/thermogenic argument for carbohydrate rests on isolated mitochondria and mouse muscle.</b> It is mechanistically clean and it fits the human overfeeding data, but it has not been demonstrated as a whole-body thermogenic effect in humans eating meals. Stated as Animal&ndash;in-vitro throughout, and it should stay there.</li>
+<li><b>Overfeeding studies are short.</b> Two weeks of controlled overfeeding does not settle what habitual high-carbohydrate eating does over decades in free-living conditions, where appetite, reward, and NEAT all operate.</li>
+<li><b>Chronobiology effect sizes are real but moderate.</b> Roughly 8&ndash;17% differences in postprandial glucose between morning and evening. That justifies weighting intake earlier; it does not justify a rigid rule. There's also genotype variation (MTNR1B) that changes how much late eating costs a given person.</li>
+<li><b>Cold exposure human data is thin outside of small trials.</b> The insulin sensitivity findings are real but come from small samples in specific populations. Dose-response is not established &mdash; the widely circulated weekly minimums are back-calculated from what study participants happened to be doing, not experimentally derived thresholds.</li>
+<li><b>Seasonality claims are the weakest thing in this paper.</b> Distinguish carefully between what's demonstrated (seasonal vitamin D, seasonal food availability historically) and what's inherited framing from the ancestral-health literature without direct support.</li>
+<li><b>Everything here is n=1 applicable, not clinical advice.</b> Markers before and after; the protocol is a hypothesis about a particular body.</li>
+</ul>
+<p class="lim-close">This paper does not yet carry a numbered citation list &mdash; per the reader's guide above, structure came first, prose second, citations last. Claims above that most need one: the cold-acclimation insulin-sensitivity trial (III.1), the overfeeding/de novo lipogenesis studies (II.3), and the chronobiology postprandial-glucose figures (Limitations, above).</p>
+</div>
+</section>
+
+<div class="part-head" id="open-questions">
+  <div class="part-num">OPEN</div>
+  <h2>Open Structural Questions</h2>
+</div>
+<section>
+<div class="limits">
+<ul>
+<li>Does this stay one paper, or split into &ldquo;framework&rdquo; and &ldquo;protocol&rdquo;?</li>
+<li>How much of the linoleic acid and AhR arguments to restate here vs. link out? Current draft leans hard on linking &mdash; check whether it reads as complete standalone.</li>
+<li>Where does fasting fit? It's currently absent. It belongs somewhere in Step&nbsp;1 as an insulin-lowering tool, but it interacts with the carb-forward step in ways worth thinking through before adding.</li>
+<li>Protein is barely mentioned and probably needs its own section in Part&nbsp;II or III.</li>
+</ul>
+</div>
+</section>
+
+<footer class="end">
+  <p><b>A note on sourcing.</b> This page is the hub for the nutrition/metabolic-health series: it states conclusions and links out to <a href="linoleic-acid.html">Linoleic Acid &amp; Metabolic Disease</a> and <a href="ahr.html">The Aryl Hydrocarbon Receptor &amp; Metabolic Disease</a> for the mechanisms it relies on, and to the <a href="nutrients.html">Nutrients &mdash; Deep Dives</a> index for nutrient-level detail that Part&nbsp;IV deliberately keeps out.</p>
+  <p>Published as a working draft rather than held back for polish. If a claim above matters to you and isn't graded or cited, treat it as unverified until it is.</p>
+</footer>
+
+<div style="margin-top:44px">
+  <span class="tag">Insulin sensitivity</span><span class="tag">Metabolic flexibility</span><span class="tag">Mitochondrial capacity</span><span class="tag">Circadian rhythm</span><span class="tag">Linoleic acid</span><span class="tag">AhR</span><span class="tag">NNT</span><span class="tag">De novo lipogenesis</span><span class="tag">Cold exposure</span><span class="tag">HOMA-IR</span><span class="tag">Continuous glucose monitoring</span><span class="tag">Vitamin D3</span><span class="tag">Vitamin K2</span><span class="tag">Magnesium glycinate</span>
+</div>
+
+</div>
+</body>
+</html>
