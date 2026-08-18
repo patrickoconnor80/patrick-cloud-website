@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glycine / Collagen — Nutrient Deep Dive</title>
+<style>
+  :root {
+    --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9;
+    --accent: #7a3b2e; --tag-bg: #f1ede4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem;
+  }
+  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(122, 59, 46, 0.35);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  a:hover { border-bottom-color: var(--accent); }
+  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
+  .crumbs a { border-bottom: none; }
+  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
+  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
+  h3 { margin-top: 1.6rem; margin-bottom: 0.4rem; color: var(--accent); font-size: 1.05rem; }
+  p { margin: 0.7rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1rem 0 2rem; }
+  th, td { border: 1px solid var(--line); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+  th { background: var(--tag-bg); font-weight: 600; }
+  .grade { font-style: italic; color: var(--sub); font-size: 0.9em; }
+  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
+  .tags { margin: 0.4rem 0 1.2rem; }
+  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
+  sup a { border-bottom: none; }
+  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
+  li { margin: 0.25rem 0; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+  .refs { font-size: 0.85rem; color: var(--sub); }
+  .refs ol { padding-left: 1.5rem; }
+  .refs li { margin: 0.5rem 0; }
+  .refs a { border-bottom-color: rgba(122, 59, 46, 0.25); }
+  .todo { color: #a05a2c; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<h1>Glycine / Collagen</h1>
+<div class="tags">
+  <span class="tag">Amino Acid</span>
+  <span class="tag">Foundational</span>
+  <span class="tag">Structural</span>
+</div>
+
+<div class="callout"><strong>TL;DR:</strong> Glycine provides substrate for collagen and several metabolic pathways; collagen provides structural integrity.</div>
+
+<h2>Overview</h2>
+<p>Collagen is a structural protein built from glycine, proline, and hydroxyproline, arranged in a triple helix that provides tensile strength. The path runs glycine → procollagen → stable triple helix (via hydroxylation of proline and lysine, which requires vitamin C and iron) → mature collagen fiber (via lysyl oxidase cross-linking, which requires copper). See Collagen Synthesis Cofactors below for the citations on each step.</p>
+
+<h2>Intake</h2>
+<p>Estimated metabolic demand runs 12–15 g/day against endogenous production of roughly 3 g/day.<sup><a href="#ref1">1</a></sup> <span class="grade">(Inferred — modeled from turnover estimates, not a formal RDA)</span> Collagen turnover is continuous and metabolically expensive, which is the basis for treating glycine as conditionally essential in humans rather than fully dispensable.</p>
+
+<h2>Functions</h2>
+<h3>Structural</h3>
+<p>Contributes carbon and nitrogen to the purine ring (adenine, guanine).<sup><a href="#ref2">2</a></sup> Major component of skin, tendons, ligaments, and bone, where it provides tensile strength.<sup><a href="#ref3">3</a></sup></p>
+<h3>Functional</h3>
+<p>Glycine + succinyl-CoA is the first step in heme synthesis.<sup><a href="#ref2">2</a></sup> Glycine conjugates bile acids, increasing their solubility and lipid absorption.<sup><a href="#ref4">4</a></sup> Glycine + arginine forms creatine, supporting rapid ATP regeneration in muscle and brain.<sup><a href="#ref2">2</a></sup></p>
+<h3>Protective</h3>
+<p>Glycine + cysteine (+ glutamate) form glutathione, which neutralizes reactive oxygen species and handles phase II detoxification, including protection against heavy metals and xenobiotics.<sup><a href="#ref5">5</a></sup> Glycine availability can be rate-limiting for glutathione synthesis.<sup><a href="#ref6">6</a></sup> Glycine also conjugates toxins directly (e.g., benzoate → hippurate) for urinary excretion.<sup><a href="#ref4">4</a></sup></p>
+
+<h2>Systems</h2>
+<p><strong>Heart.</strong> Improves insulin sensitivity and glucose homeostasis via enhanced insulin secretion;<sup><a href="#ref16">16</a></sup> supports VEGF signaling involved in angiogenesis.<sup><a href="#ref17">17</a></sup> <span class="grade">(Moderate)</span></p>
+<p><strong>Brain.</strong> Blocks ROS formation in brain mitochondria;<sup><a href="#ref18">18</a></sup> supports survival of a neural stem cell subpopulation;<sup><a href="#ref19">19</a></sup> reduces damage from hypoxia/ischemia in rat models.<sup><a href="#ref20">20</a></sup> Collagen VI has been reported to protect against amyloid-β toxicity, per a secondary summary of preclinical work.<sup><a href="#ref21">21</a></sup> <span class="grade">(Animal–in-vitro)</span></p>
+<p><strong>Gut.</strong> Collagen peptides reduce intestinal epithelial barrier dysfunction in vitro;<sup><a href="#ref22">22</a></sup> glycine showed partial benefit for mucosal regeneration in a rat ischemia-reperfusion model.<sup><a href="#ref23">23</a></sup> <span class="grade">(Animal–in-vitro)</span></p>
+<p><strong>Sleep.</strong> Oral glycine raises extracellular serotonin in rat prefrontal cortex — the proposed route to improved sleep quality via the serotonin → melatonin pathway.<sup><a href="#ref24">24</a></sup> <span class="grade">(Inferred — mechanism is rodent data; human sleep-outcome studies exist for glycine but aren't yet linked into this write-up)</span></p>
+<p><strong>Longevity.</strong> Glycine suppresses methionine-induced hyperhomocysteinemia, offsetting a known cost of methionine overload;<sup><a href="#ref14">14</a></sup> methionine restriction itself extends lifespan across multiple model organisms.<sup><a href="#ref13">13</a></sup> <span class="grade">(Animal–in-vitro)</span></p>
+
+<h2>Deficiency effects</h2>
+<p>Impaired collagen synthesis — compounded by low vitamin C or low protein intake, since both feed the same pathway.</p>
+
+<h2>Collagen synthesis cofactors</h2>
+<ul>
+  <li><strong>Vitamin C</strong> — required for prolyl/lysyl hydroxylase activity;<sup><a href="#ref9">9</a></sup> reduces Fe³⁺→Fe²⁺ and Cu²⁺→Cu⁺ into their active enzymatic forms;<sup><a href="#ref10">10</a></sup><sup><a href="#ref11">11</a></sup> also removes an IGF-1 inhibition pathway, and IGF-1 itself stimulates collagen synthesis.<sup><a href="#ref7">7</a></sup><sup><a href="#ref8">8</a></sup> <span class="grade">(Strong)</span></li>
+  <li><strong>Iron</strong> — Fe²⁺ hydroxylates proline and lysine so the triple helix can form.<sup><a href="#ref10">10</a></sup></li>
+  <li><strong>Copper</strong> — Cu⁺-dependent lysyl oxidase cross-links collagen fibers into stable covalent bonds.<sup><a href="#ref10">10</a></sup></li>
+  <li><strong>Sodium</strong> — SVCT1/2 transporters move vitamin C into tissue along sodium gradients, an indirect but relevant dependency.<sup><a href="#ref12">12</a></sup> <span class="grade">(Inferred)</span></li>
+</ul>
+
+<h2>Top foods</h2>
+<ul>
+  <li>Bone broth — collagen/gelatin content varies with prep; sodium varies widely</li>
+  <li>Beef tendon — very collagen/gelatin-rich; needs long simmer/braise/pressure cook</li>
+  <li>Oxtail — connective-tissue-rich cut; braise or pressure cook</li>
+  <li>Beef shank — high in connective tissue; braises and stocks</li>
+</ul>
+
+<hr>
+<h2>References</h2>
+<div class="refs">
+<ol>
+<li id="ref1">Branch-point stoichiometry of glycine biosynthesis. 2008. <a href="https://pubmed.ncbi.nlm.nih.gov/19179765/" target="_blank">PMID 19179765</a></li>
+<li id="ref2">The glycine story (Review). 1991. <a href="https://pubmed.ncbi.nlm.nih.gov/2050089/" target="_blank">PMID 2050089</a></li>
+<li id="ref3">Chen et al., 2017 — collagen peptides & intestinal barrier. <a href="https://pubmed.ncbi.nlm.nih.gov/28174772/" target="_blank">PMID 28174772</a> <span class="todo">(carried over as-linked from source; title doesn't obviously match the structural-component claim it supports — worth double-checking against the original when citations get audited)</span></li>
+<li id="ref4">Glycine conjugation and metabolism. 1967. <a href="https://pubmed.ncbi.nlm.nih.gov/5350494/" target="_blank">PMID 5350494</a></li>
+<li id="ref5">Glutathione metabolism and functions (review). 2004. <a href="https://pubmed.ncbi.nlm.nih.gov/15245925/" target="_blank">PMID 15245925</a></li>
+<li id="ref6">McCarty et al., 2018 — glycine rate-limiting for glutathione. <a href="https://pubmed.ncbi.nlm.nih.gov/29559876/" target="_blank">PMID 29559876</a></li>
+<li id="ref7">Vitamin C deficiency and IGF-binding proteins (tissue synthesis). 1993. <a href="https://pubmed.ncbi.nlm.nih.gov/7528515/" target="_blank">PMID 7528515</a></li>
+<li id="ref8">IGF-1 stimulates collagen synthesis and ECM production. 2014. <a href="https://pubmed.ncbi.nlm.nih.gov/24469459/" target="_blank">PMID 24469459</a></li>
+<li id="ref9">Pinnell, 1985 — vitamin C regulates collagen biosynthesis. <a href="https://pubmed.ncbi.nlm.nih.gov/3008449/" target="_blank">PMID 3008449</a></li>
+<li id="ref10">Roles for iron and copper in connective tissue biosynthesis. 1981. <a href="https://pubmed.ncbi.nlm.nih.gov/6118903/" target="_blank">PMID 6118903</a></li>
+<li id="ref11">Ascorbate requirement for hydroxylation and secretion of procollagen. 1991. <a href="https://pubmed.ncbi.nlm.nih.gov/1720597/" target="_blank">PMID 1720597</a></li>
+<li id="ref12">Takanaga et al., 2004 — SVCT sodium-dependent vitamin C transport. <a href="https://pubmed.ncbi.nlm.nih.gov/12845532/" target="_blank">PMID 12845532</a></li>
+<li id="ref13">Methionine restriction and life-span control. 2016. <a href="https://pubmed.ncbi.nlm.nih.gov/26663138/" target="_blank">PMID 26663138</a></li>
+<li id="ref14">Glycine/serine suppress methionine-induced hyperhomocysteinemia (rats). 2006. <a href="https://pubmed.ncbi.nlm.nih.gov/17031061/" target="_blank">PMID 17031061</a></li>
+<li id="ref15">Glutathione metabolism and its implications for health. 2004. <a href="https://pubmed.ncbi.nlm.nih.gov/14988435/" target="_blank">PMID 14988435</a></li>
+<li id="ref16">Glycine–insulin autocrine feedback loop (human β-cells). 2016. <a href="https://pubmed.ncbi.nlm.nih.gov/27207556/" target="_blank">PMID 27207556</a></li>
+<li id="ref17">Vascular endothelial growth factor signaling requires glycine to promote angiogenesis. 2017. <a href="https://www.nature.com/articles/s41598-017-15246-3" target="_blank">Scientific Reports</a></li>
+<li id="ref18">Glycine blocks ROS in brain mitochondria. 2012. <a href="https://link.springer.com/article/10.1007/s10517-012-1638-3" target="_blank">Springer</a></li>
+<li id="ref19">Glycine promotes survival of a subpopulation of neural stem cells. 2018. <a href="https://pubmed.ncbi.nlm.nih.gov/30050902/" target="_blank">PMID 30050902</a></li>
+<li id="ref20">Glycine ameliorates brain damage after neonatal hypoxia-ischemia (rats). 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/27613478/" target="_blank">PMID 27613478</a></li>
+<li id="ref21">Collagen VI protects brain cells against amyloid-beta. 2008. <a href="https://www.sciencedaily.com/releases/2008/12/081210150713.htm" target="_blank">ScienceDaily summary</a> — secondary source; original mechanistic paper not yet linked</li>
+<li id="ref22">Collagen peptides reduce intestinal epithelial barrier dysfunction. 2017. <a href="https://pubs.rsc.org/en/content/articlelanding/2017/fo/c6fo01347c" target="_blank">RSC Food & Function</a></li>
+<li id="ref23">Glycine/pyruvate/resveratrol and intestinal mucosa regeneration (rats). 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/29201896/" target="_blank">PMID 29201896</a></li>
+<li id="ref24">Oral glycine increases extracellular serotonin in rat prefrontal cortex. 2011. <a href="https://pubmed.ncbi.nlm.nih.gov/21414089/" target="_blank">PMID 21414089</a></li>
+</ol>
+</div>
+
+</body>
+</html>

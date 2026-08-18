@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrients — Deep Dives</title>
+<style>
+  :root {
+    --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9;
+    --accent: #7a3b2e; --tag-bg: #f1ede4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 6rem;
+  }
+  h1 { font-size: 2rem; margin-bottom: 0.2rem; }
+  .subtitle { color: var(--sub); font-style: italic; margin-top: 0; margin-bottom: 2rem; }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(122, 59, 46, 0.35);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  a:hover { border-bottom-color: var(--accent); }
+  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
+  .crumbs a { border-bottom: none; }
+  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
+  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 3rem; }
+  p { margin: 0.7rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1rem 0 2rem; }
+  th, td { border: 1px solid var(--line); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+  th { background: var(--tag-bg); font-weight: 600; }
+  td:first-child a { font-weight: 600; }
+  .status-cited { color: var(--accent); font-size: 0.8rem; white-space: nowrap; }
+  .status-plain { color: var(--sub); font-size: 0.8rem; white-space: nowrap; }
+  .status-stub { color: #a05a2c; font-size: 0.8rem; white-space: nowrap; }
+  .todo { color: #a05a2c; font-size: 0.85rem; }
+  .legend { font-size: 0.85rem; color: var(--sub); margin-bottom: 1rem; }
+  .legend span { margin-right: 1.2rem; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 3rem 0; }
+</style>
+</head>
+<body>
+
+<div class="crumbs"><a href="metabolic-health.html">← Metabolic Health</a> · companion paper</div>
+<h1>Nutrients — Deep Dives</h1>
+<p class="subtitle">All 33 entries from the Health OS Nutrients database are now written up, one page each.</p>
+
+<p>This paper holds the nutrient-level detail that <a href="metabolic-health.html">Metabolic Health</a> deliberately keeps out. Part IV of that paper decides <em>which</em> nutrients earn a place in the protocol and why (the tiering is a judgment call); this index — and the individual pages it links to — is the reference underneath: mechanism, deficiency effects, intake, food sources, citations where they exist, and how each nutrient connects to others.</p>
+
+<p>Same six-label evidence grading as the rest of the series where grades are used: <strong>Strong / Moderate / Animal–in-vitro / Inferred / Contested / Speculative.</strong> Grades attach to individual claims, not whole nutrients.</p>
+
+<p class="legend">
+  <span class="status-cited">● cited</span> has a numbered reference list
+  <span class="status-plain">● written</span> has prose from the source, no linked citations
+  <span class="status-stub">● stub</span> property fields only — thin in the source database
+</p>
+
+<h2>Index</h2>
+<table>
+<thead>
+<tr><th>Nutrient</th><th>Category</th><th>Priority</th><th>TL;DR</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td><a href="nutrients/glycine-collagen.html">Glycine / Collagen</a></td><td>Amino Acid</td><td>Foundational</td><td>Substrate for collagen and several metabolic pathways; collagen provides structural integrity.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/cysteine.html">Cysteine</a></td><td>Amino Acid</td><td>Useful</td><td>Sulfur-containing amino acid used to build glutathione; supports detox/antioxidant capacity.</td><td class="status-stub">● stub</td></tr>
+<tr><td><a href="nutrients/glutamine.html">Glutamine</a></td><td>Amino Acid</td><td>Useful</td><td>Fuels intestinal cells and supports gut barrier function.</td><td class="status-stub">● stub</td></tr>
+<tr><td><a href="nutrients/methionine.html">Methionine</a></td><td>Amino Acid</td><td>Useful</td><td>Essential amino acid central to methylation (SAM) and sulfur amino acid metabolism.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/butyrate.html">Butyrate (butyric acid)</a></td><td>Compound</td><td>Useful</td><td>SCFA from microbial fiber fermentation; colon cell energy, barrier function, anti-inflammatory signaling.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/chlorophyll.html">Chlorophyll / Chlorophyllin</a></td><td>Compound</td><td>Experimental</td><td>Studied for binding some dietary toxins; evidence mixed and context-dependent.</td><td class="status-stub">● stub</td></tr>
+<tr><td><a href="nutrients/creatine.html">Creatine</a></td><td>Compound</td><td>Useful</td><td>Supports rapid ATP regeneration via the phosphocreatine system.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/glutathione.html">Glutathione</a></td><td>Compound</td><td>Experimental</td><td>Primary intracellular antioxidant; redox balance and detoxification.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/stearic-acid.html">Stearic acid (C18:0)</a></td><td>Compound</td><td>Experimental</td><td>Saturated fatty acid with a more neutral LDL effect than most others, calorie-for-calorie.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/chloride.html">Chloride</a></td><td>Electrolyte</td><td>Foundational</td><td>Main extracellular anion; fluid balance, stomach acid, acid-base regulation.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/sodium.html">Sodium</a></td><td>Electrolyte</td><td>Foundational</td><td>Regulates fluid balance, excitability, and nutrient transport.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/calcium.html">Calcium</a></td><td>Mineral</td><td>Foundational</td><td>Bone mineral, muscle contraction, nerve signaling, clotting; balanced by D and magnesium.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/copper.html">Copper</a></td><td>Mineral</td><td>Useful</td><td>Connective tissue cross-linking (lysyl oxidase), antioxidant enzymes, iron metabolism.</td><td class="status-stub">● stub</td></tr>
+<tr><td><a href="nutrients/iron.html">Iron</a></td><td>Mineral</td><td>Foundational</td><td>Oxygen transport; cofactor for prolyl/lysyl hydroxylase in collagen synthesis (works with vitamin C).</td><td class="status-stub">● stub</td></tr>
+<tr><td><a href="nutrients/magnesium.html">Magnesium</a></td><td>Mineral</td><td>Foundational</td><td>Required for ATP function, neuromuscular activity, and relaxation.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/phosphate.html">Phosphate</a></td><td>Mineral</td><td>Foundational</td><td>ATP energy, cell membranes, bone mineral; balance with calcium, D, kidney function.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/potassium.html">Potassium</a></td><td>Mineral</td><td>Foundational</td><td>Major intracellular cation; membrane potential, nerve signaling, muscle contraction.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/selenium.html">Selenium</a></td><td>Mineral</td><td>Foundational</td><td>Antioxidant enzymes and thyroid hormone metabolism; excess is harmful.</td><td class="status-stub">● stub</td></tr>
+<tr><td><a href="nutrients/zinc.html">Zinc</a></td><td>Mineral</td><td>Foundational</td><td>Immune function, skin integrity, enzyme activity.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/vitamin-a.html">Vitamin A (Retinol / Carotenoids)</a></td><td>Vitamin</td><td>Foundational</td><td>Regulates gene expression and light detection; cell differentiation, visual signaling.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/vitamin-b1-thiamine.html">Vitamin B1 (Thiamine)</a></td><td>Vitamin</td><td>Foundational</td><td>Enables conversion of glucose into usable energy (ATP).</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/vitamin-b2-riboflavin.html">Vitamin B2 (Riboflavin)</a></td><td>Vitamin</td><td>Foundational</td><td>Enables electron transfer (FAD/FMN) for ATP production.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/vitamin-b3-niacin.html">Vitamin B3 (Niacin)</a></td><td>Vitamin</td><td>Foundational</td><td>Provides NAD⁺ for energy production and cellular repair.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/vitamin-b5-pantothenic-acid.html">Vitamin B5 (Pantothenic Acid)</a></td><td>Vitamin</td><td>Foundational</td><td>Forms CoA to enable fuel metabolism and entry into energy pathways.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/vitamin-b6-pyridoxine.html">Vitamin B6 (Pyridoxine / PLP)</a></td><td>Vitamin</td><td>Foundational</td><td>Cofactor for amino acid metabolism and neurotransmitter synthesis.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/vitamin-b7-biotin.html">Vitamin B7 (Biotin)</a></td><td>Vitamin</td><td>Foundational</td><td>Cofactor for carboxylase enzymes in fat, glucose, and amino-acid metabolism.</td><td class="status-stub">● stub</td></tr>
+<tr><td><a href="nutrients/vitamin-b9-folate.html">Vitamin B9 (Folate / Folic Acid)</a></td><td>Vitamin</td><td>Foundational</td><td>DNA/RNA synthesis and methylation via one-carbon metabolism.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/vitamin-b12-cobalamin.html">Vitamin B12 (Cobalamin)</a></td><td>Vitamin</td><td>Foundational</td><td>Neurologic function and red blood cell formation.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/vitamin-c.html">Vitamin C</a></td><td>Vitamin</td><td>Foundational</td><td>Enables collagen synthesis and protects against oxidative stress.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/vitamin-d.html">Vitamin D</a></td><td>Vitamin</td><td>Foundational</td><td>Hormone that regulates calcium/phosphate transport.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/vitamin-e.html">Vitamin E (Alpha-tocopherol)</a></td><td>Vitamin</td><td>Useful</td><td>Fat-soluble antioxidant protecting membrane lipids from oxidative damage.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="nutrients/vitamin-k1.html">Vitamin K1 (Phylloquinone)</a></td><td>Vitamin</td><td>Foundational</td><td>Activates hepatic clotting factors; essential for coagulation.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="nutrients/vitamin-k2.html">Vitamin K2</a></td><td>Vitamin</td><td>Foundational</td><td>Activates proteins that direct calcium to bone and away from arteries.</td><td class="status-cited">● cited</td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Notes on this draft</h2>
+<p>Depth varies a lot by entry, and that's a direct reflection of the source database rather than an editing choice — some nutrients (glycine, vitamin C, magnesium, sodium, calcium, the B-vitamin energy-metabolism cluster, D, K1/K2) had rich prose and linked citations already in Notion; others (cysteine, copper, iron, selenium, biotin, glutamine) currently have little beyond the property fields. The "stub" pages are the honest reflection of that, not a placeholder to be embarrassed about — but copper and iron in particular are worth prioritizing given how directly they feed the collagen-synthesis mechanism already documented on the Glycine/Collagen and Vitamin C pages.</p>
+<p class="todo">TODO — the Systems Impacted and Protocols relations in the source database (which system each nutrient feeds into, and which named protocols use it) aren't represented on these pages yet. Worth adding once the priority stubs are filled in, so the cross-linking is worth the overhead.</p>
+<p class="todo">TODO — decide whether Toxins (the source database has a parallel table: halogens, anti-nutrients, heavy metals, xenoestrogens) becomes a "what to avoid" companion paper or stays out entirely.</p>
+<p class="todo">TODO — a small number of citations carried over from the source don't obviously match the claim they're attached to (flagged inline on Glycine/Collagen), and the Sodium page has two citations pointing to now-deleted Notion pages (also flagged inline). Worth an audit pass.</p>
+<p>Assumes <code>nutrients.html</code> sits next to <code>metabolic-health.html</code>, <code>linoleic-acid.html</code>, and <code>ahr.html</code> at the site root, with individual nutrient pages in a <code>nutrients/</code> subfolder. Adjust the relative links if your actual layout differs.</p>
+
+</body>
+</html>
