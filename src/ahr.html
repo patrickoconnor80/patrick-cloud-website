@@ -170,21 +170,6 @@ ol.spine>li b{color:var(--moss-deep);font-weight:600;}
 }
 .diagram .dcap b{color:var(--moss-deep);}
 
-/* ---- Definition rows ---- */
-.defrow{
-  display:grid;grid-template-columns:180px 1fr;gap:16px;
-  padding:14px 0;border-top:1px solid var(--rule);
-}
-.defrow:first-of-type{border-top:none;}
-.defrow .term{
-  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
-  color:var(--moss-deep);line-height:1.45;padding-top:2px;
-}
-.defrow .def{margin:0;font-size:16.5px;line-height:1.55;}
-@media (max-width:560px){
-  .defrow{grid-template-columns:1fr;gap:4px;}
-}
-
 /* ---- Section scaffolding ---- */
 section{padding:18px 0;}
 .part-head{
@@ -467,7 +452,7 @@ footer.end b{color:var(--moss);}
 <div class="abstract">
   <div class="lbl">Abstract</div>
   <p style="margin-top:0;">Obesity is usually modelled as an energy-balance problem with inflammation as a complication. This paper argues something narrower and more testable: that a single ligand-activated transcription factor, the aryl hydrocarbon receptor (AhR), sits at the point where several independent metabolic insults converge, and that its chronic activation is sufficient to produce the characteristic obese phenotype &mdash; impaired fat oxidation, circadian disruption, NAD&#8314; depletion, and a gut microbiome that extracts more calories from the same food.</p>
-  <p>The causal case does not rest on correlation. AhR inhibition <em>prevents</em> Western-diet obesity in mice<sup class="cite"><a href="#r3">3</a></sup>, <em>reverses</em> established obesity and steatosis<sup class="cite"><a href="#r4">4</a></sup>, and kynurenine-driven AhR signalling alone <em>causes</em> weight gain, liver steatosis and hyperglycaemia<sup class="cite"><a href="#r5">5</a></sup>. What makes AhR unusual as a target is that its inputs are dietary: tryptophan catabolism, gut-barrier integrity, membrane fatty-acid composition, insulin pulse pattern and B-vitamin sufficiency each feed it, and each is modifiable at the plate.</p>
+  <p>The causal case does not rest on correlation. AhR inhibition <em>prevents</em> Western-diet obesity in mice<sup class="cite"><a href="#r3">3</a></sup>, <em>reverses</em> established obesity and steatosis (fatty liver disease)<sup class="cite"><a href="#r4">4</a></sup>, and kynurenine-driven AhR signalling alone <em>causes</em> weight gain, liver steatosis and hyperglycaemia<sup class="cite"><a href="#r5">5</a></sup>. What makes AhR unusual as a target is that its inputs are dietary: tryptophan catabolism, gut-barrier integrity, membrane fatty-acid composition, insulin pulse pattern and B-vitamin sufficiency each feed it, and each is modifiable at the plate.</p>
 </div>
 
 <div class="brief">
@@ -505,20 +490,11 @@ footer.end b{color:var(--moss);}
 
 <p>AhR is a ligand-activated transcription factor. At rest it sits in the cytoplasm held by a chaperone complex; when a ligand binds it sheds the chaperones, moves into the nucleus, pairs with a partner protein called ARNT, and switches on a defined set of target genes.</p>
 
-<p>It was discovered as the receptor dioxin binds, which is why most of the literature on it is toxicology rather than metabolism. That history is the reason it is under-appreciated as a metabolic node: for decades it was studied as the thing that makes industrial pollutants harmful, not as something the body operates deliberately.</p>
+<p>It was discovered as the receptor dioxin (TCDD, the potent AhR agonist used in most of this literature) binds, which is why most of the literature on it is toxicology rather than metabolism. That history is the reason it is under-appreciated as a metabolic node: for decades it was studied as the thing that makes industrial pollutants harmful, not as something the body operates deliberately.</p>
 
-<div class="defrow">
-  <div class="term">Promiscuous</div>
-  <p class="def">Unlike most receptors, AhR binds a structurally diverse ligand set &mdash; bacterial metabolites, tryptophan breakdown products, dietary compounds, oxidation products, xenobiotics. Usually described as a quirk. Read as a design feature, it makes AhR a single readout of several unrelated exposures at once.</p>
-</div>
-<div class="defrow">
-  <div class="term">Shares a partner<br>with the clock</div>
-  <p class="def">ARNT is AhR's obligate dimerisation partner, and AhR competes directly with CLOCK for BMAL1 &mdash; both are PAS-domain proteins bidding for the same partner. This is the structural accident that turns a xenobiotic sensor into a circadian disruptor.</p>
-</div>
-<div class="defrow">
-  <div class="term">Physiological,<br>not just toxic</div>
-  <p class="def">AhR is switched on after every meal by insulin signalling and switched off in the late fed state by bile-acid signalling<sup class="cite"><a href="#r2">2</a></sup>. It is a normal postprandial pulse. The pathology is not that AhR turns on &mdash; it is that in obesity it never turns off.</p>
-</div>
+<p>The best way to understand it, though, is as a normal daily rhythm rather than a disease state. AhR is switched on after every meal by insulin signalling and switched off in the late fed state by bile-acid signalling<sup class="cite"><a href="#r2">2</a></sup> &mdash; a routine postprandial pulse. The pathology is not that AhR turns on; it is that in obesity it never turns off.</p>
+
+<p>Part of why a single receptor can sit at this many crossroads at once is that it is unusually promiscuous. Most nuclear receptors are locked to one ligand family &mdash; the estrogen receptor binds estrogens, PPAR&#947; binds fatty acids. AhR binds bacterial metabolites, tryptophan breakdown products, dietary compounds, oxidation products and xenobiotics alike. Usually described as a quirk; read as a design feature, it is why gut health, diet, pollution exposure and oxidative stress all land on the same switch.</p>
 </section>
 
 <section>
@@ -619,22 +595,24 @@ footer.end b{color:var(--moss);}
 </div>
 
 <h3><span class="h3num">I.1</span>NAD&#8314; depletion through TiPARP</h3>
-<p>TiPARP (PARP7) is a canonical AhR target gene<sup class="cite"><a href="#r7">7</a></sup>. PARP enzymes consume NAD&#8314; stoichiometrically while ADP-ribosylating their substrates, so inducing TiPARP is inducing an NAD&#8314; drain. Dioxin exposure measurably lowers NAD&#8314; in liver and thymus and deactivates SIRT3 downstream<sup class="cite"><a href="#r6">6</a></sup>. <span class="ev ev-strong">Strong</span></p>
+<p>TiPARP (PARP7) is a canonical AhR target gene<sup class="cite"><a href="#r7">7</a></sup>. PARP enzymes consume NAD&#8314; stoichiometrically while ADP-ribosylating their substrates &mdash; each reaction burns one NAD&#8314; to attach an ADP-ribose tag to the target protein &mdash; so inducing TiPARP is inducing an NAD&#8314; drain. Dioxin measurably lowers NAD&#8314; in liver and thymus and deactivates SIRT3 downstream, the mitochondrial enzyme that keeps proteins like SDH deacetylated and active<sup class="cite"><a href="#r6">6</a></sup>. <span class="ev ev-strong">Strong</span></p>
 
 <h3><span class="h3num">I.2</span>Circadian displacement</h3>
-<p>AhR interacts with BMAL1 and displaces CLOCK from the heterodimer; separately it interferes with CLOCK:BMAL1 already bound at E-boxes; and separately again it displaces the coactivators the complex needs<sup class="cite"><a href="#r8">8</a></sup>. Three mechanisms, one consequence: dampened <em>Per1</em> and a flattened clock. Because there is no single point of failure, partial AhR activation produces disproportionate disruption. <span class="ev ev-strong">Strong</span></p>
+<p>CLOCK:BMAL1 is the transcription-factor pair that runs the body's ~24-hour rhythm, setting the timing of sleep, hormone release and metabolic activity. AhR interacts with BMAL1 and displaces CLOCK from the heterodimer; separately it interferes with CLOCK:BMAL1 already bound at E-boxes; and separately again it displaces the coactivators the complex needs<sup class="cite"><a href="#r8">8</a></sup>. Three mechanisms, one consequence: dampened <em>Per1</em> and a flattened clock. Because there is no single point of failure, partial AhR activation produces disproportionate disruption. <span class="ev ev-strong">Strong</span></p>
+
+<p>CLOCK:BMAL1 disruption is not a metabolism-only concern &mdash; the same clock genes are implicated well outside this paper's scope, including in mood-disorder pathophysiology<sup class="cite"><a href="#r30">30</a></sup>, which is consistent with one transcription-factor pair sitting upstream of more than one downstream system.</p>
 
 <h3><span class="h3num">I.3</span>IDO1 induction &mdash; the output that is also an input</h3>
-<p>AhR transcribes IDO1, the rate-limiting enzyme that makes kynurenine, which is AhR's own dominant endogenous ligand. This is the tightest of the loops in Part III and the reason the system is hard to exit once running. <span class="ev ev-strong">Strong</span></p>
+<p>AhR transcribes IDO1, the rate-limiting enzyme that makes kynurenine &mdash; a breakdown product of the amino acid tryptophan, not an amino acid itself &mdash; which is AhR's own dominant endogenous ligand. This is the tightest of the loops in Part III and the reason the system is hard to exit once running. <span class="ev ev-strong">Strong</span></p>
 
 <h3><span class="h3num">I.4</span>PEMT and methyl-group consumption</h3>
-<p>In the fed state AhR induces PEMT and GNMT<sup class="cite"><a href="#r2">2</a></sup>. PEMT spends three SAM molecules per phosphatidylcholine synthesised, each transfer yielding S-adenosylhomocysteine and then homocysteine. A transient postprandial pulse of this is unremarkable. Sustained, it is a continuous drain on the methyl pool that B12 and folate exist to replenish. PEMT, AhR and phosphatidylcholine are all elevated in simple-steatosis patients<sup class="cite"><a href="#r2">2</a></sup>. <span class="ev ev-mod">Moderate</span></p>
+<p>In the fed state AhR induces PEMT and GNMT<sup class="cite"><a href="#r2">2</a></sup>. PEMT spends three SAM molecules per phosphatidylcholine synthesised &mdash; SAM is the cell's universal methyl-group donor, so each PC made costs three separate methyl transfers &mdash; each transfer yielding S-adenosylhomocysteine and then homocysteine, whose rise is itself a marker of cardiometabolic risk. GNMT (glycine N-methyltransferase) is a second SAM-consuming methyltransferase induced alongside it. A transient postprandial pulse of this is unremarkable. Sustained, it is a continuous drain on the methyl pool that B12 and folate exist to replenish. PEMT, AhR and phosphatidylcholine are all elevated in simple-steatosis patients<sup class="cite"><a href="#r2">2</a></sup>. <span class="ev ev-mod">Moderate</span></p>
 
 <h3><span class="h3num">I.5</span>CYP1B1 and the mid-chain HETEs</h3>
-<p>AhR induces CYP1B1, which converts arachidonic acid into mid-chain HETEs (5-, 12-, 15-HETE). Those HETEs activate NF-&#954;B and MAPK and feed back to induce more CYP1B1<sup class="cite"><a href="#r24">24</a></sup>. One side branch matters here specifically: 12-HETE activates PPAR&#947;, raising SCD1 and monounsaturated-fat synthesis. That is AhR actively pushing membrane composition <em>away</em> from the saturated profile the thermogenic circuit of Part IV depends on &mdash; and SCD1 overexpression lowers NAD&#8314; and AMPK activation while SCD1 ablation raises both<sup class="cite"><a href="#r16">16</a></sup>. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span></p>
+<p>AhR induces CYP1B1, which converts arachidonic acid into mid-chain HETEs (5-, 12-, 15-HETE). Those HETEs activate NF-&#954;B and MAPK and feed back to induce more CYP1B1<sup class="cite"><a href="#r24">24</a></sup>. One side branch matters here specifically: 12-HETE activates PPAR&#947;, raising SCD1 and monounsaturated-fat synthesis. That is AhR actively pushing membrane composition <em>away</em> from the saturated profile &mdash; and SCD1 overexpression lowers NAD&#8314; and AMPK activation while SCD1 ablation raises both &mdash; Part IV.2 walks through why<sup class="cite"><a href="#r16">16</a></sup>. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span></p>
 
 <h3><span class="h3num">I.6</span>Microbiome shift</h3>
-<p>AhR activation by dietary and endogenous ligands raises Firmicutes and lowers Bacteroidetes. Firmicutes are the better energy harvesters, extracting more calories from identical intake. The phylum-level ratio is contested as an obesity marker across human cohorts and is reported here as a directional AhR effect, not a diagnostic. <span class="ev ev-cont">Contested</span></p>
+<p>AhR activation by dietary and endogenous ligands raises Firmicutes and lowers Bacteroidetes &mdash; two of the dominant bacterial phyla in the human gut. Firmicutes are the better energy harvesters, extracting more calories from identical intake, so the same meal leaves a larger surplus of absorbed energy to be stored as fat. The phylum-level ratio is contested as an obesity marker across human cohorts, though the same Firmicutes shift tracks fat accumulation unambiguously in hibernating animals<sup class="cite"><a href="#r29">29</a></sup>, and is reported here as a directional AhR effect, not a diagnostic. <span class="ev ev-cont">Contested</span></p>
 </section>
 
 <section>
@@ -647,14 +625,14 @@ footer.end b{color:var(--moss);}
 
 <div class="tier t-direct">
   <div class="tier-name">Tier 1 &mdash; Direct activation</div>
+  <p><strong>Insulin via PKB/Akt.</strong> Insulin drives AhR into the nucleus through PI3K/PKB with no ligand involved<sup class="cite"><a href="#r2">2</a></sup>. Physiological and self-limiting in health; its pathological form is Loop 2 in Part III. <span class="ev ev-strong">Strong</span></p>
   <p><strong>Kynurenine.</strong> IDO1 in inflamed adipose tissue converts tryptophan to kynurenine, which binds the AhR ligand-binding domain. Adipocyte-specific IDO1 depletion abolishes kynurenine accumulation and protects mice against obesity; adipocyte AhR ablation abolishes the effect of kynurenine entirely<sup class="cite"><a href="#r5">5</a></sup>. The dominant endogenous route. <span class="ev ev-strong">Strong</span></p>
   <p><strong>4-HNE and oxidised &#969;-6 phospholipids.</strong> Polyunsaturated membrane fatty acids &mdash; linoleic and arachidonic acid &mdash; carry the double bonds that hydroxyl radicals attack. Peroxidation yields 4-hydroxynonenal, an &#945;,&#946;-unsaturated aldehyde that modifies AhR cysteine residues covalently. Oxidised LDL activates AhR and downregulates circadian transcripts<sup class="cite"><a href="#r28">28</a></sup>. Saturated membrane fatty acids have no double bonds and cannot initiate the chain. <span class="ev ev-inf">Inferred</span></p>
-  <p><strong>Insulin via PKB/Akt.</strong> Insulin drives AhR into the nucleus through PI3K/PKB with no ligand involved<sup class="cite"><a href="#r2">2</a></sup>. Physiological and self-limiting in health; its pathological form is Loop 2 in Part III. <span class="ev ev-strong">Strong</span></p>
 </div>
 
 <div class="tier t-supply">
   <div class="tier-name">Tier 2 &mdash; Ligand supply</div>
-  <p>Three upstream conditions never touch AhR directly. They all raise IDO1, and therefore all act <em>through</em> kynurenine: bacterial LPS crossing a permeable gut barrier and signalling through TLR2/4 to NF-&#954;B<sup class="cite"><a href="#r3">3</a></sup>; hypoxia in expanding adipose tissue outgrowing its blood supply, via HIF-1&#945;; and inflammatory IFN-&#947; via JAK/STAT1.</p>
+  <p>Three upstream conditions never touch AhR directly. They all raise IDO1, and therefore all act <em>through</em> kynurenine: bacterial LPS (lipopolysaccharide, a fragment of the outer wall of gram-negative gut bacteria) crossing a permeable gut barrier and signalling through TLR2/4 to NF-&#954;B<sup class="cite"><a href="#r3">3</a></sup>; hypoxia (oxygen starvation) in adipose tissue that has expanded faster than its blood supply can keep up, signalling via HIF-1&#945;; and inflammatory IFN-&#947;, released by immune cells infiltrating that same inflamed, oxygen-starved fat tissue, signalling via JAK/STAT1.</p>
   <p>Calling these separate AhR routes would overstate their independence. What they are is three separate reasons the kynurenine tap runs &mdash; which is why gut-barrier repair and anti-inflammatory measures register as AhR interventions at all. <span class="ev ev-strong">Strong</span></p>
 </div>
 
@@ -663,7 +641,7 @@ footer.end b{color:var(--moss);}
   <p>These are not activators. They are the removal of brakes that would otherwise hold a given level of activation in check &mdash; which is why two people with identical kynurenine can have different AhR activity.</p>
   <p><strong>B12 and folate</strong> are direct competitive antagonists at the AhR ligand-binding domain, blocking nuclear localisation, XRE binding and target-gene induction. Deficiency in mice induces AhR transcriptional activity on its own<sup class="cite"><a href="#r1">1</a></sup>. <span class="ev ev-strong">Strong</span></p>
   <p><strong>B6</strong> never touches the receptor. As pyridoxal-5-phosphate it is the cofactor for kynureninase, the enzyme that clears kynurenine downstream<sup class="cite"><a href="#r18">18</a></sup>. Without it the ligand accumulates &mdash; see II.1.</p>
-  <p><strong>A blunted FGF19/SHP shutoff</strong> removes the physiological off-switch for the postprandial insulin pulse. Bile-acid-activated hepatic FXR induces SHP, which binds ARNT and blocks AhR/ARNT<sup class="cite"><a href="#r9">9</a></sup>; SHP occupancy at AhR target promoters is reduced in NAFLD patients and obese mice while AhR occupancy rises<sup class="cite"><a href="#r8">8</a></sup>. <span class="ev ev-strong">Strong</span></p>
+  <p><strong>Weak bile-acid signalling</strong> removes the physiological off-switch for the postprandial insulin pulse. Bile acids activate hepatic FXR, which induces SHP, and SHP is what actually binds ARNT and blocks AhR/ARNT<sup class="cite"><a href="#r9">9</a></sup>. When bile-acid signalling is weak, that shutoff doesn't fire: SHP occupancy at AhR target promoters is reduced in NAFLD patients and obese mice while AhR occupancy rises<sup class="cite"><a href="#r8">8</a></sup>. <span class="ev ev-strong">Strong</span></p>
 </div>
 
 <h3><span class="h3num">II.1</span>The B6 branch point &mdash; the same molecule as fuel or as poison</h3>
@@ -917,7 +895,7 @@ footer.end b{color:var(--moss);}
 
 <p>So theabrownin restores the physiological AhR shutoff &mdash; the same SHP-dependent brake that terminates the postprandial insulin pulse in health. It also inhibits &#945;-glucosidase and &#945;-amylase, blunting the glucose rise and therefore the insulin signal that opens the pulse in the first place. One compound acting on both the trigger and the brake of Tier&nbsp;1's insulin route.</p>
 
-<p>Three further arms: gut <em>Lactobacillus</em> enrichment diverts tryptophan to indoles, competing with IDO1 for substrate<sup class="cite"><a href="#r11">11</a></sup>; <em>Akkermansia muciniphila</em> enrichment tightens the gut barrier and reduces the LPS flux driving Tier&nbsp;2; and cinnabarinic acid, present in Pu-erh, occupies the AhR ligand-binding domain as a partial agonist, competitively displacing kynurenine.</p>
+<p>Three further arms, all downstream of Pu-erh's fermentation microbes and polyphenol content: it promotes gut <em>Lactobacillus</em> enrichment, which diverts tryptophan to indoles, competing with IDO1 for substrate<sup class="cite"><a href="#r11">11</a></sup>; it also promotes <em>Akkermansia muciniphila</em> enrichment, which tightens the gut barrier and reduces the LPS flux driving Tier&nbsp;2; and cinnabarinic acid, present in Pu-erh itself, occupies the AhR ligand-binding domain as a partial agonist, competitively displacing kynurenine.</p>
 
 <p>The cholesterol arm is separate and addresses reductive stress rather than AhR. Sustained bile-acid excretion depletes hepatic cholesterol, SREBP-2 responds, and cholesterol synthesis consumes roughly 12&ndash;16 NADPH per molecule across the mevalonate pathway &mdash; a genuine NADPH sink, shown to lower NAD(P)H and improve function in a complex-I-deficient model<sup class="cite"><a href="#r15">15</a></sup>. <span class="ev ev-mod">Moderate</span> for the human FXR/SHP arm; <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span> for the NADPH sink.</p>
 
@@ -927,19 +905,19 @@ footer.end b{color:var(--moss);}
 
 <p>What the restored NAD&#8314; buys is SIRT3 activity, and SIRT3's two relevant substrates are exactly the two failure points in the Part&nbsp;IV circuit: SDHA, which it deacetylates at thirteen identified sites<sup class="cite"><a href="#r14">14</a></sup>, and NNT. Restoring both reinstates the RET circuit and &mdash; by preventing the NADH backup that generates hydroxyl radicals &mdash; reduces the 4-HNE production feeding Loop&nbsp;3.</p>
 
-<p>Secondary arms: NRF2 activation raises glutathione, thioredoxin reductase and NQO1, cutting the ROS burden upstream of both PARP activation and lipid peroxidation. Quercetin inhibits PI3K, reducing the PKB arm directly. SIRT1 deacetylates LKB1, activating AMPK, which improves insulin sensitivity and so lowers the chronic insulin driving Tier&nbsp;1. Quercetin also inhibits mTORC1 &mdash; as does AMPK, via TSC2 and Raptor &mdash; promoting mitophagy, and inhibits COMT, slowing catecholamine breakdown and supporting lipolysis. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span> for most arms; see Limitations on bioavailability.</p>
+<p>Secondary arms: both flavonols activate NRF2, the transcription factor that senses oxidative and electrophilic stress and switches on the cell's antioxidant enzymes in response &mdash; glutathione synthesis, thioredoxin reductase (which keeps the thioredoxin system reduced and able to neutralise peroxides) and NQO1 (which detoxifies reactive quinones before they can do damage) &mdash; cutting the ROS burden upstream of both PARP activation and lipid peroxidation. Quercetin also inhibits PI3K, reducing PKB (protein kinase B, i.e. Akt) directly &mdash; the same insulin-driven arm that opens Tier&nbsp;1's nuclear-translocation route. SIRT1 deacetylates LKB1, activating AMPK, which improves insulin sensitivity and so lowers the chronic insulin driving Tier&nbsp;1. Quercetin also inhibits mTORC1 &mdash; as does AMPK, via TSC2 and Raptor &mdash; promoting mitophagy, and inhibits COMT, slowing catecholamine breakdown and supporting lipolysis. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span> for most arms; see Limitations on bioavailability.</p>
 
 <h3><span class="h3num">V.3</span>Whole-food dairy &mdash; the antagonist lever</h3>
 
 <p>B12 and folate are the only interventions here that act at the receptor itself, and their delivery vehicle matters more than usual. Milk B12 is bound to haptocorrin and related binding proteins that survive gut transit and support cubilin-mediated ileal absorption, and its bioavailability exceeds synthetic cyanocobalamin at equivalent dose<sup class="cite"><a href="#r22b">22b</a></sup>. Milk folate behaves similarly, and milk lowers homocysteine more effectively than matched supplement doses<sup class="cite"><a href="#r22">22</a></sup>. Low serum B12 is inversely associated with BMI in a nationally representative US sample after adjustment<sup class="cite"><a href="#r19">19</a></sup>.</p>
 
-<p>Whey contributes separately: it is the densest dietary tryptophan source per gram of protein, which matters when IDO1 is competing for the same pool &mdash; more substrate reaching tryptophan hydroxylase means more serotonin and melatonin, and melatonin is itself a circadian amplitude signal that the Part&nbsp;IV mechanism erodes. Whey also preserves lean mass during fat loss and blunts postprandial triglycerides. Asparagus and orange juice cover folate outside dairy; orange juice carries a fructose load, so timing relative to meals is worth considering. <span class="ev ev-mod">Moderate</span></p>
+<p>Whey contributes separately. Dietary tryptophan has two competing fates: the IDO1/kynurenine route this whole paper is about, and a smaller route through tryptophan hydroxylase (TPH) into serotonin and then melatonin. Both enzymes draw on the same circulating tryptophan pool, so when IDO1 is running hot &mdash; as this paper's model has it doing throughout obesity &mdash; more of that pool is pulled toward kynurenine and less reaches TPH. Whey is the densest dietary tryptophan source per gram of protein, which raises the size of the pool itself rather than trying to out-compete IDO1 for a fixed one; more tryptophan reaching TPH means more serotonin and melatonin, and melatonin is itself a circadian amplitude signal that the Part&nbsp;IV mechanism erodes. Pairing tryptophan-rich protein with B6 compounds this twice over: B6 is the cofactor that converts 5-HTP to serotonin, and &mdash; per II.1 &mdash; the same cofactor that clears any kynurenine that does form before it accumulates and activates AhR. Whey also preserves lean mass during fat loss and blunts postprandial triglycerides. Asparagus and orange juice cover folate outside dairy. <span class="ev ev-mod">Moderate</span></p>
 
 <h3><span class="h3num">V.4</span>Dietary saturated fat &mdash; the membrane lever</h3>
 
 <p>Saturated fat does two things nothing else here does. It supplies the high FADH&#8322;:NADH ratio that drives the Part&nbsp;IV thermogenic circuit, and it builds membranes that cannot sustain a peroxidation chain &mdash; closing Loop&nbsp;3 at its substrate rather than downstream of it. Both follow from the same structural fact: no double bonds.</p>
 
-<p>This is where this paper and the linoleic-acid argument meet from opposite directions. That paper's case is that excess &#969;-6 supplies the oxidisable substrate; this one's is that AhR supplies the oxidant and then consumes the product as a ligand. The 12-HETE &rarr; PPAR&#947; &rarr; SCD1 branch of I.5 means AhR is also pushing membrane composition toward monounsaturated and away from saturated &mdash; the direction that keeps the circuit off. <span class="ev ev-inf">Inferred</span></p>
+<p>This is where this paper and <a href="linoleic-acid.html">the linoleic-acid argument</a> meet from opposite directions. That paper's case is that excess &#969;-6 supplies the oxidisable substrate; this one's is that AhR supplies the oxidant and then consumes the product as a ligand. The 12-HETE &rarr; PPAR&#947; &rarr; SCD1 branch of I.5 means AhR is also pushing membrane composition toward monounsaturated and away from saturated &mdash; the direction that keeps the circuit off. <span class="ev ev-inf">Inferred</span></p>
 
 <h3><span class="h3num">V.5</span>Alpha-lipoic acid &mdash; the redox lever</h3>
 
@@ -1079,6 +1057,7 @@ footer.end b{color:var(--moss);}
 <ol class="refs" start="10">
 <li id="r10">Huang F, et al. Theabrownin from Pu-erh tea attenuates hypercholesterolemia via modulation of gut microbiota and bile acid metabolism. <span class="j">Nat Commun</span> 2019;10:4971. <span class="note">Human arm: intestinal FXR&ndash;FGF15/19 inhibited while hepatic FXR&ndash;SHP is activated; serum FGF19 falls; conjugated bile acids accumulate in the ileum.</span></li>
 <li id="r11">Pu-erh tea modulates tryptophan metabolism via the gut&ndash;liver&ndash;brain axis under circadian disruption. <span class="j">J Agric Food Chem</span> 2022. <span class="note">Indole and 5-HT routes boosted; serum kynurenine, xanthurenic acid and 3-hydroxykynurenine reduced. Cinnabarinic acid identified as a Pu-erh constituent affecting food intake and weight gain in circadian-disrupted mice.</span></li>
+<li id="r29">Degregori S, Johnson GC, Barber PH, Blumstein DT. Firmicutes and Bacteroidetes contribute to mass gain variation in female obligate hibernators. <span class="j">J Mammal</span> 2024;105(1):2&ndash;12. <span class="note">In wild yellow-bellied marmots, higher Firmicutes tracks greater mass gain and higher Bacteroidetes tracks less, across active-season fattening ahead of hibernation.</span></li>
 </ol>
 
 <div class="ref-group">Circadian NAD&#8314;, sirtuins &amp; the RET circuit</div>
@@ -1091,6 +1070,7 @@ footer.end b{color:var(--moss);}
 <li id="r25">Nohl H. Generation of superoxide radicals as byproduct of cellular respiration. 1990. PMID 2251677. <span class="note">Foundational: Complex&nbsp;I as a major site, maximal when the NAD pool is highly reduced.</span></li>
 <li id="r26">Alpha-lipoic acid decreases cellular NADH with a smaller and slower effect on NADPH. 2002. PMID 11985536. <span class="note">Roughly 30% NADH reduction; reduced by lipoamide dehydrogenase in an NADH-dependent reaction.</span></li>
 <li id="r27">Reductive stress in redox biology, and the antioxidant paradox. 2012. PMID 22456698; PMC3401201. <span class="note">Chronic reductive stress induces oxidative stress; chronic antioxidant supplementation can be pro-oxidant.</span></li>
+<li id="r30">Tonon AC, Nexha A, Mendon&ccedil;a da Silva M, Gomes FA, Hidalgo MP, Frey BN. Sleep and circadian disruption in bipolar disorders: from psychopathology to digital phenotyping in clinical practice. <span class="j">Psychiatry Clin Neurosci</span> 2024;78(11):654&ndash;666. PMID 39210713. <span class="note">Review of circadian clock-gene involvement in mood-disorder pathophysiology &mdash; cited here only to show CLOCK:BMAL1 disruption has consequences studied well outside metabolism.</span></li>
 </ol>
 
 <div class="ref-group">B-vitamins, dairy &amp; human anchors</div>
