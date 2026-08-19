@@ -148,6 +148,13 @@ ol.spine>li::before{
   border-radius:50%;text-align:center;line-height:24px;
 }
 ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.spine-part a{color:inherit;border-bottom:none;}
+.spine-part a:hover{border-bottom:1px solid currentColor;}
 .brief .bottom{
   margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
   font-family:'Fraunces',serif;font-style:italic;font-size:18px;
@@ -457,14 +464,14 @@ footer.end b{color:var(--moss);}
 
 <div class="brief">
   <div class="lbl">The argument in brief</div>
-  <p class="sub">Six steps</p>
+  <p class="sub">Six steps, one per part</p>
   <ol class="spine">
-    <li>AhR is a <b>promiscuous sensor</b> &mdash; it binds bacterial metabolites, tryptophan products, oxidation products and dietary compounds alike, which makes it an integrator of several unrelated exposures at once.</li>
-    <li>Its obligate partner protein is <b>shared with the circadian clock</b>. AhR competes with CLOCK for BMAL1, which is the structural accident that turns a xenobiotic sensor into a clock disruptor.</li>
-    <li>Chronically active, it produces <b>six outputs</b>: NAD&#8314; depletion via TiPARP, CLOCK displacement, IDO1 induction, methyl-pool drain via PEMT, CYP1B1&ndash;HETE signalling, and a Firmicutes-shifted microbiome.</li>
-    <li>Its inputs fall into <b>three tiers</b> &mdash; direct activation, ligand supply, and loss of restraint &mdash; and they fail in different ways, which determines what kind of intervention works on each.</li>
-    <li>Three of the outputs <b>regenerate their own inputs</b>. That is why the state persists once established rather than resolving with the insult that started it.</li>
-    <li>Each tier has a <b>dietary lever</b>: bile-acid signalling, flavonol NAD&#8314; sparing, B-vitamin repletion, membrane fat composition, and direct NADH reduction.</li>
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span>Chronically active, AhR produces <b>six outputs</b> that compound rather than add: NAD&#8314; depletion via TiPARP, CLOCK displacement, IDO1 induction, methyl-pool drain via PEMT, CYP1B1&ndash;HETE signalling, and a Firmicutes-shifted microbiome.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span>What switches it on falls into <b>three tiers</b> &mdash; direct activation, ligand supply, and loss of restraint &mdash; and each fails differently, which is why no single intervention covers all of it.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span>Three of those six outputs <b>regenerate their own inputs</b>, which is why the state persists once established rather than resolving with whatever triggered it.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span>That persistence matters because <b>two circuits break</b> as a result: the circadian NAD&#8314; supply collapses, and the saturated-fat thermogenic circuit that depends on it stops running.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span>Each tier has a corresponding <b>dietary lever</b> &mdash; bile-acid signalling, flavonol NAD&#8314; sparing, B-vitamin repletion, membrane fat composition, direct NADH reduction &mdash; that intervenes on mechanism rather than symptom.</li>
+    <li><span class="spine-part"><a href="#part-vi">Part&nbsp;VI</a></span>Those levers collapse into a <b>short, ordinary food list</b>; no supplement is load-bearing.</li>
   </ol>
   <p class="bottom">Not that AhR explains obesity &mdash; that it is the node where several partial explanations turn out to be the same explanation.</p>
 </div>
@@ -483,7 +490,7 @@ footer.end b{color:var(--moss);}
 </div>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="primer">
   <div class="part-num">PRIMER</div>
   <h2>What AhR is, and why it is the right place to look</h2>
 </div>
@@ -498,7 +505,7 @@ footer.end b{color:var(--moss);}
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-i">
   <div class="part-num">PART&nbsp;I</div>
   <h2>What AhR does when it is chronically on</h2>
 </div>
@@ -594,57 +601,57 @@ footer.end b{color:var(--moss);}
 <p class="dcap"><b>How to read it.</b> Left, three tiers of input: things that directly switch AhR on, things that manufacture its dominant ligand, and conditions that remove the brakes. Centre, the activated AhR/ARNT complex on its target genes. Right, the six outputs. The two dashed rust arrows are the reason the system does not settle &mdash; two of the outputs loop back and become inputs.</p>
 </div>
 
-<h3><span class="h3num">I.1</span>NAD&#8314; depletion through TiPARP</h3>
+<h3 id="i-1"><span class="h3num">I.1</span>NAD&#8314; depletion through TiPARP</h3>
 <p>TiPARP (PARP7) is a canonical AhR target gene<sup class="cite"><a href="#r7">7</a></sup>. PARP enzymes consume NAD&#8314; stoichiometrically while ADP-ribosylating their substrates &mdash; each reaction burns one NAD&#8314; to attach an ADP-ribose tag to the target protein &mdash; so inducing TiPARP is inducing an NAD&#8314; drain. Dioxin measurably lowers NAD&#8314; in liver and thymus and deactivates SIRT3 downstream, the mitochondrial enzyme that keeps proteins like SDH deacetylated and active<sup class="cite"><a href="#r6">6</a></sup>. <span class="ev ev-strong">Strong</span></p>
 
-<h3><span class="h3num">I.2</span>Circadian displacement</h3>
+<h3 id="i-2"><span class="h3num">I.2</span>Circadian displacement</h3>
 <p>CLOCK:BMAL1 is the transcription-factor pair that runs the body's ~24-hour rhythm, setting the timing of sleep, hormone release and metabolic activity. AhR interacts with BMAL1 and displaces CLOCK from the heterodimer; separately it interferes with CLOCK:BMAL1 already bound at E-boxes; and separately again it displaces the coactivators the complex needs<sup class="cite"><a href="#r8">8</a></sup>. Three mechanisms, one consequence: dampened <em>Per1</em> and a flattened clock. Because there is no single point of failure, partial AhR activation produces disproportionate disruption. <span class="ev ev-strong">Strong</span></p>
 
 <p>CLOCK:BMAL1 disruption is not a metabolism-only concern &mdash; the same clock genes are implicated well outside this paper's scope, including in mood-disorder pathophysiology<sup class="cite"><a href="#r30">30</a></sup>, which is consistent with one transcription-factor pair sitting upstream of more than one downstream system.</p>
 
-<h3><span class="h3num">I.3</span>IDO1 induction &mdash; the output that is also an input</h3>
-<p>AhR transcribes IDO1, the rate-limiting enzyme that makes kynurenine &mdash; a breakdown product of the amino acid tryptophan, not an amino acid itself &mdash; which is AhR's own dominant endogenous ligand. This is the tightest of the loops in Part III and the reason the system is hard to exit once running. <span class="ev ev-strong">Strong</span></p>
+<h3 id="i-3"><span class="h3num">I.3</span>IDO1 induction &mdash; the output that is also an input</h3>
+<p>AhR transcribes IDO1, the rate-limiting enzyme that makes kynurenine &mdash; a breakdown product of the amino acid tryptophan, not an amino acid itself &mdash; which is AhR's own dominant endogenous ligand. This is the tightest of the loops in <a href="#part-iii">Part III</a> and the reason the system is hard to exit once running. <span class="ev ev-strong">Strong</span></p>
 
-<h3><span class="h3num">I.4</span>PEMT and methyl-group consumption</h3>
+<h3 id="i-4"><span class="h3num">I.4</span>PEMT and methyl-group consumption</h3>
 <p>In the fed state AhR induces PEMT and GNMT<sup class="cite"><a href="#r2">2</a></sup>. PEMT spends three SAM molecules per phosphatidylcholine synthesised &mdash; SAM is the cell's universal methyl-group donor, so each PC made costs three separate methyl transfers &mdash; each transfer yielding S-adenosylhomocysteine and then homocysteine, whose rise is itself a marker of cardiometabolic risk. GNMT (glycine N-methyltransferase) is a second SAM-consuming methyltransferase induced alongside it. A transient postprandial pulse of this is unremarkable. Sustained, it is a continuous drain on the methyl pool that B12 and folate exist to replenish. PEMT, AhR and phosphatidylcholine are all elevated in simple-steatosis patients<sup class="cite"><a href="#r2">2</a></sup>. <span class="ev ev-mod">Moderate</span></p>
 
-<h3><span class="h3num">I.5</span>CYP1B1 and the mid-chain HETEs</h3>
-<p>AhR induces CYP1B1, which converts arachidonic acid into mid-chain HETEs (5-, 12-, 15-HETE). Those HETEs activate NF-&#954;B and MAPK and feed back to induce more CYP1B1<sup class="cite"><a href="#r24">24</a></sup>. One side branch matters here specifically: 12-HETE activates PPAR&#947;, raising SCD1 and monounsaturated-fat synthesis. That is AhR actively pushing membrane composition <em>away</em> from the saturated profile &mdash; and SCD1 overexpression lowers NAD&#8314; and AMPK activation while SCD1 ablation raises both &mdash; Part IV.2 walks through why<sup class="cite"><a href="#r16">16</a></sup>. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span></p>
+<h3 id="i-5"><span class="h3num">I.5</span>CYP1B1 and the mid-chain HETEs</h3>
+<p>AhR induces CYP1B1, which converts arachidonic acid into mid-chain HETEs (5-, 12-, 15-HETE). Those HETEs activate NF-&#954;B and MAPK and feed back to induce more CYP1B1<sup class="cite"><a href="#r24">24</a></sup>. One side branch matters here specifically: 12-HETE activates PPAR&#947;, raising SCD1 and monounsaturated-fat synthesis. That is AhR actively pushing membrane composition <em>away</em> from the saturated profile &mdash; and SCD1 overexpression lowers NAD&#8314; and AMPK activation while SCD1 ablation raises both &mdash; <a href="#iv-2">Part IV.2</a> walks through why<sup class="cite"><a href="#r16">16</a></sup>. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span></p>
 
-<h3><span class="h3num">I.6</span>Microbiome shift</h3>
+<h3 id="i-6"><span class="h3num">I.6</span>Microbiome shift</h3>
 <p>AhR activation by dietary and endogenous ligands raises Firmicutes and lowers Bacteroidetes &mdash; two of the dominant bacterial phyla in the human gut. Firmicutes are the better energy harvesters, extracting more calories from identical intake, so the same meal leaves a larger surplus of absorbed energy to be stored as fat. The phylum-level ratio is contested as an obesity marker across human cohorts, though the same Firmicutes shift tracks fat accumulation unambiguously in hibernating animals<sup class="cite"><a href="#r29">29</a></sup>, and is reported here as a directional AhR effect, not a diagnostic. <span class="ev ev-cont">Contested</span></p>
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-ii">
   <div class="part-num">PART&nbsp;II</div>
   <h2>What turns it on</h2>
 </div>
 
 <p>The inputs are not parallel switches. They fall into three categories that fail in different ways, and the distinction matters because it determines what kind of intervention works on each.</p>
 
-<div class="tier t-direct">
+<div class="tier t-direct" id="tier-1">
   <div class="tier-name">Tier 1 &mdash; Direct activation</div>
-  <p><strong>Insulin via PKB/Akt.</strong> Insulin drives AhR into the nucleus through PI3K/PKB with no ligand involved<sup class="cite"><a href="#r2">2</a></sup>. Physiological and self-limiting in health; its pathological form is Loop 2 in Part III. <span class="ev ev-strong">Strong</span></p>
+  <p><strong>Insulin via PKB/Akt.</strong> Insulin drives AhR into the nucleus through PI3K/PKB with no ligand involved<sup class="cite"><a href="#r2">2</a></sup>. Physiological and self-limiting in health; its pathological form is <a href="#iii-2">Loop 2</a> in <a href="#part-iii">Part III</a>. <span class="ev ev-strong">Strong</span></p>
   <p><strong>Kynurenine.</strong> IDO1 in inflamed adipose tissue converts tryptophan to kynurenine, which binds the AhR ligand-binding domain. Adipocyte-specific IDO1 depletion abolishes kynurenine accumulation and protects mice against obesity; adipocyte AhR ablation abolishes the effect of kynurenine entirely<sup class="cite"><a href="#r5">5</a></sup>. The dominant endogenous route. <span class="ev ev-strong">Strong</span></p>
   <p><strong>4-HNE and oxidised &#969;-6 phospholipids.</strong> Polyunsaturated membrane fatty acids &mdash; linoleic and arachidonic acid &mdash; carry the double bonds that hydroxyl radicals attack. Peroxidation yields 4-hydroxynonenal, an &#945;,&#946;-unsaturated aldehyde that modifies AhR cysteine residues covalently. Oxidised LDL activates AhR and downregulates circadian transcripts<sup class="cite"><a href="#r28">28</a></sup>. Saturated membrane fatty acids have no double bonds and cannot initiate the chain. <span class="ev ev-inf">Inferred</span></p>
 </div>
 
-<div class="tier t-supply">
+<div class="tier t-supply" id="tier-2">
   <div class="tier-name">Tier 2 &mdash; Ligand supply</div>
   <p>Three upstream conditions never touch AhR directly. They all raise IDO1, and therefore all act <em>through</em> kynurenine: bacterial LPS (lipopolysaccharide, a fragment of the outer wall of gram-negative gut bacteria) crossing a permeable gut barrier and signalling through TLR2/4 to NF-&#954;B<sup class="cite"><a href="#r3">3</a></sup>; hypoxia (oxygen starvation) in adipose tissue that has expanded faster than its blood supply can keep up, signalling via HIF-1&#945;; and inflammatory IFN-&#947;, released by immune cells infiltrating that same inflamed, oxygen-starved fat tissue, signalling via JAK/STAT1.</p>
   <p>Calling these separate AhR routes would overstate their independence. What they are is three separate reasons the kynurenine tap runs &mdash; which is why gut-barrier repair and anti-inflammatory measures register as AhR interventions at all. <span class="ev ev-strong">Strong</span></p>
 </div>
 
-<div class="tier t-restraint">
+<div class="tier t-restraint" id="tier-3">
   <div class="tier-name">Tier 3 &mdash; Loss of restraint</div>
   <p>These are not activators. They are the removal of brakes that would otherwise hold a given level of activation in check &mdash; which is why two people with identical kynurenine can have different AhR activity.</p>
   <p><strong>B12 and folate</strong> are direct competitive antagonists at the AhR ligand-binding domain, blocking nuclear localisation, XRE binding and target-gene induction. Deficiency in mice induces AhR transcriptional activity on its own<sup class="cite"><a href="#r1">1</a></sup>. <span class="ev ev-strong">Strong</span></p>
-  <p><strong>B6</strong> never touches the receptor. As pyridoxal-5-phosphate it is the cofactor for kynureninase, the enzyme that clears kynurenine downstream<sup class="cite"><a href="#r18">18</a></sup>. Without it the ligand accumulates &mdash; see II.1.</p>
+  <p><strong>B6</strong> never touches the receptor. As pyridoxal-5-phosphate it is the cofactor for kynureninase, the enzyme that clears kynurenine downstream<sup class="cite"><a href="#r18">18</a></sup>. Without it the ligand accumulates &mdash; see <a href="#ii-1">II.1</a>.</p>
   <p><strong>Weak bile-acid signalling</strong> removes the physiological off-switch for the postprandial insulin pulse. Bile acids activate hepatic FXR, which induces SHP, and SHP is what actually binds ARNT and blocks AhR/ARNT<sup class="cite"><a href="#r9">9</a></sup>. When bile-acid signalling is weak, that shutoff doesn't fire: SHP occupancy at AhR target promoters is reduced in NAFLD patients and obese mice while AhR occupancy rises<sup class="cite"><a href="#r8">8</a></sup>. <span class="ev ev-strong">Strong</span></p>
 </div>
 
-<h3><span class="h3num">II.1</span>The B6 branch point &mdash; the same molecule as fuel or as poison</h3>
+<h3 id="ii-1"><span class="h3num">II.1</span>The B6 branch point &mdash; the same molecule as fuel or as poison</h3>
 
 <p>Kynurenine is not intrinsically harmful. It is an intermediate, and what it becomes depends on whether the enzyme that processes it has its cofactor.</p>
 
@@ -708,7 +715,7 @@ footer.end b{color:var(--moss);}
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-iii">
   <div class="part-num">PART&nbsp;III</div>
   <h2>Why it does not settle</h2>
 </div>
@@ -769,16 +776,16 @@ footer.end b{color:var(--moss);}
 
   <text x="360" y="410" text-anchor="middle" class="ks">Loop 3 is the one dietary fat composition breaks &mdash; saturated membranes have no double bonds to peroxidise</text>
 </svg>
-<p class="dcap"><b>How to read it.</b> All three loops pass through the same central node, which is why they compound rather than add. Loop&nbsp;1 regenerates the ligand. Loop&nbsp;2 removes the antagonist. Loop&nbsp;3 manufactures a second, chemically different ligand out of the redox damage the first two cause. Every individual arrow is documented; none of the three rings has been demonstrated end-to-end in a single experiment.</p>
+<p class="dcap"><b>How to read it.</b> All three loops pass through the same central node, which is why they compound rather than add. <a href="#iii-1">Loop&nbsp;1</a> regenerates the ligand. <a href="#iii-2">Loop&nbsp;2</a> removes the antagonist. <a href="#iii-3">Loop&nbsp;3</a> manufactures a second, chemically different ligand out of the redox damage the first two cause. Every individual arrow is documented; none of the three rings has been demonstrated end-to-end in a single experiment.</p>
 </div>
 
-<h3><span class="h3num">III.1</span>Loop 1 &mdash; the ligand regenerates itself</h3>
+<h3 id="iii-1"><span class="h3num">III.1</span>Loop 1 &mdash; the ligand regenerates itself</h3>
 <p>AhR induces IDO1; IDO1 makes kynurenine; kynurenine activates AhR. The tightest of the three, and the reason kynurenine does not simply decay once the initiating inflammation resolves. <span class="ev ev-strong">Strong</span></p>
 
-<h3><span class="h3num">III.2</span>Loop 2 &mdash; the antagonist is consumed</h3>
+<h3 id="iii-2"><span class="h3num">III.2</span>Loop 2 &mdash; the antagonist is consumed</h3>
 <p>AhR induces PEMT; PEMT spends SAM; regenerating SAM draws on B12 and folate; B12 and folate are the receptor's competitive antagonists. The receptor consumes the molecules that would restrain it. In health this never runs long enough to matter, because FGF19/SHP terminates the pulse. In obesity, with the shutoff blunted and insulin chronically elevated, it runs continuously. <span class="ev ev-inf">Inferred</span></p>
 
-<h3><span class="h3num">III.3</span>Loop 3 &mdash; redox damage makes a second ligand</h3>
+<h3 id="iii-3"><span class="h3num">III.3</span>Loop 3 &mdash; redox damage makes a second ligand</h3>
 <p>AhR induces TiPARP; TiPARP depletes NAD&#8314;; NAD&#8314;-starved SIRT3 leaves SDH hyperacetylated<sup class="cite"><a href="#r14">14</a></sup>; NADH backs up at Complex&nbsp;I and produces superoxide in the forward direction<sup class="cite"><a href="#r25">25</a></sup>; the hydroxyl radical that follows attacks membrane polyunsaturated fatty acids; 4-HNE results and activates AhR covalently.</p>
 <p>This loop has a dietary lever the other two do not. Its substrate is membrane &#969;-6 content, and a saturated-fat-rich membrane cannot sustain the peroxidation chain at all, because there are no double bonds for the radical to attack. <span class="ev ev-inf">Inferred</span></p>
 
@@ -789,12 +796,12 @@ footer.end b{color:var(--moss);}
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-iv">
   <div class="part-num">PART&nbsp;IV</div>
   <h2>The damage: two circuits AhR takes down</h2>
 </div>
 
-<h3><span class="h3num">IV.1</span>The circadian NAD&#8314; supply</h3>
+<h3 id="iv-1"><span class="h3num">IV.1</span>The circadian NAD&#8314; supply</h3>
 
 <p>NAD&#8314; is not a static pool that happens to be low in obesity. It is manufactured rhythmically. CLOCK:BMAL1 transcribes NAMPT, the rate-limiting enzyme of the salvage pathway; NAMPT makes NMN; NMNAT converts NMN to NAD&#8314;; NAD&#8314; fuels SIRT1; and SIRT1 is recruited back to the NAMPT promoter to sustain synthesis of its own coenzyme<sup class="cite"><a href="#r12">12</a></sup><sup class="cite"><a href="#r13">13</a></sup>. Intracellular NAD&#8314; oscillates on a 24-hour cycle as a result.</p>
 
@@ -806,7 +813,7 @@ footer.end b{color:var(--moss);}
 
 <p>Sleep is the other input here, and no dietary intervention substitutes for it. Delaying sleep onset progressively &mdash; without reducing total sleep &mdash; collapses circadian transcript expression including CLOCK and BMAL1 severalfold in humans. <span class="gapflag">citation to pin</span></p>
 
-<h3><span class="h3num">IV.2</span>The FADH&#8322; / reverse-electron-transport circuit</h3>
+<h3 id="iv-2"><span class="h3num">IV.2</span>The FADH&#8322; / reverse-electron-transport circuit</h3>
 
 <p>The second casualty is a thermogenic circuit that runs on saturated fat and only works when NAD&#8314; is replete.</p>
 
@@ -880,50 +887,50 @@ footer.end b{color:var(--moss);}
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-v">
   <div class="part-num">PART&nbsp;V</div>
   <h2>The interventions</h2>
 </div>
 
-<p>Each lever below acts on a different tier of Part&nbsp;II. The coverage matrix at V.6 is the single place where the mapping is laid out; these sections explain the mechanisms rather than repeat it.</p>
+<p>Each lever below acts on a different tier of <a href="#part-ii">Part&nbsp;II</a>. The coverage matrix at <a href="#v-6">V.6</a> is the single place where the mapping is laid out; these sections explain the mechanisms rather than repeat it.</p>
 
-<h3><span class="h3num">V.1</span>Theabrownin &mdash; the bile-acid lever</h3>
+<h3 id="v-1"><span class="h3num">V.1</span>Theabrownin &mdash; the bile-acid lever</h3>
 
 <p>Theabrownin is the dominant bioactive polymer in fermented Pu-erh tea, and its mechanism in humans is unusual: it acts on FXR in two anatomical places with opposite local effects.</p>
 
 <p>In the gut it suppresses bile-salt-hydrolase-active microbes, so conjugated bile acids accumulate in the ileum. These are weak FXR agonists, so intestinal FXR signalling falls and serum FGF19 <em>drops</em> &mdash; which sounds like the wrong direction until you follow it: less FGF19 means CYP7A1 stays active, so bile-acid synthesis and turnover stay high. Meanwhile the bile acids reaching the liver through the portal circulation activate <em>hepatic</em> FXR, which induces SHP<sup class="cite"><a href="#r10">10</a></sup>. SHP binds ARNT and blocks AhR<sup class="cite"><a href="#r9">9</a></sup>.</p>
 
-<p>So theabrownin restores the physiological AhR shutoff &mdash; the same SHP-dependent brake that terminates the postprandial insulin pulse in health. It also inhibits &#945;-glucosidase and &#945;-amylase, blunting the glucose rise and therefore the insulin signal that opens the pulse in the first place. One compound acting on both the trigger and the brake of Tier&nbsp;1's insulin route.</p>
+<p>So theabrownin restores the physiological AhR shutoff &mdash; the same SHP-dependent brake that terminates the postprandial insulin pulse in health. It also inhibits &#945;-glucosidase and &#945;-amylase, blunting the glucose rise and therefore the insulin signal that opens the pulse in the first place. One compound acting on both the trigger and the brake of <a href="#tier-1">Tier&nbsp;1</a>'s insulin route.</p>
 
-<p>Three further arms, all downstream of Pu-erh's fermentation microbes and polyphenol content: it promotes gut <em>Lactobacillus</em> enrichment, which diverts tryptophan to indoles, competing with IDO1 for substrate<sup class="cite"><a href="#r11">11</a></sup>; it also promotes <em>Akkermansia muciniphila</em> enrichment, which tightens the gut barrier and reduces the LPS flux driving Tier&nbsp;2; and cinnabarinic acid, present in Pu-erh itself, occupies the AhR ligand-binding domain as a partial agonist, competitively displacing kynurenine.</p>
+<p>Three further arms, all downstream of Pu-erh's fermentation microbes and polyphenol content: it promotes gut <em>Lactobacillus</em> enrichment, which diverts tryptophan to indoles, competing with IDO1 for substrate<sup class="cite"><a href="#r11">11</a></sup>; it also promotes <em>Akkermansia muciniphila</em> enrichment, which tightens the gut barrier and reduces the LPS flux driving <a href="#tier-2">Tier&nbsp;2</a>; and cinnabarinic acid, present in Pu-erh itself, occupies the AhR ligand-binding domain as a partial agonist, competitively displacing kynurenine.</p>
 
 <p>The cholesterol arm is separate and addresses reductive stress rather than AhR. Sustained bile-acid excretion depletes hepatic cholesterol, SREBP-2 responds, and cholesterol synthesis consumes roughly 12&ndash;16 NADPH per molecule across the mevalonate pathway &mdash; a genuine NADPH sink, shown to lower NAD(P)H and improve function in a complex-I-deficient model<sup class="cite"><a href="#r15">15</a></sup>. <span class="ev ev-mod">Moderate</span> for the human FXR/SHP arm; <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span> for the NADPH sink.</p>
 
-<h3><span class="h3num">V.2</span>Quercetin and myricetin &mdash; the NAD&#8314; lever</h3>
+<h3 id="v-2"><span class="h3num">V.2</span>Quercetin and myricetin &mdash; the NAD&#8314; lever</h3>
 
 <p>Both flavonols competitively inhibit PARP1 at its NAD&#8314; pocket, sparing NAD&#8314; that would otherwise be consumed. This complements rather than duplicates the theabrownin arm: theabrownin reduces TiPARP by suppressing its transcription, flavonols reduce PARP1 by inhibiting the enzyme. Two different PARP family members, two different mechanisms.</p>
 
-<p>What the restored NAD&#8314; buys is SIRT3 activity, and SIRT3's two relevant substrates are exactly the two failure points in the Part&nbsp;IV circuit: SDHA, which it deacetylates at thirteen identified sites<sup class="cite"><a href="#r14">14</a></sup>, and NNT. Restoring both reinstates the RET circuit and &mdash; by preventing the NADH backup that generates hydroxyl radicals &mdash; reduces the 4-HNE production feeding Loop&nbsp;3.</p>
+<p>What the restored NAD&#8314; buys is SIRT3 activity, and SIRT3's two relevant substrates are exactly the two failure points in the <a href="#part-iv">Part&nbsp;IV</a> circuit: SDHA, which it deacetylates at thirteen identified sites<sup class="cite"><a href="#r14">14</a></sup>, and NNT. Restoring both reinstates the RET circuit and &mdash; by preventing the NADH backup that generates hydroxyl radicals &mdash; reduces the 4-HNE production feeding <a href="#iii-3">Loop&nbsp;3</a>.</p>
 
-<p>Secondary arms: both flavonols activate NRF2, the transcription factor that senses oxidative and electrophilic stress and switches on the cell's antioxidant enzymes in response &mdash; glutathione synthesis, thioredoxin reductase (which keeps the thioredoxin system reduced and able to neutralise peroxides) and NQO1 (which detoxifies reactive quinones before they can do damage) &mdash; cutting the ROS burden upstream of both PARP activation and lipid peroxidation. Quercetin also inhibits PI3K, reducing PKB (protein kinase B, i.e. Akt) directly &mdash; the same insulin-driven arm that opens Tier&nbsp;1's nuclear-translocation route. SIRT1 deacetylates LKB1, activating AMPK, which improves insulin sensitivity and so lowers the chronic insulin driving Tier&nbsp;1. Quercetin also inhibits mTORC1 &mdash; as does AMPK, via TSC2 and Raptor &mdash; promoting mitophagy, and inhibits COMT, slowing catecholamine breakdown and supporting lipolysis. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span> for most arms; see Limitations on bioavailability.</p>
+<p>Secondary arms: both flavonols activate NRF2, the transcription factor that senses oxidative and electrophilic stress and switches on the cell's antioxidant enzymes in response &mdash; glutathione synthesis, thioredoxin reductase (which keeps the thioredoxin system reduced and able to neutralise peroxides) and NQO1 (which detoxifies reactive quinones before they can do damage) &mdash; cutting the ROS burden upstream of both PARP activation and lipid peroxidation. Quercetin also inhibits PI3K, reducing PKB (protein kinase B, i.e. Akt) directly &mdash; the same insulin-driven arm that opens <a href="#tier-1">Tier&nbsp;1</a>'s nuclear-translocation route. SIRT1 deacetylates LKB1, activating AMPK, which improves insulin sensitivity and so lowers the chronic insulin driving <a href="#tier-1">Tier&nbsp;1</a>. Quercetin also inhibits mTORC1 &mdash; as does AMPK, via TSC2 and Raptor &mdash; promoting mitophagy, and inhibits COMT, slowing catecholamine breakdown and supporting lipolysis. <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span> for most arms; see Limitations on bioavailability.</p>
 
-<h3><span class="h3num">V.3</span>Whole-food dairy &mdash; the antagonist lever</h3>
+<h3 id="v-3"><span class="h3num">V.3</span>Whole-food dairy &mdash; the antagonist lever</h3>
 
 <p>B12 and folate are the only interventions here that act at the receptor itself, and their delivery vehicle matters more than usual. Milk B12 is bound to haptocorrin and related binding proteins that survive gut transit and support cubilin-mediated ileal absorption, and its bioavailability exceeds synthetic cyanocobalamin at equivalent dose<sup class="cite"><a href="#r22b">22b</a></sup>. Milk folate behaves similarly, and milk lowers homocysteine more effectively than matched supplement doses<sup class="cite"><a href="#r22">22</a></sup>. Low serum B12 is inversely associated with BMI in a nationally representative US sample after adjustment<sup class="cite"><a href="#r19">19</a></sup>.</p>
 
-<p>Whey contributes separately. Dietary tryptophan has two competing fates: the IDO1/kynurenine route this whole paper is about, and a smaller route through tryptophan hydroxylase (TPH) into serotonin and then melatonin. Both enzymes draw on the same circulating tryptophan pool, so when IDO1 is running hot &mdash; as this paper's model has it doing throughout obesity &mdash; more of that pool is pulled toward kynurenine and less reaches TPH. Whey is the densest dietary tryptophan source per gram of protein, which raises the size of the pool itself rather than trying to out-compete IDO1 for a fixed one; more tryptophan reaching TPH means more serotonin and melatonin, and melatonin is itself a circadian amplitude signal that the Part&nbsp;IV mechanism erodes. Pairing tryptophan-rich protein with B6 compounds this twice over: B6 is the cofactor that converts 5-HTP to serotonin, and &mdash; per II.1 &mdash; the same cofactor that clears any kynurenine that does form before it accumulates and activates AhR. Whey also preserves lean mass during fat loss and blunts postprandial triglycerides. Asparagus and orange juice cover folate outside dairy. <span class="ev ev-mod">Moderate</span></p>
+<p>Whey contributes separately. Dietary tryptophan has two competing fates: the IDO1/kynurenine route this whole paper is about, and a smaller route through tryptophan hydroxylase (TPH) into serotonin and then melatonin. Both enzymes draw on the same circulating tryptophan pool, so when IDO1 is running hot &mdash; as this paper's model has it doing throughout obesity &mdash; more of that pool is pulled toward kynurenine and less reaches TPH. Whey is the densest dietary tryptophan source per gram of protein, which raises the size of the pool itself rather than trying to out-compete IDO1 for a fixed one; more tryptophan reaching TPH means more serotonin and melatonin, and melatonin is itself a circadian amplitude signal that the <a href="#part-iv">Part&nbsp;IV</a> mechanism erodes. Pairing tryptophan-rich protein with B6 compounds this twice over: B6 is the cofactor that converts 5-HTP to serotonin, and &mdash; per <a href="#ii-1">II.1</a> &mdash; the same cofactor that clears any kynurenine that does form before it accumulates and activates AhR. Whey also preserves lean mass during fat loss and blunts postprandial triglycerides. Asparagus and orange juice cover folate outside dairy. <span class="ev ev-mod">Moderate</span></p>
 
-<h3><span class="h3num">V.4</span>Dietary saturated fat &mdash; the membrane lever</h3>
+<h3 id="v-4"><span class="h3num">V.4</span>Dietary saturated fat &mdash; the membrane lever</h3>
 
-<p>Saturated fat does two things nothing else here does. It supplies the high FADH&#8322;:NADH ratio that drives the Part&nbsp;IV thermogenic circuit, and it builds membranes that cannot sustain a peroxidation chain &mdash; closing Loop&nbsp;3 at its substrate rather than downstream of it. Both follow from the same structural fact: no double bonds.</p>
+<p>Saturated fat does two things nothing else here does. It supplies the high FADH&#8322;:NADH ratio that drives the <a href="#part-iv">Part&nbsp;IV</a> thermogenic circuit, and it builds membranes that cannot sustain a peroxidation chain &mdash; closing <a href="#iii-3">Loop&nbsp;3</a> at its substrate rather than downstream of it. Both follow from the same structural fact: no double bonds.</p>
 
-<p>This is where this paper and <a href="linoleic-acid.html">the linoleic-acid argument</a> meet from opposite directions. That paper's case is that excess &#969;-6 supplies the oxidisable substrate; this one's is that AhR supplies the oxidant and then consumes the product as a ligand. The 12-HETE &rarr; PPAR&#947; &rarr; SCD1 branch of I.5 means AhR is also pushing membrane composition toward monounsaturated and away from saturated &mdash; the direction that keeps the circuit off. <span class="ev ev-inf">Inferred</span></p>
+<p>This is where this paper and <a href="linoleic-acid.html">the linoleic-acid argument</a> meet from opposite directions. That paper's case is that excess &#969;-6 supplies the oxidisable substrate; this one's is that AhR supplies the oxidant and then consumes the product as a ligand. The 12-HETE &rarr; PPAR&#947; &rarr; SCD1 branch of <a href="#i-5">I.5</a> means AhR is also pushing membrane composition toward monounsaturated and away from saturated &mdash; the direction that keeps the circuit off. <span class="ev ev-inf">Inferred</span></p>
 
-<h3><span class="h3num">V.5</span>Alpha-lipoic acid &mdash; the redox lever</h3>
+<h3 id="v-5"><span class="h3num">V.5</span>Alpha-lipoic acid &mdash; the redox lever</h3>
 
-<p>Covered in the box at the end of Part&nbsp;IV. Its distinguishing property is that it targets the NADH excess directly rather than scavenging the radicals that excess produces, which makes it the one supplement in this framework that does not carry the reductive-stress objection. <span class="ev ev-mod">Moderate</span></p>
+<p>Covered in the box at the end of <a href="#part-iv">Part&nbsp;IV</a>. Its distinguishing property is that it targets the NADH excess directly rather than scavenging the radicals that excess produces, which makes it the one supplement in this framework that does not carry the reductive-stress objection. <span class="ev ev-mod">Moderate</span></p>
 
-<h3><span class="h3num">V.6</span>Coverage matrix</h3>
+<h3 id="v-6"><span class="h3num">V.6</span>Coverage matrix</h3>
 
 <table class="matrix">
 <thead>
@@ -967,7 +974,7 @@ footer.end b{color:var(--moss);}
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-vi">
   <div class="part-num">PART&nbsp;VI</div>
   <h2>What to eat</h2>
 </div>
@@ -980,12 +987,12 @@ footer.end b{color:var(--moss);}
 <li><span class="mit-title">Whole milk and whey.</span> The B12 and folate delivery vehicle, plus the tryptophan density that keeps the serotonin and melatonin routes supplied while IDO1 competes for the same pool.</li>
 <li><span class="mit-title">Pastured animal protein.</span> B6 for the kynurenine exit; saturated fat for the membrane and the FADH&#8322; ratio.</li>
 <li><span class="mit-title">Asparagus and orange juice.</span> Folate outside dairy.</li>
-<li><span class="mit-title">Less &#969;-6.</span> Not a food to add but a substrate to withdraw &mdash; the one lever that closes Loop&nbsp;3 rather than mitigating it.</li>
+<li><span class="mit-title">Less &#969;-6.</span> Not a food to add but a substrate to withdraw &mdash; the one lever that closes <a href="#iii-3">Loop&nbsp;3</a> rather than mitigating it.</li>
 <li><span class="mit-title">Consistent sleep timing.</span> Not a food, and not optional. The circadian arm has no dietary substitute; a flattened CLOCK:BMAL1 oscillation means low NAMPT transcription regardless of what is on the plate.</li>
 </ol>
 
-<h3><span class="h3num">VI.1</span>How much, and from where</h3>
-<p>The restraint-lever nutrients from V.3 and the coverage matrix (V.6), quantified. Amounts are USDA-typical per common serving; %DV uses current adult label values (B12 2.4&nbsp;&mu;g, folate 400&nbsp;&mu;g DFE, B6 1.7&nbsp;mg). Whey's tryptophan density is unusual &mdash; most protein sources run closer to 1&ndash;1.3% of protein by weight.</p>
+<h3 id="vi-1"><span class="h3num">VI.1</span>How much, and from where</h3>
+<p>The restraint-lever nutrients from <a href="#v-3">V.3</a> and the coverage matrix (<a href="#v-6">V.6</a>), quantified. Amounts are USDA-typical per common serving; %DV uses current adult label values (B12 2.4&nbsp;&mu;g, folate 400&nbsp;&mu;g DFE, B6 1.7&nbsp;mg). Whey's tryptophan density is unusual &mdash; most protein sources run closer to 1&ndash;1.3% of protein by weight.</p>
 <table class="matrix">
 <thead>
 <tr><th>Nutrient</th><th>Restraint on</th><th>Food, serving</th><th>Amount</th></tr>
@@ -1000,7 +1007,7 @@ footer.end b{color:var(--moss);}
 <tr><td>Tryptophan</td><td class="tiercell">Serotonin / melatonin</td><td>Pastured chicken or turkey, 3&nbsp;oz (85&nbsp;g)</td><td>~300&nbsp;mg</td></tr>
 </tbody>
 </table>
-<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">for the amounts &mdash; standard USDA per-serving values, but brand, cut, and fortification shift them; this quantifies V.3&rsquo;s food list, it does not newly establish the antagonism mechanism itself (that's ref&nbsp;1).</span></p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">for the amounts &mdash; standard USDA per-serving values, but brand, cut, and fortification shift them; this quantifies <a href="#v-3">V.3</a>&rsquo;s food list, it does not newly establish the antagonism mechanism itself (that's ref&nbsp;1).</span></p>
 </section>
 
 <section>
@@ -1011,9 +1018,9 @@ footer.end b{color:var(--moss);}
 
 <div class="limits">
 <ul>
-<li><b>No loop has been closed end-to-end.</b> All three rings in Part&nbsp;III are assembled from individually documented arrows. No single experiment traverses any of them, and most constituent work is cell and rodent. This is the central structural weakness and applies to the framework as a whole rather than to particular claims within it.</li>
+<li><b>No loop has been closed end-to-end.</b> All three rings in <a href="#part-iii">Part&nbsp;III</a> are assembled from individually documented arrows. No single experiment traverses any of them, and most constituent work is cell and rodent. This is the central structural weakness and applies to the framework as a whole rather than to particular claims within it.</li>
 
-<li><b>4-HNE as a direct AhR activator is the weakest documented link.</b> Electrophilic cysteine modification of AhR by reactive aldehydes is chemically plausible, supported by the oxidised-LDL/AhR/circadian work<sup class="cite"><a href="#r28">28</a></sup> and by structurally comparable quinones binding AhR directly. A direct 4-HNE binding assay at the ligand-binding domain has not been published. If that link fails, Loop&nbsp;3 still functions through its inflammatory arm &mdash; 4-HNE &rarr; TLR4 &rarr; NF-&#954;B &rarr; IDO1 &rarr; kynurenine &mdash; but becomes a Tier&nbsp;2 supply route rather than a direct activation route.</li>
+<li><b>4-HNE as a direct AhR activator is the weakest documented link.</b> Electrophilic cysteine modification of AhR by reactive aldehydes is chemically plausible, supported by the oxidised-LDL/AhR/circadian work<sup class="cite"><a href="#r28">28</a></sup> and by structurally comparable quinones binding AhR directly. A direct 4-HNE binding assay at the ligand-binding domain has not been published. If that link fails, <a href="#iii-3">Loop&nbsp;3</a> still functions through its inflammatory arm &mdash; 4-HNE &rarr; TLR4 &rarr; NF-&#954;B &rarr; IDO1 &rarr; kynurenine &mdash; but becomes a <a href="#tier-2">Tier&nbsp;2</a> supply route rather than a direct activation route.</li>
 
 <li><b>B12/folate antagonism has not been tested against covalent modification.</b> Their competitive antagonism is established against reversible ligand binding<sup class="cite"><a href="#r1">1</a></sup>. 4-HNE modifies cysteines covalently, which is different chemistry. The matrix reflects this: route&nbsp;3 is addressed by preventing 4-HNE formation, not by receptor competition after the fact.</li>
 
@@ -1027,7 +1034,7 @@ footer.end b{color:var(--moss);}
 
 <li><b>Human quantification is thin throughout.</b> The causal AhR work<sup class="cite"><a href="#r3">3</a></sup><sup class="cite"><a href="#r4">4</a></sup><sup class="cite"><a href="#r5">5</a></sup> is murine. The strongest human anchors are the monozygotic-twin NAD&#8314; data<sup class="cite"><a href="#r20">20</a></sup>, the theabrownin trial<sup class="cite"><a href="#r10">10</a></sup>, the B6 trial<sup class="cite"><a href="#r17">17</a></sup> and the NAFLD promoter-occupancy finding<sup class="cite"><a href="#r8">8</a></sup>. None tests the framework as a whole; each tests one arm.</li>
 
-<li><b>Citation gaps to close.</b> The SHP&ndash;ARNT interaction paper needs its primary reference pinned rather than described. The human forced-desynchrony sleep data in IV.1 needs a specific citation. The 12-HETE &rarr; PPAR&#947; &rarr; SCD1 branch is carried over from the linoleic-acid paper's chain and needs its own reference here.</li>
+<li><b>Citation gaps to close.</b> The SHP&ndash;ARNT interaction paper needs its primary reference pinned rather than described. The human forced-desynchrony sleep data in <a href="#iv-1">IV.1</a> needs a specific citation. The 12-HETE &rarr; PPAR&#947; &rarr; SCD1 branch is carried over from the linoleic-acid paper's chain and needs its own reference here.</li>
 </ul>
 
 <p class="lim-close">What would break the argument outright is a demonstration that AhR inhibition improves metabolic outcomes only through one of the six outputs rather than the set &mdash; that would make AhR a proxy for something narrower rather than the integrator this paper claims it is.</p>
@@ -1035,7 +1042,7 @@ footer.end b{color:var(--moss);}
 </section>
 
 <section class="refwrap">
-<div class="part-head">
+<div class="part-head" id="refs">
   <div class="part-num">REFS</div>
   <h2>References</h2>
 </div>
@@ -1098,7 +1105,7 @@ footer.end b{color:var(--moss);}
 
 <footer class="end">
   <p><b>A note on sourcing.</b> The AhR-as-metabolic-hub framing, the reductive-stress/NAD&#8314; arm and the FADH&#8322;/RET thermogenic circuit originate substantially with Brad Marshall (<em>Fire in a Bottle</em>), who built the desaturase-flux and reductive-stress case that this paper develops and in places extends with primary literature. The oxidised-linoleic-acid arm draws on Tucker Goodrich's work on LA peroxidation and 4-HNE. Where this paper goes further than either is in treating AhR itself as the organising node rather than one mechanism among several, and in mapping the intervention set onto a tiered taxonomy of its inputs.</p>
-  <p>The companion paper, <a href="linoleic-acid.html">Linoleic Acid &amp; Metabolic Disease</a>, covers the &#969;-6 substrate side of Loop&nbsp;3 in detail.</p>
+  <p>The companion paper, <a href="linoleic-acid.html">Linoleic Acid &amp; Metabolic Disease</a>, covers the &#969;-6 substrate side of <a href="#iii-3">Loop&nbsp;3</a> in detail.</p>
 </footer>
 
 </div>
