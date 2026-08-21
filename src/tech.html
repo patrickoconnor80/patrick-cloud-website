@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-tech.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html" class="active">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="tech.html" class="active">Overview</a>
+  <a href="website.html">Website</a>
+  <a href="snowplow.html">Snowplow</a>
+  <a href="databricks.html">Databricks</a>
+  <a href="kubernetes.html">Kubernetes</a>
+  <a href="ml_platform.html">ML Platform</a>
+  <a href="devops.html">DevOps</a>
+</div></div>
+<div class="shell">
+
+<div class="hero">
+  <p class="eyebrow">Cloud &amp; Data Infrastructure</p>
+  <h1>The <em>Stack</em></h1>
+  <p class="sub">A production-shaped AWS environment built end to end: analytics collection, a lakehouse, CI/CD, a Kubernetes ML platform, and the security posture holding it together. All of it Terraform-deployed and reproducible.</p>
+</div>
+
+<section class="section">
+  <div class="grid grid-3">
+    <a class="card linkable" href="website.html">
+      <div class="card-eyebrow">S3 &middot; CloudFront</div>
+      <h3>Website</h3>
+      <p>How this site is stored, encrypted, and served from the edge &mdash; and the alarms watching it.</p>
+      <span class="card-more">Architecture &rarr;</span>
+    </a>
+    <a class="card linkable" href="snowplow.html">
+      <div class="card-eyebrow">Kinesis &middot; EC2 &middot; Nginx</div>
+      <h3>Snowplow</h3>
+      <p>Behavioral analytics pipeline with a custom event schema, a private Iglu registry, and five enrichments.</p>
+      <span class="card-more">Architecture &rarr;</span>
+    </a>
+    <a class="card linkable" href="databricks.html">
+      <div class="card-eyebrow">PrivateLink &middot; dbt</div>
+      <h3>Databricks</h3>
+      <p>Lakehouse behind PrivateLink with customer-managed keys, plus dbt as the transformation layer.</p>
+      <span class="card-more">Architecture &rarr;</span>
+    </a>
+    <a class="card linkable" href="kubernetes.html">
+      <div class="card-eyebrow">EKS &middot; Istio &middot; ArgoCD</div>
+      <h3>Kubernetes</h3>
+      <p>EKS wrapped in an Istio service mesh with mTLS, the Prometheus/Grafana stack, and GitOps delivery.</p>
+      <span class="card-more">Architecture &rarr;</span>
+    </a>
+    <a class="card linkable" href="devops.html">
+      <div class="card-eyebrow">Jenkins &middot; Terraform &middot; CI/CD</div>
+      <h3>DevOps</h3>
+      <p>The Jenkins build server and the delivery model behind it &mdash; Terraform plan/apply pipelines and the dbt docs build.</p>
+      <span class="card-more">Architecture &rarr;</span>
+    </a>
+    <a class="card linkable" href="ml_platform.html">
+      <div class="card-eyebrow">Ray &middot; Jupyter &middot; MLflow</div>
+      <h3>ML Platform</h3>
+      <p>Distributed compute, interactive notebooks, and experiment tracking running on the cluster.</p>
+      <span class="card-more">Architecture &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">&sect; 1</span><h2>Consoles</h2></div>
+  <p class="lead">Live when the stack is up.</p>
+  <div class="table-wrap"><table class="simple">
+    <thead><tr><th>Service</th><th>What it does</th><th>Link</th></tr></thead>
+    <tbody>
+      <tr><td>Jenkins</td><td>CI/CD server &mdash; see <a href="devops.html">DevOps</a></td><td><a href="https://jenkins.patrick-cloud.com/">jenkins.patrick-cloud.com</a></td></tr>
+      <tr><td>Snowplow Collector</td><td>Event collection endpoint</td><td><a href="https://snowplow-collector.patrick-cloud.com/index.html">collector</a></td></tr>
+      <tr><td>Snowplow Iglu</td><td>Schema registry</td><td><a href="https://snowplow-iglu.patrick-cloud.com/index.html">iglu</a></td></tr>
+      <tr><td>Grafana</td><td>Metrics dashboards</td><td><a href="https://kubernetes.patrick-cloud.com/grafana">/grafana</a></td></tr>
+      <tr><td>Prometheus</td><td>Metrics collection</td><td><a href="https://kubernetes.patrick-cloud.com/prometheus/">/prometheus</a></td></tr>
+      <tr><td>Kiali</td><td>Service mesh console</td><td><a href="https://kubernetes.patrick-cloud.com/kiali">/kiali</a></td></tr>
+      <tr><td>Argo CD</td><td>GitOps delivery</td><td><a href="https://kubernetes.patrick-cloud.com/argocd/">/argocd</a></td></tr>
+      <tr><td>dbt Docs</td><td>Model documentation</td><td><a href="https://kubernetes.patrick-cloud.com/dbt-docs/">/dbt-docs</a></td></tr>
+      <tr><td>Ray Dashboard</td><td>Cluster compute</td><td><a href="https://kubernetes.patrick-cloud.com/ray-cluster-dashboard/">/ray-cluster-dashboard</a></td></tr>
+      <tr><td>Ray Serve</td><td>Model serving endpoint</td><td><a href="https://kubernetes.patrick-cloud.com/ray-service-serve/">/ray-service-serve</a></td></tr>
+      <tr><td>Jupyter</td><td>Notebooks</td><td><a href="https://kubernetes.patrick-cloud.com/jupyter/">/jupyter</a></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">&sect; 2</span><h2>Practices</h2></div>
+  <div class="box">
+    <ul>
+      <li>Least-privilege IAM roles, policies, and security groups throughout</li>
+      <li>All AWS resources encrypted with customer-managed KMS keys</li>
+      <li>Alarms on ALB, target groups, EC2, Kinesis, SQS, and RDS &mdash; each emailing on trigger</li>
+      <li>Public internet exposure limited via private subnets and VPC endpoints</li>
+      <li>All traffic encrypted with SSL; mTLS inside the cluster</li>
+      <li>CI enforces testing before deploy; IaC guarantees reproducibility</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">&sect; 3</span><h2>Skills</h2></div>
+  <div class="defrow"><div class="term">AWS</div><div class="tags">
+    <span class="tag">EC2</span><span class="tag">ECS</span><span class="tag">EKS</span><span class="tag">ECR</span><span class="tag">ALB</span><span class="tag">Lambda</span><span class="tag">Glue</span><span class="tag">RDS</span><span class="tag">SQS</span><span class="tag">SNS</span><span class="tag">Kinesis</span><span class="tag">Cloudwatch</span><span class="tag">IAM</span><span class="tag">KMS</span><span class="tag">Endpoints</span><span class="tag">Route53</span><span class="tag">Security Groups</span></div></div>
+  <div class="defrow"><div class="term">Languages</div><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Linux</span></div></div>
+  <div class="defrow"><div class="term">Frameworks</div><div class="tags"><span class="tag">Terraform</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">kubectl</span><span class="tag">Kustomize</span><span class="tag">Helm</span><span class="tag">AWS CLI</span></div></div>
+  <div class="defrow"><div class="term">Libraries</div><div class="tags"><span class="tag">Snowplow</span><span class="tag">dbt</span><span class="tag">Nginx</span><span class="tag">Istio</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">ArgoCD</span><span class="tag">Ray</span><span class="tag">Jupyter</span><span class="tag">MLflow</span></div></div>
+  <div class="defrow"><div class="term">CI/CD</div><div class="tags"><span class="tag">GitHub Actions</span><span class="tag">AWS CodePipeline</span><span class="tag">Jenkins</span></div></div>
+  <div class="defrow"><div class="term">Orchestration</div><div class="tags"><span class="tag">Airflow</span><span class="tag">Prefect</span><span class="tag">EventBridge</span></div></div>
+  <div class="defrow"><div class="term">Warehouses</div><div class="tags"><span class="tag">Databricks</span><span class="tag">Snowflake</span><span class="tag">Postgres</span></div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">&sect; 4</span><h2>Repositories</h2></div>
+  <div class="grid grid-2">
+    <div class="box" style="margin:0;"><p style="margin:0;">
+      <a href="https://github.com/patrickoconnor80/patrick-cloud-base-infra">patrick-cloud-base-infra</a><br>
+      <a href="https://github.com/patrickoconnor80/patrick-cloud-website">patrick-cloud-website</a><br>
+      <a href="https://github.com/patrickoconnor80/patrick-cloud-jenkins">patrick-cloud-jenkins</a><br>
+      <a href="https://github.com/patrickoconnor80/patrick-cloud-snowplow">patrick-cloud-snowplow</a>
+    </p></div>
+    <div class="box" style="margin:0;"><p style="margin:0;">
+      <a href="https://github.com/patrickoconnor80/patrick-cloud-kubernetes">patrick-cloud-kubernetes</a><br>
+      <a href="https://github.com/patrickoconnor80/patrick-cloud-databricks">patrick-cloud-databricks</a><br>
+      <a href="https://github.com/patrickoconnor80/patrick-cloud-dbt">patrick-cloud-dbt</a><br>
+      <a href="https://github.com/patrickoconnor80/patrick-cloud-machine-learning">patrick-cloud-machine-learning</a>
+    </p></div>
+  </div>
+</section>
+
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>

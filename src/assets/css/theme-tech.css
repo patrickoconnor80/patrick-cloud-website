@@ -1,0 +1,53 @@
+/* theme-tech.css — Tech section.
+   Dark terminal: near-black canvas, mono-forward, cyan/amber accents. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root{
+  --font-display:'IBM Plex Mono',monospace;
+  --font-body:'IBM Plex Sans',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --font-stat:'IBM Plex Mono',monospace;
+  --size-body:16.5px;
+
+  --bg:#0d1117;
+  --surface:#161b22;
+  --surface-hover:#1c2430;
+  --ink:#c9d3df;
+  --ink-strong:#e8eef5;
+  --muted:#8b98a8;
+  --rule:#25303c;
+
+  --accent:#2dd4bf;          /* teal */
+  --accent-strong:#5eead4;
+  --accent-2:#fbbf24;        /* amber */
+  --accent-3:#818cf8;        /* indigo */
+  --on-accent:#04211d;
+
+  --link:#5eead4;
+  --link-underline:rgba(94,234,212,.3);
+
+  --warn:#fbbf24;
+  --warn-bg:rgba(251,191,36,.07);
+  --warn-ink:#fcd34d;
+
+  --up:#2dd4bf;
+  --down:#f87171;
+
+  --radius:6px;
+  --header-bg:rgba(13,17,23,.9);
+  --header-border:1px solid #25303c;
+  --hero-border:1px solid #25303c;
+  --card-hover-shadow:0 0 0 1px rgba(45,212,191,.25),0 8px 24px rgba(0,0,0,.5);
+  --code-bg:#0a0e14;
+  --code-ink:#a5f3ec;
+  --figure-bg:#f7f9fb;
+  --subnav-bg:#0a0e14;
+  --display-tracking:.01em;
+  --em-style:normal;
+  --em-weight:600;
+}
+.hero h1{text-transform:none;}
+.hero h1 em{font-style:normal;}
+/* terminal prompt flourish on the eyebrow */
+.eyebrow::before{content:"$ ";color:var(--accent);}
+figure img{padding:14px;}

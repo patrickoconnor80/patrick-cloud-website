@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VCX NAV Model</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-stocks.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client"
+  }
+}
+</script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html" class="active">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="stocks.html">Overview</a>
+  <a href="vcx.html" class="active">VCX</a>
+  <a href="tsla.html">TSLA</a>
+  <a href="spcx.html">SPCX</a>
+  <a href="onds.html">ONDS</a>
+  <a href="ionq.html">IONQ</a>
+  <a href="bfly.html">BFLY</a>
+</div></div>
+<div class="shell">
+
+<div class="hero">
+  <p class="eyebrow">Position Notes</p>
+  <h1>VCX <em>NAV Model</em></h1>
+  <p class="sub">A projected net-asset-value model for the Fundrise Innovation Fund, built from the audited annual report rather than weight-based estimates &mdash; with stale reference valuations corrected to what is actually embedded in the reported NAV.</p>
+  <div class="meta">
+    <span><b>Ticker</b> VCX &middot; NYSE</span>
+    <span><b>Source</b> Audited annual report, FYE Mar 31, 2026</span>
+    <span><b>Updated</b> Aug 14, 2026</span>
+    <span><b>Positions</b> 29</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="flag">
+    <div class="flag-lbl">Not investment advice</div>
+    <p style="margin:0;">A personal model published for reference. Cost and fair-value figures come from the fund's own filing; the &ldquo;current valuation&rdquo; column is my own research on where each company has since been marked. Assumptions are mine and may be wrong.</p>
+  </div>
+
+  <div class="section-head"><span class="section-num">01</span><h2>The Model</h2></div>
+  <p class="lead">Toggle between conservative and bull-case company valuations, search, and sort any column. Markups are dilution-adjusted pre-money to pre-money, and each position carries a note on what its stale mark is anchored to &mdash; so the NAV/share contribution reflects an actual round price rather than a guess.</p>
+
+  <div class="widget-panel">
+    <div id="vcx-nav-root"><div class="widget-loading">Loading model&hellip;</div></div>
+  </div>
+
+  <div class="section-head"><span class="section-num">02</span><h2>The Thesis in Short</h2></div>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-eyebrow">Why the gap exists</div>
+      <h3 style="font-size:19px;">Stale marks</h3>
+      <p>The official <b>$18.97</b> NAV reflects valuations as of March 31. Anthropic is carried at roughly a <b>$350B</b> pre-money mark &mdash; anchored to the February tranche VCX bought at cost &mdash; against a <b>$900B</b> Series H closed in May. Anduril, Databricks, and SpaceX have all repriced since the mark too.</p>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">Why it may persist</div>
+      <h3 style="font-size:19px;">No forced catch-up</h3>
+      <p>Fundrise updates NAV quarterly, so the reported number stays stale by construction between marks. That cuts both ways &mdash; at roughly <b>$34</b> the market has already priced in a large share of the repricing, so the gap is an argument about magnitude, not direction.</p>
+    </div>
+  </div>
+
+  <div class="section-head"><span class="section-num">03</span><h2>Catalysts</h2></div>
+  <ol class="timeline">
+    <li><span class="t-date">Aug 13, 2026 &middot; passed</span><br><span class="t-title">VCX lockup expiration</span> &mdash; accelerated from the original Sep 19 date; watch for supply working through</li>
+    <li><span class="t-date">Mid-Aug 2026</span><br><span class="t-title">Fundrise Q2 NAV update</span> &mdash; the next chance for the reported NAV to catch up to current marks</li>
+    <li><span class="t-date">Oct&ndash;Nov 2026</span><br><span class="t-title">Anthropic IPO window</span> &mdash; S-1 filed; FT reports a $2T+ target</li>
+  </ol>
+
+  <div class="section-head"><span class="section-num">04</span><h2>My Position</h2></div>
+  <div class="box">
+    <div class="box-lbl">Options overlay</div>
+    <p style="margin:0;">Sold $30-strike January puts for $9.50 in premium &mdash; an effective breakeven of <b>$20.50</b>, roughly in line with a conservative post-repricing NAV estimate.</p>
+  </div>
+</section>
+
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+/* Compile assets/js/vcx-nav.jsx in the browser and mount it.
+   Doing this explicitly (rather than <script type="text/babel" src=...>) so that
+   failures surface in the panel instead of leaving "Loading model..." forever. */
+(async function () {
+  var root = document.getElementById('vcx-nav-root');
+  function fail(title, detail) {
+    root.innerHTML = '<div class="widget-loading" style="text-align:left;text-transform:none;letter-spacing:0;line-height:1.6;">'
+      + '<b style="color:var(--down);">' + title + '</b><br><span style="color:var(--muted);">' + detail + '</span></div>';
+  }
+  if (location.protocol === 'file:') {
+    return fail('This page must be served over http(s).',
+      'Opening the file directly blocks the fetch of vcx-nav.jsx. Run <code>python3 -m http.server</code> in the site folder, or view it on patrick-cloud.com.');
+  }
+  try {
+    var res = await fetch('assets/js/vcx-nav.jsx');
+    if (!res.ok) throw new Error('HTTP ' + res.status + ' fetching assets/js/vcx-nav.jsx');
+    var src = await res.text();
+    var out = Babel.transform(src, {
+      presets: [['react', { runtime: 'automatic' }]],
+      sourceType: 'module'
+    }).code;
+    var url = URL.createObjectURL(new Blob([out], { type: 'text/javascript' }));
+    await import(url);
+  } catch (err) {
+    console.error(err);
+    fail('Could not load the model.', String(err && err.message ? err.message : err));
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold Exposure &amp; Metabolic Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.spine-part a{color:inherit;border-bottom:none;}
+.spine-part a:hover{border-bottom:1px solid currentColor;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+sup.cite{font-size:11px;line-height:0;vertical-align:super;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+sup.cite a{color:var(--rust);text-decoration:none;padding:0 1px;border-bottom:none;}
+sup.cite a:hover{text-decoration:underline;}
+
+/* ---- Evidence chips ---- */
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mod{background:rgba(61,106,122,.13);color:#2c4f5c;}
+.ev-mod::before{background:var(--sky);}
+.ev-animal{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-animal::before{background:var(--gold);}
+.ev-inf{background:rgba(183,138,46,.09);color:#7a5c14;}
+.ev-inf::before{background:var(--gold);opacity:.55;}
+.ev-cont{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-cont::before{background:var(--rust);}
+.ev-spec{background:rgba(61,69,60,.1);color:var(--ink-soft);}
+.ev-spec::before{background:var(--ink-soft);opacity:.6;}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Pull quote ---- */
+.pull{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+  font-size:25px;line-height:1.32;color:var(--moss-deep);
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  padding:26px 0;margin:38px 0;
+}
+
+/* ---- Limitations / references ---- */
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+ol.refs{
+  list-style:none;padding:0;margin:24px 0 0;
+  font-family:'Newsreader',Georgia,serif;
+}
+ol.refs li{
+  counter-increment:ref;position:relative;padding:0 0 14px 3.2em;
+  font-size:15px;line-height:1.55;color:var(--ink);
+}
+.refwrap{counter-reset:ref;}
+ol.refs li:target{background:#fbf6ea;outline:2px solid #b78a2e;outline-offset:3px;border-radius:4px;}
+ol.refs li::before{
+  content:"["counter(ref)"]";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--rust);
+}
+ol.refs li .j{font-style:italic;}
+ol.refs li .note{color:var(--ink-soft);font-size:13.5px;}
+.ref-group{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.ref-group:first-of-type{margin-top:8px;}
+.gapflag{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:#7d3d1c;background:rgba(168,86,47,.13);
+  padding:2px 7px;border-radius:2px;font-weight:600;white-space:nowrap;
+}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .byline{flex-direction:column;gap:6px;}
+}
+@media (prefers-reduced-motion:no-preference){
+  section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html">Overview</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="linoleic-acid.html">Linoleic Acid</a>
+  <a href="ahr.html">AhR</a>
+  <a href="cold-exposure.html" class="active">Cold Exposure</a>
+  <a href="nutrients.html">Nutrients</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Nutritional Biochemistry</p>
+  <h1 class="title">Cold Exposure &amp; <em>Metabolic Health</em></h1>
+  <p class="sub">Cold exposure's clearest, best-supported benefit is improved insulin sensitivity. This paper builds out from that mechanism to thermogenic remodeling of fat tissue, mood and neurochemical effects, immune modulation, and a glucose-competition mechanism with real mouse and single-patient human data behind it in oncology.</p>
+  <div class="byline">
+    <span><b>Draft</b> v1</span>
+    <span><b>Scope</b> mechanism, with human trial evidence and protocol implications</span>
+    <span><b>Standard</b> evidence graded &amp; caveats collected in Limitations</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;">Cold exposure improves insulin sensitivity through two mechanisms that work on different timescales: an acute, insulin-independent glucose-disposal effect that fires during each exposure, and an adaptive, hormone-mediated systemic effect that builds with repetition. That two-mechanism structure is the core argument of this paper. It also drives thermogenic remodeling of fat tissue, mood and neurochemical effects, and immune modulation &mdash; covered in Parts&nbsp;II and&nbsp;III &mdash; shares a mechanism with a genuine, mouse-demonstrated tumor-suppression effect in oncology, covered in Part&nbsp;IV, and ultimately comes down to a question of practice: what actually delivers the stimulus, covered in Part&nbsp;V.</p>
+  <p>This is also the paper referenced from <a href="metabolic-health.html">Metabolic Health</a>&rsquo;s <em>Thermal comfort</em> section (II.5): never being cold, never being hot, removes a stimulus the system evolved to expect, with measurable costs to brown adipose tissue and glucose disposal. This paper is the mechanism behind that claim.</p>
+</div>
+
+<div class="brief">
+  <div class="lbl">The argument in brief</div>
+  <p class="sub">Five parts</p>
+  <ol class="spine">
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span>Cold exposure improves insulin sensitivity through <b>two mechanisms on different timescales</b> &mdash; an acute, insulin-independent glucose-disposal effect in muscle and brown fat, and an adaptive, batokine-mediated systemic effect that builds with repeated exposure.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span>The same cold signal drives <b>thermogenic remodeling</b>: UCP1-mediated uncoupling, locally amplified thyroid signaling via type&nbsp;II deiodinase, and coordinated mitochondrial biogenesis and mitophagy in brown fat.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span>Beyond metabolism, cold exposure drives a <b>catecholamine surge</b> tied to mood, an immune <b>shift rather than a boost</b>, and a <b>biphasic cortisol response</b> &mdash; an acute spike with a same-day partial resolution, not the sustained baseline reduction the practice is often credited with.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span>The same brown-fat glucose sink from Part&nbsp;I gives cold exposure a real, mouse-demonstrated <b>tumor-suppressing mechanism</b> in oncology, and a separate cold-shock-protein DNA-repair mechanism explains long-lived, cancer-resistant species &mdash; but the popular retelling of both runs well ahead of the single-patient human data.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span>What actually triggers all of the above is <b>intensity and surface area, not the specific method</b> &mdash; a cold windy day, a plunge, and an ice bath all work through the same pathway at different efficiencies, and the face is a genuine exception with its own added reflex.</li>
+  </ol>
+  <p class="bottom">Insulin sensitivity is the load-bearing claim. Everything else in this paper is a real effect, but a smaller and less consistently supported one.</p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Reader's guide</div>
+  <p style="margin-top:0;">Part&nbsp;I carries the strongest evidence and the protocol implication. Parts&nbsp;II and&nbsp;III cover mechanism and secondary effects that are real but graded more cautiously. Part&nbsp;IV covers cancer specifically: read it carefully, since it is the section most likely to be oversold in retelling &mdash; see its closing note before drawing any personal conclusion from it. Part&nbsp;V translates the mechanism into practice &mdash; what actually delivers the stimulus described everywhere else in this paper. Caveats are collected in <a href="#limitations">Limitations</a> rather than scattered through the text; where a specific claim is weaker than the prose implies, it carries a grade.</p>
+  <p style="margin-bottom:0;">
+    <span class="ev ev-strong">Strong</span>
+    <span class="ev ev-mod">Moderate</span>
+    <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span>
+    <span class="ev ev-inf">Inferred</span>
+    <span class="ev ev-cont">Contested</span>
+    <span class="ev ev-spec">Speculative</span>
+  </p>
+</div>
+
+<section>
+<div class="part-head" id="part-i">
+  <div class="part-num">PART&nbsp;I</div>
+  <h2>Insulin Sensitivity</h2>
+</div>
+
+<h3><span class="h3num">I.1</span>The acute mechanism: insulin-independent glucose disposal</h3>
+<p>Cold exposure activates the sympathetic nervous system, and norepinephrine release drives two tissues to pull glucose out of circulation without needing insulin signaling at all. In skeletal muscle, shivering contraction activates AMPK, which moves GLUT4 glucose transporters to the cell membrane through the same pathway exercise uses &mdash; a route that bypasses the insulin/PI3K-Akt signaling that insulin resistance disrupts. In a 10-day human cold acclimation trial, cold-induced glucose uptake in brown fat was paralleled by increased basal GLUT4 localization at the muscle cell surface, confirmed by biopsy.<sup class="cite"><a href="#r1">1</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">human biopsy data, direct mechanism.</span></p>
+
+<p>Brown adipose tissue (BAT) runs the same play through a different mechanism. Norepinephrine hits &beta;3-adrenergic receptors on brown adipocytes, activating PKA, which drives both lipolysis and glucose uptake to fuel UCP1-mediated heat production. Cold exposure via adrenergic stimulation activates BAT, which combusts substantial amounts of blood glucose and free fatty acid to produce heat.<sup class="cite"><a href="#r2">2</a></sup> Active BAT is, functionally, a second glucose sink working alongside muscle &mdash; disposing of glucose the way working muscle does during exercise, on a schedule set by ambient temperature rather than movement.</p>
+
+<h3><span class="h3num">I.2</span>The adaptive mechanism: batokine signaling to other tissues</h3>
+<p>This is the part that explains why insulin sensitivity improves systemically rather than only in the tissues doing the shivering. BAT secretes several signaling molecules &mdash; batokines &mdash; that act on distant tissues.</p>
+<p>Brown fat produces a lipid mediator called Maresin 2 when cold-stimulated, and this molecule resolves the chronic low-grade inflammation that drives insulin resistance in obese tissue, improving insulin sensitivity and glucose tolerance in animal models.<sup class="cite"><a href="#r3">3</a></sup> Chronic inflammation is one of the upstream drivers of insulin resistance, so this pathway removes a cause rather than compensating for it.</p>
+<p>Cold exposure also releases the lipokine 12,13-diHOME from BAT, which increases fatty acid uptake and lipolysis in a way that improves systemic lipid handling &mdash; less circulating and ectopic fat means less lipid-driven interference with insulin signaling in liver and muscle.<sup class="cite"><a href="#r4">4</a></sup> BAT-derived FGF21 and adiponectin act on the liver to suppress excess glucose production and improve hepatic insulin sensitivity through a related route.</p>
+<p class="evline"><span class="ev ev-animal">Animal&ndash;in vitro</span><span class="txt">for the Maresin 2 and 12,13-diHOME mechanisms specifically;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for the systemic human outcome they're proposed to explain.</span></p>
+<p>The systemic reach of this signaling shows up directly in the acclimation data: BAT activity was negatively related to age and body fat percentage, and cold-induced glucose uptake in BAT was positively related to glucose uptake in nearby visceral white adipose tissue &mdash; BAT activation appears to pull surrounding fat tissue toward better glucose handling, not just improve its own metabolism in isolation.<sup class="cite"><a href="#r1">1</a></sup></p>
+
+<h3><span class="h3num">I.3</span>What the human trials show</h3>
+<p>The clearest human evidence comes from a 10-day cold acclimation protocol (6 hours daily at 14&ndash;16&deg;C) in type 2 diabetic patients, which improved whole-body insulin sensitivity by roughly 43%.<sup class="cite"><a href="#r1">1</a></sup> A systematic review of human cold-exposure trials found the accumulated evidence points the same direction: cold exposure activates BAT, and BAT activation is consistently linked to improved insulin sensitivity and glucose tolerance across the reviewed studies.<sup class="cite"><a href="#r5">5</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the BAT-activation&ndash;insulin-sensitivity link across human trials;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for the specific 43% figure, which comes from a single protocol and cohort.</span></p>
+
+<div class="mech">
+  <div class="mech-lbl">Protocol implication</div>
+  <p style="margin:0;">The acute glucose-disposal effect requires each exposure &mdash; it doesn't persist between sessions. The adaptive, batokine-mediated effect builds with repetition over days to weeks, which is why the trial protocols showing the largest insulin-sensitivity gains use daily or near-daily exposure over 7&ndash;10 days rather than a single session.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head" id="part-ii">
+  <div class="part-num">PART&nbsp;II</div>
+  <h2>Thermogenic Architecture</h2>
+</div>
+
+<h3><span class="h3num">II.1</span>Uncoupling mitochondria creates heat, not ATP</h3>
+<p>UCP1 (uncoupling protein 1) sits in the inner mitochondrial membrane and lets protons leak back across it outside the normal ATP-synthase route, converting the proton gradient directly into heat instead of ATP.<sup class="cite"><a href="#r6">6</a></sup> It's expressed at high levels in brown and beige fat and only marginally in skeletal muscle. Its presence in white fat matters even at low levels: UCP1-deficient mice show increased fat synthesis (de novo lipogenesis) in white adipose tissue at standard housing temperature, indicating UCP1 normally restrains this process rather than only generating heat.<sup class="cite"><a href="#r7">7</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the proton-leak thermogenic mechanism;</span> <span class="ev ev-animal">Animal&ndash;in vitro</span><span class="txt">for the lipogenesis-restraint finding specifically.</span></p>
+
+<h3><span class="h3num">II.2</span>BAT increases T3 conversion, which drives browning</h3>
+<p>BAT expresses high levels of type II deiodinase (D2), the enzyme that converts thyroxine (T4) into the active hormone triiodothyronine (T3) &mdash; a conversion, not new hormone synthesis.<sup class="cite"><a href="#r8">8</a></sup> Sympathetic stimulation from cold exposure sharply increases D2 activity, creating what researchers describe as a localized state of thyrotoxicosis inside brown adipocytes, with T3 receptor saturation running far higher in activated BAT than anywhere else in the body.<sup class="cite"><a href="#r8">8</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">D2-driven local thyroid hormone amplification is well established.</span></p>
+<p>That locally-generated T3 is itself one of the drivers of browning: it induces UCP1 expression in white fat depots and increases the beige-fat fraction embedded throughout white adipose tissue. Cold exposure independently drives the same browning program through sympathetic signaling, and the two pathways converge on the same transcriptional targets (PGC1&alpha;, PPAR&gamma;, UCP1) rather than acting as separate mechanisms &mdash; D2-generated T3 and direct sympathetic signaling are two inputs into one browning program.</p>
+<p class="evline"><span class="ev ev-mod">Moderate&ndash;to&ndash;Strong</span><span class="txt">for thyroid and cold converging on UCP1-driven browning.</span></p>
+
+<h3><span class="h3num">II.3</span>Mitochondrial renewal: biogenesis and selective clearance in parallel</h3>
+<p>Cold exposure drives two mitochondrial quality-control processes simultaneously in BAT. PGC1&alpha;-mediated biogenesis increases mitochondrial mass and replicates the existing pool of mitochondrial DNA to expand thermogenic capacity.<sup class="cite"><a href="#r9">9</a></sup> Running alongside it, PINK1/Parkin-mediated mitophagy selectively tags and removes mitochondria damaged by the reactive oxygen species that thermogenesis itself generates &mdash; blocking this clearance pathway measurably impairs BAT's oxidative capacity.<sup class="cite"><a href="#r10">10</a></sup> The two processes run coordinated rather than sequentially: cold-challenged tissue shows both markers elevated at the same time, with net mitochondrial mass still increasing despite the active turnover.<sup class="cite"><a href="#r9">9</a></sup></p>
+<p class="evline"><span class="ev ev-animal">Animal&ndash;in vitro</span><span class="txt">human BAT biogenesis is inferred from PET-measured tissue mass changes, not directly measured at the mitochondrial level.</span></p>
+
+<div class="pull">Two pathways &mdash; a locally amplified thyroid hormone signal and direct sympathetic stimulation &mdash; converge on the same browning program rather than acting as independent routes to the same outcome.</div>
+</section>
+
+<section>
+<div class="part-head" id="part-iii">
+  <div class="part-num">PART&nbsp;III</div>
+  <h2>Neurochemical, Mood, and Immune Effects</h2>
+</div>
+
+<h3><span class="h3num">III.1</span>Catecholamine response</h3>
+<p>Norepinephrine spikes 200&ndash;530% and dopamine 200&ndash;250% during cold exposure, sustained for two to three hours afterward &mdash; the mechanism behind the alertness and mood lift people report.<sup class="cite"><a href="#r11">11</a></sup> A 20-week trial of regular cold water swimming improved WHO-5 well-being scores from 39.2 to 54.0, one of the better-controlled outcomes in this literature.<sup class="cite"><a href="#r12">12</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the norepinephrine/dopamine surge and its duration;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for mood/well-being improvement with regular practice.</span></p>
+
+<h3 id="iii-2"><span class="h3num">III.2</span>Immune modulation, not simple &ldquo;boosting&rdquo;</h3>
+<p>Cold water immersion increases neutrophil counts (innate immunity) while suppressing lymphocyte and monocyte counts (adaptive immunity) &mdash; a shift in immune activity, not a uniform boost.<sup class="cite"><a href="#r13">13</a></sup> A meta-analysis of over 3,000 participants found cold-water immersion significantly increased inflammation immediately and at one hour post-exposure, the opposite of the general &ldquo;anti-inflammatory&rdquo; framing the practice often gets.<sup class="cite"><a href="#r14">14</a></sup></p>
+<p class="evline"><span class="ev ev-cont">Contested</span><span class="txt">as commonly framed &mdash; modulation, not uniform enhancement; acute inflammation actually rises.</span></p>
+
+<h3><span class="h3num">III.3</span>Cortisol: an acute spike that partially resolves same-day</h3>
+<p>Cortisol follows a similar biphasic pattern to inflammation. Cold water immersion induces a marked acute release of cortisol alongside epinephrine and norepinephrine, with increases of roughly 30&ndash;100% above baseline in the first 15&ndash;30 minutes &mdash; the standard sympathetic/HPA-axis stress response.<sup class="cite"><a href="#r17">17</a></sup> One controlled study found cortisol dropped significantly below baseline by 180 minutes post-immersion, alongside reduced negative affect.<sup class="cite"><a href="#r18">18</a></sup> The same meta-analysis cited above for inflammation tracked a separate &ldquo;stress&rdquo; outcome across timepoints and found a significant reduction at 12 hours post-exposure, with no effect immediately, at 1 hour, 24 hours, or 48 hours.<sup class="cite"><a href="#r14">14</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the acute cortisol spike;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for the same-day delayed reduction (3&ndash;12h) &mdash; consistent direction, limited studies.</span></p>
+
+<div class="flag">
+  <div class="flag-lbl">Not supported by current evidence</div>
+  <p style="margin:0;">The broader claim that a regular cold exposure practice lowers resting cortisol over time, as an ongoing baseline shift, is <span class="ev ev-inf">Inferred</span> rather than demonstrated. The evidence so far points to a same-day spike-and-partial-resolution pattern, not a sustained downward trend in baseline cortisol &mdash; that claim has not been tested longitudinally.</p>
+</div>
+
+<h3><span class="h3num">III.4</span>Neurotrophic signaling: the least settled piece</h3>
+<p>BDNF and related neurotrophic factors respond to cold stress in animal models &mdash; mouse studies show cold-modulated BDNF and mitochondrial markers in the hippocampus, with the response depending on exposure intensity and duration.<sup class="cite"><a href="#r15">15</a></sup> Human data on cold-specific BDNF elevation is thin; the strongest human neurotrophic-factor evidence in the thermal-stress literature actually comes from heat and hyperthermia protocols, not cold.<sup class="cite"><a href="#r16">16</a></sup></p>
+<p class="evline"><span class="ev ev-animal">Animal&ndash;in vitro</span><span class="txt">no direct human evidence for cold-specific BDNF elevation.</span></p>
+
+<h3><span class="h3num">III.5</span>The pre-workout cold-plunge testosterone claim</h3>
+<p>A claim that circulates widely in cold-exposure media, popularized separately by Andrew Huberman and by Thomas Seager &mdash; an Arizona State sustainability-engineering professor and co-founder/CEO of the ice-bath company Morozko Forge: that cold plunging immediately <em>before</em> resistance training, rather than after (when cold water immersion is more commonly discussed as recovery), produces a larger testosterone response than either alone. Seager's version rests on his own self-tracked biomarkers and reports from his community rather than a published trial.<sup class="cite"><a href="#r19">19</a></sup> Huberman's separate, narrower claim &mdash; that cold exposure to the testes specifically may raise testosterone &mdash; is presented on his podcast as biologically plausible rather than demonstrated by a cited trial.<sup class="cite"><a href="#r20">20</a></sup></p>
+<p class="evline"><span class="ev ev-spec">Speculative</span><span class="txt">no controlled trial has tested this specific protocol &mdash; cold plunging immediately before a single training session &mdash; against testosterone response.</span></p>
+
+<div class="flag">
+  <div class="flag-lbl">Not supported by current evidence</div>
+  <p style="margin:0;">&ldquo;Cold plunge before your workout for a same-session testosterone boost&rdquo; has not been demonstrated by a published trial. Seager's claim is also worth reading with his commercial interest in ice-bath sales in view.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head" id="part-iv">
+  <div class="part-num">PART&nbsp;IV</div>
+  <h2>Cancer: Glucose Competition and DNA Repair</h2>
+</div>
+
+<p>Two genuinely different mechanisms get bundled together in popular cold-exposure discourse as &ldquo;cold fights cancer&rdquo;: brown fat competing with tumors for glucose, and cold-shock proteins that repair DNA more accurately. Both have real, published mechanistic support &mdash; one with a strong causal chain in mice, the other with cross-species cell-culture validation. Neither has been shown to work as a human cancer treatment outside a single pilot case.</p>
+
+<h3 id="iv-1"><span class="h3num">IV.1</span>Brown fat and tumors compete for the same fuel</h3>
+<p>Tumors are unusually dependent on glycolysis for fuel even when oxygen is available &mdash; the Warburg effect &mdash; which makes them vulnerable to anything that reliably out-competes them for circulating glucose. A 2022 study found that mice housed at 4&deg;C, rather than a thermoneutral 30&deg;C, showed markedly slower growth of colorectal, breast, and pancreatic tumors and lived nearly twice as long.<sup class="cite"><a href="#r23">23</a></sup> The mechanism traces directly back to <a href="#part-i">Part&nbsp;I</a>'s insulin-sensitivity story run against a tumor instead of for one: cold-activated brown fat combusts blood glucose fast enough that the tumor is left glucose-starved.</p>
+<p>What makes this an unusually clean causal chain for this literature is that the authors tested it two ways. Removing brown fat, or knocking out UCP1 specifically, abolished the protective effect &mdash; tumors grew at the same pace as in warm-housed mice. Giving the cold-housed mice a high-sugar drink also abolished it, by refilling the glucose supply the tumor was being starved of. Mechanism, knockout, and rescue-reversal all point the same direction.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the mouse mechanism &mdash; multiple cancer types, causally confirmed by both knockout and rescue.</span></p>
+
+<h3><span class="h3num">IV.2</span>The human pilot case, and what it does not show</h3>
+<p>The same paper included a single human case: an 18-year-old with Hodgkin lymphoma, already five cycles into ABVD chemotherapy, with detectable disease remaining. Exposed to 22&deg;C for 7 days and then 28&deg;C for 4 days in light clothing, PET&ndash;CT showed the expected brown-fat activation at the cooler temperature, and lower tumor glucose (18F-FDG) uptake during the cold phase than the warm phase.<sup class="cite"><a href="#r23">23</a></sup></p>
+<p>That is a metabolic PET signal in one patient, not a measured reduction in tumor size &mdash; the paper does not report the tumor shrinking, only its glucose uptake changing on imaging. There is no comparison group and no replication. It is a human correlate of the mouse mechanism, not a demonstrated clinical benefit.</p>
+<p class="evline"><span class="ev ev-animal">Animal&ndash;in vitro</span><span class="txt">for the mechanism, established in mice;</span> <span class="ev ev-inf">Inferred</span><span class="txt">for any human therapeutic benefit, which rests on a single uncontrolled case with a PET surrogate endpoint.</span></p>
+
+<h3><span class="h3num">IV.3</span>Cold-shock proteins, DNA repair, and Peto's paradox</h3>
+<p>Bowhead whales live up to roughly 200 years and, with far more cells dividing over far longer lifespans than humans, should by simple probability accumulate far more cancer-causing mutations &mdash; yet they don't get much cancer. That mismatch between body size, lifespan, and observed cancer rates is known as Peto's paradox. A 2025 study from the University of Rochester found that bowhead whale cells carry roughly 100-fold higher levels of a cold-shock protein called CIRBP than other mammalian cells, and that CIRBP drives more accurate repair of double-strand DNA breaks &mdash; the class of damage most likely to drive cancer when repaired badly.<sup class="cite"><a href="#r24">24</a></sup> Adding bowhead CIRBP to human and fruit-fly cells in culture improved DNA repair in both, and extended lifespan in the flies.</p>
+<p>Cold is the connective tissue in this mechanism, not incidental: CIRBP is a cold-shock protein by definition, and mammalian cells generally increase CIRBP output when their temperature drops a few degrees in culture. That's the closest thing to a &ldquo;cold exposure improves DNA repair&rdquo; pathway in mammalian cells &mdash; but it was established as a cell-culture temperature response, not as an outcome of a deliberate human cold-exposure practice. Whether a cold plunge or cold room lowers cellular temperature enough, for long enough, to meaningfully raise CIRBP output in a living, thermoregulating human &mdash; and whether that would measurably change cancer risk &mdash; has not been tested.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for CIRBP's role in bowhead DNA repair and its cross-species validation in human cell culture;</span> <span class="ev ev-spec">Speculative</span><span class="txt">for the leap to a deliberate human cold-exposure practice lowering cancer risk.</span></p>
+
+<h3><span class="h3num">IV.4</span>An unresolved tension in the mouse data</h3>
+<p>Standard laboratory housing temperature for mice (20&ndash;26&deg;C) is mild chronic cold stress relative to their thermoneutral zone (30&ndash;31&deg;C). A 2013 study found that moving tumor-bearing mice to the warmer, thermoneutral 30&ndash;31&deg;C markedly <em>improved</em> tumor control &mdash; smaller tumors, less metastasis &mdash; through more CD8+ T-cell infiltration and fewer immunosuppressive MDSCs and regulatory T cells.<sup class="cite"><a href="#r25">25</a></sup> On its face, that runs the opposite direction from <a href="#iv-1">IV.1</a>: warming mice up helped there, while cooling mice down (to a genuinely cold 4&deg;C, not merely sub-thermoneutral) helped here.</p>
+<p>This isn't necessarily a contradiction so much as two different mechanisms engaged by two different protocols. The 2013 study tested a mild, chronic housing-temperature difference across the 20&ndash;31&deg;C range, where the cooler condition looks like it produces chronic stress and immunosuppression without recruiting much thermogenic brown fat. The 2022 study tested a much colder, deliberately thermogenic protocol (4&deg;C) engineered to drive substantial BAT activation. Neither study tested the other's temperature range, and where on that spectrum immune suppression gives way to glucose competition as the dominant effect is not established.</p>
+<p class="evline"><span class="ev ev-cont">Contested</span><span class="txt">both findings are real and peer-reviewed; which mechanism dominates in a given cold-exposure regimen is not established.</span></p>
+
+<div class="flag">
+  <div class="flag-lbl">Not a treatment, and not risk-free</div>
+  <p style="margin:0;">Nothing in this section is a treatment recommendation. The mouse mechanism is genuinely strong; the human evidence is a single uncontrolled pilot case with a surrogate imaging endpoint, not a tumor-shrinkage trial. Cancer patients undergoing chemotherapy often have neutropenia, cardiovascular strain, and impaired thermoregulation, so unsupervised cold exposure during active treatment carries real risk and should only be attempted, if at all, under a treating oncologist's supervision.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head" id="part-v">
+  <div class="part-num">PART&nbsp;V</div>
+  <h2>Practice: What Getting Cold Actually Requires</h2>
+</div>
+
+<p>Every mechanism in Parts&nbsp;I&ndash;IV runs through the same starting trigger: cold-sensing nerve endings in skin signaling the sympathetic nervous system. What varies across the common &ldquo;how to do it&rdquo; methods &mdash; a cold windy day, a face dunk, an ocean or lake plunge, an ice bath, a cold shower &mdash; is mostly how efficiently each one delivers that trigger, not a different mechanism each time. There is one real exception, covered in V.2.</p>
+
+<h3><span class="h3num">V.1</span>Intensity and surface area matter more than the label on the method</h3>
+<p>Water pulls heat from the body far faster than air at the same temperature, which is why immersion protocols dominate the acute catecholamine and BAT literature cited throughout this paper rather than air exposure at a similar number on the thermometer. In one whole-body 10&deg;C water immersion study, plasma norepinephrine rose from a baseline of roughly 359&nbsp;pg/ml to about 642&nbsp;pg/ml within 2 minutes, and continued climbing to a peak of roughly 1,171&nbsp;pg/ml by 45 minutes &mdash; the response is not simply a first-30-seconds jolt that plateaus.<sup class="cite"><a href="#r30">30</a></sup> There is also a real intensity threshold: cold-pressor protocols generally need water colder than roughly 7&deg;C to reliably trigger the sympathetic response at all &mdash; a mild chill under that threshold often doesn't do it.<sup class="cite"><a href="#r31">31</a></sup></p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">intensity/threshold effects are real and documented; whether onset speed specifically, versus final temperature or total duration, is the dominant variable has not been isolated in a dedicated dose-response trial.</span></p>
+
+<h3><span class="h3num">V.2</span>The face is a special case, not a smaller version of a full plunge</h3>
+<p>Forehead cooling produces a faster and larger sympathetic nerve response, per unit of skin surface, than cooling the hand &mdash; the face is disproportionately effective for its size.<sup class="cite"><a href="#r26">26</a></sup> But face immersion also engages the mammalian dive reflex through the trigeminal nerve, a distinct, predominantly parasympathetic (vagal) pathway that produces bradycardia.<sup class="cite"><a href="#r29">29</a></sup> A 2024 study found that during progressive face cooling, sympathetic activation switches on at a comparatively mild forehead skin temperature (around 19&deg;C), while the vagal, heart-rate-lowering response engages later, at a colder threshold (around 11&deg;C).<sup class="cite"><a href="#r27">27</a></sup></p>
+<p>A face dunk is therefore not simply a scaled-down plunge. It's an unusually efficient sympathetic trigger for the skin area involved, and if it's cold enough to also cross the lower vagal threshold, it layers a genuine calming, heart-rate-lowering reflex on top &mdash; something whole-body immersion doesn't produce the same way. It's a distinct tool, useful in its own right, not a lesser substitute for the whole-body mechanisms in Part&nbsp;I if the goal is glucose disposal or BAT recruitment specifically.</p>
+<p class="evline"><span class="ev ev-mod">Moderate&ndash;to&ndash;Strong</span><span class="txt">the differential sympathetic/parasympathetic thresholds during face cooling are specific and consistently reported across independent studies.</span></p>
+
+<h3><span class="h3num">V.3</span>Modality, compared</h3>
+<p>A <strong>cold windy day</strong> with skin exposed works through the same pathway as immersion, but air's slower heat transfer means it generally needs to be colder, windier (convective heat loss adds up), and sustained longer to match what a plunge does in a few minutes at the same nominal temperature &mdash; not a lesser method, a slower one. An <strong>ocean or lake plunge</strong> and an <strong>ice bath</strong> both deliver the fastest, largest-surface-area heat pull of the common methods, which is why they dominate the acute-effect literature. A <strong>face dunk</strong> is the distinct case from V.2: a real, efficient tool, but not a substitute for whole-body immersion if the target is the metabolic mechanisms in Part&nbsp;I. A <strong>cold shower</strong> is typically the mildest method in practice &mdash; water contacts only part of the body at a time, and most household cold-water taps and most people's tolerance don't reach the intensity or duration described in V.1.</p>
+
+<div class="mech">
+  <div class="mech-lbl">Practical takeaway</div>
+  <p style="margin-top:0;">What the evidence actually available points to is getting cold enough, over enough skin surface, to cross a real physiological threshold &mdash; a genuine shock rather than a mild chill. But &ldquo;just get the shock and stop&rdquo; oversells it: in the immersion data available, the sympathetic and catecholamine response keeps building for tens of minutes, not just the first jolt of entry. Modality mostly changes how fast and how completely that threshold gets crossed, with the face as a genuine exception carrying its own added reflex.</p>
+  <p style="margin-bottom:0;">None of this is dosed against a specific outcome in a head-to-head trial across methods &mdash; see <a href="#part-i">Part&nbsp;I</a>'s Protocol implication for the actual dosing evidence behind the insulin-sensitivity claim specifically (daily or near-daily exposure over 7&ndash;10 days for the adaptive effect).</p>
+</div>
+</section>
+
+<section>
+<div class="part-head" id="limitations">
+  <div class="part-num">LIMITS</div>
+  <h2>What would weaken this argument</h2>
+</div>
+
+<div class="limits">
+<ul>
+<li><b>The batokine mechanisms in Part&nbsp;I.2 are animal and in-vitro work, not direct human evidence.</b> Maresin 2 and 12,13-diHOME are documented mechanisms in mouse and cell models. That BAT-secreted signaling is the reason human insulin sensitivity improves systemically &mdash; rather than, say, whole-body sympathetic tone or behavior change during the trial protocols &mdash; is inference from the human acclimation data, not a demonstrated causal chain in humans.</li>
+
+<li><b>The headline 43% insulin-sensitivity figure comes from one protocol and one cohort.</b> It is a real, biopsy-confirmed result, but type 2 diabetic patients undergoing 6 hours/day at 14&ndash;16&deg;C for 10 days is a specific and demanding regimen. Generalizing the magnitude of the effect to shorter or less frequent protocols &mdash; the kind most people actually adopt &mdash; is not supported by this data point alone.</li>
+
+<li><b>The &ldquo;immune boost&rdquo; framing common in popular cold-exposure discourse is not supported, and the acute data point the other way.</b> Neutrophil/lymphocyte shifts are modulation, and the meta-analysis in <a href="#iii-2">III.2</a> found inflammation markers rise, not fall, in the hours after cold water immersion. Any net benefit would have to come from a delayed or cumulative effect not yet well characterized, not from the acute response itself.</li>
+
+<li><b>Chronic resting-cortisol reduction has not been tested longitudinally.</b> As flagged in <a href="#part-iii">Part&nbsp;III</a>, the evidence base covers acute spikes and same-day partial resolution. No trial in this review tracked resting cortisol over weeks to months of a regular practice, so the popular claim that cold exposure lowers baseline stress hormone levels over time remains untested rather than confirmed or refuted.</li>
+
+<li><b>Human BDNF data is essentially absent for cold specifically.</b> The strongest human neurotrophic-factor signal in the broader thermal-stress literature comes from heat/hyperthermia protocols. Extending that finding to cold exposure, as is common in popular framing, is not supported by direct evidence.</li>
+
+<li><b>The pre-workout cold-plunge testosterone claim (III.5) is popular-media in origin, not literature-derived.</b> It reached this paper because it's widely repeated, not because a trial supports it. No controlled study identified here tests the specific claim as stated &mdash; cold plunging immediately before a single training session, compared against training without it.</li>
+
+<li><b>The cancer mechanism in Part&nbsp;IV rests on strong mouse data and one uncontrolled human case.</b> The glucose-competition mechanism (IV.1) is causally well-supported in mice via knockout and rescue experiments. The single human pilot case (IV.2) shows a PET glucose-uptake change, not measured tumor shrinkage, in one patient with no comparison group. Treat the mouse finding as strong and the human finding as suggestive at most.</li>
+
+<li><b>The CIRBP/DNA-repair mechanism (IV.3) has not been shown to operate in a living human undergoing deliberate cold exposure.</b> It is established in bowhead whale physiology and validated by adding bowhead CIRBP to human cells in culture &mdash; not by measuring CIRBP or DNA-repair fidelity in humans who cold-plunge or use cold rooms. Whether ordinary cold-exposure practices raise cellular CIRBP enough to matter is untested.</li>
+
+<li><b>The mouse temperature literature points in two directions depending on protocol (IV.4), and this paper does not resolve which mechanism dominates when.</b> Thermoneutral (warm) housing improves tumor control via immune infiltration in one well-controlled study; genuinely cold housing improves tumor control via glucose competition in another. They may both be true under their respective protocols without either generalizing cleanly to a human cold-exposure regimen.</li>
+
+<li><b>Part&nbsp;V synthesizes physiology across separate studies, not a single head-to-head comparison.</b> The face-cooling threshold data, the whole-body immersion catecholamine kinetics, and the cold-pressor intensity threshold each come from different studies, protocols, and populations. No trial cited here directly compares a cold windy day, a face dunk, a plunge, an ice bath, and a cold shower against each other or against a specific metabolic outcome. The synthesis in V.1&ndash;V.3 is this paper's own reading of consistent findings across that literature, not a result any single study reports.</li>
+
+<li><b>Protocol heterogeneity across the cited trials is substantial.</b> Water versus air exposure, temperature, duration, and frequency vary widely across the studies referenced here, and effect sizes (especially for mood and cortisol) are not necessarily comparable across protocols.</li>
+</ul>
+<p class="lim-close">What would strengthen this paper most is a single trial that tracks insulin sensitivity, BAT activity, and resting cortisol together over a multi-week protocol in the same cohort &mdash; the current evidence base assembles these from separate studies with different designs.</p>
+</div>
+</section>
+
+<section class="refwrap">
+<div class="part-head" id="refs">
+  <div class="part-num">REFS</div>
+  <h2>References</h2>
+</div>
+
+<div class="ref-group">Insulin sensitivity &amp; BAT glucose disposal</div>
+<ol class="refs">
+<li id="r1">van Marken Lichtenbelt WD, et al. 10-day cold acclimation trial in type&nbsp;2 diabetic patients: BAT glucose uptake, muscle GLUT4 localization, and whole-body insulin sensitivity. <span class="gapflag">citation to pin</span></li>
+<li id="r2">Cold exposure, adrenergic stimulation of brown adipose tissue, and glucose/free-fatty-acid combustion for heat production. <span class="gapflag">citation to pin</span></li>
+<li id="r3">Brown fat, cold-stimulated Maresin&nbsp;2, and resolution of obesity-induced inflammation improving insulin sensitivity and glucose tolerance (mouse). <span class="gapflag">citation to pin</span></li>
+<li id="r4">12,13-diHOME lipokine release from BAT and its effect on systemic fatty-acid uptake and lipolysis. <span class="gapflag">citation to pin</span></li>
+<li id="r5">Systematic review of human cold-exposure trials on BAT activation, insulin sensitivity, and glucose tolerance. <span class="gapflag">citation to pin</span></li>
+</ol>
+
+<div class="ref-group">Thermogenic architecture</div>
+<ol class="refs" start="6">
+<li id="r6">Review of UCP1-mediated proton-leak thermogenesis in brown adipose tissue mitochondria. <span class="gapflag">citation to pin</span></li>
+<li id="r7">UCP1-deficient mice and increased de novo lipogenesis in white adipose tissue at standard housing temperature. <span class="gapflag">citation to pin</span></li>
+<li id="r8">Bianco AC, et al. Type&nbsp;II deiodinase (D2) and local T3 generation in brown adipose tissue; T3 receptor saturation in activated BAT. <span class="gapflag">citation to pin</span></li>
+<li id="r9">Chronic cold exposure, PGC1&alpha;-mediated mitochondrial biogenesis, and mitochondrial DNA replication markers in BAT. <span class="gapflag">citation to pin</span></li>
+<li id="r10">PINK1/Parkin-mediated mitophagy and its role in maintaining BAT oxidative capacity during cold challenge. <span class="gapflag">citation to pin</span></li>
+</ol>
+
+<div class="ref-group">Neurochemical, mood &amp; immune effects</div>
+<ol class="refs" start="11">
+<li id="r11">&Scaron;r&aacute;mek P, et al. Norepinephrine and dopamine response to cold water immersion in humans. <span class="gapflag">citation to pin</span></li>
+<li id="r12">20-week cold water swimming trial and WHO-5 well-being index outcomes. <span class="gapflag">citation to pin</span></li>
+<li id="r13">Cold water immersion and neutrophil/lymphocyte count shifts &mdash; innate versus adaptive immune modulation. <span class="gapflag">citation to pin</span></li>
+<li id="r14">Meta-analysis (n&gt;3,000) of cold-water immersion, acute inflammation, and stress-marker outcomes across timepoints. <span class="gapflag">citation to pin</span></li>
+<li id="r15">Cold exposure duration/intensity and hippocampal BDNF and mitochondrial markers in mice. <span class="gapflag">citation to pin</span></li>
+<li id="r16">Whole-body hyperthermia and serum BDNF elevation in humans. <span class="gapflag">citation to pin</span></li>
+<li id="r17">Cold water immersion and acute release of cortisol, epinephrine, and norepinephrine. <span class="gapflag">citation to pin</span></li>
+<li id="r18">Reed A, et al. Cortisol reduction below baseline at 180 minutes post cold water immersion, alongside reduced negative affect. <span class="gapflag">citation to pin</span></li>
+<li id="r19">Seager TP. Ice bathing before exercise boosted my testosterone. <span class="j">Medium</span> (self-published), 2023. <span class="note">Self-tracked personal biomarkers and community-reported anecdotes, not a controlled trial. Seager is co-founder and CEO of the ice-bath company Morozko Forge.</span></li>
+<li id="r20">Huberman A. Using deliberate cold exposure for health and performance. <span class="j">Huberman Lab</span> podcast. <span class="note">Testicular cold exposure and testosterone presented as biologically plausible; no trial is cited establishing the effect in humans.</span></li>
+</ol>
+
+<div class="ref-group">Cancer, cold-shock proteins &amp; DNA repair</div>
+<ol class="refs" start="23">
+<li id="r23">Seki T, Yang Y, Sun X, et al. Brown-fat-mediated tumour suppression by cold-altered global metabolism. <span class="j">Nature</span> 2022;608(7922):421&ndash;428. PMID 35922508. doi:10.1038/s41586-022-05030-3. <span class="note">Colorectal, breast, and pancreatic tumors in mice at 4&deg;C vs 30&deg;C; UCP1/BAT knockout and high-sugar-drink rescue both abolish the effect. Includes the single human pilot case (18F-FDG PET, 22&deg;C&times;7d then 28&deg;C&times;4d) discussed in IV.2.</span></li>
+<li id="r24">Evidence for improved DNA repair in the long-lived bowhead whale. <span class="j">Nature</span> 2025. doi:10.1038/s41586-025-09694-5. <span class="gapflag">full author list, volume &amp; page to pin</span> <span class="note">Gorbunova/Seluanov lab, University of Rochester. CIRBP ~100-fold higher in bowhead cells than other mammals; improves double-strand-break repair fidelity; validated by adding bowhead CIRBP to human and Drosophila cells in culture.</span></li>
+<li id="r25">Kokolus KM, et al. Baseline tumor growth and immune control in laboratory mice are significantly influenced by subthermoneutral housing temperature. <span class="j">PNAS</span> 2013;110(50):20176&ndash;20181. PMID 24248371. <span class="note">Thermoneutral (30&ndash;31&deg;C) housing improved CD8+ T-cell-mediated tumor control versus standard (20&ndash;26&deg;C) housing &mdash; opposite direction from ref&nbsp;23, different protocol and mechanism.</span></li>
+</ol>
+
+<div class="ref-group">Practice: modality and stimulus intensity</div>
+<ol class="refs" start="26">
+<li id="r26">Effect of facial cooling and cold air inhalation on sympathetic nerve activity in men. PMID 15351305. <span class="note">Forehead cooling produced faster, larger muscle sympathetic nerve activity (MSNA) and greater diastolic blood pressure rise than hand cooling.</span></li>
+<li id="r27">Activation of cardiac parasympathetic and sympathetic activity occur at different skin temperatures during face cooling. <span class="j">Am J Physiol Regul Integr Comp Physiol</span> 2024. doi:10.1152/ajpregu.00196.2023. <span class="note">Sympathetic activation engages at a milder forehead skin temperature (~19&deg;C) than the vagal, bradycardic dive response (~11&deg;C) during progressive face cooling.</span></li>
+<li id="r28">Barwood MJ, Eglin C, Hills SP, et al. Habituation of the cold shock response: a systematic review and meta-analysis. <span class="j">J Therm Biol</span> 2024;119:103775. PMID 38211547. <span class="note">Repeated cold-water immersion blunts the acute cold shock response (heart rate, respiratory rate) over successive exposures &mdash; relevant to whether the acute &ldquo;hit&rdquo; and the adaptive mechanism in I.2 stay on the same trajectory with repetition.</span></li>
+<li id="r29">Physiology, Diving Reflex. <span class="j">StatPearls</span> [Internet]. NCBI Bookshelf ID: NBK538245. <span class="note">Trigeminal-nerve-mediated mechanism of the mammalian dive reflex triggered by face immersion.</span></li>
+<li id="r30">Plasma norepinephrine kinetics during 60 minutes of 10&deg;C whole-body water immersion. <span class="gapflag">citation to pin</span> <span class="note">Norepinephrine rose from ~359&nbsp;pg/ml baseline to ~642&nbsp;pg/ml at 2 minutes, continuing to a peak of ~1,171&nbsp;pg/ml at 45 minutes.</span></li>
+<li id="r31">Cold-pressor test intensity threshold (~7&deg;C) for reliably eliciting the sympathetic response. <span class="gapflag">citation to pin</span></li>
+</ol>
+</section>
+
+<div style="margin-top:44px">
+  <span class="tag">Brown Adipose Tissue</span><span class="tag">UCP1</span><span class="tag">GLUT4</span><span class="tag">Batokines</span><span class="tag">Maresin 2</span><span class="tag">12,13-diHOME</span><span class="tag">Type II Deiodinase</span><span class="tag">PGC1&alpha;</span><span class="tag">Mitophagy</span><span class="tag">Norepinephrine</span><span class="tag">Cortisol</span><span class="tag">BDNF</span><span class="tag">Testosterone</span><span class="tag">Warburg Effect</span><span class="tag">CIRBP</span><span class="tag">Peto's Paradox</span><span class="tag">Dive Reflex</span><span class="tag">MSNA</span><span class="tag">Cold Shock Response</span>
+</div>
+
+<footer class="end">
+  <p><b>A note on sourcing.</b> This paper fills the <em>Thermal comfort</em> gap flagged in <a href="metabolic-health.html">Metabolic Health</a> II.5, and stands on its own literature rather than a single external framework. References&nbsp;1&ndash;18 still need their full citation pinned (author, journal, year, PMID) &mdash; the mechanisms and findings described are consistent with the published cold-exposure and thermogenesis literature, but this draft has not yet done that citation pass. Treat those as directionally correct, not independently verifiable, until that pass is complete. References&nbsp;19&ndash;20 and 23&ndash;29, covering the pre-workout testosterone claim in <a href="#part-iii">Part&nbsp;III</a>, the cancer mechanisms in <a href="#part-iv">Part&nbsp;IV</a>, and the modality physiology in <a href="#part-v">Part&nbsp;V</a>, are fully cited (ref&nbsp;24 needs only its full author list and volume/page pinned). References&nbsp;30&ndash;31 in Part&nbsp;V still need their citation pinned.</p>
+  <p>The companion papers &mdash; <a href="linoleic-acid.html">Linoleic Acid &amp; Metabolic Disease</a> and <a href="ahr.html">The Aryl Hydrocarbon Receptor &amp; Metabolic Disease</a> &mdash; cover the dietary side of metabolic health; this paper covers a non-dietary input the same framework depends on.</p>
+</footer>
+
+</div>
+</body>
+</html>

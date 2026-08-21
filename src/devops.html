@@ -1,124 +1,74 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Jenkins</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="shortcut icon" href="images/favicon.ico" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps &mdash; CI/CD</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-tech.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html" class="active">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="tech.html">Overview</a>
+  <a href="website.html">Website</a>
+  <a href="snowplow.html">Snowplow</a>
+  <a href="databricks.html">Databricks</a>
+  <a href="kubernetes.html">Kubernetes</a>
+  <a href="ml_platform.html">ML Platform</a>
+  <a href="devops.html" class="active">DevOps</a>
+</div></div>
+<div class="shell narrow">
+<div class="hero">
+  <p class="eyebrow">Automation &amp; Delivery</p>
+  <h1>DevOps <em>&mdash; Jenkins</em></h1>
+  <p class="sub">The CI/CD server that tests and deploys every piece of infrastructure in this stack: Terraform plans and applies, and the dbt docs build.</p>
+</div>
+<section class="section">
+  <figure><img src="images/patrick-cloud-jenkins-terraform.svg" alt="Jenkins Terraform pipeline"></figure>
+  <figure><img src="images/patrick-cloud-jenkins-dbt-docs.svg" alt="Jenkins dbt docs pipeline"></figure>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <div class="section-head"><span class="section-num">01</span><h2>Architecture Decisions</h2></div>
+  <div class="defrow"><div class="term">Security</div><p class="def">Sits behind the ALB in a private subnet &mdash; no direct public exposure.</p></div>
+  <div class="defrow"><div class="term">Alarms</div><div class="def">Standard AWS alarms applied to EC2, emailing on trigger:
+    <ul><li>EC2 &mdash; error log detection, high CPU, low CPU</li></ul></div></div>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Patrick O'Connor</a>
-					</header>
+  <div class="flag">
+    <div class="flag-lbl">Write-up in progress</div>
+    <p style="margin:0;">The pipeline diagrams are in and the decisions above are what the old page documented &mdash; it cut off mid-list. Send me notes on the two pipelines (stages, approvals, how Terraform state and the dbt docs publish are handled) and I&rsquo;ll finish this out.</p>
+  </div>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">Patrick Cloud</a></li>
-							<li><a href="website.html">Website</a></li>
-							<li><a href="snowplow.html">Snowplow</a></li>
-							<li><a href="databricks.html">Databricks</a></li>
-							<li><a href="kubernetes.html">Kubernetes</a></li>
-							<li><a href="ml_platform.html">ML Platform</a></li>
-							<li class="active"><a href="jenkins.html">Jenkins</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/patrickoconnor80/patrick-cloud-jenkins" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+  <div class="section-head"><span class="section-num">02</span><h2>Delivery Across the Stack</h2></div>
+  <p class="lead">Jenkins is the execution layer, but delivery spans a few tools.</p>
+  <div class="defrow"><div class="term">Terraform</div><p class="def">Every resource in this environment is declared in code across eight repositories, so the whole stack can be torn down and rebuilt reproducibly.</p></div>
+  <div class="defrow"><div class="term">Jenkins</div><p class="def">Runs the plan/apply pipelines and the dbt docs build. Behind the ALB in a private subnet.</p></div>
+  <div class="defrow"><div class="term">Argo CD</div><p class="def">GitOps continuous delivery for anything running inside the Kubernetes cluster &mdash; see <a href="kubernetes.html">Kubernetes</a>.</p></div>
+  <div class="defrow"><div class="term">GitHub Actions</div><p class="def">Used alongside Jenkins for lighter-weight repository automation.</p></div>
 
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<h1>DevOps<br />
-									Architecture</h1>
-								</header>
-								<span class="image fit"><img src="images/patrick-cloud-dev-ops.svg" alt="" /></span>
-								<div class="col-6 col-12-small">
-									<h2>Architecture Decisions</h2>
-									<ul>
-										<li>Plan - Jira and Confluence would be my preffered planning tools</li>
-										<li>Code - Github is where the code is stored</li>
-										<li>Build - Docker is used to build the images</li>
-										<li>Test - Trivy, Checkov, Behave, Unit Testing</li>
-										<ul>
-											<li>Trivy scans the image for vunlerabilities</li>
-											<li>Checkov scans the terraform code for vunlerabilities</li>
-											<li>Behave performs end to end testing(Not used in this project)</li>
-											<li>Unit Testing for SQL in dbt and any python application code(not used in this project)</li>
-										</ul>
-										<li>Release - Jenkins runs the build process for Terraform, Docker and Kubernetes</li>
-										<li>Deploy - Terraform deploys the infrastructure to AWS</li>
-										<li>Operate - Argo CD keeps the kubernetes cluster in sync with github</li>
-										<li>Monitor - Cloudwatch, Prometheus & Grafana</li>
-										<ul>
-											<li>Cloudwatch logs events and has alarms to send emails</li>
-											<li>Prometheus & Grafana provide a dashoboard for monitoring Kubernetes</li>
-										</ul>
-									</ul>
-								</div>
-                                <span class="image fit"><img src="images/patrick-cloud-jenkins-dbt-docs.svg" alt="" /></span>
-								<div class="col-6 col-12-small">
-									<h2>Kubernetes Deployment</h2>
-									<ul>
-										<li>Jenkins Pulls the image repo</li>
-										<li>Docker builds the image</li>
-										<li>Trivy scans the image</li>
-										<li>Jenkins pushs the image to ECR</li>
-										<li>Jenkins pulls the kubernetes manifest repo</li>
-										<li>The manifest's image tag is updated in github</li>
-										<li>Argocd periodically polls the github repo for changes and applies them to the cluster</li>
-									</ul>
-								</div>
-								<span class="image fit"><img src="images/patrick-cloud-jenkins-terraform.svg" alt="" /></span>
-								<div class="col-6 col-12-small">
-									<h2>Terraform Deployment</h2>
-									<ul>
-										<li>Jenkins Pulls the Terraform repo</li>
-										<li>Checkov scans the Terraform code for vulnerablilites</li>
-										<li>Terraform applies the code to AWS</li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<h2>Jenkins Architecture Decisions</h2>
-									<ul>
-										<li>Security - Jenkins EC2 server sits behind ALB in private subnet. Nginx is running on the server so traffic can be encrypted from the ALB to the Jenkins EC2 server.</li>
-										<li>Alarms - The standard AWS alarms are applied to EC2. These alarms will also send an email when triggered.</li>
-											<ul>
-												<li>EC2 - Error log detection, High CPU, Low CPU</li>
-											</ul>
-									</ul>
-								</div>
-							</section>
-					</div>
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/snowplow_init.js"></script>
-			<script src="assets/js/snowplow_trakcer.js"></script>
-
-	</body>
+  <div class="section-head"><span class="section-num">03</span><h2>Console</h2></div>
+  <div class="defrow"><div class="term">Jenkins</div><p class="def"><a href="https://jenkins.patrick-cloud.com/">jenkins.patrick-cloud.com</a></p></div>
+</section>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
 </html>

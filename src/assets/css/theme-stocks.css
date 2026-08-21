@@ -1,0 +1,49 @@
+/* theme-stocks.css — Stocks section.
+   Clean financial terminal-light: slate/white, Inter + Plex Mono, tabular figures,
+   green/red semantics. Chosen to sit naturally around the VCX widget's palette. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --font-display:'Inter',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --font-stat:'IBM Plex Mono',monospace;
+  --size-body:16px;
+
+  --bg:#f8fafc;
+  --surface:#ffffff;
+  --surface-hover:#f1f5f9;
+  --ink:#334155;
+  --ink-strong:#0f172a;
+  --muted:#64748b;
+  --rule:#e2e8f0;
+
+  --accent:#1d4ed8;          /* blue */
+  --accent-strong:#1e3a8a;
+  --accent-2:#15803d;        /* green */
+  --accent-3:#7c3aed;        /* violet */
+  --on-accent:#ffffff;
+
+  --link:#1d4ed8;
+  --link-underline:rgba(29,78,216,.3);
+
+  --warn:#ca8a04;
+  --warn-bg:#fefce8;
+  --warn-ink:#713f12;
+
+  --up:#15803d;
+  --down:#b91c1c;
+
+  --radius:8px;
+  --header-bg:rgba(248,250,252,.92);
+  --header-border:1px solid #e2e8f0;
+  --hero-border:1px solid #e2e8f0;
+  --card-hover-shadow:0 8px 24px rgba(15,23,42,.08);
+  --code-bg:#f1f5f9;
+  --display-tracking:-.02em;
+  --em-style:normal;
+  --em-weight:700;
+}
+body{font-variant-numeric:tabular-nums;}
+.hero h1 em{font-style:normal;}
+.stats .big{letter-spacing:-.02em;}
