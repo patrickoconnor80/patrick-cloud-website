@@ -45,6 +45,12 @@
   .refs li { margin: 0.5rem 0; }
   .refs a { border-bottom-color: rgba(122, 59, 46, 0.25); }
   .todo { color: #a05a2c; font-size: 0.85rem; }
+  .toc { background: var(--tag-bg); border: 1px solid var(--line); border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1.2rem 0; font-size: 0.88rem; }
+  .toc-title { font-weight: 600; margin-bottom: 0.4rem; color: var(--sub); text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.04em; }
+  .toc ol { columns: 2; column-gap: 1.5rem; margin: 0; padding-left: 1.2rem; }
+  .toc li { margin: 0.15rem 0; break-inside: avoid; }
+  .toc a { border-bottom: none; }
+  .toc a:hover { border-bottom: 1px solid var(--accent); }
 </style>
 </head>
 <body>
@@ -55,35 +61,91 @@
   <span class="tag">Amino Acid</span>
   <span class="tag">Foundational</span>
   <span class="tag">Structural</span>
+  <span class="tag">Anti-Stress</span>
 </div>
 
-<div class="callout"><strong>TL;DR:</strong> Glycine provides substrate for collagen and several metabolic pathways; collagen provides structural integrity.</div>
+<div class="callout"><strong>TL;DR:</strong> Glycine provides substrate for collagen and several metabolic pathways; collagen provides structural integrity. Beyond structure, glycine is also an inhibitory neurotransmitter with measurable anti-stress, sleep, and metabolic effects on its own. Synthesis depends on vitamin C, iron, and copper as cofactors, declines roughly 1%/year after age 25, and human trials show benefit for skin, joints, gut lining, sleep, blood pressure, insulin sensitivity, and muscle recovery at daily doses in the 2.5–20 g range.</div>
 
-<h2>Overview</h2>
-<p>Collagen is a structural protein built from glycine, proline, and hydroxyproline, arranged in a triple helix that provides tensile strength. The path runs glycine → procollagen → stable triple helix (via hydroxylation of proline and lysine, which requires vitamin C and iron) → mature collagen fiber (via lysyl oxidase cross-linking, which requires copper). See Collagen Synthesis Cofactors below for the citations on each step.</p>
+<div class="toc">
+<div class="toc-title">On this page</div>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#types">Types of Collagen</a></li>
+<li><a href="#intake">Intake</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#collagen-outcomes">Collagen: Supplementation Outcomes</a></li>
+<li><a href="#glycine-systems">Glycine: Independent Systems</a></li>
+<li><a href="#deficiency">Deficiency Effects</a></li>
+<li><a href="#forms">Forms &amp; Bioavailability</a></li>
+<li><a href="#dosage">Dosage &amp; Timing</a></li>
+<li><a href="#cofactors">Synthesis Cofactors</a></li>
+<li><a href="#foods">Top Foods</a></li>
+<li><a href="#refs">References</a></li>
+</ol>
+</div>
 
-<h2>Intake</h2>
+<h2 id="overview">Overview</h2>
+<p>Collagen is a structural protein built from glycine, proline, and hydroxyproline, arranged in a triple helix that provides tensile strength. The path runs glycine → procollagen → stable triple helix (via hydroxylation of proline and lysine, which requires vitamin C and iron) → mature collagen fiber (via lysyl oxidase cross-linking, which requires copper). See Collagen Synthesis Cofactors below for the citations on each step. It's the single most abundant protein in the human body, present in skin, bone, tendon, ligament, cartilage, blood vessels, and the basement membranes that anchor organ tissue.<sup><a href="#ref36">36</a></sup> Roughly 28 distinct collagen types have been identified, but four (types I–IV) account for nearly all of the collagen relevant to skin, joint, and connective-tissue health.<sup><a href="#ref36">36</a></sup></p>
+<p>Endogenous synthesis slows with age — by an estimated ~1%/year starting around age 25 — which tracks with visible skin thinning and, less visibly, the same structural-protein loss underlying age-related bone density decline.<sup><a href="#ref33">33</a></sup> <span class="grade">(Human — observational/mechanistic)</span></p>
+
+<h2 id="types">Types of Collagen</h2>
+<p>The four major types differ in location and role. Most supplements (bovine or marine) supply a mix of I and III; type II requires a separately sourced, typically cartilage-derived ingredient.</p>
+<table>
+<tr><th>Type</th><th>Where it's found</th><th>Role</th></tr>
+<tr><td>I</td><td>Skin, bone, tendon, ligament</td><td>&gt;90% of total body collagen; primary source of tensile strength and structure.<sup><a href="#ref32">32</a></sup></td></tr>
+<tr><td>II</td><td>Cartilage</td><td>Joint structure and elasticity; often absent from standard hydrolyzed blends, which is why joint-specific products add it separately as undenatured type II.<sup><a href="#ref30">30</a></sup></td></tr>
+<tr><td>III</td><td>Skin, blood vessels, internal organs</td><td>Co-assembles with type I fibrils and is required for normal fibril structure and cardiovascular development.<sup><a href="#ref35">35</a></sup></td></tr>
+<tr><td>IV</td><td>Basement membranes (skin, kidney, other organs)</td><td>Forms the sheet-like scaffold that anchors epithelial and endothelial cell layers, distinct from the fibrillar types I–III.<sup><a href="#ref31">31</a></sup></td></tr>
+</table>
+
+<h2 id="intake">Intake</h2>
 <p>Estimated metabolic demand runs 12–15 g/day against endogenous production of roughly 3 g/day.<sup><a href="#ref1">1</a></sup> <span class="grade">(Inferred — modeled from turnover estimates, not a formal RDA)</span> Collagen turnover is continuous and metabolically expensive, which is the basis for treating glycine as conditionally essential in humans rather than fully dispensable.</p>
+<p><strong>The modern-diet gap.</strong> Roughly half of the protein in an animal carcass is collagen, and about 35% of collagen's amino acid content is glycine — traditional nose-to-tail eating supplied glycine in that ratio more or less automatically.<sup><a href="#ref38">38</a></sup> Diets built almost entirely around isolated muscle meat (boneless chicken breast, steak trimmed of connective tissue, whey/muscle-meat protein powders) skew the amino acid intake toward methionine, cysteine, and tryptophan relative to glycine, since those are muscle-dense and glycine is connective-tissue-dense.<sup><a href="#ref38">38</a></sup> Serum glycine deficiency shows up consistently in people with diabetes, obesity, hypertension, and fatty liver, though these are cross-sectional associations rather than proof that low glycine causes the disease.<sup><a href="#ref39">39</a></sup> <span class="grade">(Human — observational)</span> This also connects back to the Longevity entry below: glycine offsets some of the downstream cost of a methionine-heavy amino acid profile.</p>
 
-<h2>Functions</h2>
+<h2 id="functions">Functions</h2>
 <h3>Structural</h3>
 <p>Contributes carbon and nitrogen to the purine ring (adenine, guanine).<sup><a href="#ref2">2</a></sup> Major component of skin, tendons, ligaments, and bone, where it provides tensile strength.<sup><a href="#ref3">3</a></sup></p>
 <h3>Functional</h3>
 <p>Glycine + succinyl-CoA is the first step in heme synthesis.<sup><a href="#ref2">2</a></sup> Glycine conjugates bile acids, increasing their solubility and lipid absorption.<sup><a href="#ref4">4</a></sup> Glycine + arginine forms creatine, supporting rapid ATP regeneration in muscle and brain.<sup><a href="#ref2">2</a></sup></p>
 <h3>Protective</h3>
-<p>Glycine + cysteine (+ glutamate) form glutathione, which neutralizes reactive oxygen species and handles phase II detoxification, including protection against heavy metals and xenobiotics.<sup><a href="#ref5">5</a></sup> Glycine availability can be rate-limiting for glutathione synthesis.<sup><a href="#ref6">6</a></sup> Glycine also conjugates toxins directly (e.g., benzoate → hippurate) for urinary excretion.<sup><a href="#ref4">4</a></sup></p>
+<p>Glycine + cysteine (+ glutamate) form glutathione, which neutralizes reactive oxygen species and handles phase II detoxification, including protection against heavy metals and xenobiotics.<sup><a href="#ref5">5</a></sup> Glycine availability can be rate-limiting for glutathione synthesis.<sup><a href="#ref6">6</a></sup> Glycine also conjugates toxins directly (e.g., benzoate → hippurate) for urinary excretion.<sup><a href="#ref4">4</a></sup> Separately from its role as a collagen precursor, glycine also acts directly at the cell level as a cytoprotective and anti-inflammatory agent — limiting fibrosis, calcium overload, and ATP depletion, and dampening inflammatory activation of immune cells (documented most thoroughly in Kupffer cells and other macrophage populations).<sup><a href="#ref41">41</a></sup> <span class="grade">(Mixed — mechanism well-characterized in vitro/animal models, less established in humans)</span></p>
 
-<h2>Systems</h2>
-<p><strong>Heart.</strong> Improves insulin sensitivity and glucose homeostasis via enhanced insulin secretion;<sup><a href="#ref16">16</a></sup> supports VEGF signaling involved in angiogenesis.<sup><a href="#ref17">17</a></sup> <span class="grade">(Moderate)</span></p>
-<p><strong>Brain.</strong> Blocks ROS formation in brain mitochondria;<sup><a href="#ref18">18</a></sup> supports survival of a neural stem cell subpopulation;<sup><a href="#ref19">19</a></sup> reduces damage from hypoxia/ischemia in rat models.<sup><a href="#ref20">20</a></sup> Collagen VI has been reported to protect against amyloid-β toxicity, per a secondary summary of preclinical work.<sup><a href="#ref21">21</a></sup> <span class="grade">(Animal–in-vitro)</span></p>
-<p><strong>Gut.</strong> Collagen peptides reduce intestinal epithelial barrier dysfunction in vitro;<sup><a href="#ref22">22</a></sup> glycine showed partial benefit for mucosal regeneration in a rat ischemia-reperfusion model.<sup><a href="#ref23">23</a></sup> <span class="grade">(Animal–in-vitro)</span></p>
-<p><strong>Sleep.</strong> Oral glycine raises extracellular serotonin in rat prefrontal cortex — the proposed route to improved sleep quality via the serotonin → melatonin pathway.<sup><a href="#ref24">24</a></sup> <span class="grade">(Inferred — mechanism is rodent data; human sleep-outcome studies exist for glycine but aren't yet linked into this write-up)</span></p>
-<p><strong>Longevity.</strong> Glycine suppresses methionine-induced hyperhomocysteinemia, offsetting a known cost of methionine overload;<sup><a href="#ref14">14</a></sup> methionine restriction itself extends lifespan across multiple model organisms.<sup><a href="#ref13">13</a></sup> <span class="grade">(Animal–in-vitro)</span></p>
+<h2 id="collagen-outcomes">Collagen: Supplementation Outcomes</h2>
+<p>These are outcomes from trials of ingested collagen (usually hydrolyzed peptides) rather than glycine in isolation — evidence here leans toward direct human trials since collagen supplements are what's actually been tested in people.</p>
+<p><strong>Skin.</strong> A systematic review and meta-analysis of hydrolyzed collagen trials found improvements in skin hydration, elasticity, and wrinkle depth, with effects detectable within roughly 90 days of daily supplementation.<sup><a href="#ref25">25</a></sup> <span class="grade">(Human — meta-analysis)</span></p>
+<p><strong>Joints.</strong> Collagen supplementation — both hydrolyzed peptides and undenatured type II — is associated with reduced joint pain and stiffness and improved function in adults, including those with osteoarthritis.<sup><a href="#ref26">26</a></sup> Undenatured type II collagen is thought to work through a distinct oral-tolerance immune mechanism rather than through peptide absorption.<sup><a href="#ref30">30</a></sup> <span class="grade">(Human — review)</span></p>
+<p><strong>Hair &amp; nails.</strong> A 24-week trial of specific bioactive collagen peptides improved nail growth rate and reduced breakage in women with brittle nails.<sup><a href="#ref27">27</a></sup> <span class="grade">(Human — RCT)</span></p>
+<p><strong>Gut.</strong> Collagen peptides reduce intestinal epithelial barrier dysfunction in vitro;<sup><a href="#ref22">22</a></sup> glycine showed partial benefit for mucosal regeneration in a rat ischemia-reperfusion model.<sup><a href="#ref23">23</a></sup> In a mixed-methods human trial, a 20 g/day collagen peptide supplement reduced self-reported digestive symptoms, including bloating, in healthy women over 8 weeks.<sup><a href="#ref28">28</a></sup> <span class="grade">(Mixed — human trial for symptoms, animal/in-vitro for mechanism)</span></p>
+<p><strong>Muscle &amp; recovery.</strong> Twelve weeks of collagen peptide supplementation combined with resistance training increased fat-free mass and shifted the skeletal-muscle proteome toward markers of extracellular-matrix remodeling, beyond what resistance training alone produced.<sup><a href="#ref29">29</a></sup> <span class="grade">(Human — RCT)</span></p>
 
-<h2>Deficiency effects</h2>
-<p>Impaired collagen synthesis — compounded by low vitamin C or low protein intake, since both feed the same pathway.</p>
+<h2 id="glycine-systems">Glycine: Independent Systems</h2>
+<p>Glycine has effects that don't run through collagen at all — as a free amino acid it's also an inhibitory neurotransmitter, a metabolic modulator, and (per the strongest single finding on this page) a lifespan-extending intervention in mice. Evidence quality here is more mixed: some entries are backed by human RCTs, others rest mainly on animal or in-vitro mechanism.</p>
+<p><strong>Heart &amp; metabolism.</strong> Improves insulin sensitivity and glucose homeostasis via enhanced insulin secretion;<sup><a href="#ref16">16</a></sup> supports VEGF signaling involved in angiogenesis.<sup><a href="#ref17">17</a></sup> In a sucrose-induced insulin resistance model, glycine supplementation increased insulin sensitivity and glutathione synthesis while reducing oxidative stress.<sup><a href="#ref48">48</a></sup> In people with metabolic syndrome, 8 weeks of oral glycine reduced markers of oxidative stress and lowered systolic blood pressure.<sup><a href="#ref40">40</a></sup> A broader review of glycine and metabolic syndrome components covers similar effects on blood glucose regulation and lipolysis.<sup><a href="#ref47">47</a></sup> <span class="grade">(Human — small trials; mechanism converges across several independent lines of evidence)</span></p>
+<p><strong>Liver.</strong> Glycine conjugates with bile acids (alongside taurine) to form bile salts, supporting fat digestion and fat-soluble vitamin absorption.<sup><a href="#ref4">4</a></sup> In a warm liver ischemia-reperfusion model, glycine preserved mitochondrial activity and normal bile composition.<sup><a href="#ref45">45</a></sup> <span class="grade">(Animal — mechanistic)</span></p>
+<p><strong>Brain.</strong> Blocks ROS formation in brain mitochondria;<sup><a href="#ref18">18</a></sup> supports survival of a neural stem cell subpopulation;<sup><a href="#ref19">19</a></sup> reduces damage from hypoxia/ischemia in rat models.<sup><a href="#ref20">20</a></sup> Collagen VI has been reported to protect against amyloid-β toxicity, per a secondary summary of preclinical work.<sup><a href="#ref21">21</a></sup> Beyond these roles, glycine is itself an inhibitory neurotransmitter, acting through glycine receptors and potentiating GABAergic/glutamatergic signaling — one of the nervous system's primary brakes on excitatory, stress-related overactivation.<sup><a href="#ref38">38</a></sup> High-dose glycine as an adjunct treatment reduced negative symptoms in people with schizophrenia in a placebo-controlled trial, a clinical (if narrow) demonstration of this inhibitory action in humans.<sup><a href="#ref37">37</a></sup> <span class="grade">(Mixed — general inhibitory-neurotransmitter role is well established; most other Brain claims here are animal–in-vitro)</span></p>
+<p><strong>Sleep.</strong> Glycine taken before bed lowers core body temperature, one of the body's own signals for initiating deep sleep, and improves next-day cognitive performance.<sup><a href="#ref44">44</a></sup> In a placebo-controlled human trial, glycine ingestion before bedtime improved subjective sleep quality and produced correlated changes on polysomnography.<sup><a href="#ref46">46</a></sup> A proposed underlying mechanism is that oral glycine raises extracellular serotonin in rat prefrontal cortex, feeding the serotonin → melatonin pathway.<sup><a href="#ref24">24</a></sup> <span class="grade">(Human — small RCTs for the sleep-quality outcome; the serotonin mechanism itself is rodent data)</span></p>
+<p><strong>Longevity.</strong> Glycine suppresses methionine-induced hyperhomocysteinemia, offsetting a known cost of methionine overload;<sup><a href="#ref14">14</a></sup> methionine restriction itself extends lifespan across multiple model organisms.<sup><a href="#ref13">13</a></sup> Glycine supplementation itself — not just methionine restriction — extended lifespan in both male and female mice in a multi-site NIA Interventions Testing Program study, one of the more rigorously designed longevity findings for any single nutrient.<sup><a href="#ref42">42</a></sup> A 2024 systematic review of glycine administration in human adults covers effects across multiple physiological systems, though long-term human lifespan data obviously doesn't exist.<sup><a href="#ref49">49</a></sup> <span class="grade">(Animal — the mouse lifespan-extension finding is the strongest single data point on this page; human evidence is indirect)</span></p>
 
-<h2>Collagen synthesis cofactors</h2>
+<h2 id="deficiency">Deficiency effects</h2>
+<p>Impaired collagen synthesis — compounded by low vitamin C or low protein intake, since both feed the same pathway. The same structural-protein loss that thins skin with age is implicated in osteoporosis, framing skin aging and bone density loss as two expressions of the same underlying deficit.<sup><a href="#ref33">33</a></sup></p>
+
+<h2 id="forms">Forms & Bioavailability</h2>
+<p><strong>Hydrolyzed collagen</strong> (collagen peptides) has been enzymatically broken into short chains that absorb intact across the gut wall and appear in the bloodstream within hours — most human trials use this form, and it's the reason it outperforms less-processed collagen for measurable outcomes.<sup><a href="#ref34">34</a></sup> <strong>Gelatin</strong> is a less-processed, larger-molecule version of the same protein: fully digestible, but not broken down into the specific peptides studied in most trials. <strong>Undenatured type II collagen</strong> (often labeled UC-II) is prepared differently again — kept in its native, non-hydrolyzed state specifically to act on gut-associated immune tissue rather than to be absorbed as free amino acids, which is why it shows up separately in joint-focused formulas rather than as part of a general hydrolyzed blend.<sup><a href="#ref30">30</a></sup></p>
+<p>Source also determines the type mix: bovine (cattle-derived) collagen typically supplies a blend of types I and III, while marine (fish-derived) collagen is almost entirely type I. Neither supplies meaningful type II unless it's added separately from cartilage.</p>
+
+<h2 id="dosage">Dosage & Timing</h2>
+<p>Human trials cluster around three effective ranges: ~2.5 g/day for nail-specific outcomes,<sup><a href="#ref27">27</a></sup> ~10 g/day as a general maintenance dose, and 15–20 g/day in trials targeting joint, gut, or muscle outcomes.<sup><a href="#ref26">26</a></sup><sup><a href="#ref28">28</a></sup><sup><a href="#ref29">29</a></sup> <span class="grade">(Human — across trials, not a formal RDA)</span></p>
+<table>
+<tr><th>Outcome</th><th>Typical time to effect</th></tr>
+<tr><td>Skin hydration / elasticity</td><td>~4–12 weeks<sup><a href="#ref25">25</a></sup></td></tr>
+<tr><td>Digestive symptoms</td><td>~4–8 weeks<sup><a href="#ref28">28</a></sup></td></tr>
+<tr><td>Joint pain / stiffness</td><td>~8–12 weeks<sup><a href="#ref26">26</a></sup></td></tr>
+<tr><td>Muscle / fat-free mass (with training)</td><td>~12 weeks<sup><a href="#ref29">29</a></sup></td></tr>
+<tr><td>Hair / nail growth</td><td>~12–24 weeks<sup><a href="#ref27">27</a></sup></td></tr>
+</table>
+<p>Timing relative to meals doesn't appear to matter mechanistically — collagen peptides are absorbed like any other protein source — though pairing with a vitamin C source is worth doing given its role as a rate-limiting cofactor (see below).</p>
+
+<h2 id="cofactors">Collagen synthesis cofactors</h2>
 <ul>
   <li><strong>Vitamin C</strong> — required for prolyl/lysyl hydroxylase activity;<sup><a href="#ref9">9</a></sup> reduces Fe³⁺→Fe²⁺ and Cu²⁺→Cu⁺ into their active enzymatic forms;<sup><a href="#ref10">10</a></sup><sup><a href="#ref11">11</a></sup> also removes an IGF-1 inhibition pathway, and IGF-1 itself stimulates collagen synthesis.<sup><a href="#ref7">7</a></sup><sup><a href="#ref8">8</a></sup> <span class="grade">(Strong)</span></li>
   <li><strong>Iron</strong> — Fe²⁺ hydroxylates proline and lysine so the triple helix can form.<sup><a href="#ref10">10</a></sup></li>
@@ -91,16 +153,18 @@
   <li><strong>Sodium</strong> — SVCT1/2 transporters move vitamin C into tissue along sodium gradients, an indirect but relevant dependency.<sup><a href="#ref12">12</a></sup> <span class="grade">(Inferred)</span></li>
 </ul>
 
-<h2>Top foods</h2>
+<h2 id="foods">Top foods</h2>
 <ul>
   <li>Bone broth — collagen/gelatin content varies with prep; sodium varies widely</li>
   <li>Beef tendon — very collagen/gelatin-rich; needs long simmer/braise/pressure cook</li>
   <li>Oxtail — connective-tissue-rich cut; braise or pressure cook</li>
   <li>Beef shank — high in connective tissue; braises and stocks</li>
+  <li>Gelatin — same amino acid profile as collagen, less processed than hydrolyzed peptides; used in traditional cooking (aspic, homemade jellies)</li>
+  <li>Chicken, pork, or fish skin — concentrated, cookable collagen source; fish skin skews almost entirely type I</li>
 </ul>
 
 <hr>
-<h2>References</h2>
+<h2 id="refs">References</h2>
 <div class="refs">
 <ol>
 <li id="ref1">Branch-point stoichiometry of glycine biosynthesis. 2008. <a href="https://pubmed.ncbi.nlm.nih.gov/19179765/" target="_blank">PMID 19179765</a></li>
@@ -127,6 +191,32 @@
 <li id="ref22">Collagen peptides reduce intestinal epithelial barrier dysfunction. 2017. <a href="https://pubs.rsc.org/en/content/articlelanding/2017/fo/c6fo01347c" target="_blank">RSC Food & Function</a></li>
 <li id="ref23">Glycine/pyruvate/resveratrol and intestinal mucosa regeneration (rats). 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/29201896/" target="_blank">PMID 29201896</a></li>
 <li id="ref24">Oral glycine increases extracellular serotonin in rat prefrontal cortex. 2011. <a href="https://pubmed.ncbi.nlm.nih.gov/21414089/" target="_blank">PMID 21414089</a></li>
+<li id="ref25">Effects of hydrolyzed collagen supplementation on skin aging: a systematic review and meta-analysis. 2021. <a href="https://pubmed.ncbi.nlm.nih.gov/33742704/" target="_blank">PMID 33742704</a></li>
+<li id="ref26">Collagen supplementation in skin and orthopedic diseases: a review of the literature. 2023. <a href="https://pubmed.ncbi.nlm.nih.gov/37064452/" target="_blank">PMID 37064452</a></li>
+<li id="ref27">Oral supplementation with specific bioactive collagen peptides improves nail growth and reduces symptoms of brittle nails. 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/28786550/" target="_blank">PMID 28786550</a></li>
+<li id="ref28">Effect of a daily collagen peptide supplement on digestive symptoms in healthy women: 2-phase mixed methods study. 2022. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9198822" target="_blank">PMC9198822</a></li>
+<li id="ref29">Effects of 12 weeks of hypertrophy resistance exercise training combined with collagen peptide supplementation on the skeletal muscle proteome in recreationally active men. 2019. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6566884" target="_blank">PMC6566884</a></li>
+<li id="ref30">Undenatured type II collagen and its role in improving osteoarthritis. 2023. <a href="https://pubmed.ncbi.nlm.nih.gov/37774932/" target="_blank">PMID 37774932</a></li>
+<li id="ref31">Type IV collagens and basement membrane diseases: cell biology and pathogenic mechanisms. 2015. <a href="https://pubmed.ncbi.nlm.nih.gov/26610912/" target="_blank">PMID 26610912</a></li>
+<li id="ref32">Current insights into collagen type I. 2021. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8399689" target="_blank">PMC8399689</a></li>
+<li id="ref33">Osteoporosis, like skin ageing, is caused by collagen loss which is reversible. 2020. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7160787" target="_blank">PMC7160787</a></li>
+<li id="ref34">Hydrolyzed collagen — sources and applications. 2019. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6891674" target="_blank">PMC6891674</a></li>
+<li id="ref35">Type III collagen is crucial for collagen I fibrillogenesis and for normal cardiovascular development. 1997. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC20006" target="_blank">PMC20006</a></li>
+<li id="ref36">Biochemistry, collagen synthesis (StatPearls). <a href="https://www.ncbi.nlm.nih.gov/books/NBK507709/" target="_blank">NBK507709</a></li>
+<li id="ref37">Heresco-Levy et al., 1999 — high-dose glycine for negative symptoms of schizophrenia (RCT). <a href="https://pubmed.ncbi.nlm.nih.gov/9892253/" target="_blank">PMID 9892253</a></li>
+<li id="ref38">Wang et al., 2013 — glycine metabolism in animals and humans: implications for nutrition and health (review). <a href="https://pubmed.ncbi.nlm.nih.gov/23615880/" target="_blank">PMID 23615880</a></li>
+<li id="ref39">Alves et al., 2019 — glycine metabolism and its alterations in obesity and metabolic diseases. <a href="https://pubmed.ncbi.nlm.nih.gov/31208147/" target="_blank">PMID 31208147</a></li>
+<li id="ref40">Díaz-Flores et al., 2013 — oral glycine reduces oxidative stress and systolic blood pressure in metabolic syndrome. <a href="https://pubmed.ncbi.nlm.nih.gov/24144057/" target="_blank">PMID 24144057</a></li>
+<li id="ref41">Zhong et al., 2003 — L-glycine as an antiinflammatory, immunomodulatory, and cytoprotective agent (review). <a href="https://pubmed.ncbi.nlm.nih.gov/12589194/" target="_blank">PMID 12589194</a></li>
+<li id="ref42">Miller et al., 2019 — glycine supplementation extends lifespan of male and female mice (NIA Interventions Testing Program). <a href="https://pubmed.ncbi.nlm.nih.gov/30916479/" target="_blank">PMID 30916479</a></li>
+<li id="ref43">Gannon et al., 2002 — the metabolic response to ingested glycine. <a href="https://pubmed.ncbi.nlm.nih.gov/12450897/" target="_blank">PMID 12450897</a></li>
+<li id="ref44">Bannai & Kawai, 2012 — glycine improves the quality of sleep (review of mechanism, incl. core body temperature). <a href="https://pubmed.ncbi.nlm.nih.gov/22293292/" target="_blank">PMID 22293292</a></li>
+<li id="ref45">Sheth et al., 2011 — glycine maintains mitochondrial activity and bile composition following warm liver ischemia-reperfusion injury (rats). <a href="https://pubmed.ncbi.nlm.nih.gov/21175814/" target="_blank">PMID 21175814</a></li>
+<li id="ref46">Yamadera et al., 2007 — glycine ingestion improves subjective sleep quality in human volunteers, correlating with polysomnographic changes (RCT). <a href="https://doi.org/10.1111/j.1479-8425.2007.00262.x" target="_blank">DOI 10.1111/j.1479-8425.2007.00262.x</a>, Sleep and Biological Rhythms — not indexed in PubMed</li>
+<li id="ref47">Imenshahidi & Hosseinzadeh, 2022 — effects of glycine on metabolic syndrome components (review). <a href="https://pubmed.ncbi.nlm.nih.gov/35013990/" target="_blank">PMID 35013990</a></li>
+<li id="ref48">El-Hafidi et al., 2018 — glycine increases insulin sensitivity and glutathione biosynthesis and protects against oxidative stress in sucrose-induced insulin resistance (animal model). <a href="https://pubmed.ncbi.nlm.nih.gov/29675131/" target="_blank">PMID 29675131</a></li>
+<li id="ref49">Soh et al., 2024 — the effect of glycine administration on the characteristics of physiological systems in human adults (systematic review). <a href="https://pubmed.ncbi.nlm.nih.gov/37851316/" target="_blank">PMID 37851316</a></li>
+<li id="ref50">Peat, Ray — "Gelatin, Stress, and Longevity." <a href="http://raypeat.com/articles/articles/gelatin.shtml" target="_blank">raypeat.com</a> <span class="todo">(not peer-reviewed — a popular-press synthesis by an independent researcher, not a primary source; included because it's the origin of the "~50% of animal protein is collagen / ~35% of collagen is glycine" framing used above, which is otherwise supported by ref38)</span></li>
 </ol>
 </div>
 
