@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Metabolism</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.spine-part a{color:inherit;border-bottom:none;}
+.spine-part a:hover{border-bottom:1px solid currentColor;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+/* ---- Figure: SVG diagram ---- */
+.diagram{
+  margin:30px 0;
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:20px 20px 14px;
+}
+.diagram svg{width:100%;height:auto;display:block;}
+.diagram .dcap{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;
+  color:var(--ink-soft);line-height:1.55;margin:14px 0 0;
+  padding-left:14px;border-left:2px solid var(--moss);
+}
+.diagram .dcap b{color:var(--moss-deep);}
+
+/* ---- Definition rows ---- */
+.defrow{
+  display:grid;grid-template-columns:180px 1fr;gap:16px;
+  padding:14px 0;border-top:1px solid var(--rule);
+}
+.defrow:first-of-type{border-top:none;}
+.defrow .term{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
+  color:var(--moss-deep);line-height:1.45;padding-top:2px;
+}
+.defrow .def{margin:0;font-size:16.5px;line-height:1.55;}
+@media (max-width:560px){
+  .defrow{grid-template-columns:1fr;gap:4px;}
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+code{font-family:'IBM Plex Mono',monospace;font-size:.85em;background:var(--paper-deep);padding:1px 5px;border-radius:3px;color:var(--moss-deep);}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Coverage table ---- */
+table.matrix{
+  width:100%;border-collapse:collapse;margin:26px 0;
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+}
+table.matrix th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  font-weight:600;padding:14px 16px;border-bottom:2px solid var(--ink);
+  vertical-align:bottom;
+}
+table.matrix td{
+  padding:14px 16px;border-top:1px solid var(--rule);
+  vertical-align:top;font-size:15.5px;line-height:1.5;color:var(--ink-soft);
+}
+table.matrix td:first-child{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--moss-deep);width:20%;padding-top:16px;
+}
+table.matrix td.tiercell{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  width:16%;padding-top:17px;
+}
+@media (max-width:640px){
+  table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100%;}
+  table.matrix thead{display:none;}
+  table.matrix tr{border-top:1px solid var(--rule);padding:6px 0;}
+  table.matrix td{border-top:none;padding:4px 16px;}
+  table.matrix td:first-child{width:auto;padding-top:14px;}
+  table.matrix td.tiercell{width:auto;}
+}
+
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .byline{flex-direction:column;gap:6px;}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html">Overview</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="linoleic-acid.html">Linoleic Acid</a>
+  <a href="ahr.html">AhR</a>
+  <a href="cold-exposure.html">Cold Exposure</a>
+  <a href="energy-metabolism.html" class="active">Energy Metabolism</a>
+  <a href="nutrients.html">Nutrients</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Primer &middot; Nutritional Biochemistry</p>
+  <h1 class="title">Energy <em>Metabolism</em></h1>
+  <p class="sub">How glucose, fat, and protein all become ATP &mdash; glycolysis, &beta;-oxidation, the Krebs cycle, and amino acid entry &mdash; and the B vitamins whose coenzyme forms make every step run.</p>
+  <div class="byline">
+    <span><b>Draft</b> v1</span>
+    <span><b>Scope</b> mechanism primer, not a supplement protocol</span>
+    <span><b>Standard</b> textbook biochemistry throughout</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;">Three fuels &mdash; glucose, fat, and, when needed, protein &mdash; are broken down by three different routes that all converge on the same destination: acetyl&#8209;CoA and the Krebs cycle. Glycolysis strips glucose to pyruvate in the cytosol; &beta;-oxidation spirals fatty acids down two carbons at a time in the mitochondrial matrix; transamination strips the nitrogen off amino acids and hands their carbon skeletons into one of six points around the same cycle. What all three routes share is a small, fixed set of B&#8209;vitamin&#8209;derived coenzymes doing the actual chemistry: <strong>TPP</strong> (B1) and <strong>CoA</strong> (B5) gate carbon into and through the cycle, <strong>FAD</strong> (B2) and <strong>NAD&plus;</strong> (B3) carry the stripped electrons back out to the electron transport chain, and <strong>PLP</strong> (B6) runs every transamination that gets protein into the system at all.</p>
+  <p>This paper is a primer, not an argument: nothing here is contested biochemistry. It exists to make the mechanism visible &mdash; specifically, which enzyme needs which vitamin, and why a deficiency in one B vitamin stalls an identifiable step rather than causing a vague drop in &ldquo;energy.&rdquo;</p>
+</div>
+
+<div class="flag">
+  <div class="flag-lbl">A note on sourcing</div>
+  <p style="margin:0;">The core pathway facts here are standard biochemistry &mdash; the kind found in <em>Lehninger</em> or <em>Harper's Illustrated Biochemistry</em> &mdash; and are not in dispute. The framing choice, to organize the pathways around which B vitamin does which specific job rather than treating &ldquo;cofactors&rdquo; as a footnote, follows the teaching style of <strong>Chris Masterjohn</strong>, whose nutrient-biochemistry writing and courses cover this material in more depth than a single page can.</p>
+</div>
+
+<div class="brief">
+  <div class="lbl">The path in brief</div>
+  <p class="sub">Three fuels, five parts</p>
+  <ol class="spine">
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span><b>Glycolysis</b> splits glucose into two pyruvate molecules in the cytosol &mdash; the only vitamin cofactor used directly is niacin (NAD&plus;), at a single step.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span><b>&beta;-oxidation</b> spirals a fatty acid down two carbons per turn in the mitochondrial matrix, needing riboflavin, niacin, and pantothenic acid every single turn.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span>Both routes hand off to the <b>Krebs cycle</b> as acetyl-CoA &mdash; whose two decarboxylation steps are the densest cofactor dependencies in the whole system.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span><b>Protein</b> feeds in too: transamination, a PLP (B6)-dependent reaction, strips the nitrogen off any of twenty amino acids and hands the carbon skeleton into one of six points on the pathways above.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span><b>Eight B vitamins</b>, mapped to the specific coenzyme and the specific step each one runs &mdash; with links out to the full nutrient-level page for each.</li>
+  </ol>
+  <p class="bottom">Not eight vitamins doing something vaguely metabolic &mdash; eight specific coenzymes, each gating a specific, nameable reaction.</p>
+</div>
+
+<!-- ============ PART I: GLYCOLYSIS ============ -->
+<div class="part-head" id="part-i">
+  <span class="part-num">Part&nbsp;I</span>
+  <h2>Glycolysis</h2>
+</div>
+<section>
+<p>Ten enzymatic steps, run in the cytosol without oxygen, split into two phases. The first five steps <em>spend</em> 2 ATP to prime glucose for cleavage; the last five, run twice over &mdash; once per 3-carbon half &mdash; <em>repay</em> that loan and turn a profit. Only one step in the whole sequence is a redox reaction, and it's where niacin does its work.</p>
+
+<h3 id="i-1"><span class="h3num">I.1</span>Investment, then payoff, twice over</h3>
+<p>Hexokinase and phosphofructokinase-1 (PFK-1) each spend one ATP to add a phosphate group, priming the six-carbon sugar to be split in half by aldolase. From there, every downstream step runs twice &mdash; once for each 3-carbon fragment. Glyceraldehyde-3-phosphate dehydrogenase (GAPDH) reduces NAD&plus; to NADH while oxidizing the triose; phosphoglycerate kinase and pyruvate kinase each regenerate one ATP directly from the reaction, a mechanism called substrate-level phosphorylation because it doesn't route through the electron transport chain at all.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 900 300" role="img" aria-labelledby="glyTitle glyDesc">
+  <title id="glyTitle">Glycolysis from glucose to pyruvate</title>
+  <desc id="glyDesc">Glucose is phosphorylated twice, spending two ATP, then split into two three-carbon units. Each unit is oxidized at GAPDH, reducing NAD+ to NADH, then converted to pyruvate while regenerating two ATP per unit.</desc>
+  <defs>
+    <marker id="glyArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3d6a7a"/>
+    </marker>
+    <marker id="glyArrowCo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5d3a"/>
+    </marker>
+  </defs>
+  <g font-family="'Newsreader',Georgia,serif" font-size="13" fill="#1a1f1a">
+    <line x1="60" y1="170" x2="840" y2="170" stroke="#d9d4c4" stroke-width="1"/>
+
+    <circle cx="70" cy="170" r="7" fill="#3d6a7a"/>
+    <text x="70" y="200" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600">Glucose</text>
+
+    <path d="M77 170 H220" stroke="#3d6a7a" stroke-width="2" marker-end="url(#glyArrow)"/>
+    <text x="148" y="150" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11">Hexokinase</text>
+    <path d="M115 140 V110" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#glyArrowCo)"/>
+    <text x="115" y="100" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">ATP</text>
+    <path d="M181 110 V140" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#glyArrowCo)"/>
+    <text x="181" y="100" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">ADP</text>
+
+    <circle cx="227" cy="170" r="7" fill="#3d6a7a"/>
+    <text x="227" y="200" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600">Glucose-6-P</text>
+
+    <path d="M234 170 H370" stroke="#3d6a7a" stroke-width="2" marker-end="url(#glyArrow)"/>
+    <text x="300" y="150" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11">PFK-1</text>
+    <path d="M270 140 V110" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#glyArrowCo)"/>
+    <text x="270" y="100" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">ATP</text>
+    <path d="M336 110 V140" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#glyArrowCo)"/>
+    <text x="336" y="100" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">ADP</text>
+
+    <circle cx="377" cy="170" r="7" fill="#3d6a7a"/>
+    <text x="377" y="200" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600">Fructose-1,6-BP</text>
+
+    <path d="M384 170 H520" stroke="#3d6a7a" stroke-width="2" marker-end="url(#glyArrow)"/>
+    <text x="452" y="150" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11">Aldolase</text>
+    <text x="452" y="225" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c" font-style="italic">splits into two 3-carbon units</text>
+
+    <circle cx="527" cy="170" r="7" fill="#3d6a7a"/>
+    <text x="527" y="200" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600">G3P &times;2</text>
+
+    <path d="M534 170 H670" stroke="#3d6a7a" stroke-width="2" marker-end="url(#glyArrow)"/>
+    <text x="602" y="150" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11">GAPDH</text>
+    <path d="M572 140 V110" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#glyArrowCo)"/>
+    <text x="572" y="100" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">NAD&plus;</text>
+    <path d="M638 110 V140" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#glyArrowCo)"/>
+    <text x="638" y="100" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">NADH</text>
+
+    <circle cx="677" cy="170" r="7" fill="#3d6a7a"/>
+    <text x="677" y="200" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600">1,3-BPG</text>
+
+    <path d="M684 170 H830" stroke="#3d6a7a" stroke-width="2" marker-end="url(#glyArrow)"/>
+    <text x="757" y="150" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11">PGK &rarr; Enolase &rarr; PK</text>
+    <path d="M720 140 V110" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#glyArrowCo)"/>
+    <text x="720" y="100" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">2 ADP</text>
+    <path d="M796 110 V140" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#glyArrowCo)"/>
+    <text x="796" y="100" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">2 ATP</text>
+
+    <circle cx="837" cy="170" r="8" fill="#a8562f"/>
+    <text x="837" y="200" text-anchor="middle" font-family="'Fraunces',serif" font-weight="700">Pyruvate &times;2</text>
+  </g>
+</svg>
+<p class="dcap"><b>Net per glucose:</b> 2 ATP, 2 NADH, and 2 pyruvate. The investment phase (hexokinase, PFK-1) spends 2 ATP; the payoff phase runs twice &mdash; once per triose &mdash; repaying that loan and netting 2 ATP plus 2 NADH.</p>
+</div>
+
+<h3 id="i-2"><span class="h3num">I.2</span>The bridge to the cycle: pyruvate dehydrogenase</h3>
+<div class="mech">
+  <div class="mech-lbl">Five cofactors, one enzyme</div>
+  <p style="margin-top:0;">Before pyruvate can enter the Krebs cycle it has to be decarboxylated to acetyl-CoA by the pyruvate dehydrogenase complex &mdash; and that single enzyme needs <strong>five</strong> cofactors running at once: thiamine (TPP, B1), lipoic acid, coenzyme A (B5), FAD (B2), and NAD&plus; (B3). It's the densest vitamin dependency in this entire paper, and it repeats almost exactly at the &alpha;-ketoglutarate dehydrogenase step inside the Krebs cycle itself (<a href="#iii-2">III.2</a>) &mdash; which is why thiamine status alone can throttle carbon flow into the cycle from two separate directions.</p>
+</div>
+</section>
+
+<!-- ============ PART II: BETA-OXIDATION ============ -->
+<div class="part-head" id="part-ii">
+  <span class="part-num">Part&nbsp;II</span>
+  <h2>&beta;-Oxidation</h2>
+</div>
+<section>
+<p>Fat is dismantled in the mitochondrial matrix by a four-step loop that repeats, not a line that runs once. A carnitine shuttle first carries the activated fatty acyl-CoA across the inner mitochondrial membrane; from there, a C16 chain like palmitate spins through the loop seven times, releasing eight acetyl-CoA units and reducing seven FAD and seven NAD&plus; along the way. Every turn needs the same two vitamin-derived electron acceptors and the same pantothenic-acid-built coenzyme to cleave the final bond.</p>
+
+<h3 id="ii-1"><span class="h3num">II.1</span>Four steps, repeated until nothing is left but acetyl-CoA</h3>
+<p>Acyl-CoA dehydrogenase reduces FAD to FADH2 while introducing a double bond; enoyl-CoA hydratase adds water across it; 3-hydroxyacyl-CoA dehydrogenase reduces NAD&plus; to NADH; and thiolase uses a free coenzyme A to cleave off the terminal two carbons as acetyl-CoA, leaving a chain two carbons shorter to re-enter at the top.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 640 640" role="img" aria-labelledby="boTitle boDesc">
+  <title id="boTitle">One turn of the beta-oxidation spiral</title>
+  <desc id="boDesc">Acyl-CoA dehydrogenase reduces FAD, enoyl-CoA hydratase adds water, 3-hydroxyacyl-CoA dehydrogenase reduces NAD+, and thiolase cleaves off acetyl-CoA using coenzyme A, shortening the chain by two carbons. The shortened chain re-enters at the top for the next turn.</desc>
+  <defs>
+    <marker id="boArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b78a2e"/>
+    </marker>
+    <marker id="boArrowKr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#a8562f"/>
+    </marker>
+  </defs>
+  <g font-family="'Newsreader',Georgia,serif" font-size="13" fill="#1a1f1a">
+    <path d="M320 40 V95" stroke="#b78a2e" stroke-width="2" marker-end="url(#boArrow)"/>
+    <text x="320" y="30" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11">Fatty acid + CoA + ATP (activation)</text>
+
+    <circle cx="320" cy="340" r="170" fill="none" stroke="#d9d4c4" stroke-width="1" stroke-dasharray="3 5"/>
+
+    <rect x="255" y="105" width="130" height="40" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="320" y="130" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="13">Acyl-CoA (C&#8345;)</text>
+
+    <rect x="415" y="315" width="150" height="40" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="490" y="340" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12">trans-&Delta;&sup2;-Enoyl-CoA</text>
+
+    <rect x="255" y="490" width="150" height="40" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="330" y="515" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12">3-Hydroxyacyl-CoA</text>
+
+    <rect x="75" y="315" width="150" height="40" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="150" y="340" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12">3-Ketoacyl-CoA</text>
+
+    <path d="M 385 122 A 170 170 0 0 1 486 313" fill="none" stroke="#b78a2e" stroke-width="2" marker-end="url(#boArrow)"/>
+    <text x="450" y="185" font-family="'IBM Plex Mono',monospace" font-size="11">Acyl-CoA Dehydrogenase</text>
+    <text x="450" y="200" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">FAD &rarr; FADH2</text>
+
+    <path d="M 480 358 A 170 170 0 0 1 385 508" fill="none" stroke="#b78a2e" stroke-width="2" marker-end="url(#boArrow)"/>
+    <text x="450" y="450" font-family="'IBM Plex Mono',monospace" font-size="11">Enoyl-CoA Hydratase</text>
+    <text x="450" y="465" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c">+ H2O</text>
+
+    <path d="M 265 508 A 170 170 0 0 1 165 358" fill="none" stroke="#b78a2e" stroke-width="2" marker-end="url(#boArrow)"/>
+    <text x="130" y="465" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="11">3-OH-Acyl-CoA DH</text>
+    <text x="130" y="450" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">NAD&plus; &rarr; NADH</text>
+
+    <path d="M 165 313 A 170 170 0 0 1 260 128" fill="none" stroke="#b78a2e" stroke-width="2" marker-end="url(#boArrow)"/>
+    <text x="130" y="200" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="11">Thiolase</text>
+    <text x="130" y="215" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">+ CoA-SH</text>
+
+    <path d="M75 335 H15" stroke="#a8562f" stroke-width="2" marker-end="url(#boArrowKr)"/>
+    <text x="16" y="315" text-anchor="start" font-family="'IBM Plex Mono',monospace" font-size="11" font-weight="600" fill="#a8562f">Acetyl-CoA</text>
+    <text x="16" y="365" text-anchor="start" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3d453c">&rarr; Krebs cycle</text>
+
+    <text x="320" y="345" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c" font-style="italic">repeats with</text>
+    <text x="320" y="360" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c" font-style="italic">Acyl-CoA (C&#8345;&#8331;&#8322;)</text>
+  </g>
+</svg>
+<p class="dcap"><b>Per turn:</b> 1 FADH2, 1 NADH, 1 acetyl-CoA. A C16 chain (palmitate) spins through seven turns, releasing eight acetyl-CoA for the Krebs cycle below.</p>
+</div>
+</section>
+
+<!-- ============ PART III: KREBS CYCLE ============ -->
+<div class="part-head" id="part-iii">
+  <span class="part-num">Part&nbsp;III</span>
+  <h2>The Krebs Cycle</h2>
+</div>
+<section>
+<p>Every acetyl-CoA &mdash; from glucose or from fat &mdash; enters the same eight-step wheel in the mitochondrial matrix. Oxaloacetate is regenerated at the end of each turn, so the cycle never runs out of a place to put the next acetyl group. Four of the eight steps are redox reactions loading electrons onto NAD&plus; or FAD; a fifth makes GTP directly by substrate-level phosphorylation.</p>
+
+<h3 id="iii-1"><span class="h3num">III.1</span>Eight steps, one wheel</h3>
+
+<div class="diagram">
+<svg viewBox="0 0 850 760" role="img" aria-labelledby="krTitle krDesc">
+  <title id="krTitle">The Krebs cycle</title>
+  <desc id="krDesc">Citrate, isocitrate, alpha-ketoglutarate, succinyl-CoA, succinate, fumarate, malate, and oxaloacetate arranged in a circle, with NAD+, FAD, and GTP cofactor changes labeled at each step.</desc>
+  <defs>
+    <marker id="krArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#a8562f"/>
+    </marker>
+  </defs>
+  <g font-family="'Newsreader',Georgia,serif" font-size="12" fill="#1a1f1a">
+    <path d="M380 30 V95" stroke="#a8562f" stroke-width="2" marker-end="url(#krArrow)"/>
+    <text x="380" y="20" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-weight="600" font-size="12" fill="#a8562f">Acetyl-CoA</text>
+
+    <path d="M 405 152 A 230 230 0 0 1 540 244" fill="none" stroke="#a8562f" stroke-width="2" marker-end="url(#krArrow)"/>
+    <text x="230" y="112" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11">Citrate Synthase</text>
+
+    <path d="M 566 235 A 230 230 0 0 1 608 353" fill="none" stroke="#a8562f" stroke-width="2" marker-end="url(#krArrow)"/>
+    <text x="505" y="150" font-family="'IBM Plex Mono',monospace" font-size="11">Aconitase</text>
+
+    <path d="M 608 407 A 230 230 0 0 1 566 525" fill="none" stroke="#a8562f" stroke-width="2" marker-end="url(#krArrow)"/>
+    <text x="666" y="270" text-anchor="start" font-family="'IBM Plex Mono',monospace" font-size="11">Isocitrate DH</text>
+    <text x="666" y="285" text-anchor="start" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">NAD&plus;&rarr;NADH, CO2</text>
+
+    <path d="M 540 516 A 230 230 0 0 1 405 608" fill="none" stroke="#a8562f" stroke-width="2" marker-end="url(#krArrow)"/>
+    <text x="666" y="470" text-anchor="start" font-family="'IBM Plex Mono',monospace" font-size="11">&alpha;-KG Dehydrogenase</text>
+    <text x="666" y="485" text-anchor="start" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">NAD&plus;+CoA&rarr;NADH, CO2</text>
+    <text x="666" y="500" text-anchor="start" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3d453c" font-style="italic">5-cofactor complex, like PDH</text>
+
+    <path d="M 355 608 A 230 230 0 0 1 220 516" fill="none" stroke="#a8562f" stroke-width="2" marker-end="url(#krArrow)"/>
+    <text x="505" y="640" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11">Succinyl-CoA Synthetase</text>
+    <text x="505" y="655" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">GDP+Pi&rarr;GTP</text>
+
+    <path d="M 194 525 A 230 230 0 0 1 152 407" fill="none" stroke="#a8562f" stroke-width="2" marker-end="url(#krArrow)"/>
+    <text x="255" y="640" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11">Succinate DH</text>
+    <text x="255" y="655" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">FAD&rarr;FADH2</text>
+    <text x="255" y="670" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3d453c" font-style="italic">= ETC Complex II</text>
+
+    <path d="M 152 353 A 230 230 0 0 1 194 235" fill="none" stroke="#a8562f" stroke-width="2" marker-end="url(#krArrow)"/>
+    <text x="94" y="470" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="11">Fumarase</text>
+    <text x="94" y="485" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c">+ H2O</text>
+
+    <text x="94" y="270" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="11">Malate DH</text>
+    <text x="94" y="285" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4a5d3a">NAD&plus;&rarr;NADH</text>
+
+    <g font-weight="600" fill="#1a1f1a" font-family="'Fraunces',serif">
+      <rect x="315" y="128" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+      <text x="380" y="154" text-anchor="middle" font-size="13">Citrate</text>
+
+      <rect x="478" y="196" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+      <text x="543" y="222" text-anchor="middle" font-size="13">Isocitrate</text>
+
+      <rect x="545" y="359" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+      <text x="610" y="385" text-anchor="middle" font-size="13">&alpha;-Ketoglutarate</text>
+
+      <rect x="478" y="522" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+      <text x="543" y="548" text-anchor="middle" font-size="12">Succinyl-CoA</text>
+
+      <rect x="315" y="588" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+      <text x="380" y="614" text-anchor="middle" font-size="13">Succinate</text>
+
+      <rect x="152" y="522" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+      <text x="217" y="548" text-anchor="middle" font-size="13">Fumarate</text>
+
+      <rect x="85" y="359" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+      <text x="150" y="385" text-anchor="middle" font-size="13">Malate</text>
+
+      <rect x="152" y="196" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+      <text x="217" y="222" text-anchor="middle" font-size="12">Oxaloacetate</text>
+    </g>
+  </g>
+</svg>
+<p class="dcap"><b>Per turn:</b> 3 NADH, 1 FADH2, 1 GTP, 2 CO2. The two decarboxylation steps and the succinate dehydrogenase step double as a direct entry point into the electron transport chain.</p>
+</div>
+
+<h3 id="iii-2"><span class="h3num">III.2</span>Two steps worth noticing</h3>
+<div class="mech">
+  <div class="mech-lbl">Where the cycle repeats itself &mdash; and where it plugs straight into the ETC</div>
+  <p style="margin-top:0;"><strong>&alpha;-Ketoglutarate dehydrogenase</strong> is structurally almost identical to pyruvate dehydrogenase (<a href="#i-2">I.2</a>) and needs the same five cofactors &mdash; B1, lipoic acid, B2, B3, B5 &mdash; a second checkpoint where thiamine status alone can throttle the cycle. <strong>Succinate dehydrogenase</strong> is the only Krebs cycle enzyme embedded in the inner mitochondrial membrane: it's also Complex II of the electron transport chain, so this one step belongs to both pathways at once.</p>
+</div>
+</section>
+
+<!-- ============ PART IV: PROTEIN METABOLISM ============ -->
+<div class="part-head" id="part-iv">
+  <span class="part-num">Part&nbsp;IV</span>
+  <h2>Protein &amp; Amino Acid Metabolism</h2>
+</div>
+<section>
+<p>Glucose and fat aren't the only fuels these pathways run on. Amino acids &mdash; from dietary protein, or from muscle during fasting, very-low-carbohydrate intake, or intake beyond what's needed for synthesis &mdash; can be stripped of their nitrogen and fed into the same central pathways as carbon skeletons. It's normally a minor contributor to ATP production, but the entry mechanism is one every amino acid shares.</p>
+
+<h3 id="iv-1"><span class="h3num">IV.1</span>Transamination strips the nitrogen &mdash; PLP does the stripping</h3>
+<p>Before an amino acid's carbon skeleton can enter glycolysis or the Krebs cycle, its amino group has to come off. That's done by a family of enzymes called aminotransferases (or transaminases &mdash; ALT and AST are the two measured on a standard liver panel), which transfer the amino group from the amino acid onto &alpha;-ketoglutarate, producing glutamate and the corresponding keto acid: alanine becomes pyruvate, aspartate becomes oxaloacetate, and so on for each of the twenty.</p>
+
+<div class="mech">
+  <div class="mech-lbl">Every transaminase in the body runs on one cofactor</div>
+  <p style="margin-top:0;">Pyridoxal-5&prime;-phosphate (PLP), the active form of vitamin B6, is the obligate cofactor for every transamination reaction. It forms a Schiff base with the incoming amino group and physically carries it across to the accepting keto acid &mdash; the same chemistry, repeated for all twenty amino acids. Glutamate's amino group is then released as free ammonia by glutamate dehydrogenase (an NAD&plus;/NADP&plus;-dependent oxidative deamination), regenerating the &alpha;-ketoglutarate that started the cycle. The ammonia itself is converted to urea in the liver's urea cycle and excreted by the kidneys &mdash; an ATP-costly disposal route, and a separate system from the ATP-generating pathways this paper otherwise covers.</p>
+</div>
+
+<h3 id="iv-2"><span class="h3num">IV.2</span>Six doors, twenty amino acids</h3>
+<p>Once the nitrogen is off, the carbon skeleton lands at one of six points on the pathways already drawn above: pyruvate, acetyl-CoA, or one of four Krebs cycle intermediates. Which door an amino acid uses determines what its carbon can become. Skeletons that land at pyruvate or a Krebs cycle intermediate can be run in reverse, through gluconeogenesis, back into glucose &mdash; these are called <strong>glucogenic</strong>. Leucine and lysine are the exception: they land only at acetyl-CoA, which the Krebs cycle can burn for ATP but which cell chemistry cannot run back into glucose &mdash; making them <strong>purely ketogenic</strong>. A handful of amino acids split their carbons across two doors and count as both.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 920 420" role="img" aria-labelledby="aaTitle aaDesc">
+  <title id="aaTitle">Amino acid entry points into glycolysis and the Krebs cycle</title>
+  <desc id="aaDesc">Six docking points -- pyruvate, alpha-ketoglutarate, oxaloacetate, succinyl-CoA, fumarate, and acetyl-CoA -- each receiving carbon skeletons from a specific group of amino acids after transamination. Acetyl-CoA is marked as ketogenic only, with no path back to glucose; the other five are glucogenic.</desc>
+  <defs>
+    <marker id="aaArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5d3a"/>
+    </marker>
+  </defs>
+  <g font-family="'Newsreader',Georgia,serif" font-size="13" fill="#1a1f1a">
+    <text x="20" y="30" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2" fill="#4a5d3a">SIX DOORS INTO THE PATHWAYS ABOVE</text>
+
+    <!-- Row A -->
+    <text x="160" y="106" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c">Ala &middot; Ser &middot; Gly &middot; Cys</text>
+    <path d="M160 112 V129" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#aaArrow)"/>
+    <rect x="75" y="129" width="170" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="160" y="155" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="14">Pyruvate</text>
+
+    <text x="460" y="98" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c">Glu &middot; Gln &middot; His</text>
+    <text x="460" y="112" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c">Pro &middot; Arg</text>
+    <path d="M460 118 V129" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#aaArrow)"/>
+    <rect x="375" y="129" width="170" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="460" y="155" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="13">&alpha;-Ketoglutarate</text>
+
+    <text x="760" y="106" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c">Asp &middot; Asn</text>
+    <path d="M760 112 V129" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#aaArrow)"/>
+    <rect x="675" y="129" width="170" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="760" y="155" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="13">Oxaloacetate</text>
+
+    <!-- Row B -->
+    <text x="160" y="306" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c">Ile &middot; Met &middot; Val &middot; Thr</text>
+    <path d="M160 312 V329" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#aaArrow)"/>
+    <rect x="75" y="329" width="170" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="160" y="355" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="13">Succinyl-CoA</text>
+
+    <text x="460" y="306" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c">Phe &middot; Tyr</text>
+    <path d="M460 312 V329" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#aaArrow)"/>
+    <rect x="375" y="329" width="170" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="460" y="355" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="14">Fumarate</text>
+
+    <text x="760" y="298" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#3d453c">Leu &middot; Lys</text>
+    <text x="760" y="312" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3d453c" font-style="italic">+Ile,Phe,Tyr,Trp (partly)</text>
+    <path d="M760 318 V329" stroke="#4a5d3a" stroke-width="1.6" marker-end="url(#aaArrow)"/>
+    <rect x="675" y="329" width="170" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="760" y="355" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="13">Acetyl-CoA</text>
+    <text x="760" y="392" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3d453c" font-style="italic">ketogenic only &mdash; no path back to glucose</text>
+  </g>
+</svg>
+<p class="dcap"><b>Every arrow above is PLP-dependent (B6).</b> Alanine, serine, glycine, and cysteine feed pyruvate; glutamate, glutamine, histidine, proline, and arginine feed &alpha;-ketoglutarate; aspartate and asparagine feed oxaloacetate; isoleucine, methionine, valine, and threonine feed succinyl-CoA; phenylalanine and tyrosine feed fumarate. Leucine and lysine are the only two amino acids that are purely ketogenic &mdash; every other amino acid can, at least partly, run back to glucose.</p>
+</div>
+</section>
+
+<!-- ============ PART V: B-VITAMIN COFACTORS ============ -->
+<div class="part-head" id="part-v">
+  <span class="part-num">Part&nbsp;V</span>
+  <h2>The B-Vitamin Cofactors</h2>
+</div>
+<section>
+<p>Each B vitamin has to be converted into an active coenzyme form before it can do anything. A deficiency doesn't cause a generic drop in &ldquo;energy&rdquo; &mdash; it stalls a specific, nameable step in one of the pathways above. Six of the eight get direct or indirect use in this paper; the individual nutrient pages carry deficiency signs, intake targets, and food sources for each.</p>
+
+<table class="matrix">
+<thead><tr><th>Vitamin</th><th>Coenzyme</th><th>Acts in</th><th>Role</th></tr></thead>
+<tbody>
+<tr>
+  <td><a href="vitaminb1thiamine.html">B1 &middot; Thiamine</a></td>
+  <td>TPP</td>
+  <td class="tiercell">I, III</td>
+  <td>Cofactor for pyruvate dehydrogenase (<a href="#i-2">I.2</a>) and &alpha;-ketoglutarate dehydrogenase (<a href="#iii-2">III.2</a>) &mdash; the two decarboxylation steps that hand carbon into and around the Krebs cycle.</td>
+</tr>
+<tr>
+  <td><a href="vitaminb2riboflavin.html">B2 &middot; Riboflavin</a></td>
+  <td>FAD / FMN</td>
+  <td class="tiercell">II, III</td>
+  <td>FAD is the electron acceptor for acyl-CoA dehydrogenase in every turn of &beta;-oxidation and for succinate dehydrogenase in the Krebs cycle, which feeds those electrons directly into Complex II of the electron transport chain.</td>
+</tr>
+<tr>
+  <td><a href="vitaminb3niacin.html">B3 &middot; Niacin</a></td>
+  <td>NAD&plus; / NADP&plus;</td>
+  <td class="tiercell">I, II, III</td>
+  <td>The most-used cofactor in this paper: GAPDH in glycolysis, 3-hydroxyacyl-CoA dehydrogenase in &beta;-oxidation, and three separate Krebs cycle steps all reduce NAD&plus; to NADH &mdash; the main electron currency feeding Complex I.</td>
+</tr>
+<tr>
+  <td><a href="vitaminb5pantothenicacid.html">B5 &middot; Pantothenic acid</a></td>
+  <td>Coenzyme A</td>
+  <td class="tiercell">I, II, III</td>
+  <td>CoA is the handle every acyl group is carried by: fatty acid activation, thiolase's final cleavage in &beta;-oxidation, and both pyruvate dehydrogenase and citrate synthase depend on a free thiol from CoA-SH.</td>
+</tr>
+<tr>
+  <td><a href="vitaminb6pyridoxine.html">B6 &middot; Pyridoxine</a></td>
+  <td>PLP</td>
+  <td class="tiercell">IV</td>
+  <td>PLP runs every transamination reaction in <a href="#part-iv">Part&nbsp;IV</a> &mdash; swapping an amino group for a keto group and handing twenty different carbon skeletons into six points on the pathways above.</td>
+</tr>
+<tr>
+  <td><a href="vitaminb7biotin.html">B7 &middot; Biotin</a></td>
+  <td>Carboxylase prosthetic group</td>
+  <td class="tiercell">III</td>
+  <td>Pyruvate carboxylase, biotin's signature reaction, converts pyruvate directly to oxaloacetate &mdash; refilling the Krebs cycle whenever intermediates are pulled out for amino acid or heme synthesis.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="mech">
+  <div class="mech-lbl">Reading the map</div>
+  <p style="margin-top:0;">Four cofactors do almost all the direct work: <strong>TPP</strong> and <strong>CoA</strong> gate carbon entering and moving through the cycle, while <strong>FAD</strong> and <strong>NAD&plus;</strong> carry the electrons back out to the electron transport chain. <strong>B6</strong> and <strong>biotin</strong> don't touch the core pathways directly &mdash; B6 keeps protein's carbon flowing in, and biotin keeps the cycle's intermediate pool topped up &mdash; which is what lets the Krebs cycle double as a biosynthetic hub, not just a combustion engine. See <a href="metabolic-health.html">Metabolic Health</a> for where this fits into the broader picture of mitochondrial capacity and insulin sensitivity.</p>
+</div>
+</section>
+
+<footer class="end">
+  <p><b>A note on sourcing.</b> The pathway facts in this paper are standard textbook biochemistry (Lehninger, Harper's) and are not in dispute; the vitamin-cofactor framing follows Chris Masterjohn's teaching. Individual B-vitamin pages &mdash; intake, deficiency signs, food sources &mdash; live in the <a href="nutrients.html">Nutrients</a> index.</p>
+  <p>Published as a primer, not a protocol. Nothing here substitutes for individualized medical advice.</p>
+</footer>
+
+<div style="margin-top:44px">
+  <span class="tag">Glycolysis</span><span class="tag">&beta;-oxidation</span><span class="tag">Krebs cycle</span><span class="tag">TCA cycle</span><span class="tag">Pyruvate dehydrogenase</span><span class="tag">Transamination</span><span class="tag">Glucogenic amino acids</span><span class="tag">Ketogenic amino acids</span><span class="tag">Thiamine</span><span class="tag">Riboflavin</span><span class="tag">Niacin</span><span class="tag">Pantothenic acid</span><span class="tag">Pyridoxine</span><span class="tag">Biotin</span><span class="tag">Mitochondrial capacity</span><span class="tag">ATP</span>
+</div>
+
+</div>
+</body>
+</html>
