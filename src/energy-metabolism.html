@@ -325,9 +325,9 @@ footer.end b{color:var(--moss);}
 <header class="top">
   <p class="eyebrow">Primer &middot; Nutritional Biochemistry</p>
   <h1 class="title">Energy <em>Metabolism</em></h1>
-  <p class="sub">How glucose, fat, and protein all become ATP &mdash; glycolysis, &beta;-oxidation, the Krebs cycle, and amino acid entry &mdash; and the B vitamins whose coenzyme forms make every step run.</p>
+  <p class="sub">How glucose, fat, and protein all become ATP &mdash; and how the body runs the same machinery in reverse to build fat, build glucose, and make ketones &mdash; mapped against the B vitamins that make every step run.</p>
   <div class="byline">
-    <span><b>Draft</b> v1</span>
+    <span><b>Draft</b> v2</span>
     <span><b>Scope</b> mechanism primer, not a supplement protocol</span>
     <span><b>Standard</b> textbook biochemistry throughout</span>
   </div>
@@ -335,26 +335,81 @@ footer.end b{color:var(--moss);}
 
 <div class="abstract">
   <div class="lbl">Abstract</div>
-  <p style="margin-top:0;">Three fuels &mdash; glucose, fat, and, when needed, protein &mdash; are broken down by three different routes that all converge on the same destination: acetyl&#8209;CoA and the Krebs cycle. Glycolysis strips glucose to pyruvate in the cytosol; &beta;-oxidation spirals fatty acids down two carbons at a time in the mitochondrial matrix; transamination strips the nitrogen off amino acids and hands their carbon skeletons into one of six points around the same cycle. What all three routes share is a small, fixed set of B&#8209;vitamin&#8209;derived coenzymes doing the actual chemistry: <strong>TPP</strong> (B1) and <strong>CoA</strong> (B5) gate carbon into and through the cycle, <strong>FAD</strong> (B2) and <strong>NAD&plus;</strong> (B3) carry the stripped electrons back out to the electron transport chain, and <strong>PLP</strong> (B6) runs every transamination that gets protein into the system at all.</p>
-  <p>This paper is a primer, not an argument: nothing here is contested biochemistry. It exists to make the mechanism visible &mdash; specifically, which enzyme needs which vitamin, and why a deficiency in one B vitamin stalls an identifiable step rather than causing a vague drop in &ldquo;energy.&rdquo;</p>
+  <p style="margin-top:0;">Three fuels &mdash; glucose, fat, and, when needed, protein &mdash; funnel down to one molecule, acetyl&#8209;CoA, and one hub, the Krebs cycle. This paper is built around <em>flow</em> more than mechanism: the diagrams carry the argument, and the text is there to name what the arrows mean. A small, fixed set of B&#8209;vitamin&#8209;derived coenzymes runs the whole system &mdash; <strong>TPP</strong> (B1), <strong>FAD</strong> (B2), <strong>NAD&plus;</strong> (B3), <strong>CoA</strong> (B5), <strong>PLP</strong> (B6), and <strong>biotin</strong> (B7) &mdash; and the same handful of molecules (pyruvate, acetyl-CoA, citrate) keep reappearing as the junctions where the body decides which way to run the traffic: toward ATP, or toward building something.</p>
 </div>
 
 <div class="flag">
   <div class="flag-lbl">A note on sourcing</div>
-  <p style="margin:0;">The core pathway facts here are standard biochemistry &mdash; the kind found in <em>Lehninger</em> or <em>Harper's Illustrated Biochemistry</em> &mdash; and are not in dispute. The framing choice, to organize the pathways around which B vitamin does which specific job rather than treating &ldquo;cofactors&rdquo; as a footnote, follows the teaching style of <strong>Chris Masterjohn</strong>, whose nutrient-biochemistry writing and courses cover this material in more depth than a single page can.</p>
+  <p style="margin:0;">The pathway facts here are standard biochemistry (<em>Lehninger</em>, <em>Harper's Illustrated Biochemistry</em>) and not in dispute. Organizing the pathways around which B vitamin does which specific job follows the teaching style of <strong>Chris Masterjohn</strong>.</p>
 </div>
 
 <div class="brief">
   <div class="lbl">The path in brief</div>
-  <p class="sub">Three fuels, five parts</p>
+  <p class="sub">Three fuels in, four ways the traffic can reverse, six parts</p>
   <ol class="spine">
-    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span><b>Glycolysis</b> splits glucose into two pyruvate molecules in the cytosol &mdash; the only vitamin cofactor used directly is niacin (NAD&plus;), at a single step.</li>
-    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span><b>&beta;-oxidation</b> spirals a fatty acid down two carbons per turn in the mitochondrial matrix, needing riboflavin, niacin, and pantothenic acid every single turn.</li>
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span><b>Glycolysis</b> splits glucose into two pyruvate in the cytosol on niacin (NAD&plus;) alone &mdash; then pyruvate dehydrogenase, the very next step, pulls in thiamine (B1) along with three more cofactors to make acetyl-CoA.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span><b>&beta;-oxidation</b> spirals a fatty acid down two carbons per turn, needing riboflavin, niacin, and pantothenic acid every single turn.</li>
     <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span>Both routes hand off to the <b>Krebs cycle</b> as acetyl-CoA &mdash; whose two decarboxylation steps are the densest cofactor dependencies in the whole system.</li>
-    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span><b>Protein</b> feeds in too: transamination, a PLP (B6)-dependent reaction, strips the nitrogen off any of twenty amino acids and hands the carbon skeleton into one of six points on the pathways above.</li>
-    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span><b>Eight B vitamins</b>, mapped to the specific coenzyme and the specific step each one runs &mdash; with links out to the full nutrient-level page for each.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span><b>Protein</b> feeds in too: transamination, a PLP (B6)-dependent swap, strips the amine off any of twenty amino acids and hands the carbon skeleton into one of six points on the pathways above.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span>Run in reverse or sideways, the same junctions build fat (<b>lipogenesis</b>), build glucose (<b>gluconeogenesis</b>), make NADPH and nucleotide precursors (<b>pentose phosphate pathway</b>), and make <b>ketone bodies</b> &mdash; four branches off the pathways above.</li>
+    <li><span class="spine-part"><a href="#part-vi">Part&nbsp;VI</a></span>All of it mapped to <b>eight B vitamins</b>, each gating a specific, nameable step &mdash; with links out to the full nutrient page for each.</li>
   </ol>
-  <p class="bottom">Not eight vitamins doing something vaguely metabolic &mdash; eight specific coenzymes, each gating a specific, nameable reaction.</p>
+  <p class="bottom">Follow the arrows first. The names are secondary.</p>
+</div>
+
+<div class="diagram">
+<p class="label" style="margin-bottom:10px;">THE BIG PICTURE</p>
+<svg viewBox="0 0 860 330" role="img" aria-labelledby="bigTitle bigDesc">
+  <title id="bigTitle">Glucose and fat both converge on acetyl-CoA, which the Krebs cycle feeds to the electron transport chain</title>
+  <desc id="bigDesc">Glucose flows through glycolysis to pyruvate, then through pyruvate dehydrogenase to acetyl-CoA. Fat flows through beta-oxidation, repeating, to the same acetyl-CoA. Amino acids feed into the Krebs cycle at several points via transamination. Acetyl-CoA enters the Krebs cycle, which produces NADH and FADH2 that the electron transport chain converts to ATP.</desc>
+  <defs>
+    <marker id="bigArrowSky" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d6a7a"/></marker>
+    <marker id="bigArrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b78a2e"/></marker>
+    <marker id="bigArrowRust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a8562f"/></marker>
+    <marker id="bigArrowInk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a1f1a"/></marker>
+    <marker id="bigArrowSoft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d453c"/></marker>
+  </defs>
+  <g font-family="'IBM Plex Mono',monospace" font-size="12" fill="#1a1f1a">
+    <rect x="20" y="45" width="120" height="42" rx="8" fill="#fffefb" stroke="#3d6a7a" stroke-width="2"/>
+    <text x="80" y="71" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#3d6a7a">Glucose</text>
+    <path d="M140 66 H228" stroke="#3d6a7a" stroke-width="2" marker-end="url(#bigArrowSky)"/>
+    <text x="184" y="56" text-anchor="middle" font-size="10" fill="#3d453c">Part I</text>
+    <rect x="230" y="45" width="120" height="42" rx="8" fill="#fffefb" stroke="#3d6a7a" stroke-width="2"/>
+    <text x="290" y="71" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#3d6a7a">Pyruvate</text>
+
+    <rect x="20" y="213" width="120" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="80" y="239" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#b78a2e">Fatty Acid</text>
+    <path d="M140 234 H228" stroke="#b78a2e" stroke-width="2" marker-end="url(#bigArrowGold)"/>
+    <text x="184" y="224" text-anchor="middle" font-size="10" fill="#3d453c">Part II</text>
+    <rect x="230" y="213" width="120" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="290" y="239" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#b78a2e">Acyl-CoA</text>
+
+    <path d="M350 66 C 400 66, 400 150, 450 150" stroke="#3d6a7a" stroke-width="2" fill="none" marker-end="url(#bigArrowSky)"/>
+    <text x="392" y="100" font-size="10" fill="#3d453c">PDH</text>
+    <path d="M350 234 C 400 234, 400 150, 450 150" stroke="#b78a2e" stroke-width="2" fill="none" marker-end="url(#bigArrowGold)"/>
+    <text x="392" y="212" font-size="10" fill="#3d453c">repeats</text>
+
+    <rect x="452" y="129" width="120" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="512" y="155" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#a8562f">Acetyl-CoA</text>
+
+    <path d="M572 150 H648" stroke="#a8562f" stroke-width="2" marker-end="url(#bigArrowRust)"/>
+    <circle cx="700" cy="150" r="42" fill="none" stroke="#a8562f" stroke-width="2"/>
+    <text x="700" y="146" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#a8562f" font-size="12">Krebs</text>
+    <text x="700" y="161" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#a8562f" font-size="12">cycle</text>
+
+    <path d="M742 150 H790" stroke="#1a1f1a" stroke-width="2" marker-end="url(#bigArrowInk)"/>
+    <text x="766" y="140" text-anchor="middle" font-size="10" fill="#3d453c">NADH</text>
+    <text x="766" y="176" text-anchor="middle" font-size="10" fill="#3d453c">FADH2</text>
+    <rect x="792" y="129" width="52" height="42" rx="8" fill="none" stroke="#1a1f1a" stroke-width="2"/>
+    <text x="818" y="147" text-anchor="middle" font-size="10">ETC &rarr;</text>
+    <text x="818" y="161" text-anchor="middle" font-size="12" font-weight="700">ATP</text>
+
+    <rect x="635" y="255" width="130" height="40" rx="8" fill="#fffefb" stroke="#3d453c" stroke-width="2"/>
+    <text x="700" y="280" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#3d453c" font-size="13">Amino Acids</text>
+    <path d="M700 255 V196" stroke="#3d453c" stroke-width="2" marker-end="url(#bigArrowSoft)"/>
+    <text x="700" y="240" text-anchor="middle" font-size="10" fill="#3d453c">Part IV</text>
+  </g>
+</svg>
 </div>
 
 <!-- ============ PART I: GLYCOLYSIS ============ -->
@@ -363,10 +418,9 @@ footer.end b{color:var(--moss);}
   <h2>Glycolysis</h2>
 </div>
 <section>
-<p>Ten enzymatic steps, run in the cytosol without oxygen, split into two phases. The first five steps <em>spend</em> 2 ATP to prime glucose for cleavage; the last five, run twice over &mdash; once per 3-carbon half &mdash; <em>repay</em> that loan and turn a profit. Only one step in the whole sequence is a redox reaction, and it's where niacin does its work.</p>
+<p>Ten steps in the cytosol, no oxygen needed: five that <em>spend</em> ATP priming glucose for cleavage, then five &mdash; run twice, once per 3-carbon half &mdash; that <em>repay</em> it with a profit. Only one step is a redox reaction; it's the only place niacin is used directly in these ten steps.</p>
 
 <h3 id="i-1"><span class="h3num">I.1</span>Investment, then payoff, twice over</h3>
-<p>Hexokinase and phosphofructokinase-1 (PFK-1) each spend one ATP to add a phosphate group, priming the six-carbon sugar to be split in half by aldolase. From there, every downstream step runs twice &mdash; once for each 3-carbon fragment. Glyceraldehyde-3-phosphate dehydrogenase (GAPDH) reduces NAD&plus; to NADH while oxidizing the triose; phosphoglycerate kinase and pyruvate kinase each regenerate one ATP directly from the reaction, a mechanism called substrate-level phosphorylation because it doesn't route through the electron transport chain at all.</p>
 
 <div class="diagram">
 <svg viewBox="0 0 900 300" role="img" aria-labelledby="glyTitle glyDesc">
@@ -438,9 +492,34 @@ footer.end b{color:var(--moss);}
 </div>
 
 <h3 id="i-2"><span class="h3num">I.2</span>The bridge to the cycle: pyruvate dehydrogenase</h3>
-<div class="mech">
-  <div class="mech-lbl">Five cofactors, one enzyme</div>
-  <p style="margin-top:0;">Before pyruvate can enter the Krebs cycle it has to be decarboxylated to acetyl-CoA by the pyruvate dehydrogenase complex &mdash; and that single enzyme needs <strong>five</strong> cofactors running at once: thiamine (TPP, B1), lipoic acid, coenzyme A (B5), FAD (B2), and NAD&plus; (B3). It's the densest vitamin dependency in this entire paper, and it repeats almost exactly at the &alpha;-ketoglutarate dehydrogenase step inside the Krebs cycle itself (<a href="#iii-2">III.2</a>) &mdash; which is why thiamine status alone can throttle carbon flow into the cycle from two separate directions.</p>
+<p>Pyruvate isn't a Krebs cycle intermediate. One more step, pyruvate dehydrogenase (PDH), decarboxylates it to acetyl-CoA first &mdash; and that single enzyme pulls in five cofactors at once, more than any other step in this paper.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 720 200" role="img" aria-labelledby="pdhTitle pdhDesc">
+  <title id="pdhTitle">Pyruvate dehydrogenase converts pyruvate to acetyl-CoA using five cofactors at once</title>
+  <desc id="pdhDesc">Pyruvate plus thiamine pyrophosphate, lipoic acid, FAD, NAD+, and coenzyme A yields acetyl-CoA, CO2, and NADH.</desc>
+  <defs>
+    <marker id="pdhArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a8562f"/></marker>
+  </defs>
+  <g font-family="'IBM Plex Mono',monospace" font-size="11" fill="#1a1f1a">
+    <text x="360" y="24" text-anchor="middle" letter-spacing="1" fill="#4a5d3a">5 COFACTORS AT ONCE</text>
+    <text x="360" y="42" text-anchor="middle" fill="#4a5d3a">TPP (B1) &middot; Lipoic acid &middot; FAD (B2) &middot; NAD&plus; (B3) &middot; CoA (B5)</text>
+    <path d="M360 48 V78" stroke="#4a5d3a" stroke-width="1.4" stroke-dasharray="3 3"/>
+
+    <rect x="30" y="79" width="160" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="110" y="105" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="14" fill="#1a1f1a">Pyruvate</text>
+
+    <path d="M192 100 H538" stroke="#a8562f" stroke-width="2" marker-end="url(#pdhArrow)"/>
+    <text x="365" y="95" text-anchor="middle" fill="#1a1f1a">Pyruvate Dehydrogenase</text>
+    <text x="365" y="135" text-anchor="middle" fill="#3d453c" font-style="italic">releases CO2, reduces NAD&plus; &rarr; NADH</text>
+
+    <rect x="540" y="79" width="150" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="615" y="105" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="14" fill="#1a1f1a">Acetyl-CoA</text>
+
+    <text x="615" y="170" text-anchor="middle" fill="#3d453c">&rarr; Krebs cycle, Part III</text>
+  </g>
+</svg>
+<p class="dcap">Same five cofactors, same reaction template, repeat almost exactly at &alpha;-ketoglutarate dehydrogenase inside the Krebs cycle (<a href="#iii-2">III.2</a>) &mdash; thiamine status can throttle carbon flow into the cycle from two separate directions.</p>
 </div>
 </section>
 
@@ -450,10 +529,9 @@ footer.end b{color:var(--moss);}
   <h2>&beta;-Oxidation</h2>
 </div>
 <section>
-<p>Fat is dismantled in the mitochondrial matrix by a four-step loop that repeats, not a line that runs once. A carnitine shuttle first carries the activated fatty acyl-CoA across the inner mitochondrial membrane; from there, a C16 chain like palmitate spins through the loop seven times, releasing eight acetyl-CoA units and reducing seven FAD and seven NAD&plus; along the way. Every turn needs the same two vitamin-derived electron acceptors and the same pantothenic-acid-built coenzyme to cleave the final bond.</p>
+<p>Fat is dismantled in the mitochondrial matrix by a four-step loop that repeats, not a line that runs once. A C16 chain like palmitate spins through it seven times, releasing eight acetyl-CoA and reducing seven FAD and seven NAD&plus; along the way.</p>
 
 <h3 id="ii-1"><span class="h3num">II.1</span>Four steps, repeated until nothing is left but acetyl-CoA</h3>
-<p>Acyl-CoA dehydrogenase reduces FAD to FADH2 while introducing a double bond; enoyl-CoA hydratase adds water across it; 3-hydroxyacyl-CoA dehydrogenase reduces NAD&plus; to NADH; and thiolase uses a free coenzyme A to cleave off the terminal two carbons as acetyl-CoA, leaving a chain two carbons shorter to re-enter at the top.</p>
 
 <div class="diagram">
 <svg viewBox="0 0 640 640" role="img" aria-labelledby="boTitle boDesc">
@@ -519,7 +597,7 @@ footer.end b{color:var(--moss);}
   <h2>The Krebs Cycle</h2>
 </div>
 <section>
-<p>Every acetyl-CoA &mdash; from glucose or from fat &mdash; enters the same eight-step wheel in the mitochondrial matrix. Oxaloacetate is regenerated at the end of each turn, so the cycle never runs out of a place to put the next acetyl group. Four of the eight steps are redox reactions loading electrons onto NAD&plus; or FAD; a fifth makes GTP directly by substrate-level phosphorylation.</p>
+<p>Every acetyl-CoA &mdash; from glucose or from fat &mdash; enters the same eight-step wheel. Oxaloacetate regenerates at the end of each turn, so the cycle never runs out of a place to put the next acetyl group.</p>
 
 <h3 id="iii-1"><span class="h3num">III.1</span>Eight steps, one wheel</h3>
 
@@ -610,18 +688,47 @@ footer.end b{color:var(--moss);}
   <h2>Protein &amp; Amino Acid Metabolism</h2>
 </div>
 <section>
-<p>Glucose and fat aren't the only fuels these pathways run on. Amino acids &mdash; from dietary protein, or from muscle during fasting, very-low-carbohydrate intake, or intake beyond what's needed for synthesis &mdash; can be stripped of their nitrogen and fed into the same central pathways as carbon skeletons. It's normally a minor contributor to ATP production, but the entry mechanism is one every amino acid shares.</p>
+<p>Amino acids &mdash; from dietary protein, or from muscle during fasting or very-low-carb intake &mdash; can be stripped of their nitrogen and fed into the same pathways as carbon skeletons. Every one of the twenty shares the same entry mechanism.</p>
 
-<h3 id="iv-1"><span class="h3num">IV.1</span>Transamination strips the nitrogen &mdash; PLP does the stripping</h3>
-<p>Before an amino acid's carbon skeleton can enter glycolysis or the Krebs cycle, its amino group has to come off. That's done by a family of enzymes called aminotransferases (or transaminases &mdash; ALT and AST are the two measured on a standard liver panel), which transfer the amino group from the amino acid onto &alpha;-ketoglutarate, producing glutamate and the corresponding keto acid: alanine becomes pyruvate, aspartate becomes oxaloacetate, and so on for each of the twenty.</p>
+<h3 id="iv-1"><span class="h3num">IV.1</span>Transamination: one cofactor swaps the amine for a keto group</h3>
+<p>An aminotransferase (ALT and AST are the two on a standard liver panel) transfers the amino acid's &ndash;NH&#8322; group onto &alpha;-ketoglutarate. The amino acid becomes a keto acid; &alpha;-ketoglutarate becomes glutamate. Same swap, all twenty times, always on the same cofactor.</p>
 
-<div class="mech">
-  <div class="mech-lbl">Every transaminase in the body runs on one cofactor</div>
-  <p style="margin-top:0;">Pyridoxal-5&prime;-phosphate (PLP), the active form of vitamin B6, is the obligate cofactor for every transamination reaction. It forms a Schiff base with the incoming amino group and physically carries it across to the accepting keto acid &mdash; the same chemistry, repeated for all twenty amino acids. Glutamate's amino group is then released as free ammonia by glutamate dehydrogenase (an NAD&plus;/NADP&plus;-dependent oxidative deamination), regenerating the &alpha;-ketoglutarate that started the cycle. The ammonia itself is converted to urea in the liver's urea cycle and excreted by the kidneys &mdash; an ATP-costly disposal route, and a separate system from the ATP-generating pathways this paper otherwise covers.</p>
+<div class="diagram">
+<svg viewBox="0 0 700 320" role="img" aria-labelledby="taTitle taDesc">
+  <title id="taTitle">Transamination moves an amine group from an amino acid to alpha-ketoglutarate</title>
+  <desc id="taDesc">An amino acid with an R group and an amine group loses the amine to become a keto acid. The amine group, carried by PLP, attaches to alpha-ketoglutarate, converting it to glutamate.</desc>
+  <defs>
+    <marker id="taArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a5d3a"/></marker>
+  </defs>
+  <g font-family="'IBM Plex Mono',monospace" font-size="12" fill="#1a1f1a">
+    <rect x="30" y="20" width="270" height="54" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="165" y="43" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="14">Amino Acid</text>
+    <text x="165" y="63" text-anchor="middle" font-size="10" fill="#3d453c">R &ndash; CH(NH&#8322;) &ndash; COOH</text>
+
+    <rect x="400" y="20" width="270" height="54" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="535" y="49" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="14">&alpha;-Ketoglutarate</text>
+
+    <path d="M165 76 V244" stroke="#4a5d3a" stroke-width="2" marker-end="url(#taArrow)"/>
+    <path d="M535 76 V244" stroke="#4a5d3a" stroke-width="2" marker-end="url(#taArrow)"/>
+    <path d="M165 160 H535" stroke="#4a5d3a" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#taArrow)"/>
+    <text x="350" y="146" text-anchor="middle" fill="#4a5d3a">&ndash;NH&#8322; carried by PLP (B6)</text>
+
+    <rect x="30" y="246" width="270" height="54" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="165" y="269" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="14">Keto Acid</text>
+    <text x="165" y="289" text-anchor="middle" font-size="10" fill="#3d453c">R &ndash; CO &ndash; COOH</text>
+
+    <rect x="400" y="246" width="270" height="54" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="535" y="278" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="14">Glutamate</text>
+
+    <text x="165" y="103" text-anchor="middle" font-size="10" fill="#3d453c" font-style="italic">R = a different side chain</text>
+    <text x="165" y="117" text-anchor="middle" font-size="10" fill="#3d453c" font-style="italic">for each of the 20 amino acids</text>
+  </g>
+</svg>
+<p class="dcap">Glutamate's amine is then released as free ammonia (glutamate dehydrogenase, NAD&plus;/NADP&plus;) and disposed of via the liver's urea cycle &mdash; an ATP-costly system separate from the ATP-generating pathways above.</p>
 </div>
 
 <h3 id="iv-2"><span class="h3num">IV.2</span>Six doors, twenty amino acids</h3>
-<p>Once the nitrogen is off, the carbon skeleton lands at one of six points on the pathways already drawn above: pyruvate, acetyl-CoA, or one of four Krebs cycle intermediates. Which door an amino acid uses determines what its carbon can become. Skeletons that land at pyruvate or a Krebs cycle intermediate can be run in reverse, through gluconeogenesis, back into glucose &mdash; these are called <strong>glucogenic</strong>. Leucine and lysine are the exception: they land only at acetyl-CoA, which the Krebs cycle can burn for ATP but which cell chemistry cannot run back into glucose &mdash; making them <strong>purely ketogenic</strong>. A handful of amino acids split their carbons across two doors and count as both.</p>
+<p>The keto acid lands at one of six points already drawn above: pyruvate, acetyl-CoA, or a Krebs cycle intermediate. Land at pyruvate or a Krebs intermediate and the carbon can run back to glucose (<strong>glucogenic</strong>, via <a href="#part-v">gluconeogenesis</a>). Leucine and lysine land only at acetyl-CoA, which can't run backward &mdash; <strong>purely ketogenic</strong>. A few amino acids split across two doors and count as both.</p>
 
 <div class="diagram">
 <svg viewBox="0 0 920 420" role="img" aria-labelledby="aaTitle aaDesc">
@@ -675,13 +782,208 @@ footer.end b{color:var(--moss);}
 </div>
 </section>
 
-<!-- ============ PART V: B-VITAMIN COFACTORS ============ -->
+<!-- ============ PART V: WHERE THE PATHWAYS BRANCH ============ -->
 <div class="part-head" id="part-v">
   <span class="part-num">Part&nbsp;V</span>
+  <h2>Where the Pathways Branch</h2>
+</div>
+<section>
+<p>Everything above runs toward ATP. The same junction molecules &mdash; citrate, pyruvate, glucose-6-phosphate, acetyl-CoA &mdash; also sit at the start of four branches that run the traffic somewhere else: building fat, building glucose, building nucleotide precursors, or building an alternative fuel for when glucose is scarce.</p>
+
+<h3 id="v-1"><span class="h3num">V.1</span>Lipogenesis: citrate leaves the cycle to build fat</h3>
+<p>When acetyl-CoA and ATP are both abundant, citrate backs up and is exported out of the mitochondria instead of continuing around the Krebs wheel.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 900 300" role="img" aria-labelledby="lipoTitle lipoDesc">
+  <title id="lipoTitle">Lipogenesis: citrate exported to the cytosol is rebuilt into fatty acids</title>
+  <desc id="lipoDesc">Citrate crosses from the mitochondria to the cytosol, where ATP-citrate lyase splits it back into acetyl-CoA. Acetyl-CoA carboxylase, using biotin, converts it to malonyl-CoA, and fatty acid synthase, using NADPH, builds fatty acids and triglycerides.</desc>
+  <defs>
+    <marker id="lipoArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a8562f"/></marker>
+    <marker id="lipoArrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b78a2e"/></marker>
+  </defs>
+  <g font-family="'IBM Plex Mono',monospace" font-size="11" fill="#1a1f1a">
+    <text x="120" y="28" text-anchor="middle" letter-spacing="1.5" fill="#3d453c">MITOCHONDRIA</text>
+    <text x="480" y="28" text-anchor="middle" letter-spacing="1.5" fill="#3d453c">CYTOSOL</text>
+    <line x1="225" y1="15" x2="225" y2="280" stroke="#d9d4c4" stroke-width="1" stroke-dasharray="3 5"/>
+
+    <rect x="30" y="110" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="95" y="136" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#a8562f">Citrate</text>
+
+    <path d="M162 131 H288" stroke="#a8562f" stroke-width="2" marker-end="url(#lipoArrow)"/>
+    <text x="225" y="121" text-anchor="middle" fill="#3d453c">shuttle</text>
+
+    <rect x="290" y="110" width="130" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="355" y="136" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#a8562f">Citrate</text>
+
+    <path d="M422 131 H548" stroke="#a8562f" stroke-width="2" marker-end="url(#lipoArrow)"/>
+    <text x="485" y="121" text-anchor="middle" fill="#1a1f1a">ATP-Citrate Lyase</text>
+
+    <rect x="550" y="110" width="140" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="620" y="136" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#a8562f">Acetyl-CoA</text>
+
+    <path d="M692 131 H818" stroke="#b78a2e" stroke-width="2" marker-end="url(#lipoArrowGold)"/>
+    <text x="755" y="112" text-anchor="middle" fill="#1a1f1a">Acetyl-CoA</text>
+    <text x="755" y="123" text-anchor="middle" fill="#1a1f1a">Carboxylase</text>
+    <text x="755" y="149" text-anchor="middle" fill="#4a5d3a">Biotin (B7)</text>
+
+    <rect x="700" y="180" width="140" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="770" y="206" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#b78a2e" font-size="12">Malonyl-CoA</text>
+
+    <path d="M770 152 V178" stroke="#b78a2e" stroke-width="2" marker-end="url(#lipoArrowGold)"/>
+
+    <path d="M700 240 H430" stroke="#b78a2e" stroke-width="2" marker-end="url(#lipoArrowGold)"/>
+    <text x="565" y="230" text-anchor="middle" fill="#1a1f1a">Fatty Acid Synthase</text>
+    <text x="565" y="264" text-anchor="middle" fill="#4a5d3a">NADPH (from Part V.3)</text>
+
+    <rect x="240" y="221" width="190" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="335" y="247" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#b78a2e" font-size="12">Fatty Acids &rarr; Triglycerides</text>
+  </g>
+</svg>
+<p class="dcap">The rate-limiting step, acetyl-CoA carboxylase, needs biotin (B7) &mdash; the same vitamin that runs pyruvate carboxylase in gluconeogenesis below.</p>
+</div>
+
+<h3 id="v-2"><span class="h3num">V.2</span>Gluconeogenesis: running glycolysis backward, with three detours</h3>
+<p>Liver and kidney rebuild glucose from lactate, alanine, and glycerol. Seven of the ten glycolysis steps just run in reverse; three are one-way, so the body uses different enzymes to get around them.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 990 260" role="img" aria-labelledby="gngTitle gngDesc">
+  <title id="gngTitle">Gluconeogenesis rebuilds glucose from pyruvate using three bypass enzymes</title>
+  <desc id="gngDesc">Lactate, alanine, and glycerol feed into pyruvate, which pyruvate carboxylase and PEPCK convert to PEP, bypassing pyruvate kinase. PEP runs the reverse of glycolysis to fructose-1,6-bisphosphate, which fructose-1,6-bisphosphatase converts to fructose-6-phosphate, bypassing PFK-1. Glucose-6-phosphatase, liver and kidney only, produces free glucose, bypassing hexokinase.</desc>
+  <defs>
+    <marker id="gngArrowSoft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d453c"/></marker>
+    <marker id="gngArrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b78a2e"/></marker>
+    <marker id="gngArrowSky" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d6a7a"/></marker>
+  </defs>
+  <g font-family="'IBM Plex Mono',monospace" font-size="11" fill="#1a1f1a">
+    <rect x="20" y="109" width="150" height="42" rx="8" fill="#fffefb" stroke="#3d453c" stroke-width="2"/>
+    <text x="95" y="128" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12">Lactate &middot; Alanine</text>
+    <text x="95" y="143" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12">Glycerol</text>
+
+    <path d="M172 130 H208" stroke="#3d453c" stroke-width="2" marker-end="url(#gngArrowSoft)"/>
+
+    <rect x="210" y="109" width="110" height="42" rx="8" fill="#fffefb" stroke="#a8562f" stroke-width="2"/>
+    <text x="265" y="135" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#a8562f">Pyruvate</text>
+
+    <path d="M322 130 H448" stroke="#b78a2e" stroke-width="2" marker-end="url(#gngArrowGold)"/>
+    <text x="385" y="105" text-anchor="middle" fill="#1a1f1a">Pyruvate Carboxylase</text>
+    <text x="385" y="118" text-anchor="middle" fill="#1a1f1a">+ PEPCK</text>
+    <text x="385" y="150" text-anchor="middle" fill="#4a5d3a">Biotin (B7) &middot; bypass 1</text>
+
+    <rect x="450" y="109" width="90" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="495" y="135" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12" fill="#b78a2e">PEP</text>
+
+    <path d="M542 130 H628" stroke="#3d6a7a" stroke-width="2" marker-end="url(#gngArrowSky)"/>
+    <text x="585" y="105" text-anchor="middle" fill="#1a1f1a" font-size="10">reverse of</text>
+    <text x="585" y="118" text-anchor="middle" fill="#1a1f1a" font-size="10">Part I steps</text>
+
+    <rect x="630" y="109" width="150" height="42" rx="8" fill="#fffefb" stroke="#3d6a7a" stroke-width="2"/>
+    <text x="705" y="135" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12" fill="#3d6a7a">Fructose-1,6-BP</text>
+
+    <path d="M782 130 H818" stroke="#b78a2e" stroke-width="2" marker-end="url(#gngArrowGold)"/>
+    <text x="800" y="105" text-anchor="middle" fill="#4a5d3a" font-size="10">bypass 2</text>
+
+    <rect x="820" y="109" width="110" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="875" y="129" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="11" fill="#b78a2e">Fructose-6-P</text>
+    <text x="875" y="143" text-anchor="middle" font-size="9" fill="#4a5d3a">&rarr; Glucose (bypass 3, liver/kidney)</text>
+  </g>
+</svg>
+<p class="dcap">Sky-colored arrows are the same enzymes as Part I, run backward. Gold arrows are gluconeogenesis-only detours around the three irreversible glycolysis steps &mdash; the first needs biotin.</p>
+</div>
+
+<h3 id="v-3"><span class="h3num">V.3</span>The pentose phosphate pathway: G6P branches for NADPH</h3>
+<p>Before glucose-6-phosphate (G6P) commits to glycolysis, some of it can branch off to make NADPH &mdash; the electron donor lipogenesis and antioxidant defenses run on &mdash; and ribose-5-phosphate for nucleotide synthesis.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 640 420" role="img" aria-labelledby="pppTitle pppDesc">
+  <title id="pppTitle">The pentose phosphate pathway branches off glucose-6-phosphate to make NADPH and ribose-5-phosphate</title>
+  <desc id="pppDesc">Glucose-6-phosphate is oxidized to 6-phosphogluconate, reducing NADP+ to NADPH, then to ribulose-5-phosphate, reducing a second NADP+ and releasing CO2. Ribulose-5-phosphate converts to ribose-5-phosphate, used for nucleotide synthesis.</desc>
+  <defs>
+    <marker id="pppArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a5d3a"/></marker>
+  </defs>
+  <g font-family="'IBM Plex Mono',monospace" font-size="11" fill="#1a1f1a">
+    <rect x="220" y="20" width="200" height="42" rx="8" fill="#fffefb" stroke="#3d6a7a" stroke-width="2"/>
+    <text x="320" y="46" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#3d6a7a">Glucose-6-P</text>
+
+    <path d="M320 64 V126" stroke="#4a5d3a" stroke-width="2" marker-end="url(#pppArrow)"/>
+    <text x="335" y="85" fill="#1a1f1a">G6PD</text>
+    <text x="335" y="100" fill="#4a5d3a">NADP&plus; &rarr; NADPH</text>
+
+    <rect x="180" y="128" width="280" height="42" rx="8" fill="#fffefb" stroke="#4a5d3a" stroke-width="2"/>
+    <text x="320" y="154" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#4a5d3a" font-size="13">6-Phosphogluconate</text>
+
+    <path d="M320 172 V234" stroke="#4a5d3a" stroke-width="2" marker-end="url(#pppArrow)"/>
+    <text x="335" y="193" fill="#1a1f1a">6PGD</text>
+    <text x="335" y="208" fill="#4a5d3a">NADP&plus; &rarr; NADPH, CO2</text>
+
+    <rect x="220" y="236" width="200" height="42" rx="8" fill="#fffefb" stroke="#4a5d3a" stroke-width="2"/>
+    <text x="320" y="262" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#4a5d3a" font-size="13">Ribulose-5-P</text>
+
+    <path d="M320 280 V336" stroke="#4a5d3a" stroke-width="2" marker-end="url(#pppArrow)"/>
+
+    <rect x="230" y="338" width="180" height="42" rx="8" fill="#fffefb" stroke="#4a5d3a" stroke-width="2"/>
+    <text x="320" y="364" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#4a5d3a" font-size="13">Ribose-5-P</text>
+
+    <text x="320" y="405" text-anchor="middle" fill="#3d453c" font-style="italic">&rarr; nucleotides (DNA / RNA)</text>
+  </g>
+</svg>
+<p class="dcap">2 NADPH per G6P, spent above in lipogenesis (V.1) and on glutathione regeneration. The pathway's non-oxidative half (not shown) can run in reverse and needs TPP (B1) &mdash; the same cofactor as pyruvate dehydrogenase.</p>
+</div>
+
+<h3 id="v-4"><span class="h3num">V.4</span>Ketogenesis: when acetyl-CoA outpaces oxaloacetate</h3>
+<p>Fasting or very-low-carb intake drops oxaloacetate (it's pulled toward gluconeogenesis), so the liver's mitochondria can't condense all the acetyl-CoA &beta;-oxidation is producing. The surplus becomes ketone bodies instead.</p>
+
+<div class="diagram">
+<svg viewBox="0 0 960 260" role="img" aria-labelledby="ketoTitle ketoDesc">
+  <title id="ketoTitle">Ketogenesis converts surplus acetyl-CoA into beta-hydroxybutyrate and acetone</title>
+  <desc id="ketoDesc">Two acetyl-CoA combine to acetoacetyl-CoA, then a third acetyl-CoA forms HMG-CoA, which splits into acetoacetate. Acetoacetate becomes either beta-hydroxybutyrate, using NADH, or acetone, spontaneously.</desc>
+  <defs>
+    <marker id="ketoArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b78a2e"/></marker>
+  </defs>
+  <g font-family="'IBM Plex Mono',monospace" font-size="11" fill="#1a1f1a">
+    <rect x="20" y="110" width="140" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="90" y="132" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12" fill="#b78a2e">2 &times; Acetyl-CoA</text>
+
+    <path d="M162 131 H208" stroke="#b78a2e" stroke-width="2" marker-end="url(#ketoArrow)"/>
+    <text x="185" y="121" text-anchor="middle" font-size="9">Thiolase</text>
+
+    <rect x="210" y="110" width="170" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="295" y="136" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12" fill="#b78a2e">Acetoacetyl-CoA</text>
+
+    <path d="M382 131 H418" stroke="#b78a2e" stroke-width="2" marker-end="url(#ketoArrow)"/>
+    <text x="400" y="121" text-anchor="middle" font-size="9">+CoA</text>
+
+    <rect x="420" y="110" width="130" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="485" y="136" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#b78a2e">HMG-CoA</text>
+
+    <path d="M552 131 H588" stroke="#b78a2e" stroke-width="2" marker-end="url(#ketoArrow)"/>
+
+    <rect x="590" y="110" width="150" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="665" y="136" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12" fill="#b78a2e">Acetoacetate</text>
+
+    <path d="M635 154 C 610 175, 600 185, 600 194" stroke="#b78a2e" stroke-width="2" fill="none" marker-end="url(#ketoArrow)"/>
+    <text x="560" y="180" text-anchor="middle" font-size="10">+NADH</text>
+
+    <rect x="510" y="196" width="200" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="610" y="222" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" font-size="12" fill="#b78a2e">&beta;-Hydroxybutyrate</text>
+
+    <path d="M700 154 C 740 175, 760 185, 770 194" stroke="#b78a2e" stroke-width="2" fill="none" marker-end="url(#ketoArrow)"/>
+    <text x="790" y="180" text-anchor="middle" font-size="10">spontaneous</text>
+
+    <rect x="760" y="196" width="120" height="42" rx="8" fill="#fffefb" stroke="#b78a2e" stroke-width="2"/>
+    <text x="820" y="222" text-anchor="middle" font-family="'Fraunces',serif" font-weight="600" fill="#b78a2e">Acetone</text>
+  </g>
+</svg>
+<p class="dcap">&beta;-Hydroxybutyrate travels to other tissues &mdash; brain included &mdash; as an alternative fuel to glucose. Acetone is mostly exhaled, which is where the fruity breath in ketosis or diabetic ketoacidosis comes from.</p>
+</div>
+</section>
+
+<!-- ============ PART VI: B-VITAMIN COFACTORS ============ -->
+<div class="part-head" id="part-vi">
+  <span class="part-num">Part&nbsp;VI</span>
   <h2>The B-Vitamin Cofactors</h2>
 </div>
 <section>
-<p>Each B vitamin has to be converted into an active coenzyme form before it can do anything. A deficiency doesn't cause a generic drop in &ldquo;energy&rdquo; &mdash; it stalls a specific, nameable step in one of the pathways above. Six of the eight get direct or indirect use in this paper; the individual nutrient pages carry deficiency signs, intake targets, and food sources for each.</p>
+<p>Each B vitamin converts into an active coenzyme before it can do anything. A deficiency doesn't cause a generic drop in &ldquo;energy&rdquo; &mdash; it stalls a specific, nameable step. The individual nutrient pages carry deficiency signs, intake targets, and food sources for each.</p>
 
 <table class="matrix">
 <thead><tr><th>Vitamin</th><th>Coenzyme</th><th>Acts in</th><th>Role</th></tr></thead>
@@ -689,45 +991,45 @@ footer.end b{color:var(--moss);}
 <tr>
   <td><a href="vitaminb1thiamine.html">B1 &middot; Thiamine</a></td>
   <td>TPP</td>
-  <td class="tiercell">I, III</td>
-  <td>Cofactor for pyruvate dehydrogenase (<a href="#i-2">I.2</a>) and &alpha;-ketoglutarate dehydrogenase (<a href="#iii-2">III.2</a>) &mdash; the two decarboxylation steps that hand carbon into and around the Krebs cycle.</td>
+  <td class="tiercell">I, III, V</td>
+  <td>Pyruvate dehydrogenase (<a href="#i-2">I.2</a>) and &alpha;-ketoglutarate dehydrogenase (<a href="#iii-2">III.2</a>) &mdash; both decarboxylation steps &mdash; plus the reversible half of the pentose phosphate pathway (<a href="#v-3">V.3</a>).</td>
 </tr>
 <tr>
   <td><a href="vitaminb2riboflavin.html">B2 &middot; Riboflavin</a></td>
   <td>FAD / FMN</td>
   <td class="tiercell">II, III</td>
-  <td>FAD is the electron acceptor for acyl-CoA dehydrogenase in every turn of &beta;-oxidation and for succinate dehydrogenase in the Krebs cycle, which feeds those electrons directly into Complex II of the electron transport chain.</td>
+  <td>Electron acceptor for acyl-CoA dehydrogenase in every turn of &beta;-oxidation and for succinate dehydrogenase in the Krebs cycle, which feeds those electrons directly into Complex II.</td>
 </tr>
 <tr>
   <td><a href="vitaminb3niacin.html">B3 &middot; Niacin</a></td>
   <td>NAD&plus; / NADP&plus;</td>
-  <td class="tiercell">I, II, III</td>
-  <td>The most-used cofactor in this paper: GAPDH in glycolysis, 3-hydroxyacyl-CoA dehydrogenase in &beta;-oxidation, and three separate Krebs cycle steps all reduce NAD&plus; to NADH &mdash; the main electron currency feeding Complex I.</td>
+  <td class="tiercell">I&ndash;V</td>
+  <td>NAD&plus; runs GAPDH, &beta;-oxidation, and three Krebs steps. Its cousin NADP&plus; is what the pentose phosphate pathway (<a href="#v-3">V.3</a>) reduces to NADPH &mdash; the electron donor lipogenesis (<a href="#v-1">V.1</a>) spends.</td>
 </tr>
 <tr>
   <td><a href="vitaminb5pantothenicacid.html">B5 &middot; Pantothenic acid</a></td>
   <td>Coenzyme A</td>
-  <td class="tiercell">I, II, III</td>
-  <td>CoA is the handle every acyl group is carried by: fatty acid activation, thiolase's final cleavage in &beta;-oxidation, and both pyruvate dehydrogenase and citrate synthase depend on a free thiol from CoA-SH.</td>
+  <td class="tiercell">I&ndash;V</td>
+  <td>CoA is the handle every acyl group is carried by &mdash; acetyl-CoA, malonyl-CoA, HMG-CoA &mdash; through &beta;-oxidation, the Krebs cycle, lipogenesis, and ketogenesis alike.</td>
 </tr>
 <tr>
   <td><a href="vitaminb6pyridoxine.html">B6 &middot; Pyridoxine</a></td>
   <td>PLP</td>
   <td class="tiercell">IV</td>
-  <td>PLP runs every transamination reaction in <a href="#part-iv">Part&nbsp;IV</a> &mdash; swapping an amino group for a keto group and handing twenty different carbon skeletons into six points on the pathways above.</td>
+  <td>PLP runs every transamination in <a href="#part-iv">Part&nbsp;IV</a> &mdash; swapping an amine for a keto group and handing twenty carbon skeletons into six points on the pathways above.</td>
 </tr>
 <tr>
   <td><a href="vitaminb7biotin.html">B7 &middot; Biotin</a></td>
   <td>Carboxylase prosthetic group</td>
-  <td class="tiercell">III</td>
-  <td>Pyruvate carboxylase, biotin's signature reaction, converts pyruvate directly to oxaloacetate &mdash; refilling the Krebs cycle whenever intermediates are pulled out for amino acid or heme synthesis.</td>
+  <td class="tiercell">III, V</td>
+  <td>Pyruvate carboxylase refills the Krebs cycle (III) and starts gluconeogenesis (<a href="#v-2">V.2</a>); acetyl-CoA carboxylase is the rate-limiting step of lipogenesis (<a href="#v-1">V.1</a>). Same vitamin, opposite directions.</td>
 </tr>
 </tbody>
 </table>
 
 <div class="mech">
   <div class="mech-lbl">Reading the map</div>
-  <p style="margin-top:0;">Four cofactors do almost all the direct work: <strong>TPP</strong> and <strong>CoA</strong> gate carbon entering and moving through the cycle, while <strong>FAD</strong> and <strong>NAD&plus;</strong> carry the electrons back out to the electron transport chain. <strong>B6</strong> and <strong>biotin</strong> don't touch the core pathways directly &mdash; B6 keeps protein's carbon flowing in, and biotin keeps the cycle's intermediate pool topped up &mdash; which is what lets the Krebs cycle double as a biosynthetic hub, not just a combustion engine. See <a href="metabolic-health.html">Metabolic Health</a> for where this fits into the broader picture of mitochondrial capacity and insulin sensitivity.</p>
+  <p style="margin-top:0;"><strong>TPP</strong>, <strong>CoA</strong>, <strong>FAD</strong>, and <strong>NAD&plus;/NADP&plus;</strong> do almost all the direct chemistry. <strong>B6</strong> and <strong>biotin</strong> sit at the branch points instead &mdash; B6 decides what protein becomes, biotin decides whether pyruvate builds glucose or acetyl-CoA builds fat. See <a href="metabolic-health.html">Metabolic Health</a> for how this fits into mitochondrial capacity and insulin sensitivity.</p>
 </div>
 </section>
 
@@ -737,7 +1039,7 @@ footer.end b{color:var(--moss);}
 </footer>
 
 <div style="margin-top:44px">
-  <span class="tag">Glycolysis</span><span class="tag">&beta;-oxidation</span><span class="tag">Krebs cycle</span><span class="tag">TCA cycle</span><span class="tag">Pyruvate dehydrogenase</span><span class="tag">Transamination</span><span class="tag">Glucogenic amino acids</span><span class="tag">Ketogenic amino acids</span><span class="tag">Thiamine</span><span class="tag">Riboflavin</span><span class="tag">Niacin</span><span class="tag">Pantothenic acid</span><span class="tag">Pyridoxine</span><span class="tag">Biotin</span><span class="tag">Mitochondrial capacity</span><span class="tag">ATP</span>
+  <span class="tag">Glycolysis</span><span class="tag">&beta;-oxidation</span><span class="tag">Krebs cycle</span><span class="tag">TCA cycle</span><span class="tag">Pyruvate dehydrogenase</span><span class="tag">Transamination</span><span class="tag">Glucogenic amino acids</span><span class="tag">Ketogenic amino acids</span><span class="tag">Lipogenesis</span><span class="tag">Gluconeogenesis</span><span class="tag">Pentose phosphate pathway</span><span class="tag">Ketogenesis</span><span class="tag">NADPH</span><span class="tag">Thiamine</span><span class="tag">Riboflavin</span><span class="tag">Niacin</span><span class="tag">Pantothenic acid</span><span class="tag">Pyridoxine</span><span class="tag">Biotin</span><span class="tag">Mitochondrial capacity</span><span class="tag">ATP</span>
 </div>
 
 </div>
