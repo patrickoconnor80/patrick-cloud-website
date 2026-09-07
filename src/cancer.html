@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancer as Metabolic Disease</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+.diagram{
+  margin:30px 0;
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:20px 20px 14px;
+}
+.diagram svg{width:100%;height:auto;display:block;}
+.diagram .dcap{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;
+  color:var(--ink-soft);line-height:1.55;margin:14px 0 0;
+  padding-left:14px;border-left:2px solid var(--moss);
+}
+.diagram .dcap b{color:var(--moss-deep);}
+
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mixed{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-mixed::before{background:var(--gold);}
+.ev-weak{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-weak::before{background:var(--rust);}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.deepdive{
+  border-left:3px solid var(--sky);
+  background:linear-gradient(90deg,rgba(61,106,122,.045),rgba(61,106,122,0) 60%);
+  border-radius:0 4px 4px 0;
+  padding:6px 24px 14px 22px;
+  margin:26px 0;
+}
+.deepdive-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;display:flex;align-items:baseline;gap:8px;
+  padding:10px 0 4px;border-bottom:1px dotted var(--rule);margin-bottom:12px;
+}
+.deepdive-tag .dd-skip{
+  font-weight:400;text-transform:none;letter-spacing:.02em;
+  color:var(--ink-soft);font-style:italic;font-size:11px;
+}
+.deepdive-tag::before{content:"\25B7";font-size:12px;color:var(--sky);}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.chain{
+  font-family:'IBM Plex Mono',monospace;font-size:14px;
+  line-height:1.9;color:var(--ink-soft);
+  background:var(--paper-deep);padding:16px 18px;border-radius:3px;
+  margin:14px 0;overflow-x:auto;
+}
+.chain b{color:var(--moss-deep);}
+.arrow{color:var(--rust);font-weight:600;}
+
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+.pushback{
+  border-left:3px solid var(--rust);
+  background:rgba(168,86,47,.05);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.pushback .pb-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+
+.hallmark-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:26px 0;
+}
+.hallmark-card{
+  border:1px solid var(--rule);border-radius:4px;background:var(--card);
+  padding:16px 18px;
+}
+.hallmark-card .hm-num{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-bottom:4px;
+}
+.hallmark-card .hm-name{
+  font-family:'Fraunces',serif;font-weight:600;font-size:17px;
+  color:var(--moss-deep);margin-bottom:6px;
+}
+.hallmark-card p{margin:0;font-size:14.5px;line-height:1.5;color:var(--ink-soft);}
+@media (max-width:560px){.hallmark-grid{grid-template-columns:1fr;}}
+
+.ratio{
+  display:flex;gap:0;margin:30px 0;border:1px solid var(--rule);
+  border-radius:4px;overflow:hidden;background:var(--card);
+}
+.ratio div{flex:1;padding:22px 20px;text-align:center;border-right:1px solid var(--rule);}
+.ratio div:last-child{border-right:none;}
+.ratio .big{
+  font-family:'Fraunces',serif;font-weight:600;font-size:34px;
+  color:var(--moss-deep);line-height:1;
+}
+.ratio .big.hot{color:var(--rust);}
+.ratio .cap{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-soft);margin-top:10px;line-height:1.4;
+}
+
+.pull{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+  font-size:25px;line-height:1.32;color:var(--moss-deep);
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  padding:26px 0;margin:38px 0;
+}
+
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-h{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;
+  margin:30px 0 0;
+}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+ol.refs{
+  list-style:none;padding:0;margin:24px 0 0;
+  font-family:'Newsreader',Georgia,serif;
+}
+ol.refs li{
+  counter-increment:ref;position:relative;padding:0 0 14px 3.2em;
+  font-size:15px;line-height:1.55;color:var(--ink);
+}
+.refwrap{counter-reset:ref;}
+sup.cite{font-size:11px;line-height:0;vertical-align:super;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+sup.cite a{color:var(--rust);text-decoration:none;padding:0 1px;}
+sup.cite a:hover{text-decoration:underline;}
+ol.refs li:target{background:#fbf6ea;outline:2px solid #b78a2e;outline-offset:3px;border-radius:4px;}
+ol.refs li::before{
+  content:"["counter(ref)"]";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--rust);
+}
+ol.refs li .j{font-style:italic;}
+ol.refs li .note{color:var(--ink-soft);font-size:13.5px;}
+.ref-group{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.ref-group:first-of-type{margin-top:8px;}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .ratio{flex-wrap:wrap;}
+  .ratio div{flex:1 1 50%;border-bottom:1px solid var(--rule);}
+  .byline{flex-direction:column;gap:6px;}
+}
+@media (prefers-reduced-motion:no-preference){
+  section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html">Overview</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="linoleic-acid.html">Linoleic Acid</a>
+  <a href="ahr.html">AhR</a>
+  <a href="cold-exposure.html">Cold Exposure</a>
+  <a href="energy-metabolism.html">Energy Metabolism</a>
+  <a href="cancer.html" class="active">Cancer</a>
+  <a href="nutrients.html">Nutrients</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Nutritional Biochemistry &middot; Oncology</p>
+  <h1 class="title">Cancer as <em>Metabolic Disease</em></h1>
+  <p class="sub">How mitochondrial dysfunction may drive the cancer cell&rsquo;s signature behaviours &mdash; and why treating it as primarily a genetic disease has stalled progress for two decades.</p>
+  <div class="byline">
+    <span><b>Primary source</b> Seyfried, <em>Cancer as a Metabolic Disease</em> (2012) + primary literature</span>
+    <span><b>Draft</b> v1</span>
+    <span><b>Standard</b> evidence graded &amp; contrary arguments engaged</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;">Cancer is almost universally framed as a genetic disease: accumulating somatic mutations corrupt the machinery of growth control, and treatment is directed at correcting or killing those specific mutant cells. The evidence for this framing is real &mdash; virtually every cancer carries identifiable mutations. But the genetic model has not translated into proportional improvements in survival, and a quiet alternative has gathered substantial experimental support: that the primary lesion in most cancers is mitochondrial dysfunction, and that the mutations we observe are downstream consequences of the energy crisis that follows, not upstream causes. This paper examines both views fairly, presents the mechanistic evidence for the metabolic model, and explores what accepting it even partially would mean for treatment. The conclusion is not that genetics is irrelevant &mdash; some cancers are predominantly genetic &mdash; but that treating every cancer as a genetic disease, while ignoring its universal metabolic phenotype, may explain why the therapeutic needle has barely moved.</p>
+</div>
+
+<div class="brief">
+  <div class="lbl">Argument in brief</div>
+  <div class="sub">Seven claims this paper defends</div>
+  <ol class="spine">
+    <li><span class="spine-part"><a href="#part-i">Part I</a></span><b>Cancer has a universal metabolic signature</b> regardless of its tissue of origin or genetic profile: aerobic glycolysis, elevated glucose and glutamine dependence, impaired oxidative phosphorylation, and abnormal mitochondria. This phenotype is more consistent across cancers than any specific genetic mutation.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part II</a></span><b>The genetic model, while real, is incomplete.</b> No single gene is linked to most cancers. The signaling pathways most commonly altered (RTK/RAS/PI3K, p53, RB) all converge on the same metabolic outputs. And cancer treatment, despite massive investment, has not substantially changed mortality for most solid tumors over two decades.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part III</a></span><b>Mitochondria show consistent structural and functional damage in cancer.</b> Reduced cytochrome oxidase activity, fewer and smaller organelles, abnormal shapes, and cardiolipin irregularities are found across malignancies and correlate with degree of malignancy.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part IV</a></span><b>Cancer cells ferment glucose and glutamine</b> to compensate for impaired oxidative phosphorylation. The specific pathways &mdash; aerobic glycolysis and reductive glutamine metabolism &mdash; are predictable consequences of mitochondrial dysfunction, not independent features requiring separate explanation.</li>
+    <li><span class="spine-part"><a href="#part-v">Part V</a></span><b>Mutations may be downstream of the energy crisis, not upstream.</b> Maintaining genomic stability requires ATP; a cell conserving energy under chronic mitochondrial stress will accumulate mutations as a side-effect &mdash; not because a mutator gene was first hit, but because repair was deprioritized.</li>
+    <li><span class="spine-part"><a href="#part-vi">Part VI</a></span><b>Standard cancer models are poor proxies for the disease.</b> Xenografts (human cells in mice), cell culture, and targeted genetic models all fail to replicate the tumor microenvironment, metastatic biology, or the spontaneous development that characterizes human cancer.</li>
+    <li><span class="spine-part"><a href="#part-vii">Part VII</a></span><b>Metabolic therapies have proof-of-concept support</b> that is rarely explored relative to their potential. Calorie restriction and ketogenic dietary approaches work through the same mechanism &mdash; depriving cancer of its fermentable fuels &mdash; and may enhance, rather than replace, conventional treatment.</li>
+  </ol>
+  <div class="bottom">The core challenge: a disease whose hallmarks are universal and metabolic is being treated as if it were many different diseases, each defined by its particular set of mutations. Progress may require inverting that framing.</div>
+</div>
+
+<!-- ============================================================ PART I -->
+<section>
+<div class="part-head" id="part-i">
+  <span class="part-num">Part I</span>
+  <h2>What Cancer Actually Is</h2>
+</div>
+
+<h3 id="i-1"><span class="h3num">I.1</span>The hallmarks: what they describe and what they leave out</h3>
+
+<p>The dominant framework for understanding cancer comes from Hanahan and Weinberg, who proposed in 2000 that all cancers, regardless of tissue origin or genetic makeup, acquire the same six capabilities during their development.<sup class="cite"><a href="#r1">1</a></sup> This was updated in 2011 to ten hallmarks, with reprogrammed energy metabolism &mdash; the Warburg effect &mdash; finally included as a named feature.<sup class="cite"><a href="#r2">2</a></sup></p>
+
+<div class="hallmark-grid">
+  <div class="hallmark-card">
+    <div class="hm-num">Hallmark 1</div>
+    <div class="hm-name">Self-sufficiency in growth signals</div>
+    <p>Cancer cells generate their own mitogenic signals rather than waiting for external cues, bypassing the normal requirement for growth-factor stimulation.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Hallmark 2</div>
+    <div class="hm-name">Insensitivity to anti-growth signals</div>
+    <p>Normal tissue homeostasis is enforced partly by anti-proliferative signals; cancer cells rewire to ignore or override them, most commonly via loss of RB pathway function.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Hallmark 3</div>
+    <div class="hm-name">Evasion of programmed cell death</div>
+    <p>Apoptosis is the fail-safe mechanism that eliminates damaged or aberrant cells. Cancer cells disable it, most often through p53 loss or BCL-2 overexpression, allowing damaged cells to survive and divide.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Hallmark 4</div>
+    <div class="hm-name">Limitless replicative potential</div>
+    <p>Normal cells have a finite replication capacity enforced by telomere shortening; cancer cells reactivate telomerase (or use alternative lengthening mechanisms) to divide indefinitely.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Hallmark 5</div>
+    <div class="hm-name">Sustained angiogenesis</div>
+    <p>Tumors beyond a few millimeters must induce new blood vessel formation to receive oxygen and nutrients; they do so by upregulating VEGF and other angiogenic factors while suppressing inhibitors.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Hallmark 6</div>
+    <div class="hm-name">Tissue invasion &amp; metastasis</div>
+    <p>The shift from localized to invasive disease, and ultimately to distant metastasis, involves suppression of cell-adhesion molecules and upregulation of matrix metalloproteinases enabling migration.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Hallmarks 7&ndash;8 (2011)</div>
+    <div class="hm-name">Reprogrammed energy metabolism &amp; immune evasion</div>
+    <p>Aerobic glycolysis (the Warburg effect) and glutamine dependence are now recognized as hallmarks, as is the cancer cell&rsquo;s ability to avoid immune destruction through checkpoint upregulation.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Hallmarks 9&ndash;10 (2011)</div>
+    <div class="hm-name">Genome instability &amp; tumor-promoting inflammation</div>
+    <p>The high mutational burden of cancer cells reflects an acquired defect in DNA-repair fidelity. Chronic inflammation in the tumor microenvironment supplies growth factors and promotes invasion.</p>
+  </div>
+</div>
+
+<p>What the hallmarks describe is more important than their catalogue. <em>Every one of these features converges on a common metabolic output.</em> Self-sufficiency in growth signals means upregulating the same nutrient-sensing and proliferation pathways &mdash; PI3K/AKT/mTOR &mdash; that also govern glucose and glutamine uptake. Evasion of apoptosis involves loss of cytochrome c release from mitochondria, which is itself tied to cardiolipin integrity (see <a href="#part-iii">Part III</a>). Limitless replication requires massive anabolic substrate. Angiogenesis is induced partly by hypoxia-inducible factor (HIF-1&alpha;), which is itself activated when mitochondria fail to consume oxygen efficiently. The hallmarks read, from a metabolic perspective, less like independent features and more like downstream consequences of a single underlying disruption.</p>
+
+<h3 id="i-2"><span class="h3num">I.2</span>Signaling pathway alterations: pervasive but non-specific</h3>
+
+<p>Large-scale genomic analyses &mdash; most prominently The Cancer Genome Atlas &mdash; have documented the frequency of pathway-level alterations across thousands of tumors:<sup class="cite"><a href="#r3">3</a></sup></p>
+
+<div class="ratio">
+  <div><div class="big hot">87%</div><div class="cap">RTK / RAS / PI3K pathway altered</div></div>
+  <div><div class="big hot">87%</div><div class="cap">p53 pathway altered</div></div>
+  <div><div class="big hot">78%</div><div class="cap">RB pathway altered</div></div>
+  <div><div class="big">~60%</div><div class="cap">AKT overexpressed or activated</div></div>
+</div>
+
+<p>These numbers are striking, but their interpretation matters enormously. The observation that nearly every cancer alters the RTK/RAS/PI3K axis does not, by itself, tell us whether those alterations are the <em>cause</em> or a <em>consequence</em> of the disease. Consider what these pathways do: RTK/RAS/PI3K signaling promotes glucose uptake, glycolysis, and biosynthetic precursor generation &mdash; exactly what a cell with impaired oxidative phosphorylation would need to upregulate to survive. p53 normally triggers apoptosis in cells with DNA damage or energetic stress; losing it lets energetically compromised cells escape death. RB normally restrains entry into the cell cycle; losing it enables replication even when cellular conditions are suboptimal.</p>
+
+<p>The metabolic interpretation is not that these mutations are unimportant &mdash; they clearly facilitate cancer progression. It is that the same metabolic pressure (mitochondrial dysfunction, energy deficit) might be the upstream event that creates selection pressure for cells that acquire these mutations, rather than the mutations themselves being the originating lesion.</p>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: where the genetic model is clearly right</div>
+  <p style="margin:0 0 8px;">Some cancers are straightforwardly genetic in their origin. BRCA1/2 mutations in breast and ovarian cancer, APC mutations in familial adenomatous polyposis, RB1 loss in retinoblastoma, and BCR-ABL in chronic myeloid leukemia are genuine driver events &mdash; heritable, mechanistically understood, and in the case of CML, successfully targeted (imatinib). The extraordinary success of imatinib &mdash; converting CML from a near-uniformly fatal disease to one manageable with a daily pill &mdash; proves that targeting a specific oncogenic mutation can be curative, at least when a single driver dominates. Pediatric cancers as a group tend to have simpler mutational landscapes and are more tractable to genetic approaches. <em>The claim this paper examines is not that all cancers are purely metabolic, but that the metabolic dimension is consistently underweighted relative to the genetic one.</em></p>
+</div>
+
+<h3 id="i-3"><span class="h3num">I.3</span>The universal metabolic phenotype</h3>
+
+<p>Whatever their tissue of origin, whatever mutations they carry, cancer cells share a metabolic fingerprint that has been recognized since Otto Warburg&rsquo;s observations in the 1920s and confirmed by modern metabolomics and imaging:</p>
+
+<div class="mech">
+  <div class="mech-lbl">Cancer&rsquo;s Universal Metabolic Profile</div>
+  <ul style="margin:0;padding-left:20px;font-size:16.5px;line-height:1.65;">
+    <li><strong>Aerobic glycolysis (the Warburg effect):</strong> glucose is fermented to lactate even in the presence of oxygen &mdash; a striking inefficiency, since glycolysis yields only ~2 ATP per glucose vs. ~30 through full oxidative phosphorylation. Warburg himself proposed this reflected a fundamental impairment in mitochondrial function.</li>
+    <li><strong>Elevated glucose uptake:</strong> cancer cells massively upregulate glucose transporters (GLUT1, GLUT3) and are so avid for glucose that PET imaging with radiolabeled glucose (FDG-PET) is standard oncologic staging &mdash; tumors light up wherever they are.</li>
+    <li><strong>Glutamine dependence:</strong> most cancer cells also require glutamine as a secondary fermentable fuel, consuming it at rates far exceeding normal cells. This is not simply for amino acid synthesis; glutamine carbons enter the TCA cycle and support anaplerosis when glucose-derived pyruvate is diverted to lactate.</li>
+    <li><strong>Elevated lactate production:</strong> the acid load from lactate secretion acidifies the tumor microenvironment (pH often 6.5&ndash;6.9 vs. normal 7.4), which promotes invasion and suppresses immune cell function.</li>
+    <li><strong>Impaired oxidative phosphorylation:</strong> despite often having functional electron transport chain complexes in isolation, cancer cells typically fail to use them efficiently &mdash; either because the regulatory machinery is broken, because mitochondrial mass is reduced, or because the inner membrane&rsquo;s biophysical properties are altered.</li>
+    <li><strong>Reactive oxygen species (ROS) elevation:</strong> partly a consequence of impaired ETC function and partly a driver of further oxidative damage, elevated mitochondrial ROS create a pro-mutagenic environment and activate redox-sensitive signaling pathways.</li>
+    <li><strong>Cholesterol and lipid synthesis upregulation:</strong> rapidly proliferating cells need membrane material; cancer cells upregulate de novo lipogenesis and cholesterol synthesis, and both fermentable fuels (glucose and glutamine) supply the carbon and nitrogen for this.</li>
+  </ul>
+</div>
+
+<p>What makes this phenotype so striking is its consistency. A lung adenocarcinoma and a colon adenocarcinoma may share almost no mutations, but they share this metabolic profile almost entirely. This universality is exactly what a single upstream cause &mdash; mitochondrial dysfunction &mdash; would predict.</p>
+
+</section>
+
+<!-- ============================================================ PART II -->
+<section>
+<div class="part-head" id="part-ii">
+  <span class="part-num">Part II</span>
+  <h2>The Genomic Model and Its Limits</h2>
+</div>
+
+<h3 id="ii-1"><span class="h3num">II.1</span>No single gene links most cancers</h3>
+
+<p>If cancer were primarily a genetic disease, we would expect to find a small set of driver genes &mdash; mutated in most cancers, necessary and (in combination) sufficient to cause cancer, and targetable to produce reliable cures. The actual picture is more complicated. The Cancer Genome Atlas found that while pathway-level alterations are nearly universal, the specific genes mutated within those pathways vary enormously between patients and cancer types. The number of meaningful driver mutations per cancer is typically 2&ndash;8, but they are drawn from a long tail of possible genes &mdash; researchers have identified hundreds of potential cancer driver genes, with no single gene mutated across a majority of cancer types.<sup class="cite"><a href="#r3">3</a></sup></p>
+
+<p>This matters for treatment. If the specific mutation varies, targeted therapies aimed at specific mutations will work only in the patients who carry that mutation. The history of oncology since the genomic revolution has been one of spectacular successes in narrow populations (imatinib in BCR-ABL&ndash;positive CML; EGFR inhibitors in EGFR-mutant lung cancer; BRAF inhibitors in V600E-mutant melanoma) and broad frustration elsewhere. <em>Overall cancer mortality &mdash; adjusted for age and population &mdash; has improved only modestly over the past two decades for most solid tumor types, despite enormous investment.</em><sup class="cite"><a href="#r4">4</a></sup> Survival gains are real and meaningful for specific cancers, but the broad promise of precision oncology has not fully materialized.</p>
+
+<div class="flag">
+  <div class="flag-lbl">Important caveat on treatment progress</div>
+  <p style="margin:0;">Cancer survival statistics are genuinely complicated. Age-adjusted incidence and mortality have improved for some cancers (colorectal, cervical, some childhood cancers) due to screening, vaccination, and genuine treatment advances. The claim here is specifically about <em>mortality from solid tumors after diagnosis</em>, where the picture is more equivocal. Immunotherapy (checkpoint inhibitors) is a legitimate exception, with durable responses in a subset of patients &mdash; notably, its mechanism (restoring immune recognition) is not dependent on identifying specific driver mutations in each patient, which is consistent with targeting a universal cancer vulnerability rather than an individual genetic lesion.</p>
+</div>
+
+<h3 id="ii-2"><span class="h3num">II.2</span>The paradox of genetic experiments</h3>
+
+<p>Some of the most revealing evidence against a purely genetic model comes from experiments designed to support it. Several studies have introduced known cancer-causing nuclear DNA (with confirmed oncogenic mutations) into cells with normal mitochondria, and conversely transferred normal nuclei into cells with cancerous mitochondria. The results are difficult to explain under strict genetic primacy:<sup class="cite"><a href="#r5">5</a></sup></p>
+
+<ul style="font-size:16.5px;line-height:1.7;">
+  <li><strong>Nuclear transfer experiments:</strong> when the nucleus from a cancer cell is transferred into an enucleated normal cell (retaining the normal cell&rsquo;s mitochondria), the resulting hybrid typically develops normally or has suppressed tumorigenic capacity. The cancer nucleus, in a normal mitochondrial environment, does not fully recapitulate cancer.</li>
+  <li><strong>Cytoplast transfer experiments:</strong> conversely, when cancer cell cytoplasm (containing cancer mitochondria) is transferred into a normal enucleated cell (retaining the normal nucleus), tumorigenic capacity is often increased &mdash; the normal nucleus, in a cancer mitochondrial environment, begins to behave like a cancer cell.</li>
+  <li><strong>Targeted oncogene expression:</strong> in many genetic models, expressing a single known oncogene (c-Myc, Ras) in normal cells causes metabolic changes and some hallmarks of transformation, but complete malignant transformation is variable and context-dependent. Removing the oncogene sometimes causes tumors to regress, but sometimes does not.</li>
+</ul>
+
+<p>None of these experiments are definitive on their own, and critics raise valid concerns about artifact and interpretation. But the pattern they describe &mdash; that the mitochondrial environment shapes tumorigenic capacity more strongly than the nuclear genotype &mdash; is not easily accommodated within a purely genetic framework.</p>
+
+<div class="pull">
+&ldquo;If mutations were sufficient to cause cancer, we would expect every cell carrying those mutations to become malignant. They do not. If mitochondrial dysfunction were sufficient, we would expect every cell with damaged mitochondria to become malignant. They do not. What we see instead is that mitochondrial damage creates the metabolic environment within which selection for cancer-enabling mutations is powerfully accelerated.&rdquo;
+</div>
+
+<h3 id="ii-3"><span class="h3num">II.3</span>Model failures and the translation gap</h3>
+
+<p>The canonical cancer research models &mdash; the systems through which most experimental oncology is conducted &mdash; have systematic limitations that are relevant to the treatment gap:</p>
+
+<div class="mech">
+  <div class="mech-lbl">Standard Models and Their Limitations</div>
+  <ul style="margin:0;padding-left:20px;font-size:16px;line-height:1.7;">
+    <li><strong>Cell culture models:</strong> cancer cells grown in two-dimensional culture in high-glucose, high-oxygen media are metabolically very different from tumors in vivo. Standard culture conditions (typically 20% O&sub;2;, 25 mM glucose) bear little resemblance to the hypoxic, nutrient-deprived tumor microenvironment. Many metabolic phenotypes &mdash; including aspects of the Warburg effect &mdash; are artifacts of culture conditions.</li>
+    <li><strong>Xenograft models:</strong> implanting human cancer cells into immunocompromised mice is the workhorse of preclinical drug testing. But human cells in a mouse metabolic environment, without a competent immune system, in a species whose metabolic rate, telomere length, glucose regulation, and body temperature all differ substantially from humans, produce findings that translate poorly. Thousands of compounds that &ldquo;work&rdquo; in xenograft models have failed in clinical trials.</li>
+    <li><strong>Genetic/transgenic models:</strong> driving cancer by engineering specific genetic mutations in mice creates reproducible tumor development but not necessarily the same disease. Mice rarely develop spontaneous epithelial cancers (carcinomas), which constitute most human cancer deaths. Their short lifespan, small body size, and different carcinogen exposure history mean the models are inherently imperfect.</li>
+    <li><strong>Metastatic models:</strong> the majority of cancer deaths come not from primary tumors but from metastasis, yet most experimental models poorly recapitulate the metastatic cascade &mdash; particularly the early steps of intravasation, circulation, and extravasation in an intact immune environment. Not all cancers metastasize, and why some do while others do not remains poorly understood in either the genetic or metabolic framework.</li>
+    <li><strong>Natural/spontaneous models:</strong> tumors that arise spontaneously in companion animals (particularly dogs), or in inbred mouse strains over long observation periods, provide a fundamentally different and arguably more realistic picture. Spontaneous tumors develop over time, in an intact immune system, with the full complement of host metabolic and stromal interactions. They are understudied relative to their potential scientific value.</li>
+  </ul>
+</div>
+
+</section>
+
+<!-- ============================================================ PART III -->
+<section>
+<div class="part-head" id="part-iii">
+  <span class="part-num">Part III</span>
+  <h2>Mitochondria as Driver, Not Bystander</h2>
+</div>
+
+<h3 id="iii-1"><span class="h3num">III.1</span>The structural case: what mitochondria look like in cancer</h3>
+
+<p>Mitochondrial abnormalities in cancer are not subtle. Across malignancy types, electron microscopy and biochemical analyses consistently show:<sup class="cite"><a href="#r6">6</a></sup></p>
+
+<ul style="font-size:16.5px;line-height:1.7;">
+  <li><strong>Reduced mitochondrial number:</strong> cancer cells typically contain fewer mitochondria per unit cytoplasm than their normal tissue counterparts.</li>
+  <li><strong>Altered morphology:</strong> cancer mitochondria are often smaller, more rounded, and structurally simplified &mdash; with fewer, less organized cristae. The cristae are the inner membrane folds where the electron transport chain complexes reside; their reduction directly impairs respiratory capacity.</li>
+  <li><strong>Abnormal ultrastructure:</strong> swollen, vacuolated, or fragmented mitochondria are common in malignant tumors. These structural abnormalities track with degree of malignancy &mdash; more aggressive tumors tend to have more severely abnormal mitochondria.</li>
+  <li><strong>Altered mitochondrial lipidome:</strong> the fatty acid composition of mitochondrial membranes is systematically different in cancer cells, with changes in phospholipid class distribution and fatty acid chain length profiles that would predictably affect membrane fluidity and ETC complex activity.</li>
+</ul>
+
+<p>Roskelley and colleagues documented over decades that <strong>cytochrome oxidase (Complex IV) activity is deficient in nearly all highly malignant cancers</strong> examined &mdash; a finding that predates the molecular biology era but remains significant.<sup class="cite"><a href="#r7">7</a></sup> Complex IV is the terminal electron acceptor in the ETC and the site at which oxygen is consumed. Its deficiency means the cell cannot efficiently complete oxidative phosphorylation regardless of how much glucose and oxygen are available.</p>
+
+<p>More recent work has identified two enzymes as consistently altered across malignancies: <strong>GAPDH (glyceraldehyde-3-phosphate dehydrogenase)</strong> is elevated, reflecting upregulation of glycolysis; and <strong>&beta;-F1-ATPase</strong> (the catalytic subunit of ATP synthase, Complex V) is reduced. This is mechanistically important: &beta;-F1-ATPase is not only required for oxidative phosphorylation but also for the intrinsic apoptotic pathway &mdash; its reduction simultaneously impairs mitochondrial ATP production and apoptotic signaling, which would contribute to evasion of cell death.<sup class="cite"><a href="#r8">8</a></sup></p>
+
+<h3 id="iii-2"><span class="h3num">III.2</span>Cardiolipin: the lipid at the center</h3>
+
+<p>Of all the molecular abnormalities in cancer mitochondria, <strong>cardiolipin dysregulation</strong> may be the most mechanistically important and the most underappreciated in mainstream oncology discussion.<sup class="cite"><a href="#r9">9</a></sup></p>
+
+<p>Cardiolipin (CL) is a unique phospholipid found almost exclusively in the inner mitochondrial membrane (IMM), where it constitutes approximately 20% of total lipid. Its structure &mdash; a dimeric phosphoglycerol backbone with four fatty acid chains, almost entirely long-chain polyunsaturated fatty acids (primarily linoleic acid, C18:2, in humans) &mdash; is essential for the biophysical properties of the IMM. No short-chain saturated or monounsaturated fatty acid can substitute; the specific geometry of linoleic acid enables the tight membrane curvature of cristae and the proximity of ETC complexes required for efficient electron transfer.<sup class="cite"><a href="#r9">9</a></sup></p>
+
+<p>Cardiolipin performs several specific functions that are disrupted in cancer:</p>
+
+<div class="mech">
+  <div class="mech-lbl">Cardiolipin&rsquo;s Roles in Normal Mitochondria</div>
+  <ul style="margin:0;padding-left:20px;font-size:16px;line-height:1.65;">
+    <li><strong>ETC supercomplex assembly:</strong> CL acts as a molecular glue that holds the respiratory chain complexes (I&ndash;IV) together into supercomplexes, dramatically increasing the efficiency of electron transfer.</li>
+    <li><strong>Cytochrome c anchoring:</strong> CL binds cytochrome c to the IMM. Under normal conditions this keeps cytochrome c available for electron transfer; when CL is oxidized, cytochrome c is released into the cytoplasm, triggering apoptosis via caspase activation. CL oxidation is the molecular switch for the intrinsic apoptotic pathway.</li>
+    <li><strong>ATP synthase function:</strong> CL stabilizes the F<sub>o</sub>F<sub>1</sub>-ATP synthase and is required for its full catalytic activity and for the membrane proton gradient it harnesses.</li>
+    <li><strong>Mitochondrial fusion dynamics:</strong> CL participates in the fusion/fission cycle that maintains the mitochondrial network and enables quality control (mitophagy).</li>
+  </ul>
+</div>
+
+<p>In cancer, cardiolipin is consistently abnormal: total CL content is reduced, the fatty acid composition is shifted (often with less linoleic acid and more of other species), and CL is oxidized at higher rates. The remodeling enzymes that maintain CL composition &mdash; particularly Tafazzin (TAZ) &mdash; are dysregulated.<sup class="cite"><a href="#r9">9</a></sup></p>
+
+<div class="deepdive">
+  <div class="deepdive-tag">Connection to the seed oils paper <span class="dd-skip">relevant if you&rsquo;ve read the linoleic acid paper</span></div>
+  <p>The requirement for linoleic acid in cardiolipin might seem to argue against the seed oils paper&rsquo;s claim that excess dietary linoleic acid is harmful. It does not. The two arguments are complementary, not contradictory, and the connection runs exactly where you would expect it to.</p>
+  <p>The seed oils paper does not argue that linoleic acid in cardiolipin is the problem. It argues that <em>excess dietary LA</em> creates an oxidative burden through its metabolites (OXLAMs, 4-HNE). And cardiolipin is precisely the structure those metabolites damage. The inner mitochondrial membrane is lined with LA in cardiolipin, sitting at the site of maximal ROS generation. More dietary LA means more LA incorporated into cardiolipin, means more 4-HNE precursor at the exact location where it can inactivate PDH and KGDH (the two enzymes Humphries and Szweda showed are selectively adducted by 4-HNE). The pathway runs: <strong>excess dietary LA &rarr; elevated oxLAMs and 4-HNE &rarr; cardiolipin oxidation at the IMM &rarr; disruption of CL&rsquo;s structural and signaling roles &rarr; ETC dysfunction &rarr; impaired oxidative phosphorylation &rarr; the Warburg shift that Seyfried identifies as the cancer cell&rsquo;s defining metabolic state.</strong></p>
+  <p>The body needs <em>some</em> LA for normal CL synthesis &mdash; estimates suggest 2&ndash;4% of calories provides adequate LA for all physiological purposes including CL maintenance. The modern seed-oil exposure (7&ndash;10% of calories, a several-fold increase from pre-20th-century baselines) represents an excess that overloads the very membrane it supplies, creating the oxidative conditions under which CL is damaged rather than maintained. This is not a contradiction: it is the specific molecular mechanism linking dietary fat quality to mitochondrial dysfunction and, by Seyfried&rsquo;s argument, to cancer risk.</p>
+</div>
+
+<h3 id="iii-3"><span class="h3num">III.3</span>Uncoupled mitochondria and the heat signature of malignancy</h3>
+
+<p>An important and somewhat counterintuitive observation is that some cancer cells consume oxygen without producing ATP &mdash; their mitochondria are <em>uncoupled</em>. This is distinct from the cold-induced uncoupling mediated by uncoupling protein 1 (UCP1) in brown adipose tissue. In cancer, the uncoupling appears to reflect structural membrane damage (altered CL, altered IMM lipid composition) that allows protons to leak back across the inner membrane without passing through ATP synthase, dissipating the proton gradient as heat rather than ATP.</p>
+
+<p>The clinical implication is a measurable correlate of malignancy: <strong>more malignant tumors produce more heat per unit mass</strong>, reflecting greater uncoupling. This heat signature &mdash; long observed empirically &mdash; is mechanistically explained by the degree of IMM disruption.<sup class="cite"><a href="#r10">10</a></sup> It also creates a perverse dynamic: the cancer cell is consuming oxygen (so it does not appear anoxic), but generating little ATP from that oxygen consumption, which forces compensatory glycolysis and glutamine fermentation to maintain energy supply.</p>
+
+</section>
+
+<!-- ============================================================ PART IV -->
+<section>
+<div class="part-head" id="part-iv">
+  <span class="part-num">Part IV</span>
+  <h2>The Two Fuels: Glucose and Glutamine Fermentation</h2>
+</div>
+
+<h3 id="iv-1"><span class="h3num">IV.1</span>Aerobic glycolysis: why it is not as wasteful as it looks</h3>
+
+<p>Otto Warburg identified in the 1920s that cancer cells produce lactic acid even in the presence of oxygen &mdash; the phenomenon now called aerobic glycolysis or the Warburg effect. From a pure ATP-yield perspective this seems irrational: fermentation produces ~2 ATP per glucose, while full oxidative phosphorylation produces ~30. Why would a highly proliferative cell use an energy pathway 15 times less efficient?</p>
+
+<p>The answer is that a cell with damaged mitochondria cannot use oxidative phosphorylation efficiently, regardless of substrate or oxygen availability. Glycolysis becomes the default not by choice but by necessity. Additionally, glycolysis is not only an ATP source &mdash; it supplies carbon skeletons for biosynthesis (ribose for nucleotides via the pentose phosphate pathway, pyruvate for amino acids, glycolytic intermediates for lipid synthesis) that a rapidly dividing cell requires. From this perspective, the Warburg shift is metabolically coherent for a cell that can no longer run oxidative phosphorylation.</p>
+
+<div class="chain">
+<b>Warburg pathway</b><br>
+Glucose <span class="arrow">&rarr;</span> [glucose transporters GLUT1/3] <span class="arrow">&rarr;</span> intracellular glucose<br>
+<span class="arrow">&rarr;</span> glycolysis (10 steps) <span class="arrow">&rarr;</span> pyruvate (net 2 ATP/glucose)<br>
+<span class="arrow">&rarr;</span> [lactate dehydrogenase] <span class="arrow">&rarr;</span> lactate + H&sup1;<br>
+Lactate secreted via MCT4 <span class="arrow">&rarr;</span> acidified tumor microenvironment<br>
+<b>GAPDH</b> (step 6 of glycolysis) is elevated in cancer cells, reflecting pathway upregulation
+</div>
+
+<h3 id="iv-2"><span class="h3num">IV.2</span>Glutamine fermentation: the second fuel</h3>
+
+<p>Glucose alone cannot sustain cancer cell proliferation. Most cancer cells are also addicted to <strong>glutamine</strong> &mdash; the most abundant amino acid in plasma &mdash; which they consume at rates far exceeding their protein synthesis needs. Glutamine fermentation in cancer proceeds through a specific pathway first characterized in detail by Moreadith and Lehninger:<sup class="cite"><a href="#r11">11</a></sup></p>
+
+<div class="chain">
+<b>Glutamine fermentation pathway</b><br>
+Glutamine <span class="arrow">&rarr;</span> [glutaminase] <span class="arrow">&rarr;</span> glutamate + NH&sub;3;<br>
+Glutamate <span class="arrow">&rarr;</span> [glutamate dehydrogenase] <span class="arrow">&rarr;</span> &alpha;-ketoglutarate (&alpha;-KG)<br>
+&alpha;-KG enters TCA cycle as an anaplerotic substrate<br>
+<b>Preferred route:</b> &alpha;-KG <span class="arrow">&rarr;</span> succinate <span class="arrow">&rarr;</span> fumarate <span class="arrow">&rarr;</span> malate <span class="arrow">&rarr;</span> oxaloacetate<br>
+Oxaloacetate <span class="arrow">&rarr;</span> [citrate synthase] <span class="arrow">&rarr;</span> TCA cycle continues, generating ATP<br>
+<b>Alternative routes:</b> pyruvate <span class="arrow">&rarr;</span> alanine; oxaloacetate <span class="arrow">&rarr;</span> aspartate<br>
+<em>Oxaloacetate route is preferred (Moreadith &amp; Lehninger) to keep TCA cycle running</em>
+</div>
+
+<p>Tomitsuka and colleagues provided direct evidence that cancer cells have an <strong>active fumarate reductase reaction</strong> &mdash; running the succinate-to-fumarate step in reverse compared to the normal TCA cycle direction.<sup class="cite"><a href="#r12">12</a></sup> This reductive TCA activity is consistent with a partially dysfunctional ETC that cannot fully oxidize substrates in the forward direction, but can still extract energy from partial reductive cycling. It also generates succinate, which has signaling properties (activating HIF-1&alpha;, suppressing prolyl hydroxylases) that promote the angiogenic and inflammatory phenotype of tumors.</p>
+
+<div class="takeaway"><b>Why both fuels are needed:</b> glucose alone cannot provide sufficient nitrogen for nucleotide synthesis (required for DNA replication). Glutamine provides nitrogen. Together, glucose and glutamine supply the carbon, nitrogen, and energy needed for rapid cell division. Cholesterol is also required for membrane synthesis in proliferating cells, and both fuels supply precursors for its synthesis. The combination of fermentable substrates and cholesterol appears to be the minimal metabolic requirement for sustained tumor growth.</div>
+
+<h3 id="iv-3"><span class="h3num">IV.3</span>ATP homeostasis and the ascites tumor data</h3>
+
+<p>A critical prediction of the metabolic model is that cancer cells, despite their altered metabolism, maintain intracellular ATP levels within a viable range &mdash; neither so low as to trigger cell death through ATP depletion, nor so high as to produce Donnan equilibrium failure. This ATP homeostasis prediction has been confirmed: when tumor cells (particularly ascites tumor cells) were compared with normal liver, kidney, and embryo cells, their total ATP status was approximately equivalent, despite the dramatically different fuel sources and pathway utilization.<sup class="cite"><a href="#r13">13</a></sup></p>
+
+<p>This finding is important for two reasons. First, it demonstrates that cancer cells are not simply energy-depleted &mdash; they are energy-adequate through fermentation, which sustains their proliferative capacity. Second, it implies that the cancer cell&rsquo;s metabolic reprogramming is a successful adaptive response to mitochondrial dysfunction, not a failure state. The cell is doing what it needs to do to survive under impaired conditions.</p>
+
+<p>The corollary is that as mitochondria become progressively more dysfunctional, the cell increasingly diverts ATP away from &ldquo;expensive&rdquo; cellular maintenance processes &mdash; including DNA repair, transcriptional fidelity, and the energy-intensive processes of chromatin remodeling &mdash; and toward the minimal requirements for survival and replication. This is the mechanistic basis for the mutation accumulation argument developed in <a href="#part-v">Part V</a>.</p>
+
+</section>
+
+<!-- ============================================================ PART V -->
+<section>
+<div class="part-head" id="part-v">
+  <span class="part-num">Part V</span>
+  <h2>Why Mutations Follow from Energy Crisis</h2>
+</div>
+
+<h3 id="v-1"><span class="h3num">V.1</span>Genomic stability as an ATP-dependent luxury</h3>
+
+<p>The genome is not passively stable. Maintaining it requires continuous, ATP-demanding work: base-excision repair, nucleotide-excision repair, mismatch repair, double-strand break repair, and the proofreading activity of DNA polymerases all consume energy. Chromatin compaction and decompaction for transcription factor access, histone modification, and the spindle checkpoint that ensures accurate chromosome segregation are similarly expensive. Under normal conditions, cells allocate substantial ATP toward these fidelity-maintaining processes because the cost of not doing so &mdash; mutation accumulation &mdash; is evolutionarily catastrophic.</p>
+
+<p>A cell in chronic energy deficit, compensating for mitochondrial dysfunction through glycolysis and glutamine fermentation, operates under a different ATP budget. Fermentation provides enough ATP to survive and replicate, but the total yield is dramatically lower than oxidative phosphorylation would provide. Under this constraint, ATP is rationed to the processes most essential for immediate survival, and genomic maintenance is a long-term investment that a stressed cell will deprioritize.<sup class="cite"><a href="#r14">14</a></sup></p>
+
+<div class="chain">
+<b>Mutation accumulation through energy rationing</b><br>
+Mitochondrial damage <span class="arrow">&rarr;</span> impaired OxPhos <span class="arrow">&rarr;</span> reduced ATP yield<br>
+<span class="arrow">&rarr;</span> compensatory glycolysis + glutamine fermentation (inadequate substitute)<br>
+<span class="arrow">&rarr;</span> chronic energy deficit <span class="arrow">&rarr;</span> ATP rationed toward survival processes<br>
+<span class="arrow">&rarr;</span> reduced investment in DNA repair, proofreading, chromatin fidelity<br>
+<span class="arrow">&rarr;</span> <b>mutation accumulation as downstream consequence</b><br>
+<em>Selection then favors mutations that further upregulate fermentation (e.g., upregulating glycolytic enzymes, losing p53-mediated apoptosis of energetically compromised cells)</em>
+</div>
+
+<p>This model explains something that the purely genetic model struggles with: <em>why so many different cancers end up with mutations in the same pathways</em>. If the initial event were a random mutation in any of hundreds of possible driver genes, the subsequent evolution of the cancer would depend on the specific mutation &mdash; and we would expect the signaling pathway profiles to be diverse. Instead, they converge on RTK/RAS/PI3K (which drives glucose uptake and glycolysis), p53 (which would eliminate energetically compromised cells), and RB (which would restrain replication in energetically stressed cells). These are exactly the mutations that a glycolytic, energy-deprived cell would be selected for.</p>
+
+<h3 id="v-2"><span class="h3num">V.2</span>Oncogenes as compensatory responses</h3>
+
+<p>The conventional view treats oncogene upregulation as the disease: a mutated RAS or amplified Myc drives proliferation pathologically. The metabolic model offers an alternative reading: <strong>oncogene upregulation is a compensatory response by a cell that needs to increase glycolytic capacity</strong> to compensate for failing oxidative phosphorylation.</p>
+
+<p>Myc upregulation increases glucose transporter expression, glycolytic enzyme expression, and glutamine uptake &mdash; all exactly what a cell with impaired mitochondria needs to maintain ATP supply. HIF-1&alpha; upregulation (normally induced by hypoxia) achieves the same shift toward glycolysis and is constitutively active in many cancers even at normal oxygen tensions &mdash; a finding that makes sense if the cell&rsquo;s mitochondria are functionally hypoxic regardless of ambient oxygen. RAS activation promotes glucose uptake through PI3K/AKT/mTOR signaling, also increasing glycolytic flux.<sup class="cite"><a href="#r5">5</a></sup></p>
+
+<p>Under this interpretation, the oncogenes are not the disease itself but the cell&rsquo;s (maladaptive) solution to the disease. This has a therapeutic implication: inhibiting an oncogene in a cell that depends on it for ATP supply may not cure the cancer so much as create selection pressure for cells that find alternative routes to the same metabolic end.</p>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: the causal direction is debated</div>
+  <p style="margin:0 0 8px;">The argument that mutations are downstream of metabolic dysfunction requires accepting a specific causal chain that is difficult to establish experimentally &mdash; partly because mitochondrial dysfunction and mutation accumulation are likely to be mutually reinforcing rather than purely sequential. Some oncogenic mutations (Myc amplification, certain Ras mutations, IDH1/2 mutations) demonstrably alter mitochondrial function &mdash; they are upstream of the metabolic shift in those specific contexts, not downstream of it. IDH1/2 mutations, for example, produce the oncometabolite 2-hydroxyglutarate, which inhibits &alpha;-ketoglutarate-dependent dioxygenases and directly alters the mitochondrial metabolic environment. In these cases, the genetic event is clearly driving the metabolic change. The metabolic model does not need to claim this never happens; it claims only that it is not the dominant pattern across most cancers.</p>
+</div>
+
+</section>
+
+<!-- ============================================================ PART VI -->
+<section>
+<div class="part-head" id="part-vi">
+  <span class="part-num">Part VI</span>
+  <h2>What the Models Tell Us (and Don&rsquo;t)</h2>
+</div>
+
+<h3 id="vi-1"><span class="h3num">VI.1</span>Why xenografts keep failing</h3>
+
+<p>The xenograft model &mdash; implanting human cancer cells into immunodeficient mice and testing whether treatments shrink the resulting tumors &mdash; remains the primary preclinical screening tool for oncology drugs. Its failure rate at predicting human clinical outcomes is high by any measure: estimates of the concordance between xenograft results and Phase II/III trial outcomes in solid tumors range from roughly 5&ndash;8%.<sup class="cite"><a href="#r15">15</a></sup></p>
+
+<p>Several specific problems arise from a metabolic perspective. Human and mouse cells have fundamentally different metabolic rates (mice have ~7x the mass-specific metabolic rate of humans), different glucose regulatory dynamics, and different telomere biology. Implanting human cells into this environment alters their metabolic phenotype in ways that are difficult to characterize and unlikely to match the original tumor. The immunodeficient host eliminates the tumor microenvironment's immune component &mdash; precisely the component that checkpoint immunotherapy, currently one of the most effective new treatments, depends on. And the implanted tumor grows from a single cell line or biopsy, rather than through the spontaneous process of malignant progression in an intact organism.</p>
+
+<h3 id="vi-2"><span class="h3num">VI.2</span>The case for natural models</h3>
+
+<p>Tumors arising spontaneously in non-human animals &mdash; particularly domestic dogs, which share much of the human environmental exposome, have a similar body size and lifespan relative to mice, and develop epithelial cancers at meaningful rates &mdash; provide a more faithful model system. Spontaneous canine osteosarcoma, lymphoma, and mammary tumors have been studied as comparative oncology models and show similar genomic and metabolic features to their human counterparts. Dogs receive conventional veterinary oncology treatment, allowing parallel assessment of treatment efficacy in a species whose tumors developed naturally in an intact immune and metabolic environment.<sup class="cite"><a href="#r16">16</a></sup></p>
+
+<p>The metabolic model specifically predicts that interventions targeting the fermentable fuel supply &mdash; glucose and glutamine restriction, ketogenic diets, calorie restriction &mdash; should work across species if the mechanism is fundamental. This testable prediction in spontaneous animal tumors is underexplored relative to its potential.</p>
+
+</section>
+
+<!-- ============================================================ PART VII -->
+<section>
+<div class="part-head" id="part-vii">
+  <span class="part-num">Part VII</span>
+  <h2>Treatment and the Metabolic Horizon</h2>
+</div>
+
+<h3 id="vii-1"><span class="h3num">VII.1</span>Why current treatments have a ceiling</h3>
+
+<p>The dominant modalities of cancer treatment &mdash; cytotoxic chemotherapy, radiation, targeted therapy &mdash; share a conceptual approach: identify something that cancer cells need (DNA replication, a specific signaling protein, rapid division) and interfere with it. The problem is that cancer cells, operating under high mutational pressure and metabolic plasticity, are extraordinarily good at finding alternative routes. Targeted therapies face near-universal acquired resistance; even imatinib, one of the most successful targeted therapies, requires indefinite administration and produces resistance in aggressive disease.</p>
+
+<p>Metabolic therapies aim at something more fundamental: <em>the fuels themselves</em>. Cancer cells cannot easily evolve around the absence of glucose and glutamine, because these are not pathway components that can be re-routed &mdash; they are the carbon and nitrogen sources without which the cell simply cannot build the biomass required for replication. This is why the metabolic approach has a theoretical advantage over targeted therapies in terms of resistance potential.</p>
+
+<h3 id="vii-2"><span class="h3num">VII.2</span>Calorie restriction and its mimetics</h3>
+
+<p>Calorie restriction (CR) &mdash; reducing total energy intake without malnutrition &mdash; is the most consistently effective anti-cancer intervention in animal models. It extends lifespan, reduces spontaneous tumor incidence, and slows tumor growth across dozens of cancer types and animal species.<sup class="cite"><a href="#r17">17</a></sup> The mechanism is metabolic: CR lowers blood glucose, reduces insulin and IGF-1 signaling, and switches the organism from a glucose-dependent to a fat-dependent metabolic mode &mdash; exactly the fuel shift that cancer cells, dependent on fermentable substrates, cannot easily follow.</p>
+
+<p>Several drugs effectively mimic aspects of calorie restriction and have shown preclinical anti-cancer activity through this mechanism:</p>
+
+<ul style="font-size:16.5px;line-height:1.7;">
+  <li><strong>Metformin:</strong> inhibits Complex I of the ETC in normal cells, lowering cellular energy status, activating AMPK, and reducing hepatic glucose output. Epidemiological data from diabetic patients show consistently lower cancer incidence and improved cancer outcomes in metformin users &mdash; a finding replicated across enough populations to be compelling even without randomized trial data for cancer prevention.</li>
+  <li><strong>Rapamycin (mTOR inhibition):</strong> mTOR is the central integrator of nutrient and growth factor signals; its inhibition mimics the nutrient-deprived state of calorie restriction. mTOR inhibitors have clinical activity in several cancer types and extend lifespan in animal models even when started in midlife.</li>
+  <li><strong>2-Deoxyglucose (2-DG):</strong> a glucose analog that is taken up but not metabolized, competitively inhibiting glycolysis. It has shown preclinical efficacy and is being investigated clinically, particularly in combination.</li>
+  <li><strong>Glutamine antagonists:</strong> targeting glutamine metabolism (via glutaminase inhibitors or DON analogs) attacks the second major fermentable fuel and may be particularly important for cancer types with high glutamine dependence.</li>
+</ul>
+
+<div class="flag">
+  <div class="flag-lbl">Honest caveat on CR and metabolic therapy</div>
+  <p style="margin:0;">Calorie restriction as an adjunct to cancer treatment is not validated in randomized trials. The animal data, while extensive, involves rodents whose baseline metabolic rate and carcinogenesis biology differ from humans. The ketogenic diet as a cancer therapy has case reports and small trials showing safety and feasibility, but no large randomized controlled trials demonstrating survival benefit. This is partly a funding problem (dietary interventions are not patentable) and partly a genuine evidence gap. The mechanistic rationale is strong; the clinical evidence is preliminary. Describing CR-mimetics as &ldquo;a better half-ass treatment&rdquo; &mdash; while colorful &mdash; understates both their mechanistic grounding and their potential: metabolic restriction is not an alternative to conventional treatment but a plausible, underinvestigated adjunct to it.</p>
+</div>
+
+<h3 id="vii-3"><span class="h3num">VII.3</span>What a metabolic treatment framework would look like</h3>
+
+<p>If the metabolic model is substantially correct, it suggests a reorientation of treatment strategy rather than a replacement of existing tools:</p>
+
+<ol style="font-size:16.5px;line-height:1.7;padding-left:22px;">
+  <li><strong>Target the fuel supply systemically,</strong> not just locally. Dietary and pharmacological glucose restriction, combined with glutamine targeting, removes the substrate that cancer cells cannot survive without regardless of their specific genetic makeup.</li>
+  <li><strong>Use the metabolic vulnerability to enhance conventional therapy.</strong> Calorie restriction and ketogenic diets may sensitize tumors to radiation and certain chemotherapies while simultaneously protecting normal cells (which can switch to fat oxidation; cancer cells generally cannot).</li>
+  <li><strong>Protect and restore mitochondrial function as a preventive strategy.</strong> If mito dysfunction is the upstream event, interventions that support mitochondrial health &mdash; reducing oxidative damage to cardiolipin (including modulating dietary LA), supporting cardiolipin remodeling enzymes, ensuring adequate micronutrients for ETC function (CoQ10, B vitamins, magnesium) &mdash; are potential cancer preventives, not merely supportive care.</li>
+  <li><strong>Monitor metabolic biomarkers alongside genomic ones.</strong> Fasting glucose, fasting insulin, metabolic flexibility (ability to switch fuel sources), and imaging markers of tumor glucose uptake (FDG-PET) all reflect the metabolic dimension that standard genomic profiling misses.</li>
+</ol>
+
+</section>
+
+<!-- ============================================================ LIMITATIONS -->
+<section>
+<div class="part-head">
+  <span class="part-num">Limits</span>
+  <h2>Limitations and Open Questions</h2>
+</div>
+
+<div class="limits">
+<p class="lim-h">Scope</p>
+<ul>
+  <li><b>This paper presents the metabolic model with more emphasis than the genetic model.</b> The genetic model of cancer has overwhelming support and explains a great deal. The metabolic model presented here is the minority view &mdash; though a growing and increasingly evidence-supported one. Both views contain truth; the question is of emphasis and causation.</li>
+  <li><b>The causal direction of mitochondrial dysfunction is not settled.</b> The paper argues that mito dysfunction is often upstream of genetic mutation, but the evidence for this is largely from nuclear-cytoplasmic transfer experiments, which are methodologically limited. The reverse &mdash; that some mutations cause mito dysfunction &mdash; is clearly true in specific cases.</li>
+  <li><b>Cancer is not one disease.</b> The degree to which the metabolic model applies varies by cancer type. Leukemias, lymphomas, and pediatric cancers often have simpler genetic profiles and may be more tractable to genetic approaches. Solid tumors in adults with complex mutational landscapes are the primary target of the metabolic argument.</li>
+  <li><b>Metastatic biology is poorly explained by either model.</b> Why some tumors metastasize and others do not, and how the metastatic cascade operates, remains incompletely understood from both the genetic and metabolic perspectives.</li>
+  <li><b>Human clinical trial data for metabolic interventions is limited.</b> The strongest evidence for CR-mimetics and ketogenic diet as anti-cancer agents comes from animal studies. Human trials are ongoing but small and without survival endpoints in most cases.</li>
+</ul>
+<p class="lim-h">Where this paper agrees with mainstream oncology</p>
+<ul>
+  <li>Mutations are real and important features of cancer.</li>
+  <li>Some cancers (CML, certain BRCA-driven cancers) have clear genetic drivers where targeted therapy is appropriate.</li>
+  <li>Checkpoint immunotherapy represents a genuine advance, and its mechanism (restoring immune recognition) does not depend on the genetic vs. metabolic debate.</li>
+  <li>Early detection through improved imaging, liquid biopsy, and surveillance is a high-value approach regardless of the mechanistic model.</li>
+</ul>
+<div class="lim-close">The strongest version of this paper&rsquo;s argument is not &ldquo;cancer is metabolic, not genetic&rdquo; &mdash; it is: &ldquo;cancer is both, and we have been spending almost all our effort on one half of the answer.&rdquo; A field that treats the Warburg effect as a footnote to the mutation landscape, rather than a window into its cause, may be missing the most tractable intervention point available.</div>
+</div>
+</section>
+
+<!-- ============================================================ REFERENCES -->
+<section>
+<div class="part-head">
+  <span class="part-num">Refs</span>
+  <h2>References</h2>
+</div>
+<div class="refwrap">
+
+<div class="ref-group">Cancer hallmarks &amp; genomic landscape</div>
+<ol class="refs">
+<li id="r1">Hanahan D, Weinberg RA. The hallmarks of cancer. <span class="j">Cell</span> 2000;100(1):57&ndash;70. <span class="note">(Original six hallmarks paper.)</span></li>
+<li id="r2">Hanahan D, Weinberg RA. Hallmarks of cancer: the next generation. <span class="j">Cell</span> 2011;144(5):646&ndash;674. <span class="note">(Added reprogrammed energy metabolism and tumor-promoting inflammation as hallmarks; the metabolic Warburg shift formally recognized.)</span></li>
+<li id="r3">Comprehensive molecular portraits of human breast tumours. <span class="j">Nature</span> 2012;490:61&ndash;70 (TCGA); and Jones S, et al. Core signaling pathways in human pancreatic cancers revealed by global genomic analyses. <span class="j">Science</span> 2008;321(5897):1801&ndash;1806. <span class="note">(Basis for the 87%/87%/78% pathway alteration frequencies; pathway-level convergence across diverse genetic events.)</span></li>
+<li id="r4">Siegel RL, Miller KD, Wagle NS, Jemal A. Cancer statistics, 2023. <span class="j">CA Cancer J Clin</span> 2023;73(1):17&ndash;48. <span class="note">(Overall mortality trends; survival improvements concentrated in specific cancers; broad solid tumor mortality change modest.)</span></li>
+</ol>
+
+<div class="ref-group">Nuclear transfer &amp; mitochondrial transplant experiments</div>
+<ol class="refs">
+<li id="r5">Seyfried TN. <span class="j">Cancer as a Metabolic Disease: On the Origin, Management, and Prevention of Cancer.</span> Wiley, 2012. <span class="note">(Primary synthesis; nuclear-cytoplasmic transfer evidence summarized in Chapters 11&ndash;13; oncogene-as-compensatory-response argument developed throughout.)</span></li>
+</ol>
+
+<div class="ref-group">Mitochondrial structure &amp; function in cancer</div>
+<ol class="refs">
+<li id="r6">Warburg O. On the origin of cancer cells. <span class="j">Science</span> 1956;123(3191):309&ndash;314. <span class="note">(Warburg&rsquo;s mature statement of the mitochondrial hypothesis of cancer; predates molecular biology but correctly identifies the metabolic phenotype.)</span></li>
+<li id="r7">Roskelley RC, Mayer N, Horwitt BN, Salter WT. Studies in cancer. VII. Enzyme deficiency in human and experimental cancer. <span class="j">J Clin Invest</span> 1943;22(5):743&ndash;751. <span class="note">(Cytochrome oxidase deficiency in malignant cancers; foundational observation.)</span></li>
+<li id="r8">S&aacute;nchez-Cenizo L, Formentini L, Aldea M, et al. Up-regulation of the ATPase inhibitory factor 1 (IF1) of the mitochondrial H&sup1;-ATP synthase in human tumors mediates the metabolic shift of cancer cells to a Warburg phenotype. <span class="j">J Biol Chem</span> 2010;285(33):25308&ndash;25313. <span class="note">(&beta;-F1-ATPase reduction and IF1 upregulation; direct connection between ATP synthase downregulation and cancer glycolytic switch.)</span></li>
+</ol>
+
+<div class="ref-group">Cardiolipin in cancer</div>
+<ol class="refs">
+<li id="r9">Claypool SM, Koehler CM. The complexity of cardiolipin in health and disease. <span class="j">Trends Biochem Sci</span> 2012;37(1):32&ndash;41; and Seyfried TN, Flores R, Poff AM, D&rsquo;Agostino DP. Cancer as a metabolic disease: implications for novel therapeutics. <span class="j">Carcinogenesis</span> 2014;35(3):515&ndash;527. <span class="note">(Cardiolipin structure-function; requirement for long-chain PUFA, specifically linoleic acid; CL abnormalities in cancer including oxidation, compositional shift, and remodeling enzyme dysregulation.)</span></li>
+</ol>
+
+<div class="ref-group">Uncoupled mitochondria &amp; heat production in cancer</div>
+<ol class="refs">
+<li id="r10">Samudio I, Fiegl M, McQueen T, Clise-Dwyer K, Andreeff M. The warburg effect in leukemia-stroma co-cultures is mediated by mitochondrial uncoupling associated with uncoupling protein 2 activation. <span class="j">Cancer Res</span> 2008;68(13):5198&ndash;5205; and Seyfried (2012), Chapter 9. <span class="note">(Uncoupling in cancer distinct from cold-induced UCP1; more malignant tumors produce more heat per unit mass consistent with degree of IMM disruption.)</span></li>
+</ol>
+
+<div class="ref-group">Glutamine fermentation in cancer</div>
+<ol class="refs">
+<li id="r11">Moreadith RW, Lehninger AL. The pathways of glutamate and glutamine oxidation by tumor cell mitochondria: role of mitochondrial NAD(P)&sup1;-dependent malic enzyme. <span class="j">J Biol Chem</span> 1984;259(10):6215&ndash;6221. <span class="note">(Direct dehydrogenation vs. oxidative decarboxylation; oxaloacetate route preferred to sustain TCA cycling; foundational characterization of cancer glutamine metabolism.)</span></li>
+<li id="r12">Tomitsuka E, Kita K, Esumi H. Regulation of succinate-ubiquinone reductase and fumarate reductase activities in human complex II by phosphorylation of its flavoprotein subunit. <span class="j">Proc Jpn Acad Ser B Phys Biol Sci</span> 2009;85(7):258&ndash;265. <span class="note">(Evidence for active fumarate reductase reaction in cancer cells; reductive TCA cycling consistent with partial ETC dysfunction.)</span></li>
+</ol>
+
+<div class="ref-group">ATP homeostasis in tumor cells</div>
+<ol class="refs">
+<li id="r13">Pedersen PL. Tumor mitochondria and the bioenergetics of cancer cells. <span class="j">Prog Exp Tumor Res</span> 1978;22:190&ndash;274. <span class="note">(Ascites tumor cell ATP status comparable to liver, kidney, and embryo despite dramatically different fuel sources and pathway utilization; ATP homeostasis as maintained adaptive state.)</span></li>
+</ol>
+
+<div class="ref-group">Energy and genomic stability</div>
+<ol class="refs">
+<li id="r14">Seyfried TN, Shelton LM. Cancer as a metabolic disease. <span class="j">Nutr Metab (Lond)</span> 2010;7:7. <span class="note">(ATP rationing model; genomic instability as downstream consequence of energy crisis rather than upstream initiating event.)</span></li>
+</ol>
+
+<div class="ref-group">Xenograft model failure rates</div>
+<ol class="refs">
+<li id="r15">Voskoglou-Nomikos T, Pater JL, Seymour L. Clinical predictive value of the in vitro cell line, human xenograft, and mouse allograft preclinical cancer models. <span class="j">Clin Cancer Res</span> 2003;9(11):4227&ndash;4239. <span class="note">(Concordance between xenograft results and Phase II/III outcomes ~5&ndash;8% for most solid tumor types; meta-analysis of model predictive validity.)</span></li>
+</ol>
+
+<div class="ref-group">Comparative oncology &amp; natural tumor models</div>
+<ol class="refs">
+<li id="r16">Khanna C, London C, Vail D, Mazcko C, Hirschfeld S. Guiding the optimal translation of new cancer treatments from canine to human cancer patients. <span class="j">Clin Cancer Res</span> 2009;15(18):5671&ndash;5677. <span class="note">(Case for spontaneous canine tumors as translational models; shared environmental exposome, intact immune system, similar body size and epithelial cancer biology.)</span></li>
+</ol>
+
+<div class="ref-group">Calorie restriction &amp; metabolic cancer therapy</div>
+<ol class="refs">
+<li id="r17">Hursting SD, Lavigne JA, Berrigan D, Perkins SN, Barrett JC. Calorie restriction, aging, and cancer prevention: mechanisms of action and applicability to humans. <span class="j">Annu Rev Med</span> 2003;54:131&ndash;152; and Lv M, Zhu X, Wang H, Wang F, Guan W. Roles of caloric restriction, ketogenic diet and intermittent fasting during initiation, progression and metastasis of cancer in animal models: a systematic review and meta-analysis. <span class="j">PLoS One</span> 2014;9(12):e115147. <span class="note">(CR most consistently anti-tumorigenic intervention in animal models; mechanism through lowered glucose, insulin, and IGF-1; glucose/glutamine starvation of cancer cells.)</span></li>
+</ol>
+
+</div>
+</section>
+
+<footer class="end">
+  <p><b>Primary source:</b> Thomas Seyfried, <em>Cancer as a Metabolic Disease</em> (Wiley, 2012), supplemented with primary literature cited above. Evidence grades appear inline; contrary arguments are engaged in the Pushback sections and the Limitations. Not medical advice.</p>
+  <div style="margin-top:16px;">
+    <span class="tag">Draft v1</span>
+    <span class="tag">Evidence graded</span>
+    <span class="tag">Contrary evidence engaged</span>
+    <span class="tag">Not medical advice</span>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
