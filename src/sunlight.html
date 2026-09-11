@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunlight &amp; Metabolic Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.spine-part a{color:inherit;border-bottom:none;}
+.spine-part a:hover{border-bottom:1px solid currentColor;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+sup.cite{font-size:11px;line-height:0;vertical-align:super;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+sup.cite a{color:var(--rust);text-decoration:none;padding:0 1px;border-bottom:none;}
+sup.cite a:hover{text-decoration:underline;}
+
+/* ---- Evidence chips ---- */
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mod{background:rgba(61,106,122,.13);color:#2c4f5c;}
+.ev-mod::before{background:var(--sky);}
+.ev-animal{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-animal::before{background:var(--gold);}
+.ev-inf{background:rgba(183,138,46,.09);color:#7a5c14;}
+.ev-inf::before{background:var(--gold);opacity:.55;}
+.ev-cont{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-cont::before{background:var(--rust);}
+.ev-spec{background:rgba(61,69,60,.1);color:var(--ink-soft);}
+.ev-spec::before{background:var(--ink-soft);opacity:.6;}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Pushback ---- */
+.pushback{
+  border-left:3px solid var(--rust);
+  background:rgba(168,86,47,.05);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.pushback .pb-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Deep dive ---- */
+.deepdive{
+  border-left:3px solid var(--sky);
+  background:linear-gradient(90deg,rgba(61,106,122,.045),rgba(61,106,122,0) 60%);
+  border-radius:0 4px 4px 0;
+  padding:6px 24px 14px 22px;
+  margin:26px 0;
+}
+.deepdive-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin:16px 0 8px;
+}
+.dd-skip{color:var(--ink-soft);text-transform:none;letter-spacing:0;font-weight:500;font-style:italic;font-size:12px;margin-left:8px;}
+
+/* ---- Wavelength chart ---- */
+.wchart{margin:26px 0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--card);}
+.wband{display:grid;grid-template-columns:140px 1fr;gap:0;border-top:1px solid var(--rule);}
+.wband:first-child{border-top:none;}
+.wband-label{
+  padding:16px 16px;color:#fff;font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13.5px;line-height:1.3;
+}
+.wband-label small{display:block;font-weight:500;opacity:.85;font-size:11px;margin-top:3px;}
+.wband-body{padding:14px 20px;font-size:15px;}
+.wband-row{margin:6px 0;}
+.wband-row .via{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-right:8px;}
+.wband-row .path{color:var(--ink-soft);font-style:italic;}
+.wband-row .out{color:var(--ink);}
+.up{color:var(--moss-deep);}
+.down{color:var(--rust);}
+.w-infrared{background:#5c1f1a;}
+.w-infrared2{background:#8a2e22;}
+.w-redorange{background:#c1552a;}
+.w-green{background:#2f6b3a;}
+.w-blue{background:#1f5f8a;}
+.w-uva{background:#5a2d6e;}
+.w-uvauvb{background:#2a2438;}
+.w-uvb{background:#7a1530;}
+
+/* ---- Limitations / references ---- */
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+ol.refs{
+  list-style:none;padding:0;margin:24px 0 0;
+  font-family:'Newsreader',Georgia,serif;
+}
+ol.refs li{
+  counter-increment:ref;position:relative;padding:0 0 14px 3.2em;
+  font-size:15px;line-height:1.55;color:var(--ink);
+}
+.refwrap{counter-reset:ref;}
+ol.refs li:target{background:#fbf6ea;outline:2px solid #b78a2e;outline-offset:3px;border-radius:4px;}
+ol.refs li::before{
+  content:"["counter(ref)"]";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--rust);
+}
+ol.refs li .j{font-style:italic;}
+ol.refs li .note{color:var(--ink-soft);font-size:13.5px;}
+.ref-group{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.ref-group:first-of-type{margin-top:8px;}
+.gapflag{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:#7d3d1c;background:rgba(168,86,47,.13);
+  padding:2px 7px;border-radius:2px;font-weight:600;white-space:nowrap;
+}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .byline{flex-direction:column;gap:6px;}
+  .wband{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion:no-preference){
+  section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html">Overview</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="linoleic-acid.html">Linoleic Acid</a>
+  <a href="ahr.html">AhR</a>
+  <a href="cold-exposure.html">Cold Exposure</a>
+  <a href="sunlight.html" class="active">Sunlight</a>
+  <a href="energy-metabolism.html">Energy Metabolism</a>
+  <a href="cancer.html">Cancer</a>
+  <a href="nutrients.html">Nutrients</a>
+  <a href="supplements.html">Supplements</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Nutritional Biochemistry</p>
+  <h1 class="title">Sunlight &amp; <em>Metabolic Health</em></h1>
+  <p class="sub">Sunlight is not one exposure but eight, stacked in a single beam &mdash; infrared, red, green, blue, and three bands of ultraviolet, each driving a different pathway on a different tissue. The UVB that raises skin cancer risk through direct DNA damage is the same UVB that drives vitamin D synthesis and immune modulation linked to lower rates of over a dozen other cancers. Untangling which claim rests on which band, and on what kind of evidence, is the point of this paper.</p>
+  <div class="byline">
+    <span><b>Draft</b> v1</span>
+    <span><b>Scope</b> mechanism, by wavelength band, with human cohort evidence and protocol implications</span>
+    <span><b>Standard</b> evidence graded &amp; caveats collected in Limitations</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;">&ldquo;Sun exposure&rdquo; is not a single variable. Ultraviolet B (280&ndash;315nm) drives both the strongest cancer-causing pathway in this paper (direct DNA mutation in skin cells) and the strongest cancer-protective one (vitamin D and immune modulation) &mdash; through two different molecular routes in the same tissue. Ultraviolet A (315&ndash;400nm) and visible light drive a separate, better-tolerated pathway: cutaneous nitric-oxide release that lowers blood pressure. Visible and infrared bands drive circadian entrainment, mitochondrial and keratinocyte signaling largely independent of the UV cancer question entirely. This paper works through the evidence band by band, then through three specific human studies &mdash; a melanoma-mortality cohort, a 29,000-person Swedish sun-exposure cohort, and an ecological review of UVB and 24 cancer types &mdash; each of which is weaker, and tells a narrower story, than its popular retelling.</p>
+  <p>This is the companion paper to <a href="cold-exposure.html">Cold Exposure &amp; Metabolic Health</a>: both cover a non-dietary environmental input the body evolved under and that modern indoor, sun-avoidant life has mostly removed.</p>
+</div>
+
+<div class="brief">
+  <div class="lbl">The argument in brief</div>
+  <p class="sub">Six parts</p>
+  <ol class="spine">
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span>Sunlight is <b>eight overlapping exposures, not one</b> &mdash; infrared, red/orange, green, blue, and three UV bands each act on a different tissue (skin, eyes, mitochondria) through a different signaling molecule, with different, sometimes opposite, downstream effects.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span>UVB drives <b>two opposing pathways in the same tissue</b>: direct DNA mutation in keratinocytes (skin cancer) and cutaneous vitamin D synthesis plus immune modulation, ecologically associated with lower rates of at least 15 other cancer types.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span>A 29,518-person Swedish cohort found sun-seekers had <b>lower cardiovascular and non-cancer mortality</b> than avoiders despite more skin cancer &mdash; but the design cannot separate sunlight from the broader active, outdoor lifestyle that tends to come with it.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span>A 528-person melanoma cohort found sun awareness and visible skin sun-damage predicted <b>lower melanoma death</b> &mdash; read by its own authors as an early-detection effect, not evidence that sunlight protects against melanoma once it occurs.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span>UVA and visible light trigger a separate, <b>DNA-independent mechanism</b>: cutaneous nitric-oxide release that dilates blood vessels and lowers blood pressure, plus a POMC/&alpha;-MSH pathway tied to mood and appetite.</li>
+    <li><span class="spine-part"><a href="#part-vi">Part&nbsp;VI</a></span>Visible light's <b>circadian and practical dimension</b>: bright blue-rich light by day for alertness and night-time melatonin, dimmer and warmer light by evening, and what a working &ldquo;light diet&rdquo; looks like in practice.</li>
+  </ol>
+  <p class="bottom">UVB is the load-bearing, two-edged band. Every other part of this paper either sits upstream of it (Part&nbsp;I's map), tests its net effect in a real population (Parts&nbsp;II&ndash;IV), or covers a mechanism that doesn't depend on it at all (Parts&nbsp;V&ndash;VI).</p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Reader's guide</div>
+  <p style="margin-top:0;">Part&nbsp;I is a reference map, not an argument &mdash; use it to see which band a later claim is actually about. Parts&nbsp;II&ndash;IV each cover one human study in depth, and each carries a real methodological limitation that changes what it can and cannot support; read the caveat attached to each as part of the finding, not an afterthought. Parts&nbsp;V&ndash;VI cover mechanisms that don't carry cancer risk the way UV does. Caveats are collected in <a href="#limitations">Limitations</a> rather than scattered through the text.</p>
+  <p style="margin-bottom:0;">
+    <span class="ev ev-strong">Strong</span>
+    <span class="ev ev-mod">Moderate</span>
+    <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span>
+    <span class="ev ev-inf">Inferred</span>
+    <span class="ev ev-cont">Contested</span>
+    <span class="ev ev-spec">Speculative</span>
+  </p>
+</div>
+
+<section>
+<div class="part-head" id="part-i">
+  <div class="part-num">PART&nbsp;I</div>
+  <h2>The Wavelength Map</h2>
+</div>
+
+<p>Popular writing about &ldquo;sunlight&rdquo; tends to treat it as one exposure with one dose-response curve. It isn't. Sunlight reaching skin and eyes spans roughly 280 to over 1000 nanometers, and different bands within that range are absorbed by different chromophores, in different tissues, triggering different signaling cascades. Infrared warms mitochondria. Blue light resets the circadian clock through the eyes. UVB, absorbed almost entirely in the outer few hundred microns of skin, does two nearly opposite things in the same cells depending on which molecule it hits first &mdash; DNA directly, or 7-dehydrocholesterol just beneath it. The table below is a reference map compiled from a published heliotherapy reference chart<sup class="cite"><a href="#r-book">B</a></sup> cross-checked against the mechanism literature cited through the rest of this paper; treat band boundaries as approximate, since UV and visible light are a continuum, not eight hard-edged categories.</p>
+
+<div class="wchart">
+  <div class="wband">
+    <div class="wband-label w-infrared">Infrared<small>750+ nm</small></div>
+    <div class="wband-body">
+      <div class="wband-row"><span class="via">Body &rarr; mitochondria</span><span class="path">photobiomodulation</span> &mdash; <span class="out"><span class="up">&uarr;</span>healing, <span class="up">&uarr;</span>damage repair, <span class="down">&darr;</span>Parkinson's markers, <span class="up">&uarr;</span>cellular energy</span></div>
+      <div class="wband-row"><span class="via">Body &rarr; nitric oxide</span> &mdash; <span class="out"><span class="down">&darr;</span>inflammation, <span class="down">&darr;</span>pain, <span class="down">&darr;</span>respiratory disease markers</span></div>
+    </div>
+  </div>
+  <div class="wband">
+    <div class="wband-label w-infrared2">Infrared&thinsp;/&thinsp;Red<small>700 nm</small></div>
+    <div class="wband-body">
+      <div class="wband-row"><span class="via">Skin &rarr; keratinocytes</span> &mdash; <span class="out"><span class="up">&uarr;</span>damage repair, <span class="up">&uarr;</span>sun protection (photoadaptation)</span></div>
+    </div>
+  </div>
+  <div class="wband">
+    <div class="wband-label w-redorange">Red&thinsp;/&thinsp;Orange<small>600&ndash;700 nm</small></div>
+    <div class="wband-body">
+      <div class="wband-row"><span class="via">Eyes &rarr; melatonin</span> &mdash; <span class="out">does not suppress night-time sleepiness the way blue light does</span></div>
+    </div>
+  </div>
+  <div class="wband">
+    <div class="wband-label w-green">Green<small>550 nm</small></div>
+    <div class="wband-body">
+      <div class="wband-row"><span class="via">Eyes &rarr; endogenous opioids</span> &mdash; <span class="out"><span class="down">&darr;</span>pain, <span class="down">&darr;</span>migraine, <span class="down">&darr;</span>stress, <span class="up">&uarr;</span>mood, <span class="down">&darr;</span>neuroinflammation, <span class="down">&darr;</span>anxiety, <span class="up">&uarr;</span>calm</span></div>
+    </div>
+  </div>
+  <div class="wband">
+    <div class="wband-label w-blue">Blue<small>450 nm</small></div>
+    <div class="wband-body">
+      <div class="wband-row"><span class="via">Eyes (day) &rarr; melatonin/cortisol</span> &mdash; <span class="out"><span class="up">&uarr;</span>mood, <span class="up">&uarr;</span>alertness, <span class="up">&uarr;</span>performance, <span class="up">&uarr;</span>learning, <span class="down">&darr;</span>obesity risk</span></div>
+      <div class="wband-row"><span class="via">Eyes (night) &rarr; melatonin/cortisol</span> &mdash; <span class="out"><span class="down">&darr;</span>sleep, <span class="down">&darr;</span>circadian alignment; over time, tracks with higher <span class="up">&uarr;</span>inflammation, diabetes, heart disease, dementia, cancer, Parkinson's risk</span></div>
+      <div class="wband-row"><span class="via">Skin &rarr; nitric oxide</span> &mdash; <span class="out"><span class="down">&darr;</span>blood pressure, <span class="down">&darr;</span>diabetes, <span class="down">&darr;</span>cardiovascular disease risk</span></div>
+    </div>
+  </div>
+  <div class="wband">
+    <div class="wband-label w-uva">Ultraviolet A<small>315&ndash;400 nm</small></div>
+    <div class="wband-body">
+      <div class="wband-row"><span class="via">Skin &rarr; free radicals</span> &mdash; <span class="out"><span class="up">&uarr;</span>skin cancer (melanoma) risk with cumulative, unprotected exposure</span></div>
+    </div>
+  </div>
+  <div class="wband">
+    <div class="wband-label w-uvauvb">UVA&thinsp;/&thinsp;UVB<small>280&ndash;400 nm</small></div>
+    <div class="wband-body">
+      <div class="wband-row"><span class="via">Skin &rarr; nitric oxide</span> &mdash; <span class="out"><span class="down">&darr;</span>blood pressure, <span class="down">&darr;</span>diabetes, <span class="down">&darr;</span>heart disease, <span class="down">&darr;</span>stroke, <span class="down">&darr;</span>blood clot risk, <span class="up">&uarr;</span>wound healing</span></div>
+      <div class="wband-row"><span class="via">Skin &rarr; POMC / &alpha;-MSH</span> &mdash; <span class="out"><span class="up">&uarr;</span>melanin, <span class="up">&uarr;</span>alertness, <span class="up">&uarr;</span>energy, <span class="up">&uarr;</span>metabolism, <span class="up">&uarr;</span>mood, <span class="up">&uarr;</span>performance, <span class="down">&darr;</span>anxiety</span></div>
+    </div>
+  </div>
+  <div class="wband">
+    <div class="wband-label w-uvb">UVB<small>280&ndash;315 nm</small></div>
+    <div class="wband-body">
+      <div class="wband-row"><span class="via">Skin &rarr; vitamin D</span> &mdash; <span class="out"><span class="down">&darr;</span>osteoporosis, <span class="down">&darr;</span>rickets, <span class="down">&darr;</span>inflammation, and ecologically <span class="down">&darr;</span>cancer &mdash; see <a href="#part-ii">Part&nbsp;II</a></span></div>
+      <div class="wband-row"><span class="via">Skin &rarr; DNA mutation</span> &mdash; <span class="out"><span class="up">&uarr;</span>skin cancer (basal &amp; squamous cell carcinoma) &mdash; the direct-damage counterweight to the row above</span></div>
+      <div class="wband-row"><span class="via">Skin &rarr; immune system</span> &mdash; <span class="out"><span class="down">&darr;</span>inflammation, and observational associations with lower rates of Alzheimer's, autoimmune disease (MS, type&nbsp;1 diabetes, Crohn's), psoriasis, vitiligo, eczema, allergies</span></div>
+      <div class="wband-row"><span class="via">Skin &rarr; urocanic acid / microbiome</span> &mdash; <span class="out"><span class="down">&darr;</span>infection susceptibility, local immune modulation</span></div>
+      <div class="wband-row"><span class="via">Eyes &rarr; dopamine</span> &mdash; <span class="out"><span class="up">&uarr;</span>cognition, <span class="down">&darr;</span>dementia, <span class="down">&darr;</span>depression, <span class="down">&darr;</span>myopia risk in children</span></div>
+    </div>
+  </div>
+</div>
+
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">the physiological pathways (nitric oxide release, vitamin D synthesis, melanopsin/circadian signaling, POMC) are individually well characterized;</span> <span class="ev ev-inf">Inferred</span><span class="txt">for many of the specific downstream disease outcomes listed, which come from correlational or ecological data discussed in Parts&nbsp;II&ndash;III, not a trial testing that exact band against that exact outcome.</span></p>
+
+<div class="deepdive">
+  <div class="deepdive-tag">The tension this chart doesn't resolve <span class="dd-skip">why Part&nbsp;II exists</span></div>
+  <p>Reading straight down the UVB row, the chart lists both a cancer-causing pathway (DNA mutation) and a cancer-protective one (vitamin D, immune modulation) under the same 280&ndash;315nm band. That is not a contradiction in the chart &mdash; it's an accurate summary of a real, unresolved tension in the literature, and the next three Parts are an attempt to work through it using three specific studies rather than the summary chart alone.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head" id="part-ii">
+  <div class="part-num">PART&nbsp;II</div>
+  <h2>UVB, Vitamin D, and 24 Cancers</h2>
+</div>
+
+<h3><span class="h3num">II.1</span>The ecological pattern</h3>
+<p>William Grant's 2012 review in <em>Anticancer Research</em> compiled ecological studies &mdash; comparisons of cancer incidence and mortality rates across geographic regions with different levels of ambient solar UVB &mdash; drawing on three US studies, one each from Australia, China, France, Japan, and Spain, and eight multicountry studies spanning more than 100 countries.<sup class="cite"><a href="#r1">1</a></sup> The review found consistent inverse correlations between solar UVB and 15 cancer types: bladder, breast, cervical, colon, endometrial, esophageal, gastric, lung, ovarian, pancreatic, rectal, renal, and vulvar cancer, plus Hodgkin's and non-Hodgkin's lymphoma. Nine more &mdash; brain, gallbladder, laryngeal, oral/pharyngeal, prostate, and thyroid cancer, leukemia, multiple myeloma, and, notably, melanoma itself &mdash; showed weaker evidence.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">the correlational pattern across studies is real and consistently reported;</span> <span class="ev ev-inf">Inferred</span><span class="txt">that UVB/vitamin D is the causal driver, rather than something else that also tracks with latitude &mdash; see the pushback below.</span></p>
+
+<h3><span class="h3num">II.2</span>The proposed mechanism</h3>
+<p>The mechanistic case behind the correlation is genuine cell biology, not just a geographic pattern. UVB converts 7-dehydrocholesterol in skin to previtamin D3, which becomes calcitriol (1,25-dihydroxyvitamin D), the active hormone. Calcitriol binds the vitamin D receptor, expressed in most tissue types including immune cells, and regulates genes involved in cell differentiation, apoptosis, and inflammation &mdash; the same processes disrupted in cancer's uncontrolled proliferation.<sup class="cite"><a href="#r-vdr">C</a></sup> Local, tissue-level vitamin D metabolism, independent of circulating blood levels, is also implicated: several of the tissues in the protected-15 list (colon, breast) express the enzyme that activates vitamin D locally, giving them a potential paracrine protective signal that a blood test alone wouldn't capture.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for calcitriol's role in cell differentiation and apoptosis generally;</span> <span class="ev ev-inf">Inferred</span><span class="txt">that this specific pathway explains the geographic cancer pattern in II.1.</span></p>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: ecological correlation is the weakest design in this paper</div>
+  <p style="margin:0 0 8px;">An ecological study correlates a population-level exposure (regional UVB) with a population-level outcome (regional cancer rate) &mdash; it does not measure either variable in the same individual. Everything else that varies by latitude and country varies right along with UVB: diet, obesity prevalence, smoking rates, alcohol consumption, cancer-screening infrastructure, and general healthcare access all differ systematically between, say, Scandinavia and equatorial countries, and any of them could independently move 15 different cancer rates in the same direction as sunlight without sunlight causing any of it. Several of the ecological studies underlying this review are Grant's own earlier work, and he directs the Sunlight, Nutrition and Health Research Center (SUNARC), a research group organized specifically around this hypothesis &mdash; not disqualifying, but worth weighing alongside independent replication. <em>The vitamin D mechanism in II.2 is real cell biology; whether it's the dominant explanation for the geographic pattern in II.1, versus one contributor among several confounded variables, is not something an ecological design can settle.</em></p>
+</div>
+
+<h3><span class="h3num">II.3</span>What would settle it</h3>
+<p>Randomized vitamin D supplementation trials are the design that can isolate the vitamin D variable from everything else that moves with latitude, since supplementation can be randomized independent of where someone lives. That literature exists and is genuinely mixed: several large trials have found reduced cancer <em>mortality</em> without a matching reduction in cancer <em>incidence</em> &mdash; suggesting, if real, a role in slowing progression in people who already have cancer rather than preventing it from starting, a narrower and different claim than II.1's incidence-correlation implies.<sup class="cite"><a href="#r-rct">D</a></sup></p>
+<p class="evline"><span class="ev ev-cont">Contested</span><span class="txt">supplementation trials are the right design to isolate this question, and the incidence-versus-mortality split across them is a real, unresolved pattern in this literature &mdash; not yet a settled answer.</span></p>
+</section>
+
+<section>
+<div class="part-head" id="part-iii">
+  <div class="part-num">PART&nbsp;III</div>
+  <h2>All-Cause Mortality: the Swedish Cohort</h2>
+</div>
+
+<h3><span class="h3num">III.1</span>Design and headline finding</h3>
+<p>The Melanoma in Southern Sweden (MISS) cohort enrolled 29,518 Swedish women between 1990 and 1992 and followed them for 20 years through national mortality registers, grouped by self-reported sun-exposure habits.<sup class="cite"><a href="#r2">2</a></sup> Active sun-seekers had lower cardiovascular and other non-cancer mortality than avoiders, despite higher skin-cancer incidence &mdash; the all-cause mortality gap was driven mainly by cardiovascular and other non-cancer deaths, not by fewer skin-cancer deaths among sun-seekers. Modeled out, sun avoidance was associated with an estimated 0.6 to 2.1 fewer years of life expectancy compared to high sun exposure &mdash; the basis of the widely repeated comparison to smoking as a mortality risk factor of similar modeled magnitude.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">large, long-follow-up cohort with registry-linked mortality &mdash; the strongest human data in this paper by sample size and duration;</span> <span class="ev ev-cont">Contested</span><span class="txt">as an argument that sunlight itself, rather than the lifestyle correlated with it, drives the effect.</span></p>
+
+<h3><span class="h3num">III.2</span>What the smoking comparison actually claims</h3>
+<p>The comparison to smoking is a modeled life-expectancy gap, not a claim that sun exposure offsets or cancels smoking's harm &mdash; a distinction the popular retelling of this study frequently drops. Two variables producing similarly sized effects on the same outcome measure does not mean either variable determines the other.</p>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: this is an observational cohort, not a trial</div>
+  <p style="margin:0 0 8px;">Sun-exposure habits were self-reported, not randomized, and sun-seeking behavior is entangled with a cluster of other health-relevant habits: more time outdoors generally means more walking, more incidental exercise, more social contact, and plausibly better baseline health that both causes someone to spend more time outside and independently protects cardiovascular health. The study could not separate UV dose from this broader lifestyle pattern, and no exercise data was collected at all. <em>The mortality gap is real and well measured; whether sunlight itself is the active ingredient, versus a marker for an generally more active and socially engaged life, is exactly what an observational design like this one cannot resolve.</em></p>
+</div>
+
+<div class="flag">
+  <div class="flag-lbl">Doesn't change existing guidance</div>
+  <p style="margin:0;">WHO and Swedish national sun-protection guidance &mdash; cover up and seek shade above UV Index 3 &mdash; is unchanged by this study. The finding is a population-level mortality pattern over two decades, not a demonstrated individual protocol for how much unprotected sun exposure is beneficial versus harmful for a given skin type.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head" id="part-iv">
+  <div class="part-num">PART&nbsp;IV</div>
+  <h2>Melanoma Survival: a Detection Effect, Not Protection</h2>
+</div>
+
+<h3><span class="h3num">IV.1</span>The finding</h3>
+<p>Berwick and colleagues followed 528 population-based cutaneous melanoma cases for an average of more than five years, combining interview data (sun exposure history, skin self-awareness, screening behavior) with histopathology review of each lesion (solar elastosis, Breslow thickness, mitotic rate).<sup class="cite"><a href="#r3">3</a></sup> In multivariable competing-risk models, two factors were independently associated with <em>lower</em> melanoma death after adjusting for tumor thickness, mitotic index, and head/neck location: solar elastosis, a histologic marker of chronic sun damage (HR&nbsp;0.4, 95%&nbsp;CI&nbsp;0.2&ndash;0.8, p=.009), and self-reported skin awareness (HR&nbsp;0.5, 95%&nbsp;CI&nbsp;0.3&ndash;0.9, p=.022). Tumor thickness, mitoses, ulceration, and head/neck location all independently predicted higher death risk, as expected.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the statistical associations themselves &mdash; a well-powered cohort with histopathology-confirmed covariates and appropriate competing-risk modeling.</span></p>
+
+<h3><span class="h3num">IV.2</span>Why this is not evidence that sunlight protects against melanoma</h3>
+<p>The authors' own reading of their result is a detection-effect story, and it fits the data better than a protective-sunlight story does. Solar elastosis is a marker that someone has accumulated substantial visible sun damage over their lifetime &mdash; exactly the kind of skin that makes a new or changing mole more noticeable to the person carrying it or to a clinician examining it. Skin awareness is a direct behavioral measure of the same thing: people who pay closer attention to their skin catch melanomas earlier, when they are thinner and more survivable, which is precisely what the thickness and mitosis covariates in the same model are already controlling for. The paper was explicitly designed to test this: whether the previously observed positive correlation between UV exposure/solar elastosis and melanoma <em>survival</em> reflects sunlight's biology or simply earlier detection &mdash; and the pattern (awareness and elastosis predicting survival independent of tumor severity at diagnosis) is consistent with detection, not consistent with sunlight altering the tumor's underlying biology once it has formed.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">as evidence for a detection/early-catch effect;</span> <span class="ev ev-spec">Speculative</span><span class="txt">as evidence that sun exposure changes melanoma's course biologically once it exists &mdash; the study wasn't designed to distinguish that from detection timing, and its authors don't claim it does.</span></p>
+
+<div class="flag">
+  <div class="flag-lbl">Reading this against Part&nbsp;I's chart</div>
+  <p style="margin:0;">Part&nbsp;I's UVA row lists melanoma risk rising with cumulative UV exposure &mdash; that remains the operative causal claim. This study does not contradict it. It answers a narrower, different question: among people who already have melanoma, why do some survive longer &mdash; and the answer here is earlier detection, not a protective effect of the sun exposure that likely contributed to causing the melanoma in the first place.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head" id="part-v">
+  <div class="part-num">PART&nbsp;V</div>
+  <h2>Nitric Oxide and Blood Pressure</h2>
+</div>
+
+<h3><span class="h3num">V.1</span>A DNA-independent mechanism</h3>
+<p>Human skin stores a substantial pool of nitric oxide in inactive forms &mdash; nitrite and nitrosated compounds &mdash; independent of the enzymatic nitric oxide synthase pathway used elsewhere in the body. UVA wavelengths, which penetrate deeper into skin than UVB and are absorbed by different chromophores, photochemically release this stored nitric oxide into circulation. Circulating nitric oxide is a potent vasodilator, and human trials of UVA skin exposure have shown measurable blood pressure reduction accompanying the release, independent of vitamin D or any DNA-mediated pathway.<sup class="cite"><a href="#r-no">E</a></sup></p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">the cutaneous nitric-oxide store and its UVA-triggered release is documented in human skin;</span> <span class="ev ev-inf">Inferred</span><span class="txt">for how much this specific mechanism contributes to the Part&nbsp;III cohort's cardiovascular mortality gap versus the lifestyle confounders flagged there.</span></p>
+
+<h3><span class="h3num">V.2</span>POMC, &alpha;-MSH, and mood</h3>
+<p>Separately, UV exposure in skin upregulates proopiomelanocortin (POMC), a precursor protein cleaved into several active peptides including &alpha;-melanocyte-stimulating hormone (&alpha;-MSH, which drives melanin production and tanning) and beta-endorphin. This is the leading proposed mechanism behind the mood-lifting and mildly reinforcing quality some people report from sun exposure, and behind why moderate, repeated UV exposure produces habituation rather than aversion in some studies &mdash; a real, biologically plausible route distinct from vitamin D or nitric oxide, though it carries its own caveat.<sup class="cite"><a href="#r-pomc">F</a></sup></p>
+<p class="evline"><span class="ev ev-animal">Animal&ndash;in vitro</span><span class="txt">the POMC/beta-endorphin pathway is best characterized in mouse skin; direct human behavioral confirmation is thinner.</span></p>
+
+<div class="flag">
+  <div class="flag-lbl">A caveat worth naming plainly</div>
+  <p style="margin:0;">A beta-endorphin-mediated reward pathway is also the leading proposed mechanism behind &ldquo;tanning dependence&rdquo; described in a small addiction-medicine literature &mdash; the same signal that makes moderate sun exposure feel good is mechanistically capable of reinforcing excessive exposure in a minority of people. This doesn't undercut the mechanism; it's a reason dosing matters here as much as it does anywhere else in this paper.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head" id="part-vi">
+  <div class="part-num">PART&nbsp;VI</div>
+  <h2>Practice: A Personal Light Diet</h2>
+</div>
+
+<p>Every mechanism in this paper runs on dose and timing, not just presence or absence of light. A published heliotherapy guide organizes the practical benefits of getting this right into six areas: lower blood pressure and better cardiovascular health, improved mood and reduced stress, healthier immune function and reduced chronic inflammation, increased metabolism and mitochondrial function, better sleep, and enhanced energy, alertness, and cognition.<sup class="cite"><a href="#r-book">B</a></sup> Its own framing is worth keeping: these aren't six independent wins so much as one nest of interlocking systems, where bright, well-timed days and genuinely dark nights raise circadian amplitude and that amplitude improvement is what cascades into the other five.</p>
+
+<h3><span class="h3num">VI.1</span>Daytime brightness is the input most people are short on</h3>
+<p>Indoor lighting rarely exceeds a few hundred lux; overcast outdoor daylight is typically 1,000&ndash;10,000&nbsp;lux, and direct sun exceeds 50,000. The blue-rich portion of that daylight signal drives melanopsin-containing retinal ganglion cells that set the circadian clock in the hypothalamus &mdash; the same pathway summarized in Part&nbsp;I's blue-light row.<sup class="cite"><a href="#r-blue1">G</a></sup> A weak daytime light signal is one of the more overlooked contributors to poor sleep specifically because the body generates its night-time melatonin signal in proportion to how strong a contrast it registered during the day &mdash; someone who is dim-lit all day and then also screen-lit all evening has removed the contrast entirely, not just moved it later.</p>
+
+<h3><span class="h3num">VI.2</span>Evening light: timing, not elimination</h3>
+<p>The same blue wavelengths that entrain the clock by day suppress melatonin and delay sleep onset at night, because melanopsin cells don't distinguish a screen from the sun &mdash; only intensity and spectrum.<sup class="cite"><a href="#r-blue2">H</a></sup> The practical implication is spectral matching, not blue-light avoidance outright: bright, cool-toned light through the day; dimmer, warmer-toned light in the few hours before sleep, mirroring the natural shift toward red and amber wavelengths as the sun approaches the horizon that Part&nbsp;I's infrared/red row describes.</p>
+
+<div class="mech">
+  <div class="mech-lbl">Practical takeaway</div>
+  <p style="margin-top:0;">Outdoor light exposure within the first hour or two of waking is the single highest-leverage change available given how much stronger daylight is than any indoor source &mdash; nothing indoors easily substitutes for it. Getting outside more broadly through daylight hours, dimming and warming indoor light in the evening, and protecting a genuinely dark night are the same three levers described across Parts&nbsp;II&ndash;V, applied on a daily clock rather than a lifetime-cancer-risk one.</p>
+  <p style="margin-bottom:0;">None of this licenses unprotected midday UV exposure without regard to skin type or duration &mdash; see the flag in <a href="#part-iii">Part&nbsp;III</a>. The dosing question for UV specifically (how much, for whom, before benefit gives way to risk) remains the least resolved part of this paper; see Limitations.</p>
+</div>
+</section>
+
+<section>
+<div class="part-head" id="limitations">
+  <div class="part-num">LIMITS</div>
+  <h2>What would weaken this argument</h2>
+</div>
+
+<div class="limits">
+<ul>
+<li><b>No study cited here doses UV exposure against a specific, individualized outcome.</b> The Part&nbsp;I chart, the Part&nbsp;II ecological review, and the Part&nbsp;III cohort all describe population-level patterns or mechanism, not a trial establishing how much unprotected sun exposure, for a given skin type and latitude, maximizes net benefit. That dose-response curve almost certainly exists and almost certainly varies by skin pigmentation, but this paper does not have it to cite.</li>
+
+<li><b>Part&nbsp;II's central finding is ecological, the weakest observational design used in this paper.</b> As flagged there, everything that varies by latitude &mdash; diet, obesity, smoking, screening access, healthcare infrastructure &mdash; varies alongside solar UVB, and an ecological design cannot separate them. Randomized vitamin D supplementation trials are the better-suited design and, per II.3, currently show a mixed and unresolved mortality-versus-incidence pattern.</li>
+
+<li><b>Part&nbsp;III's cohort is observational and self-reported, not randomized.</b> Sun-seeking behavior correlates with a broader active, socially engaged lifestyle that independently affects cardiovascular mortality. No exercise data was collected. The study cannot cleanly attribute its mortality gap to UV exposure specifically rather than the lifestyle it travels with.</li>
+
+<li><b>Part&nbsp;IV should not be read as evidence sunlight protects against melanoma.</b> Its own authors' interpretation &mdash; that skin awareness and solar elastosis predict survival through earlier detection, not altered tumor biology &mdash; is the more parsimonious reading and the one this paper adopts. Popular retellings that flip this into &ldquo;sun exposure improves melanoma survival&rdquo; are not supported by the study's own design or interpretation.</li>
+
+<li><b>The Part&nbsp;I wavelength chart is a secondary source, not itself a primary study.</b> It is useful as an organizing map and is broadly consistent with the mechanism literature cited alongside it, but several of its listed disease-outcome associations (autoimmune disease, myopia, dementia) are not individually pinned to a citation in this draft and should be read as directionally plausible pending that citation pass, the same status this paper's house style gives any unpinned reference elsewhere.</li>
+
+<li><b>The POMC/beta-endorphin mood mechanism (V.2) is thin in direct human behavioral data.</b> It is well characterized in mouse skin; the human reward/habituation literature it's used to explain is smaller and partly drawn from addiction-medicine case literature on tanning dependence rather than controlled trials in typical sun-exposure users.</li>
+
+<li><b>Skin type, baseline vitamin D status, and geographic latitude are not controlled for as a single variable anywhere in this paper.</b> Each study handles this differently or not at all, and the practical upshot &mdash; how the guidance in Part&nbsp;VI should change for darker skin, higher latitude, or existing vitamin D sufficiency &mdash; is not something this draft resolves.</li>
+</ul>
+<p class="lim-close">What would strengthen this paper most is a randomized trial dosing UV exposure by skin type against both cancer incidence and cardiovascular mortality in the same cohort &mdash; the current evidence base assembles these from an ecological review, one observational cohort, and one melanoma-survival study with different designs, populations, and outcome measures.</p>
+</div>
+</section>
+
+<section class="refwrap">
+<div class="part-head" id="refs">
+  <div class="part-num">REFS</div>
+  <h2>References</h2>
+</div>
+
+<div class="ref-group">UVB, vitamin D &amp; cancer</div>
+<ol class="refs">
+<li id="r1">Grant WB. Ecological studies of the UVB-vitamin D-cancer hypothesis. <span class="j">Anticancer Res</span> 2012;32(1):223&ndash;236. PMID 22213311. <span class="note">Review of 3 US, 5 single-country, and 8 multicountry (100+ nations) ecological studies. Strong inverse correlation with solar UVB for 15 cancer types; weaker evidence for 9 others including melanoma. Several underlying studies are the author's own prior work; author directs SUNARC, a research center organized around this hypothesis.</span></li>
+<li id="r-vdr">Vitamin D receptor signaling, calcitriol, and regulation of cell differentiation and apoptosis. <span class="gapflag">citation to pin</span></li>
+<li id="r-rct">Randomized vitamin D supplementation trials and the cancer-mortality-versus-incidence split. <span class="gapflag">citation to pin</span></li>
+</ol>
+
+<div class="ref-group">All-cause &amp; cardiovascular mortality</div>
+<ol class="refs" start="2">
+<li id="r2">Lindqvist PG, et al. Avoidance of sun exposure as a risk factor for major causes of death: a competing risk analysis of the Melanoma in Southern Sweden cohort. <span class="j">J Intern Med</span> 2016. <span class="gapflag">volume &amp; page to pin</span> <span class="note">n=29,518 Swedish women, enrolled 1990&ndash;1992, 20-year follow-up via national mortality registers. Sun avoiders showed an estimated 0.6&ndash;2.1 fewer years of life expectancy versus high-exposure women, driven mainly by cardiovascular and other non-cancer mortality.</span></li>
+</ol>
+
+<div class="ref-group">Melanoma survival</div>
+<ol class="refs" start="3">
+<li id="r3">Berwick M, Armstrong BK, Ben-Porat L, Fine J, Kricker A, Eberle C, Barnhill R. Sun exposure and mortality from melanoma. <span class="j">J Natl Cancer Inst</span> 2005;97(3):195&ndash;199. PMID 15687762. doi:10.1093/jnci/dji019. <span class="note">n=528 population-based cutaneous melanoma cases, &gt;5-year average follow-up. Multivariable competing-risk model: solar elastosis HR 0.4 (95% CI 0.2&ndash;0.8, p=.009) and skin awareness HR 0.5 (95% CI 0.3&ndash;0.9, p=.022) independently associated with lower melanoma death, adjusted for Breslow thickness, mitotic index, and head/neck location. Authors interpret as a detection effect.</span></li>
+</ol>
+
+<div class="ref-group">Nitric oxide, mood &amp; circadian mechanisms</div>
+<ol class="refs" start="4">
+<li id="r-no">Cutaneous nitric-oxide stores, UVA-triggered photorelease, and blood-pressure reduction in human trials. <span class="gapflag">citation to pin</span></li>
+<li id="r-pomc">UV-induced POMC upregulation in skin, &alpha;-MSH and beta-endorphin cleavage products, and reward/habituation signaling. <span class="gapflag">citation to pin</span></li>
+<li id="r-blue1">Melanopsin-containing retinal ganglion cells and circadian entrainment by blue-enriched daylight. <span class="gapflag">citation to pin</span></li>
+<li id="r-blue2">Evening blue-light exposure, melatonin suppression, and delayed sleep onset. <span class="gapflag">citation to pin</span></li>
+</ol>
+
+<div class="ref-group">Wavelength reference chart</div>
+<ol class="refs" start="8">
+<li id="r-book"><span class="gapflag">title, author &amp; publisher to pin</span> <span class="note">Photographed reference chart and &ldquo;Right with Light: Putting Heliotherapy into Practice&rdquo; chapter excerpt, source book not yet identified in this draft &mdash; Patrick to supply title/author/edition for a proper citation.</span></li>
+</ol>
+</section>
+
+<div style="margin-top:44px">
+  <span class="tag">UVB</span><span class="tag">UVA</span><span class="tag">Vitamin D</span><span class="tag">Calcitriol</span><span class="tag">Solar Elastosis</span><span class="tag">Melanoma</span><span class="tag">Nitric Oxide</span><span class="tag">Blood Pressure</span><span class="tag">POMC</span><span class="tag">&alpha;-MSH</span><span class="tag">Beta-Endorphin</span><span class="tag">Melanopsin</span><span class="tag">Circadian Rhythm</span><span class="tag">Melatonin</span><span class="tag">Ecological Study</span><span class="tag">MISS Cohort</span><span class="tag">Heliotherapy</span><span class="tag">Urocanic Acid</span><span class="tag">Skin Microbiome</span>
+</div>
+
+<footer class="end">
+  <p><b>A note on sourcing.</b> References 1 and 3 (the Grant ecological review and the Berwick melanoma cohort) and reference 2 (the Lindqvist Swedish cohort) are the load-bearing human data in this paper and were checked directly against their published abstracts. References C&ndash;H and the wavelength chart in reference B still need their full citations pinned; the mechanisms described are consistent with established photobiology (cutaneous nitric-oxide photorelease, POMC/melanocortin signaling, melanopsin-driven circadian entrainment) but this draft has not yet done that citation pass. The source of reference B's wavelength chart and heliotherapy excerpt is not yet identified &mdash; treat Part&nbsp;I and Part&nbsp;VI's book-derived claims as directionally consistent with the cited mechanism literature, not independently verified against that specific source, until it's pinned.</p>
+  <p>The companion paper &mdash; <a href="cold-exposure.html">Cold Exposure &amp; Metabolic Health</a> &mdash; covers the other major non-dietary environmental input this framework depends on.</p>
+</footer>
+
+</div>
+</body>
+</html>
