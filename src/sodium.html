@@ -5,71 +5,125 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sodium — Nutrient Deep Dive</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  sup a { border-bottom: none; }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .refs { font-size: 0.85rem; color: var(--sub); }
-  .refs ol { padding-left: 1.5rem; }
-  .refs li { margin: 0.5rem 0; }
-  .refs a { border-bottom-color: rgba(122, 59, 46, 0.25); }
-  hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
-  .todo { color: #a05a2c; font-size: 0.85rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Sodium</h1>
 <div class="tags"><span class="tag">Electrolyte</span><span class="tag">Foundational</span><span class="tag">Transport</span><span class="tag">Electrochemical</span></div>
 
-<div class="callout"><strong>TL;DR:</strong> Sodium is an essential electrolyte that regulates extracellular fluid balance, nerve signaling, and nutrient transport across cell membranes via sodium gradients.<sup><a href="#ref1">1</a></sup></div>
+<p class="lede">Not just "salt": the gradient that runs your nerves, heart and nutrient absorption.</p>
 
-<h2>Intake</h2>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential · don't fear salt</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Keeps you hydrated</span>
+      <span class="how">Holds water in your blood and tissues.</span>
+      <a class="why" href="#hydration">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Lets nerves fire</span>
+      <span class="how">Sodium rushing into nerve cells is the nerve signal.</span>
+      <a class="why" href="#brain">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Powers the heart's rhythm</span>
+      <span class="how">Heart signals run on sodium gradients.</span>
+      <a class="why" href="#heart">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Pulls nutrients into cells</span>
+      <span class="how">Drives absorption of glucose, amino acids and vitamin C.</span>
+      <a class="why" href="#gut">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>Roughly 2–3 g a day, more if you sweat a lot</li>
+        <li>Salt your food, especially if you cook at home</li>
+        <li>Also: cheese, olives, bone broth</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Both too little and too much stress the body</li>
+      </ul>
+      <h3 style="margin-top:0.7rem">Signs you're low</h3>
+      <ul>
+        <li>Headache, confusion</li>
+        <li>Seizures in severe cases</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
+
+<h2 id="intake">Intake</h2>
 <p>Roughly 2–3 g/day, increasing with sweat loss.</p>
 
-<h2>Hydration</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="hydration"><span class="ev strong" title="Strong human evidence"></span>Hydration</h2>
 <p>Regulates water retention, blood volume, and cellular hydration.<sup><a href="#ref1">1</a></sup> Works with potassium and chloride to maintain osmotic gradients and membrane potential, keeping electrolytes in balance.<sup><a href="#ref3">3</a></sup></p>
 
-<h2>Heart</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="heart"><span class="ev strong" title="Strong human evidence"></span>Heart</h2>
 <p>Electrical signaling in cardiac tissue depends on sodium gradients;<sup><a href="#ref3">3</a></sup> also maintains blood volume and circulation.<sup><a href="#ref1">1</a></sup></p>
 
-<h2>Brain</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="brain"><span class="ev strong" title="Strong human evidence"></span>Brain</h2>
 <p>Sodium influx generates action potentials (nerve signaling).<sup><a href="#ref2">2</a></sup> Sodium-dependent transporters (SVCT2) also deliver vitamin C to neurons.<sup><a href="#ref4">4</a></sup> Imbalance (hyponatremia) can cause neurological dysfunction.<sup><a href="#ref5">5</a></sup></p>
 
-<h2>Muscle and performance</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="muscle-and-performance">Muscle and performance</h2>
 <p>Required for muscle contraction and prevention of dysfunction from electrolyte imbalance.<sup><a href="#ref3">3</a></sup></p>
 
-<h2>Gut</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="gut"><span class="ev strong" title="Strong human evidence"></span>Gut</h2>
 <p>Sodium-dependent transport improves nutrient absorption and vitamin uptake, including SVCT1-mediated dietary vitamin C absorption in intestinal tissue.<sup><a href="#ref4">4</a></sup><sup><a href="#ref6">6</a></sup> Also enables absorption of glucose and amino acids via sodium-coupled cotransporters. <span class="todo">(the two citations originally linked for glucose/amino-acid cotransport point to Notion pages that no longer resolve — flagged rather than silently dropped)</span></p>
 
-<h2>Longevity</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="longevity">Longevity</h2>
 <p>Sodium balance influences hormonal regulation (RAAS, stress response) and circulatory stability;<sup><a href="#ref7">7</a></sup> dysregulation in either direction (too low or too high) is a physiological stressor.<sup><a href="#ref7">7</a></sup></p>
 
-<h2>Oxidation / cellular stress</h2>
-<p>Indirectly supports antioxidant systems by enabling vitamin C transport into cells.<sup><a href="#ref4">4</a></sup> See <a href="vitamin-c.html">Vitamin C</a> and <a href="glycine-collagen.html">Glycine / Collagen</a> for where that connects to collagen synthesis.</p>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<h2>Deficiency effects</h2>
+<h2 id="oxidation-cellular-stress">Oxidation / cellular stress</h2>
+<p>Indirectly supports antioxidant systems by enabling vitamin C transport into cells.<sup><a href="#ref4">4</a></sup> See <a href="vitaminc.html">Vitamin C</a> and <a href="glycinecollagen.html">Glycine / Collagen</a> for where that connects to collagen synthesis.</p>
+
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="deficiency-effects">Deficiency effects</h2>
 <p>Hyponatremia: confusion, headache, seizures.</p>
 
-<h2>Key insight</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="key-insight">Key insight</h2>
 <p>Sodium is not just "salt" — it's a central regulator of fluid balance, cellular energy systems, and nutrient delivery, especially for compounds like vitamin C that feed directly into collagen synthesis and antioxidant defense.<sup><a href="#ref8">8</a></sup></p>
 
-<h2>Top foods</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="top-foods">Top foods</h2>
 <ul>
   <li>Salt</li>
   <li>Cheese</li>
@@ -77,8 +131,10 @@
   <li>Bone broth</li>
 </ul>
 
+<a class="back" href="#glance">↑ back to summary</a>
+
 <hr>
-<h2>References</h2>
+<h2 id="references">References</h2>
 <div class="refs">
 <ol>
 <li id="ref1">Strazzullo and Leclercq, 2014 — sodium and fluid volume. <a href="https://pubmed.ncbi.nlm.nih.gov/24566466/" target="_blank">PMID 24566466</a></li>

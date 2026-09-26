@@ -352,6 +352,93 @@ footer.end b{color:var(--moss);}
   border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
 }
 
+/* ---- Start here: the short list ---- */
+.quick{
+  border:2px solid var(--ink);border-radius:4px;background:var(--card);
+  padding:30px 32px 24px;margin:36px 0 12px;counter-reset:q;
+}
+.q-eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:10px;
+}
+.quick h2.q-title{font-size:clamp(24px,3.6vw,31px);margin:0 0 10px;}
+.q-intro{font-size:17px;color:var(--ink-soft);margin:0 0 22px;}
+.q-three{
+  background:var(--moss-deep);color:#e4eadb;border-radius:4px;
+  padding:18px 20px 20px;margin:0 0 8px;
+}
+.q-three-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:#cdd8bd;font-weight:600;margin-bottom:12px;
+}
+.q-three-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.q-three-grid>div{font-size:15.5px;line-height:1.45;}
+.q-three-grid b{display:block;color:#fff;font-weight:600;margin-bottom:4px;font-size:16.5px;line-height:1.35;}
+.q-three .n{
+  display:block;font-family:'Fraunces',serif;font-weight:600;font-size:28px;
+  line-height:1;color:var(--gold);margin-bottom:8px;
+}
+.q-group{margin:26px 0 0;}
+.q-group-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  padding-bottom:7px;border-bottom:1px solid var(--ink);
+}
+ol.q-list{list-style:none;padding:0;margin:0;}
+ol.q-list>li{
+  counter-increment:q;position:relative;
+  padding:13px 0 13px 42px;border-top:1px solid var(--rule);
+}
+ol.q-list>li:first-child{border-top:none;}
+ol.q-list>li::before{
+  content:counter(q);position:absolute;left:0;top:14px;
+  width:26px;height:26px;border:1.5px solid var(--moss);border-radius:3px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;
+  color:var(--moss-deep);text-align:center;line-height:23px;
+}
+.q-do{font-weight:600;font-size:17.5px;line-height:1.4;color:var(--ink);}
+.q-why{font-size:15.5px;line-height:1.5;color:var(--ink-soft);margin-top:3px;}
+.q-why .ev{font-size:10px;padding:2px 8px;margin:0 4px 0 2px;vertical-align:1px;}
+.q-link{font-family:'IBM Plex Mono',monospace;font-size:12px;white-space:nowrap;}
+.q-safety{
+  margin:26px 0 0;padding:14px 18px;border-left:3px solid var(--rust);
+  background:rgba(168,86,47,.07);font-size:15.5px;line-height:1.5;
+}
+.q-safety b{color:#7d3d1c;}
+.q-actions{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  margin-top:20px;padding-top:16px;border-top:2px solid var(--ink);
+}
+.q-btn{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;
+  text-transform:uppercase;font-weight:600;cursor:pointer;
+  background:var(--moss);color:var(--card);border:1.5px solid var(--moss);
+  border-radius:4px;padding:9px 14px;
+}
+.q-btn:hover{background:var(--moss-deep);border-color:var(--moss-deep);}
+.q-btn.alt{background:transparent;color:var(--moss-deep);}
+.q-btn.alt:hover{background:var(--paper-deep);}
+.q-note{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);}
+@media (max-width:640px){
+  .q-three-grid{grid-template-columns:1fr;gap:14px;}
+}
+@media (max-width:560px){
+  .quick{padding:22px 18px 18px;}
+  ol.q-list>li{padding-left:36px;}
+}
+@media print{
+  body{background:#fff;font-size:12pt;}
+  body.print-quick .site-header,
+  body.print-quick .subnav,
+  body.print-quick .wrap>*:not(#start-here){display:none !important;}
+  body.print-quick .quick{border:none;padding:0;margin:0;}
+  .q-actions{display:none;}
+  .q-three{background:none;color:var(--ink);border:1.5px solid var(--ink);}
+  .q-three-grid b{color:var(--ink);}
+  .q-three-lbl{color:var(--moss);}
+  ol.q-list>li{break-inside:avoid;}
+}
+
 @media (max-width:560px){
   body{font-size:17.5px;}
   .byline{flex-direction:column;gap:6px;}
@@ -370,14 +457,8 @@ footer.end b{color:var(--moss);}
   </div>
 </header>
 <div class="subnav"><div class="subnav-inner">
-  <a href="nutrition.html">Overview</a>
+  <a href="nutrition.html">Papers</a>
   <a href="metabolic-health.html" class="active">Metabolic Health</a>
-  <a href="linoleic-acid.html">Linoleic Acid</a>
-  <a href="ahr.html">AhR</a>
-  <a href="cold-exposure.html">Cold Exposure</a>
-  <a href="sunlight.html">Sunlight</a>
-  <a href="energy-metabolism.html">Energy Metabolism</a>
-  <a href="cancer.html">Cancer</a>
   <a href="nutrients.html">Nutrients</a>
   <a href="supplements.html">Supplements</a>
 </div></div>
@@ -388,15 +469,110 @@ footer.end b{color:var(--moss);}
   <h1 class="title">Metabolic <em>Health</em></h1>
   <p class="sub">What metabolic health actually is, what breaks it, and the order in which to fix it &mdash; the hub paper the mechanism deep-dives link back to.</p>
   <div class="byline">
-    <span><b>Draft</b> v1 &mdash; structure first, prose second, citations last</span>
+    <span><b>Draft</b> v2 &mdash; adds the short list; folds in the statins, blood-pressure and supplement work</span>
     <span><b>Scope</b> framework &amp; protocol</span>
     <span><b>Standard</b> evidence graded where grades are used</span>
   </div>
 </header>
 
+<section class="quick" id="start-here">
+  <div class="q-eyebrow">Start here &middot; the short list</div>
+  <h2 class="q-title">Easy things that make you metabolically healthier</h2>
+  <p class="q-intro">The practical end of this whole series, in plain language. Nothing here needs a lab, a prescription, or much money. Each item links to the paper that makes the full case and carries the same evidence grade used everywhere else on this site, so you can see which ones are firm and which are reasoned.</p>
+
+  <div class="q-three">
+    <div class="q-three-lbl">If you only do three</div>
+    <div class="q-three-grid">
+      <div><span class="n">1</span><b>Cook at home, in butter, ghee, tallow or olive oil.</b>Most seed oil isn&rsquo;t the bottle in your cupboard &mdash; it&rsquo;s restaurant, fried and packaged food.</div>
+      <div><span class="n">2</span><b>Walk after meals. Lift twice a week.</b>Muscle is the body&rsquo;s biggest sugar sink. Use it after you eat, and make it bigger.</div>
+      <div><span class="n">3</span><b>Bright mornings, dark nights, same bedtime.</b>Outdoor light soon after waking; dim, warm light in the evening; a regular sleep window.</div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-lbl">In the kitchen</div>
+    <ol class="q-list">
+      <li><div class="q-do">Eat out less. Eat fried food less.</div>
+        <div class="q-why">Restaurant and packaged food is where most linoleic acid comes from &mdash; soybean oil is the default almost everywhere. Fryer oil sits hot for days and arrives already oxidised; in one large cohort analysis, French fries carried about six times the weight gain per serving of boiled or baked potato. <span class="ev ev-strong">Strong</span> <a class="q-link" href="linoleic-acid.html">&rarr; Linoleic Acid VI.1&ndash;2</a></div></li>
+      <li><div class="q-do">Swap the cooking fat.</div>
+        <div class="q-why">For heat: butter, ghee, beef tallow, coconut oil. For low heat and finishing: extra-virgin olive oil or avocado oil (buy harvest-dated, dark bottles &mdash; olive oil is often cut with cheaper oils). Drop &ldquo;vegetable oil&rdquo;, corn, sunflower, safflower, cottonseed and grapeseed. A tablespoon of soybean oil carries ~7&nbsp;g of LA; butter, under half a gram. <span class="ev ev-strong">Strong</span> <a class="q-link" href="linoleic-acid.html">&rarr; Linoleic Acid VI.3</a></div></li>
+      <li><div class="q-do">Read the ingredients on dressings, mayo, crackers, granola bars and creamers.</div>
+        <div class="q-why">Seed oil hides in exactly the foods nobody thinks of as &ldquo;oily&rdquo;. Swap for olive-oil or avocado-oil versions, or make them. <span class="ev ev-inf">Inferred</span> <a class="q-link" href="linoleic-acid.html">&rarr; Linoleic Acid VI.6</a></div></li>
+    </ol>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-lbl">On the plate</div>
+    <ol class="q-list">
+      <li><div class="q-do">Eat wild-caught oily fish twice a week.</div>
+        <div class="q-why">Sardines, mackerel, wild salmon, herring, anchovies. Wild fish eat a marine diet, so they&rsquo;re higher in omega-3 and lower in omega-6 than farmed fish raised on grain- and soy-based feed. Fish give you EPA and DHA directly. The plant omega-3 in nuts and seeds is ALA, and the body converts very little of it to EPA/DHA. <span class="ev ev-mod">Moderate</span> <a class="q-link" href="linoleic-acid.html">&rarr; Linoleic Acid VI.4</a></div></li>
+      <li><div class="q-do">Beef, lamb and dairy are the easy proteins. If you pay extra for anything, pay for pastured pork, chicken and eggs.</div>
+        <div class="q-why">Cattle and sheep saturate their feed&rsquo;s fat before it reaches the meat; pigs and chickens don&rsquo;t, so their fat mirrors the corn and soy they ate. On a budget, that&rsquo;s where sourcing matters &mdash; more than grass-fed beef. <span class="ev ev-mod">Moderate</span> <a class="q-link" href="linoleic-acid.html">&rarr; Linoleic Acid VI.4</a></div></li>
+      <li><div class="q-do">Protein and vegetables first, starch last.</div>
+        <div class="q-why">Same meal, different order: it slows how fast the starch reaches your blood. <span class="ev ev-mod">Moderate</span> <a class="q-link" href="#protocol">&rarr; Part III</a></div></li>
+      <li><div class="q-do">Eat more of your carbs earlier in the day; keep dinner lighter and not too late.</div>
+        <div class="q-why">Insulin sensitivity peaks in the morning and falls through the evening &mdash; an identical meal causes a bigger blood-sugar spike at dinner than at breakfast. <span class="ev ev-mod">Moderate</span> <a class="q-link" href="#part-1">&rarr; Part I</a></div></li>
+      <li><div class="q-do">Whole fruit as the staple. Orange juice is fine as a supplement.</div>
+        <div class="q-why">Whole foods come first. But a glass of orange juice is a good source of vitamin C, folate and potassium, and the case that its fructose harms you hasn&rsquo;t been shown at a glass a day in people who aren&rsquo;t gaining weight. <span class="ev ev-mod">Moderate</span> <a class="q-link" href="orangejuice.html">&rarr; Orange Juice</a></div></li>
+      <li><div class="q-do">Eat arugula and beets &mdash; and skip antibacterial mouthwash.</div>
+        <div class="q-why">They&rsquo;re the best common sources of dietary nitrate, and arugula is the richest. Bacteria in your mouth turn that nitrate into nitric oxide, which relaxes blood vessels and improves blood flow and exercise capacity. Antiseptic mouthwash kills those bacteria and cancels the effect. <span class="ev ev-strong">Strong</span> <a class="q-link" href="beetjuice.html">&rarr; Beet Juice</a></div></li>
+      <li><div class="q-do">Get your potassium. And if you cook at home, salt your food.</div>
+        <div class="q-why">Potatoes, beans, avocado, fruit and orange juice all carry potassium, and most people fall well short of it. Salt runs the other way: processed and restaurant food supplies it for you, so people who cook everything themselves can end up low. Salt to taste. Aiming for as little as possible isn&rsquo;t the target. <span class="ev ev-cont">Contested</span> <a class="q-link" href="sodium.html">&rarr; Sodium</a></div></li>
+      <li><div class="q-do">Drink less alcohol.</div>
+        <div class="q-why">Clearing it uses up NAD<sup>+</sup>, the same molecule your cells need to burn fuel, and it acutely worsens insulin sensitivity. <span class="ev ev-mod">Moderate</span> <a class="q-link" href="energy-metabolism.html">&rarr; Energy Metabolism</a></div></li>
+    </ol>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-lbl">Moving</div>
+    <ol class="q-list">
+      <li><div class="q-do">Walk 10&ndash;15 minutes after your biggest meal.</div>
+        <div class="q-why">Working muscle pulls glucose out of the blood without needing insulin. The single easiest thing on this list. <span class="ev ev-strong">Strong</span> <a class="q-link" href="#protocol">&rarr; Part III</a></div></li>
+      <li><div class="q-do">Lift something heavy 2&ndash;3 times a week.</div>
+        <div class="q-why">Muscle is the largest glucose sink in the body. Under-muscled is under-buffered. <span class="ev ev-strong">Strong</span> <a class="q-link" href="#part-2">&rarr; Part II.7</a></div></li>
+      <li><div class="q-do">Build an easy aerobic base, then add some hard intervals.</div>
+        <div class="q-why">Easy cardio builds mitochondria. Hard intervals do something more: in a randomised trial, 4&times;4-minute intervals twice a week <em>shrank</em> coronary plaque on direct imaging while it grew under standard care &mdash; in heart patients, on top of their usual treatment, not instead of it. <span class="ev ev-strong">Strong</span> <a class="q-link" href="statins.html">&rarr; Statins &amp; LDL VII.3</a></div></li>
+    </ol>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-lbl">Light, sleep and temperature</div>
+    <ol class="q-list">
+      <li><div class="q-do">Get outside within an hour or two of waking.</div>
+        <div class="q-why">Indoor light is a few hundred lux; an overcast morning is 1,000&ndash;10,000, direct sun over 50,000. Nothing indoors substitutes, and it sets the clock your insulin sensitivity runs on. <span class="ev ev-mod">Moderate</span> <a class="q-link" href="sunlight.html">&rarr; Sunlight VI</a></div></li>
+      <li><div class="q-do">Dim and warm the lights for the last few hours before bed. Sleep in the dark.</div>
+        <div class="q-why">Your body can&rsquo;t tell a screen from the sun. The contrast between bright days and dark nights is the signal. <span class="ev ev-mod">Moderate</span> <a class="q-link" href="sunlight.html">&rarr; Sunlight VI.2</a></div></li>
+      <li><div class="q-do">Keep a regular sleep window, and get enough of it.</div>
+        <div class="q-why">Short or irregular sleep degrades insulin sensitivity no matter how clean the diet. There&rsquo;s no dietary substitute. <span class="ev ev-strong">Strong</span> <a class="q-link" href="ahr.html">&rarr; AhR VI</a></div></li>
+      <li><div class="q-do">Let yourself get properly cold, a few times a week.</div>
+        <div class="q-why">Cold enough to be a genuine shock &mdash; a cold plunge, a lake, an ice bath &mdash; recruits brown fat and pulls glucose into muscle without insulin. A mild chill often doesn&rsquo;t cross the threshold. And stop keeping the house at one temperature all year. <span class="ev ev-mod">Moderate</span> <a class="q-link" href="cold-exposure.html">&rarr; Cold Exposure V</a></div></li>
+    </ol>
+  </div>
+
+  <div class="q-group">
+    <div class="q-group-lbl">Before buying supplements</div>
+    <ol class="q-list">
+      <li><div class="q-do">Log a normal week of eating in Cronometer first.</div>
+        <div class="q-why">It shows which vitamins and minerals are actually running low. Supplement the gap, not a guess. <a class="q-link" href="#part-4">&rarr; Part IV</a></div></li>
+      <li><div class="q-do">Vitamin D3 in winter if you live north of ~37&deg;N; magnesium if you&rsquo;re short.</div>
+        <div class="q-why">Above roughly the latitude of San Francisco or Richmond, VA, skin makes almost no vitamin D from October to March. Magnesium is genuinely under-eaten on modern diets. <span class="ev ev-strong">Strong</span> <a class="q-link" href="#part-4">&rarr; Part IV.1</a></div></li>
+      <li><div class="q-do">Know a few numbers.</div>
+        <div class="q-why">Fasting insulin (goes wrong years before fasting glucose does), triglyceride-to-HDL ratio, blood pressure, and waist under half your height. Ask for apoB rather than relying on LDL-C. <a class="q-link" href="#part-5">&rarr; Part V</a></div></li>
+    </ol>
+  </div>
+
+  <div class="q-safety"><b>Not medical advice.</b> If you take a prescribed medication &mdash; a statin, or a blood-pressure or diabetes drug &mdash; nothing here is a reason to stop it. The reverse caution matters too: changes like these can lower blood sugar and blood pressure enough that doses need adjusting, so tell whoever prescribes them what you&rsquo;re changing.</div>
+
+  <div class="q-actions">
+    <button class="q-btn" type="button" id="q-copy">Copy as text</button>
+    <button class="q-btn alt" type="button" id="q-print">Print the list</button>
+    <span class="q-note" id="q-status">Or share this page with <code>#start-here</code> on the end.</span>
+  </div>
+</section>
+
 <div class="flag">
   <div class="flag-lbl">Draft status</div>
-  <p style="margin:0;">This page is a working structural draft, published as-is rather than held back. Sections marked <span class="gapflag">TODO</span> are open decisions, not oversights &mdash; several are flagged explicitly in <a href="#limitations">Limitations</a> and <a href="#open-questions">Open Structural Questions</a> below. It does not yet carry a numbered citation list; claims that need one are noted inline.</p>
+  <p style="margin:0;">The short list above is the stable, shareable part of this page. Everything below it is a working structural draft, published as-is rather than held back. Sections marked <span class="gapflag">TODO</span> are open decisions, not oversights &mdash; several are flagged explicitly in <a href="#limitations">Limitations</a> and <a href="#open-questions">Open Structural Questions</a> below. It does not yet carry a numbered citation list; claims that need one are noted inline.</p>
 </div>
 
 <div class="mech">
@@ -405,6 +581,10 @@ footer.end b{color:var(--moss);}
   <div class="defrow">
     <div class="term">Linoleic acid &amp;<br>seed oils</div>
     <p class="def">&rarr; <a href="linoleic-acid.html">linoleic-acid.html</a></p>
+  </div>
+  <div class="defrow">
+    <div class="term">LDL, apoB, statins &amp;<br>blood pressure</div>
+    <p class="def">&rarr; <a href="statins.html">statins.html</a></p>
   </div>
   <div class="defrow">
     <div class="term">AhR as a metabolic<br>disruptor</div>
@@ -416,11 +596,23 @@ footer.end b{color:var(--moss);}
   </div>
   <div class="defrow">
     <div class="term">Cold exposure</div>
-    <p class="def"><span class="gapflag">planned</span></p>
+    <p class="def">&rarr; <a href="cold-exposure.html">cold-exposure.html</a></p>
   </div>
   <div class="defrow">
     <div class="term">Light: UVA / UVB /<br>full-spectrum / infrared</div>
-    <p class="def"><span class="gapflag">planned</span></p>
+    <p class="def">&rarr; <a href="sunlight.html">sunlight.html</a></p>
+  </div>
+  <div class="defrow">
+    <div class="term">Mitochondrial dysfunction<br>in cancer</div>
+    <p class="def">&rarr; <a href="cancer.html">cancer.html</a></p>
+  </div>
+  <div class="defrow">
+    <div class="term">Individual nutrients</div>
+    <p class="def">&rarr; <a href="nutrients.html">nutrients.html</a></p>
+  </div>
+  <div class="defrow">
+    <div class="term">Herbs, juices &amp;<br>optional compounds</div>
+    <p class="def">&rarr; <a href="supplements.html">supplements.html</a></p>
   </div>
   <div class="defrow">
     <div class="term">Intermittent fasting &amp;<br>hormetic thresholds</div>
@@ -430,7 +622,7 @@ footer.end b{color:var(--moss);}
 </div>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-1">
   <div class="part-num">PART&nbsp;I</div>
   <h2>What We're Actually Optimizing</h2>
 </div>
@@ -458,13 +650,14 @@ footer.end b{color:var(--moss);}
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-2">
   <div class="part-num">PART&nbsp;II</div>
   <h2>What Breaks It</h2>
 </div>
 
 <h3><span class="h3num">II.1</span>Dietary linoleic acid</h3>
 <p>The single largest compositional change to the food supply in the last century. High membrane and adipose LA content creates a substrate pool primed for peroxidation, and pushes flux down the desaturase chain toward inflammatory metabolite output. Both routes run together; only the weighting shifts by tissue.</p>
+<p>The dose is the argument. LA is essential, but the requirement is small &mdash; roughly 1&ndash;2% of calories &mdash; and its benefits saturate there. Seed oils pushed typical intake to ~8&ndash;10%. And most of that doesn&rsquo;t come from the bottle at home: it comes from restaurant, fried and packaged food, where soybean oil is the default. Frying is a separate, additive exposure &mdash; oil held hot for days delivers the oxidation products pre-formed, rather than waiting for them to form in the body. <span class="ev ev-strong">Strong</span> for the intake figures and for heated oil accumulating aldehydes.</p>
 <p class="takeaway"><b>Full argument:</b> <a href="linoleic-acid.html">linoleic-acid.html</a>. This paper states the conclusion and moves on &mdash; don't re-litigate here.</p>
 
 <h3><span class="h3num">II.2</span>Persistent AhR activation</h3>
@@ -488,14 +681,26 @@ footer.end b{color:var(--moss);}
 
 <h3><span class="h3num">II.6</span>Insufficient light exposure</h3>
 <p>Insufficient UVB (vitamin D synthesis), insufficient full-spectrum morning light (circadian anchoring), insufficient infrared. Also a thermal-comfort-shaped problem: modern indoor life removes an expected input.</p>
-<p class="takeaway"><b>Full argument:</b> light paper <span class="gapflag">planned</span></p>
+<p class="takeaway"><b>Full argument:</b> <a href="sunlight.html">sunlight.html</a>.</p>
 
 <h3><span class="h3num">II.7</span>Insufficient mechanical loading</h3>
 <p>Skeletal muscle is the largest glucose sink in the body. Resistance training increases both the size of that sink and its insulin-independent glucose uptake. Under-muscled is under-buffered.</p>
+
+<h3><span class="h3num">II.8</span>Too little potassium, too little nitrate</h3>
+<p>The modern diet runs short on two inputs to vascular function. Potassium intake sits well below adequate for most people. Nitrate-rich vegetables, with arugula and beets at the top, have mostly dropped out of the diet, and nitrate is the substrate for the oral-bacteria route to nitric oxide that bypasses the eNOS pathway metabolic disease damages.</p>
+<p>Salt is the one mineral where the usual advice points the wrong way for the people this protocol is written for. Processed and restaurant food is where most sodium comes from. Someone who follows Step&nbsp;1 and cooks everything at home has removed that source and can easily end up under-salted. Mortality studies show a J-shaped curve for sodium, not a line where lower is always better. The trial results that drive low-salt guidance are blood-pressure reductions of a few mmHg, which is a surrogate endpoint. They aren&rsquo;t outcomes.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for nitrate &rarr; NO.</span> <span class="ev ev-mod">Moderate</span><span class="txt">for potassium adequacy.</span> <span class="ev ev-cont">Contested</span><span class="txt">for the sodium curve &mdash; the low end of the J is argued over, largely on reverse causation.</span></p>
+<p class="takeaway"><b>Related:</b> <a href="sodium.html">sodium.html</a>, <a href="potassium.html">potassium.html</a>, <a href="beetjuice.html">beetjuice.html</a>. <a href="statins.html">statins.html</a> VII.4&ndash;5 takes a more mainstream line on sodium.</p>
+
+<div class="mech">
+  <div class="mech-lbl">Where cholesterol fits</div>
+  <p style="margin-top:0;">This paper doesn&rsquo;t list LDL under &ldquo;what breaks it&rdquo;, and the omission is deliberate. The statins paper concedes that apoB-containing particles cause atherosclerosis &mdash; the genetic evidence is too strong to argue with &mdash; and then argues that for most people outside familial hypercholesterolaemia and established heart disease, serum lipids are substantially a <em>readout</em> of metabolic terrain rather than an independent lever. Restoring insulin sensitivity moves triglycerides, HDL, particle size and number, blood pressure and visceral fat together. The same LDL-C number means something different in an insulin-resistant person than in a lean athlete &mdash; and in the first, LDL-C probably <em>under</em>states the particle count, which is why apoB is the better test.</p>
+  <p style="margin-bottom:0;">Exercise is the one place this has direct anatomical support: in the CERT trial, supervised high-intensity intervals regressed coronary plaque on intravascular ultrasound with no lipid target at all &mdash; layered on top of standard care, not replacing it. <span class="ev ev-strong">Strong</span> for that result; <span class="ev ev-spec">Speculative</span> that dietary terrain levers alone beat the drug for most people. <a href="statins.html">statins.html</a> Part&nbsp;VII.</p>
+</div>
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="protocol">
   <div class="part-num">PART&nbsp;III</div>
   <h2>The Protocol</h2>
 </div>
@@ -510,14 +715,19 @@ footer.end b{color:var(--moss);}
 <tr><th>Intervention</th><th>Mechanism</th><th>Grade</th></tr>
 </thead>
 <tbody>
-<tr><td>Remove seed oils / lower dietary LA</td><td>Reduces peroxidation substrate and desaturase flux</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td>Remove seed oils / lower dietary LA toward ~1&ndash;2% of calories</td><td>Reduces peroxidation substrate and desaturase flux. In practice: cook at home, cut fried, restaurant and packaged food</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td>Oily fish; MUFA and saturated fat in place of PUFA</td><td>Omega-3 competes with LA for D6D and membrane slots; oleic acid displaces PUFA from membranes via ACSL3</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
 <tr><td>Resistance training, 2&ndash;3&times;/week</td><td>Expands muscle glucose sink; glycogen depletion creates draw</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
 <tr><td>Zone 2 / aerobic base</td><td>Mitochondrial density; intramyocellular lipid clearance</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
+<tr><td>High-intensity intervals (4&times;4 min, 85&ndash;95% peak HR, 2&times;/week)</td><td>Regressed coronary plaque on IVUS vs. guideline care (CERT) &mdash; on top of standard therapy, in post-PCI patients</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
 <tr><td>Adequate sleep</td><td>Insulin sensitivity, appetite regulation, GH/autophagy window</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
 <tr><td>Cold exposure</td><td>BAT recruitment, insulin-independent glucose uptake, lowered fasting glucose</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
 <tr><td>Morning light / evening dark</td><td>Anchors the insulin sensitivity rhythm</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
 <tr><td>Post-meal walking (10&ndash;15 min)</td><td>Blunts postprandial excursion directly</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
 <tr><td>Meal sequencing (protein/fiber/veg before starch)</td><td>Slows gastric emptying and absorption</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td>Dietary nitrate (arugula, beets); no antiseptic mouthwash</td><td>Oral bacteria reduce nitrate &rarr; nitrite &rarr; NO, bypassing damaged eNOS; vasodilation and blood flow</td><td class="tiercell"><span class="ev ev-strong">Strong</span></td></tr>
+<tr><td>Adequate potassium; salt to taste when cooking at home</td><td>Potassium is broadly under-consumed; cutting processed and restaurant food removes most dietary sodium</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td>Whole fruit as staple; orange juice as a supplement</td><td>Fibre and matrix intact in whole fruit; juice supplies vitamin C, folate and potassium</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
 <tr><td>Reduce alcohol</td><td>Consumes NAD&#8314; via ADH/ALDH; acutely worsens insulin sensitivity</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
 <tr><td>Front-load carbohydrate earlier in the day</td><td>Aligns intake with the sensitivity peak</td><td class="tiercell"><span class="ev ev-mod">Moderate</span></td></tr>
 </tbody>
@@ -552,7 +762,7 @@ footer.end b{color:var(--moss);}
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-4">
   <div class="part-num">PART&nbsp;IV</div>
   <h2>Supplements</h2>
 </div>
@@ -597,12 +807,24 @@ footer.end b{color:var(--moss);}
 </div>
 <p><span class="gapflag">TODO</span> &mdash; creatine probably deserves promotion to Tier 1. The muscle and cognitive evidence is stronger than everything else in Tier 3. Decide.</p>
 
-<h3><span class="h3num">IV.4</span>What's deliberately not here</h3>
+<h3><span class="h3num">IV.4</span>Juices, herbs and the rest &mdash; the Supplements index</h3>
+<p>Optional additions are evaluated one at a time on the <a href="supplements.html">Supplements</a> index, and most sit at the weak end of the grading scale. The ones that bear directly on this paper:</p>
+<ul style="padding-left:20px;">
+  <li><strong><a href="beetjuice.html">Beet juice</a></strong> &mdash; the best-supported entry. The nitrate &rarr; nitric oxide effect is reliable in randomised trials. Whole beets and arugula deliver the same nitrate without the juice&rsquo;s sugar. <span class="ev ev-strong">Strong</span></li>
+  <li><strong><a href="pomegranate.html">Pomegranate juice</a></strong> &mdash; a different mechanism (ACE inhibition, eNOS), plausibly complementary to beet. But the effect appears to fade after ~2 months, a large minority of people lack the gut bacteria to activate it, and the clinical literature was largely funded by POM Wonderful. <span class="ev ev-mod">Moderate</span> for an acute effect only.</li>
+  <li><strong><a href="orangejuice.html">Orange juice</a></strong> &mdash; good as a supplement: vitamin C, folate and potassium, and the fructose harm hasn&rsquo;t been shown at a glass a day in weight-stable people. Whole fruit is still the better staple. <span class="ev ev-mod">Moderate</span></li>
+</ul>
+<div class="flag">
+  <div class="flag-lbl">The sugar tension</div>
+  <p style="margin:0;">Someone still in Step&nbsp;1 has limited disposal capacity, so large daily volumes of juice work against the goal. A glass is a supplement, not a staple. For beet and pomegranate, juice is the form the trials used, not necessarily the form that makes sense: whole beets, arugula and pomegranate arils carry the same actives with the fibre intact.</p>
+</div>
+
+<h3><span class="h3num">IV.5</span>What's deliberately not here</h3>
 <p>Anything whose claimed benefit is already delivered by Part&nbsp;III. Metabolic health is not a supplement problem, and a long stack is usually a sign that a foundation is being worked around rather than fixed.</p>
 </section>
 
 <section>
-<div class="part-head">
+<div class="part-head" id="part-5">
   <div class="part-num">PART&nbsp;V</div>
   <h2>Measurement</h2>
 </div>
@@ -616,6 +838,9 @@ footer.end b{color:var(--moss);}
   <li><strong>25(OH)D</strong> &mdash; seasonal, drives the D3 decision.</li>
   <li><strong>Omega-6:omega-3 index</strong> &mdash; the direct readout on II.1.</li>
   <li><strong>Waist-to-height</strong> over BMI.</li>
+  <li><strong>ApoB</strong> over LDL-C &mdash; a particle count rather than a cargo measurement. Discordance between the two concentrates in insulin-resistant people, where LDL-C tends to understate risk. See <a href="statins.html">statins.html</a> III.4.</li>
+  <li><strong>Blood pressure</strong>, measured at home over several days. It&rsquo;s worth knowing if it&rsquo;s genuinely high. Chasing a few mmHg in someone who&rsquo;s already normal isn&rsquo;t the goal.</li>
+  <li><strong>Coronary calcium score</strong> &mdash; only when the numbers leave you in uncertain territory. If it shows plaque, you&rsquo;re no longer in primary prevention, whatever the risk calculator says.</li>
 </ul>
 <p><span class="gapflag">TODO</span> &mdash; add target ranges. Decide whether to state &ldquo;optimal&rdquo; ranges vs. lab reference ranges &mdash; the gap between them is a point worth making.</p>
 </section>
@@ -633,6 +858,7 @@ footer.end b{color:var(--moss);}
 <li><b>Chronobiology effect sizes are real but moderate.</b> Roughly 8&ndash;17% differences in postprandial glucose between morning and evening. That justifies weighting intake earlier; it does not justify a rigid rule. There's also genotype variation (MTNR1B) that changes how much late eating costs a given person.</li>
 <li><b>Cold exposure human data is thin outside of small trials.</b> The insulin sensitivity findings are real but come from small samples in specific populations. Dose-response is not established &mdash; the widely circulated weekly minimums are back-calculated from what study participants happened to be doing, not experimentally derived thresholds.</li>
 <li><b>Seasonality claims are the weakest thing in this paper.</b> Distinguish carefully between what's demonstrated (seasonal vitamin D, seasonal food availability historically) and what's inherited framing from the ancestral-health literature without direct support.</li>
+<li><b>The short list trades nuance for usability.</b> Each item keeps its grade, but the caveats behind it live in the linked papers. The CERT plaque result, in particular, was in heart patients doing supervised training on top of standard therapy; it says nothing about exercise <em>instead</em> of medication, and the authors doubt the intensity is reachable unsupervised.</li>
 <li><b>Everything here is n=1 applicable, not clinical advice.</b> Markers before and after; the protocol is a hypothesis about a particular body.</li>
 </ul>
 <p class="lim-close">This paper does not yet carry a numbered citation list &mdash; per the reader's guide above, structure came first, prose second, citations last. Claims above that most need one: the cold-acclimation insulin-sensitivity trial (III.1), the overfeeding/de novo lipogenesis studies (II.3), and the chronobiology postprandial-glucose figures (Limitations, above).</p>
@@ -655,14 +881,51 @@ footer.end b{color:var(--moss);}
 </section>
 
 <footer class="end">
-  <p><b>A note on sourcing.</b> This page is the hub for the nutrition/metabolic-health series: it states conclusions and links out to <a href="linoleic-acid.html">Linoleic Acid &amp; Metabolic Disease</a> and <a href="ahr.html">The Aryl Hydrocarbon Receptor &amp; Metabolic Disease</a> for the mechanisms it relies on, and to the <a href="nutrients.html">Nutrients &mdash; Deep Dives</a> index for nutrient-level detail that Part&nbsp;IV deliberately keeps out.</p>
+  <p><b>A note on sourcing.</b> This page is the hub for the nutrition/metabolic-health series: it states conclusions and links out to <a href="linoleic-acid.html">Linoleic Acid &amp; Metabolic Disease</a>, <a href="statins.html">Statins, LDL &amp; Cardiovascular Disease</a>, <a href="ahr.html">The Aryl Hydrocarbon Receptor &amp; Metabolic Disease</a>, <a href="energy-metabolism.html">Energy Metabolism</a>, <a href="cold-exposure.html">Cold Exposure &amp; Metabolic Health</a>, and <a href="sunlight.html">Sunlight &amp; Metabolic Health</a> for the mechanisms it relies on, to <a href="cancer.html">Cancer as Metabolic Disease</a> for where the same mitochondrial-capacity argument leads at the far end, and to the <a href="nutrients.html">Nutrients &mdash; Deep Dives</a> index for nutrient-level detail that Part&nbsp;IV deliberately keeps out, and to the <a href="supplements.html">Supplements</a> index for optional herbs and juices.</p>
   <p>Published as a working draft rather than held back for polish. If a claim above matters to you and isn't graded or cited, treat it as unverified until it is.</p>
 </footer>
 
 <div style="margin-top:44px">
-  <span class="tag">Insulin sensitivity</span><span class="tag">Metabolic flexibility</span><span class="tag">Mitochondrial capacity</span><span class="tag">Circadian rhythm</span><span class="tag">Linoleic acid</span><span class="tag">AhR</span><span class="tag">NNT</span><span class="tag">De novo lipogenesis</span><span class="tag">Cold exposure</span><span class="tag">HOMA-IR</span><span class="tag">Continuous glucose monitoring</span><span class="tag">Vitamin D3</span><span class="tag">Vitamin K2</span><span class="tag">Magnesium glycinate</span><span class="tag">Micronutrient adequacy</span><span class="tag">Cronometer</span><span class="tag">Krebs cycle</span><span class="tag">B vitamins</span>
+  <span class="tag">Insulin sensitivity</span><span class="tag">Metabolic flexibility</span><span class="tag">Mitochondrial capacity</span><span class="tag">Circadian rhythm</span><span class="tag">Linoleic acid</span><span class="tag">AhR</span><span class="tag">NNT</span><span class="tag">De novo lipogenesis</span><span class="tag">Cold exposure</span><span class="tag">Sunlight</span><span class="tag">Cancer metabolism</span><span class="tag">HOMA-IR</span><span class="tag">Continuous glucose monitoring</span><span class="tag">Vitamin D3</span><span class="tag">Vitamin K2</span><span class="tag">Magnesium glycinate</span><span class="tag">Micronutrient adequacy</span><span class="tag">Cronometer</span><span class="tag">Krebs cycle</span><span class="tag">B vitamins</span><span class="tag">ApoB</span><span class="tag">Blood pressure</span><span class="tag">Dietary nitrate</span><span class="tag">Potassium</span><span class="tag">HIIT</span>
 </div>
 
 </div>
+<script>
+(function(){
+  var list=document.getElementById('start-here');
+  if(!list) return;
+  var status=document.getElementById('q-status');
+  function clean(el){return el.textContent.replace(/\s+/g,' ').trim();}
+  function asText(){
+    var out=['Easy things that make you metabolically healthier',''];
+    out.push('IF YOU ONLY DO THREE');
+    list.querySelectorAll('.q-three-grid b').forEach(function(b,i){out.push((i+1)+'. '+clean(b));});
+    var n=0;
+    list.querySelectorAll('.q-group').forEach(function(g){
+      out.push('',clean(g.querySelector('.q-group-lbl')).toUpperCase());
+      g.querySelectorAll('.q-do').forEach(function(d){out.push((++n)+'. '+clean(d));});
+    });
+    out.push('','Not medical advice. Don’t stop a prescribed medication; tell your prescriber what you’re changing.');
+    out.push('Why each one works: '+location.href.split('#')[0]+'#start-here');
+    return out.join('\n');
+  }
+  document.getElementById('q-copy').addEventListener('click',function(){
+    var t=asText();
+    var done=function(){status.textContent='Copied — paste it anywhere.';};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done,function(){fallback(t);done();});
+    } else {fallback(t);done();}
+  });
+  function fallback(t){
+    var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);
+    ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);
+  }
+  document.getElementById('q-print').addEventListener('click',function(){
+    document.body.classList.add('print-quick');
+    window.print();
+  });
+  window.addEventListener('afterprint',function(){document.body.classList.remove('print-quick');});
+})();
+</script>
 </body>
 </html>

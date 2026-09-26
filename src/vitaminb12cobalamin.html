@@ -5,54 +5,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vitamin B12 (Cobalamin) — Nutrient Deep Dive</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Vitamin B12 (Cobalamin)</h1>
 <div class="tags"><span class="tag">Vitamin</span><span class="tag">Foundational</span></div>
 
-<div class="callout"><strong>TL;DR:</strong> Vitamin B12 is required for neurologic function and red blood cell formation; deficiency can cause anemia and irreversible neurologic injury if untreated.</div>
+<p class="lede">Protects your nerves and builds red blood cells. Deficiency damage can be permanent.</p>
 
-<h2>Functions</h2>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential · test if at risk</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Protects nerves</span>
+      <span class="how">Needed to build myelin, the insulation around nerves.</span>
+      <a class="why" href="#functions">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Builds red blood cells</span>
+      <span class="how">Without it, cells come out large and dysfunctional.</span>
+      <a class="why" href="#functions">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Keeps homocysteine down</span>
+      <span class="how">Recycles homocysteine back into methionine.</span>
+      <a class="why" href="#mechanism">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>About 2.4 mcg a day</li>
+        <li>Clams, liver, salmon, beef, dairy, eggs</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Higher risk if vegan, older, on metformin, or after stomach surgery</li>
+        <li>Very low toxicity</li>
+      </ul>
+      <h3 style="margin-top:0.7rem">Signs you're low</h3>
+      <ul>
+        <li>Numbness, tingling, balance problems</li>
+        <li>Fatigue from anemia</li>
+        <li>Memory or mood changes</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
+
+<h2 id="functions">Functions</h2>
 <ul>
   <li>Myelin formation and neurologic function</li>
   <li>Red blood cell production</li>
   <li>Methylation and energy metabolism</li>
 </ul>
 
-<h2>Mechanism</h2>
-<p>Two enzyme roles: methionine synthase (converts homocysteine back to methionine — see <a href="methionine.html">Methionine</a> and <a href="vitamin-b9-folate.html">Vitamin B9</a>) and methylmalonyl-CoA mutase (converts to succinyl-CoA, feeding the TCA cycle).</p>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<h2>Intake / absorption</h2>
+<h2 id="mechanism"><span class="ev strong" title="Strong human evidence"></span>Mechanism</h2>
+<p>Two enzyme roles: methionine synthase (converts homocysteine back to methionine — see <a href="methionine.html">Methionine</a> and <a href="vitaminb9folate.html">Vitamin B9</a>) and methylmalonyl-CoA mutase (converts to succinyl-CoA, feeding the TCA cycle).</p>
+
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="intake-absorption">Intake / absorption</h2>
 <p>RDA roughly 2.4 mcg/day for adults. Comes from animal or fortified foods; absorption requires intrinsic factor and an intact ileum, and decreases with age generally. Higher deficiency risk with a vegan diet, pernicious anemia, gastric surgery/disease, or metformin use.</p>
 
-<h2>Deficiency effects</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="deficiency-effects">Deficiency effects</h2>
 <p>Megaloblastic anemia; neuropathy, numbness/tingling, gait issues, cognitive/mood changes; elevated MMA and homocysteine. Neuropathy and cognitive changes can be irreversible if deficiency goes uncorrected too long.</p>
 
-<h2>Excess effects</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="excess-effects">Excess effects</h2>
 <p>Generally low toxicity.</p>
 
-<h2>Top foods</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="top-foods">Top foods</h2>
 <ul>
   <li>Clams</li>
   <li>Liver</li>
@@ -66,6 +111,8 @@
   <li>Fortified plant milk</li>
   <li>Fortified cereal</li>
 </ul>
+
+<a class="back" href="#glance">↑ back to summary</a>
 
 <p class="stub">Source page has no linked citations for this entry beyond its own summary text.</p>
 

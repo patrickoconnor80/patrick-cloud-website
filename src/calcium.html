@@ -5,60 +5,100 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calcium — Nutrient Deep Dive</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  h3 { margin-top: 1.4rem; margin-bottom: 0.3rem; color: var(--accent); font-size: 1rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  sup a { border-bottom: none; }
-  ul, ol.body-list { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .refs { font-size: 0.85rem; color: var(--sub); }
-  .refs ol { padding-left: 1.5rem; }
-  .refs li { margin: 0.5rem 0; }
-  .refs a { border-bottom-color: rgba(122, 59, 46, 0.25); }
-  hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Calcium</h1>
 <div class="tags"><span class="tag">Mineral</span><span class="tag">Foundational</span></div>
 
-<div class="callout"><strong>TL;DR:</strong> Calcium is a tightly regulated signaling ion and structural mineral. While ~99% is stored in bone, the extracellular fraction is actively controlled and drives muscle contraction, neurotransmission, and enzyme activation.<sup><a href="#ref1">1</a></sup></div>
+<p class="lede">More than a bone mineral: a tightly controlled signal that runs muscles, nerves and clotting.</p>
 
-<h2>Core mechanism</h2>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential · food first</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Builds strong bones</span>
+      <span class="how">Combines with phosphate to form the mineral that makes bone rigid.</span>
+      <a class="why" href="#1-structural-mineral-bone">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Makes muscles contract</span>
+      <span class="how">Calcium flooding in is the trigger that makes muscle fibers pull.</span>
+      <a class="why" href="#2-muscle-contraction">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Lets nerves fire</span>
+      <span class="how">Triggers the release of neurotransmitters.</span>
+      <a class="why" href="#3-neurotransmission">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Helps blood clot</span>
+      <span class="how">A required partner for several clotting factors.</span>
+      <a class="why" href="#5-blood-coagulation">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>About 1,000 mg a day (1,200 mg for older adults)</li>
+        <li>Food first: milk, yogurt, cheese</li>
+        <li>Absorption depends on vitamin D and magnesium, not just intake</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Low vitamin D or magnesium causes problems even with enough calcium</li>
+      </ul>
+      <h3 style="margin-top:0.7rem">Signs you're low</h3>
+      <ul>
+        <li>Cramps, twitching, tingling</li>
+        <li>Bone loss over time</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
+
+<h2 id="core-mechanism">Core mechanism</h2>
 <p>Ca²⁺ gradients enable rapid cellular signaling; systemic levels are maintained by PTH and vitamin D regulating absorption, storage, and excretion.<sup><a href="#ref1">1</a></sup></p>
 
-<h2>Key functions</h2>
-<h3>1. Structural mineral (bone)</h3>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="key-functions">Key functions</h2>
+<h3 id="1-structural-mineral-bone"><span class="ev strong" title="Strong human evidence"></span>1. Structural mineral (bone)</h3>
 <p>Forms hydroxyapatite with phosphate, giving bone its rigidity.<sup><a href="#ref1">1</a></sup> See <a href="phosphate.html">Phosphate</a>.</p>
-<h3>2. Muscle contraction</h3>
+<h3 id="2-muscle-contraction"><span class="ev strong" title="Strong human evidence"></span>2. Muscle contraction</h3>
 <p>Ca²⁺ binds troponin, enabling the actin–myosin interaction that produces contraction.<sup><a href="#ref2">2</a></sup></p>
-<h3>3. Neurotransmission</h3>
+<h3 id="3-neurotransmission"><span class="ev strong" title="Strong human evidence"></span>3. Neurotransmission</h3>
 <p>Ca²⁺ influx triggers vesicle fusion and neurotransmitter release.<sup><a href="#ref3">3</a></sup></p>
-<h3>4. Intracellular signaling</h3>
+<h3 id="4-intracellular-signaling">4. Intracellular signaling</h3>
 <p>Acts as a second messenger for enzyme activation, hormone signaling, and broader cellular responses.</p>
-<h3>5. Blood coagulation</h3>
+<h3 id="5-blood-coagulation"><span class="ev strong" title="Strong human evidence"></span>5. Blood coagulation</h3>
 <p>Required cofactor for multiple clotting factors.<sup><a href="#ref4">4</a></sup></p>
 
-<h2>Regulation</h2>
-<p><strong>Hormonal control.</strong> PTH increases bone resorption and renal Ca²⁺ reabsorption. Vitamin D (as calcitriol) increases intestinal Ca²⁺ absorption.<sup><a href="#ref5">5</a></sup> Together they maintain a narrow serum Ca²⁺ range — see <a href="vitamin-d.html">Vitamin D</a>.</p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="regulation">Regulation</h2>
+<p><strong>Hormonal control.</strong> PTH increases bone resorption and renal Ca²⁺ reabsorption. Vitamin D (as calcitriol) increases intestinal Ca²⁺ absorption.<sup><a href="#ref5">5</a></sup> Together they maintain a narrow serum Ca²⁺ range — see <a href="vitamind.html">Vitamin D</a>.</p>
 <p><strong>Electrolyte control.</strong> Magnesium is required for PTH secretion and signaling;<sup><a href="#ref6">6</a></sup> phosphate couples with Ca²⁺ for both structure and energy. See <a href="magnesium.html">Magnesium</a>.</p>
 
-<h2>System interactions</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="system-interactions">System interactions</h2>
 <ul>
   <li><strong>Calcium system</strong> — core signaling ion driving contraction and neurotransmission</li>
   <li><strong>Energy system</strong> — Ca²⁺ activates PDH and TCA-cycle enzymes, linking demand to ATP production</li>
@@ -66,7 +106,9 @@
   <li><strong>Structural system</strong> — bone acts as a reservoir buffering serum Ca²⁺</li>
 </ul>
 
-<h2>Failure points</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="failure-points">Failure points</h2>
 <ul>
   <li>↓ Vitamin D → ↓ absorption → ↑ PTH</li>
   <li>↓ Magnesium → impaired PTH signaling</li>
@@ -74,24 +116,34 @@
   <li>Mitochondrial Ca²⁺ overload → dysfunction</li>
 </ul>
 
-<h2>Deficiency effects</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="deficiency-effects">Deficiency effects</h2>
 <p>Core disruption: insufficient available Ca²⁺ or impaired regulation leads to signaling and structural instability. Functional consequences include muscle cramps and tetany, impaired contraction, neurological excitability, and (chronically) bone demineralization. Low intake over time raises osteoporosis risk; severe hypocalcemia causes tingling, muscle cramps, and tetany.</p>
 
-<h2>Intake</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="intake">Intake</h2>
 <p>RDA roughly 1,000 mg/day for most adults, ~1,200 mg/day for older adults and some other groups. Best food-first when possible.</p>
 
-<h2>Key insight</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="key-insight">Key insight</h2>
 <p>Calcium is not just a structural mineral — it's a tightly controlled signaling ion, and its function depends more on regulation (PTH, vitamin D, Mg²⁺) than on intake alone.</p>
 
-<h2>Top foods</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="top-foods">Top foods</h2>
 <ul>
   <li>Milk</li>
   <li>Yogurt</li>
   <li>Cheese</li>
 </ul>
 
+<a class="back" href="#glance">↑ back to summary</a>
+
 <hr>
-<h2>References</h2>
+<h2 id="references">References</h2>
 <div class="refs">
 <ol>
 <li id="ref1">Peacock M. Calcium metabolism in health and disease. <em>Clin J Am Soc Nephrol.</em> 2010.</li>

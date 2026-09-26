@@ -5,74 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vitamin B6 (Pyridoxine / PLP) — Nutrient Deep Dive</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  h3 { margin-top: 1.4rem; margin-bottom: 0.3rem; color: var(--accent); font-size: 1rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  sup a { border-bottom: none; }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .refs { font-size: 0.85rem; color: var(--sub); }
-  .refs ol { padding-left: 1.5rem; }
-  .refs li { margin: 0.5rem 0; }
-  .refs a { border-bottom-color: rgba(122, 59, 46, 0.25); }
-  hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Vitamin B6 (Pyridoxine / PLP)</h1>
 <div class="tags"><span class="tag">Vitamin</span><span class="tag">Foundational</span><span class="tag">Cofactor</span></div>
 
-<div class="callout"><strong>TL;DR:</strong> Vitamin B6 (pyridoxine) is a water-soluble vitamin that functions primarily as pyridoxal phosphate (PLP), a coenzyme in amino acid metabolism, neurotransmitter synthesis, and haem production.<sup><a href="#ref1">1</a></sup></div>
+<p class="lede">Moves nitrogen around your body, turning amino acids into energy and brain chemicals.</p>
 
-<h2>Core mechanism</h2>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Makes mood chemicals</span>
+      <span class="how">Needed to make serotonin, dopamine and GABA.</span>
+      <a class="why" href="#brain">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Builds red blood cells</span>
+      <span class="how">Required for the first step of making heme.</span>
+      <a class="why" href="#blood-oxygen-system">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Keeps homocysteine down</span>
+      <span class="how">High homocysteine is linked to heart risk.</span>
+      <a class="why" href="#heart-longevity">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Uses protein for energy</span>
+      <span class="how">Lets amino acids enter the energy cycle.</span>
+      <a class="why" href="#1-transamination">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span><span><span class="ev moderate"></span>Some human evidence</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>1.3–1.7 mg a day</li>
+        <li>Chicken, turkey, tuna, baked potato, banana</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Works as a team with B9 and B12 on homocysteine</li>
+      </ul>
+      <h3 style="margin-top:0.7rem">Signs you're low</h3>
+      <ul>
+        <li>Irritability, depression</li>
+        <li>Anemia</li>
+        <li>Seizures in severe cases</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
+
+<h2 id="core-mechanism">Core mechanism</h2>
 <p>B6 converts to PLP, which enables amino-group transfer and nitrogen flow — allowing amino acids to integrate into central metabolism via transamination, decarboxylation, and neurotransmitter formation.<sup><a href="#ref1">1</a></sup></p>
 
-<h2>Key functions</h2>
-<h3>1. Transamination</h3>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="key-functions">Key functions</h2>
+<h3 id="1-transamination"><span class="ev strong" title="Strong human evidence"></span>1. Transamination</h3>
 <p>Amino acid + α-ketoglutarate ↔ glutamate + α-keto acid, enabling entry into pyruvate, acetyl-CoA, and TCA intermediates — this step determines whether protein carbon enters energy metabolism.</p>
-<h3>2. Nitrogen routing</h3>
+<h3 id="2-nitrogen-routing">2. Nitrogen routing</h3>
 <p>Transfers amino groups via glutamate and aspartate, feeding the urea cycle and biosynthesis pathways — prevents accumulation of free ammonia.</p>
-<h3>3. Decarboxylation reactions</h3>
+<h3 id="3-decarboxylation-reactions">3. Decarboxylation reactions</h3>
 <p>Glutamate → GABA; 5-HTP → serotonin; DOPA → dopamine. This is the direct link from amino acid metabolism to neurotransmitter synthesis.</p>
-<h3>4. Heme synthesis</h3>
+<h3 id="4-heme-synthesis">4. Heme synthesis</h3>
 <p>PLP is required for δ-ALA synthase, the rate-limiting step — links amino acid metabolism to oxygen transport capacity.<sup><a href="#ref2">2</a></sup></p>
-<h3>5. Glycogen breakdown</h3>
+<h3 id="5-glycogen-breakdown">5. Glycogen breakdown</h3>
 <p>Cofactor for glycogen phosphorylase, enabling glucose release during demand.</p>
 
-<h2>Brain</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="brain"><span class="ev strong" title="Strong human evidence"></span>Brain</h2>
 <p>Required for synthesis of serotonin, dopamine, and GABA — supports mood and cognition.<sup><a href="#ref1">1</a></sup></p>
 
-<h2>Blood / oxygen system</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="blood-oxygen-system"><span class="ev strong" title="Strong human evidence"></span>Blood / oxygen system</h2>
 <p>Essential for heme synthesis, supporting red blood cell production.<sup><a href="#ref2">2</a></sup></p>
 
-<h2>Heart / longevity</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="heart-longevity"><span class="ev moderate" title="Some human evidence"></span>Heart / longevity</h2>
 <p>Helps regulate homocysteine levels; elevated homocysteine is associated with cardiovascular risk.<sup><a href="#ref3">3</a></sup></p>
 
-<h2>Muscle / protein metabolism</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="muscle-protein-metabolism">Muscle / protein metabolism</h2>
 <p>Required for amino acid utilization and protein turnover.<sup><a href="#ref1">1</a></sup></p>
 
-<h2>Deficiency effects</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="deficiency-effects">Deficiency effects</h2>
 <p>Neurological: irritability, depression, seizures. Hematological: microcytic anemia.<sup><a href="#ref1">1</a></sup></p>
 
-<h2>Intake</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="intake">Intake</h2>
 <p>Roughly 1.3–1.7 mg/day.</p>
 
-<h2>Top foods</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="top-foods">Top foods</h2>
 <ul>
   <li>Chicken</li>
   <li>Turkey</li>
@@ -81,7 +131,9 @@
   <li>Banana</li>
 </ul>
 
-<h2>Failure points</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="failure-points">Failure points</h2>
 <ul>
   <li>Amino acids can't enter central metabolism</li>
   <li>Nitrogen accumulates → toxicity risk</li>
@@ -89,11 +141,15 @@
   <li>Impaired neurotransmitter synthesis</li>
 </ul>
 
-<h2>Key insight</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="key-insight">Key insight</h2>
 <p>Vitamin B6 is a central metabolic cofactor that links amino acid metabolism to neurotransmitter production and oxygen transport, making it critical for brain, blood, and energy systems.<sup><a href="#ref1">1</a></sup></p>
 
+<a class="back" href="#glance">↑ back to summary</a>
+
 <hr>
-<h2>References</h2>
+<h2 id="references">References</h2>
 <div class="refs">
 <ol>
 <li id="ref1">Vitamin B6 (pyridoxine) overview. <a href="https://pubmed.ncbi.nlm.nih.gov/28763081/" target="_blank">PMID 28763081</a></li>

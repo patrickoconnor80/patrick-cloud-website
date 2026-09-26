@@ -67,6 +67,14 @@
   .legend { font-size: 0.85rem; color: var(--sub); margin-bottom: 1rem; }
   .legend span { margin-right: 1.2rem; }
   hr { border: none; border-top: 1px solid var(--line); margin: 3rem 0; }
+  .bens { min-width: 14rem; }
+  .ben { display: inline-flex; align-items: center; gap: 0.35rem; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 999px; padding: 0.05rem 0.55rem; margin: 0.12rem 0.2rem 0.12rem 0; font-size: 0.8rem; white-space: nowrap; }
+  .ben i { width: 0.5rem; height: 0.5rem; border-radius: 50%; border: 1.5px solid currentColor; display: inline-block; }
+  .ben i.strong { color: #3f6b3a; background: currentColor; }
+  .ben i.moderate { color: #a07a1f; background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
+  .ben i.early { color: #8a8a8a; }
+  .table-wrap { overflow-x: auto; }
+  @media (max-width: 600px) { .table-wrap th:nth-child(2), .table-wrap td:nth-child(2) { display: none; } .bens { min-width: 0; } .ben { white-space: normal; border-radius: 6px; } .table-wrap th:nth-child(5), .table-wrap td:nth-child(5) { display: none; } }
 </style>
 </head>
 <body>
@@ -81,14 +89,8 @@
   </div>
 </header>
 <div class="subnav"><div class="subnav-inner">
-  <a href="nutrition.html">Overview</a>
+  <a href="nutrition.html">Papers</a>
   <a href="metabolic-health.html">Metabolic Health</a>
-  <a href="linoleic-acid.html">Linoleic Acid</a>
-  <a href="ahr.html">AhR</a>
-  <a href="cold-exposure.html">Cold Exposure</a>
-  <a href="sunlight.html">Sunlight</a>
-  <a href="energy-metabolism.html">Energy Metabolism</a>
-  <a href="cancer.html">Cancer</a>
   <a href="nutrients.html">Nutrients</a>
   <a href="supplements.html" class="active">Supplements</a>
 </div></div>
@@ -103,23 +105,30 @@
 <p>Same evidence grading as the rest of the series: <strong>Strong / Moderate / Animal&ndash;in-vitro / Inferred / Contested / Speculative.</strong> Most entries here lean toward the weaker end of that scale &mdash; broad preclinical evidence with limited human trial data is the norm for this category, not the exception.</p>
 
 <h2>Index</h2>
-<table>
+<p class="legend" style="margin-top:-0.5rem">Dots show evidence strength: <span class="ben"><i class="strong"></i>strong</span> <span class="ben"><i class="moderate"></i>some human data</span> <span class="ben"><i class="early"></i>early</span></p>
+<div class="table-wrap"><table>
 <thead>
-<tr><th>Supplement</th><th>Category</th><th>Verdict</th><th>TL;DR</th><th></th></tr>
+<tr><th>Supplement</th><th>Category</th><th>Verdict</th><th>What it does</th><th></th></tr>
 </thead>
 <tbody>
-<tr><td><a href="blackseed.html">Black Seed (Nigella sativa)</a></td><td>Herb / Seed</td><td>Whole seed, not oil</td><td>Broad preclinical anti-inflammatory/antioxidant evidence via thymoquinone; modest human trial effects; oil's potency is unverifiable and adds unwanted omega-6.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="skullcap.html">Chinese Skullcap (Scutellaria baicalensis)</a></td><td>Herb / Root</td><td>Situational, not daily</td><td>Root (not the calming American species) used anti-inflammatory/antimicrobial via baicalin and wogonin; limited human data; adulteration risk in the trade.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="beetjuice.html">Beet Juice (Nitrate &amp; Betalains)</a></td><td>Vegetable / Juice</td><td>Well-supported</td><td>Nitrate &rarr; nitrite &rarr; nitric oxide gives a reliable, well-trialed BP/exercise effect; the betalain pigments are a separate, more preclinical antioxidant story.</td><td class="status-plain">● written</td></tr>
+<tr><td><a href="blackseed.html">Black Seed (Nigella sativa)</a></td><td>Herb / Seed</td><td>Whole seed, not oil</td><td class="bens"><span class="ben"><i class="moderate"></i>Modest drops in blood sugar, cholesterol and blood pressure</span><span class="ben"><i class="early"></i>Lowers inflammation and oxidative stress</span><span class="ben"><i class="early"></i>Helps recycle cellular energy</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="skullcap.html">Chinese Skullcap (Scutellaria baicalensis)</a></td><td>Herb / Root</td><td>Situational, not daily</td><td class="bens"><span class="ben"><i class="early"></i>Eases anxiety without sedation</span><span class="ben"><i class="early"></i>Fights bacteria and fungi</span><span class="ben"><i class="early"></i>Lowers blood sugar and LDL</span><span class="ben"><i class="early"></i>Calms brain inflammation</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="beetjuice.html">Beet Juice (Nitrate &amp; Betalains)</a></td><td>Vegetable / Juice</td><td>Worth taking</td><td class="bens"><span class="ben"><i class="strong"></i>Lowers blood pressure</span><span class="ben"><i class="strong"></i>Better endurance</span><span class="ben"><i class="early"></i>Lowers oxidative stress</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="pomegranate.html">Pomegranate Juice (Ellagitannins)</a></td><td>Fruit / Juice</td><td>Qualified: use it situationally</td><td class="bens"><span class="ben"><i class="moderate"></i>Lowers blood pressure</span><span class="ben"><i class="early"></i>Protects LDL from oxidation</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="orangejuice.html">Orange Juice (Fructose &amp; Flavanones)</a></td><td>Fruit / Juice</td><td>Good in moderation</td><td class="bens"><span class="ben"><i class="moderate"></i>Better blood sugar and cholesterol markers</span><span class="ben"><i class="moderate"></i>Lowers uric acid</span><span class="ben"><i class="early"></i>Blunts inflammation after a heavy meal</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="citruspeel.html">Citrus Peel (Polymethoxyflavones)</a></td><td>Fruit / Peel</td><td>Unproven at food doses, but free</td><td class="bens"><span class="ben"><i class="early"></i>Protects against fatty liver and insulin resistance</span><span class="ben"><i class="early"></i>Breaks down the estrogen receptor in breast-cancer cells</span><span class="ben"><i class="early"></i>Absorbs better than juice flavonoids</span></td><td class="status-cited">&#9679; cited</td></tr>
+<tr><td><a href="mastic.html">Mastic Gum (Pistacia lentiscus Resin)</a></td><td>Resin / Chewed or capsule</td><td>Adjunct, not a cure</td><td class="bens"><span class="ben"><i class="moderate"></i>Eases indigestion, bloating and heartburn</span><span class="ben"><i class="moderate"></i>Cuts cavity-causing bacteria and plaque</span><span class="ben"><i class="moderate"></i>Boosts saliva</span><span class="ben"><i class="early"></i>May help ulcers heal</span></td><td class="status-cited">&#9679; cited</td></tr>
+<tr><td><a href="molecularhydrogen.html">Molecular Hydrogen (H<sub>2</sub> Water &amp; Baths)</a></td><td>Gas / Dissolved</td><td>Promising, thin base</td><td class="bens"><span class="ben"><i class="early"></i>Neutralizes only the most damaging free radicals</span><span class="ben"><i class="moderate"></i>Faster hangover recovery</span><span class="ben"><i class="moderate"></i>Sharper when sleep-deprived</span><span class="ben"><i class="early"></i>Less soreness after exercise</span></td><td class="status-cited">● cited</td></tr>
 </tbody>
-</table>
+</table></div>
 
 <hr>
 
 <h2>Notes on this draft</h2>
-<p>Three entries so far, and evidence quality varies a lot between them &mdash; Black Seed and Chinese Skullcap lean on preclinical (animal/cell-study) evidence with human data limited to small trials on adjacent endpoints, while Beet Juice has the strongest and most direct human trial support of the three. That spread is disclosed inline on each page rather than smoothed over.</p>
+<p>Eight entries so far, and evidence quality varies a lot between them &mdash; Black Seed and Chinese Skullcap lean on preclinical (animal/cell-study) evidence with human data limited to small trials on adjacent endpoints, Beet Juice has the strongest and most direct human trial support, Pomegranate is the odd case where the <em>mechanism</em> is better established than the clinical literature (which is largely industry-funded and subject to an adverse FTC ruling on its advertising), Orange Juice is the one entry written as an adjudication between two loud public positions rather than an evaluation from scratch, Citrus Peel is the clearest case on the index of a genuinely interesting mechanism with a dose gap wide enough that the human relevance is unresolved, Mastic Gum is the second adjudication entry, and the clearest case of a supplement with a genuine evidence base being promoted for the one indication where its evidence fails, and Molecular Hydrogen sits in between: real small human RCTs exist, but the citation list is dominated by two research groups and was sourced from a tablet retailer's own blog rather than an independent review. That spread is disclosed inline on each page rather than smoothed over.</p>
 <p class="todo">TODO &mdash; neither entry has a numbered reference list yet; the specific figures (TQ variability range, baicalin/wogonin pharmacology) are carried over from source notes. Worth an audit pass to attach citations where the underlying studies can be pinned down.</p>
 <p class="todo">TODO &mdash; Black Seed's <a href="blackseed.html#mechanism">NQO1/NAD&#8314; mechanism section</a> named three other NQO1-substrate quinones worth their own entries: <strong>ubiquinone (CoQ10)</strong>, <strong>PQQ (pyrroloquinoline quinone)</strong>, and <strong>beta-lapachone (Pau d'arco)</strong>. All three feed the same riboflavin-dependent enzyme and inherit the same NRF2-upstream framing; worth writing up as a group rather than one at a time so the shared mechanism isn't repeated four times.</p>
+<p class="todo">TODO &mdash; Skullcap's cardiometabolic section describes its AMPK effect as "a mild version of <strong>berberine</strong>." Berberine has a much larger human evidence base (AMPK activation, LDL/glucose-lowering) and probably deserves its own entry rather than only existing as a comparison point on the Skullcap page.</p>
 <p>All pages, including this index, sit flat at the site root (no <code>supplements/</code> subfolder), matching how <a href="nutrients.html">Nutrients</a> is deployed.</p>
 
 </div>

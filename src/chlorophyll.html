@@ -3,48 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chlorophyll / Chlorophyllin — Nutrient Deep Dive</title>
+<title>Chlorophyll / Chlorophyllin — Nutrient</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a> · <a href="cancer.html">Cancer</a></div>
 <h1>Chlorophyll / Chlorophyllin</h1>
 <div class="tags"><span class="tag">Compound</span><span class="tag">Experimental</span></div>
+<p class="lede">The green pigment in plants. Its best-supported trick is binding certain toxins in the gut before you absorb them.</p>
 
-<div class="callout"><strong>TL;DR:</strong> Plant pigment; supplemental chlorophyllin is studied for binding some dietary toxins and supporting odor control; evidence is mixed and context-dependent.</div>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Experimental · eat your greens</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Blocks absorption of a liver carcinogen</span>
+      <span class="how">Binds aflatoxin, a mold toxin, in the gut. It halved a DNA-damage marker in a large trial.</span>
+      <a class="why" href="#aflatoxin">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early / limited"></span>
+      <span class="what">May reduce body odor</span>
+      <span class="how">Helped people with "fish odor syndrome" in one small study.</span>
+      <a class="why" href="#odor">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev moderate"></span>Some human evidence</span><span><span class="ev early"></span>Early / limited</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>From food: spinach, kale, broccoli, Brussels sprouts, arugula</li>
+        <li>Eat greens alongside foods at risk of mold (grains, peanuts, corn)</li>
+        <li>Supplements (chlorophyllin): the trials used 100 mg with meals</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Turns stool (and sometimes urine) green, which is harmless</li>
+        <li>Not an essential nutrient. There's no deficiency.</li>
+        <li>Supplement "detox" claims go far beyond the evidence</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<h2>Notes</h2>
-<p>No deficiency syndrome applies (it's not an essential nutrient). No established intake — if using it at all, the source database frames it as a food-based approach (leafy greens) rather than a supplement to dose.</p>
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
 
-<h2>Top foods</h2>
+<h2 id="what">Chlorophyll vs. chlorophyllin</h2>
+<p>Chlorophyll is the fat-soluble green pigment in plants. <strong>Chlorophyllin</strong> is a semisynthetic, water-soluble mixture derived from it (usually as sodium copper chlorophyllin), used as a food colorant and over-the-counter supplement. Almost all human data come from chlorophyllin; one small study suggests natural chlorophyll behaves similarly.<sup><a href="#ref2">2</a></sup> It is not an essential nutrient and has no deficiency syndrome.</p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="aflatoxin"><span class="ev moderate" title="Some human evidence"></span>Blocks absorption of a liver carcinogen</h2>
+<p>The mechanism is simple: chlorophyll's flat ring structure forms tight complexes with other flat molecules in the gut &mdash; including aflatoxin B1, a mold toxin found on poorly stored grains, corn and peanuts and a major cause of liver cancer in high-exposure regions &mdash; so less of the carcinogen is absorbed. This worked consistently in trout and rat models.<sup><a href="#ref1">1</a></sup></p>
+<p>The key human trial was run in Qidong, China, where liver-cancer risk is high partly from dietary aflatoxin. 180 healthy adults took 100&nbsp;mg chlorophyllin or placebo three times a day with meals for four months. Chlorophyllin cut the median urinary level of aflatoxin-DNA adducts &mdash; a biomarker of the dose that actually reached and damaged DNA, and one associated with liver-cancer risk &mdash; by <strong>55%</strong> (p=0.036), with no adverse events.<sup><a href="#ref1">1</a></sup> A later small crossover study in U.S. volunteers given a trace radiolabelled dose found that both chlorophyll and chlorophyllin taken alongside it reduced aflatoxin absorption.<sup><a href="#ref2">2</a></sup></p>
+<p>What this does not show: a reduction in actual cancer incidence (the trial measured a biomarker for four months), or any benefit in low-exposure populations eating well-stored food. It's the most concrete support for a food-matrix idea &mdash; greens eaten with a meal may reduce uptake of some flat, ring-shaped carcinogens &mdash; not for chlorophyll water as a general "detox". <span class="grade">(Moderate for the biomarker effect; Inferred for cancer prevention)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="odor"><span class="ev early" title="Early / limited"></span>May reduce body odor</h2>
+<p>Chlorophyllin has been sold as an internal deodorant for decades, mostly on anecdote. The clearest data are in trimethylaminuria ("fish odor syndrome"), a genetic disorder in which the body can't convert fishy-smelling trimethylamine to its odorless form. In seven Japanese patients, copper chlorophyllin (180&nbsp;mg/day for 3 weeks) normalized the ratio of urinary trimethylamine to its odorless metabolite, with the effect lasting several weeks &mdash; longer than activated charcoal.<sup><a href="#ref3">3</a></sup> That is a tiny, uncontrolled study in a rare condition; it doesn't establish an effect on ordinary body odor. <span class="grade">(Early &mdash; small case series)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="practical">Practical notes</h2>
+<p>For most people the food-first approach is the defensible one: dark leafy greens supply chlorophyll alongside nitrate, folate and magnesium, all of which have better evidence behind them. Chlorophyllin supplements are well tolerated at trial doses; the common side effect is green discoloration of stool.</p>
+<h3>Top foods</h3>
 <ul>
   <li>Spinach</li>
   <li>Kale</li>
+  <li>Arugula</li>
   <li>Broccoli</li>
   <li>Brussels sprouts</li>
 </ul>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<p class="stub">Thin entry in the source database — no body content or linked citations beyond the TL;DR and property fields. Given the "Experimental" priority tag, this is a low-priority page to flesh out further.</p>
+<hr>
+<h2 id="references">References</h2>
+<div class="refs">
+<ol>
+<li id="ref1">Egner PA et al. Chlorophyllin intervention reduces aflatoxin-DNA adducts in individuals at high risk for liver cancer. <em>PNAS</em> 2001. <a href="https://pubmed.ncbi.nlm.nih.gov/11724948/" target="_blank">PMID 11724948</a></li>
+<li id="ref2">Jubert C et al. Effects of chlorophyll and chlorophyllin on low-dose aflatoxin B1 pharmacokinetics in human volunteers. <em>Cancer Prev Res</em> 2009. <a href="https://pubmed.ncbi.nlm.nih.gov/19952359/" target="_blank">PMID 19952359</a></li>
+<li id="ref3">Yamazaki H et al. Effects of the dietary supplements, activated charcoal and copper chlorophyllin, on urinary excretion of trimethylamine in Japanese trimethylaminuria patients. <em>Life Sci</em> 2004. <a href="https://pubmed.ncbi.nlm.nih.gov/15043988/" target="_blank">PMID 15043988</a></li>
+</ol>
+</div>
 
 </body>
 </html>

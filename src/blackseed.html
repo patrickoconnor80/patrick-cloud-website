@@ -5,35 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Black Seed (Nigella sativa) — Supplement Deep Dive</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; --caution: #a05a2c; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  h3 { margin-top: 1.4rem; margin-bottom: 0.3rem; color: var(--accent); font-size: 1rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .caution { background: #fbf3e6; border-left: 3px solid var(--caution); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.93rem; color: #5a4326; }
-  .caution strong { color: var(--caution); }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  .grade { font-style: italic; color: var(--sub); font-size: 0.9em; }
-  .verdict { font-weight: 600; }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0 1.5rem; }
-  th, td { border: 1px solid var(--line); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
-  th { background: var(--tag-bg); font-weight: 600; }
-  td:first-child { font-weight: 600; white-space: nowrap; }
-  .markers { color: var(--sub); font-size: 0.9em; }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
@@ -41,19 +13,70 @@
 <h1>Black Seed <span style="font-style:italic;font-weight:400;">(Nigella sativa)</span></h1>
 <div class="tags"><span class="tag">Herb / Seed</span><span class="tag">Experimental</span><span class="tag">Anti-inflammatory</span></div>
 
-<div class="callout"><strong>TL;DR:</strong> Whole ground seed, not the oil — the oil's thymoquinone content varies too much across brands to trust, and it carries an omega-6 load that isn't needed. Take about &frac12; tsp (~1&nbsp;g) daily with some dietary fat, ground fresh weekly.</div>
+<p class="lede">A traditional seed with a broad anti-inflammatory story. Take the whole ground seed, not the oil.</p>
 
-<h2>Whole seed vs. oil</h2>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Whole seed, not oil</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Modest drops in blood sugar, cholesterol and blood pressure</span>
+      <span class="how">Small human trials show small but real effects.</span>
+      <a class="why" href="#thymoquinone-tq-the-active-compound">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early — mostly animal / cell or limited"></span>
+      <span class="what">Lowers inflammation and oxidative stress</span>
+      <span class="how">Thymoquinone switches on the body's own antioxidant defenses.</span>
+      <a class="why" href="#the-four-core-mechanisms">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early — mostly animal / cell or limited"></span>
+      <span class="what">Helps recycle cellular energy</span>
+      <span class="how">Feeds an enzyme (NQO1) that regenerates NAD⁺, which mitochondria run on.</span>
+      <a class="why" href="#mechanism">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev moderate"></span>Some human evidence</span><span><span class="ev early"></span>Early / limited</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>About ½ tsp (~1 g) of ground seed a day</li>
+        <li>Take it with some fat, which it needs to absorb</li>
+        <li>Grind a week's worth at a time and store airtight</li>
+        <li>Stir into food or a smoothie</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Skip the oil: potency varies about 27× between brands, and it's 50–60% linoleic acid</li>
+        <li>Don't escalate the dose. High doses were toxic in animal studies.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
+
+<h2 id="whole-seed-vs-oil">Whole seed vs. oil</h2>
 <p>The oil form has a real, specific problem: thymoquinone (TQ) content measured across commercial black seed oil brands ranges from roughly 0.07% to 1.88% &mdash; about a 27x spread &mdash; with no label test or easy way for a buyer to verify potency before use. <span class="grade">(Moderate — based on analytical surveys of commercial products, not a single controlled study)</span> The oil is also 50&ndash;60% linoleic acid, adding omega-6/PUFA load that isn't wanted on top of an already LA-heavy diet (see <a href="linoleic-acid.html">Linoleic Acid &amp; Metabolic Disease</a>).</p>
 <p>Whole ground seed at roughly 1&nbsp;g twice daily matches the dosing actually used in most human clinical trials, so it inherits whatever precedent those trials provide. The oil doesn't have the same trial precedent behind its typical consumer dosing.</p>
 <p class="verdict">Verdict: whole ground seed &gt; oil, for dosing precedent and avoiding unverifiable potency and added PUFA.</p>
 
-<h2>Thymoquinone (TQ) &mdash; the active compound</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="thymoquinone-tq-the-active-compound"><span class="ev moderate" title="Some human evidence"></span>Thymoquinone (TQ) &mdash; the active compound</h2>
 <p>TQ is the seed's best-characterized bioactive constituent. Preclinical work &mdash; mouse and cell-line studies &mdash; reports anti-inflammatory, antioxidant, hepatoprotective, cardioprotective, and neuroprotective effects across nearly every organ system studied. <span class="grade">(Animal&ndash;in-vitro)</span> This is broad and consistent enough to take seriously as a mechanism story, but breadth-across-organ-systems in animal models is exactly the pattern that doesn't reliably survive translation to humans.</p>
 <p>Human clinical evidence is real but limited: small-to-medium trials show modest effects on blood sugar, cholesterol, blood pressure, asthma symptoms, and osteoarthritis. <span class="grade">(Moderate, effect sizes modest)</span> None of this is dramatic, and none of it is close to the volume of preclinical claims.</p>
 <p>TQ has poor oral bioavailability on its own &mdash; it needs a fat/lipid carrier to absorb well, which is the practical reason to take it with food that contains some fat rather than on an empty stomach or in water.</p>
 
-<h3 id="mechanism">Mechanism: NQO1 and NAD&#8314; recycling</h3>
+<h3 id="mechanism"><span class="ev early" title="Early — mostly animal / cell or limited"></span>Mechanism: NQO1 and NAD&#8314; recycling</h3>
 <p>TQ is a quinone, which makes it a substrate for <strong>NQO1</strong> (NAD(P)H quinone oxidoreductase 1) &mdash; a riboflavin/FAD-dependent enzyme that catalyzes an obligate two-electron reduction. Two things happen in the same reaction: NADH is oxidized back to NAD&#8314;, and the quinone substrate is reduced to its hydroquinone form. <span class="grade">(Strong &mdash; core enzymology, well established)</span> That dual output is the whole appeal: the cell regenerates the oxidized NAD&#8314; that Complex I and several TCA-cycle dehydrogenases require to keep running, while the reduced quinone itself becomes a recyclable antioxidant. Going through NQO1 specifically (rather than a one-electron reductase such as cytochrome P450 reductase) matters because two-electron reduction skips the unstable semiquinone radical intermediate that one-electron pathways produce &mdash; the reaction most quinone toxicity actually comes from.</p>
 <p>TQ isn't the only dietary or supplemental NQO1 substrate that works this way &mdash; ubiquinone (CoQ10), PQQ, and beta-lapachone (the naphthoquinone in Pau d'arco) all feed the same enzyme. See <a href="supplements.html">Supplements</a> for whether any of those earn their own page.</p>
 <p>NQO1 expression itself is controlled upstream by <strong>NRF2</strong>, the master antioxidant-response transcription factor. Exercise, sulforaphane (cruciferous vegetables), and dietary polyphenols are among the best-supported NRF2 activators <span class="grade">(Moderate&ndash;Strong for NRF2 activation itself; Inferred that a modest dietary dose of any single quinone substrate meaningfully moves whole-body NAD&#8314;/NADH balance on top of that)</span> &mdash; which puts a ceiling on how much a single quinone-containing seed can be expected to do in isolation, versus supporting the pathway that regulates the enzyme in the first place.</p>
@@ -61,10 +84,12 @@
 
 <div class="caution"><strong>Toxicity note:</strong> animal studies show dose-dependent toxicity at high doses &mdash; lethargy, weight loss &mdash; so this is not a "more is better, indefinitely safe" compound. The NQO1 mechanism above gives that caution a concrete basis: at trial-matched doses TQ is a modest antioxidant-recycling substrate; pushed hard enough, the same redox chemistry that makes NQO1 useful is exactly what high-dose quinone chemotherapy weaponizes against cells that over-rely on it. Stick to trial-matched doses rather than escalating.</div>
 
-<h2>Breadth of preclinical effects</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="breadth-of-preclinical-effects">Breadth of preclinical effects</h2>
 <p>Preclinical review figures for TQ tend to organize its effects around four core mechanisms that then radiate out into a long list of organ-system claims. Worth seeing the whole shape of it, because the shape itself is informative &mdash; both about the strength of the mechanism story and about how much to discount any single claimed effect. <span class="grade">(Animal&ndash;in-vitro throughout this section unless noted otherwise)</span></p>
 
-<h3>The four core mechanisms</h3>
+<h3 id="the-four-core-mechanisms"><span class="ev early" title="Early — mostly animal / cell or limited"></span>The four core mechanisms</h3>
 <ul>
   <li><strong>Oxidative stress:</strong> reported to lower MDA, ROS, 4-HNE, and lipid peroxidation while raising the antioxidant enzymes SOD, GPx, CAT, GST, and HO-1 &mdash; upstream of NRF2, consistent with the NQO1/NRF2 story above.</li>
   <li><strong>Inflammation:</strong> reported to suppress NF-&kappa;B and TLR signalling, along with COX2, LOX1, IL-1&beta;, IL-6, TNF&alpha;, TGF&beta;, VCAM1, iNOS, and MMP9.</li>
@@ -73,8 +98,8 @@
 </ul>
 <p>A fifth thread &mdash; energy metabolism and autophagy (&uarr;AMPK, PPAR&gamma;, PGC1&alpha;, SIRT1, IGF-1, PI3K/Akt, UCP1, FGF21; &darr;HIF-1&alpha;) &mdash; feeds specifically into the metabolic-disease-adjacent entries below (anti-diabetic, anti-obesity, skin, pulmonary).</p>
 
-<h3>Organ-system claims built on those mechanisms</h3>
-<table>
+<h3 id="organ-system-claims-built-on-those-mechanisms">Organ-system claims built on those mechanisms</h3>
+<div class="table-wrap"><table>
 <thead><tr><th>System</th><th>Reported effect</th></tr></thead>
 <tbody>
 <tr><td>Cardioprotective / anti-hypertensive</td><td class="markers">&darr;TC, TG, LDL, &uarr;HDL-C; autophagy induction (&uarr;LC3-II, SIRT1, &darr;p62)</td></tr>
@@ -94,15 +119,19 @@
 <tr><td>Anti-depression / anti-anxiety</td><td class="markers">&uarr;BDNF, 5-HT</td></tr>
 <tr><td>Anti-epileptic / anti-schizophrenia</td><td class="markers">&uarr;dopamine</td></tr>
 </tbody>
-</table>
+</table></div>
 <p>Two honest caveats belong right next to this table, not buried after it. First, a list like this is typically compiled across dozens of separate studies &mdash; different species, doses, delivery routes, disease models, and cell lines &mdash; not one coherent experiment, so the coherence of the "wheel" is partly an artifact of how review figures get assembled, not evidence that TQ reliably does all of this at once in one animal, let alone one person. Second, the anti-cancer marker list above includes both up- and down-regulated tumor-suppressor and oncogene-adjacent proteins side by side (e.g. Brca1/2 and p53-pathway components appearing alongside proliferation markers) &mdash; a reminder that "anti-cancer" summaries like this often mix effects observed in different cancer types and models rather than one clean mechanism, and shouldn't be read as a settled, unified pathway.</p>
 
-<h2>Practical use</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="practical-use">Practical use</h2>
 <ul>
   <li><strong>Grind fresh, in small batches</strong> (roughly a week's worth at a time) &mdash; the seed is oil-dense and oxidizes once cracked open. Store the ground seed airtight and away from light.</li>
   <li><strong>Dose:</strong> about &frac12; tsp (~1&nbsp;g) daily, taken alongside some dietary fat for absorption.</li>
   <li><strong>Delivery:</strong> stirred into a smoothie or food is fine &mdash; no meaningful absorption advantage to milk versus a smoothie.</li>
 </ul>
+
+<a class="back" href="#glance">↑ back to summary</a>
 
 <p class="stub">No linked citations for the specific figures above (TQ variability range, oil fatty-acid composition, trial dosing, NQO1/NRF2 mechanism, the organ-system effects table) &mdash; these are carried over from source notes rather than a numbered reference list. The NQO1 enzymology and NRF2 upstream regulation are well-established biochemistry; the organ-system table is transcribed from a preclinical-review-style summary figure and inherits that figure's sourcing, not a citation checked against the underlying primary studies here. Worth an audit pass to attach PMIDs across all of it, and to verify the review figure's own sourcing while at it.</p>
 

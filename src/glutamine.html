@@ -3,55 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glutamine — Nutrient Deep Dive</title>
+<title>Glutamine — Nutrient</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a> · <a href="cancer.html">Cancer</a></div>
 <h1>Glutamine</h1>
 <div class="tags"><span class="tag">Amino Acid</span><span class="tag">Useful</span></div>
+<p class="lede">The main fuel for your gut lining. It helps a specific kind of IBS, and the "gut repair" claims beyond that are shaky.</p>
 
-<div class="callout"><strong>TL;DR:</strong> Conditionally essential amino acid that fuels intestinal cells and supports gut barrier function — often used in "gut repair" protocols.</div>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Situational · gut support</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Fuels the gut lining</span>
+      <span class="how">Intestinal and immune cells burn it as a primary fuel.</span>
+      <a class="why" href="#fuel">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Calms IBS after a gut infection</span>
+      <span class="how">Tightened a leaky gut and relieved symptoms in 80% of patients vs 6% on placebo.</span>
+      <a class="why" href="#ibs">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early / limited"></span>
+      <span class="what">Tightens a leaky gut, but only at high doses</span>
+      <span class="how">Pooled trials show no effect overall, with a hint of one above 30 g a day.</span>
+      <a class="why" href="#permeability">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Fewer sickle-cell pain crises</span>
+      <span class="how">An FDA-approved use. It reduces oxidative stress in red blood cells.</span>
+      <a class="why" href="#sickle">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span><span><span class="ev moderate"></span>Some human evidence</span><span><span class="ev early"></span>Early / limited</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>Most people make and eat plenty: meat, fish, eggs, dairy</li>
+        <li>For post-infection IBS: 5 g three times a day for 8 weeks (the trial dose)</li>
+        <li>Short courses with a goal, not an open-ended habit</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>No benefit for athletic performance or immunity in athletes</li>
+        <li>Increased deaths in critically ill ICU patients</li>
+        <li>Tumors also use glutamine as fuel (see Cancer)</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<h2>Role</h2>
-<p>Classified as conditionally essential: the body makes enough under normal conditions, but demand can exceed supply during illness, injury, or intense training, at which point dietary or supplemental glutamine becomes relevant. Its signature use case is as a primary fuel source for enterocytes (the cells lining the small intestine), which is the basis for its place in gut-repair protocols.</p>
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
 
-<h2>Intake</h2>
-<p>No RDA. Supplemental dosing varies by goal and is typically used short-term for targeted gut support rather than continuously.</p>
+<h2 id="fuel"><span class="ev strong" title="Strong human evidence"></span>Fuels the gut lining</h2>
+<p>Glutamine is the most abundant free amino acid in blood and muscle, and is classed as <em>conditionally essential</em>: the body makes enough under normal conditions, but demand can exceed supply during severe illness, injury, or intense training. Its signature use is as a primary fuel for enterocytes (the cells lining the small intestine) and for rapidly dividing immune cells, which is the basis for its place in gut-repair protocols. It's also a nitrogen carrier between tissues and a precursor to glutamate, and therefore to glutathione. <span class="grade">(Strong &mdash; physiology)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<h2>Deficiency effects</h2>
-<p>In stress states (illness, major exertion, critical injury), low availability can impair gut and immune function — a clinical-context finding rather than something seen in ordinary diets.</p>
+<h2 id="ibs"><span class="ev moderate" title="Some human evidence"></span>Calms IBS after a gut infection</h2>
+<p>The strongest human result is in a specific subgroup: diarrhea-predominant IBS that began after an enteric infection, in patients with measurably increased intestinal permeability. In a randomized placebo-controlled trial of 106 completers, glutamine 5&nbsp;g three times daily for 8 weeks achieved the primary endpoint (&ge;50-point drop in IBS severity) in 79.6% versus 5.8% on placebo. It also reduced stool frequency, improved stool form, and normalized the lactulose/mannitol permeability ratio, with side effects no different from placebo.<sup><a href="#ref1">1</a></sup></p>
+<p>A 14-fold difference with a placebo response of only 6% is unusually large for IBS, a condition famous for high placebo response; the authors themselves call for larger trials. It is also a single-centre result in a narrowly selected group. <span class="grade">(Moderate &mdash; one striking RCT, narrow population)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<h2>Top foods</h2>
+<h2 id="permeability"><span class="ev early" title="Early / limited"></span>Tightens a leaky gut, but only at high doses</h2>
+<p>For "leaky gut" more broadly, the pooled evidence is weaker than the marketing. A 2024 meta-analysis of clinical trials in adults found that oral glutamine had <strong>no significant effect</strong> on intestinal permeability overall; only a subgroup receiving more than 30&nbsp;g/day showed a reduction.<sup><a href="#ref2">2</a></sup> That dose is several times what most supplement protocols use. <span class="grade">(Early &mdash; null overall, dose-dependent subgroup signal)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="sickle"><span class="ev moderate" title="Some human evidence"></span>Fewer sickle-cell pain crises</h2>
+<p>Sickle red cells are under heavy oxidative stress, and glutamine is a precursor to NAD and glutathione within them. In a phase 3 trial of 230 children and adults with sickle cell anemia, oral L-glutamine for 48 weeks reduced the median number of pain crises (3 vs 4) and hospitalizations (2 vs 3) compared with placebo, on top of hydroxyurea in two-thirds of patients.<sup><a href="#ref3">3</a></sup> This trial underpinned FDA approval. It was funded by Emmaus Medical, the company that markets the drug. <span class="grade">(Moderate &mdash; phase 3 RCT, sponsor-funded)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="limits">Where it doesn't work</h2>
 <ul>
-  <li>Chicken</li>
-  <li>Turkey</li>
-  <li>Beef</li>
-  <li>Yogurt</li>
-  <li>Onion</li>
+  <li><strong>Athletes.</strong> A meta-analysis of 47 studies (25 pooled) found glutamine had no effect on athletes' immune function, aerobic performance, or body composition, beyond a small weight reduction.<sup><a href="#ref4">4</a></sup> <span class="grade">(Strong for no performance effect)</span></li>
+  <li><strong>Critical illness.</strong> The logic that sick people become glutamine-depleted led to high-dose supplementation in intensive care. In the REDOXS trial of critically ill patients with multiorgan failure, early glutamine did not improve outcomes, and in-hospital and 6-month mortality were significantly <em>higher</em> with it.<sup><a href="#ref5">5</a></sup> <span class="grade">(Strong &mdash; a large RCT showing harm in this setting)</span></li>
+  <li><strong>Cancer.</strong> Many tumors are "glutamine-addicted", using it as a second fuel alongside glucose &mdash; a central point in the Seyfried framework discussed in <a href="cancer.html">Cancer as Metabolic Disease</a>. Whether dietary or supplemental glutamine meaningfully feeds an existing tumor in people is not established, but it is a reason not to take high-dose glutamine without a specific indication if cancer is in the picture. <span class="grade">(Inferred)</span></li>
 </ul>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<p class="stub">This entry is thin in the source database — no body content beyond the property fields above, and no linked citations. Worth expanding once there's more material to draw on.</p>
+<h2 id="intake">Intake &amp; food sources</h2>
+<p>No RDA. A typical protein-containing diet supplies several grams a day, and the body synthesizes more, mainly in muscle. Supplemental dosing is goal-specific and usually short-term.</p>
+<h3>Top foods</h3>
+<ul>
+  <li>Beef</li>
+  <li>Chicken and turkey</li>
+  <li>Fish</li>
+  <li>Eggs</li>
+  <li>Yogurt and cheese</li>
+</ul>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<hr>
+<h2 id="references">References</h2>
+<div class="refs">
+<ol>
+<li id="ref1">Zhou Q et al. Randomised placebo-controlled trial of dietary glutamine supplements for postinfectious irritable bowel syndrome. <em>Gut</em> 2019. <a href="https://pubmed.ncbi.nlm.nih.gov/30108163/" target="_blank">PMID 30108163</a></li>
+<li id="ref2">Abbasi F et al. A systematic review and meta-analysis of clinical trials on the effects of glutamine supplementation on gut permeability in adults. <em>Amino Acids</em> 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/39397201/" target="_blank">PMID 39397201</a></li>
+<li id="ref3">Niihara Y et al. A phase 3 trial of L-glutamine in sickle cell disease. <em>N Engl J Med</em> 2018. <a href="https://pubmed.ncbi.nlm.nih.gov/30021096/" target="_blank">PMID 30021096</a></li>
+<li id="ref4">Ramezani Ahmadi A et al. The effect of glutamine supplementation on athletic performance, body composition, and immune function: a systematic review and meta-analysis of clinical trials. <em>Clin Nutr</em> 2019. <a href="https://pubmed.ncbi.nlm.nih.gov/29784526/" target="_blank">PMID 29784526</a></li>
+<li id="ref5">Heyland D et al. A randomized trial of glutamine and antioxidants in critically ill patients. <em>N Engl J Med</em> 2013. <a href="https://pubmed.ncbi.nlm.nih.gov/23594003/" target="_blank">PMID 23594003</a></li>
+</ol>
+</div>
 
 </body>
 </html>

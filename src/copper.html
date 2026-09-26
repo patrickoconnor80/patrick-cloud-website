@@ -3,38 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Copper — Nutrient Deep Dive</title>
+<title>Copper — Nutrient</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Copper</h1>
 <div class="tags"><span class="tag">Mineral</span><span class="tag">Useful</span></div>
+<p class="lede">A trace mineral that ties collagen together, helps you use iron, and protects your nerves. The usual way people run low is by taking too much zinc.</p>
 
-<div class="callout"><strong>TL;DR:</strong> Trace mineral required for connective tissue cross-linking (lysyl oxidase), antioxidant enzymes, and iron metabolism; too little can impair collagen strength.</div>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential · watch it with zinc</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Strengthens collagen</span>
+      <span class="how">Powers the enzyme that cross-links collagen fibers.</span>
+      <a class="why" href="#collagen">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Helps you use iron</span>
+      <span class="how">Moves stored iron out to make red blood cells. Low copper causes anemia.</span>
+      <a class="why" href="#iron">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Protects nerves</span>
+      <span class="how">Deficiency damages the spinal cord, much like low B12 does.</span>
+      <a class="why" href="#nerves">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Antioxidant defense</span>
+      <span class="how">Needed for superoxide dismutase, a key antioxidant enzyme.</span>
+      <a class="why" href="#antioxidant">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span><span><span class="ev moderate"></span>Some human evidence</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>About 900 mcg a day</li>
+        <li>Liver, oysters and other shellfish, dark chocolate</li>
+        <li>Most people get enough from food. Supplement only if you take zinc long-term.</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>High-dose zinc blocks copper absorption</li>
+        <li>Upper limit 10 mg a day</li>
+        <li>Skip supplements if you have Wilson's disease</li>
+      </ul>
+      <h3 style="margin-top:0.7rem">Signs you're low</h3>
+      <ul>
+        <li>Anemia that doesn't respond to iron</li>
+        <li>Numb feet, unsteady walking</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<h2>Role</h2>
-<p>Copper's best-established mechanistic role in this series is as the cofactor for lysyl oxidase, the enzyme that cross-links collagen fibers into stable covalent bonds during connective tissue synthesis — see <a href="glycine-collagen.html">Glycine / Collagen</a> for the full pathway. It's also required for several antioxidant enzymes (notably superoxide dismutase) and for iron metabolism, where it helps mobilize stored iron for use.</p>
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
 
-<p class="stub">This is one of the thinnest entries in the source database — even the Deficiency Effects, Functions, and Optimal Intake fields are empty, and there's no body content or linked foods/citations. Flagged as a priority to fill in given how directly it feeds the collagen-synthesis mechanism the hub paper already leans on.</p>
+<h2 id="collagen"><span class="ev strong" title="Strong human evidence"></span>Strengthens collagen</h2>
+<p>Copper's best-established mechanistic role in this series is as the cofactor for <strong>lysyl oxidase</strong>, the enzyme that cross-links collagen and elastin fibers into stable covalent bonds during connective tissue synthesis.<sup><a href="#ref1">1</a></sup> Without those cross-links, newly made collagen is mechanically weak. This is the third cofactor in the collagen chain alongside vitamin C and iron &mdash; see <a href="glycinecollagen.html">Glycine / Collagen</a> for the full pathway. <span class="grade">(Strong &mdash; well-characterized enzymology)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="iron"><span class="ev strong" title="Strong human evidence"></span>Helps you use iron</h2>
+<p>Copper is the core of ceruloplasmin and hephaestin, the ferroxidase enzymes that oxidize iron so it can be loaded onto transferrin and moved out of storage and gut cells. When copper runs short, iron gets stranded: the result is an anemia (often with low white-cell counts) that looks like iron deficiency but doesn't respond to iron.<sup><a href="#ref2">2</a></sup> The hematologic effects are fully reversible with copper replacement, typically over 4&ndash;12 weeks.<sup><a href="#ref2">2</a></sup> <span class="grade">(Strong &mdash; consistent clinical literature)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="nerves"><span class="ev strong" title="Strong human evidence"></span>Protects nerves</h2>
+<p>The neurological side of copper deficiency was recognized only relatively recently. The most common presentation is a <strong>myelopathy</strong> &mdash; spinal cord damage causing a stiff, spastic gait and loss of position sense in the feet &mdash; that is clinically and on MRI almost indistinguishable from the subacute combined degeneration of vitamin B12 deficiency. The two deficiencies can coexist, and the nerve damage can appear without any anemia at all.<sup><a href="#ref3">3</a></sup></p>
+<p>The recognized causes are prior gastric surgery, malabsorption, and <strong>excess zinc</strong>.<sup><a href="#ref3">3</a></sup> Zinc induces a copper-binding protein (metallothionein) in gut cells that traps dietary copper so it's shed rather than absorbed &mdash; which is why long-term high-dose zinc supplements (and even zinc-containing denture creams) show up repeatedly in case reports. Crucially, copper replacement fixes the blood picture completely but the neurological damage only partially: improvement, when it happens, is often limited to sensory symptoms.<sup><a href="#ref2">2</a>,<a href="#ref3">3</a></sup> That asymmetry is the practical argument for pairing any long-term zinc supplement with a little copper rather than waiting for symptoms. <span class="grade">(Strong for the syndrome; Moderate for the zinc mechanism)</span> See <a href="zinc.html">Zinc</a>.</p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="antioxidant"><span class="ev moderate" title="Some human evidence"></span>Antioxidant defense</h2>
+<p>Copper is required, with zinc, for cytosolic superoxide dismutase (Cu/Zn-SOD), one of the main enzymes that neutralizes superoxide radicals, and for cytochrome c oxidase, the final complex of the mitochondrial electron transport chain.<sup><a href="#ref4">4</a></sup> Frank deficiency lowers SOD activity; whether intakes above adequacy improve antioxidant status in people who aren't deficient is not established. <span class="grade">(Moderate for the requirement; Inferred for any benefit above adequacy)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="intake">Intake &amp; safety</h2>
+<p>The U.S. RDA is 900&nbsp;mcg/day for adults, with a tolerable upper intake level of 10&nbsp;mg/day.<sup><a href="#ref5">5</a></sup> National authorities disagree on the exact reference values, because copper status biomarkers are insensitive at the margins &mdash; serum copper and ceruloplasmin only fall clearly in outright deficiency.<sup><a href="#ref4">4</a></sup> Diagnosis of deficiency uses serum copper, ceruloplasmin, and 24-hour urine copper.<sup><a href="#ref2">2</a></sup></p>
+<div class="caution"><strong>Caution:</strong> Wilson's disease is a genetic disorder of copper excretion in which copper accumulates in the liver and brain; copper supplements are contraindicated. Conversely, over-treatment of Wilson's disease is itself a documented cause of copper deficiency.</div>
+<h3>Top foods</h3>
+<ul>
+  <li>Beef liver (by far the richest source)</li>
+  <li>Oysters and other shellfish</li>
+  <li>Dark chocolate / cocoa</li>
+  <li>Shiitake mushrooms</li>
+</ul>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<hr>
+<h2 id="references">References</h2>
+<div class="refs">
+<ol>
+<li id="ref1">Rucker RB et al. Copper, lysyl oxidase, and extracellular matrix protein cross-linking. <em>Am J Clin Nutr</em> 1998. <a href="https://pubmed.ncbi.nlm.nih.gov/9587142/" target="_blank">PMID 9587142</a></li>
+<li id="ref2">Myint ZW et al. Copper deficiency anemia: review article. <em>Ann Hematol</em> 2018. <a href="https://pubmed.ncbi.nlm.nih.gov/29959467/" target="_blank">PMID 29959467</a></li>
+<li id="ref3">Kumar N. Copper deficiency myelopathy (human swayback). <em>Mayo Clin Proc</em> 2006. <a href="https://pubmed.ncbi.nlm.nih.gov/17036563/" target="_blank">PMID 17036563</a></li>
+<li id="ref4">Bost M et al. Dietary copper and human health: current evidence and unresolved issues. <em>J Trace Elem Med Biol</em> 2016. <a href="https://pubmed.ncbi.nlm.nih.gov/27049134/" target="_blank">PMID 27049134</a></li>
+<li id="ref5">NIH Office of Dietary Supplements. Copper &mdash; Health Professional Fact Sheet. <a href="https://ods.od.nih.gov/factsheets/Copper-HealthProfessional/" target="_blank">ods.od.nih.gov</a></li>
+</ol>
+</div>
 
 </body>
 </html>

@@ -370,14 +370,8 @@ footer.end b{color:var(--moss);}
   </div>
 </header>
 <div class="subnav"><div class="subnav-inner">
-  <a href="nutrition.html">Overview</a>
+  <a href="nutrition.html" class="active">Papers</a>
   <a href="metabolic-health.html">Metabolic Health</a>
-  <a href="linoleic-acid.html">Linoleic Acid</a>
-  <a href="ahr.html">AhR</a>
-  <a href="cold-exposure.html">Cold Exposure</a>
-  <a href="sunlight.html" class="active">Sunlight</a>
-  <a href="energy-metabolism.html">Energy Metabolism</a>
-  <a href="cancer.html">Cancer</a>
   <a href="nutrients.html">Nutrients</a>
   <a href="supplements.html">Supplements</a>
 </div></div>
@@ -524,6 +518,15 @@ footer.end b{color:var(--moss);}
 <h3><span class="h3num">II.3</span>What would settle it</h3>
 <p>Randomized vitamin D supplementation trials are the design that can isolate the vitamin D variable from everything else that moves with latitude, since supplementation can be randomized independent of where someone lives. That literature exists and is genuinely mixed: several large trials have found reduced cancer <em>mortality</em> without a matching reduction in cancer <em>incidence</em> &mdash; suggesting, if real, a role in slowing progression in people who already have cancer rather than preventing it from starting, a narrower and different claim than II.1's incidence-correlation implies.<sup class="cite"><a href="#r-rct">D</a></sup></p>
 <p class="evline"><span class="ev ev-cont">Contested</span><span class="txt">supplementation trials are the right design to isolate this question, and the incidence-versus-mortality split across them is a real, unresolved pattern in this literature &mdash; not yet a settled answer.</span></p>
+
+<h3><span class="h3num">II.4</span>A hypothesis for melanoma's own exception</h3>
+<p>Melanoma was the one cancer in II.1's list with only weak inverse correlation to solar UVB &mdash; an odd result if UVB/vitamin D is simply protective across the board. A 2009 hypothesis paper offers a specific explanation. Cutaneous melanoma has risen at a steady exponential rate in fair-skinned <em>indoor</em> workers since before 1940, despite indoor workers getting three to nine times less total solar UV than outdoor workers &mdash; a direct paradox if total sun exposure were the driver.<sup class="cite"><a href="#r-godar">J</a></sup> The paper's two-part hypothesis: indoor UVA &mdash; the band that passes through ordinary window glass, unlike UVB, which glass blocks almost entirely &mdash; both causes mutations directly and degrades any vitamin D3 already synthesized in skin; separately, melanoma cells themselves can convert vitamin D3 to calcitriol, which drives growth inhibition and apoptosis in melanoma cells in culture and in animal models, so inadequate cutaneous vitamin D removes a brake on cells that have already begun to transform. The authors measured indoor solar UVA at roughly 25% of outdoor irradiance (about 60&times; a typical fluorescent fixture) and confirmed previtamin D3 synthesis essentially requires being outdoors, since window glass blocks the UVB it depends on. Framed this way, the hypothesis is a <em>promotion</em> mechanism layered on top of the established <em>initiation</em> mechanism from Part&nbsp;I &mdash; the authors explicitly still attribute melanoma's initiation to intense, intermittent outdoor UV overexposure and sunburn, not to indoor UVA instead of it.</p>
+<p class="evline"><span class="ev ev-spec">Speculative</span><span class="txt">a named hypothesis built from the authors' own irradiance measurements plus cited melanoma cell-biology data, not a study measuring melanoma incidence against individually measured UVA exposure or vitamin D status.</span></p>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: the journal itself carries a caveat here</div>
+  <p style="margin:0 0 8px;"><em>Medical Hypotheses</em>, where this paper appeared, was explicitly a hypothesis-generating journal at the time of publication (April 2009): submissions were screened editorially for interest and plausibility rather than sent out for standard external peer review &mdash; a policy Elsevier discontinued starting in 2010, following a separate, unrelated controversy over the journal's publication of AIDS-denialist material the same year. That history doesn't mean this specific paper is wrong; the underlying irradiance measurements and the calcitriol/melanoma-cell mechanism it cites are independently verifiable. But it means this piece carries less institutional vetting than the ecological review in II.1 or the cohort studies in Parts&nbsp;III&ndash;IV, and it should be read as a plausible, testable explanation for melanoma's exception &mdash; not as settled evidence of one.</p>
+</div>
 </section>
 
 <section>
@@ -568,6 +571,10 @@ footer.end b{color:var(--moss);}
   <div class="flag-lbl">Reading this against Part&nbsp;I's chart</div>
   <p style="margin:0;">Part&nbsp;I's UVA row lists melanoma risk rising with cumulative UV exposure &mdash; that remains the operative causal claim. This study does not contradict it. It answers a narrower, different question: among people who already have melanoma, why do some survive longer &mdash; and the answer here is earlier detection, not a protective effect of the sun exposure that likely contributed to causing the melanoma in the first place.</p>
 </div>
+
+<h3><span class="h3num">IV.3</span>A separate, dietary lever on melanoma tumor growth</h3>
+<p>Unrelated to the detection-effect story above, a dietary intervention has shown a direct antitumor effect on melanoma specifically. Mice fed a 5% glycine diet for just three days before subcutaneous B16 melanoma implantation grew tumors 50&ndash;75% smaller than control-fed mice, weighing nearly 65% less at 14 days &mdash; not through slowing cancer-cell proliferation directly (glycine had no effect on B16 cell growth rates in culture) but through a 70% reduction in tumor blood-vessel density, alongside dose-dependent inhibition of endothelial cell growth in vitro.<sup class="cite"><a href="#r-gly">I</a></sup> See the <a href="glycinecollagen.html#glycine-systems">Glycine</a> nutrient page for the parallel liver-tumor finding and glycine's broader mechanism profile.</p>
+<p class="evline"><span class="ev ev-animal">Animal&ndash;in vitro</span><span class="txt">a mouse implantation model, not a human melanoma trial &mdash; an antiangiogenic diet-and-tumor-growth finding, mechanistically unconnected to the sun-exposure/detection question in IV.1&ndash;IV.2.</span></p>
 </section>
 
 <section>
@@ -648,6 +655,7 @@ footer.end b{color:var(--moss);}
 <li id="r1">Grant WB. Ecological studies of the UVB-vitamin D-cancer hypothesis. <span class="j">Anticancer Res</span> 2012;32(1):223&ndash;236. PMID 22213311. <span class="note">Review of 3 US, 5 single-country, and 8 multicountry (100+ nations) ecological studies. Strong inverse correlation with solar UVB for 15 cancer types; weaker evidence for 9 others including melanoma. Several underlying studies are the author's own prior work; author directs SUNARC, a research center organized around this hypothesis.</span></li>
 <li id="r-vdr">Vitamin D receptor signaling, calcitriol, and regulation of cell differentiation and apoptosis. <span class="gapflag">citation to pin</span></li>
 <li id="r-rct">Randomized vitamin D supplementation trials and the cancer-mortality-versus-incidence split. <span class="gapflag">citation to pin</span></li>
+<li id="r-godar">Godar DE, Landry RJ, Lucas AD. Increased UVA exposures and decreased cutaneous Vitamin D3 levels may be responsible for the increasing incidence of melanoma. <span class="j">Med Hypotheses</span> 2009;72(4):434&ndash;443. PMID 19155143. doi:10.1016/j.mehy.2008.09.056. <span class="note">Hypothesis paper, not an original epidemiological study. Measured indoor vs. outdoor solar UVA irradiance (indoor &asymp;25% of outdoor, &asymp;60&times; fluorescent light) and action-spectrum-weighted contributions to erythema, SCC, melanoma, and previtamin D3 synthesis. Proposes indoor window-transmitted UVA plus inadequate cutaneous vitamin D3 promotes CMM in already-initiated cells, layered on top of the established sunburn-initiation mechanism. Published in an editorially-screened, non-externally-peer-reviewed issue of <span class="j">Medical Hypotheses</span> prior to the journal's 2010 shift to standard peer review.</span></li>
 </ol>
 
 <div class="ref-group">All-cause &amp; cardiovascular mortality</div>
@@ -658,6 +666,7 @@ footer.end b{color:var(--moss);}
 <div class="ref-group">Melanoma survival</div>
 <ol class="refs" start="3">
 <li id="r3">Berwick M, Armstrong BK, Ben-Porat L, Fine J, Kricker A, Eberle C, Barnhill R. Sun exposure and mortality from melanoma. <span class="j">J Natl Cancer Inst</span> 2005;97(3):195&ndash;199. PMID 15687762. doi:10.1093/jnci/dji019. <span class="note">n=528 population-based cutaneous melanoma cases, &gt;5-year average follow-up. Multivariable competing-risk model: solar elastosis HR 0.4 (95% CI 0.2&ndash;0.8, p=.009) and skin awareness HR 0.5 (95% CI 0.3&ndash;0.9, p=.022) independently associated with lower melanoma death, adjusted for Breslow thickness, mitotic index, and head/neck location. Authors interpret as a detection effect.</span></li>
+<li id="r-gly">Rose ML, Madren J, Bunzendahl H, Thurman RG. Dietary glycine inhibits the growth of B16 melanoma tumors in mice. <span class="j">Carcinogenesis</span> 1999;20(5):793&ndash;798. PMID 10334195. doi:10.1093/carcin/20.5.793. <span class="note">C57BL/6 mice fed 5% glycine + 15% casein vs. 20% casein control diet for 3 days before subcutaneous B16 melanoma implantation, tracked 14 days. Tumors 50&ndash;75% smaller and ~65% lighter in glycine-fed mice (P&lt;0.05); 70% fewer tumor arteries (P&lt;0.05); glycine (0.01&ndash;10mM) dose-dependently inhibited endothelial cell growth in vitro (IC50=0.05mM) but did not affect B16 cell growth directly &mdash; antiangiogenic mechanism, not direct cytotoxicity. See also the parallel liver-tumor finding on the <a href="glycinecollagen.html#glycine-systems">Glycine</a> page.</span></li>
 </ol>
 
 <div class="ref-group">Nitric oxide, mood &amp; circadian mechanisms</div>
@@ -675,7 +684,7 @@ footer.end b{color:var(--moss);}
 </section>
 
 <div style="margin-top:44px">
-  <span class="tag">UVB</span><span class="tag">UVA</span><span class="tag">Vitamin D</span><span class="tag">Calcitriol</span><span class="tag">Solar Elastosis</span><span class="tag">Melanoma</span><span class="tag">Nitric Oxide</span><span class="tag">Blood Pressure</span><span class="tag">POMC</span><span class="tag">&alpha;-MSH</span><span class="tag">Beta-Endorphin</span><span class="tag">Melanopsin</span><span class="tag">Circadian Rhythm</span><span class="tag">Melatonin</span><span class="tag">Ecological Study</span><span class="tag">MISS Cohort</span><span class="tag">Heliotherapy</span><span class="tag">Urocanic Acid</span><span class="tag">Skin Microbiome</span>
+  <span class="tag">UVB</span><span class="tag">UVA</span><span class="tag">Vitamin D</span><span class="tag">Calcitriol</span><span class="tag">Solar Elastosis</span><span class="tag">Melanoma</span><span class="tag">Nitric Oxide</span><span class="tag">Blood Pressure</span><span class="tag">POMC</span><span class="tag">&alpha;-MSH</span><span class="tag">Beta-Endorphin</span><span class="tag">Melanopsin</span><span class="tag">Circadian Rhythm</span><span class="tag">Melatonin</span><span class="tag">Ecological Study</span><span class="tag">MISS Cohort</span><span class="tag">Heliotherapy</span><span class="tag">Urocanic Acid</span><span class="tag">Skin Microbiome</span><span class="tag">Glycine</span><span class="tag">Angiogenesis</span><span class="tag">Window Glass UVA</span>
 </div>
 
 <footer class="end">

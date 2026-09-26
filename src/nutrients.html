@@ -67,6 +67,14 @@
   .legend { font-size: 0.85rem; color: var(--sub); margin-bottom: 1rem; }
   .legend span { margin-right: 1.2rem; }
   hr { border: none; border-top: 1px solid var(--line); margin: 3rem 0; }
+  .bens { min-width: 14rem; }
+  .ben { display: inline-flex; align-items: center; gap: 0.35rem; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 999px; padding: 0.05rem 0.55rem; margin: 0.12rem 0.2rem 0.12rem 0; font-size: 0.8rem; white-space: nowrap; }
+  .ben i { width: 0.5rem; height: 0.5rem; border-radius: 50%; border: 1.5px solid currentColor; display: inline-block; }
+  .ben i.strong { color: #3f6b3a; background: currentColor; }
+  .ben i.moderate { color: #a07a1f; background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
+  .ben i.early { color: #8a8a8a; }
+  .table-wrap { overflow-x: auto; }
+  @media (max-width: 600px) { .table-wrap th:nth-child(2), .table-wrap td:nth-child(2), .table-wrap th:nth-child(3), .table-wrap td:nth-child(3) { display: none; } .bens { min-width: 0; } .ben { white-space: normal; border-radius: 6px; } .table-wrap th:nth-child(5), .table-wrap td:nth-child(5) { display: none; } }
 </style>
 </head>
 <body>
@@ -81,14 +89,8 @@
   </div>
 </header>
 <div class="subnav"><div class="subnav-inner">
-  <a href="nutrition.html">Overview</a>
+  <a href="nutrition.html">Papers</a>
   <a href="metabolic-health.html">Metabolic Health</a>
-  <a href="linoleic-acid.html">Linoleic Acid</a>
-  <a href="ahr.html">AhR</a>
-  <a href="cold-exposure.html">Cold Exposure</a>
-  <a href="sunlight.html">Sunlight</a>
-  <a href="energy-metabolism.html">Energy Metabolism</a>
-  <a href="cancer.html">Cancer</a>
   <a href="nutrients.html" class="active">Nutrients</a>
   <a href="supplements.html">Supplements</a>
 </div></div>
@@ -105,55 +107,55 @@
 <p class="legend">
   <span class="status-cited">● cited</span> has a numbered reference list
   <span class="status-plain">● written</span> has prose from the source, no linked citations
-  <span class="status-stub">● stub</span> property fields only — thin in the source database
 </p>
 
 <h2>Index</h2>
-<table>
+<p class="legend" style="margin-top:-0.5rem">Dots show evidence strength: <span class="ben"><i class="strong"></i>strong</span> <span class="ben"><i class="moderate"></i>some human data</span> <span class="ben"><i class="early"></i>early</span></p>
+<div class="table-wrap"><table>
 <thead>
-<tr><th>Nutrient</th><th>Category</th><th>Priority</th><th>TL;DR</th><th></th></tr>
+<tr><th>Nutrient</th><th>Category</th><th>Priority</th><th>What it does</th><th></th></tr>
 </thead>
 <tbody>
-<tr><td><a href="glycinecollagen.html">Glycine / Collagen</a></td><td>Amino Acid</td><td>Foundational</td><td>Substrate for collagen and several metabolic pathways; collagen provides structural integrity.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="cysteine.html">Cysteine</a></td><td>Amino Acid</td><td>Useful</td><td>Sulfur-containing amino acid used to build glutathione; supports detox/antioxidant capacity.</td><td class="status-stub">● stub</td></tr>
-<tr><td><a href="glutamine.html">Glutamine</a></td><td>Amino Acid</td><td>Useful</td><td>Fuels intestinal cells and supports gut barrier function.</td><td class="status-stub">● stub</td></tr>
-<tr><td><a href="methionine.html">Methionine</a></td><td>Amino Acid</td><td>Useful</td><td>Essential amino acid central to methylation (SAM) and sulfur amino acid metabolism.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="butyrate.html">Butyrate (butyric acid)</a></td><td>Compound</td><td>Useful</td><td>SCFA from microbial fiber fermentation; colon cell energy, barrier function, anti-inflammatory signaling.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="chlorophyll.html">Chlorophyll / Chlorophyllin</a></td><td>Compound</td><td>Experimental</td><td>Studied for binding some dietary toxins; evidence mixed and context-dependent.</td><td class="status-stub">● stub</td></tr>
-<tr><td><a href="creatine.html">Creatine</a></td><td>Compound</td><td>Useful</td><td>Supports rapid ATP regeneration via the phosphocreatine system.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="glutathione.html">Glutathione</a></td><td>Compound</td><td>Experimental</td><td>Primary intracellular antioxidant; redox balance and detoxification.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="stearicacid.html">Stearic acid (C18:0)</a></td><td>Compound</td><td>Experimental</td><td>Saturated fatty acid with a more neutral LDL effect than most others, calorie-for-calorie.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="chloride.html">Chloride</a></td><td>Electrolyte</td><td>Foundational</td><td>Main extracellular anion; fluid balance, stomach acid, acid-base regulation.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="sodium.html">Sodium</a></td><td>Electrolyte</td><td>Foundational</td><td>Regulates fluid balance, excitability, and nutrient transport.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="calcium.html">Calcium</a></td><td>Mineral</td><td>Foundational</td><td>Bone mineral, muscle contraction, nerve signaling, clotting; balanced by D and magnesium.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="copper.html">Copper</a></td><td>Mineral</td><td>Useful</td><td>Connective tissue cross-linking (lysyl oxidase), antioxidant enzymes, iron metabolism.</td><td class="status-stub">● stub</td></tr>
-<tr><td><a href="iron.html">Iron</a></td><td>Mineral</td><td>Foundational</td><td>Oxygen transport; cofactor for prolyl/lysyl hydroxylase in collagen synthesis (works with vitamin C).</td><td class="status-stub">● stub</td></tr>
-<tr><td><a href="magnesium.html">Magnesium</a></td><td>Mineral</td><td>Foundational</td><td>Required for ATP function, neuromuscular activity, and relaxation.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="phosphate.html">Phosphate</a></td><td>Mineral</td><td>Foundational</td><td>ATP energy, cell membranes, bone mineral; balance with calcium, D, kidney function.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="potassium.html">Potassium</a></td><td>Mineral</td><td>Foundational</td><td>Major intracellular cation; membrane potential, nerve signaling, muscle contraction.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="selenium.html">Selenium</a></td><td>Mineral</td><td>Foundational</td><td>Antioxidant enzymes and thyroid hormone metabolism; excess is harmful.</td><td class="status-stub">● stub</td></tr>
-<tr><td><a href="zinc.html">Zinc</a></td><td>Mineral</td><td>Foundational</td><td>Immune function, skin integrity, enzyme activity.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="vitamina.html">Vitamin A (Retinol / Carotenoids)</a></td><td>Vitamin</td><td>Foundational</td><td>Regulates gene expression and light detection; cell differentiation, visual signaling.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="vitaminb1thiamine.html">Vitamin B1 (Thiamine)</a></td><td>Vitamin</td><td>Foundational</td><td>Enables conversion of glucose into usable energy (ATP).</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="vitaminb2riboflavin.html">Vitamin B2 (Riboflavin)</a></td><td>Vitamin</td><td>Foundational</td><td>Enables electron transfer (FAD/FMN) for ATP production.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="vitaminb3niacin.html">Vitamin B3 (Niacin)</a></td><td>Vitamin</td><td>Foundational</td><td>Provides NAD⁺ for energy production and cellular repair.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="vitaminb5pantothenicacid.html">Vitamin B5 (Pantothenic Acid)</a></td><td>Vitamin</td><td>Foundational</td><td>Forms CoA to enable fuel metabolism and entry into energy pathways.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="vitaminb6pyridoxine.html">Vitamin B6 (Pyridoxine / PLP)</a></td><td>Vitamin</td><td>Foundational</td><td>Cofactor for amino acid metabolism and neurotransmitter synthesis.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="vitaminb7biotin.html">Vitamin B7 (Biotin)</a></td><td>Vitamin</td><td>Foundational</td><td>Cofactor for carboxylase enzymes in fat, glucose, and amino-acid metabolism.</td><td class="status-stub">● stub</td></tr>
-<tr><td><a href="vitaminb9folate.html">Vitamin B9 (Folate / Folic Acid)</a></td><td>Vitamin</td><td>Foundational</td><td>DNA/RNA synthesis and methylation via one-carbon metabolism.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="vitaminb12cobalamin.html">Vitamin B12 (Cobalamin)</a></td><td>Vitamin</td><td>Foundational</td><td>Neurologic function and red blood cell formation.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="vitaminc.html">Vitamin C</a></td><td>Vitamin</td><td>Foundational</td><td>Enables collagen synthesis and protects against oxidative stress.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="vitamind.html">Vitamin D</a></td><td>Vitamin</td><td>Foundational</td><td>Hormone that regulates calcium/phosphate transport.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="vitamine.html">Vitamin E (Alpha-tocopherol)</a></td><td>Vitamin</td><td>Useful</td><td>Fat-soluble antioxidant protecting membrane lipids from oxidative damage.</td><td class="status-plain">● written</td></tr>
-<tr><td><a href="vitamink1.html">Vitamin K1 (Phylloquinone)</a></td><td>Vitamin</td><td>Foundational</td><td>Activates hepatic clotting factors; essential for coagulation.</td><td class="status-cited">● cited</td></tr>
-<tr><td><a href="vitamink2.html">Vitamin K2</a></td><td>Vitamin</td><td>Foundational</td><td>Activates proteins that direct calcium to bone and away from arteries.</td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="glycinecollagen.html">Glycine / Collagen</a></td><td>Amino Acid</td><td>Foundational</td><td class="bens"><span class="ben"><i class="moderate"></i>Firmer, more hydrated skin</span><span class="ben"><i class="moderate"></i>Less joint pain</span><span class="ben"><i class="moderate"></i>Deeper sleep</span><span class="ben"><i class="moderate"></i>Better insulin sensitivity</span><span class="ben"><i class="moderate"></i>Builds glutathione</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="cysteine.html">Cysteine</a></td><td>Amino Acid</td><td>Useful</td><td class="bens"><span class="ben"><i class="strong"></i>Builds glutathione</span><span class="ben"><i class="strong"></i>Protects the liver in a Tylenol overdose</span><span class="ben"><i class="moderate"></i>Fewer COPD flare-ups</span><span class="ben"><i class="early"></i>Eases compulsive habits</span><span class="ben"><i class="early"></i>Slows aging markers when paired with glycine</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="glutamine.html">Glutamine</a></td><td>Amino Acid</td><td>Useful</td><td class="bens"><span class="ben"><i class="strong"></i>Fuels the gut lining</span><span class="ben"><i class="moderate"></i>Calms IBS after a gut infection</span><span class="ben"><i class="early"></i>Tightens a leaky gut, but only at high doses</span><span class="ben"><i class="moderate"></i>Fewer sickle-cell pain crises</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="methionine.html">Methionine</a></td><td>Amino Acid</td><td>Useful</td><td class="bens"><span class="ben"><i class="strong"></i>Powers methylation</span><span class="ben"><i class="strong"></i>Feeds glutathione</span><span class="ben"><i class="early"></i>Needs glycine to stay balanced</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="butyrate.html">Butyrate (butyric acid)</a></td><td>Compound</td><td>Useful</td><td class="bens"><span class="ben"><i class="strong"></i>Fuels the colon</span><span class="ben"><i class="early"></i>Strengthens the gut lining</span><span class="ben"><i class="early"></i>Calms immune signaling</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="chlorophyll.html">Chlorophyll / Chlorophyllin</a></td><td>Compound</td><td>Experimental</td><td class="bens"><span class="ben"><i class="moderate"></i>Blocks absorption of a liver carcinogen</span><span class="ben"><i class="early"></i>May reduce body odor</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="creatine.html">Creatine</a></td><td>Compound</td><td>Useful</td><td class="bens"><span class="ben"><i class="strong"></i>More power in short bursts</span><span class="ben"><i class="strong"></i>Better repeated sprints and lifts</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="glutathione.html">Glutathione</a></td><td>Compound</td><td>Experimental</td><td class="bens"><span class="ben"><i class="strong"></i>Neutralizes free radicals</span><span class="ben"><i class="strong"></i>Supports detox</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="stearicacid.html">Stearic acid (C18:0)</a></td><td>Compound</td><td>Experimental</td><td class="bens"><span class="ben"><i class="moderate"></i>Neutral on LDL</span><span class="ben"><i class="early"></i>Becomes oleic acid</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="chloride.html">Chloride</a></td><td>Electrolyte</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Keeps you hydrated</span><span class="ben"><i class="strong"></i>Makes stomach acid</span><span class="ben"><i class="strong"></i>Balances blood pH</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="sodium.html">Sodium</a></td><td>Electrolyte</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Keeps you hydrated</span><span class="ben"><i class="strong"></i>Lets nerves fire</span><span class="ben"><i class="strong"></i>Powers the heart's rhythm</span><span class="ben"><i class="strong"></i>Pulls nutrients into cells</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="calcium.html">Calcium</a></td><td>Mineral</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Builds strong bones</span><span class="ben"><i class="strong"></i>Makes muscles contract</span><span class="ben"><i class="strong"></i>Lets nerves fire</span><span class="ben"><i class="strong"></i>Helps blood clot</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="copper.html">Copper</a></td><td>Mineral</td><td>Useful</td><td class="bens"><span class="ben"><i class="strong"></i>Strengthens collagen</span><span class="ben"><i class="strong"></i>Helps you use iron</span><span class="ben"><i class="strong"></i>Protects nerves</span><span class="ben"><i class="moderate"></i>Antioxidant defense</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="iron.html">Iron</a></td><td>Mineral</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Carries oxygen</span><span class="ben"><i class="moderate"></i>Less fatigue when stores are low</span><span class="ben"><i class="strong"></i>Builds stable collagen</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="magnesium.html">Magnesium</a></td><td>Mineral</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Powers every cell</span><span class="ben"><i class="moderate"></i>Calmer mind, better sleep</span><span class="ben"><i class="moderate"></i>Relaxes muscles</span><span class="ben"><i class="strong"></i>Steady heart rhythm</span><span class="ben"><i class="moderate"></i>Better blood sugar control</span><span class="ben"><i class="early"></i>Calms inflammation</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="phosphate.html">Phosphate</a></td><td>Mineral</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Stores cellular energy</span><span class="ben"><i class="strong"></i>Builds bone</span><span class="ben"><i class="strong"></i>Builds DNA and membranes</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="potassium.html">Potassium</a></td><td>Mineral</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Keeps nerves and muscles firing</span><span class="ben"><i class="strong"></i>Steady heart rhythm</span><span class="ben"><i class="strong"></i>Balances sodium</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="selenium.html">Selenium</a></td><td>Mineral</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Antioxidant defense</span><span class="ben"><i class="strong"></i>Protects the heart when intake is very low</span><span class="ben"><i class="moderate"></i>Calms autoimmune thyroiditis</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="zinc.html">Zinc</a></td><td>Mineral</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Supports immunity</span><span class="ben"><i class="strong"></i>Heals wounds and skin</span><span class="ben"><i class="strong"></i>Controls genes</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="vitamina.html">Vitamin A (Retinol / Carotenoids)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Night vision</span><span class="ben"><i class="strong"></i>Healthy skin and gut lining</span><span class="ben"><i class="strong"></i>Immune defense</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitaminb1thiamine.html">Vitamin B1 (Thiamine)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Turns carbs into energy</span><span class="ben"><i class="strong"></i>Powers the brain</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitaminb2riboflavin.html">Vitamin B2 (Riboflavin)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Powers mitochondria</span><span class="ben"><i class="strong"></i>Recharges antioxidants</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitaminb3niacin.html">Vitamin B3 (Niacin)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Powers energy production</span><span class="ben"><i class="strong"></i>Repairs DNA</span><span class="ben"><i class="moderate"></i>Supports the brain</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitaminb5pantothenicacid.html">Vitamin B5 (Pantothenic Acid)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Turns food into fuel</span><span class="ben"><i class="strong"></i>Burns and builds fat</span><span class="ben"><i class="strong"></i>Makes acetylcholine</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitaminb6pyridoxine.html">Vitamin B6 (Pyridoxine / PLP)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Makes mood chemicals</span><span class="ben"><i class="strong"></i>Builds red blood cells</span><span class="ben"><i class="moderate"></i>Keeps homocysteine down</span><span class="ben"><i class="strong"></i>Uses protein for energy</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitaminb7biotin.html">Vitamin B7 (Biotin)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Helps process fat, sugar and protein</span><span class="ben"><i class="early"></i>Hair and nails, only if you're deficient</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitaminb9folate.html">Vitamin B9 (Folate / Folic Acid)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Builds new cells</span><span class="ben"><i class="strong"></i>Builds red blood cells</span><span class="ben"><i class="strong"></i>Keeps homocysteine down</span><span class="ben"><i class="strong"></i>Protects pregnancy</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="vitaminb12cobalamin.html">Vitamin B12 (Cobalamin)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Protects nerves</span><span class="ben"><i class="strong"></i>Builds red blood cells</span><span class="ben"><i class="strong"></i>Keeps homocysteine down</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="vitaminc.html">Vitamin C</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Builds strong collagen</span><span class="ben"><i class="strong"></i>Antioxidant, and recharges vitamin E</span><span class="ben"><i class="moderate"></i>Supports immunity, heart, stress and more</span><span class="ben"><i class="strong"></i>Boosts iron absorption</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitamind.html">Vitamin D</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Builds bone</span><span class="ben"><i class="moderate"></i>Supports immunity</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitamine.html">Vitamin E (Alpha-tocopherol)</a></td><td>Vitamin</td><td>Useful</td><td class="bens"><span class="ben"><i class="strong"></i>Protects cell membranes</span><span class="ben"><i class="moderate"></i>Supports immunity</span></td><td class="status-plain">● written</td></tr>
+<tr><td><a href="vitamink1.html">Vitamin K1 (Phylloquinone)</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="strong"></i>Lets your blood clot</span></td><td class="status-cited">● cited</td></tr>
+<tr><td><a href="vitamink2.html">Vitamin K2</a></td><td>Vitamin</td><td>Foundational</td><td class="bens"><span class="ben"><i class="moderate"></i>Builds bone</span><span class="ben"><i class="moderate"></i>Keeps arteries clear</span></td><td class="status-cited">● cited</td></tr>
 </tbody>
-</table>
+</table></div>
 
 <hr>
 
 <h2>Notes on this draft</h2>
-<p>Depth varies a lot by entry, and that's a direct reflection of the source database rather than an editing choice — some nutrients (glycine, vitamin C, magnesium, sodium, calcium, the B-vitamin energy-metabolism cluster, D, K1/K2) had rich prose and linked citations already in Notion; others (cysteine, copper, iron, selenium, biotin, glutamine) currently have little beyond the property fields. The "stub" pages are the honest reflection of that, not a placeholder to be embarrassed about — but copper and iron in particular are worth prioritizing given how directly they feed the collagen-synthesis mechanism already documented on the Glycine/Collagen and Vitamin C pages.</p>
+<p>Depth still varies by entry. The seven pages that began as property-field stubs &mdash; cysteine, glutamine, chlorophyll, copper, iron, selenium and biotin &mdash; were researched and rewritten in September 2026, each with a numbered reference list checked against PubMed. Several turned out to carry the most useful cautions on the index: selenium's U-shaped risk curve, glutamine's harm in critical illness, iron's lack of any excretion route, biotin's interference with blood tests, and zinc-induced copper deficiency.</p>
 <p class="todo">TODO — the Systems Impacted and Protocols relations in the source database (which system each nutrient feeds into, and which named protocols use it) aren't represented on these pages yet. Worth adding once the priority stubs are filled in, so the cross-linking is worth the overhead.</p>
 <p class="todo">TODO — decide whether Toxins (the source database has a parallel table: halogens, anti-nutrients, heavy metals, xenoestrogens) becomes a "what to avoid" companion paper or stays out entirely.</p>
 <p class="todo">TODO — a small number of citations carried over from the source don't obviously match the claim they're attached to (flagged inline on Glycine/Collagen), and the Sodium page has two citations pointing to now-deleted Notion pages (also flagged inline). Worth an audit pass.</p>

@@ -3,55 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cysteine — Nutrient Deep Dive</title>
+<title>Cysteine / NAC — Nutrient</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
-<h1>Cysteine</h1>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
+<h1>Cysteine <span class="alt">(and NAC)</span></h1>
 <div class="tags"><span class="tag">Amino Acid</span><span class="tag">Useful</span></div>
+<p class="lede">The sulfur amino acid that usually limits how much glutathione you can make. NAC, its supplement form, has real clinical uses.</p>
 
-<div class="callout"><strong>TL;DR:</strong> Sulfur-containing amino acid used to build glutathione (major cellular antioxidant) and support detox/antioxidant capacity.</div>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Protein first · NAC for specific uses</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Builds glutathione</span>
+      <span class="how">Supplies the sulfur for the body's master antioxidant, and is usually the bottleneck.</span>
+      <a class="why" href="#glutathione">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Protects the liver in a Tylenol overdose</span>
+      <span class="how">NAC is the standard antidote. It refills the glutathione the overdose burns through.</span>
+      <a class="why" href="#acetaminophen">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Fewer COPD flare-ups</span>
+      <span class="how">600 mg twice a day cut flare-ups by about a fifth over a year.</span>
+      <a class="why" href="#lungs">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early / limited"></span>
+      <span class="what">Eases compulsive habits</span>
+      <span class="how">Rebalances glutamate in the brain's reward circuit. It helped hair-pulling in one trial.</span>
+      <a class="why" href="#brain">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early / limited"></span>
+      <span class="what">Slows aging markers when paired with glycine</span>
+      <span class="how">"GlyNAC" restored glutathione in older adults in a small trial.</span>
+      <a class="why" href="#glynac">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span><span><span class="ev moderate"></span>Some human evidence</span><span><span class="ev early"></span>Early / limited</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>Enough protein usually covers it: beef, eggs, salmon, poultry, dairy</li>
+        <li>NAC: 600–1,200 mg a day is the common range (1,200–2,400 mg in the brain trials)</li>
+        <li>Pair it with glycine, glutathione's other limiting building block</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>NAC smells of sulfur and can upset the stomach</li>
+        <li>Very little oral NAC reaches the blood intact</li>
+        <li>Overdose treatment happens in hospital, not with supplements</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<h2>Role</h2>
-<p>Cysteine is the sulfur-donating partner in glutathione synthesis (glycine + cysteine + glutamate → glutathione) and is generally considered the rate-limiting substrate in that pathway — see <a href="glutathione.html">Glutathione</a> and <a href="glycine-collagen.html">Glycine / Collagen</a> for the fuller mechanism.</p>
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
 
-<h2>Intake</h2>
-<p>Dietary protein generally supplies sufficient cysteine. Where it's used deliberately (as N-acetylcysteine, NAC), dosing varies by goal and should be individualized rather than following a fixed target.</p>
+<h2 id="glutathione"><span class="ev strong" title="Strong human evidence"></span>Builds glutathione</h2>
+<p>Cysteine is the sulfur-donating partner in glutathione synthesis (glutamate + cysteine + glycine &rarr; glutathione), and is generally considered the rate-limiting substrate in that pathway &mdash; its thiol (&ndash;SH) group is the business end of glutathione's antioxidant chemistry. The body makes cysteine from methionine via the transsulfuration pathway, which is why it's classed as conditionally essential. See <a href="glutathione.html">Glutathione</a>, <a href="methionine.html">Methionine</a> and <a href="glycinecollagen.html">Glycine / Collagen</a>. <span class="grade">(Strong &mdash; biochemistry)</span></p>
+<p>Free cysteine is unstable and oxidizes easily, so the supplement form is <strong>N-acetylcysteine (NAC)</strong>, which the body deacetylates back to cysteine. Oral NAC's systemic bioavailability is low &mdash; most is metabolized in the gut wall and liver on first pass<sup><a href="#ref1">1</a></sup> &mdash; which is part of why its effects are more convincing as a glutathione precursor than as a direct antioxidant.</p>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<h2>Deficiency effects</h2>
-<p>Low cysteine availability can impair glutathione synthesis and antioxidant capacity — typically seen in the context of broader malnutrition or illness rather than as an isolated deficiency.</p>
+<h2 id="acetaminophen"><span class="ev strong" title="Strong human evidence"></span>Protects the liver in a Tylenol overdose</h2>
+<p>The clearest proof that cysteine supply limits glutathione. In overdose, acetaminophen (paracetamol) is metabolized to a reactive intermediate, NAPQI, that is normally neutralized by glutathione. Once hepatic glutathione runs out, NAPQI binds liver proteins and destroys hepatocytes. NAC, given promptly, replenishes glutathione and is the standard antidote worldwide.<sup><a href="#ref2">2</a></sup> This is a hospital treatment, not a reason to take NAC with Tylenol. <span class="grade">(Strong)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<h2>Top foods</h2>
+<h2 id="lungs"><span class="ev moderate" title="Some human evidence"></span>Fewer COPD flare-ups</h2>
+<p>NAC also thins mucus by breaking disulfide bonds in mucus proteins. In PANTHEON, 1,006 Chinese patients with moderate-to-severe COPD took 600&nbsp;mg NAC or placebo twice daily for a year: exacerbations fell from 1.49 to 1.16 per patient-year (risk ratio 0.78, p=0.001), with side effects no different from placebo.<sup><a href="#ref3">3</a></sup> Note the funder: the trial was sponsored by Hainan Zambon, a manufacturer of NAC. <span class="grade">(Moderate &mdash; large RCT, industry-funded, single country)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="brain"><span class="ev early" title="Early / limited"></span>Eases compulsive habits</h2>
+<p>NAC feeds the cystine&ndash;glutamate antiporter, which modulates extracellular glutamate in the nucleus accumbens &mdash; a reward-circuit mechanism proposed to dampen compulsive behavior. In a 12-week double-blind trial in 50 adults with trichotillomania (compulsive hair-pulling), NAC at 1,200&ndash;2,400&nbsp;mg/day produced "much or very much improved" ratings in 56% versus 16% on placebo (p=0.003), with no adverse events; improvement appeared after about 9 weeks.<sup><a href="#ref4">4</a></sup> Trials across other compulsive and addictive conditions have been more mixed. <span class="grade">(Early &mdash; one positive RCT in this indication)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="glynac"><span class="ev early" title="Early / limited"></span>Slows aging markers when paired with glycine</h2>
+<p>Glutathione falls with age, and both of its limiting precursors &mdash; cysteine and glycine &mdash; are implicated. In a randomized trial, 24 older adults took GlyNAC (glycine + NAC) or an alanine placebo for 16 weeks, with 12 young adults as a reference group. GlyNAC, but not placebo, corrected glutathione deficiency and improved oxidative stress, mitochondrial fat oxidation, inflammation, insulin resistance, endothelial function, gait speed, strength, waist circumference and blood pressure.<sup><a href="#ref5">5</a></sup> That's an unusually long list of wins from 12 treated people &mdash; worth taking seriously as a hypothesis, and worth replicating before believing in full. <span class="grade">(Early &mdash; small RCT, needs replication)</span> It pairs directly with the glycine argument on the <a href="glycinecollagen.html">Glycine / Collagen</a> page.</p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="intake">Intake &amp; food sources</h2>
+<p>Dietary protein generally supplies enough cysteine; low availability is typically seen with broader malnutrition or illness rather than as an isolated deficiency. There's no RDA for cysteine alone; it's covered within the combined sulfur amino acid (methionine + cysteine) requirement.</p>
+<h3>Top foods</h3>
 <ul>
   <li>Beef</li>
-  <li>Salmon</li>
   <li>Eggs</li>
+  <li>Salmon</li>
+  <li>Chicken and turkey</li>
   <li>Yogurt</li>
-  <li>Onion</li>
+  <li>Onion and garlic (sulfur compounds, not cysteine itself)</li>
 </ul>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<p class="stub">This entry is thin in the source database — no body content beyond the property fields above, and no linked citations. Worth expanding once there's more material to draw on.</p>
+<hr>
+<h2 id="references">References</h2>
+<div class="refs">
+<ol>
+<li id="ref1">Holdiness MR. Clinical pharmacokinetics of N-acetylcysteine. <em>Clin Pharmacokinet</em> 1991. <a href="https://pubmed.ncbi.nlm.nih.gov/2029805/" target="_blank">PMID 2029805</a></li>
+<li id="ref2">Chidiac AS et al. Paracetamol (acetaminophen) overdose and hepatotoxicity: mechanism, treatment, prevention measures, and estimates of burden of disease. <em>Expert Opin Drug Metab Toxicol</em> 2023. <a href="https://pubmed.ncbi.nlm.nih.gov/37436926/" target="_blank">PMID 37436926</a></li>
+<li id="ref3">Zheng JP et al. Twice daily N-acetylcysteine 600 mg for exacerbations of chronic obstructive pulmonary disease (PANTHEON). <em>Lancet Respir Med</em> 2014. <a href="https://pubmed.ncbi.nlm.nih.gov/24621680/" target="_blank">PMID 24621680</a></li>
+<li id="ref4">Grant JE, Odlaug BL, Kim SW. N-acetylcysteine, a glutamate modulator, in the treatment of trichotillomania. <em>Arch Gen Psychiatry</em> 2009. <a href="https://pubmed.ncbi.nlm.nih.gov/19581567/" target="_blank">PMID 19581567</a></li>
+<li id="ref5">Kumar P et al. Supplementing glycine and N-acetylcysteine (GlyNAC) in older adults improves glutathione deficiency, oxidative stress, mitochondrial dysfunction, inflammation, physical function, and aging hallmarks: a randomized clinical trial. <em>J Gerontol A Biol Sci Med Sci</em> 2023. <a href="https://pubmed.ncbi.nlm.nih.gov/35975308/" target="_blank">PMID 35975308</a></li>
+</ol>
+</div>
 
 </body>
 </html>

@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statins, LDL &amp; Cardiovascular Disease</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+.site-nav{display:flex;flex-wrap:wrap;gap:2px 16px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;}
+.site-nav a{color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px;text-decoration:none;font-weight:500;}
+.site-nav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.site-nav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.spine-part a{color:inherit;border-bottom:none;}
+.spine-part a:hover{border-bottom:1px solid currentColor;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+
+/* ---- Figure: SVG diagram ---- */
+.diagram{
+  margin:30px 0;
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:20px 20px 14px;
+}
+.diagram svg{width:100%;height:auto;display:block;}
+.diagram .dcap{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;
+  color:var(--ink-soft);line-height:1.55;margin:14px 0 0;
+  padding-left:14px;border-left:2px solid var(--moss);
+}
+.diagram .dcap b{color:var(--moss-deep);}
+
+/* ---- Primer ---- */
+.fattypes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0;}
+.ftype{
+  border:1px solid var(--rule);border-radius:4px;background:var(--card);
+  padding:18px 18px 16px;
+}
+.ftype .nm{
+  font-family:'Fraunces',serif;font-weight:600;font-size:19px;
+  color:var(--moss-deep);margin-bottom:2px;
+}
+.ftype .bonds{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:10px;
+}
+.ftype p{margin:0;font-size:15.5px;line-height:1.5;}
+.ftype .eg{
+  margin-top:10px;padding-top:10px;border-top:1px solid var(--rule);
+  font-size:14px;color:var(--ink-soft);font-style:italic;
+}
+.defrow{
+  display:grid;grid-template-columns:180px 1fr;gap:16px;
+  padding:14px 0;border-top:1px solid var(--rule);
+}
+.defrow:first-of-type{border-top:none;}
+.defrow .term{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
+  color:var(--moss-deep);line-height:1.45;padding-top:2px;
+}
+.defrow .def{margin:0;font-size:16.5px;line-height:1.55;}
+@media (max-width:560px){
+  .fattypes{grid-template-columns:1fr;}
+  .defrow{grid-template-columns:1fr;gap:4px;}
+}
+
+/* ---- Data table ---- */
+table.matrix{
+  width:100%;border-collapse:collapse;margin:26px 0;
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+}
+table.matrix th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  font-weight:600;padding:14px 16px;border-bottom:2px solid var(--ink);
+  vertical-align:bottom;
+}
+table.matrix td{
+  padding:14px 16px;border-top:1px solid var(--rule);
+  vertical-align:top;font-size:15.5px;line-height:1.5;color:var(--ink-soft);
+}
+table.matrix td:first-child{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--moss-deep);width:26%;padding-top:16px;
+}
+table.matrix td.tiercell{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  width:16%;padding-top:17px;
+}
+@media (max-width:640px){
+  table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100%;}
+  table.matrix thead{display:none;}
+  table.matrix tr{border-top:1px solid var(--rule);padding:6px 0;}
+  table.matrix td{border-top:none;padding:4px 16px;}
+  table.matrix td:first-child{width:auto;padding-top:14px;}
+  table.matrix td.tiercell{width:auto;}
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+
+/* ---- Evidence chips ---- */
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mixed{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-mixed::before{background:var(--gold);}
+.ev-weak{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-weak::before{background:var(--rust);}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.deepdive{
+  border-left:3px solid var(--sky);
+  background:linear-gradient(90deg,rgba(61,106,122,.045),rgba(61,106,122,0) 60%);
+  border-radius:0 4px 4px 0;
+  padding:6px 24px 14px 22px;
+  margin:26px 0;
+}
+.deepdive-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;display:flex;align-items:baseline;gap:8px;
+  padding:10px 0 4px;border-bottom:1px dotted var(--rule);margin-bottom:12px;
+}
+.deepdive-tag .dd-skip{
+  font-weight:400;text-transform:none;letter-spacing:.02em;
+  color:var(--ink-soft);font-style:italic;font-size:11px;
+}
+.deepdive-tag::before{content:"\25B7";font-size:12px;color:var(--sky);}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.chain{
+  font-family:'IBM Plex Mono',monospace;font-size:14px;
+  line-height:1.9;color:var(--ink-soft);
+  background:var(--paper-deep);padding:16px 18px;border-radius:3px;
+  margin:14px 0;overflow-x:auto;
+}
+.chain b{color:var(--moss-deep);}
+.arrow{color:var(--rust);font-weight:600;}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Numbered mitigation list ---- */
+ol.mit{list-style:none;counter-reset:m;padding:0;margin:24px 0;}
+ol.mit>li{
+  counter-increment:m;position:relative;
+  padding:18px 0 18px 58px;border-top:1px solid var(--rule);
+}
+ol.mit>li::before{
+  content:counter(m);position:absolute;left:0;top:16px;
+  font-family:'Fraunces',serif;font-weight:600;font-size:30px;
+  color:var(--moss);line-height:1;width:42px;text-align:center;
+}
+ol.mit>li .mit-title{font-weight:600;color:var(--moss-deep);}
+
+/* ---- Figure / table image ---- */
+figure{margin:34px 0;}
+figure img{
+  width:100%;height:auto;display:block;
+  border:1px solid var(--rule);border-radius:4px;
+  background:#fff;
+}
+figcaption{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;
+  color:var(--ink-soft);margin-top:12px;line-height:1.5;
+  padding-left:14px;border-left:2px solid var(--moss);
+}
+figcaption b{color:var(--moss-deep);font-weight:600;}
+
+/* ---- Ratio stat strip ---- */
+.ratio{
+  display:flex;gap:0;margin:30px 0;border:1px solid var(--rule);
+  border-radius:4px;overflow:hidden;background:var(--card);
+}
+.ratio div{flex:1;padding:22px 20px;text-align:center;border-right:1px solid var(--rule);}
+.ratio div:last-child{border-right:none;}
+.ratio .big{
+  font-family:'Fraunces',serif;font-weight:600;font-size:34px;
+  color:var(--moss-deep);line-height:1;
+}
+.ratio .big.hot{color:var(--rust);}
+.ratio .cap{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-soft);margin-top:10px;line-height:1.4;
+}
+
+/* ---- Pull quote ---- */
+.pull{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+  font-size:25px;line-height:1.32;color:var(--moss-deep);
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  padding:26px 0;margin:38px 0;
+}
+
+/* ---- Footer / limitations ---- */
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-h{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;
+  margin:30px 0 0;
+}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+ol.refs{
+  list-style:none;padding:0;margin:24px 0 0;
+  font-family:'Newsreader',Georgia,serif;
+}
+ol.refs li{
+  counter-increment:ref;position:relative;padding:0 0 14px 3.2em;
+  font-size:15px;line-height:1.55;color:var(--ink);
+}
+.refwrap{counter-reset:ref;}
+sup.cite{font-size:11px;line-height:0;vertical-align:super;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+sup.cite a{color:var(--rust);text-decoration:none;padding:0 1px;}
+sup.cite a:hover{text-decoration:underline;}
+ol.refs li:target{background:#fbf6ea;outline:2px solid #b78a2e;outline-offset:3px;border-radius:4px;}
+ol.refs li::before{
+  content:"["counter(ref)"]";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--rust);
+}
+ol.refs li .j{font-style:italic;}
+ol.refs li .note{color:var(--ink-soft);font-size:13.5px;}
+.ref-group{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.ref-group:first-of-type{margin-top:8px;}
+.ref-note{
+  font-size:13.5px;color:var(--ink-soft);font-style:italic;
+  margin:4px 0 18px;line-height:1.5;
+}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+/* refs */
+.refnote{font-size:14px;color:var(--ink-soft);font-style:italic;}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .ratio{flex-wrap:wrap;}
+  .ratio div{flex:1 1 50%;border-bottom:1px solid var(--rule);}
+  .byline{flex-direction:column;gap:6px;}
+}
+@media (prefers-reduced-motion:no-preference){
+  section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style>
+<style>
+/* ---- Pushback box (series convention, cf. cancer.html / sunlight.html) ---- */
+.pushback{
+  border-left:3px solid var(--rust);
+  background:rgba(168,86,47,.05);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.pushback .pb-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+/* ---- Safety notice ---- */
+.safety{
+  border:2px solid var(--rust);border-radius:4px;
+  background:rgba(168,86,47,.06);
+  padding:20px 26px;margin:30px 0;font-size:17px;
+}
+.safety .s-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:8px;
+}
+/* ---- Two-column concede/qualify grid ---- */
+.ledger{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0;}
+.ledger .col{
+  border:1px solid var(--rule);border-radius:4px;background:var(--card);
+  padding:18px 20px 16px;
+}
+.ledger .col.keep{border-top:3px solid var(--moss);}
+.ledger .col.drop{border-top:3px solid var(--rust);}
+.ledger .col h4{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;margin:0 0 12px;font-weight:600;
+}
+.ledger .col.keep h4{color:var(--moss-deep);}
+.ledger .col.drop h4{color:var(--rust);}
+.ledger ul{margin:0;padding-left:18px;}
+.ledger li{margin:9px 0;font-size:15.5px;line-height:1.5;}
+@media (max-width:640px){.ledger{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html" class="active">Papers</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="nutrients.html">Nutrients</a>
+  <a href="supplements.html">Supplements</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Nutritional Biochemistry</p>
+  <h1 class="title">Statins, LDL &amp; <em>Cardiovascular Disease</em></h1>
+  <p class="sub">Where the LDL hypothesis holds, where it fails as a decision rule, and what else HMG-CoA reductase inhibition switches off.</p>
+  <div class="byline">
+    <span><b>Draft</b> v1</span>
+    <span><b>Scope</b> mechanism and decision-making, not prescribing</span>
+    <span><b>Standard</b> evidence graded &amp; conflicts disclosed</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;">The popular heterodox position is that LDL cholesterol is a harmless bystander and statins are a profitable fraud. That position is wrong, and this paper does not take it. The genetic evidence that apoB-containing lipoproteins <em>cause</em> atherosclerosis is among the strongest causal evidence in all of chronic-disease epidemiology, and statins genuinely prevent heart attacks in people who have already had one. Any argument that requires denying those two facts is building on sand.</p>
+  <p>The interesting critique is a different one, and it survives the concession. <strong>A variable can be causal and still be a poor decision rule.</strong> LDL-C is causal at the population level, weakly informative at the individual level, and routinely treated as though it were the disease rather than one input to it. The paper develops four consequences of that gap. First, the benefit of statins is almost always quoted as a relative risk reduction &mdash; roughly 21&ndash;29% &mdash; while the absolute risk reduction in pooled trial data is on the order of 0.8% for all-cause mortality and 1.3% for myocardial infarction, a distinction that decides the drug for most people in primary prevention. Second, the relationship between total cholesterol and all-cause mortality is <em>U-shaped</em>, so &ldquo;lower is better&rdquo; is not the shape of the underlying curve. Third, statins do not inhibit cholesterol synthesis; they inhibit HMG-CoA reductase, which sits above a branching pathway that also produces coenzyme&nbsp;Q10, dolichol, and the farnesyl and geranylgeranyl groups that anchor a large class of signalling proteins to membranes &mdash; so the drug's effects are broader than its name suggests, in both directions. Fourth, the documented harms divide sharply on inspection: the diabetes signal is real, dose-dependent, and mechanistically on-target, while the muscle-symptom signal is mostly nocebo, which blinded n-of-1 trials establish cleanly and which the heterodox literature almost never concedes.</p>
+  <p>The paper then argues the positive case: that serum lipids are substantially a <em>readout</em> of metabolic terrain rather than an independent lever, which is why the same LDL number carries different risk in an insulin-resistant patient and a lean athlete. That framing is developed into the interventions with the best mechanistic and trial support &mdash; reducing linoleic-acid load, restoring insulin sensitivity, dietary nitrate for blood pressure, and above all exercise, where a randomised trial using serial intravascular ultrasound found coronary atheroma <em>regressed</em> under supervised interval training while it progressed under guideline care, with no lipid target anywhere in the intervention. That last result is the paper's strongest evidence that terrain moves the disease and not merely its markers &mdash; and, because it was delivered on top of standard therapy rather than instead of it, also a caution against reading any of this as a case for stopping treatment. Evidence is graded inline; the strongest counterargument is stated at full strength before it is answered. <strong>This is not medical advice, and nothing here is a reason to stop a prescribed medication.</strong></p>
+</div>
+
+<div class="brief">
+  <div class="lbl">The argument in brief</div>
+  <p class="sub">Eight steps, one per part</p>
+  <ol class="spine">
+    <li><span class="spine-part"><a href="#primer">Primer</a></span><b>&ldquo;LDL cholesterol&rdquo; is neither LDL nor cholesterol</b> in the sense people assume &mdash; it is a cargo measurement standing in for a particle count, and that substitution is where most of the confusion starts.</li>
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span><b>Ancel Keys was not a fraud</b> &mdash; the &ldquo;he cherry-picked 7 of 22 countries&rdquo; story is itself a myth. But he measured <em>total</em> cholesterol, and the framework he left behind was genuinely incomplete.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span>The <b>causal case for apoB is strong</b> and is conceded here in full: Mendelian randomization, familial hypercholesterolaemia, and dose-duration trial data all point the same way.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span>But <b>causal is not the same as actionable</b>. Absolute risk reductions are small, the total-cholesterol mortality curve is U-shaped, and the same LDL number means different things in different bodies.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span>Statins don't block cholesterol &mdash; they <b>clamp the mevalonate pathway</b>, upstream of CoQ10, dolichol, and protein prenylation. That is the source of both the pleiotropic benefits and the characteristic harms.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span>The <b>harms, graded honestly</b>: new-onset diabetes is real and on-target; muscle symptoms are mostly nocebo, and pretending otherwise discredits the rest of the case.</li>
+    <li><span class="spine-part"><a href="#part-vi">Part&nbsp;VI</a></span><b>Cholesterol is not a waste product</b> &mdash; it is the substrate for every steroid hormone, all bile acids, and vitamin&nbsp;D &mdash; and because synthesis runs under negative feedback, a high number has at least <b>four different causes</b> that mean different things.</li>
+    <li><span class="spine-part"><a href="#part-vii">Part&nbsp;VII</a></span>So the lever is <b>terrain, not the number</b> &mdash; with an explicit account of where that reasoning stops and the drug still wins.</li>
+  </ol>
+  <p class="bottom">Not &ldquo;LDL doesn't matter&rdquo; &mdash; that LDL-C is a <em>real cause</em> and a <em>bad dashboard</em>, and that treating the dashboard has costs the dashboard doesn't show.</p>
+</div>
+
+<!-- ============ SAFETY + SOURCING ============ -->
+<section>
+<div class="safety">
+  <div class="s-lbl">Read this first</div>
+  <p style="margin:0 0 10px;">This paper is an argument about evidence and mechanism. It is <strong>not medical advice</strong>, and it is not a reason to stop a prescribed statin. The distinction that matters most is the one between <em>secondary</em> prevention &mdash; people who have already had a heart attack, stroke, or revascularisation &mdash; and <em>primary</em> prevention in people who have not.</p>
+  <p style="margin:0;">In secondary prevention the absolute benefit is large, replicated, and includes all-cause mortality;<sup class="cite"><a href="#r4">4</a></sup> the critique developed below does <em>not</em> apply there with anything like the same force, and stopping abruptly after an acute coronary event is associated with harm. Familial hypercholesterolaemia is a second case where the argument does not transfer. If any of this changes how you think about a medication you are taking, the next step is a conversation with the person who prescribed it, not a unilateral change.</p>
+</div>
+
+<div class="flag">
+  <div class="flag-lbl">A note on sourcing</div>
+  <p style="margin:0;">The heterodox side of this literature is a small, interconnected, and commercially interested network, and it is named rather than laundered. The immediate prompt for this paper was a post by <strong>Ashley Armstrong</strong> (<em>@farmer_ash_</em>), who farms and sells low-PUFA animal foods and who cited two real papers accurately: the CTT Collaboration's 2024 individual-participant analysis of statins and new-onset diabetes,<sup class="cite"><a href="#r17">17</a></sup> and a NHANES analysis finding a U-shaped total-cholesterol/mortality curve.<sup class="cite"><a href="#r6">6</a></sup> Both are engaged directly below. <strong>Uffe Ravnskov</strong> and THINCS, <strong>Malcolm Kendrick</strong>, <strong>Aseem Malhotra</strong>, and <strong>Nicholas Norwitz</strong> supply much of the rest of the sceptical case; Norwitz's KETO-CTA work is funded through the low-carb research ecosystem and one of its papers has been <em>retracted</em>, which is stated at point of use rather than buried. On the other side, the CTT Collaboration holds the trial-level data and has been criticised &mdash; fairly, in my view &mdash; for not releasing individual participant data for independent re-analysis, and most large statin trials were industry-funded. <strong>Neither side here is disinterested.</strong> Where a claim rests on advocacy synthesis rather than a study that demonstrates it end-to-end, it is flagged.</p>
+</div>
+
+<div class="flag" style="margin-top:14px;">
+  <div class="flag-lbl">How to read this paper</div>
+  <p style="margin:0;">The argument runs in the main text and needs no biochemistry background. Blocks marked <span style="color:var(--sky);font-weight:600;">&#9655; In the weeds</span> (blue left-border) are optional enzyme-level detail; each is preceded by a plain-language takeaway that carries the essential point. Evidence is graded inline with the same fixed vocabulary used across this series:</p>
+  <ul style="margin:8px 0 0;padding-left:18px;">
+    <li><span class="ev ev-strong" style="display:inline">Strong</span> &mdash; replicated human evidence, or textbook biochemistry, for the specific claim named.</li>
+    <li><span class="ev ev-mixed" style="display:inline">Moderate</span> &mdash; real evidence, but limited in size, scope, or consistency.</li>
+    <li><span class="ev ev-mixed" style="display:inline">Inferred</span> &mdash; each link is documented separately; the chain has not been shown end-to-end.</li>
+    <li><span class="ev ev-weak" style="display:inline">Contested</span> &mdash; the literature genuinely disagrees.</li>
+    <li><span class="ev ev-weak" style="display:inline">Speculative</span> &mdash; a testable hypothesis, not a demonstrated result.</li>
+  </ul>
+  <p style="margin:8px 0 0;">A grade attaches to a <em>specific</em> claim, never to a whole section.</p>
+</div>
+</section>
+
+<!-- ============ PRIMER ============ -->
+<div class="part-head" id="primer">
+  <span class="part-num">Primer</span>
+  <h2>What the Number on the Lab Report Actually Is</h2>
+</div>
+<section>
+<p>Almost every argument in this field goes wrong in the first ten seconds, because the phrase &ldquo;LDL cholesterol&rdquo; is doing three jobs at once and none of them well. Ten minutes here makes the rest of the paper follow almost mechanically.</p>
+
+<h3 id="p-1"><span class="h3num">P.1</span>Cholesterol is a molecule; LDL is a boat</h3>
+<p>Cholesterol is a rigid four-ring lipid that the body <em>makes</em> &mdash; roughly 70&ndash;80% of the cholesterol in your body was synthesised by your own cells, mostly the liver, and only the remainder came from food. It is not soluble in blood. To move it, the liver packages it with triglycerides, phospholipids, and a structural protein into a lipoprotein particle: a boat.</p>
+
+<p>Each such boat carries exactly <strong>one</strong> molecule of <strong>apolipoprotein B</strong> (apoB), and that protein stays with the particle from the moment it leaves the liver until it is cleared. VLDL, IDL, LDL and Lp(a) are all apoB particles &mdash; different stages and variants of the same vessel. So a measurement of apoB is a <em>count of particles</em>. A measurement of LDL-C is a measure of <em>how much cholesterol those particles happen to be carrying</em>.</p>
+
+<div class="defrow">
+  <div class="term">LDL-C</div>
+  <p class="def">The mass of cholesterol carried inside LDL particles, per decilitre of blood. On most standard panels it is not even measured &mdash; it is <em>calculated</em> by the Friedewald equation from total cholesterol, HDL-C and triglycerides, an estimate that degrades badly when triglycerides are high or very low.</p>
+</div>
+<div class="defrow">
+  <div class="term">ApoB</div>
+  <p class="def">A direct count of atherogenic particles, one protein per particle. Measured, not inferred. When apoB and LDL-C disagree &mdash; <em>discordance</em> &mdash; risk tracks apoB.<sup class="cite"><a href="#r8">8</a></sup></p>
+</div>
+<div class="defrow">
+  <div class="term">Total cholesterol</div>
+  <p class="def">Everything in one bucket: LDL-C plus HDL-C plus roughly a fifth of triglycerides. It is the crudest of the three, and it is the number nearly all of the classical epidemiology &mdash; including Keys's &mdash; was actually built on.</p>
+</div>
+
+<div class="takeaway"><b>Why this matters:</b> two people can have identical LDL-C and quite different particle counts. If the particles are large and cholesterol-rich, it takes few of them to carry that cholesterol. If they are small and depleted, it takes many. The artery wall is penetrated by <em>particles</em>, not by dissolved cholesterol &mdash; so of the two people, the one with more particles is at higher risk, at the same LDL-C.</div>
+
+<h3 id="p-2"><span class="h3num">P.2</span>The lesion is a retention event, not a plumbing problem</h3>
+<p>The mental model most people carry &mdash; cholesterol as grease coating the inside of a pipe &mdash; is wrong in a way that matters. Atherosclerosis begins <em>inside the arterial wall</em>, not on its surface. An apoB particle crosses the endothelium, and if it binds to the proteoglycan matrix underneath it is retained there. Retained particles are chemically modified, principally by oxidation. Modified particles are recognised by macrophages through scavenger receptors that &mdash; crucially &mdash; are <strong>not</strong> down-regulated by intracellular cholesterol load, so the macrophage keeps eating until it becomes a foam cell and dies. That debris is the plaque core.</p>
+
+<div class="mech">
+  <div class="mech-lbl">The response-to-retention chain</div>
+  <div class="chain">
+<b>apoB particle</b> <span class="arrow">&rarr;</span> crosses endothelium<br>
+<span class="arrow">&rarr;</span> <b>retained</b> by subendothelial proteoglycans<br>
+<span class="arrow">&rarr;</span> <b>oxidatively modified</b> (the PUFA cargo is the substrate)<br>
+<span class="arrow">&rarr;</span> taken up via <b>scavenger receptors</b> (no feedback shutoff)<br>
+<span class="arrow">&rarr;</span> <b>foam cell</b> <span class="arrow">&rarr;</span> apoptosis <span class="arrow">&rarr;</span> necrotic core <span class="arrow">&rarr;</span> <b>plaque</b>
+  </div>
+  <p style="margin:12px 0 0;font-size:15.5px;">Two independent things govern the rate of this chain: <em>how many particles arrive</em>, and <em>how readily they are modified once retained</em>. The mainstream model optimises the first term. The argument in the <a href="linoleic-acid.html">linoleic acid paper</a> is that the second term is modifiable too &mdash; the oxidisability of a particle is set by the fatty acids esterified into it, and those come from the diet.</p>
+</div>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">Retention of apoB particles in the subendothelial matrix is the initiating step in atherogenesis; this is not in dispute in either camp.</span></p>
+<p class="evline"><span class="ev ev-mixed">Inferred</span><span class="txt">That dietary fatty-acid composition meaningfully shifts the oxidisability term <em>in vivo</em> to a degree that changes clinical events. Each link is documented; the chain has not been demonstrated end-to-end in an outcome trial.</span></p>
+
+<div class="pull">Both camps are describing the same reaction. They disagree about which term in it you can actually move.</div>
+</section>
+
+<!-- ============ PART I ============ -->
+<div class="part-head" id="part-i">
+  <span class="part-num">Part I</span>
+  <h2>Ancel Keys, Fairly</h2>
+</div>
+<section>
+<p>No figure in nutrition is more caricatured, in both directions. Getting him right matters here for a specific reason: the modern LDL hypothesis is routinely attacked <em>through</em> Keys, and if that attack is factually wrong &mdash; which it largely is &mdash; then leaning on it damages the credibility of the better arguments that follow.</p>
+
+<h3 id="i-1"><span class="h3num">I.1</span>What he actually claimed</h3>
+<p>Keys's position, built through the 1950s and formalised in the Seven Countries Study, was a chain: dietary saturated fat raises <strong>serum total cholesterol</strong>, and populations with higher mean serum cholesterol have higher coronary mortality. Note what is and is not in that sentence. It is a claim about <em>total</em> cholesterol, at the level of <em>populations</em>, and it predates the ability to measure LDL at all &mdash; the Friedewald equation that made routine LDL-C estimation possible was not published until 1972, by which time Keys was near the end of his career.</p>
+
+<div class="takeaway"><b>The honest correction:</b> Keys did not think &ldquo;low LDL is good.&rdquo; He thought low <em>population mean total cholesterol</em> tracked low coronary mortality, which &mdash; for the populations and the range he studied &mdash; it did. Attributing the modern LDL-C target to him is an anachronism, and one the sceptical literature repeats constantly.</div>
+
+<h3 id="i-2"><span class="h3num">I.2</span>The &ldquo;he cherry-picked 7 of 22 countries&rdquo; story is false</h3>
+<p>This is the single most-repeated claim in the anti-Keys literature, and it does not survive contact with the primary sources. The 22-country graph comes from <strong>Yerushalmy and Hilleboe's 1957 critique</strong> of an <em>earlier</em> Keys paper &mdash; it is the critics' graph, built from UN food-balance-sheet data, not Keys's.<sup class="cite"><a href="#r11">11</a></sup> The Seven Countries Study never had 22 countries to discard: it was a prospective cohort study, designed from the outset around seven countries chosen for feasibility and for spread along the exposure gradient, with investigators on the ground and actual blood draws in sixteen cohorts.<sup class="cite"><a href="#r10">10</a></sup><sup class="cite"><a href="#r12">12</a></sup> You cannot drop what you never enrolled.</p>
+
+<div class="pushback">
+  <div class="pb-lbl">Where the criticism does land</div>
+  <p style="margin:0;">Three real problems remain, and they are enough. <strong>(1)</strong> Seven Countries was ecological in its headline correlations &mdash; comparing population means &mdash; and ecological correlations do not establish individual-level causation. <strong>(2)</strong> Keys attributed the Cretan advantage to fat composition, but the Cretan cohort was examined partly <em>during Lent</em>, when a substantial share of the population was fasting from animal foods; the dietary characterisation is on weaker ground than the mortality data. <strong>(3)</strong> Most importantly, the framework confounded saturated fat with everything else that distinguished mid-century Finland from mid-century Crete &mdash; and the diet-heart hypothesis it launched was operationalised as <em>replace saturated fat with polyunsaturated vegetable oil</em>, a recommendation whose own controlled trials &mdash; the Minnesota Coronary Experiment and the Sydney Diet Heart Study &mdash; lowered cholesterol and did <em>not</em> reduce mortality, with recovered data suggesting the opposite.<sup class="cite"><a href="#r13">13</a></sup></p>
+</div>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">The 22-countries cherry-picking story is a misattribution; the graph is Yerushalmy &amp; Hilleboe's.</span></p>
+<p class="evline"><span class="ev ev-mixed">Moderate</span><span class="txt">That the recovered MCE and Sydney data undermine the specific saturated-fat&rarr;PUFA substitution recommendation. The trials are real and the recovered analyses are published, but both were conducted with hydrogenated-oil-era formulations and have their own methodological critics.</span></p>
+
+<div class="takeaway"><b>Carry forward:</b> the correct lesson from Keys is not &ldquo;cholesterol doesn't matter.&rdquo; It is that <em>lowering a marker is not the same as improving an outcome</em> &mdash; the exact failure mode the MCE demonstrated, and the one Part&nbsp;III generalises.</div>
+</section>
+
+<!-- ============ PART II ============ -->
+<div class="part-head" id="part-ii">
+  <span class="part-num">Part II</span>
+  <h2>The Case for apoB, at Full Strength</h2>
+</div>
+<section>
+<p>This is the part of the paper that concedes. It is placed before the critique deliberately, because an argument that has to hide this evidence is not worth making.</p>
+
+<h3 id="ii-1"><span class="h3num">II.1</span>Mendelian randomization is the hard part to answer</h3>
+<p>Observational epidemiology cannot separate LDL-C from the dozens of things that travel with it. Mendelian randomization can, and this is its best application. Alleles are assigned at conception, before any confounder can act, and they are fixed for life. So if you compare people who inherited variants that give them lifelong slightly-lower LDL-C against those who did not, you have something close to a randomised trial of lifetime exposure.</p>
+
+<p>The answer is consistent across more than a dozen independent loci &mdash; <em>PCSK9</em>, <em>HMGCR</em>, <em>NPC1L1</em>, <em>LDLR</em>, <em>ABCG5/8</em> &mdash; and it does not depend on which gene does the lowering. Lower lifetime apoB, lower lifetime coronary disease, proportional to the magnitude and the duration of exposure.<sup class="cite"><a href="#r1">1</a></sup> The effect per unit of LDL-C in the genetic data is roughly <em>threefold larger</em> than in statin trials, which is exactly what a cumulative-exposure model predicts: five years of drug in middle age cannot do what fifty years of genetics does.</p>
+
+<div class="deepdive">
+  <div class="deepdive-tag">In the weeds <span class="dd-skip">&mdash; skip if the takeaway above landed</span></div>
+  <p style="margin-top:0;">The strength of the design is that it is a <em>naturally randomised instrument with a known mechanism</em>. The standard objections to MR are pleiotropy (the variant affects the outcome through some other path) and linkage (the variant is a marker for a nearby causal one). Both are addressed here by the convergence across unlinked loci acting through different proteins: <em>PCSK9</em> governs LDL-receptor recycling, <em>NPC1L1</em> governs intestinal sterol absorption, <em>HMGCR</em> governs synthesis. They share nothing except the downstream particle concentration, and they give the same answer. That convergence is the reason this evidence is hard to dismiss, and it is why the strong form of &ldquo;LDL is a bystander&rdquo; is untenable.</p>
+</div>
+
+<h3 id="ii-2"><span class="h3num">II.2</span>Familial hypercholesterolaemia is the dose-response experiment nature already ran</h3>
+<p>Heterozygous FH &mdash; roughly 1 in 250 people &mdash; means a lifetime of LDL-C around 200&ndash;400&nbsp;mg/dL from a single defective LDL-receptor allele, with no accompanying insulin resistance, hypertension or inflammation. Untreated, it produces coronary disease decades early. Homozygous FH, with LDL-C above 500&nbsp;mg/dL, produces it in childhood. This is isolated apoB elevation without metabolic confounding, and it is unambiguously atherogenic.</p>
+
+<div class="safety" style="border-color:var(--moss);background:rgba(74,93,58,.07);">
+  <div class="s-lbl" style="color:var(--moss-deep);">The concession, stated plainly</div>
+  <p style="margin:0;">Any model in which LDL/apoB is merely a passive marker has to explain FH, and none of them do. <strong>ApoB is causal.</strong> The rest of this paper is written on that assumption, not against it.</p>
+</div>
+
+<h3 id="ii-3"><span class="h3num">II.3</span>And the trials do work &mdash; where the baseline risk is high</h3>
+<p>The CTT Collaboration's pooled analyses, covering roughly 170,000 participants across 26 trials, find a consistent <strong>~21&ndash;22% proportional reduction in major vascular events per 1.0&nbsp;mmol/L (&asymp;39&nbsp;mg/dL) of LDL-C lowering</strong>, and that proportionality holds across baseline risk strata, sexes, and starting LDL levels.<sup class="cite"><a href="#r2">2</a></sup><sup class="cite"><a href="#r3">3</a></sup> In 4S &mdash; secondary prevention, high baseline risk &mdash; simvastatin cut all-cause mortality by 30% over 5.4 years.<sup class="cite"><a href="#r4">4</a></sup> That is a real, large, replicated effect on death, and it is not explained away.</p>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">ApoB-containing lipoproteins are causal in atherosclerosis; statins reduce major vascular events proportionally to LDL-C lowering; secondary-prevention mortality benefit is real.</span></p>
+</section>
+
+<!-- ============ PART III ============ -->
+<div class="part-head" id="part-iii">
+  <span class="part-num">Part III</span>
+  <h2>Causal, and Still a Bad Dashboard</h2>
+</div>
+<section>
+<p>Everything in Part&nbsp;II is true. None of it establishes that LDL-C is the right thing to <em>manage</em> in an individual patient, and the gap between those two propositions is where this paper lives.</p>
+
+<h3 id="iii-1"><span class="h3num">III.1</span>The relative/absolute gap</h3>
+<p>&ldquo;Statins cut your risk of a heart attack by a third&rdquo; is true and almost useless, because a third of a small number is a smaller number. Byrne and colleagues pooled 21 trials and reported both metrics side by side; the contrast is the single most decision-relevant table in the field.<sup class="cite"><a href="#r5">5</a></sup></p>
+
+<div class="ratio">
+  <div><div class="big">0.8%</div><div class="cap">Absolute risk reduction<br>all-cause mortality</div></div>
+  <div><div class="big">1.3%</div><div class="cap">Absolute risk reduction<br>myocardial infarction</div></div>
+  <div><div class="big">0.4%</div><div class="cap">Absolute risk reduction<br>stroke</div></div>
+  <div><div class="big hot">29%</div><div class="cap">Relative risk reduction<br>the number you're quoted (MI)</div></div>
+</div>
+
+<p>The same data, two presentations. A 1.3% absolute reduction in myocardial infarction over the trial durations means roughly <strong>77 people take the drug for one to avoid a heart attack</strong>; the other 76 get the side-effect profile and none of the benefit. Whether that trade is worth making is a genuine value judgement that depends on baseline risk &mdash; which is the point. It is a judgement the relative figure quietly makes on the patient's behalf.</p>
+
+<div class="pushback">
+  <div class="pb-lbl">The strongest reply, and it is a good one</div>
+  <p style="margin:0;">The CTT investigators would say Byrne's pooled ARR is an artefact of averaging over heterogeneous baseline risk and short follow-up. Both objections are legitimate. Proportional risk reduction is the stable quantity across trials; absolute reduction is <em>derived</em> from it by multiplying against the patient's own baseline risk, and pooling ARR across populations with wildly different baselines produces a number that describes no actual patient. And because atherosclerosis is cumulative, five-year trial ARRs systematically understate the benefit of thirty years of treatment &mdash; the same cumulative-exposure logic that makes the MR estimates larger.<br><br><strong>The reply to the reply:</strong> both points are correct and neither rescues the clinical practice. If ARR must be computed per-patient from baseline risk, then quoting a population RRR to an individual is precisely the error, and guidelines built on 10-year risk calculators should be producing individualised absolute numbers &mdash; which, in practice, consultations rarely do. And the extrapolation from 5-year trials to 30-year treatment is an <em>assumption</em>, not a finding; it is also the extrapolation that makes the cumulative harms in Part&nbsp;V matter more, not less. You cannot claim the long horizon for benefits and the short one for risks.</p>
+</div>
+
+<h3 id="iii-2"><span class="h3num">III.2</span>The mortality curve is U-shaped</h3>
+<p>&ldquo;Lower is better&rdquo; is a claim about the <em>shape</em> of a curve, and for all-cause mortality the shape is not monotonic. A NHANES analysis of roughly 30,000 adults using restricted cubic splines found U-shaped associations between total cholesterol and all-cause, cardiovascular, and cancer mortality. The lower limb was steep: <strong>total cholesterol below ~120&nbsp;mg/dL strongly predicted elevated all-cause mortality</strong>, while values at or above 280&nbsp;mg/dL predicted elevated mortality only for the cardiovascular cause specifically.<sup class="cite"><a href="#r6">6</a></sup></p>
+
+<div class="flag">
+  <div class="flag-lbl">The obvious confound, handled</div>
+  <p style="margin:0;">Reverse causation is the first thing to raise here and it is real: advanced cancer, liver failure, malabsorption, frailty and chronic infection all <em>lower</em> cholesterol, so sick people have low numbers because they are sick. Serious analyses address this by excluding early deaths and adjusting for baseline illness, and a residual U generally survives &mdash; but it is attenuated, and how much survives is genuinely <span class="ev ev-weak" style="display:inline">Contested</span>. What the U-curve licenses is a <em>modest</em> conclusion: that the population-level dose-response for all-cause mortality is not monotonic, so &ldquo;as low as possible&rdquo; is an extrapolation past the data rather than a reading of it. What it does <em>not</em> license is the inference that lowering LDL pharmacologically moves you up the left-hand limb &mdash; the trials show no such mortality signal.</p>
+</div>
+
+<p>The related finding in the elderly is on similar footing: a systematic review of cohorts covering 68,000 people over 60 found LDL-C inversely associated with all-cause mortality in most of them.<sup class="cite"><a href="#r7">7</a></sup> That paper's authors are the sceptical camp's core group and the review has been criticised for selective inclusion; it is cited here as <span class="ev ev-weak" style="display:inline">Contested</span> and load-bearing on nothing.</p>
+
+<h3 id="iii-3"><span class="h3num">III.3</span>The same number means different things in different bodies</h3>
+<p>This is the deepest version of the critique. LDL-C is one variable in a risk function that also contains insulin resistance, triglyceride/HDL ratio, blood pressure, inflammation, and visceral adiposity &mdash; and those covary. In the general population, high LDL-C usually arrives <em>bundled</em> with the rest of the metabolic syndrome, and the bundle is what the epidemiology is actually measuring.</p>
+
+<p>The natural test is to find people with isolated high LDL-C and an otherwise pristine metabolic profile. The <strong>lean mass hyper-responder</strong> phenotype &mdash; LDL-C &ge;200, HDL-C &ge;80, triglycerides &le;70, typically lean and on a ketogenic diet &mdash; is exactly that population, and the KETO-CTA study followed 100 of them with serial coronary CT angiography for a year. In that cohort, neither apoB nor cumulative LDL-C exposure predicted plaque progression; <em>baseline plaque</em> did.<sup class="cite"><a href="#r9">9</a></sup></p>
+
+<div class="pushback">
+  <div class="pb-lbl">Why this is much weaker than its advocates claim</div>
+  <p style="margin:0;">Handle with real caution. <strong>(1)</strong> A JACC: Advances paper reporting these results was <strong>retracted</strong> &mdash; that fact belongs in any honest citation of this work. <strong>(2)</strong> There was no control group; the design cannot separate &ldquo;LDL doesn't matter here&rdquo; from &ldquo;one year is too short to detect it.&rdquo; <strong>(3)</strong> The headline finding cuts both ways: median non-calcified plaque volume <em>rose</em> by about 37% relatively over the year, which is not a reassuring absolute result. <strong>(4)</strong> A null within a cohort selected for a narrow, uniformly high LDL range has little power to detect a dose-response &mdash; restriction of range produces nulls mechanically. <strong>(5)</strong> The funding and the investigators are openly aligned with the conclusion.<br><br>What it does establish, weakly: that in this phenotype, one year of apoB around 180&nbsp;mg/dL did not produce plaque progression proportional to that exposure, and that baseline disease dominated. That is a hypothesis worth testing properly, not a refutation of Part&nbsp;II.</p>
+</div>
+
+<p class="evline"><span class="ev ev-weak">Speculative</span><span class="txt">That metabolically healthy isolated LDL-C elevation carries materially lower risk than the same number in an insulin-resistant person. Mechanistically plausible, consistent with discordance analyses, and not established by outcome data.</span></p>
+
+<h3 id="iii-4"><span class="h3num">III.4</span>Even inside the lipid model, LDL-C is the wrong variable</h3>
+<p>Set the terrain argument aside entirely; LDL-C still underperforms. Where apoB and LDL-C disagree, risk follows apoB &mdash; across meta-analyses and discordance analyses, consistently.<sup class="cite"><a href="#r8">8</a></sup> Discordance is not rare: it is concentrated precisely in insulin-resistant and hypertriglyceridaemic people, who carry many small cholesterol-poor particles and whose LDL-C therefore <em>understates</em> their particle burden. The people most likely to be falsely reassured by a normal LDL-C are the ones at highest metabolic risk.</p>
+
+<div class="takeaway"><b>The irony worth sitting with:</b> the strongest evidence against LDL-C as a decision rule comes from inside the lipid hypothesis, not from outside it. Mainstream lipidology has been arguing for apoB for two decades. That is a critique of the dashboard, made by its own engineers.</div>
+</section>
+
+<!-- ============ PART IV ============ -->
+<div class="part-head" id="part-iv">
+  <span class="part-num">Part IV</span>
+  <h2>What the Drug Actually Inhibits</h2>
+</div>
+<section>
+<p>Statins are described as cholesterol-lowering drugs. That is a description of an <em>effect</em>, not of a mechanism, and the difference explains nearly everything about their side-effect profile.</p>
+
+<h3 id="iv-1"><span class="h3num">IV.1</span>HMG-CoA reductase sits above a branch point</h3>
+<p>A statin inhibits HMG-CoA reductase, the rate-limiting enzyme converting HMG-CoA to <strong>mevalonate</strong>. Cholesterol is downstream of mevalonate &mdash; but so is a whole isoprenoid tree. Clamping the trunk reduces every branch.</p>
+
+<div class="mech">
+  <div class="mech-lbl">The mevalonate pathway, and what a statin clamps</div>
+  <div class="chain">
+Acetyl-CoA <span class="arrow">&rarr;</span> HMG-CoA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#8595; <b>HMG-CoA reductase</b> &nbsp;&#9668;&#9472;&#9472; <b style="color:#a8562f;">STATIN BLOCKS HERE</b><br>
+<b>Mevalonate</b> <span class="arrow">&rarr;</span> IPP/DMAPP <span class="arrow">&rarr;</span> <b>Farnesyl-PP</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> Squalene <span class="arrow">&rarr;</span> <b>CHOLESTEROL</b> &nbsp;<span style="font-size:12px;">&larr; the intended target</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> <b>Coenzyme Q10</b> &nbsp;<span style="font-size:12px;">&larr; mitochondrial electron transport</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> <b>Dolichol</b> &nbsp;<span style="font-size:12px;">&larr; N-glycosylation of proteins</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> <b>Geranylgeranyl-PP</b> &nbsp;<span style="font-size:12px;">&larr; prenylation: Rho, Rac, Rab</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> <b>Heme A</b> &nbsp;<span style="font-size:12px;">&larr; cytochrome c oxidase</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472; <span class="arrow">&rarr;</span> <b>Isopentenyl-tRNA</b> &nbsp;<span style="font-size:12px;">&larr; selenocysteine incorporation</span>
+  </div>
+  <p style="margin:12px 0 0;font-size:15.5px;">Every branch below mevalonate is reduced by the same inhibition.<sup class="cite"><a href="#r14">14</a></sup> This is not a fringe claim &mdash; it is standard pharmacology, and it is also the accepted explanation for statins' <em>beneficial</em> pleiotropic effects. Reduced geranylgeranylation of Rho and Rac is why statins lower CRP and stabilise endothelium independently of lipid lowering. The same mechanism produces both columns of the ledger.</p>
+</div>
+
+<div class="ledger">
+  <div class="col keep">
+    <h4>Off-target benefits</h4>
+    <ul>
+      <li>Reduced Rho/Rac prenylation &rarr; lower vascular inflammation, lower hsCRP</li>
+      <li>Increased endothelial nitric oxide synthase expression &rarr; better endothelial function</li>
+      <li>Plaque stabilisation &mdash; plausibly a larger share of early event reduction than lipid lowering alone explains</li>
+      <li>Antithrombotic effects</li>
+    </ul>
+  </div>
+  <div class="col drop">
+    <h4>Off-target costs</h4>
+    <ul>
+      <li>Reduced CoQ10 synthesis &rarr; impaired mitochondrial electron transport</li>
+      <li>Reduced dolichol &rarr; impaired protein glycosylation</li>
+      <li>Reduced selenoprotein synthesis &rarr; weakened glutathione-peroxidase antioxidant defence</li>
+      <li>Reduced prenylation in myocytes &rarr; a candidate mechanism for true myopathy</li>
+    </ul>
+  </div>
+</div>
+
+<div class="takeaway"><b>The structural point:</b> you cannot accept the pleiotropic-benefit argument and reject the pleiotropic-harm argument. They are the same pharmacology. Anyone who credits statins for lowering CRP has already conceded that the drug does considerably more than lower cholesterol.</div>
+
+<h3 id="iv-2"><span class="h3num">IV.2</span>CoQ10 depletion is measured, not hypothesised</h3>
+<p>Coenzyme Q10 carries electrons between Complex&nbsp;I/II and Complex&nbsp;III of the respiratory chain, and is a lipid-phase antioxidant. A meta-analysis of placebo-controlled statin arms found plasma CoQ10 falls by a weighted mean of <strong>&minus;0.44&nbsp;&micro;mol/L</strong>.<sup class="cite"><a href="#r15">15</a></sup> That depletion is not in question.</p>
+
+<div class="flag">
+  <div class="flag-lbl">Where the chain breaks</div>
+  <p style="margin:0;">Two honest gaps. First, plasma CoQ10 travels on lipoproteins &mdash; so some of the measured fall is simply fewer carrier particles, not less tissue CoQ10. Muscle-biopsy data are sparser and less consistent than the plasma data. Second, if CoQ10 depletion caused statin myopathy, supplementation should fix it, and the trials are genuinely split: several meta-analyses report significant reduction in statin-associated muscle symptoms, others report no benefit over placebo.<sup class="cite"><a href="#r16">16</a></sup> Given Part&nbsp;V's nocebo finding, that split is unsurprising &mdash; a supplement cannot fix a symptom the drug isn't causing.</p>
+</div>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">Statins reduce circulating CoQ10; the mevalonate pathway makes this obligatory.</span></p>
+<p class="evline"><span class="ev ev-weak">Contested</span><span class="txt">That CoQ10 depletion causes clinically meaningful mitochondrial dysfunction, and that supplementation relieves statin muscle symptoms.</span></p>
+</section>
+
+<!-- ============ PART V ============ -->
+<div class="part-head" id="part-v">
+  <span class="part-num">Part V</span>
+  <h2>The Harms, Sorted Honestly</h2>
+</div>
+<section>
+<p>The sceptical literature treats statin side effects as a single undifferentiated mass. They are not. On close inspection one major claim gets <em>stronger</em> than its advocates usually argue, and another collapses almost entirely &mdash; and conceding the second is what earns the right to press the first.</p>
+
+<h3 id="v-1"><span class="h3num">V.1</span>New-onset diabetes: real, dose-dependent, and on-target</h3>
+<p>This is the finding from the post that prompted this paper, and it holds up. The CTT Collaboration's individual-participant meta-analysis pooled 19 placebo-controlled trials (123,940 participants) and four intensity-comparison trials (30,724 participants).<sup class="cite"><a href="#r17">17</a></sup> Among participants without diabetes at baseline:</p>
+
+<div class="ratio">
+  <div><div class="big">1.10</div><div class="cap">Rate ratio, new-onset diabetes<br>low/moderate-intensity statin</div></div>
+  <div><div class="big hot">1.36</div><div class="cap">Rate ratio, new-onset diabetes<br>high-intensity statin</div></div>
+</div>
+
+<p>Two features make this more than a statistical curiosity. It is <strong>dose-dependent</strong> &mdash; a 10% excess at moderate intensity, 36% at high intensity &mdash; which is the signature of a causal drug effect rather than confounding. And it is <strong>on-target</strong>: Mendelian randomization studies of <em>HMGCR</em> variants find the same association between genetically lower HMG-CoA reductase activity and higher type&nbsp;2 diabetes risk, meaning the diabetes effect flows through the drug's intended target, not some incidental property of a particular molecule. There is no statin that escapes it.</p>
+
+<div class="flag">
+  <div class="flag-lbl">What the CTT analysis also found &mdash; and the sceptics omit</div>
+  <p style="margin:0;">The average glycaemic effect was small, and most of the new diagnoses occurred in people whose baseline glycaemia was <em>already close to the diagnostic threshold</em>. In large part the drug is nudging people over a line they were already standing on, rather than producing diabetes in the metabolically healthy. Whether that is reassuring depends on your view of thresholds; the mechanism &mdash; impaired &beta;-cell insulin secretion and reduced peripheral insulin sensitivity &mdash; is the same either way, and crossing the line still carries the clinical consequences of the diagnosis. The CTT authors' own conclusion is that the cardiovascular benefit outweighs this risk; that conclusion is a value judgement laid over the data, and it will be right for high-risk patients and wrong for some low-risk ones.</p>
+</div>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">Statins increase new-onset diabetes incidence, dose-dependently, through on-target HMGCR inhibition.</span></p>
+
+<div class="pull">A drug given to prevent a complication of metabolic disease measurably worsens metabolic disease. That is not a scandal, but it is a cost, and it belongs on the ledger.</div>
+
+<h3 id="v-2"><span class="h3num">V.2</span>Muscle symptoms: mostly nocebo &mdash; and this must be conceded</h3>
+<p>Here the sceptical case largely fails, and the failure is instructive. Muscle pain is the most-cited reason people stop statins, and the obvious causal story &mdash; mevalonate depletion in myocytes &mdash; is mechanistically tidy. The problem is that blinded n-of-1 trials test it directly.</p>
+
+<p><strong>SAMSON</strong> gave 60 patients who had previously abandoned statins for side effects a randomised sequence of twelve one-month periods: four on atorvastatin, four on placebo, four on nothing. Symptom burden on placebo was <em>statistically indistinguishable from symptom burden on the statin</em>, and both were markedly higher than during the no-tablet months. Roughly <strong>90% of the symptom burden attributed to the drug was reproduced by placebo</strong>.<sup class="cite"><a href="#r18">18</a></sup> When shown their own data, half the participants successfully restarted a statin. <strong>StatinWISE</strong>, a larger independent series of n-of-1 trials in UK primary care, reached the same conclusion.<sup class="cite"><a href="#r19">19</a></sup></p>
+
+<div class="pushback">
+  <div class="pb-lbl">The steelman, and what survives</div>
+  <p style="margin:0;">Three caveats are legitimate. <strong>(1)</strong> Nocebo is not imaginary &mdash; the pain is real; what the trials establish is that the <em>drug molecule</em> is not producing it. <strong>(2)</strong> These trials enrolled people who had already stopped statins for symptoms, a population enriched for expectation effects; they do not exclude a smaller group with genuine pharmacological myopathy. <strong>(3)</strong> Rhabdomyolysis is unambiguously drug-caused, and objectively-measured myopathy with raised creatine kinase is a real, if uncommon, entity &mdash; CTT estimates roughly 1 excess case of myopathy per 10,000 treated per year.<br><br>But the honest summary is that the <em>bulk</em> of what is attributed to statins in popular discussion is expectation, not pharmacology. Any critique that leads with muscle pain is leading with its weakest card, and sophisticated readers will discount everything after it.</p>
+</div>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">Most statin-attributed muscle symptoms are nocebo; blinded n-of-1 designs establish this directly.</span></p>
+
+<h3 id="v-3"><span class="h3num">V.3</span>Hormones and cognition: weaker than claimed</h3>
+<p>Because every steroid hormone is built from cholesterol (Part&nbsp;VI), the inference that statins lower testosterone is natural. Meta-analyses do find a statistically significant reduction, but a small one &mdash; and steroidogenic tissue is not supply-limited by circulating cholesterol under ordinary conditions; the adrenal and gonad can up-regulate LDL-receptor uptake and local synthesis. The signal is real and probably clinically minor for most people. <span class="ev ev-mixed" style="display:inline">Moderate</span></p>
+
+<p>On cognition, the FDA added a label warning in 2012 on the strength of case reports, but randomised data &mdash; including PROSPER and the Heart Protection Study, both with formal cognitive endpoints &mdash; have been essentially null. Brain cholesterol is synthesised locally behind the blood-brain barrier and turns over slowly; lipophilic statins (simvastatin, lovastatin) penetrate more than hydrophilic ones (pravastatin, rosuvastatin), which is a plausible basis for individual variation but not for a population effect. <span class="ev ev-weak" style="display:inline">Contested</span>, and weaker than the sceptical literature presents it.</p>
+</section>
+
+<!-- ============ PART VI ============ -->
+<div class="part-head" id="part-vi">
+  <span class="part-num">Part VI</span>
+  <h2>What Cholesterol Is For &mdash; and What Sets Your Number</h2>
+</div>
+<section>
+<p>Two questions get conflated constantly: <em>what does cholesterol do</em>, and <em>why is mine what it is</em>. They have different answers, and <a href="#iii-3">III.3</a> issued an instruction &mdash; ask why a number is elevated before asking how to lower it &mdash; that this paper owes an actual answer to. <a href="#vi-1">VI.1</a> covers the function; <a href="#vi-2">VI.2</a> covers the regulation.</p>
+
+<h3 id="vi-1"><span class="h3num">VI.1</span>What the molecule actually does</h3>
+<p>The framing of cholesterol as a pathogen to be minimised obscures that it is one of the most functionally central molecules in the body. None of what follows argues that lowering LDL-C harms these functions &mdash; in a healthy person, it mostly doesn't, because cells synthesise their own. It argues something narrower and more useful: that <em>the body's insistence on making 70&ndash;80% of its own supply, under tight feedback control, is information about how much it needs.</em></p>
+
+<table class="matrix">
+<thead><tr><th>Function</th><th>Tier</th><th>What cholesterol does there</th></tr></thead>
+<tbody>
+<tr><td>Membrane architecture</td><td class="tiercell">Universal</td><td>Intercalates between phospholipid tails, setting membrane fluidity and thickness. Concentrated with sphingolipids into <strong>lipid rafts</strong> &mdash; ordered platforms where receptors cluster to signal. Insulin-receptor signalling, immune-synapse formation and neurotransmitter receptor function are all raft-dependent.</td></tr>
+<tr><td>Steroid hormones</td><td class="tiercell">Obligate</td><td>The sole precursor. Cholesterol is imported into mitochondria by StAR and cleaved by CYP11A1 to <strong>pregnenolone</strong> &mdash; the parent of progesterone, cortisol, aldosterone, DHEA, testosterone and oestradiol. There is no alternative substrate.</td></tr>
+<tr><td>Bile acids</td><td class="tiercell">Obligate</td><td>CYP7A1 converts cholesterol to cholic and chenodeoxycholic acid. This is the body's <em>main disposal route</em> for cholesterol &mdash; and those bile acids are what emulsify dietary fat and enable absorption of vitamins A, D, E and K. They are also signalling molecules via FXR and TGR5.</td></tr>
+<tr><td>Vitamin D</td><td class="tiercell">Obligate</td><td>7-dehydrocholesterol in the skin is cleaved by UVB to cholecalciferol &mdash; the direct link to the <a href="sunlight.html">sunlight paper</a>. The precursor is a cholesterol intermediate one step from the end of the synthesis pathway.</td></tr>
+<tr><td>Myelin &amp; the brain</td><td class="tiercell">Critical</td><td>The brain is ~2% of body mass and holds ~20&ndash;25% of the body's cholesterol, most of it in myelin. CNS cholesterol is synthesised <em>locally</em> &mdash; lipoproteins do not cross the blood-brain barrier &mdash; which is the main reason the cognitive-harm hypothesis is weaker than it looks.</td></tr>
+<tr><td>Cell division</td><td class="tiercell">Obligate</td><td>A dividing cell must build two membranes' worth of material, and cholesterol synthesis is required to complete the cell cycle. Separately, cytokinesis requires <strong>geranylgeranylated RhoA</strong> &mdash; a mevalonate-pathway product, not cholesterol itself. This is the basis for the (entirely separate) research programme on statins as antiproliferative agents in oncology.</td></tr>
+<tr><td>Hedgehog signalling</td><td class="tiercell">Developmental</td><td>Sonic hedgehog is covalently modified with cholesterol; the pathway is central to embryonic patterning. Severe inherited defects in cholesterol synthesis (Smith-Lemli-Opitz syndrome) cause profound developmental abnormalities &mdash; the clearest natural evidence that cholesterol synthesis is not optional.</td></tr>
+</tbody>
+</table>
+
+<div class="pushback">
+  <div class="pb-lbl">Don't overread this table</div>
+  <p style="margin:0;">It would be easy, and wrong, to run from this list to &ldquo;so lowering cholesterol must damage all of these.&rdquo; It generally does not, for a concrete reason: these are <em>intracellular</em> functions served by <em>local</em> synthesis and receptor-mediated uptake, both of which are homeostatically defended. Statin-treated patients do not develop adrenal insufficiency or demyelination. What the table actually supports is narrower: that a molecule under this much regulatory control is not plausibly something the body wants as little of as possible, and that the burden of proof on &ldquo;lower indefinitely&rdquo; is higher than it is usually made to carry. Smith-Lemli-Opitz is the proof of principle for catastrophic deficiency, not a model of statin therapy.</p>
+</div>
+
+<h3 id="vi-2"><span class="h3num">VI.2</span>Why your number is what it is</h3>
+<p>Here is the fact that reorganises the whole question: <strong>cholesterol synthesis is under negative feedback, so the body makes more precisely when cells sense they have too little.</strong> The sensor is the SCAP&ndash;Insig complex in the endoplasmic reticulum membrane. When ER cholesterol falls, SCAP escorts SREBP-2 to the Golgi, where two proteases release its transcription-factor domain; that fragment enters the nucleus and switches on <em>both</em> HMG-CoA reductase (make more) and the LDL receptor (import more). When cholesterol is replete, Insig retains the complex in the ER and the programme shuts off.<sup class="cite"><a href="#r32">32</a></sup></p>
+
+<div class="mech">
+  <div class="mech-lbl">The SREBP-2 feedback loop &mdash; and where the drugs act</div>
+  <div class="chain">
+<b>ER cholesterol LOW</b><br>
+&nbsp;&nbsp;<span class="arrow">&rarr;</span> Insig releases <b>SCAP&ndash;SREBP-2</b> <span class="arrow">&rarr;</span> Golgi <span class="arrow">&rarr;</span> S1P/S2P cleavage<br>
+&nbsp;&nbsp;<span class="arrow">&rarr;</span> nuclear <b>SREBP-2</b> <span class="arrow">&rarr;</span> transcribes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <b>HMGCR</b> &nbsp;<span style="font-size:12px;">&larr; synthesise more &nbsp;(statin blocks the enzyme)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472; <b>LDLR</b> &nbsp;<span style="font-size:12px;">&larr; import more from blood &nbsp;(this is what lowers serum LDL)</span><br>
+<b>ER cholesterol HIGH</b> <span class="arrow">&rarr;</span> Insig retains complex <span class="arrow">&rarr;</span> programme off
+  </div>
+  <p style="margin:12px 0 0;font-size:15.5px;"><b>Why this explains the drug:</b> a statin lowers serum LDL only <em>indirectly</em>. By blocking HMG-CoA reductase it depletes hepatocyte cholesterol, which trips this very sensor, which upregulates LDL receptors, which pull LDL out of the blood. The drug works <em>through</em> the feedback loop, not around it &mdash; which is also why the effect plateaus, and why adding ezetimibe or a PCSK9 inhibitor (both of which act on other points in the same loop) stacks on top of it.</p>
+</div>
+
+<p>Once the loop is clear, &ldquo;high cholesterol&rdquo; stops being one condition. It is at least four, with genuinely different meanings:</p>
+
+<table class="matrix">
+<thead><tr><th>Why the number is up</th><th>Tier</th><th>What is actually happening</th></tr></thead>
+<tbody>
+<tr><td>Impaired clearance</td><td class="tiercell">Most common</td><td>LDL-C is a <em>concentration</em> &mdash; production minus clearance &mdash; and receptor activity is usually the dominant term. <strong>Hypothyroidism</strong> is the textbook case: T3 upregulates LDL-receptor transcription, so low thyroid means fewer receptors and a higher number with no change in synthesis.<sup class="cite"><a href="#r33">33</a></sup> <strong>PCSK9</strong> activity does the same by degrading the receptor, and familial hypercholesterolaemia is the genetic version. Here the number is a <em>clearance readout</em>, and the useful response is to find out why clearance is impaired.</td></tr>
+<tr><td>Genuine demand</td><td class="tiercell">Physiological</td><td>Proliferation and tissue repair consume membrane, and membrane requires cholesterol; steroidogenic tissue under load draws on it. The biggest lever here is <strong>bile acid loss</strong>: excrete bile acids and the liver must synthesise replacements from cholesterol, depleting hepatic stores, tripping SREBP-2, raising LDL-receptor expression &mdash; which is why the number <em>falls</em>. This is the mechanism of every soluble fibre and every bile-acid sequestrant.</td></tr>
+<tr><td>Energy trafficking</td><td class="tiercell">Context-dependent</td><td>Under carbohydrate restriction, VLDL turnover rises to shuttle fat as the dominant fuel, and LDL-C can rise as a <em>transport</em> consequence rather than a disease state &mdash; the lean-mass hyper-responder phenotype of <a href="#iii-3">III.3</a>. Whether this carries the same risk as the same number arrived at by impaired clearance is exactly the open question that paper section flags, and nobody knows.</td></tr>
+<tr><td>Immune / acute phase</td><td class="tiercell">Points the other way</td><td>Lipoproteins are genuinely part of innate immunity &mdash; LDL, VLDL, HDL and chylomicrons all bind and neutralise bacterial LPS, and LPS-binding protein circulates with apoB particles to hand endotoxin off for hepatic clearance.<sup class="cite"><a href="#r34">34</a></sup> But the <em>direction</em> matters: in human endotoxaemia and sepsis the observed pattern is <strong>rising triglycerides with falling LDL-C and HDL-C</strong>.<sup class="cite"><a href="#r35">35</a></sup> Infection lowers cholesterol; it does not raise it.</td></tr>
+</tbody>
+</table>
+
+<div class="takeaway"><b>The practical upshot for <a href="#iii-3">III.3</a>:</b> before treating a number, establish which of these it is. A thyroid panel, an apoB, a triglyceride/HDL ratio and a fasting insulin distinguish most of them, and they point to different actions &mdash; treat the thyroid, address the insulin resistance, or in the third case admit that nobody yet knows what the number means.</div>
+
+<div class="pushback">
+  <div class="pb-lbl">A worked example: the carrot-salad claim</div>
+  <p style="margin:0;">A popular version of this argument runs: raw carrot lowers cholesterol; carrot has a mild antibiotic effect on gut flora; therefore endotoxin drives cholesterol up, and cholesterol is the body's defence against toxins (a framing associated with <strong>Ray Peat</strong>). The underlying study is real &mdash; Robertson et al. 1979, 200&nbsp;g raw carrot at breakfast for three weeks, serum cholesterol down about 11%.<sup class="cite"><a href="#r36">36</a></sup> The reasoning on top of it is not.<br><br><strong>The study measured its own mechanism.</strong> The same abstract reports a <strong>50% increase in faecal bile acid and fat excretion</strong> &mdash; that is row two of the table above, the ordinary soluble-fibre pathway shared by psyllium, oat beta-glucan and cholestyramine. The "change in bacterial flora or metabolism" line the claim quotes is the authors speculating about something else entirely: why the effect <em>persisted</em> three weeks after stopping. The popular version promotes that aside to primary mechanism and discards the measured one.<br><br><strong>And it names the wrong molecule.</strong> In the innate-immunity literature, LPS-neutralising capacity tracks the <em>phospholipid</em> content of lipoproteins &mdash; cholesterol and triglyceride content specifically do not correlate with it.<sup class="cite"><a href="#r34">34</a></sup> Whatever protection lipoproteins provide belongs to the particle's phospholipid surface, not to the cholesterol it is carrying. "Cholesterol protects against toxins" credits the cargo with the work of the boat.</p>
+</div>
+
+<p>What survives is better than what was claimed, and worth stating in its own right: the reason a <em>very low</em> number can be a bad sign is not that cholesterol is a toxin-sponge. It is that cholesterol is largely a <strong>downstream readout</strong>, and the states that drive it very low &mdash; inflammation, infection, liver dysfunction, malabsorption, hyperthyroidism, frailty &mdash; are themselves harmful. That is the honest mechanism behind the U-shaped curve in <a href="#iii-2">III.2</a>, and it is the same terrain logic as the rest of this paper: the gauge reads low for bad reasons as well as good ones, and neither the high end nor the low end interprets itself.</p>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">The SREBP-2/SCAP&ndash;Insig feedback loop and its control of HMGCR and LDLR; thyroid hormone's regulation of LDL-receptor expression; lipoprotein binding of LPS.</span></p>
+<p class="evline"><span class="ev ev-mixed">Moderate</span><span class="txt">That the four categories above are cleanly separable in an individual patient. In practice they overlap, and the common case &mdash; metabolic syndrome &mdash; involves several at once.</span></p>
+</section>
+
+<!-- ============ PART VII ============ -->
+<div class="part-head" id="part-vii">
+  <span class="part-num">Part VII</span>
+  <h2>Terrain, and What Actually Moves It</h2>
+</div>
+<section>
+<p>The positive claim of this paper: for most people outside FH and secondary prevention, <strong>serum lipids are substantially a readout of metabolic state</strong>, and the readout moves when the state moves. Most of this part is the most speculative material in the paper and is labelled accordingly &mdash; with one exception, <a href="#vii-3">VII.3</a>, which carries the only direct anatomical evidence anywhere in it.</p>
+
+<div class="takeaway"><b>The framing:</b> ask <em>why</em> a number is elevated before asking how to lower it. High LDL-C in an insulin-resistant person with high triglycerides, low HDL and visceral fat is a different object from the same number in a lean, insulin-sensitive athlete &mdash; and the discordance data in <a href="#iii-4">III.4</a> show the first person's LDL-C is probably <em>understating</em> their particle burden.</div>
+
+<h3 id="vii-1"><span class="h3num">VII.1</span>The oxidisability term &mdash; reducing linoleic acid</h3>
+<p>Part of the Primer's chain that mainstream practice leaves alone: an LDL particle's vulnerability to oxidative modification is set by the polyunsaturated fatty acids esterified into it, and those come from the diet. Controlled feeding studies show that substituting oleate for linoleate makes LDL measurably more resistant to oxidation.<sup class="cite"><a href="#r20">20</a></sup> The full argument, with its counterarguments, is the subject of the <a href="linoleic-acid.html">linoleic acid paper</a> and is not repeated here.</p>
+<p class="evline"><span class="ev ev-mixed">Inferred</span><span class="txt">That reducing dietary LA lowers clinical cardiovascular events via reduced LDL oxidisability. The oxidation-resistance step is demonstrated in humans; the event step is not.</span></p>
+
+<h3 id="vii-2"><span class="h3num">VII.2</span>Insulin sensitivity is the upstream variable</h3>
+<p>Restoring insulin sensitivity improves nearly every term in the risk function simultaneously &mdash; triglycerides, HDL, particle size and number, blood pressure, inflammation, visceral fat. The interventions are the ones in the <a href="metabolic-health.html">metabolic health paper</a>: carbohydrate quality and load, resistance training and muscle mass as a glucose sink, sleep, and visceral fat reduction. Unlike the lipid-lowering lever, this one moves the whole system rather than one gauge on it.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">That improving insulin sensitivity improves the full metabolic risk profile including lipid subfractions.</span> <span class="ev ev-mixed" style="display:inline">Moderate</span> <span class="txt">that this translates into event reduction comparable to pharmacological LDL lowering in a matched population &mdash; the head-to-head trial has not been done.</span></p>
+
+<h3 id="vii-3"><span class="h3num">VII.3</span>Exercise moves the plaque itself &mdash; not just the risk factors</h3>
+<p>Everything else in this part rests on surrogate endpoints: oxidation resistance, blood pressure, insulin sensitivity. This section does not, and that makes it the single strongest piece of evidence the terrain argument has.</p>
+
+<p>The <strong>CERT trial</strong> randomised 60 patients with stable coronary disease following PCI to either six months of supervised high-intensity interval training &mdash; 4&nbsp;&times;&nbsp;4-minute intervals at 85&ndash;95% of peak heart rate, twice weekly &mdash; or to contemporary preventive guidelines, and measured coronary plaque directly by <em>intravascular ultrasound</em> at baseline and follow-up.<sup class="cite"><a href="#r22">22</a></sup> The plaque regressed.</p>
+
+<div class="ratio">
+  <div><div class="big">&minus;1.4%</div><div class="cap">Percent atheroma volume<br>between-group difference (P&nbsp;=&nbsp;0.036)</div></div>
+  <div><div class="big">&minus;12.0</div><div class="cap">TAV<sub>norm</sub>, mm&sup3;<br>between-group difference (P&nbsp;=&nbsp;0.003)</div></div>
+  <div><div class="big">&minus;1.2%</div><div class="cap">PAV change, HIIT arm<br>(P&nbsp;=&nbsp;0.017)</div></div>
+  <div><div class="big hot">+0.2%</div><div class="cap">PAV change, control arm<br>(P&nbsp;=&nbsp;0.616, i.e. progression)</div></div>
+</div>
+
+<p>Read the last two columns together: the control group's plaque drifted upward as untreated atherosclerosis does, and the exercising group's went backwards. Normalised total atheroma volume fell by 9&nbsp;mm&sup3; in the HIIT arm against a 3&nbsp;mm&sup3; rise in controls. This is disease regression on a direct anatomical measurement, in a randomised design.</p>
+
+<div class="takeaway"><b>Why this matters for the argument of this paper:</b> the intervention had <em>no lipid target at all.</em> Nobody was titrating a number. A terrain intervention moved the disease itself, measured on the only endpoint that is not a proxy for it &mdash; which is precisely the claim <a href="#iii-3">III.3</a> makes and could not previously support with anything this direct.</div>
+
+<div class="pushback">
+  <div class="pb-lbl">Four things this does not show</div>
+  <p style="margin:0;"><strong>(1) It is not exercise <em>instead of</em> statins &mdash; it is exercise <em>on top of</em> them.</strong> This is the most important caveat and the one most likely to be dropped in transmission. Both arms were post-PCI patients under contemporary secondary-prevention guidelines, which means both arms were, in the main, statin-treated. CERT demonstrates an <em>additive</em> effect on a background of optimal medical therapy. It says nothing whatsoever about substituting one for the other. <strong>(2) n&nbsp;=&nbsp;60, six months.</strong> Small and short; plaque volume, not events. Regression of atheroma is strongly associated with reduced coronary events but is still a surrogate. <strong>(3) The contrast is attenuated by design</strong> &mdash; the control group received guideline-based care including cardiac rehabilitation, so this is high-intensity training versus <em>some</em> training, not versus nothing. That makes the observed difference more impressive, not less, but it also means the effect size does not transfer to a sedentary comparison. <strong>(4) It was supervised, and the authors say so plainly</strong> &mdash; they doubt the achieved intensity is reachable without continuous supervision. The intervention that worked is not the intervention most people will actually do.</p>
+</div>
+
+<p>Note also what was tested: <strong>85&ndash;95% of peak heart rate</strong>. This is not Zone&nbsp;2 steady-state work, and the distinction matters when citing this trial. Zone&nbsp;2 training has its own strong rationale &mdash; mitochondrial density, fat oxidation, sustainability &mdash; but it is not what produced this result.</p>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">Supervised HIIT produced coronary atheroma regression versus guideline care in post-PCI patients, by IVUS, in a randomised trial.</span></p>
+<p class="evline"><span class="ev ev-mixed">Inferred</span><span class="txt">That this plaque regression translates into reduced events, and that it generalises to primary prevention or to unsupervised training at lower intensity. Neither was tested.</span></p>
+
+<h3 id="vii-4"><span class="h3num">VII.4</span>Blood pressure: two juices, two different mechanisms</h3>
+<p>Blood pressure is an independent and arguably larger contributor to cardiovascular risk than LDL-C, and two food interventions have enough randomised data to be worth stating precisely. They are usually lumped together as &ldquo;antioxidant juices.&rdquo; They should not be &mdash; they act on <em>different nodes of the same axis</em>, which is the only reason it is worth discussing both.</p>
+
+<p><strong>Beetroot supplies substrate.</strong> Nitrate from beetroot and leafy greens is reduced to nitrite by oral commensal bacteria, then to <strong>nitric oxide</strong> in tissue &mdash; an endothelium-independent route to vasodilation that bypasses the eNOS pathway damaged in metabolic disease.</p>
+
+<div class="mech">
+  <div class="mech-lbl">The enterosalivary nitrate pathway</div>
+  <div class="chain">
+Dietary <b>nitrate</b> (NO&#8323;&#8315;) <span class="arrow">&rarr;</span> absorbed <span class="arrow">&rarr;</span> concentrated in <b>salivary glands</b><br>
+<span class="arrow">&rarr;</span> oral bacteria reduce to <b>nitrite</b> (NO&#8322;&#8315;)<br>
+<span class="arrow">&rarr;</span> swallowed <span class="arrow">&rarr;</span> reduced to <b>nitric oxide</b> in acidic/hypoxic tissue<br>
+<span class="arrow">&rarr;</span> <b>vasodilation</b> <span class="arrow">&rarr;</span> lower blood pressure
+  </div>
+  <p style="margin:12px 0 0;font-size:15.5px;"><b>The practical corollary:</b> antibacterial mouthwash abolishes the effect by killing the nitrate-reducing commensals. This is one of the cleanest demonstrations that an oral-microbiome function has a direct cardiovascular readout.</p>
+</div>
+
+<p>Meta-analyses of randomised trials find inorganic nitrate and beetroot juice lower systolic blood pressure by roughly <strong>3&ndash;5&nbsp;mmHg</strong>, with larger effects in hypertensive populations (&minus;5.3&nbsp;mmHg in one analysis restricted to them).<sup class="cite"><a href="#r21">21</a></sup><sup class="cite"><a href="#r23">23</a></sup> That is a modest effect per person and a large one per population &mdash; roughly the magnitude at which epidemiological models project meaningful reductions in stroke and ischaemic heart disease mortality. Dose and practical notes are in the <a href="beetjuice.html">beet juice entry</a>.</p>
+
+<p><strong>Pomegranate restrains the opposing system.</strong> Where beetroot adds vasodilator substrate, pomegranate acts on the <em>vasoconstrictor</em> arm &mdash; the renin&ndash;angiotensin system &mdash; and on eNOS itself. Pomegranate's ellagitannins inhibit angiotensin-converting enzyme, the same target as the &ldquo;-pril&rdquo; drug class. An early human study reported a <strong>36% reduction in serum ACE activity</strong> alongside a 5% systolic fall,<sup class="cite"><a href="#r26">26</a></sup> and the specific inhibitory compounds have since been isolated and characterised &mdash; pedunculagin, punicalin and gallagic acid, with IC<sub>50</sub> values around 0.9&ndash;1.8&nbsp;&micro;M, apparently binding the catalytic zinc.<sup class="cite"><a href="#r27">27</a></sup> Punicalagin additionally raises NO output by activating eNOS, so the two mechanisms push the same direction.</p>
+
+<div class="mech">
+  <div class="mech-lbl">Two juices, one axis</div>
+  <div class="chain">
+<b>BEETROOT</b> &mdash; adds substrate to the dilator arm<br>
+&nbsp;&nbsp;nitrate <span class="arrow">&rarr;</span> <i>oral bacteria</i> <span class="arrow">&rarr;</span> nitrite <span class="arrow">&rarr;</span> <b>NO</b> <span class="arrow">&rarr;</span> vasodilation<br>
+<br>
+<b>POMEGRANATE</b> &mdash; restrains the constrictor arm, and boosts NO synthesis<br>
+&nbsp;&nbsp;ellagitannins <span class="arrow">&dashv;</span> <b>ACE</b> <span class="arrow">&rarr;</span> less angiotensin&nbsp;II <span class="arrow">&rarr;</span> less vasoconstriction<br>
+&nbsp;&nbsp;punicalagin <span class="arrow">&rarr;</span> <b>eNOS</b> activation <span class="arrow">&rarr;</span> more NO<br>
+&nbsp;&nbsp;ellagitannins <span class="arrow">&rarr;</span> <i>gut bacteria</i> <span class="arrow">&rarr;</span> <b>urolithins</b> <span class="arrow">&rarr;</span> systemic effects
+  </div>
+  <p style="margin:12px 0 0;font-size:15.5px;">Because they act on opposite arms of the same control loop, there is a reasonable mechanistic case that the two are <em>additive</em> rather than redundant. <span class="ev ev-weak" style="display:inline">Speculative</span> &mdash; I could find no trial that tested them in combination, so this is an inference from mechanism, not a result.</p>
+</div>
+
+<div class="takeaway"><b>The structural parallel worth noticing:</b> both juices depend on a <em>microbial conversion step</em> the host cannot perform. Beetroot needs oral bacteria to reduce nitrate to nitrite; pomegranate needs gut bacteria to convert ellagitannins into absorbable urolithins &mdash; and a substantial minority of people (estimates range widely, roughly 10&ndash;40% depending on population) are urolithin non-producers.<sup class="cite"><a href="#r28">28</a></sup> Neither is a simple pharmacological dose-response. In both cases the active molecule is made by something living in you, which is a large and under-appreciated source of the inter-individual variability in these trials.</div>
+
+<p>The pomegranate trial data are real but weaker than beetroot's. A meta-analysis of 8 RCTs found systolic pressure fell <strong>&minus;4.96&nbsp;mmHg</strong> (95% CI &minus;7.67 to &minus;2.25) and diastolic <strong>&minus;2.01&nbsp;mmHg</strong> (&minus;3.71 to &minus;0.31).<sup class="cite"><a href="#r24">24</a></sup> A later analysis of 14 trials (n&nbsp;=&nbsp;573) found a near-identical systolic effect of &minus;5.02&nbsp;mmHg &mdash; but with two findings that complicate the picture considerably: the effect was concentrated at doses of <strong>&le;300&nbsp;mL/day</strong> (larger doses did <em>less</em> for systolic pressure), and the benefit <strong>was lost after two months</strong> of continued intake.<sup class="cite"><a href="#r25">25</a></sup></p>
+
+<div class="pushback">
+  <div class="pb-lbl">Three reasons to hold pomegranate loosely</div>
+  <p style="margin:0;"><strong>(1) The attenuation finding is the important one and it is rarely quoted.</strong> If the effect genuinely disappears by month three, then pomegranate is an acute vasoactive intervention rather than a treatment for chronic hypertension, and every enthusiastic summary that stops at &ldquo;&minus;5&nbsp;mmHg&rdquo; is describing a transient. It may be a statistical artefact of fewer, smaller long-duration trials &mdash; but it is what the data currently say. <strong>(2) The two meta-analyses share a senior author</strong> (Sahebkar), so they are not the independent replication they superficially appear to be. <strong>(3) The provenance is unusually compromised.</strong> POM Wonderful funded a very large share of the pomegranate literature &mdash; reportedly over $35 million across a hundred-plus studies &mdash; including much of Michael Aviram's foundational work, and the FTC found the company's cardiovascular and cancer advertising claims deceptive, a ruling upheld on appeal in 2015. That does not make the ACE-inhibition biochemistry wrong; it does mean the <em>clinical</em> literature was assembled by an interested party, and should be discounted accordingly.</p>
+</div>
+
+<div class="flag">
+  <div class="flag-lbl">The sugar problem &mdash; which cuts against this paper's own thesis</div>
+  <p style="margin:0;">A 240&nbsp;mL serving of pomegranate juice carries roughly 30&nbsp;g of sugar and ~130&nbsp;kcal; beet juice is lower but not trivial. This paper's central positive claim (<a href="#vii-2">VII.2</a>) is that insulin sensitivity is the upstream variable. Recommending a daily glass of concentrated fruit sugar to an insulin-resistant person in order to capture a few mmHg is close to self-contradictory, and I would rather name that tension than route around it. The resolution, such as it is: whole pomegranate arils carry the ellagitannins with the fibre intact, and nitrate is better obtained from leafy greens and whole beets than from juice. <em>Juice is the form the trials used, not necessarily the form that makes sense.</em></p>
+</div>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">Dietary nitrate lowers blood pressure in randomised trials.</span> <span class="ev ev-mixed" style="display:inline">Moderate</span> <span class="txt">that pomegranate juice lowers blood pressure acutely &mdash; real meta-analytic effect, compromised provenance, apparent loss of effect past two months.</span> <span class="ev ev-mixed" style="display:inline">Inferred</span> <span class="txt">that either reduces cardiovascular events; no outcome trial exists for either.</span></p>
+
+<h3 id="vii-5"><span class="h3num">VII.5</span>The rest of the blood-pressure stack</h3>
+<ol class="mit">
+  <li><span class="mit-title">Potassium, not just sodium restriction.</span> Raising potassium intake lowered systolic pressure by <strong>&minus;3.49&nbsp;mmHg</strong> (95% CI &minus;1.82 to &minus;5.15) across 22 RCTs &mdash; but the effect appeared <em>in hypertensive participants and not in normotensive ones</em>, which is a limit worth carrying.<sup class="cite"><a href="#r29">29</a></sup> Most people are well below adequate intake. See <a href="potassium.html">potassium</a> and <a href="sodium.html">sodium</a>.</li>
+  <li><span class="mit-title">Magnesium.</span> A cofactor for vascular smooth-muscle relaxation and endothelial function. Across 34 trials, a median 368&nbsp;mg/day for three months lowered systolic pressure by <strong>&minus;2.00&nbsp;mmHg</strong> (95% CI &minus;0.43 to &minus;3.58) and diastolic by &minus;1.78 &mdash; small, consistent, and notably larger in people with insulin resistance or low baseline magnesium,<sup class="cite"><a href="#r30">30</a></sup> which is the terrain argument showing up again in miniature. See <a href="magnesium.html">magnesium</a>.</li>
+  <li><span class="mit-title">Aerobic training.</span> Acts on endothelial function, arterial compliance and mitochondrial density at once &mdash; and, at high intensity, on plaque itself (<a href="#vii-3">VII.3</a>). The blood-pressure effect is the least of what it does.</li>
+  <li><span class="mit-title">Visceral fat reduction.</span> Upstream of both blood pressure and the lipid profile; the largest single lever for most people carrying excess visceral adiposity.</li>
+  <li><span class="mit-title">Vitamin K2.</span> Directs calcium into bone and away from arterial wall via matrix Gla protein &mdash; relevant to arterial stiffness rather than to lipids. See <a href="vitamink2.html">vitamin K2</a>. <span class="ev ev-mixed" style="display:inline">Moderate</span></li>
+</ol>
+
+<div class="pushback">
+  <div class="pb-lbl">Correcting a popular overcorrection</div>
+  <p style="margin:0;">The claim now circulating widely &mdash; that <em>sodium alone does not cause high blood pressure, and only a lack of potassium and magnesium does</em> &mdash; is an overcorrection of a real insight, and it is worth separating the two. <strong>What is right:</strong> the sodium/potassium <em>ratio</em> does predict blood pressure and cardiovascular mortality better than sodium in isolation; potassium intake in the modern diet is genuinely poor; and the mechanisms usually given (potassium promoting natriuresis and vascular relaxation, magnesium supporting vasodilation) are broadly correct. <strong>What is wrong:</strong> the strong form is refuted by controlled feeding data. DASH-Sodium fed 412 people three sodium levels &mdash; 50, 100 and 150&nbsp;mmol/day &mdash; in random sequence, <em>within</em> each diet arm, so potassium was held constant while sodium moved. Blood pressure fell stepwise as sodium fell, on both the high-potassium DASH diet and the control diet, and the two effects were <strong>additive and independent</strong>.<sup class="cite"><a href="#r31">31</a></sup> Sodium reduction works <em>even when potassium is already high</em>. The honest statement is that both matter, the ratio captures them jointly, and potassium is the more neglected half &mdash; not that sodium is exonerated. The magnesium claim is also oversold at the popular level: the measured effect is about 2&nbsp;mmHg, not a fix for hypertension, and the blanket assertion that supplementation is &ldquo;usually necessary&rdquo; has no support in the trial data.</p>
+</div>
+
+<h3 id="vii-6"><span class="h3num">VII.6</span>Where this reasoning stops</h3>
+<div class="safety">
+  <div class="s-lbl">The limits of the terrain argument</div>
+  <p style="margin:0 0 10px;">Intellectual honesty requires naming the cases where the argument of this paper does not apply, and where the drug simply wins:</p>
+  <ul style="margin:0;padding-left:18px;">
+    <li style="margin:8px 0;"><b>Familial hypercholesterolaemia.</b> Lifetime apoB elevation with no metabolic confounding. Diet does not fix a broken LDL receptor. Treat it.</li>
+    <li style="margin:8px 0;"><b>Established coronary disease.</b> Secondary prevention has large absolute benefit and a demonstrated mortality reduction. The ARR critique in <a href="#iii-1">III.1</a> loses most of its force when baseline risk is high &mdash; that is arithmetic, not opinion. Note that CERT (<a href="#vii-3">VII.3</a>) is <em>not</em> a counterexample here: it showed plaque regression from training layered <em>on top of</em> guideline therapy in exactly this population, which is an argument for adding exercise, not for dropping the drug.</li>
+    <li style="margin:8px 0;"><b>Existing plaque burden.</b> If a CT angiogram or calcium score shows disease, you are no longer in primary prevention regardless of what the risk calculator says. This is also the KETO-CTA study's own main finding: <em>plaque predicts plaque</em>.</li>
+    <li style="margin:8px 0;"><b>Very high apoB.</b> At the extremes, the terrain argument does not rescue the number. A lean, insulin-sensitive person with apoB of 180 is in genuinely uncertain territory, and the honest answer is that nobody knows &mdash; which is an argument for measuring plaque directly rather than for confidence in either direction.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ============ CONCLUSION ============ -->
+<div class="part-head" id="conclusion">
+  <span class="part-num">&sect; Close</span>
+  <h2>What This Adds Up To</h2>
+</div>
+<section>
+<div class="brief">
+  <div class="lbl">The position, compressed</div>
+  <p class="sub">Six claims, in descending confidence</p>
+  <ol class="spine">
+    <li><b>ApoB is causal.</b> The genetic evidence is strong enough that any model denying it is not worth defending. <span class="ev ev-strong" style="display:inline">Strong</span></li>
+    <li><b>LDL-C is the wrong variable even inside that model</b> &mdash; apoB outperforms it, and discordance concentrates in exactly the people most at risk. <span class="ev ev-strong" style="display:inline">Strong</span></li>
+    <li><b>The absolute benefit in primary prevention is small enough to be a genuine value judgement</b>, and quoting relative risk makes that judgement for the patient. <span class="ev ev-strong" style="display:inline">Strong</span></li>
+    <li><b>The costs are real but must be sorted</b> &mdash; diabetes yes, muscle pain mostly not. <span class="ev ev-strong" style="display:inline">Strong</span> for both halves.</li>
+    <li><b>Terrain moves the disease, not merely the markers</b> &mdash; established for exercise, which regressed coronary plaque on serial imaging without any lipid target (<a href="#vii-3">VII.3</a>). <span class="ev ev-strong" style="display:inline">Strong</span> for exercise specifically.</li>
+    <li><b>The dietary terrain levers are the better bet for most people</b> not in the exception list &mdash; but this generalises from mechanism and from the exercise result, and has not been tested on its own. <span class="ev ev-weak" style="display:inline">Speculative</span></li>
+  </ol>
+  <p class="bottom">The disagreement worth having is not whether LDL causes atherosclerosis. It is whether a population-level cause makes a good individual-level target &mdash; and on that, the mainstream case is much weaker than its confidence suggests.</p>
+</div>
+
+<div class="limits">
+  <p class="lim-h">Limitations of this paper</p>
+  <ul>
+    <li><b>No outcome data compares the alternative against the drug.</b> There is still no randomised trial in which low-LA, insulin-sensitivity-focused management is tested <em>against</em> statins for hard endpoints. CERT (<a href="#vii-3">VII.3</a>) is the closest thing in this paper and is not that trial: it is an anatomical endpoint rather than events, and the training was layered on top of guideline therapy rather than substituted for it. The dietary components of Part&nbsp;VII remain mechanism and inference; only the exercise component has direct anatomical evidence.</li>
+    <li><b>The U-curve cannot bear much weight.</b> Reverse causation is a serious confound and the residual association after adjustment is contested. It argues against &ldquo;as low as possible&rdquo; as a principle; it does not argue that pharmacological lowering is harmful.</li>
+    <li><b>KETO-CTA is weak evidence</b> &mdash; uncontrolled, one year, restricted range, aligned funding, with one associated publication retracted. It is included because it is the only direct test of the metabolically-healthy-hyperlipidaemia question, not because it settles it.</li>
+    <li><b>The CTT data are not independently verifiable.</b> The collaboration has not released participant-level data for external re-analysis, so the efficacy estimates this paper concedes in Part&nbsp;II rest on analyses that cannot be independently checked. That cuts against my own concession as much as for it.</li>
+    <li><b>Absolute risk reduction is population-dependent by construction.</b> The Byrne figures are averages over heterogeneous baseline risks; no individual patient has a 0.8% ARR. The correct use of that number is to demonstrate the size of the relative/absolute gap, not to quote it to a specific person.</li>
+    <li><b>Selection of the sceptical literature is a live risk.</b> I have tried to cite mainstream sources for every concession and flag advocacy provenance at point of use, but the sceptical network is small and mutually citing, and I am not confident I have fully escaped its framing.</li>
+  </ul>
+  <p class="lim-close">What would change my mind: a properly controlled trial of the LMHR phenotype with multi-year imaging endpoints showing plaque progression proportional to apoB; or conversely, a primary-prevention trial reporting individualised absolute benefit alongside new-onset diabetes and quality-of-life endpoints, showing net benefit at low baseline risk. Both are feasible. Neither has been done.</p>
+</div>
+</section>
+
+<!-- ============ REFERENCES ============ -->
+<div class="part-head" id="refs">
+  <span class="part-num">&sect; Refs</span>
+  <h2>References</h2>
+</div>
+<section>
+<div class="refwrap">
+
+<div class="ref-group">The causal case for apoB</div>
+<ol class="refs">
+<li id="r1">Ference BA, Ginsberg HN, Graham I, et al. Low-density lipoproteins cause atherosclerotic cardiovascular disease. 1. Evidence from genetic, epidemiologic, and clinical studies. A consensus statement from the European Atherosclerosis Society Consensus Panel. <span class="j">Eur Heart J</span> 2017;38(32):2459&ndash;2472. <span class="note">(&gt;200 cohort studies, MR studies and RCTs; &gt;2 million participants, &gt;150,000 events. The central document this paper concedes to in <a href="#part-ii">Part&nbsp;II</a>.)</span></li>
+<li id="r2">Cholesterol Treatment Trialists' (CTT) Collaboration. Efficacy and safety of more intensive lowering of LDL cholesterol: a meta-analysis of data from 170,000 participants in 26 randomised trials. <span class="j">Lancet</span> 2010;376(9753):1670&ndash;1681. <span class="note">(RR 0.78 per 1.0 mmol/L LDL-C reduction for major vascular events.)</span></li>
+<li id="r3">Cholesterol Treatment Trialists' (CTT) Collaboration. The effects of lowering LDL cholesterol with statin therapy in people at low risk of vascular disease: meta-analysis of individual data from 27 randomised trials. <span class="j">Lancet</span> 2012;380(9841):581&ndash;590.</li>
+<li id="r4">Scandinavian Simvastatin Survival Study Group. Randomised trial of cholesterol lowering in 4444 patients with coronary heart disease: the Scandinavian Simvastatin Survival Study (4S). <span class="j">Lancet</span> 1994;344(8934):1383&ndash;1389. <span class="note">(30% reduction in all-cause mortality over 5.4 years in secondary prevention &mdash; the strongest single result in the field.)</span></li>
+</ol>
+
+<div class="ref-group">Absolute vs relative benefit, and the mortality curve</div>
+<ol class="refs">
+<li id="r5">Byrne P, Demasi M, Jones M, Smith SM, O'Brien KK, DuBroff R. Evaluating the association between LDL-C reduction and relative and absolute effects of statin treatment: a systematic review and meta-analysis. <span class="j">JAMA Intern Med</span> 2022;182(5):474&ndash;481. <span class="note">(21 trials. ARR: 0.8% all-cause mortality, 1.3% MI, 0.4% stroke; RRR: 9%, 29%, 14% respectively.)</span></li>
+<li id="r6">A nonlinear association of total cholesterol with all-cause and cause-specific mortality. <span class="j">Nutr Metab (Lond)</span> 2021;18:20. doi:10.1186/s12986-021-00548-1. <span class="note">(NHANES 1999&ndash;2014, n&nbsp;&asymp;&nbsp;30,700; restricted cubic splines. TC &lt;120 mg/dL strongly predicted all-cause mortality; TC &ge;280 mg/dL predicted CVD mortality only. One of the two papers cited in the post that prompted this paper. Author list to be confirmed at proof.)</span></li>
+<li id="r7">Ravnskov U, Diamond DM, Hama R, et al. Lack of an association or an inverse association between LDL-cholesterol and mortality in the elderly: a systematic review. <span class="j">BMJ Open</span> 2016;6(6):e010401. <span class="note">(Contested; authors are the core sceptical network (THINCS) and the review has been criticised for selective inclusion. Cited as contested and load-bearing on nothing. Also cited as r39 in the <a href="linoleic-acid.html">linoleic acid paper</a>.)</span></li>
+<li id="r8">Sniderman AD, Williams K, Contois JH, et al. A meta-analysis of low-density lipoprotein cholesterol, non-high-density lipoprotein cholesterol, and apolipoprotein B as markers of cardiovascular risk. <span class="j">Circ Cardiovasc Qual Outcomes</span> 2011;4(3):337&ndash;345; with Sniderman AD, et al. ApoB, LDL-C, and non-HDL-C as markers of cardiovascular risk. <span class="j">J Clin Lipidol</span> 2025 (15 studies, 593,354 participants). <span class="note">(ApoB outperformed LDL-C consistently; the basis for <a href="#iii-4">III.4</a>.)</span></li>
+<li id="r9">Soto-Mota A, Norwitz NG, Manubolu VS, et al. KETO-CTA: coronary plaque progression in lean mass hyper-responders. <span class="j">medRxiv</span> 2026 preprint (primary results); an earlier report, &ldquo;Plaque Begets Plaque, ApoB Does Not,&rdquo; <span class="j">JACC: Advances</span> 2025, has been <b>RETRACTED</b>. <span class="note">(n=100, LMHR phenotype, 1 year serial CCTA. Mean LDL-C 242 mg/dL, apoB 180 mg/dL. Median non-calcified plaque volume rose 5.6 mm&sup3; (~37% relative). Neither apoB nor cumulative LDL-C predicted progression; baseline plaque did. Uncontrolled, restricted range, aligned funding &mdash; see the pushback at <a href="#iii-3">III.3</a>.)</span></li>
+</ol>
+
+<div class="ref-group">Keys and the diet-heart hypothesis</div>
+<ol class="refs">
+<li id="r10">Keys A (ed). Seven Countries: A Multivariate Analysis of Death and Coronary Heart Disease. <span class="j">Harvard University Press</span>, 1980. <span class="note">(The primary source. 16 cohorts in 7 countries; the study never enrolled 22.)</span></li>
+<li id="r11">Yerushalmy J, Hilleboe HE. Fat in the diet and mortality from heart disease: a methodologic note. <span class="j">N Y State J Med</span> 1957;57(14):2343&ndash;2354. <span class="note">(The actual source of the 22-country graph, built from UN food-balance data as a <em>critique</em> of Keys's earlier work &mdash; not a Keys dataset he pared down. This misattribution is the foundation of the cherry-picking myth.)</span></li>
+<li id="r12">Pett KD, Kahn J, Willett WC, Katz DL. Ancel Keys and the Seven Countries Study: An Evidence-Based Response to Revisionist Histories. <span class="j">True Health Initiative</span> white paper, 2017. <span class="note">(Provenance noted: THI is an advocacy organisation for plant-forward diets and is not neutral. Cited for its documentation of primary sources on the enrolment question, which is checkable independently, not for its dietary conclusions.)</span></li>
+<li id="r13">Ramsden CE, Zamora D, Majchrzak-Hong S, et al. Re-evaluation of the traditional diet-heart hypothesis: analysis of recovered data from Minnesota Coronary Experiment (1968&ndash;73). <span class="j">BMJ</span> 2016;353:i1246; and Ramsden CE, et al. Use of dietary linoleic acid for secondary prevention of coronary heart disease and death: evaluation of recovered data from the Sydney Diet Heart Study. <span class="j">BMJ</span> 2013;346:e8707. <span class="note">(Both: replacing saturated fat with linoleic acid lowered serum cholesterol without reducing mortality; in MCE, greater cholesterol reduction was associated with <em>higher</em> mortality. Methodological critics note incomplete recovered data and hydrogenated-oil-era formulations.)</span></li>
+</ol>
+
+<div class="ref-group">The mevalonate pathway and statin pharmacology</div>
+<ol class="refs">
+<li id="r14">Liao JK, Laufs U. Pleiotropic effects of statins. <span class="j">Annu Rev Pharmacol Toxicol</span> 2005;45:89&ndash;118; with Goldstein JL, Brown MS. Regulation of the mevalonate pathway. <span class="j">Nature</span> 1990;343:425&ndash;430. <span class="note">(Textbook anchor for <a href="#part-iv">Part&nbsp;IV</a>: HMG-CoA reductase inhibition reduces all downstream isoprenoids &mdash; CoQ10, dolichol, heme A, farnesyl-PP and geranylgeranyl-PP &mdash; not cholesterol alone. Both the pleiotropic benefits and the characteristic harms follow from this.)</span></li>
+<li id="r15">Banach M, Serban C, Sahebkar A, et al. Statin therapy and plasma coenzyme Q10 concentrations &mdash; a systematic review and meta-analysis of placebo-controlled trials. <span class="j">Pharmacol Res</span> 2015;99:329&ndash;336. <span class="note">(8 placebo-controlled arms; weighted mean difference &minus;0.44 &micro;mol/L, p&lt;0.001. Caveat noted in <a href="#iv-2">IV.2</a>: plasma CoQ10 travels on lipoproteins, so part of the fall reflects fewer carriers.)</span></li>
+<li id="r16">Qu H, Guo M, Chai H, et al. Effects of coenzyme Q10 on statin-induced myopathy: an updated meta-analysis of randomized controlled trials. <span class="j">J Am Heart Assoc</span> 2018;7:e009835; against Banach M, Serban C, Ursoniu S, et al. Statin therapy and plasma coenzyme Q10 concentrations / CoQ10 supplementation and statin-induced myopathy: a meta-analysis. <span class="j">Mayo Clin Proc</span> 2015;90(1):24&ndash;34. <span class="note">(Directly conflicting conclusions in the same literature. Cited as <span class="ev ev-weak" style="display:inline">Contested</span>. A 2025 meta-analysis of 7 RCTs (n=389) found benefit in 4 trials and none in 3 &mdash; the split persists.)</span></li>
+</ol>
+
+<div class="ref-group">Harms: diabetes and muscle</div>
+<ol class="refs">
+<li id="r17">Cholesterol Treatment Trialists' (CTT) Collaboration. Effects of statin therapy on diagnoses of new-onset diabetes and worsening glycaemia in large-scale randomised blinded statin trials: an individual participant data meta-analysis. <span class="j">Lancet Diabetes Endocrinol</span> 2024;12(5):306&ndash;319. doi:10.1016/S2213-8587(24)00040-8. <span class="note">(19 placebo-controlled trials, n=123,940, median 4.3y; 4 intensity trials, n=30,724, median 4.9y. New-onset diabetes rate ratio 1.10 (95% CI 1.04&ndash;1.16) low/moderate intensity, 1.36 (1.25&ndash;1.48) high intensity. Most new diagnoses occurred in participants whose baseline glycaemia was already near the diagnostic threshold. The second paper cited in the post that prompted this one.)</span></li>
+<li id="r18">Wood FA, Howard JP, Finegold JA, et al. N-of-1 trial of a statin, placebo, or no treatment to assess side effects (SAMSON). <span class="j">N Engl J Med</span> 2020;383:2182&ndash;2184. <span class="note">(60 patients, 12 one-month randomised periods each. ~90% of symptom burden on atorvastatin was reproduced on placebo; both exceeded no-tablet months. Half restarted a statin after seeing their own data.)</span></li>
+<li id="r19">Herrett E, Williamson E, Brack K, et al. Statin treatment and muscle symptoms: series of randomised, placebo controlled n-of-1 trials (StatinWISE). <span class="j">BMJ</span> 2021;372:n135. <span class="note">(Independent replication of SAMSON in UK primary care; no overall effect of atorvastatin on muscle symptoms.)</span></li>
+</ol>
+
+<div class="ref-group">Terrain interventions</div>
+<ol class="refs">
+<li id="r20">Reaven P, Parthasarathy S, Grasse BJ, et al. Effects of oleate-rich and linoleate-rich diets on the susceptibility of LDL to oxidative modification in mildly hypercholesterolemic subjects. <span class="j">J Clin Invest</span> 1993;91:668&ndash;676; and Bonanome A, Pagnan A, Biffanti S, et al. <span class="j">Arterioscler Thromb</span> 1992;12(4):529&ndash;533. <span class="note">(Human feeding studies; oleate substitution increases LDL oxidation resistance. Same references as r37&ndash;38 in the <a href="linoleic-acid.html">linoleic acid paper</a>, where the argument is developed in full.)</span></li>
+<li id="r21">Siervo M, Lara J, Ogbonmwan I, Mathers JC. Inorganic nitrate and beetroot juice supplementation reduces blood pressure in adults: a systematic review and meta-analysis. <span class="j">J Nutr</span> 2013;143(6):818&ndash;826. <span class="note">(SBP &minus;3.55 mmHg, DBP &minus;1.32 mmHg vs control.)</span></li>
+<li id="r22">Vesterbekkmo EK, Aksetøy IA, Follestad T, Nilsen HO, Hegbom K, Wisløff U, Wiseth R, Madssen E. High-intensity interval training induces beneficial effects on coronary atheromatous plaques: a randomized trial (CERT). <span class="j">Eur J Prev Cardiol</span> 2023;30(5):384&ndash;392. doi:10.1093/eurjpc/zwac309. PMID 36562212. <span class="note">(n=60 randomised, 59 analysed; stable CAD post-PCI; 6 months supervised HIIT, 4&times;4 min at 85&ndash;95% HR<sub>peak</sub> twice weekly, vs contemporary preventive guidelines. Serial IVUS. Average PAV between-group difference &minus;1.4% (95% CI &minus;2.7 to &minus;0.1, P=0.036); HIIT arm &minus;1.2% (P=0.017), control +0.2% (P=0.616). Maximum PAV between-group &minus;2.5% (95% CI &minus;4.6 to &minus;0.3, P=0.025). TAV<sub>norm</sub> &minus;9.0 mm&sup3; in HIIT (P=0.002), between-group &minus;12.0 mm&sup3; (95% CI &minus;19.9 to &minus;4.2, P=0.003). <b>Both arms were on guideline secondary-prevention therapy</b> &mdash; the effect is additive to statins, not a substitute for them. Authors' own limitations: small sample, control group also received guideline rehabilitation (attenuating the contrast), and doubt that the achieved intensity is reachable without continuous supervision. The only direct anatomical-endpoint evidence in <a href="#part-vii">Part&nbsp;VII</a>.)</span></li>
+<li id="r23">Bonilla Ocampo DA, Paipilla AF, Marín E, et al. Dietary nitrate from beetroot juice for hypertension: a systematic review / Nitrate derived from beetroot juice lowers blood pressure in patients with arterial hypertension: a systematic review and meta-analysis. <span class="j">Front Nutr</span> 2022;9:823039. <span class="note">(Restricted to hypertensive populations: clinical SBP &minus;5.31 mmHg (95% CI &minus;7.46 to &minus;3.16). Practical dose notes in the <a href="beetjuice.html">beet juice entry</a>.)</span></li>
+<li id="r24">Sahebkar A, Ferri C, Giorgini P, Bo S, Nachtigal P, Grassi D. Effects of pomegranate juice on blood pressure: a systematic review and meta-analysis of randomized controlled trials. <span class="j">Pharmacol Res</span> 2017;115:149&ndash;161. <span class="note">(8 RCTs. SBP &minus;4.96 mmHg (95% CI &minus;7.67 to &minus;2.25, p&lt;0.001); DBP &minus;2.01 mmHg (&minus;3.71 to &minus;0.31, p=0.021). Shares a senior author with <a href="#r25">25</a> &mdash; not independent replication.)</span></li>
+<li id="r25">Ghaemi F, Emadzadeh M, Atkin SL, Jamialahmadi T, Zengin G, Sahebkar A. Impact of pomegranate juice on blood pressure: a systematic review and meta-analysis. <span class="j">Phytother Res</span> 2023;37(10):4429&ndash;4441. doi:10.1002/ptr.7952. <span class="note">(14 trials, n=573. SBP &minus;5.02 mmHg (95% CI &minus;7.55 to &minus;2.48). Two qualifying findings used in <a href="#vii-4">VII.4</a>: the systolic effect was largest at doses &le;300 mL/day and smaller above it, and the benefit <b>was lost after 2 months</b> of continued intake. The durability question is the one that matters and is rarely quoted.)</span></li>
+<li id="r26">Aviram M, Dornfeld L. Pomegranate juice consumption inhibits serum angiotensin converting enzyme activity and reduces systolic blood pressure. <span class="j">Atherosclerosis</span> 2001;158(1):195&ndash;198. <span class="note">(36% reduction in serum ACE activity, 5% systolic reduction. Small and foundational to the field &mdash; and the author's pomegranate programme was substantially POM Wonderful-funded, disclosed at point of use in <a href="#vii-4">VII.4</a>. Cited for the ACE mechanism, which has since been independently characterised in <a href="#r27">27</a>, not as strong clinical evidence.)</span></li>
+<li id="r27">Discovery of potent angiotensin-converting enzyme inhibitors in pomegranate as a treatment for hypertension. <span class="j">J Agric Food Chem</span> 2023. PMID 37384918. <span class="note">(Isolates and characterises the active compounds: pedunculagin, punicalin and gallagic acid, IC<sub>50</sub> 0.91, 1.12 and 1.77 &micro;M, binding catalytic residues and the zinc ion in ACE's C- and N-domains. Independent of the POM-funded clinical literature; this is the mechanistic anchor. Author list to be confirmed at proof.)</span></li>
+<li id="r28">Urolithin metabotypes and interindividual variation in ellagitannin metabolism. <span class="note">(Gut microbiota convert pomegranate ellagitannins via ellagic acid into urolithins; individuals stratify into metabotype A, metabotype B, and metabotype 0 &mdash; non-producers. Published non-producer estimates vary widely by population and method, so the 10&ndash;40% range given in <a href="#vii-4">VII.4</a> is deliberately loose. Needs a single primary citation at proof &mdash; the Toma&aacute;s-Barber&aacute;n / Espín group at CEBAS-CSIC is the anchor literature.)</span></li>
+<li id="r29">Aburto NJ, Hanson S, Gutierrez H, Hooper L, Elliott P, Cappuccio FP. Effect of increased potassium intake on cardiovascular risk factors and disease: systematic review and meta-analyses. <span class="j">BMJ</span> 2013;346:f1378. <span class="note">(22 RCTs, n=1606, plus 11 cohorts, n=127,038. SBP &minus;3.49 mmHg (95% CI &minus;1.82 to &minus;5.15), DBP &minus;1.96 mmHg &mdash; present in hypertensive participants, <em>absent in normotensive ones</em>. No adverse effect on renal function, lipids or catecholamines.)</span></li>
+<li id="r30">Zhang X, Li Y, Del Gobbo LC, et al. Effects of magnesium supplementation on blood pressure: a meta-analysis of randomized double-blind placebo-controlled trials. <span class="j">Hypertension</span> 2016;68(2):324&ndash;333. doi:10.1161/HYPERTENSIONAHA.116.07664. <span class="note">(34 trials, n=2028; median 368 mg/day for 3 months. SBP &minus;2.00 mmHg (95% CI &minus;0.43 to &minus;3.58), DBP &minus;1.78 mmHg (&minus;0.73 to &minus;2.82). Larger effects with insulin resistance or low baseline magnesium.)</span></li>
+<li id="r31">Sacks FM, Svetkey LP, Vollmer WM, et al. Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH) diet (DASH-Sodium). <span class="j">N Engl J Med</span> 2001;344(1):3&ndash;10. <span class="note">(412 participants, randomised crossover through sodium at 50, 100 and 150 mmol/day within each diet arm. Sodium reduction lowered blood pressure stepwise on <em>both</em> the high-potassium DASH diet and the control diet, and the two effects were additive and independent &mdash; the direct refutation of the strong &ldquo;sodium doesn't matter, only potassium does&rdquo; claim addressed in <a href="#vii-5">VII.5</a>.)</span></li>
+</ol>
+
+<div class="ref-group">Cholesterol regulation, and the endotoxin question</div>
+<ol class="refs">
+<li id="r32">Brown MS, Goldstein JL. The SREBP pathway: regulation of cholesterol metabolism by proteolysis of a membrane-bound transcription factor. <span class="j">Cell</span> 1997;89(3):331&ndash;340; with Goldstein JL, DeBose-Boyd RA, Brown MS. Protein sensors for membrane sterols. <span class="j">Cell</span> 2006;124(1):35&ndash;46. <span class="note">(The textbook anchor for <a href="#vi-2">VI.2</a>: SCAP&ndash;Insig sterol sensing, regulated intramembrane proteolysis of SREBP-2, and co-regulation of HMGCR and LDLR. This is the loop a statin works <em>through</em> &mdash; enzyme inhibition depletes hepatocyte cholesterol, which upregulates LDL receptors, which clears serum LDL.)</span></li>
+<li id="r33">Thyroid hormone regulation of hepatic LDL-receptor expression and the dyslipidaemia of hypothyroidism. <span class="note">(T3 upregulates LDLR transcription; overt and subclinical hypothyroidism raise LDL-C through impaired clearance rather than increased synthesis, and treating the thyroid corrects it. Standard endocrinology; anchor reference to be pinned at proof &mdash; the Duntas and Pearce reviews are the likely citations.)</span></li>
+<li id="r34">Han R. Plasma lipoproteins are important components of the immune system. <span class="j">Microbiol Immunol</span> 2010;54(4):246&ndash;253; with Catapano AL, Pirillo A, Bonacina F, Norata GD. The role of HDL in innate immunity. <span class="note">(LDL, VLDL, HDL and chylomicrons all bind and neutralise LPS and reduce its lethality in mice; LPS-binding protein circulates with apoB lipoproteins. <b>Critically for the claim examined in <a href="#vi-2">VI.2</a>:</b> neutralising capacity correlates with lipoprotein <em>phospholipid</em> content, and specifically <em>not</em> with cholesterol or triglyceride content.)</span></li>
+<li id="r35">Harris HW, Gosnell JE, Kumwenda ZL. The lipemia of sepsis: triglyceride-rich lipoproteins as agents of innate immunity. <span class="j">J Endotoxin Res</span> 2000;6(6):421&ndash;430. <span class="note">(The acute-phase lipid pattern in humans: triglyceride-rich lipoproteins rise while LDL-C and HDL-C fall. Establishes the <em>direction</em> point in <a href="#vi-2">VI.2</a> &mdash; endotoxaemia lowers cholesterol rather than raising it, which is the opposite of the popular claim.)</span></li>
+<li id="r36">Robertson J, Brydon WG, Tadesse K, Wenham P, Walls A, Eastwood MA. The effect of raw carrot on serum lipids and colon function. <span class="j">Am J Clin Nutr</span> 1979;32(9):1889&ndash;1892. PMID 474479. <span class="note">(200 g raw carrot at breakfast for 3 weeks: serum cholesterol &minus;11%, <b>faecal bile acid and fat excretion +50%</b>, stool weight +25%; changes persisted 3 weeks after stopping. The bile-acid result is the measured mechanism and is omitted from the popular retelling; the authors' "change in bacterial flora or metabolism" remark refers to the <em>persistence</em> of the effect, not to its cause. Engaged in the pushback box at <a href="#vi-2">VI.2</a>.)</span></li>
+</ol>
+
+</div>
+
+<p class="ref-note" style="margin-top:22px;">Outstanding citation-audit items for the next draft: the author list and exact volume of <a href="#r6">6</a> (the NHANES nonlinear-cholesterol paper) need confirming against the published version; the <em>HMGCR</em> Mendelian-randomization/diabetes literature cited in <a href="#v-1">V.1</a> is currently asserted from the consensus position and needs a primary citation (Swerdlow et al., <em>Lancet</em> 2015 is the likely anchor); the PROSPER and HPS cognitive-endpoint claims in <a href="#v-3">V.3</a> need direct citation rather than the summary given; the statin/testosterone meta-analysis referenced in <a href="#v-3">V.3</a> is asserted without a citation and should either be sourced or removed; and <a href="#r33">33</a> (thyroid hormone and LDL-receptor expression) is standard endocrinology asserted without a primary citation and needs one pinned. The KETO-CTA preprint at <a href="#r9">9</a> should be re-checked for peer-reviewed publication before this draft is promoted past v1.</p>
+</section>
+
+<footer class="end">
+  <p><b>References:</b> see the numbered reference list above. Evidence grades appear inline throughout; conflicts of interest and contested citations are flagged at point of use. <b>This paper is not medical advice and is not a basis for changing or stopping any prescribed medication.</b></p>
+  <div style="margin-top:16px;">
+    <span class="tag">Draft v1</span>
+    <span class="tag">Evidence graded</span>
+    <span class="tag">COI disclosed</span>
+    <span class="tag">Not medical advice</span>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

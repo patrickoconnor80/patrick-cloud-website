@@ -5,57 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chinese Skullcap (Scutellaria baicalensis) — Supplement Deep Dive</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; --caution: #a05a2c; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  h3 { margin-top: 1.4rem; margin-bottom: 0.3rem; color: var(--accent); font-size: 1rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .caution { background: #fbf3e6; border-left: 3px solid var(--caution); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.93rem; color: #5a4326; }
-  .caution strong { color: var(--caution); }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  .grade { font-style: italic; color: var(--sub); font-size: 0.9em; }
-  .verdict { font-weight: 600; }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
 <div class="crumbs"><a href="supplements.html">← Supplements</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Chinese Skullcap <span style="font-style:italic;font-weight:400;">(Scutellaria baicalensis)</span></h1>
-<div class="tags"><span class="tag">Herb / Root</span><span class="tag">Experimental</span><span class="tag">Anti-inflammatory</span></div>
+<div class="tags"><span class="tag">Herb / Root</span><span class="tag">Experimental</span><span class="tag">Antimicrobial</span><span class="tag">Nervous System</span></div>
 
-<div class="callout"><strong>TL;DR:</strong> The root of Chinese (Baikal) skullcap &mdash; not the same plant as calming American skullcap. Used situationally (2&ndash;3x/week, not necessarily daily) as a decoction or capsule, roughly 1&ndash;2&nbsp;g per serving, for its anti-inflammatory/antimicrobial baicalin-wogonin chemistry.</div>
+<p class="lede">Chinese (Baikal) skullcap root: a flavonoid-rich herb that touches many systems, none of them dramatically.</p>
 
-<h2>Not the same plant as American skullcap</h2>
-<p>Chinese/Baikal skullcap (<em>Scutellaria baicalensis</em>) is a different species from American skullcap (<em>Scutellaria lateriflora</em>), a calming nervine traditionally used for sleep and anxiety. The Chinese species is the <strong>root</strong>, used traditionally for anti-inflammatory, antimicrobial, antiviral, and hepatoprotective purposes &mdash; not as a sleep aid. Conflating the two by name is an easy label-reading mistake.</p>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Situational, not daily</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev early" title="Early — mostly animal / cell or limited"></span>
+      <span class="what">Eases anxiety without sedation</span>
+      <span class="how">Its flavonoids boost GABA-A, the brain's calming receptor.</span>
+      <a class="why" href="#neuroactive-effects-gaba-a-and-the-oroxylin-exce">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early — mostly animal / cell or limited"></span>
+      <span class="what">Fights bacteria and fungi</span>
+      <span class="how">Traditionally used as a tea for candida and gut overgrowth.</span>
+      <a class="why" href="#antimicrobial-and-gut-effects">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early — mostly animal / cell or limited"></span>
+      <span class="what">Lowers blood sugar and LDL</span>
+      <span class="how">Activates AMPK, like a mild version of berberine.</span>
+      <a class="why" href="#cardiometabolic-effects">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early — mostly animal / cell or limited"></span>
+      <span class="what">Calms brain inflammation</span>
+      <span class="how">Blocks TLR4, the immune sensor that reacts to gut endotoxin.</span>
+      <a class="why" href="#neuroinflammation">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev early"></span>Early / limited</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>1–2 g of root per serving (2–3 "00" capsules)</li>
+        <li>Simmer 15–20 minutes, or grind it into capsules; a quick tea extracts little</li>
+        <li>2–3 times a week</li>
+        <li>Grind about 2 weeks' worth at a time</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Chinese skullcap is a different plant from American skullcap</li>
+        <li>Buy only from sources that test for toxic germander adulteration</li>
+        <li>Can raise blood levels of drugs like digoxin, statins and some chemotherapy. Ask a pharmacist first.</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<h2>Active compounds</h2>
-<p>Baicalin/baicalein and wogonin are the best-studied bioactive flavonoids in the root. They're well represented in the preclinical literature <span class="grade">(Animal&ndash;in-vitro)</span> and are somewhat less bioavailability-crippled than black seed's thymoquinone, but human RCT data is still limited &mdash; mostly animal and cell-study evidence, similar in evidentiary weight to <a href="blackseed.html">Black Seed</a>'s TQ story rather than a step up from it.</p>
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
 
-<h2>Practical use</h2>
+<h2 id="flavonoids-the-active-compound-class">Flavonoids &mdash; the active compound class</h2>
+<p>Skullcap root is defined by a very high content of <strong>flavonoids</strong>, a class of polyphenols (the name comes from Latin <em>flavus</em>, "yellow") &mdash; and it's these compounds that give the root its bright yellow color. Baicalin, baicalein, and wogonin are the best-studied; oroxylin A and norwogonin are minor constituents with outsized, and in some cases opposite, effects. <span class="grade">(Animal&ndash;in-vitro for mechanism; human RCT data is limited across all of these, similar in evidentiary weight to <a href="blackseed.html">Black Seed</a>'s TQ story rather than a step up from it)</span></p>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Compound</th><th>Reported effect profile</th></tr></thead>
+<tbody>
+<tr><td>Baicalein</td><td>GABA-A positive modulation (anxiolytic, low sedation); AMPK activation; broad antimicrobial activity</td></tr>
+<tr><td>Baicalin</td><td>GABA-A positive modulation; expands the neural stem cell pool (neurogenesis); AMPK activation</td></tr>
+<tr><td>Wogonin</td><td>GABA-A positive modulation; anti-inflammatory and antimicrobial</td></tr>
+<tr><td>Oroxylin A (trace)</td><td>GABA receptor <em>inhibition</em> plus dopamine reuptake inhibition &mdash; a stimulant profile, opposite the other three; also raises BDNF</td></tr>
+<tr><td>Norwogonin (minor)</td><td>One of the few known direct agonists of TrkB, the BDNF receptor &mdash; a distinct and unusual mechanism</td></tr>
+</tbody>
+</table></div>
+
+<h3 id="antimicrobial-and-gut-effects"><span class="ev early" title="Early — mostly animal / cell or limited"></span>Antimicrobial and gut effects</h3>
+<p>The root is broadly antibacterial, antifungal, and antiviral in preclinical work. <span class="grade">(Animal&ndash;in-vitro)</span> Herbalist Stephen Buhner consistently ranks it among his top-ten herbs for infections &mdash; worth naming as what it is: an experienced clinical herbalist's traditional-use ranking, not a trial finding, and a different (weaker, harder-to-verify) kind of evidence than the lab data above. In practice this gives it a reputation for reducing candida and SIBO overgrowth when taken as a tea, an effect reported to work best paired with dietary probiotics and fiber rather than used alone. <span class="grade">(Speculative&ndash;Inferred: traditional-use pattern layered on top of genuine but non-specific-to-gut antimicrobial preclinical data)</span></p>
+
+<h3 id="bioavailability-enhancer-p-glycoprotein-inhibiti">Bioavailability enhancer: P-glycoprotein inhibition</h3>
+<p>Some of skullcap's flavonoids inhibit P-glycoprotein (P-gp), an efflux pump that actively pumps many compounds back out of intestinal cells before they can be absorbed &mdash; the same mechanism piperine (black pepper extract) uses to boost curcumin absorption. In principle this means skullcap can enhance absorption of other herbs or compounds taken alongside it. <span class="grade">(Animal&ndash;in-vitro for the P-gp inhibition itself; Inferred for any specific combination actually delivering more of a paired compound in a person)</span></p>
+<div class="caution">P-gp is also central to a lot of real drug interactions &mdash; it governs blood levels of digoxin, many statins, some chemotherapy agents, and other narrow-therapeutic-index drugs. A P-gp inhibitor taken alongside prescription medication isn't a purely theoretical concern; flag this combination to a doctor or pharmacist rather than assuming it's inert.</div>
+
+<h3 id="cardiometabolic-effects"><span class="ev early" title="Early — mostly animal / cell or limited"></span>Cardiometabolic effects</h3>
+<p>In traditional use, skullcap root is most known for cardioprotective and brain-enhancing effects. Mechanistically, it activates AMPK &mdash; lowering LDL and blood glucose in a manner comparable to a mild version of berberine (a candidate for its own future <a href="supplements.html">Supplements</a> entry, given how directly the comparison invites it). <span class="grade">(Animal&ndash;in-vitro; the berberine comparison is a useful mental model, not a claim of equivalent potency)</span> Separately, it may lower blood pressure and improve circulation by inducing nitric oxide through eNOS &mdash; the same classical, oxygen-dependent NO pathway discussed on the <a href="beetjuice.html">Beet Juice</a> page, as distinct from beet juice's oral-bacteria-dependent nitrate route. <span class="grade">(Animal&ndash;in-vitro)</span></p>
+
+<h3 id="neuroactive-effects-gaba-a-and-the-oroxylin-exce"><span class="ev early" title="Early — mostly animal / cell or limited"></span>Neuroactive effects: GABA-A and the oroxylin exception</h3>
+<p>Baicalein, baicalin, and wogonin all stimulate the relaxant GABA-A receptor &mdash; producing an anxiolytic effect without much sedation, unlike classic GABAergic sedatives. Oroxylin A, present only in trace amounts, does the opposite: it <em>inhibits</em> GABA receptors and inhibits dopamine reuptake instead, acting as a stimulant. <span class="grade">(Animal&ndash;in-vitro)</span></p>
+<div class="caution">Because these two effects point in opposite directions, the ratio of compounds in a given extract matters more than "skullcap" as a single label: high-oroxylin extracts tend to be stimulating, while high-baicalein extracts tend to be sedating/anxiolytic. Checking (or asking a supplier for) an extract's compound profile before choosing a product for an anxiety-focused use case is worth doing rather than assuming any skullcap product behaves the same way.</div>
+
+<h3 id="neurogenesis-and-neuroprotection">Neurogenesis and neuroprotection</h3>
+<p>Skullcap is reported to promote neurogenesis through at least two separable routes: oroxylin directly increasing BDNF, and baicalin increasing the neural stem cell pool. Norwogonin, a minor component, is one of the few known compounds that acts as a direct agonist of TrkB, the BDNF receptor itself &mdash; a distinct and fairly rare mechanism (most BDNF-related interventions work upstream of the receptor, not directly on it). <span class="grade">(Animal&ndash;in-vitro throughout)</span></p>
+
+<h3 id="neuroinflammation"><span class="ev early" title="Early — mostly animal / cell or limited"></span>Neuroinflammation</h3>
+<p>Skullcap is reported to meaningfully reduce neuroinflammation by blocking TLR4, the main mediator of the innate-immune response in brain glial cells &mdash; which in turn blocks the downstream cognitive impact of circulating endotoxin (LPS). <span class="grade">(Animal&ndash;in-vitro)</span> This connects directly to the gut-permeability/endotoxin-translocation mechanism discussed in <a href="ahr.html">The Aryl Hydrocarbon Receptor &amp; Metabolic Disease</a>: if LPS reaching systemic circulation from a leaky gut is part of what's driving brain fog or mood symptoms upstream, TLR4 blockade in glia is a plausible downstream lever on that same causal chain, not an unrelated mechanism.</p>
+
+<p class="verdict">Where this fits: most promising for anxiety and low mood where glutamate excess or neuroinflammation plays a role, on the strength of the GABA-A and TLR4/glial mechanisms above &mdash; and a reasonable general "tonic" herb otherwise, given how many separate systems its flavonoids touch. That breadth is also the honest caveat: almost none of it has been tested in the specific combination or dose a person actually takes, so treat "swiss-army-knife" as a hypothesis about the mechanism map, not a demonstrated multi-system clinical effect.</p>
+
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="practical-use">Practical use</h2>
 <ul>
   <li><strong>Form:</strong> dried, cut root &mdash; there's no ready-made capsule product for this one, so it has to be decocted, tinctured, or ground/encapsulated yourself.</li>
-  <li><strong>Preparation:</strong> the root is dense and bitter, so a smoothie or quick steep isn't a good fit. A decoction (simmer 15&ndash;20 minutes) or capsules work better than a fast tea.</li>
+  <li><strong>Preparation:</strong> the root is dense and bitter, so a smoothie or quick steep isn't a good fit for extracting the bulk of its flavonoid content. A decoction (simmer 15&ndash;20 minutes) or capsules extract more than a fast tea &mdash; though the traditional candida/SIBO use case specifically calls for tea, generally paired with dietary probiotics and fiber rather than the root alone.</li>
   <li><strong>Dose:</strong> roughly 1&ndash;2&nbsp;g per serving (about &frac12;&ndash;&frac34; tsp ground). In "00" capsules (500&ndash;700&nbsp;mg each), that's 2&ndash;3 capsules per dose.</li>
-  <li><strong>Frequency:</strong> situational &mdash; 2&ndash;3x/week rather than a daily habit.</li>
+  <li><strong>Frequency:</strong> situational &mdash; 2&ndash;3x/week rather than a daily habit, though its breadth (see "Where this fits" above) makes it a reasonable candidate for occasional tonic use outside of a specific complaint.</li>
   <li><strong>Grinding/storage:</strong> grind in small batches (about 2 weeks' worth) and store airtight. Less oil-dense than black seed, so it degrades somewhat more slowly once ground, but it still isn't shelf-stable indefinitely.</li>
 </ul>
 
 <div class="caution"><strong>Sourcing notes:</strong> wild Baikal skullcap faces overharvesting pressure &mdash; worth confirming any given source is cultivated rather than wild-harvested. Separately, the root has a historical adulteration risk with toxic look-alike germander (<em>Teucrium</em> species) sold as skullcap &mdash; buy only from a source that tests for this.</div>
 
-<p class="stub">No linked citations for the specific claims above &mdash; carried over from source notes rather than a numbered reference list. Worth an audit pass to attach citations where the underlying studies can be pinned down.</p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<p class="stub">No linked citations for the specific claims above (flavonoid effect profiles, AMPK/eNOS mechanisms, GABA-A vs. oroxylin's opposite effect, BDNF/TrkB/neurogenesis claims, TLR4/glial neuroinflammation) &mdash; carried over from source notes rather than a numbered reference list. Buhner's antimicrobial ranking is explicitly traditional-herbalist opinion, not a citation-backed claim, and is labeled as such above. Worth an audit pass to attach PMIDs where the underlying studies can be pinned down.</p>
 
 </body>
 </html>

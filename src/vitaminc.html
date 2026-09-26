@@ -5,51 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vitamin C — Nutrient Deep Dive</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root {
-    --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9;
-    --accent: #7a3b2e; --tag-bg: #f1ede4;
-  }
-  * { box-sizing: border-box; }
-  body {
-    background: var(--bg); color: var(--ink);
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem;
-  }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(122, 59, 46, 0.35);
-    transition: border-color 0.15s ease, color 0.15s ease;
-  }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  h3 { margin-top: 1.6rem; margin-bottom: 0.4rem; color: var(--accent); font-size: 1.05rem; }
-  p { margin: 0.7rem 0; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1rem 0 2rem; }
-  th, td { border: 1px solid var(--line); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
-  th { background: var(--tag-bg); font-weight: 600; }
-  .grade { font-style: italic; color: var(--sub); font-size: 0.9em; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  sup a { border-bottom: none; }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
-  .refs { font-size: 0.85rem; color: var(--sub); }
-  .refs ol { padding-left: 1.5rem; }
-  .refs li { margin: 0.5rem 0; }
-  .refs a { border-bottom-color: rgba(122, 59, 46, 0.25); }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Vitamin C</h1>
 <div class="tags">
   <span class="tag">Vitamin</span>
@@ -58,18 +18,83 @@
   <span class="tag">Cofactor</span>
 </div>
 
-<div class="callout"><strong>TL;DR:</strong> Water-soluble vitamin that functions as an enzymatic cofactor, an antioxidant, and a regulator of connective tissue synthesis and cellular redox balance.<sup><a href="#ref1">1</a></sup><sup><a href="#ref2">2</a></sup></div>
+<p class="lede">Holds collagen together, recycles other antioxidants, and powers your stress response.</p>
 
-<h2>Intake</h2>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Builds strong collagen</span>
+      <span class="how">Keeps the collagen-building enzymes working. Without it you get scurvy.</span>
+      <a class="why" href="#collagen-synthesis-key-mechanism">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Antioxidant, and recharges vitamin E</span>
+      <span class="how">Neutralizes free radicals and regenerates vitamin E.</span>
+      <a class="why" href="#systems">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Supports immunity, heart, stress and more</span>
+      <span class="how">Feeds white blood cells, nitric oxide and the adrenals.</span>
+      <a class="why" href="#systems">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Boosts iron absorption</span>
+      <span class="how">Converts plant iron into the form your gut can absorb.</span>
+      <a class="why" href="#systems">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span><span><span class="ev moderate"></span>Some human evidence</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>75–90 mg a day (+35 mg if you smoke)</li>
+        <li>Black currants, red peppers, kiwi, broccoli, strawberries, oranges</li>
+        <li>Absorption depends on sodium (see Sodium)</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Upper limit 2,000 mg a day</li>
+      </ul>
+      <h3 style="margin-top:0.7rem">Signs you're low</h3>
+      <ul>
+        <li>Bleeding gums</li>
+        <li>Slow wound healing</li>
+        <li>Fatigue</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
+
+<h2 id="intake">Intake</h2>
 <p>RDA ~75 mg/day (women), 90 mg/day (men); smokers +35 mg/day. Upper limit 2,000 mg/day.<sup><a href="#ref3">3</a></sup> Humans lost the capacity to synthesize vitamin C and must obtain it entirely from diet.<sup><a href="#ref3">3</a></sup></p>
 
-<h2>Transport and absorption</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="transport-and-absorption">Transport and absorption</h2>
 <p>Absorbed via sodium-dependent transporters — SVCT1 in the gut, SVCT2 in peripheral tissue and brain. Transport is coupled to sodium gradients, which is the mechanistic link back to electrolyte status.<sup><a href="#ref7">7</a></sup></p>
 
-<h2>Collagen synthesis (key mechanism)</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="collagen-synthesis-key-mechanism"><span class="ev strong" title="Strong human evidence"></span>Collagen synthesis (key mechanism)</h2>
 <p>Maintains iron in its reduced form (Fe²⁺), which enables prolyl and lysyl hydroxylase activity — the step that stabilizes the collagen triple helix. Deficiency produces impaired collagen stability, which is the mechanism behind scurvy.<sup><a href="#ref1">1</a></sup> <span class="grade">(Strong — human evidence)</span> The same mechanism underlies wound healing: systematic review of clinical trials finds supplementation improves healing outcomes in several tissue-injury contexts, though study quality is mixed.<sup><a href="#ref16">16</a></sup> <span class="grade">(Moderate — mixed trial quality)</span></p>
 
-<h2>Systems</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="systems">Systems</h2>
 <p><strong>Oxidative stress.</strong> Acts as a reducing agent that neutralizes reactive oxygen species; protects lipids, proteins, and DNA from oxidative damage; regenerates other antioxidants including vitamin E.<sup><a href="#ref2">2</a></sup> <span class="grade">(Strong)</span></p>
 <p><strong>Brain.</strong> Concentrated in neurons; supports antioxidant defense<sup><a href="#ref2">2</a></sup> and neurotransmitter synthesis, including norepinephrine;<sup><a href="#ref5">5</a></sup> transported in via SVCT2.<sup><a href="#ref7">7</a></sup></p>
 <p><strong>Immune.</strong> Supports leukocyte function and reduces oxidative stress during infection.<sup><a href="#ref6">6</a></sup></p>
@@ -82,14 +107,20 @@
 <p><strong>Cellular energy.</strong> Ascorbate is classically described as a cofactor for the two hydroxylases in carnitine biosynthesis — the pathway that shuttles fatty acids into mitochondria for beta-oxidation — and human depletion studies show plasma carnitine falls alongside vitamin C.<sup><a href="#ref10">10</a></sup> However, a knockout-mouse study found vitamin C is not strictly essential for carnitine synthesis in vivo.<sup><a href="#ref15">15</a></sup> <span class="grade">(Weak — contested)</span></p>
 <p><strong>Detoxification.</strong> As a reducing agent, vitamin C plausibly helps quench reactive intermediates generated during phase I cytochrome P450 liver metabolism, but this is inferred from its general antioxidant mechanism<sup><a href="#ref2">2</a></sup> rather than demonstrated in direct outcome trials on detox pathways. <span class="grade">(Weak — mechanistic only)</span></p>
 
-<h2>Deficiency effects</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="deficiency-effects">Deficiency effects</h2>
 <p>Scurvy: impaired collagen synthesis presenting as bleeding gums, poor wound healing, and fatigue.<sup><a href="#ref1">1</a></sup></p>
 
-<h2>Cross-reference: skin / connective tissue</h2>
-<p>Vitamin C is a documented, high-confidence cofactor for prolyl and lysyl hydroxylase in collagen biosynthesis.<sup><a href="#ref1">1</a></sup> <span class="grade">(Strong — human evidence)</span> See the <a href="glycine-collagen.html">Glycine / Collagen</a> entry for the full synthesis chain this feeds into.</p>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<h2>Top foods</h2>
-<table>
+<h2 id="cross-reference-skin-connective-tissue">Cross-reference: skin / connective tissue</h2>
+<p>Vitamin C is a documented, high-confidence cofactor for prolyl and lysyl hydroxylase in collagen biosynthesis.<sup><a href="#ref1">1</a></sup> <span class="grade">(Strong — human evidence)</span> See the <a href="glycinecollagen.html">Glycine / Collagen</a> entry for the full synthesis chain this feeds into.</p>
+
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="top-foods">Top foods</h2>
+<div class="table-wrap"><table>
 <thead><tr><th>Food</th><th>Vitamin C (approx.)</th></tr></thead>
 <tbody>
 <tr><td>Black currants</td><td>~200 mg / cup (~222% DV)</td></tr>
@@ -103,10 +134,12 @@
 <tr><td>Tomato</td><td>~17 mg / medium fruit (~19% DV)</td></tr>
 <tr><td>Potato (baked)</td><td>~20 mg / medium (~22% DV)</td></tr>
 </tbody>
-</table>
+</table></div>
+
+<a class="back" href="#glance">↑ back to summary</a>
 
 <hr>
-<h2>References</h2>
+<h2 id="references">References</h2>
 <div class="refs">
 <ol>
 <li id="ref1">Pinnell, 1985 — vitamin C regulates collagen biosynthesis. <a href="https://pubmed.ncbi.nlm.nih.gov/3008449/" target="_blank">PMID 3008449</a></li>

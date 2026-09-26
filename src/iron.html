@@ -3,38 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iron — Nutrient Deep Dive</title>
+<title>Iron — Nutrient</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Iron</h1>
 <div class="tags"><span class="tag">Mineral</span><span class="tag">Foundational</span></div>
+<p class="lede">Carries oxygen and builds stable collagen. Too little and too much are both common, so test before you supplement.</p>
 
-<div class="callout"><strong>TL;DR:</strong> Essential mineral and enzyme cofactor; required for oxygen transport and for prolyl/lysyl hydroxylase activity in collagen synthesis (works with vitamin C to maintain Fe²⁺).</div>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential · test, don't guess</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Carries oxygen</span>
+      <span class="how">The core of hemoglobin in red blood cells.</span>
+      <a class="why" href="#oxygen">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Less fatigue when stores are low</span>
+      <span class="how">Helped tired women with low ferritin even when they weren't anemic.</span>
+      <a class="why" href="#fatigue">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Builds stable collagen</span>
+      <span class="how">Powers the enzymes that lock collagen's structure together, with vitamin C's help.</span>
+      <a class="why" href="#collagen">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span><span><span class="ev moderate"></span>Some human evidence</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>8 mg a day for men, 18 mg for menstruating women</li>
+        <li>Red meat, liver and shellfish give the best-absorbed (heme) iron</li>
+        <li>If supplementing: one dose every other day absorbs better than daily</li>
+        <li>Take it with vitamin C, away from coffee, tea and calcium</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Get ferritin tested before supplementing</li>
+        <li>The body can't excrete excess iron. Hemochromatosis is common in people of Northern European ancestry.</li>
+        <li>Upper limit 45 mg a day</li>
+      </ul>
+      <h3 style="margin-top:0.7rem">Signs you're low</h3>
+      <ul>
+        <li>Fatigue, breathlessness on exertion</li>
+        <li>Pale skin, cold hands, restless legs</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<h2>Role</h2>
-<p>Two roles dominate: oxygen transport (as the core of hemoglobin) and, mechanistically closer to the rest of this series, its function as the reduced Fe²⁺ cofactor that prolyl and lysyl hydroxylase need to stabilize the collagen triple helix. Vitamin C's job in that pathway is specifically to keep iron in this reduced, active form — see <a href="vitamin-c.html">Vitamin C</a> and <a href="glycine-collagen.html">Glycine / Collagen</a> for the full mechanism.</p>
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
 
-<p class="stub">This entry is thin in the source database — Deficiency Effects, Functions, and Optimal Intake are empty, and there's no body content or linked citations beyond the TL;DR. Given iron's central role in the collagen pathway already documented elsewhere, worth prioritizing for a full write-up.</p>
+<h2 id="oxygen"><span class="ev strong" title="Strong human evidence"></span>Carries oxygen</h2>
+<p>Most of the body's iron sits in hemoglobin, where each heme group binds one oxygen molecule for transport from lungs to tissue; a smaller share is in myoglobin (oxygen storage in muscle) and in the iron-sulfur and heme proteins of the mitochondrial electron transport chain. Iron deficiency progresses in stages &mdash; depleted stores (low ferritin), then iron-deficient red cell production, then frank anemia &mdash; so symptoms can precede a low hemoglobin. <span class="grade">(Strong)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="fatigue"><span class="ev moderate" title="Some human evidence"></span>Less fatigue when stores are low</h2>
+<p>A double-blind placebo-controlled trial in 144 Swiss women aged 18&ndash;55 with unexplained fatigue and <em>normal hemoglobin</em> gave 80&nbsp;mg/day elemental iron or placebo for four weeks. Fatigue fell 29% on iron versus 13% on placebo (p=0.004) &mdash; but the benefit was confined to women with ferritin &le;50&nbsp;&micro;g/L.<sup><a href="#ref1">1</a></sup> That subgroup finding is the useful part: it says low-normal stores can matter before anemia appears, and that iron does nothing for fatigue when stores are already adequate. <span class="grade">(Moderate &mdash; one well-run trial, subgroup-dependent)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="collagen"><span class="ev strong" title="Strong human evidence"></span>Builds stable collagen</h2>
+<p>Mechanistically closer to the rest of this series: reduced iron (Fe²⁺) is the cofactor that prolyl and lysyl hydroxylase need to hydroxylate collagen and stabilize the triple helix. Vitamin C's job in that pathway is specifically to keep iron in this reduced, active form &mdash; see <a href="vitaminc.html">Vitamin C</a> and <a href="glycinecollagen.html">Glycine / Collagen</a> for the full mechanism. <span class="grade">(Strong &mdash; enzymology)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="absorption">Absorption &amp; dosing</h2>
+<p>Iron is unusual among minerals: the body has no regulated way to excrete it, so balance is controlled almost entirely at the point of absorption.<sup><a href="#ref2">2</a></sup> Estimated bioavailability is 14&ndash;18% from mixed diets and 5&ndash;12% from vegetarian diets. Heme iron from meat is absorbed far better than non-heme iron from plants, and meat also enhances non-heme absorption from the same meal; phytate, polyphenols (tea, coffee) and calcium inhibit it, and ascorbic acid enhances it.<sup><a href="#ref2">2</a></sup> These effects are large in single-meal studies and more modest across a varied diet. <span class="grade">(Strong)</span></p>
+<p><strong>Alternate-day dosing.</strong> Each oral iron dose raises the hormone hepcidin, which blocks absorption of the next dose for roughly a day. In isotope-labelled trials in iron-depleted women, 60&nbsp;mg on alternate days for 28 days delivered more total iron than the same dose on consecutive days for 14 days (fractional absorption 21.8% vs 16.3%; 175&nbsp;mg vs 131&nbsp;mg absorbed), and splitting a dose twice daily raised hepcidin without improving absorption.<sup><a href="#ref3">3</a></sup> The authors note this needs confirming in anemic patients. <span class="grade">(Moderate &mdash; mechanistically clean, small trials)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="safety">Excess &amp; safety</h2>
+<div class="caution"><strong>Caution:</strong> because iron can't be excreted, excess accumulates. Hereditary hemochromatosis (HFE gene) is one of the most common genetic disorders in people of Northern European descent and loads iron into the liver, heart, pancreas and joints over decades.<sup><a href="#ref4">4</a></sup> Routine iron supplementation without a measured deficiency is not a harmless default &mdash; check ferritin and transferrin saturation first. Accidental iron overdose is also a leading cause of poisoning deaths in young children; keep supplements out of reach. Upper limit for adults: 45&nbsp;mg/day elemental iron.<sup><a href="#ref5">5</a></sup></div>
+<h3>Intake</h3>
+<p>RDA 8&nbsp;mg/day for adult men and postmenopausal women; 18&nbsp;mg/day for menstruating women; 27&nbsp;mg/day in pregnancy.<sup><a href="#ref5">5</a></sup></p>
+<h3>Top foods</h3>
+<ul>
+  <li>Beef liver</li>
+  <li>Oysters, clams and mussels</li>
+  <li>Red meat</li>
+  <li>Sardines</li>
+  <li>Spinach and lentils (non-heme; pair with vitamin C)</li>
+</ul>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<hr>
+<h2 id="references">References</h2>
+<div class="refs">
+<ol>
+<li id="ref1">Verdon F et al. Iron supplementation for unexplained fatigue in non-anaemic women: double blind randomised placebo controlled trial. <em>BMJ</em> 2003. <a href="https://pubmed.ncbi.nlm.nih.gov/12763985/" target="_blank">PMID 12763985</a></li>
+<li id="ref2">Hurrell R, Egli I. Iron bioavailability and dietary reference values. <em>Am J Clin Nutr</em> 2010. <a href="https://pubmed.ncbi.nlm.nih.gov/20200263/" target="_blank">PMID 20200263</a></li>
+<li id="ref3">Stoffel NU et al. Iron absorption from oral iron supplements given on consecutive versus alternate days and as single morning doses versus twice-daily split dosing in iron-depleted women. <em>Lancet Haematol</em> 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/29032957/" target="_blank">PMID 29032957</a></li>
+<li id="ref4">Adams PC et al. Haemochromatosis. <em>Lancet</em> 2023. <a href="https://pubmed.ncbi.nlm.nih.gov/37121243/" target="_blank">PMID 37121243</a></li>
+<li id="ref5">NIH Office of Dietary Supplements. Iron &mdash; Health Professional Fact Sheet. <a href="https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/" target="_blank">ods.od.nih.gov</a></li>
+</ol>
+</div>
 
 </body>
 </html>

@@ -3,70 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beet Juice (Dietary Nitrate) — Supplement Deep Dive</title>
+<title>Beets (Nitrate &amp; Betalains) — Supplement</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; --caution: #a05a2c; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  h3 { margin-top: 1.4rem; margin-bottom: 0.3rem; color: var(--accent); font-size: 1rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .caution { background: #fbf3e6; border-left: 3px solid var(--caution); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.93rem; color: #5a4326; }
-  .caution strong { color: var(--caution); }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  .grade { font-style: italic; color: var(--sub); font-size: 0.9em; }
-  .verdict { font-weight: 600; }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="supplements.html">← Supplements</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
-<h1>Beet Juice <span style="font-style:italic;font-weight:400;">(Dietary Nitrate)</span></h1>
-<div class="tags"><span class="tag">Vegetable / Juice</span><span class="tag">Useful</span><span class="tag">Vascular</span><span class="tag">Antioxidant</span></div>
+<div class="crumbs"><a href="supplements.html">← Supplements</a> · <a href="statins.html">Statins &amp; LDL</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
+<h1>Beets <span class="alt">(Nitrate &amp; Betalains)</span></h1>
+<div class="tags"><span class="tag">Vegetable / Juice</span><span class="tag">Vascular</span><span class="tag">Exercise</span><span class="tag">Antioxidant</span></div>
+<p class="lede">One of the best-tested foods on this list for blood pressure and endurance.</p>
 
-<div class="callout"><strong>TL;DR:</strong> Beets carry two separable active-compound stories, not one. Inorganic nitrate drives the well-trialed blood-pressure and exercise-efficiency effect via nitric oxide. The pigments &mdash; betalains &mdash; are a second, more preclinical antioxidant/anti-inflammatory story, more heat-sensitive than the nitrate, and the reason beet juice/urine can turn red.</div>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Worth taking</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong — many human trials"></span>
+      <span class="what">Lowers blood pressure</span>
+      <span class="how">Nitrate in beets becomes nitric oxide, which relaxes blood vessels.</span>
+      <a class="why" href="#blood-pressure">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong — many human trials"></span>
+      <span class="what">Better endurance</span>
+      <span class="how">Muscles need less oxygen to do the same work.</span>
+      <a class="why" href="#endurance">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early — mostly animal and cell studies"></span>
+      <span class="what">Lowers oxidative stress</span>
+      <span class="how">Betalains, the red pigments, neutralize free radicals and calm inflammation.</span>
+      <a class="why" href="#oxidative-stress">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend">
+    <span><span class="ev strong"></span>Strong human evidence</span>
+    <span><span class="ev moderate"></span>Some human evidence</span>
+    <span><span class="ev early"></span>Early (animal / cell)</span>
+  </div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>1 cup of juice, a 70&nbsp;mL shot, or 2 medium beets</li>
+        <li>2&ndash;3 hours before you want the effect</li>
+        <li>Roast or steam them. Boiling leaches out the nitrate.</li>
+        <li>Skip antibacterial mouthwash</li>
+      </ul>
+      <a class="why" href="#how-to">details ↓</a>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Kidney stones: beets are high in oxalates</li>
+        <li>Don't combine with nitroglycerin or Viagra/Cialis</li>
+        <li>Red or pink urine is harmless</li>
+      </ul>
+      <a class="why" href="#safety">details ↓</a>
+    </div>
+  </div>
+</div>
 
-<h2>Mechanism: the nitrate&ndash;nitrite&ndash;NO pathway</h2>
-<p>Beets (and other nitrate-rich vegetables &mdash; arugula, spinach, celery) supply inorganic nitrate (NO&#8323;&#8315;). About a quarter of ingested nitrate is actively taken up by the salivary glands and concentrated in saliva, where facultative anaerobic bacteria on the back of the tongue reduce it to nitrite (NO&#8322;&#8315;). Swallowed nitrite is then absorbed and, especially in low-oxygen or acidic tissue (contracting muscle, ischemic areas), reduced further to nitric oxide (NO). <span class="grade">(Strong &mdash; well-characterized pathway)</span></p>
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
+
+<div class="research">
+
+<section>
+<h2 id="blood-pressure"><span class="ev strong" title="Strong"></span>Lowers blood pressure</h2>
+
+<h3>The nitrate&ndash;nitrite&ndash;NO pathway</h3>
+<p>Beets (and other nitrate-rich vegetables &mdash; arugula, spinach, celery) supply inorganic nitrate (NO&#8323;&#8315;). About a quarter of ingested nitrate is actively taken up by the salivary glands and concentrated in saliva, where facultative anaerobic bacteria on the back of the tongue reduce it to nitrite (NO&#8322;&#8315;). Swallowed nitrite is then absorbed and, especially in low-oxygen or acidic tissue (contracting muscle, ischemic areas), reduced further to nitric oxide (NO). That final step is not a single reaction but several competing ones, and it is worth naming the catalysts because they explain why the pathway is self-targeting: <strong>xanthine oxidoreductase</strong>, <strong>deoxyhaemoglobin and deoxymyoglobin</strong>, and components of the <strong>mitochondrial electron transport chain</strong> all reduce nitrite to NO, and all of them work <em>better</em> as oxygen tension falls. The tissue that most needs blood flow is the tissue best equipped to liberate the vasodilator. <span class="grade">(Strong &mdash; well-characterized pathway; chemistry reviewed in Liang et al. 2026, see <a href="#endurance">Endurance</a>)</span></p>
 <p>This matters because it's a <em>second</em> route to NO, separate from the classical pathway where endothelial nitric oxide synthase (eNOS) makes NO from L-arginine and requires oxygen to run. The nitrate&ndash;nitrite&ndash;NO route works best under exactly the conditions (hypoxia, acidosis) where the oxygen-dependent eNOS pathway works worst &mdash; the two are complementary rather than redundant. It's also a pathway that oxidative stress can degrade from the other side: excess dietary linoleic acid has been shown to reduce nitric-oxide metabolites and impair endothelial NO signalling through the eNOS route (see <a href="linoleic-acid.html">Linoleic Acid &amp; Metabolic Disease</a>) &mdash; a reminder that boosting NO substrate via nitrate doesn't undo damage happening upstream in the oxidative-stress pathway.</p>
-<p>Because the first reduction step (nitrate &rarr; nitrite) depends on oral bacteria, killing them changes the outcome: antibacterial mouthwash and aggressive tongue-scraping have been shown to blunt or abolish the blood-pressure-lowering effect of dietary nitrate in trials that tested for it directly. <span class="grade">(Moderate &mdash; a handful of controlled trials, but a consistent and mechanistically sensible finding)</span></p>
 
-<h2>Human evidence</h2>
-<p>This is a comparatively well-studied intervention. Acute dosing (one serving of beet juice or beetroot, supplying roughly 300&ndash;600&nbsp;mg nitrate) reliably produces small-to-moderate reductions in systolic blood pressure &mdash; commonly cited in the range of 4&ndash;10&nbsp;mmHg &mdash; peaking around 2&ndash;4 hours post-ingestion, across multiple randomized trials and meta-analyses. <span class="grade">(Moderate&ndash;Strong)</span> There's a separate, also well-replicated line of evidence in exercise physiology: dietary nitrate reduces the oxygen cost of submaximal exercise and can modestly improve time-to-exhaustion and time-trial performance, plausibly via improved mitochondrial efficiency. <span class="grade">(Moderate&ndash;Strong in trained and untrained subjects)</span></p>
+<h3>Human trials</h3>
+<p>This is a comparatively well-studied intervention. Acute dosing (one serving of beet juice or beetroot, supplying roughly 300&ndash;600&nbsp;mg nitrate) reliably produces small-to-moderate reductions in systolic blood pressure &mdash; commonly cited in the range of 4&ndash;10&nbsp;mmHg &mdash; peaking around 2&ndash;4 hours post-ingestion, across multiple randomized trials and meta-analyses. <span class="grade">(Moderate&ndash;Strong)</span></p>
 <p>What it hasn't clearly shown is a hard outcomes benefit (heart attack, stroke, mortality) from habitual beet juice intake specifically &mdash; the evidence base is built on blood-pressure and performance endpoints, not long-term cardiovascular event trials. <span class="grade">(Inferred that BP reduction of this size translates to outcome benefit, based on the broader hypertension literature rather than beet-specific trials)</span></p>
 
-<h2>Betalains &mdash; the pigment story</h2>
+<h3>Why mouthwash matters</h3>
+<p>Because the first reduction step (nitrate &rarr; nitrite) depends on oral bacteria, killing them changes the outcome: antibacterial mouthwash and aggressive tongue-scraping have been shown to blunt or abolish the blood-pressure-lowering effect of dietary nitrate in trials that tested for it directly. <span class="grade">(Moderate &mdash; a handful of controlled trials, but a consistent and mechanistically sensible finding)</span></p>
+
+<h3>Compared with pomegranate</h3>
+<p><a href="pomegranate.html">Pomegranate</a> also lowers blood pressure but by a different route &mdash; inhibiting angiotensin-converting enzyme and activating eNOS, rather than supplying NO substrate around it. Because they act on opposite arms of the same control loop (dilator substrate vs. constrictor restraint), the two are plausibly additive rather than interchangeable &mdash; though no trial has tested the combination. Notably, both depend on a microbial conversion the host cannot perform: oral bacteria here, gut bacteria producing urolithins there.</p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
+
+<section>
+<h2 id="endurance"><span class="ev strong" title="Strong"></span>Better endurance</h2>
+<p>A separate, also well-replicated line of evidence in exercise physiology: dietary nitrate reduces the oxygen cost of submaximal exercise and can modestly improve time-to-exhaustion and time-trial performance, plausibly via improved mitochondrial efficiency. <span class="grade">(Moderate&ndash;Strong in trained and untrained subjects)</span></p>
+<p>A 2026 review in <em>RSC Advances</em> covers the chemistry of this pathway in detail and is the best current single source for the exercise side of it &mdash; Liang J, Huang T, Li J, Yang Z, Ni J, Wang Y, "The chemistry of the nitrate&ndash;nitrite&ndash;nitric oxide pathway: regulating muscle oxygenation and exercise performance," <em>RSC Adv</em> 2026;16(17):15723&ndash;15735 (PMID 41868349; no conflicts declared). Note what it is and isn't: a chemistry-focused review from a sports-science group, framed around <em>muscle oxygenation and exercise performance</em>. It is a good citation for the mechanism and for the ergogenic claims, and it is <em>not</em> a cardiovascular-outcomes or oral-microbiome paper, despite being circulated as evidence that "your mouth and heart health are connected." It also explicitly flags the controversies, methodological problems, and inter-individual variability &mdash; genetic and microbial &mdash; that make the ergogenic effect less consistent than popular summaries suggest.</p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
+
+<section>
+<h2 id="oxidative-stress"><span class="ev early" title="Early"></span>Lowers oxidative stress</h2>
 <p>Beets get their color from <strong>betalains</strong>, a class of nitrogen-containing pigments found in only a handful of plant families (beets, chard, amaranth, prickly pear, dragon fruit) &mdash; chemically distinct from the anthocyanins responsible for color in most other red/purple produce. Two subclasses: <strong>betacyanins</strong> (red-violet; betanin is the dominant one in beets) and <strong>betaxanthins</strong> (yellow-orange; e.g. vulgaxanthin). This is a separate active-compound story from nitrate &mdash; a different molecule, a different mechanism, and a noticeably thinner evidence base.</p>
-<p>Betanin and other betalains are potent free-radical and singlet-oxygen scavengers in vitro, and preclinical work reports anti-inflammatory activity via NF-&kappa;B pathway inhibition and reduced COX-2/prostaglandin signalling &mdash; the same convergent Nrf2-up/NF-&kappa;B-down theme that shows up across most of the compounds on this page (see <a href="blackseed.html#mechanism">Black Seed</a>'s NRF2 note). <span class="grade">(Animal&ndash;in-vitro)</span> A smaller set of human trials has looked at betalain-rich beet extract or juice for markers of oxidative stress (LDL oxidation), inflammatory markers (CRP, IL-6), and post-exercise muscle soreness/recovery, with modest positive signals. <span class="grade">(Moderate, small trials, and hard to fully separate from the co-occurring nitrate effect in a juice or whole-food matrix)</span> Preclinical cell-line work also reports anti-proliferative and pro-apoptotic effects of betanin against several cancer cell lines, alongside cohort data associating higher intake of betalain-containing vegetables with lower cancer risk &mdash; but there is essentially no human interventional data isolating betalains themselves as the active driver of that association. <span class="grade">(Animal&ndash;in-vitro for the mechanism; Inferred for any human cancer-risk claim specific to betalains)</span></p>
-<p>Bioavailability is a real limiter: betalains are absorbed and cleared quickly, with a meaningful fraction excreted unchanged in urine &mdash; which is exactly why beeturia happens, and a sign that whatever systemic exposure a single serving provides is brief. Betalains are also considerably more heat-, light-, and pH-sensitive than nitrate: boiling degrades them faster than it degrades nitrate, so if betalain content is the goal specifically, raw juice or lightly processed beets preserve more of it than a well-cooked beet does &mdash; the opposite trade-off from the nitrate practical-use notes below, where cooking method mostly matters for leaching, not degradation.</p>
+<p>Betanin and other betalains are potent free-radical and singlet-oxygen scavengers in vitro, and preclinical work reports anti-inflammatory activity via NF-&kappa;B pathway inhibition and reduced COX-2/prostaglandin signalling &mdash; the same convergent Nrf2-up/NF-&kappa;B-down theme that shows up across most supplements on this site (see <a href="blackseed.html#mechanism">Black Seed</a>'s NRF2 note). <span class="grade">(Animal&ndash;in-vitro)</span> A smaller set of human trials has looked at betalain-rich beet extract or juice for markers of oxidative stress (LDL oxidation), inflammatory markers (CRP, IL-6), and post-exercise muscle soreness/recovery, with modest positive signals. <span class="grade">(Moderate, small trials, and hard to fully separate from the co-occurring nitrate effect in a juice or whole-food matrix)</span> Preclinical cell-line work also reports anti-proliferative and pro-apoptotic effects of betanin against several cancer cell lines, alongside cohort data associating higher intake of betalain-containing vegetables with lower cancer risk &mdash; but there is essentially no human interventional data isolating betalains themselves as the active driver of that association. <span class="grade">(Animal&ndash;in-vitro for the mechanism; Inferred for any human cancer-risk claim specific to betalains)</span></p>
+<p>Bioavailability is a real limiter: betalains are absorbed and cleared quickly, with a meaningful fraction excreted unchanged in urine &mdash; which is exactly why beeturia happens, and a sign that whatever systemic exposure a single serving provides is brief. Betalains are also considerably more heat-, light-, and pH-sensitive than nitrate: boiling degrades them faster than it degrades nitrate, so if betalain content is the goal specifically, raw juice or lightly processed beets preserve more of it than a well-cooked beet does &mdash; the opposite trade-off from the nitrate notes below, where cooking method mostly matters for leaching, not degradation.</p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
 
-<h2>The processed-nitrite counterargument</h2>
-<p>Dietary nitrate/nitrite has a genuinely bad reputation from a different context: nitrite-cured processed meats are linked to nitrosamine formation and increased cancer risk. The honest distinction is that vegetables supplying nitrate also supply vitamin C and polyphenols, which inhibit nitrosamine formation, and the epidemiological cancer signal tracks processed meat specifically rather than nitrate-rich vegetables &mdash; high-nitrate vegetable intake is associated with lower, not higher, cardiovascular and all-cause mortality in most cohort data. <span class="grade">(Moderate &mdash; associational, source-of-nitrate matters, not just the nitrate itself)</span></p>
-
-<div class="caution"><strong>Cautions:</strong> beets are relatively high in oxalates &mdash; worth factoring in for anyone prone to calcium-oxalate kidney stones. Beeturia (red or pink urine/stool from betalain pigments) is harmless but can be alarming if unexpected. More seriously: nitrate supplementation stacked on top of nitrate-based medications (e.g., sublingual nitroglycerin) or PDE5 inhibitors (sildenafil/tadalafil) can cause dangerous hypotension &mdash; that combination should be cleared with a doctor, not self-managed.</div>
-
-<h2>Practical use</h2>
+<section>
+<h2 id="how-to">How to take it</h2>
 <ul>
   <li><strong>Form (nitrate goal):</strong> juice, concentrated "shots," or whole roasted/steamed beets all work &mdash; what matters is total nitrate delivered, not the specific format. Boiling beets in a lot of water and discarding the water leaches out nitrate; roasting or steaming preserves more.</li>
   <li><strong>Form (betalain goal):</strong> raw or minimally processed &mdash; cold-pressed juice or raw grated beet &mdash; preserves noticeably more betalain content than boiling or extended cooking, since the pigments degrade with heat faster than nitrate does.</li>
   <li><strong>Dose:</strong> roughly 300&ndash;600&nbsp;mg nitrate matches the trial range &mdash; typically about 1 cup (250&nbsp;mL) of beet juice, a concentrated 70&nbsp;mL "shot," or two medium beets. No established human dose target exists for betalains specifically.</li>
   <li><strong>Timing:</strong> for an acute blood-pressure or pre-exercise effect, take it 2&ndash;3 hours ahead of when the effect is wanted. For blood pressure specifically, effects seem to build somewhat with several days of consistent intake rather than being purely one-off.</li>
+  <li><strong>Sugar:</strong> lower than the fruit juices on this index but not nil &mdash; roughly 13&ndash;15&nbsp;g per 250&nbsp;mL of beet juice. The conditional reasoning about juice sugar is worked through in the <a href="orangejuice.html">orange juice</a> entry and applies here at smaller magnitude.</li>
   <li><strong>Don't undercut it with mouthwash:</strong> if blood pressure or performance is the goal, skip antibacterial mouthwash and heavy tongue-scraping around dosing &mdash; it removes the bacteria that make the first conversion step work.</li>
 </ul>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
 
-<p class="stub">No linked citations for the specific figures above (BP reduction range, nitrate dosing, mouthwash-blunting trials, betalain mechanism) &mdash; carried over from source notes rather than a numbered reference list. The nitrate/NO story is much better-trialed than most other entries on this list; the betalain story is closer to the Black Seed/Skullcap end of the evidence spectrum &mdash; broad preclinical support, thin human data. Worth prioritizing a citation pass on the nitrate claims first.</p>
+<section>
+<h2 id="safety">Safety</h2>
+<div class="caution"><strong>Cautions:</strong> beets are relatively high in oxalates &mdash; worth factoring in for anyone prone to calcium-oxalate kidney stones. Beeturia (red or pink urine/stool from betalain pigments) is harmless but can be alarming if unexpected. More seriously: nitrate supplementation stacked on top of nitrate-based medications (e.g., sublingual nitroglycerin) or PDE5 inhibitors (sildenafil/tadalafil) can cause dangerous hypotension &mdash; that combination should be cleared with a doctor, not self-managed.</div>
+<h3>Isn't nitrate/nitrite carcinogenic?</h3>
+<p>Dietary nitrate/nitrite has a genuinely bad reputation from a different context: nitrite-cured processed meats are linked to nitrosamine formation and increased cancer risk. The honest distinction is that vegetables supplying nitrate also supply vitamin C and polyphenols, which inhibit nitrosamine formation, and the epidemiological cancer signal tracks processed meat specifically rather than nitrate-rich vegetables &mdash; high-nitrate vegetable intake is associated with lower, not higher, cardiovascular and all-cause mortality in most cohort data. <span class="grade">(Moderate &mdash; associational, source-of-nitrate matters, not just the nitrate itself)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
+
+</div>
+
+<p class="stub">No linked citations for the specific figures above (BP reduction range, nitrate dosing, mouthwash-blunting trials, betalain mechanism) &mdash; carried over from source notes rather than a numbered reference list. The nitrate/NO story is much better-trialed than most other entries on this list; the betalain story is closer to the Black Seed/Skullcap end of the evidence spectrum &mdash; broad preclinical support, thin human data. Worth prioritizing a citation pass on the nitrate claims first &mdash; partly done: the nitrate&ndash;nitrite&ndash;NO chemistry and the exercise-performance claims now carry a named review (Liang et al. 2026). Still uncited: the 4&ndash;10&nbsp;mmHg blood-pressure range, the 300&ndash;600&nbsp;mg nitrate dosing figure, and the mouthwash-blunting trials, which remain the highest-value gaps. Numbered blood-pressure meta-analyses for the BP claim do exist and are cited as refs 21 and 23 in <a href="statins.html#refs">Statins, LDL &amp; Cardiovascular Disease</a>.</p>
 
 </body>
 </html>

@@ -1,0 +1,106 @@
+/* ===================================================================
+   entry.css — shared layout for Nutrient and Supplement entries.
+   Page shape: header → .glance (What it does / How to take it /
+   Watch out) → .research (one section per benefit, anchored) → refs.
+   Each .benefit row links down to its research section; each research
+   section links back up to #glance.
+   =================================================================== */
+
+:root {
+  --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9;
+  --accent: #7a3b2e; --tag-bg: #f1ede4; --caution: #a05a2c; --card: #ffffff;
+  --ev-strong: #3f6b3a; --ev-moderate: #a07a1f; --ev-early: #8a8a8a;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+@media (max-width: 600px) { body { padding: 2rem 1rem 4rem; } }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease; }
+a:hover { border-bottom-color: var(--accent); }
+h1 { font-size: 2rem; margin: 0 0 0.2rem; line-height: 1.2; }
+h1 .alt { font-style: italic; font-weight: 400; color: var(--sub); font-size: 0.7em; }
+h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; scroll-margin-top: 1rem; }
+h3 { margin: 1.4rem 0 0.3rem; color: var(--accent); font-size: 1rem; }
+p { margin: 0.7rem 0; }
+ul { margin: 0.5rem 0; padding-left: 1.4rem; }
+li { margin: 0.25rem 0; }
+sup a { border-bottom: none; }
+
+.crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
+.crumbs a { border-bottom: none; }
+.crumbs a:hover { border-bottom: 1px solid var(--accent); }
+.tags { margin: 0.4rem 0 0.6rem; }
+.tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin: 0 0.4rem 0.3rem 0; color: var(--sub); }
+.lede { font-size: 1.08rem; color: var(--sub); margin: 0.4rem 0 1.4rem; }
+
+/* ---------- At a glance ---------- */
+.glance { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 1.3rem 1.4rem 1.1rem; margin: 1rem 0 1.5rem; scroll-margin-top: 1rem; }
+.glance-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.glance-head h2 { border: none; margin: 0; padding: 0; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub); }
+.verdict-badge { font-weight: 600; font-size: 0.9rem; color: var(--accent); background: var(--tag-bg); border-radius: 999px; padding: 0.15rem 0.75rem; }
+
+.benefits { list-style: none; padding: 0; margin: 0 0 0.4rem; }
+.benefit { display: grid; grid-template-columns: 1.1rem 1fr auto; gap: 0.2rem 0.6rem; align-items: baseline; padding: 0.55rem 0; border-top: 1px solid var(--line); margin: 0; }
+.benefit:first-child { border-top: none; }
+.benefit .what { font-weight: 600; }
+.benefit .how { grid-column: 2; color: var(--sub); font-size: 0.95rem; }
+.benefit .why { grid-column: 3; grid-row: 1; font-size: 0.85rem; white-space: nowrap; border-bottom: none; }
+.benefit .why:hover { border-bottom: 1px solid var(--accent); }
+
+/* Evidence dot: filled = strong human trials, half = some human data, hollow = mostly animal / cell */
+.ev { width: 0.7rem; height: 0.7rem; border-radius: 50%; display: inline-block; border: 2px solid currentColor; position: relative; top: 0.05rem; cursor: help; }
+.ev.strong { color: var(--ev-strong); background: currentColor; }
+.ev.moderate { color: var(--ev-moderate); background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
+.ev.early { color: var(--ev-early); background: transparent; }
+.legend { font-size: 0.78rem; color: var(--sub); display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.3rem; }
+.legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+
+.glance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 1rem; }
+@media (max-width: 600px) { .glance-grid { grid-template-columns: 1fr; } }
+.box { border-radius: 6px; padding: 0.75rem 1rem; font-size: 0.93rem; }
+.box h3 { margin: 0 0 0.35rem; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.box ul { margin: 0; padding-left: 1.1rem; }
+.box.take { background: var(--tag-bg); }
+.box.take h3 { color: var(--accent); }
+.box.watch { background: #fbf3e6; color: #5a4326; }
+.box.watch h3 { color: var(--caution); }
+
+/* ---------- The research ---------- */
+.research-divider { text-align: center; margin: 3rem 0 0.5rem; color: var(--sub); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.research-divider::before, .research-divider::after { content: ""; display: inline-block; width: 3rem; height: 1px; background: var(--line); vertical-align: middle; margin: 0 0.8rem; }
+.research-intro { color: var(--sub); font-size: 0.95rem; text-align: center; margin-bottom: 1rem; }
+.research section { position: relative; }
+h2 .ev, h3 .ev { margin-right: 0.5rem; top: -0.05rem; }
+.back { display: block; text-align: right; font-size: 0.8rem; margin-top: 0.4rem; border-bottom: none; }
+.back:hover { border-bottom: none; text-decoration: underline; }
+
+.grade { font-style: italic; color: var(--sub); font-size: 0.9em; }
+.callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
+.caution { background: #fbf3e6; border-left: 3px solid var(--caution); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.93rem; color: #5a4326; }
+.caution strong { color: var(--caution); }
+.stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
+hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+.refs { font-size: 0.85rem; color: var(--sub); }
+.refs ol { padding-left: 1.5rem; }
+.refs li { margin: 0.5rem 0; }
+
+/* ---------- Shared bits used inside research sections ---------- */
+.verdict { font-weight: 600; }
+.table-wrap { overflow-x: auto; margin: 1rem 0 2rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 0; }
+th, td { border: 1px solid var(--line); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+th { background: var(--tag-bg); font-weight: 600; }
+td:first-child { font-weight: 600; }
+.yes, .ok { color: #4a5d3a; font-weight: 600; }
+.mid { color: var(--caution); font-weight: 600; }
+.no { color: var(--accent); font-weight: 600; }
+.todo { color: var(--caution); font-size: 0.85rem; }
+.markers { color: var(--sub); font-size: 0.9em; }
+.toc { background: var(--tag-bg); border: 1px solid var(--line); border-radius: 4px; padding: 0.9rem 1.2rem; margin: 1.2rem 0; font-size: 0.88rem; }
+.toc-title { font-weight: 600; margin-bottom: 0.4rem; color: var(--sub); text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.04em; }
+.toc ol { columns: 2; column-gap: 1.5rem; margin: 0; padding-left: 1.2rem; }
+.toc li { margin: 0.15rem 0; break-inside: avoid; }
+.toc a { border-bottom: none; }
+.toc a:hover { border-bottom: 1px solid var(--accent); }
+@media (max-width: 600px) { .toc ol { columns: 1; } }

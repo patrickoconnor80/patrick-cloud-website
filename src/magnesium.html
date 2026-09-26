@@ -3,90 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Magnesium — Nutrient Deep Dive</title>
+<title>Magnesium — Nutrient</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  h3 { margin-top: 1.4rem; margin-bottom: 0.3rem; color: var(--accent); font-size: 1rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  .grade { font-style: italic; color: var(--sub); font-size: 0.9em; }
-  sup a { border-bottom: none; }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .refs { font-size: 0.85rem; color: var(--sub); }
-  .refs ol { padding-left: 1.5rem; }
-  .refs li { margin: 0.5rem 0; }
-  .refs a { border-bottom-color: rgba(122, 59, 46, 0.25); }
-  hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Magnesium</h1>
 <div class="tags"><span class="tag">Mineral</span><span class="tag">Foundational</span><span class="tag">Cofactor</span></div>
+<p class="lede">An essential mineral behind more than 300 enzymes. Your cells can't use energy without it.</p>
 
-<div class="callout"><strong>TL;DR:</strong> Magnesium is an essential mineral that functions as a cofactor in over 300 enzymatic reactions, particularly in energy metabolism, neuromuscular function, and cellular signaling.<sup><a href="#ref1">1</a></sup></div>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential &middot; worth supplementing</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong — core biochemistry"></span>
+      <span class="what">Powers every cell</span>
+      <span class="how">ATP, the body's energy molecule, only works when it's bound to magnesium.</span>
+      <a class="why" href="#energy">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Calmer mind, better sleep</span>
+      <span class="how">Supports GABA, the brain's main calming signal.</span>
+      <a class="why" href="#brain-sleep">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Relaxes muscles</span>
+      <span class="how">Balances calcium, which makes muscles contract, so they can let go.</span>
+      <a class="why" href="#muscle">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong — well-established physiology"></span>
+      <span class="what">Steady heart rhythm</span>
+      <span class="how">Keeps the heart's electrical signals stable.</span>
+      <a class="why" href="#heart">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Better blood sugar control</span>
+      <span class="how">Insulin needs magnesium to send its signal into the cell.</span>
+      <a class="why" href="#blood-sugar">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev early" title="Early — limited direct evidence"></span>
+      <span class="what">Calms inflammation</span>
+      <span class="how">Helps keep oxidative stress and inflammation in check.</span>
+      <a class="why" href="#inflammation">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend">
+    <span><span class="ev strong"></span>Strong human evidence</span>
+    <span><span class="ev moderate"></span>Some human evidence</span>
+    <span><span class="ev early"></span>Early / limited</span>
+  </div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>Aim for 300&ndash;420&nbsp;mg a day from food plus supplements</li>
+        <li><strong>Glycinate</strong> for daily use: well absorbed and easy on the gut</li>
+        <li><strong>Citrate</strong> if you also want it to act as a laxative</li>
+        <li>Skip <strong>oxide</strong>, which is poorly absorbed</li>
+        <li>Foods: pumpkin seeds, spinach, avocado, dark chocolate</li>
+      </ul>
+      <a class="why" href="#forms">details ↓</a>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Too much citrate or oxide causes loose stools</li>
+        <li>Kidney disease: check with a doctor first, since the kidneys clear excess magnesium</li>
+      </ul>
+      <h3 style="margin-top:0.7rem">Signs you're low</h3>
+      <ul>
+        <li>Cramps, twitches, tremors</li>
+        <li>Anxiety, poor sleep</li>
+        <li>Irregular heartbeat</li>
+      </ul>
+      <a class="why" href="#deficiency">details ↓</a>
+    </div>
+  </div>
+</div>
 
-<h2>Intake</h2>
-<p>Roughly 300–420 mg/day, varying by sex and age.<sup><a href="#ref1">1</a></sup> Cannot be synthesized — must come from diet.</p>
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
 
-<h2>Energy system (core mechanism)</h2>
-<p>ATP must bind magnesium to form Mg-ATP, the biologically active form. Without magnesium, cellular energy use is impaired — magnesium is required for energy metabolism, not just supportive of it.</p>
+<div class="research">
 
-<h2>Brain</h2>
+<section>
+<h2 id="energy"><span class="ev strong" title="Strong"></span>Powers every cell</h2>
+<p>ATP must bind magnesium to form Mg-ATP, the biologically active form. Without magnesium, cellular energy use is impaired &mdash; magnesium is required for energy metabolism, not just supportive of it. It is a cofactor in over 300 enzymatic reactions, particularly in energy metabolism, neuromuscular function, and cellular signaling.<sup><a href="#ref1">1</a></sup></p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
+
+<section>
+<h2 id="brain-sleep"><span class="ev moderate" title="Moderate"></span>Calmer mind, better sleep</h2>
 <p>Regulates neurotransmission and synaptic plasticity; supports GABA activity for a calming effect. Low magnesium is linked to increased neuronal excitability.<sup><a href="#ref2">2</a></sup></p>
-
-<h2>Muscle</h2>
-<p>Required for muscle relaxation (it counterbalances calcium) and helps prevent cramps and spasms.</p>
-
-<h2>Heart</h2>
-<p>Regulates cardiac rhythm and electrical stability; imbalance can contribute to arrhythmias.<sup><a href="#ref1">1</a></sup></p>
-
-<h2>Sleep</h2>
 <p>Supports relaxation via GABA and nervous system regulation; associated with improved sleep quality, though the evidence is mixed-but-supportive rather than settled.<sup><a href="#ref3">3</a></sup> <span class="grade">(Moderate)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
 
-<h2>Electrolyte interaction</h2>
-<p>Regulates ion channels (Ca²⁺, Na⁺, K⁺) and stabilizes membrane potential — see <a href="calcium.html">Calcium</a>, <a href="sodium.html">Sodium</a>, <a href="potassium.html">Potassium</a>.</p>
+<section>
+<h2 id="muscle"><span class="ev moderate" title="Moderate"></span>Relaxes muscles</h2>
+<p>Required for muscle relaxation (it counterbalances calcium) and helps prevent cramps and spasms. More broadly, it regulates ion channels (Ca²⁺, Na⁺, K⁺) and stabilizes membrane potential &mdash; see <a href="calcium.html">Calcium</a>, <a href="sodium.html">Sodium</a>, <a href="potassium.html">Potassium</a>.</p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
 
-<h2>Glucose / insulin</h2>
-<p>Required for insulin receptor signaling (tyrosine kinase activity).<sup><a href="#ref4">4</a></sup> Low magnesium is associated with increased insulin resistance and type 2 diabetes risk,<sup><a href="#ref5">5</a></sup> and supplementation can improve insulin sensitivity and glucose control.<sup><a href="#ref6">6</a></sup> Magnesium-dependent ATP is required for glucose metabolism generally. <span class="grade">(Moderate — associational + some interventional support)</span></p>
+<section>
+<h2 id="heart"><span class="ev strong" title="Strong"></span>Steady heart rhythm</h2>
+<p>Regulates cardiac rhythm and electrical stability; imbalance can contribute to arrhythmias.<sup><a href="#ref1">1</a></sup></p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
 
-<h2>Oxidation / cellular stress</h2>
+<section>
+<h2 id="blood-sugar"><span class="ev moderate" title="Moderate"></span>Better blood sugar control</h2>
+<p>Required for insulin receptor signaling (tyrosine kinase activity).<sup><a href="#ref4">4</a></sup> Low magnesium is associated with increased insulin resistance and type 2 diabetes risk,<sup><a href="#ref5">5</a></sup> and supplementation can improve insulin sensitivity and glucose control.<sup><a href="#ref6">6</a></sup> Magnesium-dependent ATP is required for glucose metabolism generally. <span class="grade">(Moderate &mdash; associational + some interventional support)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
+
+<section>
+<h2 id="inflammation"><span class="ev early" title="Early"></span>Calms inflammation</h2>
 <p>Helps regulate inflammation and oxidative stress.<sup><a href="#ref2">2</a></sup></p>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
 
-<h2>Deficiency effects</h2>
-<p>Neuromuscular: cramps, tremors. Cardiovascular: arrhythmias. CNS: anxiety, poor sleep.<sup><a href="#ref1">1</a></sup></p>
-
-<h2>Supplement forms</h2>
-<p>Bioavailability varies significantly by form; organic salts (citrate, glycinate) are generally better absorbed than inorganic forms like oxide.</p>
+<section>
+<h2 id="forms">Forms &amp; intake</h2>
+<p>Roughly 300&ndash;420&nbsp;mg/day, varying by sex and age.<sup><a href="#ref1">1</a></sup> Cannot be synthesized &mdash; must come from diet. Bioavailability varies significantly by form; organic salts (citrate, glycinate) are generally better absorbed than inorganic forms like oxide.</p>
 <ul>
-  <li><strong>Magnesium citrate</strong> — relatively high absorption; osmotic activity draws water into the intestines (laxative effect); used for constipation and general supplementation.</li>
-  <li><strong>Magnesium glycinate (bisglycinate)</strong> — chelated with glycine for improved absorption and less laxative effect; may support nervous system/sleep via the glycine component itself (see <a href="glycine-collagen.html">Glycine / Collagen</a>). This is the form the Metabolic Health hub's Tier 1 supplement entry specifically recommends, for absorption and GI tolerance.</li>
-  <li><strong>Magnesium oxide</strong> — high elemental magnesium content but poor bioavailability; primarily acts as a laxative/antacid.</li>
-  <li><strong>Magnesium threonate</strong> — proposed to cross the blood-brain barrier more effectively; limited human evidence, mostly preclinical. <span class="grade">(Animal–in-vitro)</span></li>
-  <li><strong>Magnesium malate</strong> — bound to malic acid (a TCA-cycle intermediate); sometimes used for fatigue, but evidence is limited.</li>
+  <li><strong>Magnesium glycinate (bisglycinate)</strong> &mdash; chelated with glycine for improved absorption and less laxative effect; may support nervous system/sleep via the glycine component itself (see <a href="glycinecollagen.html">Glycine / Collagen</a>). This is the form the Metabolic Health hub's Tier 1 supplement entry specifically recommends, for absorption and GI tolerance.</li>
+  <li><strong>Magnesium citrate</strong> &mdash; relatively high absorption; osmotic activity draws water into the intestines (laxative effect); used for constipation and general supplementation.</li>
+  <li><strong>Magnesium oxide</strong> &mdash; high elemental magnesium content but poor bioavailability; primarily acts as a laxative/antacid.</li>
+  <li><strong>Magnesium threonate</strong> &mdash; proposed to cross the blood-brain barrier more effectively; limited human evidence, mostly preclinical. <span class="grade">(Animal&ndash;in-vitro)</span></li>
+  <li><strong>Magnesium malate</strong> &mdash; bound to malic acid (a TCA-cycle intermediate); sometimes used for fatigue, but evidence is limited.</li>
 </ul>
-
-<h2>Top foods</h2>
+<h3>Top foods</h3>
 <ul>
   <li>Pumpkin seeds</li>
-  <li>Almonds</li>
   <li>Spinach</li>
   <li>Avocado</li>
+  <li>Dark chocolate</li>
 </ul>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
+
+<section>
+<h2 id="deficiency">Deficiency &amp; safety</h2>
+<p>Neuromuscular: cramps, tremors. Cardiovascular: arrhythmias. CNS: anxiety, poor sleep.<sup><a href="#ref1">1</a></sup></p>
+<div class="caution"><strong>Caution:</strong> the kidneys are the main route for clearing excess magnesium, so anyone with reduced kidney function should clear supplementation with a doctor. In people with healthy kidneys, the usual limiting side effect is loose stools from the citrate and oxide forms.</div>
+<a class="back" href="#glance">↑ back to summary</a>
+</section>
+
+</div>
 
 <hr>
 <h2>References</h2>

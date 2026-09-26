@@ -5,52 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vitamin A (Retinol / Carotenoids) — Nutrient Deep Dive</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  sup a { border-bottom: none; }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .refs { font-size: 0.85rem; color: var(--sub); }
-  .refs ol { padding-left: 1.5rem; }
-  .refs li { margin: 0.5rem 0; }
-  .refs a { border-bottom-color: rgba(122, 59, 46, 0.25); }
-  hr { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Vitamin A (Retinol / Carotenoids)</h1>
 <div class="tags"><span class="tag">Vitamin</span><span class="tag">Foundational</span><span class="tag">Hormonal</span></div>
 
-<div class="callout"><strong>TL;DR:</strong> Vitamin A supports vision, immune defense, and skin/mucosal barrier integrity.</div>
+<p class="lede">Controls how cells specialize, and lets your eyes see in dim light.</p>
 
-<h2>Functions</h2>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Night vision</span>
+      <span class="how">Forms rhodopsin, the light sensor in your retina.</span>
+      <a class="why" href="#functions">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Healthy skin and gut lining</span>
+      <span class="how">Keeps barrier tissues properly formed.</span>
+      <a class="why" href="#functions">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Immune defense</span>
+      <span class="how">Directs immune cells, especially at mucous membranes.</span>
+      <a class="why" href="#functions">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>700–900 mcg a day</li>
+        <li>Liver is the richest source. Also eggs, dairy, carrots, sweet potato.</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>Carotenoids in plants convert to vitamin A less reliably than retinol from animal foods</li>
+      </ul>
+      <h3 style="margin-top:0.7rem">Signs you're low</h3>
+      <ul>
+        <li>Night blindness</li>
+        <li>Dry eyes and skin</li>
+        <li>More infections</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
+
+<h2 id="functions">Functions</h2>
 <p><strong>Gene regulation (retinoic acid).</strong> Retinoic acid binds RAR/RXR receptors, regulating transcription of differentiation genes and controlling epithelial cell identity and tissue development.<sup><a href="#ref1">1</a></sup></p>
 <p><strong>Vision (retinal cycle).</strong> 11-cis-retinal combines with opsin to form rhodopsin, the photoreceptor complex; light-induced isomerization initiates visual signal transduction.<sup><a href="#ref2">2</a></sup></p>
 <p><strong>Epithelial integrity.</strong> Maintains differentiation of epithelial tissues (skin, gut, respiratory tract) and prevents keratinization and barrier dysfunction.<sup><a href="#ref3">3</a></sup></p>
 <p><strong>Immune modulation.</strong> Regulates immune cell differentiation and mucosal immunity, supporting barrier-mediated immune defense.<sup><a href="#ref3">3</a></sup></p>
 
-<h2>Intake</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="intake">Intake</h2>
 <p>Roughly 700–900 µg/day.</p>
 
-<h2>Deficiency effects</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="deficiency-effects">Deficiency effects</h2>
 <p>Night blindness; impaired epithelial integrity (dry eyes/skin, barrier dysfunction); immune dysfunction and higher infection risk.</p>
 
-<h2>Top foods</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="top-foods">Top foods</h2>
 <ul>
   <li>Liver</li>
   <li>Eggs</li>
@@ -63,11 +98,15 @@
   <li>Kale</li>
 </ul>
 
-<h2>Key insight</h2>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="key-insight">Key insight</h2>
 <p>Vitamin A controls cell identity — through gene regulation and light sensing, it determines how tissues differentiate and respond to the environment.</p>
 
+<a class="back" href="#glance">↑ back to summary</a>
+
 <hr>
-<h2>References</h2>
+<h2 id="references">References</h2>
 <div class="refs">
 <ol>
 <li id="ref1">Blomhoff R, Blomhoff HK. Overview of retinoid metabolism and function. <em>J Neurobiol.</em> 2006.</li>

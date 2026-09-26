@@ -3,52 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Selenium — Nutrient Deep Dive</title>
+<title>Selenium — Nutrient</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<style>
-  :root { --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9; --accent: #7a3b2e; --tag-bg: #f1ede4; }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.6; max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
-  a:hover { border-bottom-color: var(--accent); }
-  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
-  .crumbs a { border-bottom: none; }
-  .crumbs a:hover { border-bottom: 1px solid var(--accent); }
-  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; }
-  p { margin: 0.7rem 0; }
-  .callout { background: var(--tag-bg); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.97rem; }
-  .tags { margin: 0.4rem 0 1.2rem; }
-  .tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--line); border-radius: 3px; padding: 0.1rem 0.5rem; font-size: 0.78rem; margin-right: 0.4rem; color: var(--sub); }
-  ul { margin: 0.5rem 0; padding-left: 1.4rem; }
-  li { margin: 0.25rem 0; }
-  .stub { color: var(--sub); font-style: italic; font-size: 0.9rem; border: 1px dashed var(--line); padding: 0.7rem 1rem; margin-top: 2rem; }
-</style>
+<link rel="stylesheet" href="assets/css/entry.css">
 </head>
 <body>
 
-<div class="crumbs"><a href="../nutrients.html">← Nutrients</a> · <a href="../metabolic-health.html">Metabolic Health</a></div>
+<div class="crumbs"><a href="nutrients.html">← Nutrients</a> · <a href="metabolic-health.html">Metabolic Health</a></div>
 <h1>Selenium</h1>
 <div class="tags"><span class="tag">Mineral</span><span class="tag">Foundational</span></div>
+<p class="lede">A trace mineral with a narrow sweet spot. Getting too little and getting too much both cause harm.</p>
 
-<div class="callout"><strong>TL;DR:</strong> Trace mineral required for antioxidant enzymes and thyroid hormone metabolism; can support stress-response indirectly via redox and thyroid pathways, but excess is harmful.</div>
+<div class="glance" id="glance">
+  <div class="glance-head">
+    <h2>At a glance</h2>
+    <span class="verdict-badge">Essential · don't overdo it</span>
+  </div>
+  <ul class="benefits">
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Antioxidant defense</span>
+      <span class="how">Built into glutathione peroxidase, which neutralizes peroxides.</span>
+      <a class="why" href="#antioxidant">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev strong" title="Strong human evidence"></span>
+      <span class="what">Protects the heart when intake is very low</span>
+      <span class="how">Supplementing wiped out Keshan disease, a heart failure caused by selenium-poor soil.</span>
+      <a class="why" href="#keshan">why ↓</a>
+    </li>
+    <li class="benefit">
+      <span class="ev moderate" title="Some human evidence"></span>
+      <span class="what">Calms autoimmune thyroiditis</span>
+      <span class="how">Lowers thyroid antibodies and TSH in Hashimoto's.</span>
+      <a class="why" href="#thyroid">why ↓</a>
+    </li>
+  </ul>
+  <div class="legend"><span><span class="ev strong"></span>Strong human evidence</span><span><span class="ev moderate"></span>Some human evidence</span></div>
+  <div class="glance-grid">
+    <div class="box take">
+      <h3>How to take it</h3>
+      <ul>
+        <li>About 55 mcg a day</li>
+        <li>Sardines, tuna, eggs, beef, liver</li>
+        <li>Two Brazil nuts a day worked as well as a supplement in one trial</li>
+        <li>With Hashimoto's, 100–200 mcg a day is the studied range</li>
+      </ul>
+    </div>
+    <div class="box watch">
+      <h3>Watch out</h3>
+      <ul>
+        <li>200 mcg a day for years may raise diabetes risk in people who already get enough</li>
+        <li>It didn't prevent cancer in large trials</li>
+        <li>Upper limit 400 mcg a day. Overdose causes hair and nail loss.</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<h2>Deficiency effects</h2>
-<p>Lower antioxidant enzyme activity; may worsen thyroid function in low-iodine settings; Keshan disease (a selenium-deficiency cardiomyopathy) in severe-deficiency regions.</p>
+<div class="research-divider">The Research</div>
+<p class="research-intro">Mechanisms, studies and evidence grades for each claim above.</p>
 
-<h2>Intake</h2>
-<p>Aim around the RDA unless medically indicated for more. Food-based sources need caution — Brazil nuts in particular carry wildly variable selenium content depending on soil, so "a handful of Brazil nuts" isn't a reliable dose.</p>
+<h2 id="antioxidant"><span class="ev strong" title="Strong human evidence"></span>Antioxidant defense</h2>
+<p>Selenium works as selenocysteine, built directly into about 25 human selenoproteins. The best-known are the <strong>glutathione peroxidases</strong>, which use glutathione to neutralize hydrogen peroxide and lipid peroxides, and <strong>thioredoxin reductases</strong>, which regenerate the cell's other major reducing system.<sup><a href="#ref1">1</a></sup> This puts selenium directly downstream of the glutathione story on this site &mdash; see <a href="glutathione.html">Glutathione</a> &mdash; and upstream of lipid-peroxide handling relevant to the <a href="linoleic-acid.html">linoleic acid</a> argument. <span class="grade">(Strong &mdash; biochemistry)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<h2>Top foods</h2>
+<h2 id="keshan"><span class="ev strong" title="Strong human evidence"></span>Protects the heart when intake is very low</h2>
+<p>Keshan disease is an endemic cardiomyopathy (heart-muscle failure) that was widespread in a belt of selenium-poor soil across China from the 1950s to 1970s. A systematic review of community supplementation trials found that giving selenium to residents of endemic areas significantly reduced incidence, and concluded that selenium deficiency meets modern epidemiological criteria as a cause.<sup><a href="#ref2">2</a></sup> This is the clearest demonstration of what selenium does &mdash; and it applies to deficient populations, not to people already eating adequate amounts. <span class="grade">(Strong)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="thyroid"><span class="ev moderate" title="Some human evidence"></span>Calms autoimmune thyroiditis</h2>
+<p>The thyroid holds more selenium per gram than any other organ. The deiodinase enzymes that convert T4 into active T3 are selenoproteins, and the gland relies on glutathione peroxidase to protect itself from the hydrogen peroxide it generates while making hormone.<sup><a href="#ref1">1</a></sup></p>
+<p>A 2024 meta-analysis of 35 randomized trials in Hashimoto thyroiditis found selenium lowered TSH in patients not yet on thyroid hormone (SMD &minus;0.21), and lowered thyroid peroxidase antibodies (TPOAb, SMD &minus;0.96, 29 cohorts, 2,358 people) whether or not patients were on hormone replacement. It also lowered a marker of oxidative damage (MDA). Adverse effects were no different from control, and the overall certainty of evidence was rated moderate.<sup><a href="#ref3">3</a></sup> What's missing is evidence that lower antibodies translate into fewer people progressing to overt hypothyroidism. <span class="grade">(Moderate)</span></p>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<h2 id="u-curve">The U-shaped curve: why more isn't better</h2>
+<p>Selenium has an unusually narrow gap between adequate and excessive intake, and the trial record shows harm appearing where people were already replete:<sup><a href="#ref1">1</a></sup></p>
 <ul>
-  <li>Brazil nuts (content varies widely — see caution above)</li>
-  <li>Tuna (canned)</li>
-  <li>Eggs</li>
-  <li>Whole wheat bread</li>
-  <li>Brown rice</li>
+  <li><strong>Diabetes.</strong> In a secondary analysis of the Nutritional Prevention of Cancer trial (1,202 people, average 7.7 years), 200&nbsp;mcg/day raised type 2 diabetes incidence (12.6 vs 8.4 per 1,000 person-years; HR 1.55). The risk was concentrated in people whose baseline selenium was already highest (HR 2.70 in the top third).<sup><a href="#ref4">4</a></sup> <span class="grade">(Moderate &mdash; secondary outcome, but dose-response by baseline status)</span></li>
+  <li><strong>Cancer.</strong> SELECT, which randomized about 35,000 men to 200&nbsp;mcg/day selenium, vitamin E, both, or placebo, found no reduction in prostate or any other cancer, and a statistically non-significant rise in diabetes on selenium alone.<sup><a href="#ref5">5</a></sup> <span class="grade">(Strong for no cancer benefit)</span></li>
+  <li><strong>Toxicity.</strong> In 2008 a misformulated U.S. supplement delivered 22,300&ndash;32,200&nbsp;mcg per daily dose. The resulting outbreak of selenosis produced hair and nail loss and other effects that were in some people long-lasting or permanent.<sup><a href="#ref6">6</a></sup></li>
 </ul>
+<p>The practical reading: selenium is worth ensuring, not maximizing. Status depends heavily on the soil where food was grown, so a food-first intake around the RDA is the target, and supplements above ~100&nbsp;mcg make most sense for a specific reason (like Hashimoto's) or a known low-selenium diet.</p>
+<a class="back" href="#glance">↑ back to summary</a>
 
-<p class="stub">This entry is thin in the source database — no body content beyond the property fields above, and no linked citations. Given the Metabolic Health hub notes freeze-dried oyster as a zinc/copper source and flags iodine as a separate gap, selenium's own supplement case (dose, food-variability caveat, thyroid interaction) is worth developing alongside those.</p>
+<h2 id="intake">Intake &amp; food sources</h2>
+<p>RDA 55&nbsp;mcg/day for adults; tolerable upper intake 400&nbsp;mcg/day.<sup><a href="#ref7">7</a></sup></p>
+<p><strong>Brazil nuts.</strong> Their selenium content varies widely with the soil they grew in, which makes them an imprecise dose. But in a 12-week randomized trial in New Zealanders (a low-selenium population), two Brazil nuts a day &mdash; which actually delivered an average of 53&nbsp;mcg, ranging from roughly 20 to 84 &mdash; raised plasma selenium and glutathione peroxidase activity as effectively as 100&nbsp;mcg of selenomethionine.<sup><a href="#ref8">8</a></sup> Two nuts works; a handful risks overshooting.</p>
+<h3>Top foods</h3>
+<ul>
+  <li>Brazil nuts (two a day at most; content varies)</li>
+  <li>Sardines and canned tuna</li>
+  <li>Beef liver and kidney</li>
+  <li>Eggs</li>
+  <li>Beef</li>
+</ul>
+<a class="back" href="#glance">↑ back to summary</a>
+
+<hr>
+<h2 id="references">References</h2>
+<div class="refs">
+<ol>
+<li id="ref1">Rayman MP. Selenium and human health. <em>Lancet</em> 2012. <a href="https://pubmed.ncbi.nlm.nih.gov/22381456/" target="_blank">PMID 22381456</a></li>
+<li id="ref2">Zhou H et al. Prevention of Keshan disease by selenium supplementation: a systematic review and meta-analysis. <em>Biol Trace Elem Res</em> 2018. <a href="https://pubmed.ncbi.nlm.nih.gov/29627894/" target="_blank">PMID 29627894</a></li>
+<li id="ref3">Huwiler VV et al. Selenium supplementation in patients with Hashimoto thyroiditis: a systematic review and meta-analysis of randomized clinical trials. <em>Thyroid</em> 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/38243784/" target="_blank">PMID 38243784</a></li>
+<li id="ref4">Stranges S et al. Effects of long-term selenium supplementation on the incidence of type 2 diabetes: a randomized trial. <em>Ann Intern Med</em> 2007. <a href="https://pubmed.ncbi.nlm.nih.gov/17620655/" target="_blank">PMID 17620655</a></li>
+<li id="ref5">Lippman SM et al. Effect of selenium and vitamin E on risk of prostate cancer and other cancers: SELECT. <em>JAMA</em> 2009. <a href="https://pubmed.ncbi.nlm.nih.gov/19066370/" target="_blank">PMID 19066370</a></li>
+<li id="ref6">Morris JS, Crane SB. Selenium toxicity from a misformulated dietary supplement, adverse health effects, and the temporal response in the nail biologic monitor. <em>Nutrients</em> 2013. <a href="https://pubmed.ncbi.nlm.nih.gov/23538937/" target="_blank">PMID 23538937</a></li>
+<li id="ref7">NIH Office of Dietary Supplements. Selenium &mdash; Health Professional Fact Sheet. <a href="https://ods.od.nih.gov/factsheets/Selenium-HealthProfessional/" target="_blank">ods.od.nih.gov</a></li>
+<li id="ref8">Thomson CD et al. Brazil nuts: an effective way to improve selenium status. <em>Am J Clin Nutr</em> 2008. <a href="https://pubmed.ncbi.nlm.nih.gov/18258628/" target="_blank">PMID 18258628</a></li>
+</ol>
+</div>
 
 </body>
 </html>
