@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="images/favicon.ico" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1a1f1a;
@@ -799,6 +799,27 @@ Mitochondrial damage <span class="arrow">&rarr;</span> impaired OxPhos <span cla
   <li><strong>Monitor metabolic biomarkers alongside genomic ones.</strong> Fasting glucose, fasting insulin, metabolic flexibility (ability to switch fuel sources), and imaging markers of tumor glucose uptake (FDG-PET) all reflect the metabolic dimension that standard genomic profiling misses.</li>
 </ol>
 
+<h3 id="vii-4"><span class="h3num">VII.4</span>Iron restriction: the phlebotomy trial</h3>
+
+<p>A third metabolic lever, largely outside the Seyfried framework but consistent with it, concerns iron. Cancer cells are characteristically iron-avid: they upregulate transferrin receptor 1 (TfR1), reduce ferritin expression, and create a net iron import phenotype that exceeds their mitochondrial needs. The reason is that <strong>iron is essential for ribonucleotide reductase (RNR)</strong> &mdash; the rate-limiting enzyme that converts ribonucleotides to the deoxyribonucleotides required for DNA replication. Rapidly proliferating cells with high RNR demand import iron aggressively and are more exposed to its depletion.</p>
+
+<p>The Zacharski FeAST trial (VA Cooperative Study 410) randomized 1,277 patients with peripheral arterial disease to phlebotomy-induced iron reduction (targeting serum ferritin ~25 ng/mL) or control.<sup class="cite"><a href="#r18">18</a></sup> Cancer was a secondary endpoint. The results were striking: iron reduction was associated with a <strong>35% reduction in new cancer diagnoses</strong> (hazard ratio &asymp; 0.65, 95% CI 0.43&ndash;0.97) and a <strong>&gt;60% reduction in cancer-specific mortality</strong> (HR &asymp; 0.39, P = .003). These are effect sizes larger than most oncology interventions achieve in randomized trials against established disease.</p>
+
+<div class="mech">
+  <div class="mech-lbl">Why iron restriction hits cancer cells harder than normal cells</div>
+  <div class="chain">
+Cancer cells: elevated TfR1 <span class="arrow">&rarr;</span> aggressive iron import<br>
+Iron <span class="arrow">&rarr;</span> ribonucleotide reductase (RNR) <span class="arrow">&rarr;</span> deoxyribonucleotide synthesis <span class="arrow">&rarr;</span> <b>DNA replication</b><br>
+Elevated H&sub;2;O&sub;2; (from impaired ETC) + Fe&sup2;&sup; <span class="arrow">&rarr;</span> Fenton chemistry <span class="arrow">&rarr;</span> &middot;OH radicals <span class="arrow">&rarr;</span> further cardiolipin &amp; ETC damage<br>
+Iron restriction <span class="arrow">&rarr;</span> preferentially limits RNR in high-turnover cancer cells<br>
+Normal cells: lower iron demand, greater iron-regulatory flexibility
+  </div>
+</div>
+
+<p>There is also a direct connection to the mitochondrial dysfunction model developed in <a href="#part-iii">Part&nbsp;III</a>: cancer cells with impaired ETC already generate elevated H&sub;2;O&sub;2;. Elevated iron converts this hydrogen peroxide into the hydroxyl radical (the most reactive oxygen species) via Fenton chemistry &mdash; which then oxidizes cardiolipin, further impairing the ETC. This creates a self-amplifying loop: mitochondrial damage raises ROS, excess iron converts that ROS into radical species, which damage cardiolipin and deepen the ETC defect. Reducing iron load interrupts this cycle at the catalyst step.</p>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the mechanistic rationale (TfR1 upregulation, RNR iron dependence, Fenton chemistry at damaged ETC) and the randomized trial signal.</span> <span class="ev ev-mixed">Mixed</span><span class="txt">for the cancer endpoint specifically &mdash; it was a secondary analysis in a PAD population; replication in a cancer-prevention design is needed before this can be treated as established.</span></p>
+
 </section>
 
 <!-- ============================================================ LIMITATIONS -->
@@ -895,6 +916,11 @@ Mitochondrial damage <span class="arrow">&rarr;</span> impaired OxPhos <span cla
 <div class="ref-group">Calorie restriction &amp; metabolic cancer therapy</div>
 <ol class="refs">
 <li id="r17">Hursting SD, Lavigne JA, Berrigan D, Perkins SN, Barrett JC. Calorie restriction, aging, and cancer prevention: mechanisms of action and applicability to humans. <span class="j">Annu Rev Med</span> 2003;54:131&ndash;152; and Lv M, Zhu X, Wang H, Wang F, Guan W. Roles of caloric restriction, ketogenic diet and intermittent fasting during initiation, progression and metastasis of cancer in animal models: a systematic review and meta-analysis. <span class="j">PLoS One</span> 2014;9(12):e115147. <span class="note">(CR most consistently anti-tumorigenic intervention in animal models; mechanism through lowered glucose, insulin, and IGF-1; glucose/glutamine starvation of cancer cells.)</span></li>
+</ol>
+
+<div class="ref-group">Iron restriction &amp; phlebotomy</div>
+<ol class="refs">
+<li id="r18">Zacharski LR, Chow BK, Howes PS, et al. Decreased cancer risk after iron reduction in patients with peripheral arterial disease: results from a randomized trial. <span class="j">J Natl Cancer Inst</span> 2008;100(14):996&ndash;1002. PMID 18612136. <span class="note">(FeAST trial, VA Cooperative Study 410; n=1,277 PAD patients randomized to phlebotomy vs. control; secondary cancer endpoint: 35% reduction in new cancer diagnoses (HR 0.65, 95% CI 0.43&ndash;0.97) and &gt;60% reduction in cancer mortality (HR 0.39, P=.003). Dr. Leo Zacharski, lead author, wrote the preface to P.D. Mangan&rsquo;s <em>Dumping Iron</em>. Cancer was a secondary endpoint; replication in a primary cancer-prevention design is needed.)</span></li>
 </ol>
 
 </div>
