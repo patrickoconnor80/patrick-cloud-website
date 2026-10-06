@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grey Hair &amp; Hair Loss</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.spine-part a{color:inherit;border-bottom:none;}
+.spine-part a:hover{border-bottom:1px solid currentColor;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+sup.cite{font-size:11px;line-height:0;vertical-align:super;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+sup.cite a{color:var(--rust);text-decoration:none;padding:0 1px;border-bottom:none;}
+sup.cite a:hover{text-decoration:underline;}
+
+/* ---- Evidence chips ---- */
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mod{background:rgba(61,106,122,.13);color:#2c4f5c;}
+.ev-mod::before{background:var(--sky);}
+.ev-animal{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-animal::before{background:var(--gold);}
+.ev-inf{background:rgba(183,138,46,.09);color:#7a5c14;}
+.ev-inf::before{background:var(--gold);opacity:.55;}
+.ev-cont{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-cont::before{background:var(--rust);}
+.ev-spec{background:rgba(61,69,60,.1);color:var(--ink-soft);}
+.ev-spec::before{background:var(--ink-soft);opacity:.6;}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.chain{
+  font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.75;
+  background:var(--paper-deep);border-radius:4px;padding:16px 20px;margin:18px 0;
+  color:var(--ink);white-space:pre-wrap;overflow-x:auto;
+}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Pushback ---- */
+.pushback{
+  border-left:3px solid var(--rust);
+  background:rgba(168,86,47,.05);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.pushback .pb-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Safety ---- */
+.safety{
+  border:2px solid var(--rust);border-radius:4px;
+  background:rgba(168,86,47,.04);
+  padding:18px 24px;margin:26px 0;font-size:17px;
+}
+.safety .sf-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+.safety ul{margin:8px 0 0;padding-left:20px;}
+.safety li{margin:6px 0;}
+
+/* ---- Deep dive ---- */
+.deepdive{
+  border-left:3px solid var(--sky);
+  background:linear-gradient(90deg,rgba(61,106,122,.045),rgba(61,106,122,0) 60%);
+  border-radius:0 4px 4px 0;
+  padding:6px 24px 14px 22px;
+  margin:26px 0;
+}
+.deepdive-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin:16px 0 8px;
+}
+.dd-skip{color:var(--ink-soft);text-transform:none;letter-spacing:0;font-weight:500;font-style:italic;font-size:12px;margin-left:8px;}
+
+/* ---- Tables ---- */
+.table-wrap{overflow-x:auto;margin:26px 0;}
+table.matrix{
+  width:100%;border-collapse:collapse;
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+}
+table.matrix th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  font-weight:600;padding:14px 16px;border-bottom:2px solid var(--ink);
+  vertical-align:bottom;
+}
+table.matrix td{
+  padding:14px 16px;border-top:1px solid var(--rule);
+  vertical-align:top;font-size:15.5px;line-height:1.5;color:var(--ink-soft);
+}
+table.matrix td:first-child{color:var(--ink);width:34%;}
+table.matrix td:last-child{width:20%;}
+table.matrix td ul{margin:6px 0 0;padding-left:18px;}
+table.matrix tr.who td{
+  background:var(--paper-deep);font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--moss-deep);font-weight:600;
+  padding:10px 16px;
+}
+.yes,.mid,.no{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+.yes{color:var(--moss-deep);}
+.mid{color:#7a5c14;}
+.no{color:var(--rust);}
+@media (max-width:640px){
+  table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100% !important;}
+  table.matrix thead{display:none;}
+  table.matrix tr{border-top:1px solid var(--rule);padding:6px 0;}
+  table.matrix td{border-top:none;padding:4px 16px;}
+  table.matrix td:first-child{padding-top:14px;}
+}
+
+/* ---- Ladder ---- */
+.ladder{margin:26px 0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--card);}
+.rung{display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--rule);}
+.rung:first-child{border-top:none;}
+.rung-lbl{padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;line-height:1.35;color:#fff;}
+.rung-lbl small{display:block;font-weight:500;opacity:.85;font-size:10.5px;margin-top:4px;letter-spacing:.04em;}
+.rung-body{padding:12px 18px;font-size:15.5px;line-height:1.5;}
+.rung-body p{margin:4px 0;}
+.r1{background:var(--moss-deep);}
+.r2{background:var(--moss);}
+.r3{background:var(--sky);}
+.r4{background:var(--gold);}
+.r5{background:var(--rust);}
+.r6{background:#6b6f68;}
+
+/* ---- Limitations / references ---- */
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+ol.refs{
+  list-style:none;padding:0;margin:24px 0 0;
+  font-family:'Newsreader',Georgia,serif;
+}
+ol.refs li{
+  counter-increment:ref;position:relative;padding:0 0 14px 3.2em;
+  font-size:15px;line-height:1.55;color:var(--ink);
+}
+.refwrap{counter-reset:ref;}
+ol.refs li:target{background:#fbf6ea;outline:2px solid #b78a2e;outline-offset:3px;border-radius:4px;}
+ol.refs li::before{
+  content:"["counter(ref)"]";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--rust);
+}
+ol.refs li .j{font-style:italic;}
+ol.refs li .note{color:var(--ink-soft);font-size:13.5px;}
+.ref-group{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.ref-group:first-of-type{margin-top:8px;}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .wrap{padding:0 16px;}
+  .byline{flex-direction:column;gap:6px;}
+  .rung{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion:no-preference){
+  section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html" class="active">Papers</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="nutrients.html">Nutrients</a>
+  <a href="supplements.html">Supplements</a>
+  <a href="recipes.html">Recipes</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Nutritional Biochemistry</p>
+  <h1 class="title">Grey Hair &amp; <em>Hair Loss</em></h1>
+  <p class="sub">Grey hair is a stem-cell problem, and baldness is mostly a hormone-sensitivity problem. Nutrition, thyroid and stress sit on top of both. When grey hair has come back in people, it's usually because a specific deficiency or disease was fixed. The antioxidant cocktails sold on X have much weaker evidence than the posts suggest.</p>
+  <div class="byline">
+    <span><b>Draft</b> v1</span>
+    <span><b>Scope</b> greying mechanism, what has reversed it, baldness, and ten X posts checked claim by claim</span>
+    <span><b>Standard</b> every cited paper checked against its abstract; funders named at point of use</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;">Hair gets its colour from melanocytes in the follicle bulb. Each hair cycle, those melanocytes are restocked from a pool of melanocyte stem cells. Greying happens when that pool runs out, stops working, or is killed off. Oxidative stress (hydrogen peroxide building up as catalase fails), sympathetic-nerve bursts during stress, and mitochondrial failure are all proven ways to deplete it in mice or in human follicles. Genes set the schedule. Deficiencies and disease can push it earlier, including low B12, low iron stores and hypothyroidism, and copper matters in theory. Those are also the cases where grey hair has actually come back.</p>
+  <p>Baldness is a separate problem. Pattern baldness (androgenetic alopecia) is follicles shrinking under DHT in people genetically sensitive to it. Diffuse shedding (telogen effluvium) is the form driven by nutrition, thyroid, stress and crash diets. The drugs work for pattern baldness. Nutrients work for shedding when something is actually missing. Most of the confusion on X comes from mixing up those two problems, and from treating product trials run by the product's maker as independent evidence.</p>
+  <p style="margin-bottom:0;">This paper checks ten X posts on greying, from Dalton (@Outdoctrination), Alex (@Alex__PuraVida), @questmoosa and Dr. Mike Hart, against the studies they cite. It adds Chris Masterjohn's points on greying and Dalton's companion thread on hair regrowth.</p>
+</div>
+
+<div class="brief">
+  <div class="lbl">The argument in brief</div>
+  <p class="sub">Seven parts</p>
+  <ol class="spine">
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span>Greying is <b>melanocyte stem-cell exhaustion</b>. The pigment enzyme needs copper, but what fails first is the cells. Oxidative stress, stress-nerve bursts and broken mitochondria each deplete them in experiments.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span>In people, premature greying <b>tracks with</b> low B12, low ferritin, low vitamin D, low calcium, smoking, oxidative-stress markers and heart disease. The copper data are thinner and less consistent than the posts claim.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span>What has <b>actually reversed grey hair</b>, ranked: fixing a deficiency or disease, then certain drugs, then natural reversal, then sponsor-run topical trials. After that come old vitamin reports and mouse-only work.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span><b>The posts, checked.</b> The mechanisms are mostly real. The "reverses grey hair" studies are mostly the product maker's own, or mice, or one patient.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span><b>Baldness</b> comes in two kinds. Pattern loss is hormonal and genetic, and early onset is a marker of insulin resistance and heart disease. Shedding is where nutrition matters.</li>
+    <li><span class="spine-part"><a href="#part-vi">Part&nbsp;VI</a></span>What works for hair loss, ranked, including <b>Dalton's regrowth thread</b> checked against its sources.</li>
+    <li><span class="spine-part"><a href="#part-vii">Part&nbsp;VII</a></span><b>What to do.</b> Test before you supplement, eat the copper and B12 foods, don't overdo zinc, vitamin A or selenium, and set expectations by how long the hair has been grey.</li>
+  </ol>
+  <p class="bottom">Hair is a readout of the terrain. The best-supported way to keep your colour or your hair is to find what's actually wrong. Stacking antioxidants hoping one hits is much weaker.</p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Reader's guide</div>
+  <p style="margin-top:0;">Parts&nbsp;I&ndash;III build the model. Part&nbsp;IV is the claim-by-claim check of the X posts and can be read on its own. Parts&nbsp;V&ndash;VI cover baldness, and Part&nbsp;VII is the practical summary. Supplements and nutrients that already have their own entries on this site are linked where they come up.</p>
+  <p style="margin-bottom:0;">
+    <span class="ev ev-strong">Strong</span>
+    <span class="ev ev-mod">Moderate</span>
+    <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span>
+    <span class="ev ev-inf">Inferred</span>
+    <span class="ev ev-cont">Contested</span>
+    <span class="ev ev-spec">Speculative</span>
+  </p>
+</div>
+
+<!-- ============================ PART I ============================ -->
+<section>
+<div class="part-head" id="part-i">
+  <div class="part-num">PART&nbsp;I</div>
+  <h2>How Hair Gets Its Colour, and Loses It</h2>
+</div>
+
+<h3><span class="h3num">I.1</span>The pigment line</h3>
+<p>Melanin is made from the amino acid tyrosine by tyrosinase, a copper enzyme, inside melanocytes that sit at the base of each growing hair. The melanocytes hand the pigment to the keratin cells building the shaft. Tyrosinase gets its copper from a copper pump (ATP7A, the Menkes protein) inside the cell. Without the pump, tyrosinase is made but stays inactive, which is why Menkes disease, a genetic copper-transport failure, produces pale, steely hair.<sup class="cite"><a href="#r3">3</a></sup></p>
+<div class="chain">tyrosine ──tyrosinase (Cu)──▶ DOPA ──▶ dopaquinone ──▶ eumelanin (brown/black)
+                                              └──(+ cysteine)──▶ pheomelanin (red/yellow)</div>
+<p>Pigment is only made while the hair is growing (anagen). When the follicle rests and restarts, it needs a fresh set of melanocytes, and those come from <strong>melanocyte stem cells</strong> parked higher up the follicle.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">textbook pigment biology; the copper-pump requirement is shown directly in cells.</span></p>
+
+<h3><span class="h3num">I.2</span>Greying is the stem-cell pool running out</h3>
+<p>The landmark 2005 <em>Science</em> paper by Nishimura and colleagues showed, in mice and in ageing human follicles, that greying is caused by melanocyte stem cells failing to maintain themselves. They either die when they should go dormant, or they mature in the wrong place and are used up.<sup class="cite"><a href="#r1">1</a></sup> A 2023 <em>Nature</em> paper from NYU added a twist. These stem cells normally shuttle between compartments of the follicle, and with age more of them get <em>stuck</em> in the wrong compartment where they can't be triggered to make pigment cells.<sup class="cite"><a href="#r2">2</a></sup> Stuck isn't dead. That's one reason some grey hair can come back (Part&nbsp;III).</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for stem-cell exhaustion as the core mechanism, shown in mice and confirmed in human follicles;</span> <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span><span class="txt">for the "stuck cells" model, which so far is mostly mouse work.</span></p>
+
+<h3><span class="h3num">I.3</span>What exhausts the pool</h3>
+<p><strong>Oxidative stress.</strong> Making melanin generates hydrogen peroxide, so pigment cells live under constant oxidative load. A University of Bradford group found hydrogen peroxide at <em>millimolar</em> levels in grey and white hair shafts. They also found catalase (the enzyme that breaks it down) and the methionine-sulfoxide repair enzymes almost absent in grey follicles. The resulting oxidation of a methionine in tyrosinase's active site slows the enzyme down.<sup class="cite"><a href="#r4">4</a></sup> A Charité group found melanocyte death, a marker of mitochondrial DNA damage, and more oxidative stress in greying follicles. Adding an oxidant to cultured pigmented follicles killed melanocytes.<sup class="cite"><a href="#r5">5</a></sup> A Wuhan study, part-funded by L'Or&eacute;al, found catalase switched off in both the pigment cells and their stem cells in grey follicles.<sup class="cite"><a href="#r6">6</a></sup></p>
+<p><strong>Stress nerves.</strong> Harvard's Hsu lab showed in 2020 that in mice, acute stress greys hair through the <em>sympathetic nerves</em> wired to the stem-cell niche, not through cortisol and not through the immune system. A burst of noradrenaline makes the stem cells all activate at once, so the reserve is spent and gone for good.<sup class="cite"><a href="#r8">8</a></sup> The stressor in that study was an injected pain-causing chemical, which is intense and acute.</p>
+<p><strong>Mitochondria.</strong> Deleting a mitochondrial DNA-maintenance enzyme in mice raised oxidative stress in the stem cells and greyed the coat. The surviving melanocytes still made plenty of pigment. The problem was the number of cells, not their output.<sup class="cite"><a href="#r33">33</a></sup> This is the study behind Dalton's NAC thread (Part&nbsp;IV).</p>
+<p><strong>Genes.</strong> The first genome-wide hit for greying, in 6,000 Latin Americans, was near <em>IRF4</em>, a gene that regulates melanin production.<sup class="cite"><a href="#r10">10</a></sup> Family history is the most consistent risk factor in every case-control study below. One reply under Alex's thread made this point: a whole male line greying early despite different lifestyles.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">that oxidative damage, stress-nerve activity and mitochondrial failure can each deplete the pool experimentally;</span> <span class="ev ev-inf">Inferred</span><span class="txt">that these are the main drivers of ordinary age-related greying in a given person, rather than the genetic clock.</span></p>
+
+<div class="deepdive">
+  <div class="deepdive-tag">Masterjohn's two additions <span class="dd-skip">genes and the stress-hormone axis</span></div>
+  <p>Chris Masterjohn's January 2025 post on greying makes two points the X threads don't.<sup class="cite"><a href="#r12">12</a></sup></p>
+  <p><strong>A heat-sensitive tyrosinase.</strong> A common tyrosinase variant, R402Q (rs1126809), carried by nearly half of people of European ancestry by his figures, makes an enzyme that works normally at 31&nbsp;&deg;C but fails at body temperature. The primary study confirms it: at 37&nbsp;&deg;C the variant misfolds and is trapped inside the cell instead of reaching the pigment granules.<sup class="cite"><a href="#r11">11</a></sup> His mother carries two copies and got her first grey hair at 14; he carries one. He suggests homozygous carriers might "err on the side of maintaining cooler ambient temperatures." Two cautions. The variant is tied to lighter hair, skin and eyes; I found no study tying it to <em>greying</em> itself. And the temperature idea is untested.</p>
+  <p><strong>Cortisol suppressing the pigment hormones.</strong> ACTH and MSH, cut from the same precursor (POMC), drive pigmentation. Cortisol feeds back to suppress POMC. So, he argues, chronically high cortisol could cut the pigment signal, and MSH activation needs vitamin C, copper, zinc and glycine. That's reasonable physiology. It is a different stress route from the Hsu lab's nerve mechanism, which worked without the adrenal glands.<sup class="cite"><a href="#r8">8</a></sup> Both may be real.</p>
+  <p style="margin-bottom:0;">His overall framing is the one this paper lands on: find the <em>weakest link</em> among energy signalling (thyroid, insulin sensitivity, protein, carbs, stress), energy machinery (B vitamins, iron, copper, magnesium) and antioxidant defence, and fix that. He also notes that free copper <em>causes</em> oxidative stress, so copper beyond sufficiency may make greying worse. <span class="ev ev-spec">Speculative</span></p>
+</div>
+</section>
+
+<!-- ============================ PART II ============================ -->
+<section>
+<div class="part-head" id="part-ii">
+  <div class="part-num">PART&nbsp;II</div>
+  <h2>What Greying Is Linked To in People</h2>
+</div>
+
+<p>Almost everything here comes from small case-control studies of premature greying (before about 20&ndash;30, depending on ethnicity), mostly from India, Iran and Egypt. They compare blood levels in people who grey early with people who don't.</p>
+
+<div class="table-wrap"><table class="matrix">
+<thead><tr><th>Factor</th><th>What the studies found</th><th>Grade</th></tr></thead>
+<tbody>
+<tr><td><strong>Copper</strong></td><td>Iran, 66 teenagers vs 66 controls: serum copper lower in the grey group (90.7 vs 105.3&nbsp;&micro;g/dL, p=0.048), and serum <em>iron higher</em>.<sup class="cite"><a href="#r13">13</a></sup> Egypt, 60 vs 30: copper lower in greying patients, but it did <strong>not</strong> track with severity (p=0.74), while iron and calcium did.<sup class="cite"><a href="#r14">14</a></sup> A 2020 meta-analysis of risk factors didn't list copper among the consistent ones.<sup class="cite"><a href="#r17">17</a></sup></td><td><span class="ev ev-cont">Contested</span></td></tr>
+<tr><td><strong>Iron / ferritin</strong></td><td>Ferritin lower in Indian schoolchildren with early greying (36.9 vs 60.9)<sup class="cite"><a href="#r15">15</a></sup>, and iron fell with severity in the Egyptian study<sup class="cite"><a href="#r14">14</a></sup>, but serum iron was <em>higher</em> in the Iranian group.<sup class="cite"><a href="#r13">13</a></sup> The meta-analysis lists low ferritin as a consistent factor.<sup class="cite"><a href="#r17">17</a></sup></td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Vitamin B12, folate</strong></td><td>Listed as consistent risk factors in the meta-analysis<sup class="cite"><a href="#r17">17</a></sup>. Pernicious anaemia has been linked to premature greying for decades. B12 was <em>not</em> different in the Indian study.<sup class="cite"><a href="#r15">15</a></sup></td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Vitamin D, calcium</strong></td><td>All 35 Indian cases were deficient or insufficient, versus about two-thirds of controls. Serum calcium was lower.<sup class="cite"><a href="#r15">15</a></sup> Calcium fell with severity in Egypt.<sup class="cite"><a href="#r14">14</a></sup></td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Oxidative stress markers</strong></td><td>Delhi, 50 cases vs 30 controls: MDA (a lipid-peroxidation marker) higher, glutathione and SOD lower. MDA and glutathione tracked with how grey people were.<sup class="cite"><a href="#r16">16</a></sup></td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Thyroid</strong></td><td>Thyroid disorders are on the meta-analysis list.<sup class="cite"><a href="#r17">17</a></sup> Thyroid hormone directly raises pigment production in human follicles in culture.<sup class="cite"><a href="#r23">23</a></sup></td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Smoking</strong></td><td>First flagged in a 1996 <em>BMJ</em> survey<sup class="cite"><a href="#r19">19</a></sup>; among the most consistent factors in the meta-analysis.<sup class="cite"><a href="#r17">17</a></sup></td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Heart disease</strong></td><td>In Turkish men, the degree of premature greying independently predicted coronary artery disease on angiography, which the authors read as a marker of biological age.<sup class="cite"><a href="#r20">20</a></sup> Obesity, high blood pressure, dyslipidaemia and inactivity also cluster with it.<sup class="cite"><a href="#r17">17</a></sup></td><td><span class="ev ev-mod">Moderate</span></td></tr>
+</tbody>
+</table></div>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: a blood level is not a cause</div>
+  <p style="margin:0;">These are cross-sectional snapshots of a few dozen people each, in populations where deficiency is common. They can't say whether low copper or low ferritin <em>caused</em> the greying, or whether both reflect something else like gut absorption, inflammation or diet quality. The copper case rests on one study where it was barely significant and one where it didn't track with severity. <em>The pattern that does hold up across studies is broader than any one nutrient: people who grey early are, on average, less well nourished and less metabolically healthy. That fits the terrain framing of the <a href="metabolic-health.html">Metabolic Health</a> paper better than it fits a single-nutrient fix.</em></p>
+</div>
+</section>
+
+<!-- ============================ PART III ============================ -->
+<section>
+<div class="part-head" id="part-iii">
+  <div class="part-num">PART&nbsp;III</div>
+  <h2>What Has Actually Reversed Grey Hair</h2>
+</div>
+
+<p>Both reviews in the posts' own source lists open the same way: grey hair is generally thought permanent, and there's no proven treatment other than dye.<sup class="cite"><a href="#r25">25</a>,<a href="#r18">18</a></sup> Reversal <em>does</em> happen, though, and where it's been documented tells you what's worth trying. Ranked by strength of evidence:</p>
+
+<div class="ladder">
+  <div class="rung"><div class="rung-lbl r1">1 &middot; Fix the cause<small>case series, reviews</small></div><div class="rung-body">
+    <p>Treating the underlying deficiency or disease. The 2020 meta-analysis concluded that "treating the accompanying pathologies led to the reversal of the disease in many cases."<sup class="cite"><a href="#r17">17</a></sup> Examples: premature greying reversed on oral iron in a Korean patient<sup class="cite"><a href="#r21">21</a></sup>. White hair darkened in two patients given T3 for hypothyroidism, one of them in myxoedema coma.<sup class="cite"><a href="#r22">22</a></sup> B12 deficiency is on the meta-analysis's list of treatable causes.<sup class="cite"><a href="#r17">17</a></sup></p></div></div>
+  <div class="rung"><div class="rung-lbl r2">2 &middot; Drugs<small>incidental case reports</small></div><div class="rung-body">
+    <p>A systematic review found 27 reports of drug-induced repigmentation.<sup class="cite"><a href="#r24">24</a></sup> Most were side effects of anti-inflammatories (thalidomide, adalimumab, prednisone, cyclosporine) or drugs that stimulate melanin (imatinib, erlotinib, tamoxifen, latanoprost, levodopa). None of these would be taken for grey hair. They point to <strong>inflammation</strong> and <strong>pigment signalling</strong> as levers.</p></div></div>
+  <div class="rung"><div class="rung-lbl r3">3 &middot; On its own<small>human hair mapping</small></div><div class="rung-body">
+    <p>Columbia's Picard lab mapped pigment along single hairs and found white hairs that <strong>regained colour naturally</strong>, across sexes, ethnicities and body sites. In some people it tracked with stressful periods and their end.<sup class="cite"><a href="#r9">9</a></sup> Their model suggests hairs near the greying threshold can flip back when the load comes off. Hairs far past it can't. This is the most important finding for expectations: <em>early</em> grey is the grey most likely to come back.</p></div></div>
+  <div class="rung"><div class="rung-lbl r4">4 &middot; Topical products<small>sponsor-run trials</small></div><div class="rung-body">
+    <p>Three trials cited by Dalton: Givaudan's antioxidant ingredient (placebo-controlled; grey proportion down 17% vs 8% on placebo)<sup class="cite"><a href="#r29">29</a></sup>, and two single-arm, open-label trials by one Indian research company, one funded by the serum's manufacturer<sup class="cite"><a href="#r30">30</a>,<a href="#r31">31</a></sup>. Details in Part&nbsp;IV.</p></div></div>
+  <div class="rung"><div class="rung-lbl r5">5 &middot; Old vitamin reports<small>uncontrolled, 1940s&ndash;80s</small></div><div class="rung-body">
+    <p>PABA at 12&ndash;24&nbsp;g a day darkened grey hair in 5 of 20 patients taking it for other conditions<sup class="cite"><a href="#r27">27</a></sup>. Calcium pantothenate (B5) 200&nbsp;mg plus plucking the grey hairs gave mixed results in 39 young women with no control group.<sup class="cite"><a href="#r28">28</a></sup> The meta-analysis gives these a "low grade (2A)" recommendation.<sup class="cite"><a href="#r17">17</a></sup></p></div></div>
+  <div class="rung"><div class="rung-lbl r6">6 &middot; Mice<small>animal only</small></div><div class="rung-body">
+    <p>Luteolin, oral or topical, slowed greying in a greying-prone mouse strain<sup class="cite"><a href="#r32">32</a></sup>. NAC in drinking water prevented greying in mice with broken mitochondria<sup class="cite"><a href="#r33">33</a></sup>. Neither has been tested in people.</p></div></div>
+</div>
+
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">that correcting a real deficiency or thyroid disease can restore colour, based on case reports and the meta-analysis, not trials;</span> <span class="ev ev-spec">Speculative</span><span class="txt">that any supplement reverses ordinary age-related greying in a well-nourished person.</span></p>
+</section>
+
+<!-- ============================ PART IV ============================ -->
+<section>
+<div class="part-head" id="part-iv">
+  <div class="part-num">PART&nbsp;IV</div>
+  <h2>The Posts, Checked</h2>
+</div>
+
+<p>This part is an adjudication, like the <a href="orangejuice.html">orange juice</a>, <a href="mastic.html">mastic</a> and <a href="bpc157.html">BPC-157</a> entries. The posts:</p>
+<ul>
+  <li><strong>Dalton (@Outdoctrination)</strong>, a "biomolecular engineer" who sells consultations, lab tests and supplements through affiliate links. Posts: the April 2025 grey-hair thread (about 35 posts, including his B5 and PABA posts), a December 2025 NAC thread, a January 2026 thyroid post, and a September 2024 hair-regrowth thread checked in <a href="#part-vi">Part&nbsp;VI</a>.</li>
+  <li><strong>Alex (@Alex__PuraVida)</strong>, co-founder of a moringa brand. One August 2025 thread (20,000 likes) that ends with an Amazon link to his moringa capsules.</li>
+  <li><strong>@questmoosa</strong>, who sells a "grey hair reversal guide." Three posts: pomegranate juice (February 2025), vitamin B5 (September 2025), and a thyroid-boosting thread (September 2025).</li>
+  <li><strong>Dr. Mike Hart (@drmikehart)</strong>, a podcast host. One July 2026 post on GHK-Cu injections.</li>
+  <li><strong>Chris Masterjohn, PhD</strong>, on his Substack (January 2025) and a Q&amp;A answer, covered in the <a href="#part-i">Part&nbsp;I</a> deep-dive.</li>
+</ul>
+<p>Every paper the posts cited or pictured was identified and checked against its abstract. The NAC study was also checked against its full text.</p>
+
+<div class="table-wrap"><table class="matrix">
+<thead><tr><th>Claim</th><th>What the literature shows</th><th>Holds?</th></tr></thead>
+<tbody>
+
+<tr class="who"><td colspan="3">Dalton &middot; grey hair thread, April 2025</td></tr>
+<tr>
+  <td>"The conversion of tyrosine into the forms of melanin requires tyrosine, copper, zinc, iron, vitamin C, vitamin B9. If you are low on ANY of these, you are likely to get grey hair."</td>
+  <td>Copper, yes: tyrosinase is a copper enzyme.<sup class="cite"><a href="#r3">3</a></sup> The others are looser. Vitamin C <em>inhibits</em> melanin synthesis, which is why it's used in skin lighteners. High-dose zinc <em>lightened</em> mouse hair and cut melanin content.<sup class="cite"><a href="#r34">34</a></sup> Nobody greys from low dietary tyrosine, since the body makes it from phenylalanine.</td>
+  <td><span class="mid">Half holds.</span> Copper and deficiency in general, yes. "Any of these" overreaches.</td>
+</tr>
+<tr>
+  <td>"Copper is low in people with grey hair&hellip; Iron can actually be high in these cases."</td>
+  <td>Accurately reported from the Iranian study (copper p=0.048; iron higher in the grey group).<sup class="cite"><a href="#r13">13</a></sup></td>
+  <td><span class="yes">Holds.</span> One study of 66 teenagers.</td>
+</tr>
+<tr>
+  <td>"The more grey the hair, the lower the copper, calcium and iron. This should be the absolute priority for prevention."</td>
+  <td>The table he screenshots (Egypt) shows iron and calcium falling with severity, but copper <strong>not</strong>: p=0.743.<sup class="cite"><a href="#r14">14</a></sup> The osteopenia link he mentions is real in the literature but mixed.<sup class="cite"><a href="#r18">18</a></sup></td>
+  <td><span class="no">Does not hold</span> for copper, the one he puts first. His own screenshot says so.</td>
+</tr>
+<tr>
+  <td>"Vitamin D is also often low in people with grey hair."</td>
+  <td>Accurate for the Indian schoolchildren study: no case had normal vitamin D. The same table shows B12 was <em>not</em> different.<sup class="cite"><a href="#r15">15</a></sup></td>
+  <td><span class="yes">Holds</span> (35 cases).</td>
+</tr>
+<tr>
+  <td>"Supplying L-DOPA can actually recolor hair," found in Mucuna pruriens.</td>
+  <td>His screenshot is a single 1989 case report. A man who'd been on levodopa for 15 years with snow-white hair darkened <em>after</em> carbidopa and then bromocriptine were added.<sup class="cite"><a href="#r26">26</a></sup> A 1973 <em>Lancet</em> letter he also links (not checked) is likewise case-level. Levodopa is on the review's list of incidental repigmentation drugs.<sup class="cite"><a href="#r24">24</a></sup> Nothing tests mucuna for hair.</td>
+  <td><span class="mid">Case reports only.</span> Levodopa is a Parkinson's drug with real side effects, not a hair supplement.</td>
+</tr>
+<tr>
+  <td>"Hypothyroidism grays hair, thyroid hormones reverse it." (Repeated in his January 2026 post.)</td>
+  <td>Two hypothyroid patients' hair darkened on T3.<sup class="cite"><a href="#r22">22</a></sup> T3 and T4 raised pigmentation in human follicles in culture. His own screenshot shows the T3 effect at day&nbsp;5 had gone by day&nbsp;9.<sup class="cite"><a href="#r23">23</a></sup></td>
+  <td><span class="yes">Holds</span> for hypothyroid people. No evidence it helps if your thyroid is normal (see <a href="#safety">safety</a>).</td>
+</tr>
+<tr>
+  <td>"Grey hair is primarily driven by oxidative stress": high MDA, low glutathione, low SOD, "directly proportional" to severity.</td>
+  <td>The Delhi study found exactly that.<sup class="cite"><a href="#r16">16</a></sup> The mechanism literature backs oxidative damage as a driver.<sup class="cite"><a href="#r4">4</a>,<a href="#r5">5</a>,<a href="#r7">7</a></sup></td>
+  <td><span class="yes">Holds</span>, except "primarily." Stem-cell exhaustion and genes are the frame. Oxidative stress is one way the pool gets used up.</td>
+</tr>
+<tr>
+  <td>"Dropping hydrogen peroxide on hair follicles can literally make the hair grey&hellip; methionine sulfoxide."</td>
+  <td>The Bradford study showed peroxide builds up in grey hair and oxidises tyrosinase's methionine.<sup class="cite"><a href="#r4">4</a></sup> The Charité group induced melanocyte death in cultured follicles with an oxidant (hydroquinone).<sup class="cite"><a href="#r5">5</a></sup></td>
+  <td><span class="yes">Holds.</span></td>
+</tr>
+<tr>
+  <td>Support antioxidants: vitamins E, C, B1, B2, selenium, copper, zinc, NAC, glycine, taurine, red light, liver, oysters, flavonoids, mushrooms, "plenty of carbohydrates," avoid seed oils.</td>
+  <td>No trial tests any of these individually against greying. The seed-oil point is consistent with the lipid-peroxidation case in the <a href="linoleic-acid.html">Linoleic Acid</a> paper, and high MDA in greying people is a lipid-peroxidation marker.<sup class="cite"><a href="#r16">16</a></sup></td>
+  <td><span class="mid">Inferred.</span> A reasonable diet, not a demonstrated treatment.</td>
+</tr>
+<tr>
+  <td>"Luteolin&hellip; both oral and topical administration re-colored the hair."</td>
+  <td>Mice bred to grey early (Ednrb<sup>+/&minus;</sup>;RET), fed 0.5&nbsp;mg/kg a day. Luteolin <em>slowed</em> greying compared with untreated mice. It didn't recolour grey hair.<sup class="cite"><a href="#r32">32</a></sup> Part-funded by Hoyu, a Japanese hair-dye company, and a co-author is a Hoyu employee and shareholder.</td>
+  <td><span class="mid">Partly.</span> Slowed, in mice, with a dye-company funder.</td>
+</tr>
+<tr>
+  <td>"Antioxidant blends reverse grey hair, regenerate melanocytes" (topical lotion).</td>
+  <td>De Tollenaere 2021, <em>Applied Sciences</em>. All authors work for <strong>Givaudan</strong>, which makes the ingredient. In 44 men over 4 months, the grey proportion fell 17% on the active and 8% on placebo.<sup class="cite"><a href="#r29">29</a></sup></td>
+  <td><span class="mid">Partly.</span> The only placebo-controlled grey-hair trial in the threads. Modest effect, and the maker ran it.</td>
+</tr>
+<tr>
+  <td>"Rosemary oil blend reverses grey hair by &gt;50%."</td>
+  <td>The Soulflower "Tetragain" serum contains Redensyl, MelanoGray, AnaGain, rice water, chia and rosemary oil. MelanoGray is itself a commercial anti-grey ingredient. The trial was open-label and single-arm with no placebo, and was funded by the manufacturer, with an employee as co-author. The grey severity score fell 65% in 120 days.<sup class="cite"><a href="#r31">31</a></sup></td>
+  <td><span class="no">Does not hold</span> as a rosemary claim. It's an uncontrolled test of a seven-ingredient product.</td>
+</tr>
+<tr>
+  <td>"Antioxidants clinically reverse grey hair&hellip; nearly cut in half the severity."</td>
+  <td>The Arcedin serum trial: 29 finishers, open-label, single-arm, no placebo, run by the same research company (NovoBliss, Ahmedabad) as the Soulflower trial.<sup class="cite"><a href="#r30">30</a></sup></td>
+  <td><span class="no">Does not hold</span> as "clinically." No control group.</td>
+</tr>
+<tr>
+  <td>"STRESS drives grey hair&hellip; the sympathetic nervous system directly drives the depletion" and "stress (adrenaline + noradrenaline) also kills melanocyte stem cells."</td>
+  <td>Hsu lab, <em>Nature</em> 2020.<sup class="cite"><a href="#r8">8</a></sup> One correction: it's noradrenaline from the nerves, <em>not</em> adrenaline. Removing the adrenal glands didn't prevent it, and the stem cells aren't killed outright. They're pushed to activate all at once and used up.</td>
+  <td><span class="yes">Holds</span>, in mice.</td>
+</tr>
+<tr>
+  <td>"When stress over a lifetime accumulates past a certain point, the hair grays."</td>
+  <td>The Picard lab's threshold model. The same paper shows the reverse: hair near the threshold regaining colour when stress eased.<sup class="cite"><a href="#r9">9</a></sup></td>
+  <td><span class="yes">Holds.</span> He left out the hopeful half.</td>
+</tr>
+<tr>
+  <td>"IGF-1 prevents hair greying."</td>
+  <td>The cited 2018 paper is a <em>vitiligo</em> model. Mice had hydrogen peroxide applied to the skin and got IGF-1 injections, and skin depigmentation was reduced. Hair greying wasn't studied.<sup class="cite"><a href="#r35">35</a></sup></td>
+  <td><span class="no">Does not hold.</span> Wrong condition.</td>
+</tr>
+<tr>
+  <td>"High dose vitamin B5 can reverse premature grey hair." (questmoosa posted the same abstract in September 2025.)</td>
+  <td>Pasricha 1986: 39 girls given calcium pantothenate 200&nbsp;mg and/or vitamin E, <strong>combined with pulling out the grey hairs</strong>, and no control group. Of 7 followed for three years, grey counts fell in 4, rose in 2 and stayed flat in 1.<sup class="cite"><a href="#r28">28</a></sup> The paper itself credits the plucking.</td>
+  <td><span class="no">Does not hold</span> as stated. Uncontrolled and confounded.</td>
+</tr>
+<tr>
+  <td>"PABA can reverse grey hair. Older reports show that megadosing PABA can reverse grey hair."</td>
+  <td>Zarafonetis 1950: 5 of 20 grey-haired patients darkened on 12&ndash;24&nbsp;<em>grams</em> a day, taken as a drug for other diseases. The same paper notes an earlier trial where only 2 of 33 changed.<sup class="cite"><a href="#r27">27</a></sup></td>
+  <td><span class="mid">Partly.</span> Real but rare, and at pharmacological doses. He says he has no experience with it.</td>
+</tr>
+<tr>
+  <td>"Pigmentation only happens to hair that is in the growth phase."</td>
+  <td>Correct.<sup class="cite"><a href="#r1">1</a></sup></td>
+  <td><span class="yes">Holds.</span></td>
+</tr>
+
+<tr class="who"><td colspan="3">Dalton &middot; NAC thread, December 2025</td></tr>
+<tr>
+  <td>"NAC can prevent grey hair, as shown in a recent groundbreaking study."</td>
+  <td>Zhou et al., <em>Cell Regeneration</em> 2025, is described accurately in his thread.<sup class="cite"><a href="#r33">33</a></sup> Deleting <em>Dguok</em> (mitochondrial DNA maintenance) raised oxidative stress, killed melanocyte stem cells and greyed the mice. Pigment output per cell was actually <em>up</em>. The full text shows NAC was given in drinking water at 1&nbsp;mg/mL from day 20 to day 70, <em>before</em> greying set in. It "alleviated" the depigmentation. A lower dose (0.5&nbsp;mg/mL) didn't work. Two caveats matter:
+    <ul><li>This is a genetic mitochondrial-disease model, not ordinary ageing.</li><li>It is prevention in mice, not reversal in people.</li></ul>
+    His "one capsule a day" human-equivalent dose is about right by standard scaling (roughly 1&nbsp;g); the capsule link is an affiliate link.</td>
+  <td><span class="mid">Partly.</span> Accurate summary, overgeneral headline. Replies from people on NAC for years who are still grey are the expected result. See the <a href="nac.html">NAC</a> entry.</td>
+</tr>
+
+<tr class="who"><td colspan="3">Alex (@Alex__PuraVida) &middot; August 2025</td></tr>
+<tr>
+  <td>"1 in 4 people go grey before 30. And the beauty industry knows why&hellip; but they won't tell you."</td>
+  <td>No source given; I couldn't trace the figure. The "why" is published (Parts&nbsp;I&ndash;II), partly by L'Or&eacute;al-funded labs.<sup class="cite"><a href="#r6">6</a></sup></td>
+  <td><span class="no">Unsupported.</span></td>
+</tr>
+<tr>
+  <td>"In 2009, researchers at the University of Bradford discovered a buildup of hydrogen peroxide inside greying hair shafts&hellip; That's why catalase matters."</td>
+  <td>Correct.<sup class="cite"><a href="#r4">4</a></sup></td>
+  <td><span class="yes">Holds.</span></td>
+</tr>
+<tr>
+  <td>"Support catalase production&hellip; Eat more broccoli, garlic, onions, moringa."</td>
+  <td>No study shows any food raising catalase in the hair follicle. Catalase <em>supplements</em> are an enzyme, a protein that digestion breaks down. None of the five PMIDs he lists involves moringa or any food. One of them (Plonka 2006) shows that <em>excess zinc</em> depigments mouse hair.<sup class="cite"><a href="#r34">34</a></sup></td>
+  <td><span class="no">Does not hold.</span> The thread ends with an Amazon link to his moringa.</td>
+</tr>
+<tr>
+  <td>"Boost copper&hellip; liver, cashews, chickpeas, dark chocolate, moringa."</td>
+  <td>Copper does activate tyrosinase.<sup class="cite"><a href="#r3">3</a></sup> Liver is by far the richest source on his list. Oysters, which he leaves out, are the other. See the <a href="copper.html">Copper</a> entry.</td>
+  <td><span class="mid">Half holds.</span> Right mineral, and the food list pads toward his product.</td>
+</tr>
+<tr>
+  <td>"Don't ignore methylation&hellip; folate, B12, choline."</td>
+  <td>B12 and folate deficiency are consistent risk factors.<sup class="cite"><a href="#r17">17</a></sup> Choline has no greying data.</td>
+  <td><span class="mid">Half holds.</span></td>
+</tr>
+<tr>
+  <td>"Chronic stress increases hydrogen peroxide in the scalp." Lower cortisol with sun, nose-breathing and walks.</td>
+  <td>Stress greys hair through the sympathetic nerves.<sup class="cite"><a href="#r8">8</a></sup> I found no study of stress raising scalp peroxide.</td>
+  <td><span class="mid">Right conclusion, invented mechanism.</span></td>
+</tr>
+<tr>
+  <td>"Check your thyroid."</td>
+  <td>Reasonable; see Dalton's thyroid row.<sup class="cite"><a href="#r22">22</a>,<a href="#r23">23</a></sup></td>
+  <td><span class="yes">Holds.</span></td>
+</tr>
+
+<tr class="who"><td colspan="3">@questmoosa &middot; three posts, 2025</td></tr>
+<tr>
+  <td>"Can I reverse grey hair? 95% of the time, yes." Grey hair is caused by three things: stress, low copper, low T3. "Grey hairs increase as we age because thyroid hormones decline with age."</td>
+  <td>No study supports 95%. Reviews say there is no established treatment.<sup class="cite"><a href="#r25">25</a>,<a href="#r18">18</a></sup> The biggest causes, age and genes, are missing from his list.<sup class="cite"><a href="#r10">10</a></sup> The only "study" pictured is a paraphrase of the van Beek follicle-culture paper.<sup class="cite"><a href="#r23">23</a></sup></td>
+  <td><span class="no">Does not hold.</span></td>
+</tr>
+<tr>
+  <td>Black seed: 2&nbsp;g a day for 8 weeks lowered TSH and anti-TPO and raised T3.</td>
+  <td>Accurate for Farhangi 2016: 40 patients with Hashimoto's.<sup class="cite"><a href="#r36">36</a></sup> Nothing about hair. See the <a href="blackseed.html">Black Seed</a> entry.</td>
+  <td><span class="mid">Holds for Hashimoto's.</span> Doesn't reach hair.</td>
+</tr>
+<tr>
+  <td>Aspirin: "tissue conversion of T4 to the active form T3 was significantly increased."</td>
+  <td>His screenshot is Larsen 1972. Salicylate knocks T3 and T4 off their blood carrier proteins, so the <em>free</em> fraction rises briefly while <em>total</em> T3 and T4 fell 20&ndash;30%. That's displacement, not increased conversion.<sup class="cite"><a href="#r38">38</a></sup></td>
+  <td><span class="no">Does not hold.</span></td>
+</tr>
+<tr>
+  <td>Ashwagandha raised T3 by 18.6% at 4 weeks and 41.5% at 8 weeks.</td>
+  <td>Matches Sharma 2018: 50 people with subclinical hypothyroidism, 600&nbsp;mg a day.<sup class="cite"><a href="#r37">37</a></sup> Nothing about hair. There are case reports of liver injury and of tipping people into hyperthyroidism.</td>
+  <td><span class="mid">Holds for subclinical hypothyroid people.</span></td>
+</tr>
+<tr>
+  <td>Coffee, royal jelly and taurine for thyroid, and "before and after increasing T3" photos.</td>
+  <td>No hair or greying data for any of them. The "before and after" is a vintage portrait of a balding man with no source, and it isn't about hair colour.</td>
+  <td><span class="no">Unsupported.</span></td>
+</tr>
+<tr>
+  <td>"It may be as simple as drinking pomegranate juice everyday!"</td>
+  <td>Based on one reply saying a husband's hair darkened. PubMed has no study of pomegranate and grey hair. Replies under the post report no change after 4 months and after a year. See the <a href="pomegranate.html">Pomegranate</a> entry for what it does do.</td>
+  <td><span class="no">Anecdote.</span></td>
+</tr>
+
+<tr class="who"><td colspan="3">Dr. Mike Hart &middot; July 2026</td></tr>
+<tr>
+  <td>"Could GHK-Cu reverse grey hair? It did for Dr. Petrushkina. 1&ndash;1.5&nbsp;mg daily for 3 months. Copper is required to activate tyrosinase."</td>
+  <td>One physician's experience, with painful injection-site welts throughout. His own follow-up says "there are currently no controlled human trials" and calls it "intriguing but experimental." His three references: copper activating tyrosinase inside cells (via the Menkes pump, not from a supplement)<sup class="cite"><a href="#r3">3</a></sup>; a <em>different</em> copper peptide (AHK-Cu) lengthening cultured follicles<sup class="cite"><a href="#r39">39</a></sup>; and GHK-Cu hair <em>growth</em> in mice.<sup class="cite"><a href="#r40">40</a></sup> None is about grey hair.</td>
+  <td><span class="yes">Holds as framed.</span> The most honest of the posts: an n=1 labelled as n=1.</td>
+</tr>
+
+</tbody>
+</table></div>
+
+<p class="takeaway"><b>Overall:</b> the mechanism claims (peroxide, catalase, stress nerves, thyroid, copper-dependent tyrosinase) are mostly accurate. The "reverses grey hair" evidence behind the products isn't. It is the manufacturer's own open-label trials, mouse studies, a vitiligo paper, and plucking confounded with B5. Mike Hart labels his anecdote as an anecdote. Dalton cites his sources and summarises them mostly correctly, but his own copper screenshot contradicts his top priority. Alex's and questmoosa's threads are sales funnels.</p>
+</section>
+
+<!-- ============================ PART V ============================ -->
+<section>
+<div class="part-head" id="part-v">
+  <div class="part-num">PART&nbsp;V</div>
+  <h2>Baldness: Two Different Problems</h2>
+</div>
+
+<h3><span class="h3num">V.1</span>Pattern loss vs. shedding</h3>
+<p><strong>Androgenetic alopecia (AGA)</strong>, meaning male-pattern or female-pattern hair loss, is follicles <em>miniaturising</em> over many cycles, driven by DHT in genetically sensitive scalp. Temple and crown in men, widening part in women. Each cycle the hair comes back thinner and shorter until it's vellus fuzz. The follicle is still there for years, which is why treatment works best early.<sup class="cite"><a href="#r41">41</a></sup></p>
+<p><strong>Telogen effluvium (TE)</strong> is diffuse <em>shedding</em>, usually two to three months after a trigger: illness, surgery, childbirth, crash dieting, low protein, iron deficiency, thyroid disease, major stress. Many follicles switch to resting at once. It is usually reversible once the trigger is fixed.<sup class="cite"><a href="#r53">53</a></sup> A small study of medical students before a major exam found stress shifted immune markers and hair-cycle parameters, though within the normal range.<sup class="cite"><a href="#r56">56</a></sup></p>
+<p>The distinction matters because the evidence splits cleanly. <strong>Nutrients fix shedding when something is missing. They don't reverse pattern loss.</strong> A 2024 systematic review found deficiencies in vitamin D, iron, zinc and B vitamins associated with AGA, but the evidence was "not entirely consistent."<sup class="cite"><a href="#r54">54</a></sup> (Alopecia areata, patchy autoimmune loss, is a third condition and out of scope here.)</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the AGA/TE distinction and DHT's role in AGA.</span></p>
+
+<h3><span class="h3num">V.2</span>Early baldness as a metabolic marker</h3>
+<p>This is where hair connects to the rest of the series. A Finnish case-control study found men who started balding before 35 had a "strikingly increased risk" of hyperinsulinaemia and insulin-resistance disorders: obesity, hypertension and dyslipidaemia.<sup class="cite"><a href="#r57">57</a></sup> A meta-analysis of 37,000 men found severe baldness carried a 32% higher risk of coronary heart disease, rising to 48% for severe vertex (crown) baldness.<sup class="cite"><a href="#r58">58</a></sup> Frontal recession wasn't linked. Premature greying shows the same pattern with heart disease (<a href="#part-ii">Part&nbsp;II</a>).</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">observational, but consistent across cohorts;</span> <span class="ev ev-inf">Inferred</span><span class="txt">that improving insulin sensitivity slows hair loss. That hasn't been tested directly.</span></p>
+<div class="flag">
+  <div class="flag-lbl">Why this matters more than the hair</div>
+  <p style="margin:0;">Early crown balding or early greying is worth reading as a prompt to check fasting insulin, lipids and blood pressure, the same terrain the <a href="metabolic-health.html">Metabolic Health</a> paper works on. The hair isn't the disease. It may be an early, visible readout of it.</p>
+</div>
+</section>
+
+<!-- ============================ PART VI ============================ -->
+<section>
+<div class="part-head" id="part-vi">
+  <div class="part-num">PART&nbsp;VI</div>
+  <h2>What Works for Hair Loss</h2>
+</div>
+
+<h3><span class="h3num">VI.1</span>Ranked</h3>
+<div class="table-wrap"><table class="matrix">
+<thead><tr><th>Treatment</th><th>Evidence</th><th>Grade</th></tr></thead>
+<tbody>
+<tr><td><strong>Finasteride 1&nbsp;mg</strong> (oral, men)</td><td>Blocks conversion of testosterone to DHT. In 1,553 men over two years, hair counts ran 107&ndash;138 hairs above placebo in a 1-inch circle, and the placebo group kept losing hair.<sup class="cite"><a href="#r41">41</a></sup> The trials were Merck's. Sexual side effects occur in a minority, and some reports describe them persisting. The label also warns about depression.</td><td><span class="ev ev-strong">Strong</span></td></tr>
+<tr><td><strong>Minoxidil</strong> (topical 2&ndash;5%, or low-dose oral)</td><td>Beats placebo in men (2% and 5%) and women (2%) on meta-analysis.<sup class="cite"><a href="#r42">42</a></sup> Low-dose oral minoxidil (&le;5&nbsp;mg) didn't meaningfully change blood pressure on meta-analysis. Heart rate rose slightly, and unwanted body hair was the main reason people stopped.<sup class="cite"><a href="#r43">43</a></sup></td><td><span class="ev ev-strong">Strong</span></td></tr>
+<tr><td><strong>Low-level red light</strong> (e.g. 630&ndash;660&nbsp;nm devices)</td><td>Beats placebo in men on meta-analysis.<sup class="cite"><a href="#r42">42</a></sup> Device-maker trials dominate.</td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Microneedling</strong> + minoxidil</td><td>100 men: weekly microneedling plus minoxidil grew 91 new hairs/cm&sup2; vs 22 on minoxidil alone at 12 weeks, with evaluator blinding.<sup class="cite"><a href="#r44">44</a></sup> A pilot, but a large effect.</td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Pumpkin seed oil</strong> 400&nbsp;mg/day (oral)</td><td>76 Korean men, double-blind, 24 weeks: hair count up 40% vs 10% on placebo.<sup class="cite"><a href="#r45">45</a></sup> The product was a branded capsule (Octa Sabal Plus). One trial, not replicated.</td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Rosemary oil</strong> (topical)</td><td>100 men, 6 months: hair count rose equally with rosemary oil and 2% minoxidil, and neither changed at 3 months.<sup class="cite"><a href="#r46">46</a></sup> No placebo arm, and 2% is the weaker minoxidil. A 2025 review of blinded non-prescription trials counts it alongside pumpkin seed oil, caffeine and saw palmetto as promising but thin.<sup class="cite"><a href="#r49">49</a></sup></td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Caffeine</strong> (topical)</td><td>See Dalton's claim below.<sup class="cite"><a href="#r47">47</a></sup></td><td><span class="ev ev-cont">Contested</span></td></tr>
+<tr><td><strong>Iron, vitamin D, zinc, protein</strong></td><td>Help when low, mostly for shedding.<sup class="cite"><a href="#r53">53</a>,<a href="#r54">54</a></sup> Check ferritin before assuming. See <a href="iron.html">Iron</a>, <a href="vitamind.html">Vitamin D</a>, <a href="zinc.html">Zinc</a>.</td><td><span class="ev ev-mod">Moderate</span></td></tr>
+<tr><td><strong>Biotin</strong></td><td>All 18 reported successes were in people with an underlying deficiency or disorder. No evidence in healthy people.<sup class="cite"><a href="#r55">55</a></sup> It also skews thyroid blood tests (see <a href="vitaminb7biotin.html">Biotin</a>).</td><td><span class="ev ev-spec">Speculative</span></td></tr>
+<tr><td><strong>GHK-Cu</strong></td><td>Cultured follicles and mice only.<sup class="cite"><a href="#r39">39</a>,<a href="#r40">40</a></sup></td><td><span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span></td></tr>
+</tbody>
+</table></div>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: the drugs are what works for pattern loss</div>
+  <p style="margin:0;">The site's bias runs toward terrain over drugs, and the metabolic link in V.2 is real. But for pattern baldness, finasteride and minoxidil have multi-thousand-person placebo-controlled trials, and nothing in the natural column comes close. Pumpkin seed oil and rosemary each rest on one trial. The honest position is that fixing the terrain and the approved drugs aren't competing options. Someone losing hair to AGA who wants to keep it should know the drugs exist and what they cost in side effects, and decide.</p>
+</div>
+
+<h3><span class="h3num">VI.2</span>Dalton's regrowth thread, checked</h3>
+<p>"Hair loss doesn't have to be permanent. Here are 7 non-pharmaceutical, clinically backed tools to regrow hair" (September 2024). Four of the seven posts carry an affiliate link: a scalp wash, vitamin D, collagen, and a red-light panel.</p>
+
+<div class="table-wrap"><table class="matrix">
+<thead><tr><th>Claim</th><th>What the literature shows</th><th>Holds?</th></tr></thead>
+<tbody>
+<tr>
+  <td>Taurine, caffeine and lactoferrin gel regrows hair in AGA.</td>
+  <td>A 471-person "real life" study of a gel containing growth factors, caffeine, taurine and an iron-chelating complex. Most users were also on minoxidil or finasteride, and there was no control group. The corresponding authors (Milani, Colombo) are employees of Cantabria Labs, the company selling it (they disclose this in the companion paper<sup class="cite"><a href="#r51">51</a></sup>).<sup class="cite"><a href="#r52">52</a></sup></td>
+  <td><span class="no">Does not hold</span> as "clinically backed."</td>
+</tr>
+<tr>
+  <td>"Caffeine shampoo is at least as effective as the leading topical hair loss drug."</td>
+  <td>Dhurat 2017: a caffeine <em>liquid</em> left on the scalp twice daily (Alpecin), not a shampoo. Open-label, in 210 men. It was non-inferior to 5% minoxidil on one endpoint, the proportion of growing hairs, with no hair counts. Sponsored by Dr. Kurt Wolff (Alpecin's maker), with an employee as co-author.<sup class="cite"><a href="#r47">47</a></sup></td>
+  <td><span class="mid">Partly.</span> Not a shampoo, not blinded, not independent.</td>
+</tr>
+<tr>
+  <td>"Topical niacinamide (a form of vitamin B3) restores hair growth."</td>
+  <td>Draelos 2005 tested niacin <em>derivatives</em> (octyl and tetradecyl nicotinate), not niacinamide. It was a 60-woman double-blind pilot, and hair fullness improved on photos (p=0.04).<sup class="cite"><a href="#r48">48</a></sup></td>
+  <td><span class="mid">Partly.</span> Different compound, one pilot.</td>
+</tr>
+<tr>
+  <td>Topical B3, B5 and salicylic acid shampoo grows hair.</td>
+  <td>The pictured figure shows a 0.2% salicylic acid, 0.2% panthenol, 0.1% niacinamide shampoo vs control over 24 weeks. It isn't in his source list and I couldn't identify the paper.</td>
+  <td><span class="mid">Unverified.</span></td>
+</tr>
+<tr>
+  <td>"5,000 IU vitamin D alone stops hair loss. 5,000 IU in combination with hair loss drugs boosts hair thickness and number more than drugs alone."</td>
+  <td>Hassan 2022 (Tanta, Egypt), 45 women with pattern loss. Vitamin D alone produced <strong>no significant improvement</strong> on the Ludwig scale or dermoscopy. Vitamin D plus minoxidil beat minoxidil alone.<sup class="cite"><a href="#r50">50</a></sup></td>
+  <td><span class="no">First half contradicted</span> by his own source. Second half holds.</td>
+</tr>
+<tr>
+  <td>Collagen, taurine, cysteine, methionine, iron and selenium "substantially improved hair growth in 3 months."</td>
+  <td>Milani 2023: 83 people, <em>added to</em> hair-loss drugs vs drugs alone, assessor-blinded but no placebo. Global score 1.67 vs 0.66. Both authors are employees of the company selling the supplement.<sup class="cite"><a href="#r51">51</a></sup></td>
+  <td><span class="mid">Partly.</span> An add-on effect, from the maker.</td>
+</tr>
+<tr>
+  <td>"Red light therapy is at least as effective as the leading hair loss drugs."</td>
+  <td>The pictured meta-analysis found laser/light therapy beat placebo in men. It didn't compare it head-to-head with the drugs.<sup class="cite"><a href="#r42">42</a></sup></td>
+  <td><span class="mid">Half holds.</span> Works; "as effective as" isn't what the paper tested.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="takeaway"><b>Pattern:</b> the same as the grey-hair thread. Real mechanisms, but three of the six identified sources were funded by or written by the maker (Cantabria twice, Alpecin once). The one independent trial of vitamin D alone says it didn't work alone.</p>
+</section>
+
+<!-- ============================ PART VII ============================ -->
+<section>
+<div class="part-head" id="part-vii">
+  <div class="part-num">PART&nbsp;VII</div>
+  <h2>What To Do</h2>
+</div>
+
+<h3><span class="h3num">VII.1</span>For grey hair</h3>
+<ol>
+  <li><strong>Test before supplementing.</strong> B12 (plus MMA if borderline), ferritin, TSH with free T3 and T4, 25-OH vitamin D, and copper with ceruloplasmin next to zinc. These are the places reversal has actually been documented (<a href="#part-iii">Part&nbsp;III</a>). Stop biotin for a few days before the thyroid panel.</li>
+  <li><strong>Fix what's low, from food first.</strong> Copper: beef liver and oysters (see <a href="copper.html">Copper</a>, <a href="oyster.html">Freeze-Dried Oyster</a>). B12: meat, liver, oysters, eggs (<a href="vitaminb12cobalamin.html">B12</a>). Iron: red meat (<a href="iron.html">Iron</a>). Vitamin D: sun, then a supplement (<a href="vitamind.html">Vitamin D</a>, <a href="sunlight.html">Sunlight</a>). Nuts aren't needed for copper; liver and oysters are denser.</li>
+  <li><strong>If you're hypothyroid, get it treated.</strong> That's the best-documented reversal. Don't self-dose thyroid hormone to fix hair if your thyroid is normal.</li>
+  <li><strong>Don't smoke.</strong> It is one of the most consistent risk factors.<sup class="cite"><a href="#r17">17</a></sup></li>
+  <li><strong>Manage stress, and expect a delay.</strong> Stress greying runs through the nerves; relief can let hairs near the threshold come back.<sup class="cite"><a href="#r8">8</a>,<a href="#r9">9</a></sup></li>
+  <li><strong>Lower the oxidative load the dull way:</strong> fewer seed oils (<a href="linoleic-acid.html">Linoleic Acid</a>), enough protein, glycine and cysteine for glutathione (<a href="glycinecollagen.html">Glycine</a>, <a href="cysteine.html">Cysteine</a>), and fruit.</li>
+  <li><strong>Optional, on mechanism only:</strong> <a href="nac.html">NAC</a> (~600&ndash;1,200&nbsp;mg) is cheap and its antioxidant role is well established, but its grey-hair evidence is one knockout-mouse study. Pick it up for its other uses, not for hair.</li>
+  <li><strong>Set expectations by duration.</strong> Hairs that went grey recently, in someone young, after a clear stressor or deficiency, are the ones that come back. Hair white for decades usually stays white.</li>
+</ol>
+
+<h3><span class="h3num">VII.2</span>For hair loss</h3>
+<ol>
+  <li><strong>Work out which kind.</strong> Pattern thinning over years is AGA. Sudden diffuse shedding two to three months after an event is TE.</li>
+  <li><strong>For shedding:</strong> find the trigger. Check ferritin, thyroid, vitamin D and zinc, and look at protein intake and recent crash dieting. It usually recovers within months once fixed.</li>
+  <li><strong>For pattern loss:</strong> minoxidil and finasteride are the evidence-based options. Microneedling, red light, pumpkin seed oil and rosemary oil are adjuncts with thinner evidence. Early crown balding is also worth a metabolic check (<a href="#part-v">V.2</a>).</li>
+  <li><strong>Protein and collagen</strong>: hair is keratin, cysteine-rich. Enough protein matters, and collagen is a reasonable glycine source. Its hair evidence is company-run (<a href="glycinecollagen.html">Glycine &amp; Collagen</a>).</li>
+</ol>
+
+<div class="safety" id="safety">
+  <div class="sf-lbl">Safety: more is not better</div>
+  <ul>
+    <li><strong>Zinc</strong> above ~40&nbsp;mg/day long-term can cause copper deficiency. High-dose zinc depigmented mouse hair.<sup class="cite"><a href="#r34">34</a></sup> Pair zinc with copper or keep it modest (<a href="zinc.html">Zinc</a>).</li>
+    <li><strong>Copper</strong> beyond sufficiency is pro-oxidant; Masterjohn makes this point.<sup class="cite"><a href="#r12">12</a></sup> Test, don't guess.</li>
+    <li><strong>Vitamin A</strong> excess and <strong>selenium</strong> excess both <em>cause</em> hair loss.<sup class="cite"><a href="#r53">53</a></sup> Hair-growth stacks often contain both (<a href="vitamina.html">Vitamin A</a>, <a href="selenium.html">Selenium</a>).</li>
+    <li><strong>Thyroid hormone</strong> in someone with a normal thyroid means palpitations, bone loss and arrhythmia risk. Dalton's companion thyroid thread recommends self-dosing desiccated thyroid by armpit temperature. That is a medical decision, not a hair tip.</li>
+    <li><strong>Ashwagandha</strong> has case reports of liver injury and can raise thyroid hormone.</li>
+    <li><strong>PABA</strong> in the reported studies was 12&ndash;24&nbsp;g a day of a prescription drug.<sup class="cite"><a href="#r27">27</a></sup> <strong>Levodopa</strong> is a Parkinson's drug.</li>
+    <li><strong>Biotin</strong> throws off thyroid and some cardiac blood tests.</li>
+  </ul>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Entries on this site that tie in</div>
+  <p style="margin-top:0;"><strong>Nutrients:</strong> <a href="copper.html">Copper</a> &middot; <a href="zinc.html">Zinc</a> &middot; <a href="iron.html">Iron</a> &middot; <a href="vitaminb12cobalamin.html">B12</a> &middot; <a href="vitaminb9folate.html">Folate</a> &middot; <a href="vitaminb5pantothenicacid.html">B5</a> &middot; <a href="vitaminb7biotin.html">Biotin</a> &middot; <a href="vitamind.html">Vitamin D</a> &middot; <a href="vitamina.html">Vitamin A</a> &middot; <a href="selenium.html">Selenium</a> &middot; <a href="cysteine.html">Cysteine</a> &middot; <a href="glycinecollagen.html">Glycine &amp; Collagen</a></p>
+  <p style="margin-bottom:0;"><strong>Supplements:</strong> <a href="nac.html">NAC</a> &middot; <a href="blackseed.html">Black Seed</a> &middot; <a href="pomegranate.html">Pomegranate</a> &middot; <a href="oyster.html">Freeze-Dried Oyster</a>. No entry yet for luteolin, pumpkin seed oil, rosemary oil, topical caffeine or GHK-Cu.</p>
+</div>
+</section>
+
+<!-- ============================ LIMITATIONS ============================ -->
+<section>
+<div class="part-head" id="limitations">
+  <div class="part-num">LIMITS</div>
+  <h2>Limitations</h2>
+</div>
+<div class="limits">
+<ul>
+<li><b>The human greying data are small case-control studies.</b> Dozens of people each, mostly South Asian and Middle Eastern populations where deficiencies are common. The associations may not transfer to a well-fed Western adult.</li>
+<li><b>There is no independent, placebo-controlled trial of any supplement for grey hair.</b> The one placebo-controlled trial found (Givaudan) was run by the ingredient's maker. Everything else is open-label, uncontrolled, or in mice.</li>
+<li><b>Most mechanism work is in mice or cultured follicles.</b> Mouse coat colour is a convenient readout but not a human scalp. The stress-nerve and NAC findings are mouse findings.</li>
+<li><b>"Reversal" in case reports is selective.</b> Case reports record the patients whose hair darkened, not the ones whose didn't.</li>
+<li><b>The baldness part is a survey, not a full review.</b> Finasteride and minoxidil side effects, PRP, dutasteride, ketoconazole, saw palmetto and female-specific treatments (spironolactone) are only touched on or left out.</li>
+</ul>
+<p class="lim-close">What would move this paper most is a randomized trial in people with early, recent greying, testing a deficiency-correction protocol against placebo. That's the only intervention with a consistent human signal, and nobody has run it.</p>
+</div>
+</section>
+
+<!-- ============================ REFERENCES ============================ -->
+<section class="refwrap">
+<div class="part-head" id="refs">
+  <div class="part-num">REFS</div>
+  <h2>References</h2>
+</div>
+
+<div class="ref-group">Pigment biology &amp; greying mechanisms</div>
+<ol class="refs">
+<li id="r1">Nishimura EK, Granter SR, Fisher DE. Mechanisms of hair graying: incomplete melanocyte stem cell maintenance in the niche. <span class="j">Science</span> 2005;307(5710):720&ndash;724. PMID 15618488.</li>
+<li id="r2">Sun Q, Lee W, Hu H, et al. Dedifferentiation maintains melanocyte stem cells in a dynamic niche. <span class="j">Nature</span> 2023;616(7958):774&ndash;782. PMID 37076619. <span class="note">Stem cells shuttle between compartments; with age, "stranded" stem cells accumulate.</span></li>
+<li id="r3">Petris MJ, Strausak D, Mercer JF. The Menkes copper transporter is required for the activation of tyrosinase. <span class="j">Hum Mol Genet</span> 2000;9(19):2845&ndash;2851. PMID 11092760. <span class="note">Cited by Mike Hart.</span></li>
+<li id="r4">Wood JM, Decker H, Hartmann H, et al. Senile hair graying: H2O2-mediated oxidative stress affects human hair color by blunting methionine sulfoxide repair. <span class="j">FASEB J</span> 2009;23(7):2065&ndash;2075. PMID 19237503. <span class="note">University of Bradford. Cited by Alex and Dalton.</span></li>
+<li id="r5">Arck PC, Overall R, Spatz K, et al. Towards a "free radical theory of graying": melanocyte apoptosis in the aging human hair follicle is an indicator of oxidative stress induced tissue damage. <span class="j">FASEB J</span> 2006;20(9):1567&ndash;1569. PMID 16723385.</li>
+<li id="r6">Shi Y, Luo LF, Liu XM, et al. Premature graying as a consequence of compromised antioxidant activity in hair bulb melanocytes and their precursors. <span class="j">PLoS One</span> 2014;9(4):e93589. PMID 24695442. <span class="note">Part-funded by L'Or&eacute;al.</span></li>
+<li id="r7">Seiberg M. Age-induced hair greying &mdash; the multiple effects of oxidative stress. <span class="j">Int J Cosmet Sci</span> 2013;35(6):532&ndash;538. PMID 24033376. <span class="note">Narrative review; author is a cosmetics consultant.</span></li>
+<li id="r8">Zhang B, Ma S, Rachmin I, et al. Hyperactivation of sympathetic nerves drives depletion of melanocyte stem cells. <span class="j">Nature</span> 2020;577(7792):676&ndash;681. PMID 31969699. <span class="note">Mice; independent of adrenal hormones. Provisional patent filed on methods to control greying.</span></li>
+<li id="r9">Rosenberg AM, Rausser S, Ren J, et al. Quantitative mapping of human hair greying and reversal in relation to life stress. <span class="j">eLife</span> 2021;10:e67437. PMID 34155974.</li>
+<li id="r10">Adhikari K, Fontanil T, Cal S, et al. A genome-wide association scan in admixed Latin Americans identifies loci influencing facial and scalp hair features. <span class="j">Nat Commun</span> 2016;7:10815. PMID 26926045. <span class="note">First greying locus, at IRF4.</span></li>
+<li id="r11">Berson JF, Frank DW, Calvo PA, et al. A common temperature-sensitive allelic form of human tyrosinase is retained in the endoplasmic reticulum at the nonpermissive temperature. <span class="j">J Biol Chem</span> 2000;275(16):12281&ndash;12289. PMID 10766867. <span class="note">R402Q variant: active at 31&nbsp;&deg;C, retained in the ER at 37&nbsp;&deg;C.</span></li>
+<li id="r12">Masterjohn C. Hair graying: relax in the cold. <span class="j">Chris Masterjohn, PhD (Substack)</span>, 11 January 2025; and Q&amp;A "How to slow or reverse graying of hair?" <a href="https://chrismasterjohnphd.substack.com/p/hair-graying-relax-in-the-cold" target="_blank">substack</a> &middot; <a href="https://chrismasterjohnphd.substack.com/p/321-how-to-slow-or-reverse-graying" target="_blank">Q&amp;A</a></li>
+</ol>
+
+<div class="ref-group">Greying in people: associations</div>
+<ol class="refs">
+<li id="r13">Fatemi Naieni F, Ebrahimi B, Vakilian HR, Shahmoradi Z. Serum iron, zinc, and copper concentration in premature graying of hair. <span class="j">Biol Trace Elem Res</span> 2012;146(1):30&ndash;34. PMID 21979243. <span class="note">66 vs 66, Isfahan. Copper lower (p=0.048), iron higher (p=0.008), zinc no difference.</span></li>
+<li id="r14">El-Sheikh AM, Elfar NN, Mourad HA, Hewedy ES. Relationship between trace elements and premature hair graying. <span class="j">Int J Trichology</span> 2018;10(6):278&ndash;283. PMID 30783336. <span class="note">60 vs 30, Tanta. Iron and calcium correlated with severity; copper did not (p=0.743).</span></li>
+<li id="r15">Bhat RM, Sharma R, Pinto AC, et al. Epidemiological and investigative study of premature graying of hair in higher secondary and pre-university school children. <span class="j">Int J Trichology</span> 2013;5(1):17&ndash;21. PMID 23960391. <span class="note">35 cases, Mangalore. Ferritin, calcium, vitamin D lower; B12 not different.</span></li>
+<li id="r16">Saxena S, Gautam RK, Gupta A, Chitkara A. Evaluation of systemic oxidative stress in patients with premature canities and correlation of severity of hair graying with the degree of redox imbalance. <span class="j">Int J Trichology</span> 2020;12(1):16&ndash;23. PMID 32549695.</li>
+<li id="r17">Mahendiratta S, Sarma P, Kaur H, et al. Premature graying of hair: risk factors, co-morbid conditions, pharmacotherapy and reversal &mdash; a systematic review and meta-analysis. <span class="j">Dermatol Ther</span> 2020;33(6):e13990. PMID 32654282.</li>
+<li id="r18">Poonia K, Bhalla M. Premature graying of hair: a comprehensive review and recent insights. <span class="j">Indian Dermatol Online J</span> 2024;15(5):721&ndash;731. PMID 39359282. <span class="note">Cited by Dalton.</span></li>
+<li id="r19">Mosley JG, Gibbs AC. Premature grey hair and hair loss among smokers: a new opportunity for health education? <span class="j">BMJ</span> 1996;313(7072):1616. PMID 8991008. <span class="note">Letter; abstract not available, figures not checked.</span></li>
+<li id="r20">Kocaman SA, &Ccedil;etin M, Durakoğlugil ME, et al. The degree of premature hair graying as an independent risk marker for coronary artery disease: a predictor of biological age rather than chronological age. <span class="j">Anadolu Kardiyol Derg</span> 2012;12(6):457&ndash;463. PMID 22677402. <span class="note">213 men undergoing angiography; hair whitening score higher in the coronary-disease group (3.3 vs 2.7).</span></li>
+</ol>
+
+<div class="ref-group">Reversal</div>
+<ol class="refs">
+<li id="r21">Choi JW, Lew BL, Sim WY. A case of premature hair graying treated with ferrous sulfate. <span class="j">Ann Dermatol</span> 2016;28(6):775&ndash;776. PMID 27904283. <span class="note">Cited by Dalton.</span></li>
+<li id="r22">Redondo P, Guzm&aacute;n M, Marquina M, et al. [Repigmentation of gray hair after thyroid hormone treatment]. <span class="j">Actas Dermosifiliogr</span> 2007;98(9):603&ndash;610. PMID 17961449. <span class="note">Two patients on T3, plus mouse and follicle-culture work. Cited by Alex.</span></li>
+<li id="r23">van Beek N, Bod&oacute; E, Kromminga A, et al. Thyroid hormones directly alter human hair follicle functions: anagen prolongation and stimulation of both hair matrix keratinocyte proliferation and hair pigmentation. <span class="j">J Clin Endocrinol Metab</span> 2008;93(11):4381&ndash;4388. PMID 18728176. <span class="note">Figure 5 pictured by Dalton; paraphrased by questmoosa.</span></li>
+<li id="r24">Yale K, Juhasz M, Atanaskova Mesinkovska N. Medication-induced repigmentation of gray hair: a systematic review. <span class="j">Skin Appendage Disord</span> 2020;6(1):1&ndash;10. PMID 32021854.</li>
+<li id="r25">Feng Z, Qin Y, Jiang G. Reversing gray hair: inspiring the development of new therapies through research on hair pigmentation and repigmentation progress. <span class="j">Int J Biol Sci</span> 2023;19(14):4588&ndash;4607. PMID 37781032. <span class="note">Cited by Dalton.</span></li>
+<li id="r26">Reynolds NJ, Crossley J, Ferguson I, Peachey RD. Darkening of white hair in Parkinson's disease. <span class="j">Clin Exp Dermatol</span> 1989;14(4):317&ndash;318. PMID 2591099. <span class="note">Single case; pictured by Dalton.</span></li>
+<li id="r27">Zarafonetis CJD. Darkening of gray hair during para-amino-benzoic acid therapy. <span class="j">J Invest Dermatol</span> 1950;15(6):399&ndash;401. PMID 14794992. <span class="note">Read from Dalton's screenshot of page 1; no abstract.</span></li>
+<li id="r28">Pasricha JS. Effect of grey hair evulsion on the response to calcium pantothenate in premature grey hairs. <span class="j">Indian J Dermatol Venereol Leprol</span> 1986;52(2):77&ndash;80. PMID 28150658. <span class="note">Cited by Dalton and questmoosa.</span></li>
+</ol>
+
+<div class="ref-group">Topical anti-grey product trials</div>
+<ol class="refs">
+<li id="r29">De Tollenaere M, Chapuis E, Auriol P, et al. Global repigmentation strategy of grey hair follicles by targeting oxidative stress and stem cells protection. <span class="j">Appl Sci</span> 2021;11(4):1533. doi:10.3390/app11041533. <span class="note">All authors Givaudan (ingredient maker). 44 men, placebo-controlled. Not in PubMed.</span></li>
+<li id="r30">Merja A, Patel N, Patel M, et al. Safety and efficacy of Arcedin&trade; infused anti-gray hair serum in adult human subjects with partially gray hair. <span class="j">J Dermatol Cosmetol</span> (MedCrave) 2023;7(4). <span class="note">NovoBliss Research; 29 completers, single-arm. Read from Dalton's screenshot of the abstract.</span></li>
+<li id="r31">Patel M, Tuli N, Patel N, Merja A. A clinical evaluation of the safety, efficacy, and tolerability of the Soulflower Rosemary Redensyl Hair Growth Serum, Tetragain&trade;&hellip; <span class="j">Cureus</span> 2025;17(1):e77066. PMID 39917132. <span class="note">Funded by PT Invent India (the manufacturer); co-author is an employee and shareholder. Open-label, single-arm.</span></li>
+</ol>
+
+<div class="ref-group">Animal studies cited in the posts</div>
+<ol class="refs">
+<li id="r32">Iida M, Kagawa T, Yajima I, et al. Anti-graying effects of external and internal treatments with luteolin on hair in model mice. <span class="j">Antioxidants</span> 2024;13(12):1549. PMID 39765877. <span class="note">Part-funded by Hoyu Co. (hair dye); co-author a Hoyu employee and shareholder; model-mouse patent licensed to Hoyu.</span></li>
+<li id="r33">Zhou K, Wu G, Dong R, et al. Mitochondrial deoxyguanosine kinase depletion induced ROS causes melanocyte stem cell exhaustion and hair greying. <span class="j">Cell Regen</span> 2025;14(1):25. PMID 40522608. <span class="note">Full text checked: NAC 1&nbsp;mg/mL in drinking water, P20&ndash;P70; 0.5&nbsp;mg/mL ineffective.</span></li>
+<li id="r34">Plonka PM, Handjiski B, Michalczyk D, et al. Oral zinc sulphate causes murine hair hypopigmentation and is a potent inhibitor of eumelanogenesis in vivo. <span class="j">Br J Dermatol</span> 2006;155(1):39&ndash;49. PMID 16792750. <span class="note">Cited by Alex.</span></li>
+<li id="r35">Guan CP, Li QT, Jiang H, et al. IGF-1 resist oxidative damage to HaCaT and depigmentation in mice treated with H2O2. <span class="j">Biochem Biophys Res Commun</span> 2018;503(4):2485&ndash;2492. PMID 30208515. <span class="note">Vitiligo model. Cited by Dalton for hair greying.</span></li>
+</ol>
+
+<div class="ref-group">Thyroid &amp; copper-peptide claims</div>
+<ol class="refs">
+<li id="r36">Farhangi MA, Dehghan P, Tajmiri S, Abbasi MM. The effects of Nigella sativa on thyroid function, serum VEGF-1, Nesfatin-1 and anthropometric features in patients with Hashimoto's thyroiditis: a randomized controlled trial. <span class="j">BMC Complement Altern Med</span> 2016;16(1):471. PMID 27852303.</li>
+<li id="r37">Sharma AK, Basu I, Singh S. Efficacy and safety of ashwagandha root extract in subclinical hypothyroid patients: a double-blind, randomized placebo-controlled trial. <span class="j">J Altern Complement Med</span> 2018;24(3):243&ndash;248. PMID 28829155.</li>
+<li id="r38">Larsen PR. Salicylate-induced increases in free triiodothyronine in human serum. <span class="j">J Clin Invest</span> 1972;51(5):1125&ndash;1134. PMID 4623165. <span class="note">Pictured by questmoosa.</span></li>
+<li id="r39">Pyo HK, Yoo HG, Won CH, et al. The effect of tripeptide-copper complex on human hair growth in vitro. <span class="j">Arch Pharm Res</span> 2007;30(7):834&ndash;839. PMID 17703734. <span class="note">AHK-Cu, not GHK-Cu. Cited by Mike Hart.</span></li>
+<li id="r40">Liu T, Liu Y, Zhao X, et al. Thermodynamically stable ionic liquid microemulsions pioneer pathways for topical delivery and peptide application. <span class="j">Bioact Mater</span> 2024;32:502&ndash;513. PMID 38026438. <span class="note">GHK-Cu delivery, hair growth in mice. Cited by Mike Hart.</span></li>
+</ol>
+
+<div class="ref-group">Hair loss</div>
+<ol class="refs">
+<li id="r41">Kaufman KD, Olsen EA, Whiting D, et al. Finasteride in the treatment of men with androgenetic alopecia. <span class="j">J Am Acad Dermatol</span> 1998;39(4 Pt 1):578&ndash;589. PMID 9777765. <span class="note">Merck-sponsored.</span></li>
+<li id="r42">Adil A, Godwin M. The effectiveness of treatments for androgenetic alopecia: a systematic review and meta-analysis. <span class="j">J Am Acad Dermatol</span> 2017;77(1):136&ndash;141. PMID 28396101. <span class="note">Pictured by Dalton.</span></li>
+<li id="r43">Chen M, et al. Low-dose oral minoxidil does not significantly affect blood pressure: a systematic review and meta-analysis. <span class="j">J Am Acad Dermatol</span> 2025;92(3):554&ndash;555. PMID 39521141.</li>
+<li id="r44">Dhurat R, Sukesh M, Avhad G, et al. A randomized evaluator blinded study of effect of microneedling in androgenetic alopecia: a pilot study. <span class="j">Int J Trichology</span> 2013;5(1):6&ndash;11. PMID 23960389.</li>
+<li id="r45">Cho YH, Lee SY, Jeong DW, et al. Effect of pumpkin seed oil on hair growth in men with androgenetic alopecia: a randomized, double-blind, placebo-controlled trial. <span class="j">Evid Based Complement Alternat Med</span> 2014;2014:549721. PMID 24864154. <span class="note">Product: Octa Sabal Plus.</span></li>
+<li id="r46">Panahi Y, Taghizadeh M, Marzony ET, Sahebkar A. Rosemary oil vs minoxidil 2% for the treatment of androgenetic alopecia: a randomized comparative trial. <span class="j">Skinmed</span> 2015;13(1):15&ndash;21. PMID 25842469.</li>
+<li id="r47">Dhurat R, Chitallia J, May TW, et al. An open-label randomized multicenter study assessing the noninferiority of a caffeine-based topical liquid 0.2% versus minoxidil 5% solution in male androgenetic alopecia. <span class="j">Skin Pharmacol Physiol</span> 2017;30(6):298&ndash;305. PMID 29055953. <span class="note">Sponsor: Dr. Kurt Wolff GmbH (Alpecin); co-author Klenk an employee, May a consultant. Cited by Dalton.</span></li>
+<li id="r48">Draelos ZD, Jacobson EL, Kim H, et al. A pilot study evaluating the efficacy of topically applied niacin derivatives for treatment of female pattern alopecia. <span class="j">J Cosmet Dermatol</span> 2005;4(4):258&ndash;261. PMID 17168873. <span class="note">Cited by Dalton.</span></li>
+<li id="r49">Gupta AK, et al. Do non-prescription products help in managing androgenic alopecia? <span class="j">Skin Appendage Disord</span> 2025;11(3):270&ndash;281. PMID 40475103.</li>
+<li id="r50">Hassan GFR, et al. Treatment with oral vitamin D alone, topical minoxidil, or combination of both in patients with female pattern hair loss: a comparative clinical and dermoscopic study. <span class="j">J Cosmet Dermatol</span> 2022. doi:10.1111/jocd.14743. <span class="note">Tanta University. Abstract checked via Crossref. Cited by Dalton.</span></li>
+<li id="r51">Milani M, Colombo F; GFM-O-Trial Investigators Group. Efficacy and tolerability of an oral supplement containing amino acids, iron, selenium, and marine hydrolyzed collagen in subjects with hair loss&hellip; <span class="j">Skin Res Technol</span> 2023;29(6):e13381. PMID 37357646. <span class="note">Authors employed by Difa Cooper / Cantabria Labs, which sells the supplement. Cited by Dalton.</span></li>
+<li id="r52">Caruso A, &hellip; Colombo F, Milani M. Efficacy, tolerability and cosmetic acceptability of a growth factors, caffeine, taurine and a chelating complex-based gel in subjects with hair loss alone or in combination with drugs treatments: a real life, multicentre, assessor-blinded, 6-month trial. <span class="j">J Clin Exp Dermatol Res</span>. <a href="https://www.dermatology-society.com/abstract/jcedr/efficacy-tolerability-and-cosmetic-acceptability-of-a-growth-factors-caffeine-taurine-and-a-chelating-complexbased-gel-i-96630.html" target="_blank">abstract</a>. <span class="note">Not in PubMed; year not shown on the abstract page. Cited by Dalton.</span></li>
+<li id="r53">Almohanna HM, Ahmed AA, Tsatalis JP, Tosti A. The role of vitamins and minerals in hair loss: a review. <span class="j">Dermatol Ther (Heidelb)</span> 2019;9(1):51&ndash;70. PMID 30547302.</li>
+<li id="r54">Wang R, et al. Micronutrients and androgenetic alopecia: a systematic review. <span class="j">Mol Nutr Food Res</span> 2024;68(22):e2400652. PMID 39440586.</li>
+<li id="r55">Patel DP, Swink SM, Castelo-Soccio L. A review of the use of biotin for hair loss. <span class="j">Skin Appendage Disord</span> 2017;3(3):166&ndash;169. PMID 28879195.</li>
+<li id="r56">Peters EMJ, M&uuml;ller Y, Snaga W, et al. Hair and stress: a pilot study of hair and cytokine balance alteration in healthy young women under major exam stress. <span class="j">PLoS One</span> 2017;12(4):e0175904. PMID 28423056. <span class="note">Co-authors from Beiersdorf. Cited by Dalton.</span></li>
+</ol>
+
+<div class="ref-group">Hair as a metabolic marker</div>
+<ol class="refs">
+<li id="r57">Matilainen V, Koskela P, Keinänen-Kiukaanniemi S. Early androgenetic alopecia as a marker of insulin resistance. <span class="j">Lancet</span> 2000;356(9236):1165&ndash;1166. PMID 11030300.</li>
+<li id="r58">Yamada T, Hara K, Umematsu H, Kadowaki T. Male pattern baldness and its association with coronary heart disease: a meta-analysis. <span class="j">BMJ Open</span> 2013;3(4):e002537. PMID 23554099.</li>
+</ol>
+</section>
+
+<div style="margin-top:44px">
+  <span class="tag">Grey Hair</span><span class="tag">Canities</span><span class="tag">Melanocyte Stem Cells</span><span class="tag">Tyrosinase</span><span class="tag">Copper</span><span class="tag">Catalase</span><span class="tag">Hydrogen Peroxide</span><span class="tag">Oxidative Stress</span><span class="tag">Sympathetic Nerves</span><span class="tag">Thyroid</span><span class="tag">B12</span><span class="tag">Ferritin</span><span class="tag">NAC</span><span class="tag">Androgenetic Alopecia</span><span class="tag">Telogen Effluvium</span><span class="tag">DHT</span><span class="tag">Finasteride</span><span class="tag">Minoxidil</span><span class="tag">Insulin Resistance</span><span class="tag">Adjudication</span>
+</div>
+
+<footer class="end">
+  <p><b>A note on sourcing.</b> All ten X posts were read in full, including replies, via the fxtwitter API, and every study image in them was identified. References with PMIDs were checked against their PubMed abstracts in this session. The NAC study (ref 33) and the pumpkin seed oil trial (ref 45) were also checked in full text, and the caffeine trial's (ref 47) funding disclosure was read on PMC. Refs 29 and 50 were checked via Crossref, and refs 27 and 30 from the posters' screenshots. Not checked: the 1973 <em>Lancet</em> levodopa letter and the 1941 <em>Science</em> PABA note Dalton links; the figures in the Mosley letter (ref 19), which has no abstract; and the shampoo study pictured in Dalton's regrowth thread, which I couldn't identify. Uncited but standard: vitamin C as a melanin inhibitor, zinc-induced copper deficiency, the finasteride label warnings, and ashwagandha liver-injury reports. Masterjohn's R402Q prevalence figures and the 75% copper-binding loss are his, and only the ER-retention finding (ref 11) was checked.</p>
+  <p>Related papers: <a href="metabolic-health.html">Metabolic Health</a> for the terrain framework, <a href="linoleic-acid.html">Linoleic Acid</a> for lipid peroxidation, and <a href="sunlight.html">Sunlight</a> for vitamin D and POMC/MSH.</p>
+</footer>
+
+</div>
+</body>
+</html>

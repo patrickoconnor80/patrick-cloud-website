@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alcohol &amp; Liver Recovery</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.spine-part a{color:inherit;border-bottom:none;}
+.spine-part a:hover{border-bottom:1px solid currentColor;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+sup.cite{font-size:11px;line-height:0;vertical-align:super;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+sup.cite a{color:var(--rust);text-decoration:none;padding:0 1px;border-bottom:none;}
+sup.cite a:hover{text-decoration:underline;}
+
+/* ---- Evidence chips ---- */
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mod{background:rgba(61,106,122,.13);color:#2c4f5c;}
+.ev-mod::before{background:var(--sky);}
+.ev-animal{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-animal::before{background:var(--gold);}
+.ev-inf{background:rgba(183,138,46,.09);color:#7a5c14;}
+.ev-inf::before{background:var(--gold);opacity:.55;}
+.ev-cont{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-cont::before{background:var(--rust);}
+.ev-spec{background:rgba(61,69,60,.1);color:var(--ink-soft);}
+.ev-spec::before{background:var(--ink-soft);opacity:.6;}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.chain{
+  font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.75;
+  background:var(--paper-deep);border-radius:4px;padding:16px 20px;margin:18px 0;
+  color:var(--ink);white-space:pre-wrap;overflow-x:auto;
+}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Pushback ---- */
+.pushback{
+  border-left:3px solid var(--rust);
+  background:rgba(168,86,47,.05);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.pushback .pb-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Safety ---- */
+.safety{
+  border:2px solid var(--rust);border-radius:4px;
+  background:rgba(168,86,47,.04);
+  padding:18px 24px;margin:26px 0;font-size:17px;
+}
+.safety .sf-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+.safety ul{margin:8px 0 0;padding-left:20px;}
+.safety li{margin:6px 0;}
+
+/* ---- Deep dive ---- */
+.deepdive{
+  border-left:3px solid var(--sky);
+  background:linear-gradient(90deg,rgba(61,106,122,.045),rgba(61,106,122,0) 60%);
+  border-radius:0 4px 4px 0;
+  padding:6px 24px 14px 22px;
+  margin:26px 0;
+}
+.deepdive-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin:16px 0 8px;
+}
+.dd-skip{color:var(--ink-soft);text-transform:none;letter-spacing:0;font-weight:500;font-style:italic;font-size:12px;margin-left:8px;}
+
+/* ---- Tables ---- */
+.table-wrap{overflow-x:auto;margin:26px 0;}
+table.matrix{
+  width:100%;border-collapse:collapse;
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+}
+table.matrix th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  font-weight:600;padding:14px 16px;border-bottom:2px solid var(--ink);
+  vertical-align:bottom;
+}
+table.matrix td{
+  padding:14px 16px;border-top:1px solid var(--rule);
+  vertical-align:top;font-size:15.5px;line-height:1.5;color:var(--ink-soft);
+}
+table.matrix td:first-child{color:var(--ink);width:34%;}
+table.matrix td:last-child{width:20%;}
+table.matrix td ul{margin:6px 0 0;padding-left:18px;}
+table.matrix tr.who td{
+  background:var(--paper-deep);font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--moss-deep);font-weight:600;
+  padding:10px 16px;
+}
+.yes,.mid,.no{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+.yes{color:var(--moss-deep);}
+.mid{color:#7a5c14;}
+.no{color:var(--rust);}
+@media (max-width:640px){
+  table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100% !important;}
+  table.matrix thead{display:none;}
+  table.matrix tr{border-top:1px solid var(--rule);padding:6px 0;}
+  table.matrix td{border-top:none;padding:4px 16px;}
+  table.matrix td:first-child{padding-top:14px;}
+}
+
+/* ---- Ladder ---- */
+.ladder{margin:26px 0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--card);}
+.rung{display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--rule);}
+.rung:first-child{border-top:none;}
+.rung-lbl{padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;line-height:1.35;color:#fff;}
+.rung-lbl small{display:block;font-weight:500;opacity:.85;font-size:10.5px;margin-top:4px;letter-spacing:.04em;}
+.rung-body{padding:12px 18px;font-size:15.5px;line-height:1.5;}
+.rung-body p{margin:4px 0;}
+.r1{background:var(--moss-deep);}
+.r2{background:var(--moss);}
+.r3{background:var(--sky);}
+.r4{background:var(--gold);}
+.r5{background:var(--rust);}
+.r6{background:#6b6f68;}
+
+/* ---- Limitations / references ---- */
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+ol.refs{
+  list-style:none;padding:0;margin:24px 0 0;
+  font-family:'Newsreader',Georgia,serif;
+}
+ol.refs li{
+  counter-increment:ref;position:relative;padding:0 0 14px 3.2em;
+  font-size:15px;line-height:1.55;color:var(--ink);
+}
+.refwrap{counter-reset:ref;}
+ol.refs li:target{background:#fbf6ea;outline:2px solid #b78a2e;outline-offset:3px;border-radius:4px;}
+ol.refs li::before{
+  content:"["counter(ref)"]";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--rust);
+}
+ol.refs li .j{font-style:italic;}
+ol.refs li .note{color:var(--ink-soft);font-size:13.5px;}
+.ref-group{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.ref-group:first-of-type{margin-top:8px;}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .wrap{padding:0 16px;}
+  .byline{flex-direction:column;gap:6px;}
+  .rung{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion:no-preference){
+  section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html" class="active">Papers</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="nutrients.html">Nutrients</a>
+  <a href="supplements.html">Supplements</a>
+  <a href="recipes.html">Recipes</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Nutritional Biochemistry</p>
+  <h1 class="title">Alcohol &amp; <em>Liver Recovery</em></h1>
+  <p class="sub">The liver recovers from drinking faster than almost any other organ. Liver stiffness drops measurably within a week of stopping. What decides the long-term outcome is how much you drink from here on, not which supplements you take. Coffee has the best human data of anything on the popular "protect your liver" lists, and most of the rest is mouse work or fatty-liver trials that don't involve alcohol.</p>
+  <div class="byline">
+    <span><b>Draft</b> v1</span>
+    <span><b>Scope</b> how alcohol injures the liver, how fast it recovers, and a 12-item X list checked item by item</span>
+    <span><b>Standard</b> every cited paper checked against its abstract; funders and patents named at point of use</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;">Alcohol is broken down almost entirely in the liver, and the process does damage in three ways. It floods the cell with NADH, which shuts down fat burning and builds up fat. It makes acetaldehyde, which is toxic. And through CYP2E1 it generates oxidants. Alcohol also loosens the gut wall, so bacterial endotoxin reaches the liver and inflames it. Most people drinking more than about 40&nbsp;g a day (roughly three US drinks) get a fatty liver. Only some go on to inflammation, scarring and cirrhosis.<sup class="cite"><a href="#r1">1</a></sup> In animals, the fat eaten alongside the alcohol matters a lot: alcohol plus corn oil injures the liver, and alcohol plus saturated fat largely doesn't.<sup class="cite"><a href="#r3">3</a>,<a href="#r4">4</a></sup></p>
+  <p>Recovery starts quickly. In heavy drinkers admitted for withdrawal, liver stiffness fell within seven days of stopping, and it kept falling over two months in those who stayed off alcohol. In those who relapsed it rose again.<sup class="cite"><a href="#r6">6</a>,<a href="#r7">7</a></sup> Over years, staying abstinent is one of the strongest predictors of survival, along with fibrosis stage. Once cirrhosis is present, even moderate drinking worsens outcomes.<sup class="cite"><a href="#r8">8</a>,<a href="#r9">9</a></sup></p>
+  <p style="margin-bottom:0;">Against that backdrop, this paper checks a 12-item "things that protect your liver" post by Ryan Ayala (@RyanJAyala, October 2026), founder of the lab-testing company Labify Health. The post cites nothing and links no products. Coffee and thiamine hold up. Milk thistle and vitamin E are the right ideas in the wrong form. Glycine, theanine, resveratrol, grapefruit and taurine rest on animal work, and in one 2026 mouse study high-dose taurine made alcohol injury worse. TUDCA has no alcohol data, and its parent drug failed in alcohol-related cirrhosis. The post leaves out the main factor, the drinking itself, along with choline, magnesium, the type of dietary fat, and the one supplement with a positive survival signal in alcoholic hepatitis (NAC).</p>
+</div>
+
+<div class="brief">
+  <div class="lbl">The argument in brief</div>
+  <p class="sub">Five parts</p>
+  <ol class="spine">
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span>Alcohol damages the liver through <b>NADH overload, acetaldehyde, oxidants and gut endotoxin</b>. Most heavy drinkers get fatty liver, and only some progress. In animal models, linoleic-acid-rich fat makes the injury much worse.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span>Recovery is <b>fast and measurable</b>: liver stiffness falls in a week and keeps falling over months. How much you drink from here on drives long-term outcomes more than anything you take.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span><b>The 12 items, checked.</b> Coffee and thiamine hold. Milk thistle and vitamin E are right in principle but wrong in form or dose. Six items are animal-only, and TUDCA's closest human evidence is negative.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span><b>What the list left out</b>: cutting the dose, choline, magnesium, the type of cooking fat, and NAC.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span><b>What to do</b> after one night out, after a heavy stretch, and if you drink every day, including which labs to run and when.</li>
+  </ol>
+  <p class="bottom">The liver heals on its own when alcohol stops coming in. Supplements are a small adjustment on top of that, and none has been shown to offset continued heavy drinking.</p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Reader's guide</div>
+  <p style="margin-top:0;">Part&nbsp;III is the item-by-item check and can be read on its own. Part&nbsp;V is the practical summary. Entries on this site for <a href="milkthistle.html">Milk Thistle</a>, <a href="dhm.html">DHM</a>, <a href="nac.html">NAC</a>, <a href="theanine.html">L-Theanine</a>, <a href="beetjuice.html">Beet Juice</a>, <a href="vitaminb1thiamine.html">Thiamine</a>, <a href="glycinecollagen.html">Glycine</a> and <a href="vitamine.html">Vitamin E</a> go deeper on single items.</p>
+  <p style="margin-bottom:0;">
+    <span class="ev ev-strong">Strong</span>
+    <span class="ev ev-mod">Moderate</span>
+    <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span>
+    <span class="ev ev-inf">Inferred</span>
+    <span class="ev ev-cont">Contested</span>
+    <span class="ev ev-spec">Speculative</span>
+  </p>
+</div>
+
+<!-- ============================ PART I ============================ -->
+<section>
+<div class="part-head" id="part-i">
+  <div class="part-num">PART&nbsp;I</div>
+  <h2>What Alcohol Does to the Liver</h2>
+</div>
+
+<h3><span class="h3num">I.1</span>The breakdown line</h3>
+<p>The body has no way to store alcohol, so the liver clears it first, ahead of other fuels. Most goes through alcohol dehydrogenase (ADH) to acetaldehyde, then through aldehyde dehydrogenase (ALDH2) to acetate. Both steps turn NAD<sup>+</sup> into NADH. Heavy or chronic drinking also switches on a second enzyme, CYP2E1, which oxidises alcohol while leaking reactive oxygen species.</p>
+<div class="chain">ethanol ──ADH (NAD⁺→NADH)──▶ acetaldehyde ──ALDH2 (NAD⁺→NADH)──▶ acetate
+   └──CYP2E1 (induced by heavy drinking)──▶ acetaldehyde + reactive oxygen species
+
+high NADH/NAD⁺ ──▶ fat burning stalls, fat synthesis rises ──▶ fatty liver
+acetaldehyde ──▶ binds proteins and DNA ──▶ toxicity, inflammation
+alcohol ──▶ leaky gut wall ──▶ endotoxin to the liver ──▶ Kupffer-cell inflammation</div>
+<p>The Nature Reviews primer summarises the damage as steatosis, oxidative stress, acetaldehyde toxicity and cytokine-driven inflammation.<sup class="cite"><a href="#r1">1</a></sup> The gut-endotoxin route matters for this paper because several items on the list (glycine, taurine) act on it, and so does the type of dietary fat (I.3).</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">textbook biochemistry and decades of human and animal work.</span></p>
+
+<h3><span class="h3num">I.2</span>The spectrum, and who progresses</h3>
+<p>The stages run from fatty liver to steatohepatitis (fat plus inflammation) to fibrosis to cirrhosis, with cancer and acute alcoholic hepatitis branching off. <strong>Most people drinking more than 40&nbsp;g a day develop fatty liver</strong>, which is about three US standard drinks at 14&nbsp;g each, but only a subset progress further. Genes, sex, body weight and diet explain much of the difference.<sup class="cite"><a href="#r1">1</a></sup> Fatty liver is the reversible stage. Fibrosis can partly regress. Cirrhosis largely stays, but its outcome still depends on drinking (II.3).</p>
+<p>The trouble is that people can't tell which stage they're in. In an Austrian biopsy series, half the patients with "early", symptom-free alcohol liver disease already had severe fibrosis or cirrhosis (F3&ndash;4). Their 10-year mortality was 45%, against 0% for F0&ndash;2.<sup class="cite"><a href="#r8">8</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the spectrum and the dose threshold;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for the hidden-fibrosis finding, which is one centre's biopsy series.</span></p>
+
+<h3><span class="h3num">I.3</span>The fat it's eaten with</h3>
+<p>Animal studies of alcohol and dietary fat point the same way as the <a href="linoleic-acid.html">Linoleic Acid</a> paper. Amin Nanji's rat work found that liver pathology from alcohol <em>only</em> appeared when the alcohol was fed with polyunsaturated fat. The proposed mechanisms were more oxidative stress, more endotoxin and more inflammatory cytokines.<sup class="cite"><a href="#r3">3</a></sup> A 2012 Louisville mouse study made the gut link explicit. With alcohol plus corn oil (linoleic acid), the mice had liver injury, fatty liver, a leakier ileum and more endotoxin in the blood. Alcohol plus saturated fat (MCT and beef tallow) did none of this. Corn oil alone, without alcohol, already weakened the gut's tight junctions.<sup class="cite"><a href="#r4">4</a></sup></p>
+<p class="evline"><span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span><span class="txt">consistent across labs and decades, but untested in people.</span> <span class="ev ev-inf">Inferred</span><span class="txt">that a drinker who cooks in butter or tallow instead of seed oil takes less liver damage.</span></p>
+<div class="flag">
+  <div class="flag-lbl">Why this matters more than any supplement</div>
+  <p style="margin:0;">The same lab models that make milk thistle, glycine and resveratrol look good also show that the <em>background diet</em> largely decides whether alcohol injures the liver at all. If the animal pattern holds in people, swapping seed oil for butter, tallow, or red palm oil would matter more than anything on the X list. Red palm oil is the one fat the list itself names.</p>
+</div>
+</section>
+
+<!-- ============================ PART II ============================ -->
+<section>
+<div class="part-head" id="part-ii">
+  <div class="part-num">PART&nbsp;II</div>
+  <h2>How Fast the Liver Recovers</h2>
+</div>
+
+<h3><span class="h3num">II.1</span>After one night</h3>
+<p>A healthy liver clears a night's alcohol within hours. The hangover is mostly acetaldehyde, dehydration (alcohol blocks the hormone that holds water), poor sleep and inflammation, not liver damage. The only systematic review of hangover remedies found 21 placebo-controlled trials in 386 people. No two trials tested the same thing, and every efficacy result was rated very low quality. Clove extract, tolfenamic acid, pyritinol, <em>Hovenia</em> (the DHM plant), L-cysteine, red ginseng and Korean pear juice each had one positive study.<sup class="cite"><a href="#r10">10</a></sup> None of the 12 items in the X post has a hangover trial. See <a href="dhm.html">DHM</a> and <a href="molecularhydrogen.html">Molecular Hydrogen</a> for the two remedies covered on this site.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">that one night isn't a liver event for a healthy liver;</span> <span class="ev ev-spec">Speculative</span><span class="txt">for any specific hangover remedy.</span></p>
+
+<h3><span class="h3num">II.2</span>After a heavy stretch: weeks</h3>
+<p>Two French studies used FibroScan (an ultrasound measure of liver stiffness) on heavy drinkers admitted for withdrawal.</p>
+<ul>
+  <li><strong>Trabut 2012</strong> (Paris, 137 patients, median 150&nbsp;g alcohol a day): median stiffness fell from 7.2 to 6.1&nbsp;kPa in <strong>seven days</strong>. It dropped significantly in 45% of patients, and in 23% the estimated fibrosis stage went down a level. A week is too short for scar tissue to dissolve, so much of the "stiffness" was inflammation.<sup class="cite"><a href="#r6">6</a></sup></li>
+  <li><strong>Gelsi 2011</strong> (Nice, 23 patients, followed for 60 days): stiffness fell about 22% in the first week. Between day 8 and day 60 it fell another 20% in those who stayed abstinent and <em>rose</em> 32% in those who relapsed. GGT and AST tracked it.<sup class="cite"><a href="#r7">7</a></sup></li>
+</ul>
+<p>Liver fat is the fastest part to clear, and GGT and ALT come down over the following weeks. That makes a 4&ndash;8 week break a meaningful test: if the numbers normalise, the liver was mostly inflamed and fatty rather than scarred.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">two prospective cohorts, consistent direction, short follow-up.</span></p>
+<div class="takeaway"><b>Practical point:</b> a FibroScan done while someone is still drinking heavily overstates fibrosis. Re-measure after at least a week off, and preferably a month.</div>
+
+<h3><span class="h3num">II.3</span>Over years: the dose is the treatment</h3>
+<p>In the Austrian biopsy cohort, staying abstinent predicted survival at both early and advanced stages.<sup class="cite"><a href="#r8">8</a></sup> In the French CIRRAL cohort (650 people with compensated alcohol-related cirrhosis), drinking during follow-up worsened survival in a dose-dependent way. The authors concluded that no amount of alcohol is safe once cirrhosis has developed. A third of people who had stopped had started again within five years.<sup class="cite"><a href="#r9">9</a></sup> The AASLD and Nature Reviews summaries agree that abstinence is the best treatment at every stage of alcohol liver disease.<sup class="cite"><a href="#r1">1</a>,<a href="#r2">2</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">observational, but large, consistent and dose-dependent, and no trial is ethically possible.</span></p>
+</section>
+
+<!-- ============================ PART III ============================ -->
+<section>
+<div class="part-head" id="part-iii">
+  <div class="part-num">PART&nbsp;III</div>
+  <h2>The 12 Items, Checked</h2>
+</div>
+
+<p>The post in full: "12 things that protect your liver: Thiamine (B1). Milk thistle (tea, not pills). Glycine. Taurine (a few weeks at a time). TUDCA (a few weeks at a time). Coffee, only after eating, and only if your gut is fine. Grapefruit (skip it if you're on meds). Cranberry extract. Resveratrol. Beetroot juice. L-theanine. Vitamin E from natural sources, like red palm oil." No sources were given, so each item is checked against the best evidence I could find, giving priority to alcohol-specific human data.</p>
+
+<div class="table-wrap"><table class="matrix">
+<thead><tr><th>Claim</th><th>What the literature shows</th><th>Holds?</th></tr></thead>
+<tbody>
+<tr class="who"><td colspan="3">Ryan Ayala (@RyanJAyala) &middot; October 2026</td></tr>
+<tr>
+  <td><strong>Thiamine (B1)</strong></td>
+  <td>Chronic drinking causes thiamine deficiency three ways: less in the diet, less absorbed from the gut, and less used in the cells. The damage is to the <em>brain</em> (Wernicke&ndash;Korsakoff).<sup class="cite"><a href="#r11">11</a></sup> UK guidance is to give B vitamins by injection at the outset to heavy drinkers with a poor diet.<sup class="cite"><a href="#r12">12</a></sup> Oral thiamine reaches high blood levels at high doses because it's absorbed by passive diffusion as well as by transporters.<sup class="cite"><a href="#r13">13</a></sup> In a 24-week trial of 600&nbsp;mg benfotiamine in 120 actively drinking alcohol-dependent people, women cut their drinking more than on placebo (N=21 women).<sup class="cite"><a href="#r14">14</a></sup> See <a href="vitaminb1thiamine.html">Thiamine</a>.</td>
+  <td><span class="yes">Holds.</span> The most important item on the list, though it protects the brain more than the liver.</td>
+</tr>
+<tr>
+  <td><strong>Milk thistle</strong>, "tea, not pills"</td>
+  <td>The trials used standardised extract capsules. Ferenci 1989 (140&nbsp;mg three times a day, 170 cirrhotics): 4-year survival 58% vs 39%, driven by the alcoholic subgroup.<sup class="cite"><a href="#r15">15</a></sup> Par&eacute;s 1998 (150&nbsp;mg three times a day, 200 alcoholic cirrhotics): no effect.<sup class="cite"><a href="#r16">16</a></sup> Cochrane, 18 trials: no effect on overall mortality. Liver-related deaths were halved across all trials, but not in the high-quality ones.<sup class="cite"><a href="#r17">17</a></sup> On tea: boiling water extracts the polar flavonolignans (taxifolin, silychristin) well, but ethanol extracts the most silymarin overall.<sup class="cite"><a href="#r18">18</a></sup> At 100&nbsp;&deg;C, yields took about 200 minutes to peak.<sup class="cite"><a href="#r19">19</a></sup> A 5-minute steep gets a small fraction, and little of the silybin the trials dosed. See <a href="milkthistle.html">Milk Thistle</a>.</td>
+  <td><span class="mid">Half holds.</span> The herb has a contested signal; "tea, not pills" gets the form backwards.</td>
+</tr>
+<tr>
+  <td><strong>Glycine</strong></td>
+  <td>Thurman's lab, rats on continuous alcohol: glycine sped up alcohol breakdown in the stomach, so less reached the liver, and it cut steatosis and necrosis.<sup class="cite"><a href="#r20">20</a></sup> Given <em>after</em> 6 weeks of alcohol was stopped, a glycine diet brought ALT and AST down about 30% faster, and the pathology score was 0.5 vs 2.6. The proposed mechanism is glycine calming Kupffer cells through chloride channels.<sup class="cite"><a href="#r21">21</a></sup> No human trial. See <a href="glycinecollagen.html">Glycine &amp; Collagen</a>.</td>
+  <td><span class="mid">Plausible, animal only.</span> The recovery study is the closest match to what the post claims.</td>
+</tr>
+<tr>
+  <td><strong>Taurine</strong>, "a few weeks at a time"</td>
+  <td>No human trial in alcohol liver disease found. A 2026 Tulane/Louisville mouse study: <strong>high-dose taurine (3&nbsp;g/kg/day) made alcohol injury worse</strong>. ALT and AST were higher, there was more fat and inflammation, hydrogen-sulfide-producing gut bacteria increased, the gut barrier was impaired and more bacteria reached the liver. A low dose (0.2&nbsp;g/kg/day) <em>improved</em> it.<sup class="cite"><a href="#r22">22</a></sup> By standard body-surface-area scaling, those doses equal roughly 17&nbsp;g and 1&nbsp;g a day for a 70&nbsp;kg adult. A reply under the post ("you do not have to cycle taurine") is just as unsupported as the post: nobody has tested cycling.</td>
+  <td><span class="mid">Half holds.</span> Dose is what the data speak to, and cycling is untested.</td>
+</tr>
+<tr>
+  <td><strong>TUDCA</strong>, "a few weeks at a time"</td>
+  <td>No trial in alcohol liver disease. TUDCA performed the same as its parent drug UDCA in primary biliary cholangitis (199 patients; ALP response 76% vs 81%).<sup class="cite"><a href="#r23">23</a></sup> UDCA itself, in 226 people with alcohol cirrhosis and jaundice: 6-month survival was 69% on UDCA vs 82% on placebo. That difference wasn't significant after adjusting for bilirubin, and UDCA certainly didn't help.<sup class="cite"><a href="#r24">24</a></sup> High-dose UDCA in sclerosing cholangitis improved liver tests yet more than doubled the rate of serious endpoints.<sup class="cite"><a href="#r25">25</a></sup> Better enzyme numbers didn't mean a better liver.</td>
+  <td><span class="no">Does not hold</span> for alcohol. It's a drug for bile-flow problems.</td>
+</tr>
+<tr>
+  <td><strong>Coffee</strong>, "only after eating, and only if your gut is fine"</td>
+  <td>Meta-analysis of 9 studies (432,000 people): each extra 2 cups a day was linked to a 44% lower risk of cirrhosis, and a 38% lower risk of <em>alcoholic</em> cirrhosis.<sup class="cite"><a href="#r26">26</a></sup> UK Biobank (495,000 people): coffee drinkers had 21% less chronic liver disease and 49% fewer deaths from it. Decaf, instant and ground coffee looked alike, so caffeine isn't the whole story.<sup class="cite"><a href="#r27">27</a></sup> All observational.</td>
+  <td><span class="yes">Holds.</span> The best human data on the list. The after-food and gut caveats are his own, not from studies.</td>
+</tr>
+<tr>
+  <td><strong>Grapefruit</strong>, "skip it if you're on meds"</td>
+  <td>The drug warning is right: grapefruit switches off CYP3A4 in the gut wall for about 24 hours and raises blood levels of dozens of drugs. The interaction was found by accident, when grapefruit juice was used to mask the taste of ethanol in a felodipine&ndash;alcohol study.<sup class="cite"><a href="#r28">28</a></sup> I found no human trial of grapefruit for the liver. The benefit claim rests on naringenin in rodents and zebrafish. Alcohol is cleared by ADH and CYP2E1, not CYP3A4, so grapefruit doesn't speed it up.</td>
+  <td><span class="mid">Warning holds; benefit unsupported.</span></td>
+</tr>
+<tr>
+  <td><strong>Cranberry extract</strong></td>
+  <td>Two small Iranian trials in <em>non-alcoholic</em> fatty liver. 144&nbsp;mg a day for 6 months (110 enrolled): ALT unchanged, insulin resistance and triglycerides lower, more patients' steatosis improved.<sup class="cite"><a href="#r29">29</a></sup> 288&nbsp;mg a day plus a weight-loss diet (41 patients): ALT fell more, steatosis grade no different from placebo.<sup class="cite"><a href="#r30">30</a></sup> No alcohol data.</td>
+  <td><span class="mid">Weak.</span> Fatty liver, not alcohol.</td>
+</tr>
+<tr>
+  <td><strong>Resveratrol</strong></td>
+  <td>In alcohol-fed mice it restored SIRT1&ndash;AMPK signalling and prevented fatty liver.<sup class="cite"><a href="#r31">31</a></sup> In people with fatty liver, 3&nbsp;g a day for 8 weeks did nothing for liver fat or insulin resistance, and <em>raised</em> ALT and AST.<sup class="cite"><a href="#r32">32</a></sup> An umbrella review of the meta-analyses: the evidence does not support it.<sup class="cite"><a href="#r33">33</a></sup></td>
+  <td><span class="no">Does not hold</span> in people.</td>
+</tr>
+<tr>
+  <td><strong>Beetroot juice</strong></td>
+  <td>Karolinska mice: dietary nitrate prevented fatty liver through AMPK, and did nothing in germ-free mice, so it depends on bacteria to convert it. Two authors hold patents on therapeutic nitrate.<sup class="cite"><a href="#r34">34</a></sup> An Iraqi trial of 180 people with non-alcoholic fatty liver found beet juice (with or without a Mediterranean diet) lowered ALT and steatosis versus control. But the participants also lost about 4.5&nbsp;kg, and the abstract says the juice "had 250&nbsp;mg of beetroot", which can't be right.<sup class="cite"><a href="#r35">35</a></sup> See <a href="beetjuice.html">Beet Juice</a>.</td>
+  <td><span class="mid">Plausible.</span> Good mechanism, weak trial, no alcohol data.</td>
+</tr>
+<tr>
+  <td><strong>L-theanine</strong></td>
+  <td>Two mouse studies of acute alcohol: theanine lowered blood alcohol and acetaldehyde, raised ADH and ALDH, and damped CYP2E1 and lipid peroxidation.<sup class="cite"><a href="#r36">36</a>,<a href="#r37">37</a></sup> The 2005 study injected it. No human data. See <a href="theanine.html">L-Theanine</a>.</td>
+  <td><span class="mid">Animal only.</span></td>
+</tr>
+<tr>
+  <td><strong>Vitamin E</strong> "from natural sources, like red palm oil"</td>
+  <td>The best fatty-liver trial on the list: PIVENS, 800&nbsp;IU natural vitamin E for 96 weeks in 247 non-diabetic adults, improved NASH in 43% vs 19% on placebo, though fibrosis didn't improve.<sup class="cite"><a href="#r38">38</a></sup> In <em>alcoholic</em> hepatitis, 1,000&nbsp;IU for 3 months didn't improve liver tests.<sup class="cite"><a href="#r39">39</a></sup> Palm vitamin E is about 70% tocotrienols.<sup class="cite"><a href="#r41">41</a></sup> Delta-tocotrienol at 300&nbsp;mg twice daily matched alpha-tocopherol in fatty liver, in a trial with no placebo arm.<sup class="cite"><a href="#r40">40</a></sup> Food delivers milligrams, while PIVENS dosed about 536&nbsp;mg. See <a href="vitamine.html">Vitamin E</a>.</td>
+  <td><span class="mid">Half holds.</span> Right nutrient, but the trial dose is far above food and the trial disease isn't alcohol. Red palm oil is a good cooking fat for another reason (I.3).</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3><span class="h3num">III.1</span>Ranked</h3>
+<div class="ladder">
+  <div class="rung"><div class="rung-lbl r1">Best supported<small>human, alcohol-relevant</small></div><div class="rung-body"><p><strong>Coffee</strong> (large cohorts, includes alcoholic cirrhosis). <strong>Thiamine</strong> (real deficiency in drinkers; protects the brain).</p></div></div>
+  <div class="rung"><div class="rung-lbl r2">Human trials, mixed<small>alcohol-relevant</small></div><div class="rung-body"><p><strong>Milk thistle</strong>: one positive and one null trial in alcoholic cirrhosis; Cochrane unconvinced. Standardised extract, not tea.</p></div></div>
+  <div class="rung"><div class="rung-lbl r3">Human trials<small>fatty liver, not alcohol</small></div><div class="rung-body"><p><strong>Vitamin E</strong> (strong for NASH at 800&nbsp;IU, null in alcoholic hepatitis). <strong>Cranberry</strong>, <strong>beet juice</strong> (small trials).</p></div></div>
+  <div class="rung"><div class="rung-lbl r4">Animal only</div><div class="rung-body"><p><strong>Glycine</strong>, <strong>L-theanine</strong>, <strong>grapefruit</strong>. <strong>Taurine</strong>, where the effect depends on dose.</p></div></div>
+  <div class="rung"><div class="rung-lbl r5">Human data against</div><div class="rung-body"><p><strong>Resveratrol</strong> (null, ALT rose). <strong>TUDCA</strong> (no alcohol data; UDCA null-to-harmful in alcohol cirrhosis).</p></div></div>
+</div>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: this is a list for someone who keeps drinking</div>
+  <p style="margin:0;">Not one of the 12 items mentions drinking less. Every human study in Part&nbsp;II says that's what decides the outcome. A reply under the post (@primal_edge) did better without any supplements: enough protein, eggs for choline, collagen for glycine, meat and seafood for taurine, avoid excess alcohol, keep insulin sensitivity, sleep, and "give your liver fewer problems instead of endlessly searching for another detox." To be fair to the post, it doesn't sell anything, and its two most expensive-sounding items (TUDCA, resveratrol) are the ones with the weakest human data. That pattern is common: supplement lists put mechanism and novelty ahead of the outcome data.</p>
+</div>
+</section>
+
+<!-- ============================ PART IV ============================ -->
+<section>
+<div class="part-head" id="part-iv">
+  <div class="part-num">PART&nbsp;IV</div>
+  <h2>What the List Left Out</h2>
+</div>
+
+<h3><span class="h3num">IV.1</span>NAC</h3>
+<p>One reply asked "NAC?" It's the omission with the best data. In a French trial of 174 people with <em>severe</em> alcoholic hepatitis, adding 5 days of IV NAC to prednisolone cut 1-month mortality from 24% to 8%, and deaths from kidney failure caused by the liver (hepatorenal syndrome) and infections fell too. But 6-month mortality, the primary endpoint, missed significance (27% vs 38%, p=0.07).<sup class="cite"><a href="#r43">43</a></sup> That's a hospital drug regimen. For an outpatient drinker, NAC's case is the glutathione logic covered in the <a href="nac.html">NAC</a> and <a href="glutathione.html">Glutathione</a> entries, with no oral trial in alcohol-related liver disease.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">for IV NAC in severe alcoholic hepatitis;</span> <span class="ev ev-inf">Inferred</span><span class="txt">for oral NAC in ordinary drinkers.</span></p>
+
+<h3><span class="h3num">IV.2</span>Choline</h3>
+<p>Choline is needed to export fat from the liver as VLDL. In a UNC depletion study, 77% of men and 80% of postmenopausal women on a choline-free diet developed fatty liver or muscle damage within weeks. Six men did so even at the official Adequate Intake.<sup class="cite"><a href="#r42">42</a></sup> Eggs (about 150&nbsp;mg each) and beef liver are the dense sources. A drinker eating chicken breast and protein shakes may be short.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">that choline deficiency causes fatty liver in people;</span> <span class="ev ev-inf">Inferred</span><span class="txt">that it adds to alcohol's effect.</span></p>
+
+<h3><span class="h3num">IV.3</span>Magnesium and the other micronutrients</h3>
+<p>A 2022 Glasgow review of 46 studies found observational evidence that magnesium deficiency speeds alcohol liver injury, and weak or negative evidence for folate, vitamin D, zinc and selenium. It supports supplementing only when someone is actually deficient.<sup class="cite"><a href="#r5">5</a></sup> Heavy drinkers lose magnesium in their urine, and serum levels miss tissue deficiency. See <a href="magnesium.html">Magnesium</a>.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">observational.</span></p>
+
+<h3><span class="h3num">IV.4</span>The cooking fat</h3>
+<p>Covered in <a href="#part-i">I.3</a>. It's left out of every supplement list because nobody sells it.</p>
+</section>
+
+<!-- ============================ PART V ============================ -->
+<section>
+<div class="part-head" id="part-v">
+  <div class="part-num">PART&nbsp;V</div>
+  <h2>What To Do</h2>
+</div>
+
+<h3><span class="h3num">V.1</span>After a night out</h3>
+<ol>
+  <li><strong>Eat before and while drinking.</strong> Food in the stomach slows alcohol absorption.</li>
+  <li><strong>Water and salt.</strong> Alcohol makes you lose water, and salt helps you hold onto it. A pinch of salt in water, or a salty meal, works better than plain water. See <a href="sodium.html">Sodium</a>.</li>
+  <li><strong>Don't take acetaminophen (Tylenol) for the hangover headache.</strong> Alcohol and acetaminophen both use up the liver's glutathione.</li>
+  <li><strong>Morning:</strong> coffee if it sits well, eggs, and thiamine 50&ndash;100&nbsp;mg if you drink regularly. DHM, NAC and the rest are unproven for hangovers.<sup class="cite"><a href="#r10">10</a></sup></li>
+</ol>
+
+<h3><span class="h3num">V.2</span>Recovering from a heavy stretch (4&ndash;8 weeks)</h3>
+<ol>
+  <li><strong>Stop or cut way down.</strong> This is the treatment. Everything below is support.</li>
+  <li><strong>Get baseline labs</strong> at the start: GGT, ALT, AST, a full blood count (MCV, red-cell size, rises with heavy drinking), platelets and albumin. Repeat at about 6 weeks. If your GGT and ALT normalise, the problem was fat and inflammation. If AST is more than about twice ALT, platelets are low, or the numbers don't move, ask for a FibroScan, done at least a week, preferably a month, after your last drink (<a href="#part-ii">II.2</a>). FIB-4, calculated from age, AST, ALT and platelets, is a free first screen.</li>
+  <li><strong>Eat for the liver:</strong> protein at every meal. Eggs daily and some beef liver for choline. Wild-caught oily fish. Beets and arugula for nitrate. Cook in butter, tallow, ghee or red palm oil, not seed oils (<a href="#part-i">I.3</a>, <a href="linoleic-acid.html">Linoleic Acid</a>).</li>
+  <li><strong>Coffee:</strong> 2&ndash;4 cups a day if tolerated; decaf counts.<sup class="cite"><a href="#r27">27</a></sup></li>
+  <li><strong>Thiamine</strong> 100&nbsp;mg a day (or benfotiamine) and <strong>magnesium</strong> (glycinate, 200&ndash;400&nbsp;mg elemental) through the stretch.</li>
+  <li><strong>Optional, mechanism-level:</strong> milk thistle as a standardised extract (about 140&ndash;200&nbsp;mg silymarin, 2&ndash;3 times a day) rather than tea; glycine about &frac34;&nbsp;tsp (3&nbsp;g) at night; taurine about &frac14;&nbsp;tsp (1&nbsp;g) a day, the dose that helped in mice rather than the one that hurt.<sup class="cite"><a href="#r22">22</a></sup></li>
+  <li><strong>Skip:</strong> TUDCA, resveratrol, high-dose vitamin E (unless a doctor is treating NASH), and anything sold as a "liver detox" blend.</li>
+</ol>
+
+<h3><span class="h3num">V.3</span>If you drink heavily every day</h3>
+<p>Get medical help to stop. Withdrawal after daily heavy drinking can cause seizures and delirium tremens, which can kill. Detox is done with medication, and thiamine is given <em>before</em> any glucose, because glucose given to someone low on thiamine can bring on Wernicke's encephalopathy.<sup class="cite"><a href="#r12">12</a></sup></p>
+
+<div class="safety" id="safety">
+  <div class="sf-lbl">Safety: see a doctor, not a supplement shelf</div>
+  <ul>
+    <li><strong>Yellow eyes or skin, dark urine, a swelling belly, vomiting blood, black stools or confusion</strong> mean advanced liver disease or alcoholic hepatitis, which is an emergency.</li>
+    <li><strong>Acetaminophen</strong>: the US label carries a liver warning for people who have three or more drinks a day.</li>
+    <li><strong>"Liver support" supplements can injure the liver.</strong> Green tea extract (see <a href="greentea.html">Green Tea</a>), kava, high-dose niacin, ashwagandha and turmeric extracts all have liver-injury case reports.</li>
+    <li><strong>Vitamin A</strong> in high doses is more liver-toxic in drinkers. Keep supplements modest (<a href="vitamina.html">Vitamin A</a>).</li>
+    <li><strong>Grapefruit</strong> with statins, some blood-pressure drugs, immunosuppressants and many others: check before mixing.<sup class="cite"><a href="#r28">28</a></sup></li>
+    <li><strong>TUDCA/UDCA</strong> shouldn't be self-dosed in suspected bile-duct blockage, and high-dose UDCA caused harm in one liver disease.<sup class="cite"><a href="#r25">25</a></sup></li>
+    <li><strong>Vitamin E</strong> at 800&nbsp;IU or more adds to bleeding risk with blood thinners.</li>
+  </ul>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Entries on this site that tie in</div>
+  <p style="margin-top:0;"><strong>Supplements:</strong> <a href="milkthistle.html">Milk Thistle</a> &middot; <a href="dhm.html">DHM</a> &middot; <a href="nac.html">NAC</a> &middot; <a href="theanine.html">L-Theanine</a> &middot; <a href="beetjuice.html">Beet Juice</a> &middot; <a href="molecularhydrogen.html">Molecular Hydrogen</a> &middot; <a href="greentea.html">Green Tea</a></p>
+  <p style="margin-bottom:0;"><strong>Nutrients:</strong> <a href="vitaminb1thiamine.html">Thiamine</a> &middot; <a href="magnesium.html">Magnesium</a> &middot; <a href="glycinecollagen.html">Glycine &amp; Collagen</a> &middot; <a href="glutathione.html">Glutathione</a> &middot; <a href="cysteine.html">Cysteine</a> &middot; <a href="vitamine.html">Vitamin E</a> &middot; <a href="vitamina.html">Vitamin A</a> &middot; <a href="sodium.html">Sodium</a>. No entry yet for taurine, TUDCA, choline, coffee, cranberry or resveratrol.</p>
+</div>
+</section>
+
+<!-- ============================ LIMITATIONS ============================ -->
+<section>
+<div class="part-head" id="limitations">
+  <div class="part-num">LIMITS</div>
+  <h2>Limitations</h2>
+</div>
+<div class="limits">
+<ul>
+<li><b>Most supplement evidence comes from non-alcoholic fatty liver.</b> Fatty liver from overeating and fatty liver from alcohol share mechanisms but aren't the same disease. A NASH result like vitamin E's doesn't transfer automatically, as the null alcoholic-hepatitis trial shows.</li>
+<li><b>The recovery data are short and small.</b> The FibroScan studies followed 137 and 23 people for one week and two months. Fibrosis regression over years comes from biopsy cohorts, not trials.</li>
+<li><b>The fat-type finding is animal-only.</b> It's consistent across rats and mice and over decades, but no human trial has randomised drinkers to saturated versus polyunsaturated fat.</li>
+<li><b>The taurine dose conversion is approximate.</b> Body-surface-area scaling is the FDA convention for starting doses, not a proof that 17&nbsp;g a day would harm a person.</li>
+<li><b>The coffee data are observational.</b> They're large and consistent, and include alcoholic cirrhosis specifically, but people who drink coffee differ from those who don't in ways adjustment can't fully remove.</li>
+</ul>
+<p class="lim-close">The trial this field needs is boring: heavy drinkers cutting down, randomised to a seed-oil-free, choline- and protein-adequate diet or their usual diet, with FibroScan and enzymes at 8 and 24 weeks. That would test the dietary background the animal studies point to, and nobody sells it.</p>
+</div>
+</section>
+
+<!-- ============================ REFERENCES ============================ -->
+<section class="refwrap">
+<div class="part-head" id="refs">
+  <div class="part-num">REFS</div>
+  <h2>References</h2>
+</div>
+
+<div class="ref-group">Alcohol and the liver</div>
+<ol class="refs">
+<li id="r1">Seitz HK, Bataller R, Cortez-Pinto H, et al. Alcoholic liver disease. <span class="j">Nat Rev Dis Primers</span> 2018;4(1):16. PMID 30115921. <span class="note">Most people drinking &gt;40&nbsp;g/day develop fatty liver; abstinence is the best treatment at all stages.</span></li>
+<li id="r2">Crabb DW, Im GY, Szabo G, et al. Diagnosis and treatment of alcohol-associated liver diseases: 2019 practice guidance from the American Association for the Study of Liver Diseases. <span class="j">Hepatology</span> 2020;71(1):306&ndash;333. PMID 31314133. <span class="note">Cited for the general position on abstinence; specific figures were not checked against the full text.</span></li>
+<li id="r3">Nanji AA. Role of different dietary fatty acids in the pathogenesis of experimental alcoholic liver disease. <span class="j">Alcohol</span> 2004;34(1):21&ndash;25. PMID 15670661. <span class="note">Review of his rat work: pathology only with ethanol plus PUFA.</span></li>
+<li id="r4">Kirpich IA, Feng W, Wang Y, et al. The type of dietary fat modulates intestinal tight junction integrity, gut permeability, and hepatic toll-like receptor expression in a mouse model of alcoholic liver disease. <span class="j">Alcohol Clin Exp Res</span> 2012;36(5):835&ndash;846. PMID 22150547. <span class="note">Corn oil vs MCT/beef tallow, 8 weeks.</span></li>
+<li id="r5">Nicoll R, Gerasimidis K, Forrest E. The role of micronutrients in the pathogenesis of alcohol-related liver disease. <span class="j">Alcohol Alcohol</span> 2022;57(3):275&ndash;282. PMID 34491307.</li>
+</ol>
+
+<div class="ref-group">Recovery</div>
+<ol class="refs">
+<li id="r6">Trabut JB, Th&eacute;pot V, Nalpas B, et al. Rapid decline of liver stiffness following alcohol withdrawal in heavy drinkers. <span class="j">Alcohol Clin Exp Res</span> 2012;36(8):1407&ndash;1411. PMID 22404692.</li>
+<li id="r7">Gelsi E, Dainese R, Truchi R, et al. Effect of detoxification on liver stiffness assessed by Fibroscan&reg; in alcoholic patients. <span class="j">Alcohol Clin Exp Res</span> 2011;35(3):566&ndash;570. PMID 21143253.</li>
+<li id="r8">Lackner C, Spindelboeck W, Haybaeck J, et al. Histological parameters and alcohol abstinence determine long-term prognosis in patients with alcoholic liver disease. <span class="j">J Hepatol</span> 2017;66(3):610&ndash;618. PMID 27894795.</li>
+<li id="r9">Louvet A, Bourcier V, Archambeaud I, et al. Low alcohol consumption influences outcomes in individuals with alcohol-related compensated cirrhosis in a French multicenter cohort. <span class="j">J Hepatol</span> 2023;78(3):501&ndash;512. PMID 36423805. <span class="note">CIRRAL cohort, 650 patients.</span></li>
+<li id="r10">Roberts E, Smith R, Hotopf M, et al. The efficacy and tolerability of pharmacologically active interventions for alcohol-induced hangover symptomatology: a systematic review of the evidence from randomised placebo-controlled trials. <span class="j">Addiction</span> 2022;117(8):2157&ndash;2167. PMID 34972259.</li>
+</ol>
+
+<div class="ref-group">The twelve items</div>
+<ol class="refs">
+<li id="r11">Martin PR, Singleton CK, Hiller-Sturmh&ouml;fel S. The role of thiamine deficiency in alcoholic brain disease. <span class="j">Alcohol Res Health</span> 2003;27(2):134&ndash;142. PMID 15303623.</li>
+<li id="r12">Thomson AD, Cook CC, Touquet R, et al. The Royal College of Physicians report on alcohol: guidelines for managing Wernicke's encephalopathy in the accident and emergency department. <span class="j">Alcohol Alcohol</span> 2002;37(6):513&ndash;521. PMID 12414541. <span class="note">Thiamine-before-glucose is from the standard guidance this report sets out; the abstract states the parenteral B-vitamin recommendation.</span></li>
+<li id="r13">Smithline HA, Donnino M, Greenblatt DJ. Pharmacokinetics of high-dose oral thiamine hydrochloride in healthy subjects. <span class="j">BMC Clin Pharmacol</span> 2012;12:4. PMID 22305197.</li>
+<li id="r14">Manzardo AM, He J, Poje A, et al. Double-blind, randomized placebo-controlled clinical trial of benfotiamine for severe alcohol dependence. <span class="j">Drug Alcohol Depend</span> 2013;133(2):562&ndash;570. PMID 23992649.</li>
+<li id="r15">Ferenci P, Dragosics B, Dittrich H, et al. Randomized controlled trial of silymarin treatment in patients with cirrhosis of the liver. <span class="j">J Hepatol</span> 1989;9(1):105&ndash;113. PMID 2671116.</li>
+<li id="r16">Par&eacute;s A, Planas R, Torres M, et al. Effects of silymarin in alcoholic patients with cirrhosis of the liver: results of a controlled, double-blind, randomized and multicenter trial. <span class="j">J Hepatol</span> 1998;28(4):615&ndash;621. PMID 9566830.</li>
+<li id="r17">Rambaldi A, Jacobs BP, Gluud C. Milk thistle for alcoholic and/or hepatitis B or C virus liver diseases. <span class="j">Cochrane Database Syst Rev</span> 2007;(4):CD003620. PMID 17943794.</li>
+<li id="r18">Wallace SN, Carrier DJ, Clausen EC. Batch solvent extraction of flavanolignans from milk thistle (<em>Silybum marianum</em> L. Gaertner). <span class="j">Phytochem Anal</span> 2005;16(1):7&ndash;16. PMID 15688950.</li>
+<li id="r19">Duan L, Carrier DJ, Clausen EC. Silymarin extraction from milk thistle using hot water. <span class="j">Appl Biochem Biotechnol</span> 2004;113&ndash;116:559&ndash;568. PMID 15054277.</li>
+<li id="r20">Iimuro Y, Bradford BU, Forman DT, Thurman RG. Glycine prevents alcohol-induced liver injury by decreasing alcohol in the rat stomach. <span class="j">Gastroenterology</span> 1996;110(5):1536&ndash;1542. PMID 8613061.</li>
+<li id="r21">Yin M, Ikejima K, Arteel GE, et al. Glycine accelerates recovery from alcohol-induced liver injury. <span class="j">J Pharmacol Exp Ther</span> 1998;286(2):1014&ndash;1019. PMID 9694963.</li>
+<li id="r22">Pei J, Chen L, Pushparaj R, et al. High-dose taurine supplementation exacerbates alcohol-associated liver disease by inducing gut microbiota dysbiosis and bile acid dysregulation in mice. <span class="j">eGastroenterology</span> 2026;4(1):e100321. PMID 41809269. <span class="note">Tulane and Louisville; no conflicts declared. Human-equivalent doses are my conversion (mouse Km 3, human Km 37).</span></li>
+<li id="r23">Ma H, Zeng M, Han Y, et al. A multicenter, randomized, double-blind trial comparing the efficacy and safety of TUDCA and UDCA in Chinese patients with primary biliary cholangitis. <span class="j">Medicine (Baltimore)</span> 2016;95(47):e5391. PMID 27893675.</li>
+<li id="r24">Pelletier G, Roulot D, Davion T, et al. A randomized controlled trial of ursodeoxycholic acid in patients with alcohol-induced cirrhosis and jaundice. <span class="j">Hepatology</span> 2003;37(4):887&ndash;892. PMID 12668982.</li>
+<li id="r25">Lindor KD, Kowdley KV, Luketic VA, et al. High-dose ursodeoxycholic acid for the treatment of primary sclerosing cholangitis. <span class="j">Hepatology</span> 2009;50(3):808&ndash;814. PMID 19585548.</li>
+<li id="r26">Kennedy OJ, Roderick P, Buchanan R, et al. Systematic review with meta-analysis: coffee consumption and the risk of cirrhosis. <span class="j">Aliment Pharmacol Ther</span> 2016;43(5):562&ndash;574. PMID 26806124.</li>
+<li id="r27">Kennedy OJ, Fallowfield JA, Poole R, et al. All coffee types decrease the risk of adverse clinical outcomes in chronic liver disease: a UK Biobank study. <span class="j">BMC Public Health</span> 2021;21(1):970. PMID 34154561.</li>
+<li id="r28">Bailey DG, Malcolm J, Arnold O, Spence JD. Grapefruit juice&ndash;drug interactions. <span class="j">Br J Clin Pharmacol</span> 1998;46(2):101&ndash;110. PMID 9723817.</li>
+<li id="r29">Masnadi Shirazi K, Shirinpour E, Masnadi Shirazi A, Nikniaz Z. Effect of cranberry supplementation on liver enzymes and cardiometabolic risk factors in patients with NAFLD: a randomized clinical trial. <span class="j">BMC Complement Med Ther</span> 2021;21(1):283. PMID 34798892.</li>
+<li id="r30">Hormoznejad R, Mohammad Shahi M, Rahim F, et al. Combined cranberry supplementation and weight loss diet in non-alcoholic fatty liver disease: a double-blind placebo-controlled randomized clinical trial. <span class="j">Int J Food Sci Nutr</span> 2020;71(8):991&ndash;1000. PMID 32237922.</li>
+<li id="r31">Ajmo JM, Liang X, Rogers CQ, et al. Resveratrol alleviates alcoholic fatty liver in mice. <span class="j">Am J Physiol Gastrointest Liver Physiol</span> 2008;295(4):G833&ndash;G842. PMID 18755807.</li>
+<li id="r32">Chachay VS, Macdonald GA, Martin JH, et al. Resveratrol does not benefit patients with nonalcoholic fatty liver disease. <span class="j">Clin Gastroenterol Hepatol</span> 2014;12(12):2092&ndash;2103. PMID 24582567.</li>
+<li id="r33">Zeraattalab-Motlagh S, Jayedi A, Shab-Bidar S. The effects of resveratrol supplementation in patients with type 2 diabetes, metabolic syndrome, and nonalcoholic fatty liver disease: an umbrella review of meta-analyses of randomized controlled trials. <span class="j">Am J Clin Nutr</span> 2021;114(5):1675&ndash;1685. PMID 34320173.</li>
+<li id="r34">Cordero-Herrera I, Kozyra M, Zhuge Z, et al. AMP-activated protein kinase activation and NADPH oxidase inhibition by inorganic nitrate and nitrite prevent liver steatosis. <span class="j">Proc Natl Acad Sci U S A</span> 2019;116(1):217&ndash;226. PMID 30559212. <span class="note">Lundberg and Weitzberg are co-inventors on patent applications for therapeutic nitrate.</span></li>
+<li id="r35">Fateh HL, Rashid SA, Muhammad SS, et al. Comparing effects of beetroot juice and Mediterranean diet on liver enzymes and sonographic appearance in patients with non-alcoholic fatty liver disease: a randomized control trials. <span class="j">Front Nutr</span> 2023;10:1181706. PMID 37662597.</li>
+<li id="r36">Sadzuka Y, Inoue C, Hirooka S, et al. Effects of theanine on alcohol metabolism and hepatic toxicity. <span class="j">Biol Pharm Bull</span> 2005;28(9):1702&ndash;1706. PMID 16141543. <span class="note">Theanine given by intraperitoneal injection.</span></li>
+<li id="r37">Liu MY, Xu KH, Liu S, Xiao WJ. Protective effect and mechanism of L-theanine on acute alcoholic liver injury in mice. <span class="j">Mol Nutr Food Res</span> 2024;68(23):e2400766. PMID 39468986.</li>
+<li id="r38">Sanyal AJ, Chalasani N, Kowdley KV, et al. Pioglitazone, vitamin E, or placebo for nonalcoholic steatohepatitis. <span class="j">N Engl J Med</span> 2010;362(18):1675&ndash;1685. PMID 20427778. <span class="note">PIVENS; NIH-funded.</span></li>
+<li id="r39">Mezey E, Potter JJ, Rennie-Tankersley L, et al. A randomized placebo controlled trial of vitamin E for alcoholic hepatitis. <span class="j">J Hepatol</span> 2004;40(1):40&ndash;46. PMID 14672612.</li>
+<li id="r40">Pervez MA, Khan DA, Mirza SA, et al. Comparison of delta-tocotrienol and alpha-tocopherol effects on hepatic steatosis and inflammatory biomarkers in patients with non-alcoholic fatty liver disease: a randomized double-blind active-controlled trial. <span class="j">Complement Ther Med</span> 2022;70:102866. PMID 35933083. <span class="note">No placebo arm; funding not checked.</span></li>
+<li id="r41">Sundram K, Sambanthamurthi R, Tan YA. Palm fruit chemistry and nutrition. <span class="j">Asia Pac J Clin Nutr</span> 2003;12(3):355&ndash;362. PMID 14506001. <span class="note">Authors from the Malaysian Palm Oil Board.</span></li>
+</ol>
+
+<div class="ref-group">What the list left out</div>
+<ol class="refs">
+<li id="r42">Fischer LM, daCosta KA, Kwock L, et al. Sex and menopausal status influence human dietary requirements for the nutrient choline. <span class="j">Am J Clin Nutr</span> 2007;85(5):1275&ndash;1285. PMID 17490963.</li>
+<li id="r43">Nguyen-Khac E, Thevenot T, Piquet MA, et al. Glucocorticoids plus N-acetylcysteine in severe alcoholic hepatitis. <span class="j">N Engl J Med</span> 2011;365(19):1781&ndash;1789. PMID 22070475. <span class="note">Funded by the French Programme Hospitalier de Recherche Clinique.</span></li>
+</ol>
+</section>
+
+<div style="margin-top:44px">
+  <span class="tag">Alcohol</span><span class="tag">Liver</span><span class="tag">Fatty Liver</span><span class="tag">Alcoholic Hepatitis</span><span class="tag">Cirrhosis</span><span class="tag">FibroScan</span><span class="tag">Acetaldehyde</span><span class="tag">Endotoxin</span><span class="tag">Linoleic Acid</span><span class="tag">Coffee</span><span class="tag">Thiamine</span><span class="tag">Milk Thistle</span><span class="tag">Taurine</span><span class="tag">TUDCA</span><span class="tag">Vitamin E</span><span class="tag">NAC</span><span class="tag">Choline</span><span class="tag">Hangover</span><span class="tag">Adjudication</span>
+</div>
+
+<footer class="end">
+  <p><b>A note on sourcing.</b> The X post and its replies were read in full through the fxtwitter API. All 43 references were checked against their PubMed abstracts in this session. Not checked against full text: the AASLD guidance (ref 2), the funding of the tocotrienol trial (ref 40), and the participant numbers in the benfotiamine trial beyond the abstract. Uncited but standard: the ADH/ALDH/CYP2E1 pathway and the NADH shift; alcohol's diuretic effect through vasopressin; steatosis clearing within weeks of abstinence; the US acetaminophen liver warning; withdrawal seizures and delirium tremens; thiamine before glucose; liver-injury case reports for green tea extract, kava, niacin, ashwagandha and turmeric; vitamin A's added liver toxicity with alcohol; ~150&nbsp;mg choline per egg; 800&nbsp;IU natural vitamin E &asymp; 536&nbsp;mg. Spoon conversions for glycine and taurine powders are approximate.</p>
+  <p>Related papers: <a href="metabolic-health.html">Metabolic Health</a> for the terrain framework, <a href="linoleic-acid.html">Linoleic Acid</a> for the seed-oil mechanism behind I.3, and <a href="statins.html">Statins &amp; LDL</a> for the nitrate pathway.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build a Day — Nutrients</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9;
+    --accent: #7a3b2e; --tag-bg: #f1ede4;
+    --good: #3f6b3a; --mid: #a07a1f; --low: #a0472c; --track: #efebe2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.6; margin: 0; padding: 0 0 6rem;
+  }
+  .page-wrap { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem 0; }
+
+  /* ---- Site header / subnav (shared chrome, matches the other Nutrition pages) ---- */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+    border-bottom:2px solid #1a1f1a;margin-bottom:0;
+  }
+  .site-header-inner{
+    max-width:1000px;margin:0 auto;padding:14px 28px;
+    display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+  }
+  .site-logo{
+    font-family:'Fraunces',Georgia,serif;font-weight:600;font-style:italic;font-size:18px;
+    color:#33421f;border-bottom:none;text-decoration:none;
+  }
+  .site-logo:hover{border-bottom:none;color:#4a5d3a;}
+  .tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .tabs a{color:#3d453c;border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+  .tabs a:hover{color:#1a1f1a;background:#efece1;}
+  .tabs a.active{color:#fffefb;background:#4a5d3a;font-weight:600;}
+  .subnav{border-bottom:1px solid #d9d4c4;background:#f7f5ee;}
+  .subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+  .subnav a{color:#3d453c;border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+  .subnav a:hover{color:#4a5d3a;border-bottom-color:#d9d4c4;}
+  .subnav a.active{color:#33421f;border-bottom-color:#4a5d3a;font-weight:600;}
+
+  h1 { font-size: 2rem; margin-bottom: 0.2rem; }
+  .subtitle { color: var(--sub); font-style: italic; margin-top: 0; margin-bottom: 1.5rem; }
+  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 2.5rem; font-size: 1.35rem; }
+  h3 { font-size: 1rem; margin: 1.2rem 0 0.4rem; }
+  p { margin: 0.7rem 0; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122,59,46,.35); transition: border-color .15s ease; }
+  a:hover { border-bottom-color: var(--accent); }
+  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
+  .crumbs a { border-bottom: none; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  /* ---- Controls ---- */
+  .toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; align-items: center; margin: 1.2rem 0 1rem; }
+  .toolbar .label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--sub); margin-right: 0.4rem; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  button { font: inherit; cursor: pointer; }
+  .seg button, .btn {
+    background: #fff; border: none; padding: 0.3rem 0.75rem; font-size: 0.88rem; color: var(--ink);
+  }
+  .seg button + button { border-left: 1px solid var(--line); }
+  .seg button[aria-pressed="true"] { background: #4a5d3a; color: #fffefb; }
+  .btn { border: 1px solid var(--line); border-radius: 6px; }
+  .btn:hover, .seg button:hover:not([aria-pressed="true"]) { background: var(--tag-bg); }
+
+  /* ---- Meals ---- */
+  .meals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .meal { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 0.8rem 0.9rem 0.9rem; display: flex; flex-direction: column; }
+  .meal h3 { margin: 0 0 0.1rem; display: flex; justify-content: space-between; align-items: baseline; }
+  .meal h3 small { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 11px; color: var(--sub); }
+  .items { list-style: none; margin: 0.4rem 0 0.6rem; padding: 0; flex: 1; min-height: 2rem; }
+  .items li { display: grid; grid-template-columns: 1fr auto; gap: 0.1rem 0.5rem; padding: 0.35rem 0; border-bottom: 1px dashed var(--line); font-size: 0.9rem; line-height: 1.3; }
+  .items li:last-child { border-bottom: none; }
+  .items .por { grid-column: 1; color: var(--sub); font-size: 0.78rem; }
+  .items .qty { grid-row: 1 / span 2; grid-column: 2; display: flex; align-items: center; gap: 0.15rem; }
+  .qty button { width: 1.6rem; height: 1.6rem; border: 1px solid var(--line); background: var(--bg); border-radius: 4px; line-height: 1; padding: 0; color: var(--ink); }
+  .qty button:hover { background: var(--tag-bg); }
+  .qty span { min-width: 2.1rem; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; }
+  .empty { color: var(--sub); font-style: italic; font-size: 0.85rem; padding: 0.35rem 0; }
+  select { font: inherit; font-size: 0.88rem; width: 100%; padding: 0.35rem 0.4rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+
+  /* ---- Results ---- */
+  .summary { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; margin: 1.6rem 0 0.4rem; font-size: 0.95rem; }
+  .summary b { font-family: 'IBM Plex Mono', monospace; font-size: 1.15rem; }
+  .results { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 2rem; align-items: start; }
+  .group-title { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--sub); margin: 1.1rem 0 0.3rem; }
+  .row { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) 6.2rem; gap: 0.6rem; align-items: center; padding: 0.22rem 0; font-size: 0.88rem; }
+  .row .nm a { border-bottom: none; color: var(--ink); }
+  .row .nm a:hover { color: var(--accent); }
+  .row .val { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-align: right; color: var(--sub); white-space: nowrap; }
+  .bar { position: relative; height: 0.8rem; background: var(--track); border-radius: 3px; }
+  .bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 3px; transition: width .25s ease; }
+  .bar::after { content: ""; position: absolute; left: 66.67%; top: -3px; bottom: -3px; border-left: 1.5px solid #1a1f1a; opacity: .55; }
+  .bar .ul { position: absolute; right: 2px; top: -1px; font-size: 0.62rem; font-family: 'IBM Plex Mono', monospace; color: #fff; background: var(--low); padding: 0 3px; border-radius: 2px; line-height: 0.9rem; }
+  .row .src { grid-column: 2 / span 2; font-size: 0.74rem; color: var(--sub); margin-top: -0.2rem; line-height: 1.25; }
+  .pct-info { background: #a39d91; }
+  .bar.nomark::after { display: none; }
+  .bar .mk { position: absolute; top: -3px; bottom: -3px; border-left: 1.5px dashed #1a1f1a; opacity: .5; }
+  .pct-good { background: var(--good); } .pct-mid { background: var(--mid); } .pct-low { background: var(--low); }
+  .scale-note { font-size: 0.78rem; color: var(--sub); }
+  .key { display: inline-flex; align-items: center; gap: 0.3rem; margin-right: 0.9rem; }
+  .key i { width: 0.7rem; height: 0.7rem; border-radius: 2px; display: inline-block; }
+
+  .side { position: sticky; top: 72px; }
+  .panel { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 0.9rem 1rem 1rem; }
+  .panel + .panel { margin-top: 1rem; }
+  .panel h3 { margin-top: 0; }
+  .panel p.hint { font-size: 0.82rem; color: var(--sub); margin: 0 0 0.6rem; }
+  .sug { border-top: 1px dashed var(--line); padding: 0.55rem 0; }
+  .sug:first-of-type { border-top: none; }
+  .sug-top { display: flex; justify-content: space-between; gap: 0.5rem; align-items: baseline; }
+  .sug-name { font-weight: 600; font-size: 0.92rem; }
+  .sug-name small { font-weight: 400; color: var(--sub); }
+  .sug-fills { font-size: 0.78rem; color: var(--sub); margin: 0.15rem 0 0.3rem; }
+  .sug-add { display: inline-flex; gap: 0.25rem; }
+  .sug-add button { font-size: 0.72rem; padding: 0.1rem 0.45rem; border: 1px solid var(--line); background: var(--bg); border-radius: 4px; font-family: 'IBM Plex Mono', monospace; color: var(--ink); }
+  .sug-add button:hover { background: #4a5d3a; color: #fffefb; border-color: #4a5d3a; }
+  .warn { font-size: 0.82rem; border-left: 3px solid var(--low); background: #fbf3ef; padding: 0.45rem 0.7rem; margin: 0.5rem 0; }
+  .warn:empty { display: none; }
+
+  /* ---- Density leaderboard ---- */
+  .dens { display: grid; grid-template-columns: 11rem minmax(0,1fr) 3rem; gap: 0.2rem 0.6rem; align-items: center; font-size: 0.86rem; }
+  .dens .bar::after { display: none; }
+  .dens .bar i { background: #4a5d3a; }
+  .dens .n { text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--sub); }
+  .dens .tag { font-size: 0.68rem; color: var(--mid); font-family: 'IBM Plex Mono', monospace; }
+  .notes li { margin: 0.35rem 0; font-size: 0.92rem; }
+  .muted { color: var(--sub); font-size: 0.85rem; }
+
+  @media (max-width: 760px) {
+    .page-wrap { padding: 2rem 16px 0; }
+    .site-header-inner, .subnav-inner { padding-left: 16px; padding-right: 16px; }
+    .meals { grid-template-columns: 1fr; }
+    .results { grid-template-columns: 1fr; }
+    .side { position: static; }
+    .row { grid-template-columns: 6.5rem minmax(0, 1fr) 5.4rem; }
+    .dens { grid-template-columns: 8rem minmax(0,1fr) 2.6rem; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html">Papers</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="nutrients.html" class="active">Nutrients</a>
+  <a href="supplements.html">Supplements</a>
+  <a href="recipes.html">Recipes</a>
+</div></div>
+<div class="page-wrap">
+
+<div class="crumbs"><a href="nutrients.html">← Nutrients index</a> · <a href="foods.html">Food Database</a> · interactive</div>
+<h1>Build a Day</h1>
+<p class="subtitle">Pick breakfast, lunch and dinner and see which nutrient targets the day actually hits.</p>
+
+<p>Two things show up quickly. A few foods, like liver, oysters, sardines and eggs, cover a big share of the list in a single serving. And once you can see the gaps, closing them is usually a matter of adding one or two specific foods, not more food overall. Start from a preset or build your own. The <em>Close the gaps</em> panel suggests what to add next.</p>
+
+<div class="toolbar">
+  <div><span class="label">Start from</span>
+    <span class="seg" id="presets">
+      <button data-preset="typical">Typical American day</button>
+      <button data-preset="dense">Nutrient-dense day</button>
+      <button data-preset="organ">Organ-meat day</button>
+    </span>
+  </div>
+  <button class="btn" id="clear">Clear all</button>
+  <div><span class="label">Targets for</span>
+    <span class="seg" id="sex">
+      <button data-sex="m" aria-pressed="true">Men</button>
+      <button data-sex="f">Women</button>
+    </span>
+  </div>
+</div>
+
+<div class="meals" id="meals"></div>
+
+<div class="summary" id="summary"></div>
+
+<div class="results">
+  <div>
+    <div class="scale-note">
+      <span class="key"><i class="pct-low"></i>under 50%</span>
+      <span class="key"><i class="pct-mid"></i>50–99%</span>
+      <span class="key"><i class="pct-good"></i>target met</span>
+      <span>The black tick marks 100%. Bars stop at 150%.</span>
+    </div>
+    <div id="bars"></div>
+  </div>
+  <div class="side">
+    <div class="panel">
+      <h3>Close the gaps</h3>
+      <p class="hint">These are the foods that would cover the most of what's still missing, one serving each. Foods that would push you past a safe upper limit are left out.</p>
+      <div id="suggest"></div>
+    </div>
+    <div class="warn" id="warn"></div>
+  </div>
+</div>
+
+<h2>The densest foods on the list</h2>
+<p>The score is the average share of 21 targets, the 20 vitamins and minerals plus EPA + DHA (sodium left out), that the food covers. Each nutrient counts for at most 100%, so a food that is huge in a single vitamin can't top the list on that alone. The two views give different answers, and both are worth seeing. <strong>Per 100 kcal</strong>, cooked greens and mushrooms win: lots of vitamin K, folate and magnesium for almost no calories. <strong>Per serving</strong>, the portion you'd actually eat, liver, oysters and fish take over. You can't eat 2,000 kcal of spinach, but one 4 oz plate of liver covers about half of it.</p>
+<div class="toolbar" style="margin-top:0.4rem"><span class="seg" id="densmode">
+  <button data-mode="kcal" aria-pressed="true">Per 100 kcal</button>
+  <button data-mode="serving">Per serving</button>
+</span></div>
+<div class="dens" id="dens"></div>
+<p class="muted" style="margin-top:0.8rem">Fortified cereal ranks well only because vitamins and iron are sprayed onto it. It has almost no magnesium, potassium, selenium or vitamin K.</p>
+
+<h2>How the numbers work</h2>
+<ul class="notes">
+  <li><strong>Food data</strong> comes from USDA FoodData Central, SR Legacy (2018 release), as nutrients per 100 g scaled to the portion shown. Hover over a food to see the exact USDA entry. Where USDA left a nutrient blank, it's estimated (from protein for glycine, otherwise from the closest USDA entry). The <a href="foods.html">Food Database</a> marks those values with a ~. Bone broth is partly estimated: USDA has no bone broth with glycine, so its glycine is set at 22% of protein, the ratio in gelatin. The full table of foods and values is in the <a href="foods.html">Food Database</a>.</li>
+  <li><strong>Brand products</strong> (the jerky, protein powders, bars, sport drink and so on) use the manufacturer's nutrition label. Labels list only a few vitamins and minerals, so the rest are estimated from each product's ingredient list using USDA values, scaled to match the label's protein and fat. Meat and fish servings are 4 oz cooked; use + to go to 8 oz.</li>
+  <li><strong>Omega-3 and omega-6</strong> follow the <a href="linoleic-acid.html">Linoleic Acid</a> paper. <em>EPA + DHA</em>, the long-chain omega-3s from fish, counts as a target (500 mg a day; there's no official RDA). <em>ALA</em>, the plant omega-3, is shown in grey for reference only, because little of it becomes EPA or DHA. <em>Linoleic acid</em> is shown as a share of calories and treated as a ceiling: about 1–2% of calories covers the need, so the bar is green up to 2.5% and red past 5%. Typical Western intake is 8–10%. Eggs and chicken carry more linoleic acid than you might expect, because the animals are fed grain and soy. Sardines packed in soybean oil pick it up from the oil.</li>
+  <li><strong>Targets</strong> are the US RDA, or the AI where no RDA exists, for adults aged 19–50 (magnesium uses the 31+ figure). Glycine has no official target. The 10 g line comes from the <a href="glycinecollagen.html">Glycine / Collagen</a> page and is an estimate, not an RDA.</li>
+  <li><strong>Sodium</strong> shows the 1,500 mg AI as its target, with no upper warning on purpose. The <a href="sodium.html">Sodium</a> page explains why cooking at home tends to leave people short, not over.</li>
+  <li><strong>Upper limits</strong> are flagged for preformed vitamin A (from animal foods only; beta-carotene from plants doesn't count), copper, zinc, iron, selenium, calcium and vitamin D. They are limits on chronic <em>daily</em> intake. One serving of liver a week goes past the vitamin A and copper limits on the day you eat it, and that is fine.</li>
+  <li><strong>Absorption isn't modeled.</strong> Iron from spinach and beans is absorbed several times less well than heme iron from meat. Beta-carotene converts to retinol inefficiently, and less so in some people. Spinach's calcium is mostly bound to oxalate.</li>
+  <li><strong>Niacin</strong> counts preformed niacin only. The body also makes it from tryptophan, so high-protein days are undercounted.</li>
+  <li><strong>Vitamin D</strong> comes mainly from sun on skin, not food (see <a href="sunlight.html">Sunlight</a>). A red vitamin D bar on a day without fatty fish is expected.</li>
+  <li><strong>Not tracked:</strong> <a href="vitamink2.html">K2</a> and <a href="vitaminb7biotin.html">biotin</a> (SR Legacy has no reliable values), <a href="chloride.html">chloride</a> (it follows sodium almost gram for gram), and the compounds on the index without food-composition data or intake targets (<a href="butyrate.html">butyrate</a>, <a href="creatine.html">creatine</a>, <a href="glutathione.html">glutathione</a>, <a href="chlorophyll.html">chlorophyll</a>, <a href="stearicacid.html">stearic acid</a>, and the other amino acids).</li>
+</ul>
+
+</div>
+
+<script src="assets/js/foods-data.js"></script>
+<script src="assets/js/nutrient-targets.js"></script>
+<script>
+const FOODS = window.FOODS, NUTRIENTS = window.NUTRIENTS;
+// targets to reach; 'info' (ALA) and 'limit' (linoleic acid) rows are shown but not counted
+const CORE = NUTRIENTS.filter(n => n[0] !== 'gly' && !n[8]);
+const PLANT_CATS = new Set(['Vegetables','Fruit','Starches']);
+const MEALS = [['b','Breakfast'],['l','Lunch'],['d','Dinner & dessert']];
+const byId = Object.fromEntries(FOODS.map(f => [f.id, f]));
+const byName = Object.fromEntries(FOODS.map(f => [f.n, f]));
+
+const P = (...items) => items.map(([n, q]) => ({ id: byName[n].id, q: q || 1 }));
+const PRESETS = {
+  typical: {
+    b: P(['Bagel'], ['Cream cheese']),
+    l: P(['Fast-food hamburger', 2], ['French fries, fast food'], ['Cola']),
+    d: P(['Frozen cheese pizza', 1.5], ['Ranch dressing'], ['Potato chips'], ['Vanilla ice cream']),
+  },
+  dense: {
+    b: P(['Eggs, scrambled'], ['Butter, salted'], ['Orange juice']),
+    l: P(['Sardines, canned in oil'], ['Arugula'], ['Beets, cooked'], ['Avocado'], ['Salt']),
+    d: P(['Sirloin steak', 2], ['Baked potato, with skin'], ['Spinach, cooked'], ['Butter, salted'], ['Salt'], ['Greek yogurt, whole milk'], ['Blueberries'], ['Honey']),
+  },
+  organ: {
+    b: P(['Eggs, scrambled'], ['Butter, salted'], ['Kiwi']),
+    l: P(['Beef heart'], ['Baked potato, with skin'], ['Arugula'], ['Salt']),
+    d: P(['Beef liver'], ['Sweet potato, baked'], ['Collards, cooked'], ['Butter, salted'], ['Salt'], ['Gelatin / collagen powder'], ['Greek yogurt, whole milk'], ['Honey']),
+  },
+};
+
+let sex = 0;
+let plan = { b: [], l: [], d: [] };
+try {
+  const saved = JSON.parse(localStorage.getItem('buildaday') || 'null');
+  if (saved && saved.plan) { plan = saved.plan; sex = saved.sex || 0; }
+  else plan = structuredClone(PRESETS.dense);
+} catch (e) { plan = JSON.parse(JSON.stringify(PRESETS.dense)); }
+// drop anything whose food id no longer exists
+for (const m in plan) plan[m] = (plan[m] || []).filter(it => byId[it.id]);
+
+function save() { try { localStorage.setItem('buildaday', JSON.stringify({ plan, sex })); } catch (e) {} }
+
+// amount of nutrient k in one serving of food f
+const amt = (f, k) => (f.v[k] || 0) * f.g / 100;
+const kcal = f => amt(f, 'kcal');
+const target = n => n[3][sex];
+
+function fmt(x, unit) {
+  if (unit === 'µg' || x >= 100) return Math.round(x).toLocaleString();
+  if (x >= 10) return x.toFixed(0);
+  return x.toFixed(1);
+}
+
+function totals() {
+  const t = {}, src = {}; let preA = 0;
+  for (const n of NUTRIENTS) { t[n[0]] = 0; src[n[0]] = {}; }
+  t.kcal = t.o6 = t.o3 = 0;
+  for (const m in plan) for (const it of plan[m]) {
+    const f = byId[it.id];
+    t.kcal += kcal(f) * it.q;
+    t.o6 += amt(f, 'o6') * it.q;
+    t.o3 += amt(f, 'o3') * it.q;
+    for (const n of NUTRIENTS) {
+      const a = amt(f, n[0]) * it.q;
+      t[n[0]] += a;
+      src[n[0]][f.n] = (src[n[0]][f.n] || 0) + a;
+    }
+    if (!PLANT_CATS.has(f.c)) preA += amt(f, 'a') * it.q;
+  }
+  return { t, src, preA };
+}
+
+function overUL(n, t, preA) {
+  if (!n[6]) return false;
+  const v = n[0] === 'a' ? preA : t[n[0]];
+  return v > n[6];
+}
+
+/* ---------- rendering ---------- */
+const optionsHTML = (() => {
+  const cats = [...new Set(FOODS.map(f => f.c))];
+  return '<option value="">+ Add a food…</option>' + cats.map(c =>
+    `<optgroup label="${c}">` + FOODS.filter(f => f.c === c)
+      .map(f => `<option value="${f.id}">${f.n} (${f.p})</option>`).join('') + '</optgroup>').join('');
+})();
+
+function renderMeals() {
+  const el = document.getElementById('meals');
+  el.innerHTML = MEALS.map(([m, label]) => {
+    const items = plan[m];
+    const kc = items.reduce((s, it) => s + kcal(byId[it.id]) * it.q, 0);
+    const lis = items.length ? items.map((it, i) => {
+      const f = byId[it.id];
+      return `<li title="USDA: ${f.src}"><span>${f.n}</span><span class="por">${f.p}${it.q !== 1 ? ' × ' + it.q : ''} · ${Math.round(kcal(f) * it.q)} kcal</span>
+        <span class="qty"><button data-m="${m}" data-i="${i}" data-d="-0.5" aria-label="Less">−</button><span>×${it.q}</span><button data-m="${m}" data-i="${i}" data-d="0.5" aria-label="More">+</button></span></li>`;
+    }).join('') : '<li class="empty">Nothing yet</li>';
+    return `<div class="meal"><h3>${label}<small>${Math.round(kc)} kcal</small></h3>
+      <ul class="items">${lis}</ul><select data-m="${m}" aria-label="Add food to ${label}">${optionsHTML}</select></div>`;
+  }).join('');
+}
+
+function barRow(n, val, src, ul) {
+  const pct = val / target(n) * 100;
+  const cls = pct >= 100 ? 'pct-good' : pct >= 50 ? 'pct-mid' : 'pct-low';
+  const w = Math.min(pct, 150) / 150 * 100;
+  const srcTxt = topSources(src, val);
+  return `<div class="row">
+    <span class="nm"><a href="${n[4]}">${n[1]}</a></span>
+    <span class="bar"><i class="${cls}" style="width:${w}%"></i>${ul ? '<span class="ul">&gt;UL</span>' : ''}</span>
+    <span class="val">${Math.round(pct)}% · ${fmt(val, n[2])}${n[2]}</span>
+    ${srcTxt ? `<span class="src">${srcTxt}</span>` : ''}
+  </div>`;
+}
+
+const topSources = (src, val) => {
+  const top = Object.entries(src).filter(([, a]) => a > 0).sort((a, b) => b[1] - a[1]).slice(0, 2);
+  return top.length ? 'Mostly ' + top.map(([nm, a]) => `${nm.toLowerCase()} ${Math.round(a / val * 100)}%`).join(', ') : '';
+};
+
+// Linoleic acid is a ceiling, measured as % of the day's calories (bar runs 0–10%)
+function limitRow(n, val, src, kc) {
+  const pct = kc ? val * 9 / kc * 100 : 0;
+  const [ok, high] = n[3];
+  const cls = pct <= ok ? 'pct-good' : pct <= high ? 'pct-mid' : 'pct-low';
+  const srcTxt = topSources(src, val);
+  return `<div class="row">
+    <span class="nm"><a href="${n[4]}">${n[1]}</a></span>
+    <span class="bar nomark"><i class="${cls}" style="width:${Math.min(pct, 10) * 10}%"></i><span class="mk" style="left:${ok * 10}%"></span><span class="mk" style="left:${high * 10}%"></span></span>
+    <span class="val">${pct.toFixed(1)}% kcal · ${fmt(val, n[2])}${n[2]}</span>
+    <span class="src">${srcTxt ? srcTxt + '. ' : ''}A ceiling, not a target: green up to ${ok}% of calories, red past ${high}%.</span>
+  </div>`;
+}
+
+// ALA: shown against its AI in grey, because it converts poorly to EPA/DHA
+function infoRow(n, val, src) {
+  const pct = val / target(n) * 100;
+  const srcTxt = topSources(src, val);
+  return `<div class="row">
+    <span class="nm"><a href="${n[4]}">${n[1]}</a></span>
+    <span class="bar"><i class="pct-info" style="width:${Math.min(pct, 150) / 150 * 100}%"></i></span>
+    <span class="val">${Math.round(pct)}% · ${fmt(val, n[2])}${n[2]}</span>
+    <span class="src">${srcTxt ? srcTxt + '. ' : ''}For reference only. Little ALA becomes EPA or DHA.</span>
+  </div>`;
+}
+
+function ratioRow(o6, o3) {
+  if (!o6 && !o3) return '';
+  const r = o3 ? o6 / o3 : Infinity;
+  const cls = r <= 4 ? 'pct-good' : r <= 10 ? 'pct-mid' : 'pct-low';
+  return `<div class="row">
+    <span class="nm"><a href="linoleic-acid.html">Omega-6 : omega-3</a></span>
+    <span class="bar nomark"><i class="${cls}" style="width:${Math.min(r, 20) * 5}%"></i><span class="mk" style="left:20%"></span></span>
+    <span class="val">${isFinite(r) ? (r < 10 ? r.toFixed(1) : Math.round(r)) : '∞'} : 1</span>
+    <span class="src">All omega-6 against all omega-3, including ALA. The tick marks 4 : 1. Western diets are often quoted at 15–20 : 1. Soybean oil lowers the number a little, because it carries some ALA too, but the linoleic acid bar above is the better guide.</span>
+  </div>`;
+}
+
+function renderResults() {
+  const { t, src, preA } = totals();
+  const met = CORE.filter(n => t[n[0]] >= target(n)).length;
+  const low = CORE.filter(n => t[n[0]] < target(n) * 0.5).length;
+  document.getElementById('summary').innerHTML =
+    `<span><b>${Math.round(t.kcal).toLocaleString()}</b> kcal</span>
+     <span><b>${met}</b> of ${CORE.length} targets met</span>
+     <span><b>${low}</b> under half</span>`;
+
+  const groups = [...new Set(NUTRIENTS.map(n => n[5]))];
+  document.getElementById('bars').innerHTML = groups.map(g =>
+    `<div class="group-title">${g}</div>` +
+    NUTRIENTS.filter(n => n[5] === g).map(n =>
+      n[8] === 'limit' ? limitRow(n, t[n[0]], src[n[0]], t.kcal)
+      : n[8] === 'info' ? infoRow(n, t[n[0]], src[n[0]])
+      : barRow(n, t[n[0]], src[n[0]], overUL(n, t, preA))).join('') +
+    (g === 'Omega-3 & omega-6' ? ratioRow(t.o6, t.o3) : '')
+  ).join('');
+
+  const over = NUTRIENTS.filter(n => overUL(n, t, preA));
+  document.getElementById('warn').innerHTML = over.length
+    ? `<strong>Above the daily upper limit:</strong> ${over.map(n => n[1]).join(', ')}. ` +
+      (over.some(n => n[0] === 'a' || n[0] === 'cu') && Object.values(plan).flat().some(it => byId[it.id].c === 'Organ meats')
+        ? 'This is expected on a liver day. The limit is about eating this much every day, so keep liver to once or twice a week.'
+        : 'The limit is about sustained daily intake, not a single day.')
+    : '';
+
+  renderSuggestions(t, preA);
+}
+
+function renderSuggestions(t, preA) {
+  const gaps = {};
+  for (const n of CORE) gaps[n[0]] = Math.max(0, 1 - t[n[0]] / target(n));
+  const totalGap = Object.values(gaps).reduce((a, b) => a + b, 0);
+  const el = document.getElementById('suggest');
+  if (totalGap < 0.05) { el.innerHTML = '<p class="hint">Every target is met. Nothing to add.</p>'; return; }
+
+  const scored = FOODS.filter(f => f.c !== 'Treats & convenience' || f.n === 'Salt').map(f => {
+    // would one more serving cross an upper limit?
+    for (const n of NUTRIENTS) {
+      if (!n[6]) continue;
+      const base = n[0] === 'a' ? preA : t[n[0]];
+      const add = n[0] === 'a' && PLANT_CATS.has(f.c) ? 0 : amt(f, n[0]);
+      if (base + add > n[6] && add > n[6] * 0.03) return null;
+    }
+    const fills = CORE.map(n => {
+      const share = amt(f, n[0]) / target(n);
+      return [n, Math.min(gaps[n[0]], share)];
+    }).filter(([, c]) => c > 0.02);
+    const score = fills.reduce((s, [, c]) => s + c, 0);
+    return { f, score, fills };
+  }).filter(Boolean).filter(s => s.score > 0.05).sort((a, b) => b.score - a.score).slice(0, 5);
+
+  el.innerHTML = scored.map(({ f, fills }) => {
+    const top = fills.sort((a, b) => b[1] - a[1]).slice(0, 4)
+      .map(([n, c]) => `${n[1].replace(/^(B\d+) .*/, '$1')} +${Math.round(c * 100)}%`).join(' · ');
+    return `<div class="sug">
+      <div class="sug-top"><span class="sug-name">${f.n} <small>${f.p} · ${Math.round(kcal(f))} kcal</small></span>
+        <span class="sug-add">${MEALS.map(([m, l]) => `<button data-add="${f.id}" data-m="${m}" title="Add to ${l}">${l[0]}</button>`).join('')}</span></div>
+      <div class="sug-fills">${top}</div></div>`;
+  }).join('');
+}
+
+let densMode = 'kcal';
+function renderDensity() {
+  const rows = FOODS.map(f => {
+    const kc = kcal(f);
+    if (kc < 15) return null;
+    // per 100 kcal: scale the food to 100 kcal first, then cap each nutrient at 100%
+    const scale = densMode === 'kcal' ? 100 / kc : 1;
+    const avg = CORE.filter(n => n[0] !== 'na').reduce((s, n) => s + Math.min(1, amt(f, n[0]) * scale / n[3][sex]), 0) / (CORE.length - 1);
+    return { f, d: avg * 100 };
+  }).filter(Boolean).sort((a, b) => b.d - a.d);
+  const shown = rows.slice(0, 12).concat([{ gap: true }], rows.slice(-4));
+  const max = rows[0].d;
+  document.getElementById('dens').innerHTML = shown.map(r => r.gap
+    ? '<span class="muted">…</span><span></span><span></span>'
+    : `<span>${r.f.n}${r.f.f === 'fortified' ? ' <span class="tag">fortified</span>' : ''}</span>
+       <span class="bar"><i style="width:${r.d / max * 100}%"></i></span>
+       <span class="n">${Math.round(r.d)}%</span>`).join('');
+  document.querySelectorAll('#densmode button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === densMode)));
+}
+document.getElementById('densmode').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  densMode = b.dataset.mode; renderDensity();
+});
+
+function render() { renderMeals(); renderResults(); renderDensity(); save();
+  document.querySelectorAll('#sex button').forEach(b => b.setAttribute('aria-pressed', String(+(b.dataset.sex === 'f') === sex)));
+}
+
+/* ---------- events ---------- */
+document.getElementById('meals').addEventListener('change', e => {
+  const s = e.target.closest('select'); if (!s || !s.value) return;
+  const m = s.dataset.m, existing = plan[m].find(it => it.id === s.value);
+  if (existing) existing.q += 1; else plan[m].push({ id: s.value, q: 1 });
+  render();
+});
+document.getElementById('meals').addEventListener('click', e => {
+  const b = e.target.closest('.qty button'); if (!b) return;
+  const list = plan[b.dataset.m], it = list[+b.dataset.i];
+  it.q = Math.round((it.q + parseFloat(b.dataset.d)) * 10) / 10;
+  if (it.q <= 0) list.splice(+b.dataset.i, 1);
+  render();
+});
+document.getElementById('suggest').addEventListener('click', e => {
+  const b = e.target.closest('button[data-add]'); if (!b) return;
+  const list = plan[b.dataset.m], existing = list.find(it => it.id === b.dataset.add);
+  if (existing) existing.q += 1; else list.push({ id: b.dataset.add, q: 1 });
+  render();
+});
+document.getElementById('presets').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  plan = JSON.parse(JSON.stringify(PRESETS[b.dataset.preset])); render();
+});
+document.getElementById('clear').addEventListener('click', () => { plan = { b: [], l: [], d: [] }; render(); });
+document.getElementById('sex').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  sex = b.dataset.sex === 'f' ? 1 : 0; render();
+});
+
+render();
+</script>
+</body>
+</html>

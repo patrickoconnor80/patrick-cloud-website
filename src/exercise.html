@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise: Lifting, Running, Walking &amp; HIIT</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.spine-part a{color:inherit;border-bottom:none;}
+.spine-part a:hover{border-bottom:1px solid currentColor;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+sup.cite{font-size:11px;line-height:0;vertical-align:super;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+sup.cite a{color:var(--rust);text-decoration:none;padding:0 1px;border-bottom:none;}
+sup.cite a:hover{text-decoration:underline;}
+
+/* ---- Evidence chips ---- */
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mod{background:rgba(61,106,122,.13);color:#2c4f5c;}
+.ev-mod::before{background:var(--sky);}
+.ev-animal{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-animal::before{background:var(--gold);}
+.ev-inf{background:rgba(183,138,46,.09);color:#7a5c14;}
+.ev-inf::before{background:var(--gold);opacity:.55;}
+.ev-cont{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-cont::before{background:var(--rust);}
+.ev-spec{background:rgba(61,69,60,.1);color:var(--ink-soft);}
+.ev-spec::before{background:var(--ink-soft);opacity:.6;}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.chain{
+  font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.75;
+  background:var(--paper-deep);border-radius:4px;padding:16px 20px;margin:18px 0;
+  color:var(--ink);white-space:pre-wrap;overflow-x:auto;
+}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Pushback ---- */
+.pushback{
+  border-left:3px solid var(--rust);
+  background:rgba(168,86,47,.05);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.pushback .pb-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Safety ---- */
+.safety{
+  border:2px solid var(--rust);border-radius:4px;
+  background:rgba(168,86,47,.04);
+  padding:18px 24px;margin:26px 0;font-size:17px;
+}
+.safety .sf-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+.safety ul{margin:8px 0 0;padding-left:20px;}
+.safety li{margin:6px 0;}
+
+/* ---- Deep dive ---- */
+.deepdive{
+  border-left:3px solid var(--sky);
+  background:linear-gradient(90deg,rgba(61,106,122,.045),rgba(61,106,122,0) 60%);
+  border-radius:0 4px 4px 0;
+  padding:6px 24px 14px 22px;
+  margin:26px 0;
+}
+.deepdive-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin:16px 0 8px;
+}
+.dd-skip{color:var(--ink-soft);text-transform:none;letter-spacing:0;font-weight:500;font-style:italic;font-size:12px;margin-left:8px;}
+
+/* ---- Tables ---- */
+.table-wrap{overflow-x:auto;margin:26px 0;}
+table.matrix{
+  width:100%;border-collapse:collapse;
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+}
+table.matrix th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  font-weight:600;padding:14px 16px;border-bottom:2px solid var(--ink);
+  vertical-align:bottom;
+}
+table.matrix td{
+  padding:14px 16px;border-top:1px solid var(--rule);
+  vertical-align:top;font-size:15.5px;line-height:1.5;color:var(--ink-soft);
+}
+table.matrix td:first-child{color:var(--ink);width:34%;}
+table.matrix td:last-child{width:20%;}
+table.matrix td ul{margin:6px 0 0;padding-left:18px;}
+table.matrix tr.who td{
+  background:var(--paper-deep);font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--moss-deep);font-weight:600;
+  padding:10px 16px;
+}
+.yes,.mid,.no{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+.yes{color:var(--moss-deep);}
+.mid{color:#7a5c14;}
+.no{color:var(--rust);}
+@media (max-width:640px){
+  table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100% !important;}
+  table.matrix thead{display:none;}
+  table.matrix tr{border-top:1px solid var(--rule);padding:6px 0;}
+  table.matrix td{border-top:none;padding:4px 16px;}
+  table.matrix td:first-child{padding-top:14px;}
+}
+
+/* ---- Ladder ---- */
+.ladder{margin:26px 0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--card);}
+.rung{display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--rule);}
+.rung:first-child{border-top:none;}
+.rung-lbl{padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;line-height:1.35;color:#fff;}
+.rung-lbl small{display:block;font-weight:500;opacity:.85;font-size:10.5px;margin-top:4px;letter-spacing:.04em;}
+.rung-body{padding:12px 18px;font-size:15.5px;line-height:1.5;}
+.rung-body p{margin:4px 0;}
+.r1{background:var(--moss-deep);}
+.r2{background:var(--moss);}
+.r3{background:var(--sky);}
+.r4{background:var(--gold);}
+.r5{background:var(--rust);}
+.r6{background:#6b6f68;}
+
+/* ---- Limitations / references ---- */
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+ol.refs{
+  list-style:none;padding:0;margin:24px 0 0;
+  font-family:'Newsreader',Georgia,serif;
+}
+ol.refs li{
+  counter-increment:ref;position:relative;padding:0 0 14px 3.2em;
+  font-size:15px;line-height:1.55;color:var(--ink);
+}
+.refwrap{counter-reset:ref;}
+ol.refs li:target{background:#fbf6ea;outline:2px solid #b78a2e;outline-offset:3px;border-radius:4px;}
+ol.refs li::before{
+  content:"["counter(ref)"]";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--rust);
+}
+ol.refs li .j{font-style:italic;}
+ol.refs li .note{color:var(--ink-soft);font-size:13.5px;}
+.ref-group{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.ref-group:first-of-type{margin-top:8px;}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .wrap{padding:0 16px;}
+  .byline{flex-direction:column;gap:6px;}
+  .rung{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion:no-preference){
+  section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html" class="active">Papers</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="nutrients.html">Nutrients</a>
+  <a href="supplements.html">Supplements</a>
+  <a href="recipes.html">Recipes</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Exercise Physiology</p>
+  <h1 class="title">Lifting, Running, Walking <em>&amp; HIIT</em></h1>
+  <p class="sub">Exercise trains two separate things: the engine (heart, blood and mitochondria, measured as VO<sub>2</sub>max) and the chassis (muscle, strength and bone). Both predict how long you live, and no single kind of exercise builds both well. Walking is the base, intervals build the engine fastest, and lifting is the only one that reliably builds the chassis.</p>
+  <div class="byline">
+    <span><b>Draft</b> v1</span>
+    <span><b>Scope</b> four kinds of exercise compared on fitness, muscle, glucose, bone and mortality, plus a Siim Land post on HIIT vs lifting checked against its study</span>
+    <span><b>Standard</b> every cited paper checked against its abstract; the post's study also checked against the full text of its parent trial</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;">Two measurements predict death better than most lab tests. In 122,007 Cleveland Clinic treadmill patients, the least fit quarter died at five times the rate of the fittest 2%, and being below rather than above average fitness carried about the same risk as smoking or diabetes.<sup class="cite"><a href="#r1">1</a></sup> In 139,691 people across 17 countries, every 5&nbsp;kg less grip strength meant 16% higher mortality, and grip predicted death better than blood pressure did.<sup class="cite"><a href="#r3">3</a></sup> Strength stays protective after adjusting for aerobic fitness.<sup class="cite"><a href="#r4">4</a></sup> So the question isn't which exercise is best. It's which exercise trains which of the two.</p>
+  <p><strong>Walking</strong> is the base: the step-count curve keeps falling until about 6,000&ndash;8,000 steps a day over 60 and 8,000&ndash;10,000 under 60, and ten minutes after each meal flattens the glucose spike.<sup class="cite"><a href="#r6">6</a>,<a href="#r9">9</a></sup> <strong>Running</strong> at any dose is linked to about 27% lower mortality, with no sign that more is better.<sup class="cite"><a href="#r13">13</a></sup> <strong>Intervals</strong> raise VO<sub>2</sub>max more than steady cardio of the same total work, and in one small trial they shrank coronary plaque.<sup class="cite"><a href="#r19">19</a>,<a href="#r23">23</a></sup> <strong>Lifting</strong> builds muscle, raises the muscle's own glucose uptake machinery, and in one trial built bone in women with osteoporosis.<sup class="cite"><a href="#r26">26</a>,<a href="#r29">29</a></sup></p>
+  <p style="margin-bottom:0;">The X post that started this page, by Siim Land (@siimland, October 2026), says that in a 12-week Mayo Clinic study HIIT beat lifting for mitochondrial adaptations, lifting beat HIIT for muscle, and you should do both. The study says that. What the post leaves out is that the trial also had a "both" group, and it did worse on mitochondria than HIIT alone, because its cardio was steady cycling rather than intervals.<sup class="cite"><a href="#r30">30</a></sup></p>
+</div>
+
+<div class="brief">
+  <div class="lbl">The argument in brief</div>
+  <p class="sub">Five parts</p>
+  <ol class="spine">
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span><b>Engine and chassis.</b> Aerobic fitness and muscular strength each predict mortality on their own. They're trained by different stimuli.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span><b>The four, one at a time.</b> Walking for volume and glucose. Running for a big mortality signal at small doses. HIIT for VO<sub>2</sub>max per minute. Lifting for muscle, strength, glucose disposal and bone.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span><b>The Siim Land post, checked.</b> Accurate on the study. The "do both" line skips the trial's combined group, which is the part that answers it.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span><b>What blunts the training effect:</b> statins, metformin, high-dose vitamins C and E, ice baths after lifting, and running on lifting days. And why exercise alone rarely melts fat.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span><b>A week that covers both.</b> Daily walking, two lifting sessions, one or two interval sessions, and the doses where the curves flatten.</li>
+  </ol>
+  <p class="bottom">Walk every day, lift twice a week, and do intervals once or twice a week. Each one covers something the other two can't.</p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Reader's guide</div>
+  <p style="margin-top:0;">Part&nbsp;II.5 has the side-by-side table. Part&nbsp;V is the practical week. The <a href="statins.html">Statins</a> paper covers the CERT plaque trial in more depth, and <a href="cold-exposure.html">Cold Exposure</a>, <a href="energy-metabolism.html">Energy Metabolism</a> and <a href="creatine.html">Creatine</a> tie into Part&nbsp;IV and V.</p>
+  <p style="margin-bottom:0;">
+    <span class="ev ev-strong">Strong</span>
+    <span class="ev ev-mod">Moderate</span>
+    <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span>
+    <span class="ev ev-inf">Inferred</span>
+    <span class="ev ev-cont">Contested</span>
+    <span class="ev ev-spec">Speculative</span>
+  </p>
+</div>
+
+<!-- ============================ PART I ============================ -->
+<section>
+<div class="part-head" id="part-i">
+  <div class="part-num">PART&nbsp;I</div>
+  <h2>Engine and Chassis</h2>
+</div>
+
+<h3><span class="h3num">I.1</span>The engine: aerobic fitness</h3>
+<p>Cardiorespiratory fitness is how much oxygen your body can use at its limit (VO<sub>2</sub>max), often expressed in METs, multiples of resting metabolism. It depends on how much blood the heart pumps per beat and how much oxygen the muscles' mitochondria can burn.</p>
+<p>A Cleveland Clinic cohort followed 122,007 adults for a median 8.4 years after a treadmill test. Mortality fell with every step up in fitness and <strong>never levelled off</strong>. Compared with the elite group (top 2.3% for age and sex), the lowest quarter had five times the death rate (HR 5.04). Being below rather than above average carried an HR of 1.41, the same as smoking (1.41) and diabetes (1.40), and more than having coronary disease (1.29).<sup class="cite"><a href="#r1">1</a></sup> A meta-analysis of 33 cohorts put it per unit: each extra MET of fitness, about 1&nbsp;km/h faster running pace, was linked to 13% lower all-cause mortality.<sup class="cite"><a href="#r2">2</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">as a predictor: large, consistent, measured rather than self-reported.</span> <span class="ev ev-inf">Inferred</span><span class="txt">that raising your own VO<sub>2</sub>max buys the same drop in risk. Part of fitness is genetic, and sick people test lower.</span></p>
+
+<h3><span class="h3num">I.2</span>The chassis: strength and muscle</h3>
+<p>In the PURE study, grip strength measured once in 139,691 people across 17 countries predicted death over four years: <strong>16% higher mortality per 5&nbsp;kg less grip</strong>, for both heart and non-heart deaths. It predicted all-cause and cardiovascular death better than systolic blood pressure.<sup class="cite"><a href="#r3">3</a></sup> In the Aerobics Center cohort (8,762 men, 19 years), men in the top two thirds of leg-press-plus-bench-press strength had about 25% lower mortality than the weakest third. That held for all-cause and cancer deaths <em>after adjusting for treadmill fitness</em>, so strength isn't just a proxy for the engine.<sup class="cite"><a href="#r4">4</a></sup></p>
+<p>Muscle also matters as a place to put glucose. Skeletal muscle takes up most of the glucose from a meal. In NHANES&nbsp;III (13,644 people), each 10% increase in muscle mass relative to body weight went with 11% lower insulin resistance and 12% lower odds of prediabetes, after adjusting for obesity.<sup class="cite"><a href="#r5">5</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">as a predictor;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for muscle mass and insulin resistance, which is cross-sectional.</span></p>
+
+<div class="chain">ENGINE   heart stroke volume + mitochondrial capacity ──▶ VO₂max
+         trained by: intervals &gt; running &gt; brisk walking
+
+CHASSIS  muscle mass + strength + bone ──▶ grip, leg press, BMD
+         trained by: lifting (walking and cycling barely touch it)
+
+both ──▶ glucose disposal, insulin sensitivity ──▶ lower mortality</div>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: fitness isn't exercise</div>
+  <p style="margin:0;">Every number in this part measures a trait, not a habit. Some people are born with a high VO<sub>2</sub>max or a strong grip, and illness lowers both before it kills. Trials that make people exercise and then count deaths are rare and mostly small (II.3 has the biggest). What the trials do show well is that training raises VO<sub>2</sub>max, strength, muscle and insulin sensitivity. The link from those to longer life is observational, but it's consistent across many cohorts and has a plausible mechanism.</p>
+</div>
+</section>
+
+<!-- ============================ PART II ============================ -->
+<section>
+<div class="part-head" id="part-ii">
+  <div class="part-num">PART&nbsp;II</div>
+  <h2>The Four, One at a Time</h2>
+</div>
+
+<h3 id="walking"><span class="h3num">II.1</span>Walking</h3>
+<p><strong>Steps.</strong> A pooled analysis of 15 cohorts (47,471 adults, step counts from devices rather than memory) found mortality fell steeply from the lowest quarter (median 3,553 steps) to the highest (10,901), with an HR of 0.47. The curve flattened at <strong>6,000&ndash;8,000 steps a day in people over 60</strong> and <strong>8,000&ndash;10,000 under 60</strong>. Once total steps were accounted for, how fast people walked mattered less.<sup class="cite"><a href="#r6">6</a></sup> A harmonised accelerometer analysis found the same shape: light activity alone was linked to much lower mortality, and the most sedentary quarter had 2.6 times the death rate of the least.<sup class="cite"><a href="#r7">7</a></sup></p>
+<p><strong>Pace.</strong> In 50,225 British walkers, those who said they walked at an average or brisk pace had 20&ndash;24% lower all-cause mortality than slow walkers. The link was clearest in people over 50 and in those who did no vigorous exercise, where brisk walking is the most intense thing they do.<sup class="cite"><a href="#r8">8</a></sup></p>
+<p><strong>After meals.</strong> In a New Zealand crossover trial in 41 people with type 2 diabetes, walking 10 minutes after each main meal lowered post-meal glucose 12% more than walking 30 minutes at one time of day, and 22% more after dinner.<sup class="cite"><a href="#r9">9</a></sup> A meta-analysis of seven sitting studies found that short light walking breaks cut post-meal glucose and insulin, and beat standing breaks.<sup class="cite"><a href="#r10">10</a></sup> The working muscle pulls glucose in without needing insulin, so the timing matters more than the distance.</p>
+<p><strong>What it doesn't do.</strong> For anyone already fit, walking is too easy to raise VO<sub>2</sub>max much, and it doesn't load muscle or bone enough to build them.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for steps and mortality (device-measured, consistent);</span> <span class="ev ev-mod">Moderate</span><span class="txt">for post-meal walking (short crossover trials, glucose rather than outcomes).</span></p>
+
+<h3 id="running"><span class="h3num">II.2</span>Running</h3>
+<p>In 55,137 adults followed for 15 years at the Cooper Clinic, runners had <strong>30% lower all-cause and 45% lower cardiovascular mortality</strong> than non-runners, worth about three years of life expectancy. The benefit was about the same in every quintile of time, distance, frequency and speed. Less than 51 minutes a week, or running slower than 6&nbsp;mph, was enough.<sup class="cite"><a href="#r12">12</a></sup> A meta-analysis of six cohorts (232,149 people) agreed: any running was linked to 27% lower all-cause mortality, and there was <strong>no dose-response</strong> for frequency, duration, pace or total volume.<sup class="cite"><a href="#r13">13</a></sup> For comparison, the Taiwanese cohort that asked how little exercise counts found 15 minutes a day of moderate activity bought 14% lower mortality, with each extra 15 minutes adding about 4%.<sup class="cite"><a href="#r11">11</a></sup></p>
+<p><strong>Knees.</strong> Running doesn't wear out healthy joints at recreational doses. Across 17 studies (114,829 people), hip or knee arthritis was found in 3.5% of recreational runners, 10.2% of non-running controls, and 13.3% of competitive runners.<sup class="cite"><a href="#r14">14</a></sup></p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">that some running is linked to lower mortality;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for the knee finding (observational; prior injury not controlled).</span></p>
+
+<h3 id="too-much"><span class="h3num">II.2b</span>Is there too much?</h3>
+<p>Three findings get cited as evidence that heavy endurance training harms the heart.</p>
+<ul>
+  <li><strong>The Copenhagen joggers.</strong> Light joggers had the lowest mortality (HR 0.22) and "strenuous" joggers had an HR of 1.97, no different from sedentary people.<sup class="cite"><a href="#r15">15</a></sup> But the strenuous group's confidence interval ran from 0.48 to 8.14. That's a handful of deaths, too few to say anything.</li>
+  <li><strong>Coronary calcium in masters athletes.</strong> In 152 lifelong endurance athletes (median 13 marathons) with low risk factors, male athletes had more coronary plaque than sedentary men (44% vs 22%), and years of training predicted it. But the athletes' plaques were mostly <em>calcified</em>, the stable kind, while the sedentary men's were mostly <em>mixed</em>, the kind more likely to rupture.<sup class="cite"><a href="#r16">16</a></sup> Following 289 Dutch male athletes for six years, <em>very</em> vigorous exercise (&ge;9 METs, roughly running at 9&nbsp;km/h or faster) was linked to faster calcium build-up, while vigorous exercise (6&ndash;9 METs) was linked to <em>slower</em> build-up. Total volume made no difference. These men averaged 41 MET-hours a week, about four or five hours of running.<sup class="cite"><a href="#r17">17</a></sup></li>
+  <li><strong>Atrial fibrillation.</strong> Among 52,755 Vasaloppet skiers (a 90&nbsp;km race), men who'd finished five or more races had 29% more AF and twice the rate of slow-heart-rhythm problems as one-time finishers.<sup class="cite"><a href="#r18">18</a></sup></li>
+</ul>
+<p>Against that, the Cleveland Clinic data found no upper limit to the benefit of <em>fitness</em>.<sup class="cite"><a href="#r1">1</a></sup> The fair reading is that a very high VO<sub>2</sub>max is good, and that years of hard endurance training carry a modest arrhythmia cost and more calcified plaque, which is the more stable kind. Whether that plaque matters for heart attacks is unknown. The findings are from men doing several hours a week for decades. Mixing intensities, as in Part&nbsp;V, avoids piling up hours at hard-steady pace.</p>
+<p class="evline"><span class="ev ev-cont">Contested</span><span class="txt">for harm at extreme volume;</span> <span class="ev ev-strong">Strong</span><span class="txt">that ordinary amounts of running are not harmful.</span></p>
+
+<h3 id="hiit"><span class="h3num">II.3</span>HIIT</h3>
+<p>High-intensity interval training alternates hard bouts near maximum heart rate with easy recovery. The best-studied version is the Norwegian <strong>4&times;4</strong>: four 4-minute efforts at 85&ndash;95% of maximum heart rate, separated by 3 minutes easy.</p>
+<p><strong>VO<sub>2</sub>max.</strong> In a Trondheim trial in 40 moderately trained men, matched for total work, 4&times;4 running raised VO<sub>2</sub>max 7.2% in 8 weeks, and 15-second intervals raised it 5.5%. Both beat long slow distance and threshold running of the same total work. Stroke volume, the blood pumped per beat, rose about 10% with intervals.<sup class="cite"><a href="#r19">19</a></sup> In patients with heart disease, hypertension, metabolic syndrome or obesity, a meta-analysis of 10 trials found HIIT raised VO<sub>2</sub>peak almost twice as much as moderate continuous training (an extra 3.0&nbsp;mL/kg/min).<sup class="cite"><a href="#r20">20</a></sup></p>
+<p><strong>Time.</strong> At McMaster, sedentary men did either three 20-second all-out sprints (10 minutes a session, 1 minute of it hard) or 45 minutes of steady cycling, three times a week for 12 weeks. VO<sub>2</sub>peak rose 19% in both groups, and insulin sensitivity and muscle mitochondrial content rose about the same, on a fifth of the time.<sup class="cite"><a href="#r21">21</a></sup> In the UK Biobank, non-exercisers whose wrist devices recorded three 1&ndash;2 minute bursts of vigorous daily activity (stairs, hurrying, carrying shopping) had 38&ndash;40% lower all-cause mortality than those with none.<sup class="cite"><a href="#r24">24</a></sup></p>
+<p><strong>Hard outcomes.</strong> Two trials go further than VO<sub>2</sub>max.</p>
+<ul>
+  <li><strong>Generation 100</strong> randomised 1,567 Norwegians aged 70&ndash;77 to 4&times;4 HIIT twice a week, moderate training twice a week, or national guidelines, for five years. Mortality was 4.7% in the control group, 3.0% after HIIT (HR 0.63) and 5.9% after moderate training. None of these differences reached significance. The controls muddied it: many chose to do intervals on their own.<sup class="cite"><a href="#r22">22</a></sup></li>
+  <li><strong>CERT</strong> randomised 60 people with coronary stents to six months of supervised 4&times;4 HIIT twice a week or usual care. Intravascular ultrasound showed coronary plaque <em>shrank</em> in the HIIT group (percent atheroma volume &minus;1.4% vs control). Both groups were mostly on statins, so this is exercise on top of the drug, not instead of it.<sup class="cite"><a href="#r23">23</a></sup> See <a href="statins.html#vii-3">Statins, VII.3</a>.</li>
+</ul>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">that intervals raise VO<sub>2</sub>max more per minute;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for plaque regression (one small trial);</span> <span class="ev ev-cont">Contested</span><span class="txt">for mortality (Generation 100 trended the right way but missed significance).</span></p>
+<div class="flag">
+  <div class="flag-lbl">Who runs the 4&times;4 studies</div>
+  <p style="margin:0;">Helgerud, Generation 100, CERT and the Weston meta-analysis all come from or include Ulrik Wisl&oslash;ff's group at NTNU in Trondheim, which developed the 4&times;4 protocol. That's not a commercial conflict, and the work is solid. But when one lab produces most of the evidence for its own method, it's worth noting, the same way this site names juice-industry funders. The McMaster sprint work (Gibala) is an independent line that reaches similar conclusions.</p>
+</div>
+
+<h3 id="lifting"><span class="h3num">II.4</span>Lifting</h3>
+<p><strong>Mortality.</strong> A meta-analysis of 16 cohorts found muscle-strengthening activity linked to 10&ndash;17% lower risk of death, cardiovascular disease, cancer and diabetes, independent of aerobic activity. For mortality the curve was <strong>J-shaped: the most benefit was at 30&ndash;60 minutes a week</strong>, and the advantage faded at higher volumes. For diabetes, the curve dropped steeply up to 60 minutes a week and stayed low. People who did both lifting and aerobic exercise did best.<sup class="cite"><a href="#r25">25</a></sup></p>
+<p><strong>Glucose.</strong> In Copenhagen, people with type 2 diabetes trained one leg with weights three times a week for 6 weeks, 30 minutes a session, and left the other leg untrained. The trained leg cleared more glucose under insulin, and its muscle had more GLUT4 (the glucose transporter), more insulin receptor and more glycogen synthase. That's a local effect in the muscle that was worked.<sup class="cite"><a href="#r26">26</a></sup> In two diabetes trials, lifting alone and aerobic training alone each helped HbA1c a little, but <strong>the combination did best</strong>. In the Canadian DARE trial, combined training lowered HbA1c a further 0.46 points beyond aerobic alone.<sup class="cite"><a href="#r27">27</a></sup> In the US HART-D trial, only the combined group improved significantly against control.<sup class="cite"><a href="#r28">28</a></sup></p>
+<p><strong>Bone.</strong> LIFTMOR randomised 101 postmenopausal women with low bone density to 8 months of supervised heavy lifting and jumping (5 sets of 5 at over 85% of max, twice a week, 30 minutes) or home-based light exercise. Lumbar spine density rose 2.9% with heavy lifting and fell 1.2% with light exercise, and femoral neck density held while it fell in the light group. There was one adverse event, a minor back spasm.<sup class="cite"><a href="#r29">29</a></sup> Walking, cycling and swimming don't load bone this way.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for muscle, strength and glucose uptake;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for bone (one well-run trial) and mortality (observational).</span></p>
+<div class="pushback">
+  <div class="pb-lbl">Pushback: the J-shape</div>
+  <p style="margin:0;">The finding that benefit fades past an hour a week of lifting comes from a small number of people who reported lifting a lot, and the authors call it unclear. Heavy lifters in older cohorts may include bodybuilders using anabolic steroids, and self-reported "muscle-strengthening" covers everything from yoga to powerlifting. Treat 30&ndash;60 minutes a week as the dose where most of the benefit is captured, not as a ceiling to stay under.</p>
+</div>
+
+<h3 id="table"><span class="h3num">II.5</span>Side by side</h3>
+<div class="table-wrap"><table class="matrix">
+<thead><tr><th>Outcome</th><th>What each one does</th><th>Best tool</th></tr></thead>
+<tbody>
+<tr><td><strong>VO<sub>2</sub>max</strong> (the engine)</td><td>Intervals raise it most per minute (II.3). Running raises it. Brisk walking raises it only in unfit people. Lifting barely moves it.<sup class="cite"><a href="#r31">31</a></sup></td><td><span class="yes">HIIT</span></td></tr>
+<tr><td><strong>Mitochondria</strong></td><td>HIIT increased mitochondrial volume, number and respiration. Lifting didn't change them (Part&nbsp;III).<sup class="cite"><a href="#r30">30</a>,<a href="#r31">31</a></sup> Sprint intervals matched 45 minutes of steady cycling.<sup class="cite"><a href="#r21">21</a></sup></td><td><span class="yes">HIIT</span>, then steady cardio</td></tr>
+<tr><td><strong>Muscle and strength</strong></td><td>Only lifting reliably builds them. Running alongside lifting cuts the gains more than cycling does.<sup class="cite"><a href="#r32">32</a></sup></td><td><span class="yes">Lifting</span></td></tr>
+<tr><td><strong>Bone</strong></td><td>Heavy lifting and impact build it (LIFTMOR). Running gives some impact; cycling and swimming give none.</td><td><span class="yes">Lifting</span></td></tr>
+<tr><td><strong>Glucose and insulin</strong></td><td>All four help. Walking after meals is the cheapest for daily spikes. Lifting adds glucose-storage capacity. Combined training beats either alone for HbA1c.</td><td><span class="mid">All, combined</span></td></tr>
+<tr><td><strong>Mortality evidence</strong></td><td>Steps: large device-measured cohorts. Running: big cohorts, no dose-response. Lifting: cohorts, J-shaped. HIIT: one RCT that trended but missed significance.</td><td><span class="mid">Walking and running</span> have the most data</td></tr>
+<tr><td><strong>Time cost</strong></td><td>Sprint intervals: 10 minutes a session. 4&times;4: about 30. Lifting: 30&ndash;60 a week covers most of the benefit. Walking: an hour or more a day for 8&ndash;10k steps, but it fits into the day.</td><td><span class="yes">HIIT</span></td></tr>
+<tr><td><strong>Injury risk</strong></td><td>Walking: lowest. Running: overuse injuries common, arthritis not (II.2). Lifting: low with supervision even in osteoporosis. HIIT on a bike: low; sprinting on foot: higher.</td><td><span class="yes">Walking</span></td></tr>
+</tbody>
+</table></div>
+</section>
+
+<!-- ============================ PART III ============================ -->
+<section>
+<div class="part-head" id="part-iii">
+  <div class="part-num">PART&nbsp;III</div>
+  <h2>The Siim Land Post, Checked</h2>
+</div>
+
+<p>The post (@siimland, October 2026): "High-intensity interval training (HIIT) outperformed resistance training for mitochondrial adaptations in this 12-week study. HIIT significantly increased: mitochondrial size and abundance, mitochondrial respiration, mitochondrial fusion. Lifting alone didn't result in significant changes in these measures, but it produced greater gains in muscle mass. Different adaptations, but you should do both, obviously." It gives the protocols and cites PMID 37616334, and links his YouTube video on mitochondrial health.</p>
+<p>The study is Ruegsegger et al. 2023 from K. Sreekumaran Nair's lab at the Mayo Clinic.<sup class="cite"><a href="#r30">30</a></sup> It's a follow-up analysis of the same 12-week trial published in <em>Cell Metabolism</em> in 2017.<sup class="cite"><a href="#r31">31</a></sup> Healthy sedentary adults, some young and some older, were randomised to HIIT (n=13), lifting (n=14) or combined training (n=11). The authors declare no conflicts.</p>
+
+<div class="table-wrap"><table class="matrix">
+<thead><tr><th>Claim</th><th>What the study shows</th><th>Holds?</th></tr></thead>
+<tbody>
+<tr class="who"><td colspan="3">Siim Land (@siimland) &middot; October 2026</td></tr>
+<tr>
+  <td><strong>HIIT increased mitochondrial size and abundance</strong></td>
+  <td>Electron microscopy showed increased mitochondrial volume, number and perimeter after HIIT (P&lt;0.01), and no change after lifting.<sup class="cite"><a href="#r30">30</a></sup></td>
+  <td><span class="yes">Holds.</span></td>
+</tr>
+<tr>
+  <td><strong>HIIT increased mitochondrial respiration</strong></td>
+  <td>Yes. The 2017 paper found respiration rose after HIIT <em>and</em> after combined training, but not after lifting.<sup class="cite"><a href="#r31">31</a></sup> In the HIIT group, bigger mitochondria went with better respiration, insulin sensitivity and VO<sub>2</sub>peak.<sup class="cite"><a href="#r30">30</a></sup></td>
+  <td><span class="yes">Holds.</span></td>
+</tr>
+<tr>
+  <td><strong>HIIT increased mitochondrial fusion</strong></td>
+  <td>Fusion wasn't measured directly. The study measured proteins that control it: OPA1, which drives fusion, went up, and FIS1, which drives splitting, went down. Together with the longer, larger mitochondria on imaging, the authors call this "indicative of" more fusion.<sup class="cite"><a href="#r30">30</a></sup></td>
+  <td><span class="mid">Fair, but inferred</span> from protein markers.</td>
+</tr>
+<tr>
+  <td><strong>Lifting didn't change these, but built more muscle</strong></td>
+  <td>Correct on both. Young lifters gained the most lean mass (+2.2&nbsp;kg). What the post leaves out is that lifting <em>also</em> improved insulin sensitivity, as did all three groups.<sup class="cite"><a href="#r31">31</a></sup> Mitochondria aren't the only route to better glucose handling.</td>
+  <td><span class="yes">Holds</span>, with an omission.</td>
+</tr>
+<tr>
+  <td><strong>"Do both, obviously"</strong></td>
+  <td>The trial <em>had</em> a both group. Combined training was 30 minutes of steady cycling at 70% of VO<sub>2</sub>peak five days a week, plus lifting four days a week. It increased mitochondrial number and lowered FIS1, but didn't match HIIT on mitochondrial volume or perimeter, and none of its changes tracked with health improvements the way HIIT's did.<sup class="cite"><a href="#r30">30</a></sup> So the version of "both" that was tested came second on mitochondria. HIIT plus lifting, which is what the post implies, wasn't tested.</td>
+  <td><span class="mid">Half holds.</span> Sensible advice, but the study's own combined arm complicates it.</td>
+</tr>
+<tr>
+  <td><strong>The protocols</strong>: HIIT 3&times;/week 4&times;4 cycling plus 2 incline walks; lifting 60 minutes 4&times;/week</td>
+  <td>The 2017 paper's methods match on structure (it doesn't state session length for lifting): HIIT was 4&times;4 minutes at over 90% of VO<sub>2</sub>peak three days a week, plus two 45-minute treadmill walks at 70%. Lifting was 4 sets of 8&ndash;12, upper and lower body, two days each.<sup class="cite"><a href="#r31">31</a></sup> Worth noticing: the "HIIT" arm was really HIIT <em>plus</em> 90 minutes a week of moderate cardio, and it was the only arm whose cardio included intervals.</td>
+  <td><span class="yes">Holds.</span></td>
+</tr>
+<tr class="who"><td colspan="3">Reply: @m_goes_distance</td></tr>
+<tr>
+  <td><strong>"4&times;4 Norwegian intervals are the single most studied protocol in this space"</strong></td>
+  <td>Broadly fair: it's the protocol in Helgerud 2007, Generation 100, CERT and this trial.<sup class="cite"><a href="#r19">19</a>,<a href="#r22">22</a>,<a href="#r23">23</a></sup> Most of that work comes from the group that designed it (see the flag in II.3).</td>
+  <td><span class="yes">Holds.</span></td>
+</tr>
+</tbody>
+</table></div>
+
+<div class="pushback">
+  <div class="pb-lbl">Pushback: what the study can and can't say</div>
+  <p style="margin:0;">The post reports the study accurately, which is less common than it should be. The limits are the study's own. There were 11&ndash;14 people per group, split further into young and older. Mitochondrial shape is a surrogate, not an outcome. And the arms weren't matched for time or for intensity: the comparison is really "intervals versus no intervals", since lifting wasn't designed to train mitochondria in the first place. A fairer headline would be "lifting doesn't train mitochondria, intervals do, and steady cardio sits in between."</p>
+</div>
+</section>
+
+<!-- ============================ PART IV ============================ -->
+<section>
+<div class="part-head" id="part-iv">
+  <div class="part-num">PART&nbsp;IV</div>
+  <h2>What Blunts the Training Effect</h2>
+</div>
+
+<p>Exercise works by stressing the muscle, which then adapts. Several common drugs, supplements and habits interfere with the stress signal or the adaptation.</p>
+
+<h3><span class="h3num">IV.1</span>Statins</h3>
+<p>In a Missouri trial, overweight adults with metabolic syndrome did 12 weeks of aerobic training with or without simvastatin 40&nbsp;mg. Without the statin, fitness rose 10% and muscle mitochondrial content (citrate synthase) rose 13%. With it, fitness rose 1.5% and mitochondrial content <em>fell</em> 4.5%.<sup class="cite"><a href="#r33">33</a></sup> The <a href="statins.html">Statins</a> paper covers the mevalonate pathway, which also makes CoQ10 for the mitochondria. Don't stop a prescribed statin over this. Raise it with your doctor if you're training and not improving.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">one randomised trial, 37 completers, one statin.</span></p>
+
+<h3><span class="h3num">IV.2</span>Metformin</h3>
+<p>In older adults doing 12 weeks of aerobic training, metformin blunted the gains in insulin sensitivity and VO<sub>2</sub>max and wiped out the rise in muscle mitochondrial respiration.<sup class="cite"><a href="#r34">34</a></sup> In the MASTERS trial, adults over 65 doing 14 weeks of lifting gained less lean mass and thigh muscle on 1,700&nbsp;mg metformin than on placebo.<sup class="cite"><a href="#r35">35</a></sup> This matters most for people taking metformin "for longevity" without diabetes.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">two double-blind trials, consistent direction.</span></p>
+
+<h3><span class="h3num">IV.3</span>High-dose vitamins C and E</h3>
+<p>In young men doing 4 weeks of training, 1,000&nbsp;mg vitamin C plus 400&nbsp;IU vitamin E a day blocked the improvement in insulin sensitivity and the rise in the muscle's own antioxidant enzymes and PGC-1&alpha;, the master switch for building mitochondria.<sup class="cite"><a href="#r36">36</a></sup> The oxidants that exercise produces are part of the signal. Food amounts are fine. See <a href="vitaminc.html">Vitamin C</a> and <a href="vitamine.html">Vitamin E</a>.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">one clamp-based trial in 39 men.</span></p>
+
+<h3><span class="h3num">IV.4</span>Ice baths right after lifting</h3>
+<p>Men who sat in cold water for 10 minutes after each of 24 lifting sessions gained less strength and muscle than men who did an easy cool-down. Their type II fibres didn't grow, and satellite-cell and mTOR-pathway signalling were lower.<sup class="cite"><a href="#r37">37</a></sup> Cold exposure has its own benefits (<a href="cold-exposure.html">Cold Exposure</a>). Do it on other days, or several hours away from lifting.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">21 men in the training study.</span></p>
+
+<h3><span class="h3num">IV.5</span>Running on lifting days</h3>
+<p>A meta-analysis of 21 studies found that adding endurance training to lifting reduced muscle growth, strength and power. <strong>Running caused the interference; cycling didn't</strong>, and longer and more frequent endurance sessions caused more.<sup class="cite"><a href="#r32">32</a></sup> If muscle is a priority, do intervals on a bike or rower, and keep running away from leg days.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">meta-analysis of small trials.</span></p>
+
+<h3><span class="h3num">IV.6</span>Why exercise rarely melts fat on its own</h3>
+<p>Doubly labelled water measurements in 332 adults across five countries found that total daily energy use rises with activity at low levels but <strong>plateaus</strong> at higher ones. The body compensates by spending less elsewhere.<sup class="cite"><a href="#r38">38</a></sup> That's why exercise programs alone produce less weight loss than the calorie math predicts. Exercise changes where energy goes (muscle versus fat, mitochondria, insulin sensitivity) more than how much is burned. See <a href="energy-metabolism.html">Energy Metabolism</a>.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">well-measured, cross-sectional.</span></p>
+</section>
+
+<!-- ============================ PART V ============================ -->
+<section>
+<div class="part-head" id="part-v">
+  <div class="part-num">PART&nbsp;V</div>
+  <h2>A Week That Covers Both</h2>
+</div>
+
+<h3><span class="h3num">V.1</span>Ranked by what each one buys</h3>
+<div class="ladder">
+  <div class="rung"><div class="rung-lbl r1">Daily base<small>walking</small></div><div class="rung-body"><p><strong>Walking</strong>: the largest, most consistent mortality data; post-meal glucose control; almost no injury risk. Doesn't build the engine or the chassis in fit people.</p></div></div>
+  <div class="rung"><div class="rung-lbl r2">Non-negotiable<small>the chassis</small></div><div class="rung-body"><p><strong>Lifting</strong>: the only reliable way to build muscle, strength and bone. Most of the benefit at 30&ndash;60 minutes a week.</p></div></div>
+  <div class="rung"><div class="rung-lbl r3">Most per minute<small>the engine</small></div><div class="rung-body"><p><strong>HIIT</strong>: biggest VO<sub>2</sub>max and mitochondrial gains for the time. The only exercise with trial evidence of plaque regression.</p></div></div>
+  <div class="rung"><div class="rung-lbl r4">Optional<small>if you enjoy it</small></div><div class="rung-body"><p><strong>Steady running</strong>: large mortality benefit at small doses, no dose-response beyond that. Interferes with lifting more than cycling does.</p></div></div>
+</div>
+
+<h3><span class="h3num">V.2</span>The week</h3>
+<ol>
+  <li><strong>Walk every day:</strong> 7,000&ndash;10,000 steps (6,000&ndash;8,000 is enough over 60). Make some of it brisk, and put 10 minutes after the biggest meal, usually dinner.<sup class="cite"><a href="#r6">6</a>,<a href="#r9">9</a></sup></li>
+  <li><strong>Lift twice a week</strong>, 30&ndash;45 minutes. Compound lifts (squat or leg press, deadlift or hinge, press, row, pull-up), working up to heavy sets of 5&ndash;8. Two sessions is enough for most of the observational benefit.<sup class="cite"><a href="#r25">25</a></sup> <a href="creatine.html">Creatine</a> (1 level tsp, about 5&nbsp;g, a day) adds to strength and lean-mass gains.</li>
+  <li><strong>Intervals once or twice a week</strong>, on a different day from leg lifting if possible:
+    <ul>
+      <li><em>4&times;4</em>: 10 minutes easy warm-up, then four 4-minute efforts at 85&ndash;95% of max heart rate (hard enough that you can only say a few words), with 3 minutes easy between. About 35 minutes.<sup class="cite"><a href="#r19">19</a></sup></li>
+      <li><em>Short version</em>: three 20-second all-out sprints with 2 minutes easy between. About 10 minutes.<sup class="cite"><a href="#r21">21</a></sup></li>
+      <li>A bike, rower or hill walk is easier on the joints than flat sprinting, and interferes less with lifting.<sup class="cite"><a href="#r32">32</a></sup></li>
+    </ul>
+  </li>
+  <li><strong>Running is optional.</strong> If you like it, an hour or two a week at an easy pace is where the mortality curve sits. More isn't clearly better.<sup class="cite"><a href="#r12">12</a>,<a href="#r13">13</a></sup></li>
+  <li><strong>Protect the adaptation:</strong> no ice bath within a few hours after lifting, no megadoses of vitamins C and E around training. If you're on a statin or metformin and not improving, raise it with your doctor rather than stopping.</li>
+</ol>
+<div class="takeaway"><b>If you only have 90 minutes a week:</b> two 30-minute lifting sessions and two 10-minute sprint-interval sessions, plus walking after dinner. That covers the chassis, the engine and glucose.</div>
+
+<div class="safety" id="safety">
+  <div class="sf-lbl">Safety</div>
+  <ul>
+    <li><strong>Known heart disease, chest pain or breathlessness on exertion, fainting, or palpitations:</strong> get cleared before starting intervals. Generation 100 and CERT were both supervised.<sup class="cite"><a href="#r22">22</a>,<a href="#r23">23</a></sup></li>
+    <li><strong>Build intensity over weeks.</strong> Sedentary people starting with all-out sprints are the ones who get hurt.</li>
+    <li><strong>Osteoporosis:</strong> heavy lifting was safe and effective in LIFTMOR under close supervision.<sup class="cite"><a href="#r29">29</a></sup> Learn the lifts with a coach first.</li>
+    <li><strong>Don't stop prescribed statins or metformin</strong> because of Part&nbsp;IV. The trials show blunted adaptation, not harm from exercising on them.</li>
+  </ul>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Pages on this site that tie in</div>
+  <p style="margin:0;"><a href="statins.html">Statins, LDL &amp; Cardiovascular Disease</a> (CERT, mevalonate pathway) &middot; <a href="cold-exposure.html">Cold Exposure</a> &middot; <a href="energy-metabolism.html">Energy Metabolism</a> &middot; <a href="metabolic-health.html">Metabolic Health</a> &middot; <a href="creatine.html">Creatine</a> &middot; <a href="vitaminc.html">Vitamin C</a> &middot; <a href="vitamine.html">Vitamin E</a> &middot; <a href="magnesium.html">Magnesium</a></p>
+</div>
+</section>
+
+<!-- ============================ LIMITATIONS ============================ -->
+<section>
+<div class="part-head" id="limitations">
+  <div class="part-num">LIMITS</div>
+  <h2>Limitations</h2>
+</div>
+<div class="limits">
+<ul>
+<li><b>The mortality evidence is observational for every modality.</b> People who walk, run or lift differ from people who don't in ways adjustment can't fully remove. The one large mortality RCT (Generation 100) missed significance.</li>
+<li><b>Mechanism trials are small and short.</b> The Mayo study had 11&ndash;14 people per arm for 12 weeks; the sprint study had 9&ndash;10. They measure surrogates (VO<sub>2</sub>max, mitochondria, HbA1c), not events.</li>
+<li><b>The modalities are rarely matched.</b> HIIT versus lifting compares different stimuli for different goals. Most comparisons differ in time, intensity or both.</li>
+<li><b>Most HIIT outcome trials come from one group.</b> The NTNU 4&times;4 work is careful, but independent replication of the plaque and mortality findings is thin.</li>
+<li><b>The "too much" literature is mostly in men.</b> Masters-athlete and Vasaloppet data are almost entirely male, so the arrhythmia and calcium findings may not transfer to women.</li>
+</ul>
+<p class="lim-close">The trial that would settle the practical question isn't hard to design: sedentary middle-aged adults randomised to lifting plus HIIT, lifting plus steady cardio, or HIIT alone, for a year, with VO<sub>2</sub>max, DEXA, clamp-measured insulin sensitivity and coronary CT. The Mayo trial was the closest attempt, and its combined arm used the wrong kind of cardio to answer it.</p>
+</div>
+</section>
+
+<!-- ============================ REFERENCES ============================ -->
+<section class="refwrap">
+<div class="part-head" id="refs">
+  <div class="part-num">REFS</div>
+  <h2>References</h2>
+</div>
+
+<div class="ref-group">Fitness, strength and mortality</div>
+<ol class="refs">
+<li id="r1">Mandsager K, Harb S, Cremer P, et al. Association of cardiorespiratory fitness with long-term mortality among adults undergoing exercise treadmill testing. <span class="j">JAMA Netw Open</span> 2018;1(6):e183605. PMID 30646252. <span class="note">122,007 patients; low vs elite HR 5.04; no upper limit observed.</span></li>
+<li id="r2">Kodama S, Saito K, Tanaka S, et al. Cardiorespiratory fitness as a quantitative predictor of all-cause mortality and cardiovascular events in healthy men and women: a meta-analysis. <span class="j">JAMA</span> 2009;301(19):2024&ndash;2035. PMID 19454641. <span class="note">RR 0.87 per 1-MET higher fitness.</span></li>
+<li id="r3">Leong DP, Teo KK, Rangarajan S, et al. Prognostic value of grip strength: findings from the Prospective Urban Rural Epidemiology (PURE) study. <span class="j">Lancet</span> 2015;386(9990):266&ndash;273. PMID 25982160.</li>
+<li id="r4">Ruiz JR, Sui X, Lobelo F, et al. Association between muscular strength and mortality in men: prospective cohort study. <span class="j">BMJ</span> 2008;337:a439. PMID 18595904.</li>
+<li id="r5">Srikanthan P, Karlamangla AS. Relative muscle mass is inversely associated with insulin resistance and prediabetes. <span class="j">J Clin Endocrinol Metab</span> 2011;96(9):2898&ndash;2903. PMID 21778224.</li>
+</ol>
+
+<div class="ref-group">Walking</div>
+<ol class="refs">
+<li id="r6">Paluch AE, Bajpai S, Bassett DR, et al. Daily steps and all-cause mortality: a meta-analysis of 15 international cohorts. <span class="j">Lancet Public Health</span> 2022;7(3):e219&ndash;e228. PMID 35247352. <span class="note">CDC-funded.</span></li>
+<li id="r7">Ekelund U, Tarp J, Steene-Johannessen J, et al. Dose-response associations between accelerometry measured physical activity and sedentary time and all cause mortality: systematic review and harmonised meta-analysis. <span class="j">BMJ</span> 2019;366:l4570. PMID 31434697.</li>
+<li id="r8">Stamatakis E, Kelly P, Strain T, et al. Self-rated walking pace and all-cause, cardiovascular disease and cancer mortality: individual participant pooled analysis of 50 225 walkers from 11 population British cohorts. <span class="j">Br J Sports Med</span> 2018;52(12):761&ndash;768. PMID 29858463.</li>
+<li id="r9">Reynolds AN, Mann JI, Williams S, Venn BJ. Advice to walk after meals is more effective for lowering postprandial glycaemia in type 2 diabetes mellitus than advice that does not specify timing: a randomised crossover study. <span class="j">Diabetologia</span> 2016;59(12):2572&ndash;2578. PMID 27747394.</li>
+<li id="r10">Buffey AJ, Herring MP, Langley CK, et al. The acute effects of interrupting prolonged sitting time in adults with standing and light-intensity walking on biomarkers of cardiometabolic health in adults: a systematic review and meta-analysis. <span class="j">Sports Med</span> 2022;52(8):1765&ndash;1787. PMID 35147898.</li>
+<li id="r11">Wen CP, Wai JP, Tsai MK, et al. Minimum amount of physical activity for reduced mortality and extended life expectancy: a prospective cohort study. <span class="j">Lancet</span> 2011;378(9798):1244&ndash;1253. PMID 21846575.</li>
+</ol>
+
+<div class="ref-group">Running</div>
+<ol class="refs">
+<li id="r12">Lee DC, Pate RR, Lavie CJ, et al. Leisure-time running reduces all-cause and cardiovascular mortality risk. <span class="j">J Am Coll Cardiol</span> 2014;64(5):472&ndash;481. PMID 25082581.</li>
+<li id="r13">Pedisic Z, Shrestha N, Kovalchik S, et al. Is running associated with a lower risk of all-cause, cardiovascular and cancer mortality, and is the more the better? A systematic review and meta-analysis. <span class="j">Br J Sports Med</span> 2020;54(15):898&ndash;905. PMID 31685526.</li>
+<li id="r14">Alentorn-Geli E, Samuelsson K, Musahl V, et al. The association of recreational and competitive running with hip and knee osteoarthritis: a systematic review and meta-analysis. <span class="j">J Orthop Sports Phys Ther</span> 2017;47(6):373&ndash;390. PMID 28504066.</li>
+<li id="r15">Schnohr P, O'Keefe JH, Marott JL, et al. Dose of jogging and long-term mortality: the Copenhagen City Heart Study. <span class="j">J Am Coll Cardiol</span> 2015;65(5):411&ndash;419. PMID 25660917.</li>
+<li id="r16">Merghani A, Maestrini V, Rosmini S, et al. Prevalence of subclinical coronary artery disease in masters endurance athletes with a low atherosclerotic risk profile. <span class="j">Circulation</span> 2017;136(2):126&ndash;137. PMID 28465287.</li>
+<li id="r17">Aengevaeren VL, Mosterd A, Bakker EA, et al. Exercise volume versus intensity and the progression of coronary atherosclerosis in middle-aged and older athletes: findings from the MARC-2 study. <span class="j">Circulation</span> 2023;147(13):993&ndash;1003. PMID 36597865.</li>
+<li id="r18">Andersen K, Farahmand B, Ahlbom A, et al. Risk of arrhythmias in 52 755 long-distance cross-country skiers: a cohort study. <span class="j">Eur Heart J</span> 2013;34(47):3624&ndash;3631. PMID 23756332.</li>
+</ol>
+
+<div class="ref-group">HIIT</div>
+<ol class="refs">
+<li id="r19">Helgerud J, H&oslash;ydal K, Wang E, et al. Aerobic high-intensity intervals improve VO2max more than moderate training. <span class="j">Med Sci Sports Exerc</span> 2007;39(4):665&ndash;671. PMID 17414804.</li>
+<li id="r20">Weston KS, Wisl&oslash;ff U, Coombes JS. High-intensity interval training in patients with lifestyle-induced cardiometabolic disease: a systematic review and meta-analysis. <span class="j">Br J Sports Med</span> 2014;48(16):1227&ndash;1234. PMID 24144531.</li>
+<li id="r21">Gillen JB, Martin BJ, MacInnis MJ, et al. Twelve weeks of sprint interval training improves indices of cardiometabolic health similar to traditional endurance training despite a five-fold lower exercise volume and time commitment. <span class="j">PLoS One</span> 2016;11(4):e0154075. PMID 27115137.</li>
+<li id="r22">Stensvold D, Viken H, Steinshamn SL, et al. Effect of exercise training for five years on all cause mortality in older adults&mdash;the Generation 100 study: randomised controlled trial. <span class="j">BMJ</span> 2020;371:m3485. PMID 33028588.</li>
+<li id="r23">Vesterbekkmo EK, Akset&oslash;y IA, Follestad T, et al. High-intensity interval training induces beneficial effects on coronary atheromatous plaques: a randomized trial (CERT). <span class="j">Eur J Prev Cardiol</span> 2023;30(5):384&ndash;392. PMID 36562212.</li>
+<li id="r24">Stamatakis E, Ahmadi MN, Gill JMR, et al. Association of wearable device-measured vigorous intermittent lifestyle physical activity with mortality. <span class="j">Nat Med</span> 2022;28(12):2521&ndash;2529. PMID 36482104.</li>
+</ol>
+
+<div class="ref-group">Lifting</div>
+<ol class="refs">
+<li id="r25">Momma H, Kawakami R, Honda T, Sawada SS. Muscle-strengthening activities are associated with lower risk and mortality in major non-communicable diseases: a systematic review and meta-analysis of cohort studies. <span class="j">Br J Sports Med</span> 2022;56(13):755&ndash;763. PMID 35228201.</li>
+<li id="r26">Holten MK, Zacho M, Gaster M, et al. Strength training increases insulin-mediated glucose uptake, GLUT4 content, and insulin signaling in skeletal muscle in patients with type 2 diabetes. <span class="j">Diabetes</span> 2004;53(2):294&ndash;305. PMID 14747278.</li>
+<li id="r27">Sigal RJ, Kenny GP, Boul&eacute; NG, et al. Effects of aerobic training, resistance training, or both on glycemic control in type 2 diabetes: a randomized trial. <span class="j">Ann Intern Med</span> 2007;147(6):357&ndash;369. PMID 17876019.</li>
+<li id="r28">Church TS, Blair SN, Cocreham S, et al. Effects of aerobic and resistance training on hemoglobin A1c levels in patients with type 2 diabetes: a randomized controlled trial. <span class="j">JAMA</span> 2010;304(20):2253&ndash;2262. PMID 21098771.</li>
+<li id="r29">Watson SL, Weeks BK, Weis LJ, et al. High-intensity resistance and impact training improves bone mineral density and physical function in postmenopausal women with osteopenia and osteoporosis: the LIFTMOR randomized controlled trial. <span class="j">J Bone Miner Res</span> 2018;33(2):211&ndash;220. PMID 28975661.</li>
+</ol>
+
+<div class="ref-group">The post's study</div>
+<ol class="refs">
+<li id="r30">Ruegsegger GN, Pataky MW, Simha S, et al. High-intensity aerobic, but not resistance or combined, exercise training improves both cardiometabolic health and skeletal muscle mitochondrial dynamics. <span class="j">J Appl Physiol</span> 2023;135(4):763&ndash;774. PMID 37616334. <span class="note">The study cited in the post. Full text wasn't available through PMC's API; findings are from the abstract.</span></li>
+<li id="r31">Robinson MM, Dasari S, Konopka AR, et al. Enhanced protein translation underlies improved metabolic and physical adaptations to different exercise training modes in young and old humans. <span class="j">Cell Metab</span> 2017;25(3):581&ndash;592. PMID 28273480. <span class="note">Parent trial; protocols and lean-mass figures checked against the full text.</span></li>
+</ol>
+
+<div class="ref-group">What blunts the training effect</div>
+<ol class="refs">
+<li id="r32">Wilson JM, Marin PJ, Rhea MR, et al. Concurrent training: a meta-analysis examining interference of aerobic and resistance exercises. <span class="j">J Strength Cond Res</span> 2012;26(8):2293&ndash;2307. PMID 22002517.</li>
+<li id="r33">Mikus CR, Boyle LJ, Borengasser SJ, et al. Simvastatin impairs exercise training adaptations. <span class="j">J Am Coll Cardiol</span> 2013;62(8):709&ndash;714. PMID 23583255.</li>
+<li id="r34">Konopka AR, Laurin JL, Schoenberg HM, et al. Metformin inhibits mitochondrial adaptations to aerobic exercise training in older adults. <span class="j">Aging Cell</span> 2019;18(1):e12880. PMID 30548390.</li>
+<li id="r35">Walton RG, Dungan CM, Long DE, et al. Metformin blunts muscle hypertrophy in response to progressive resistance exercise training in older adults: a randomized, double-blind, placebo-controlled, multicenter trial: the MASTERS trial. <span class="j">Aging Cell</span> 2019;18(6):e13039. PMID 31557380.</li>
+<li id="r36">Ristow M, Zarse K, Oberbach A, et al. Antioxidants prevent health-promoting effects of physical exercise in humans. <span class="j">Proc Natl Acad Sci U S A</span> 2009;106(21):8665&ndash;8670. PMID 19433800.</li>
+<li id="r37">Roberts LA, Raastad T, Markworth JF, et al. Post-exercise cold water immersion attenuates acute anabolic signalling and long-term adaptations in muscle to strength training. <span class="j">J Physiol</span> 2015;593(18):4285&ndash;4301. PMID 26174323.</li>
+<li id="r38">Pontzer H, Durazo-Arvizu R, Dugas LR, et al. Constrained total energy expenditure and metabolic adaptation to physical activity in adult humans. <span class="j">Curr Biol</span> 2016;26(3):410&ndash;417. PMID 26832439.</li>
+</ol>
+</section>
+
+<footer class="end">
+  <b>Exercise: Lifting, Running, Walking &amp; HIIT</b> &middot; Working paper, Draft v1 &middot; October 2026<br>
+  Not medical advice. Get cleared before starting high-intensity training if you have heart disease or symptoms on exertion.
+</footer>
+
+</div>
+</body>
+</html>
