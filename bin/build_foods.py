@@ -162,6 +162,13 @@ FOODS = [
 ('170005','Green onions',25,'¼ cup','Vegetables',''),
 ('172026','Brown rice pasta',140,'1 cup cooked','Starches',''),
 ('169732','Egg noodles',160,'1 cup cooked','Starches',''),
+# seafood chowder bowl, slow-cooker carnitas
+('173694','Black sea bass',113,'4 oz cooked','Seafood',''),
+('167742','Scallops',85,'3 oz cooked','Seafood',''),
+('174062','Clam chowder, New England (canned)',244,'1 cup','Treats & convenience',''),
+('167854','Pork spareribs, braised',113,'4 oz cooked','Meat',''),   # stands in for pork brisket
+('168256','Pork shoulder, braised',113,'4 oz cooked','Meat',''),
+('175036','Corn tortillas',52,'2 tortillas','Starches',''),
 ]
 
 # Cooking ingredients used by the recipe pages (recipe-*.html). Same shape and processing as FOODS,
@@ -299,6 +306,7 @@ PROXIES = {
     '174217': ('174216', 'prot'),  # mussels, cooked <- raw
     '171975': ('174214', 'prot'),  # clams, cooked <- raw
     '174239': ('175132', 'prot'),  # fish roe, cooked <- raw
+    '174062': ('174539', 'prot'),  # clam chowder, ready-to-serve <- prepared with 2% milk
 }
 
 
