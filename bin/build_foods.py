@@ -155,6 +155,13 @@ FOODS = [
 ('171788','Skirt steak',113,'4 oz cooked','Meat',''),
 ('173625','Chicken thigh, with skin',113,'4 oz cooked','Meat',''),
 ('171450','Roast chicken, with skin',113,'4 oz cooked','Meat',''),
+# soup, tenderloin, weeknight dinners
+('171811','Beef tenderloin',113,'4 oz cooked','Meat',''),   # lean only: trimmed, as cooked whole
+('169988','Celery',101,'1 cup chopped','Vegetables',''),
+('168437','Shiitake mushrooms, cooked',73,'½ cup','Vegetables',''),
+('170005','Green onions',25,'¼ cup','Vegetables',''),
+('172026','Brown rice pasta',140,'1 cup cooked','Starches',''),
+('169732','Egg noodles',160,'1 cup cooked','Starches',''),
 ]
 
 # Cooking ingredients used by the recipe pages (recipe-*.html). Same shape and processing as FOODS,
@@ -182,6 +189,33 @@ INGREDIENTS = [
 ('174277','Soy sauce',16,'1 tbsp','Ingredients',''),
 ('168556','Ketchup',17,'1 tbsp','Ingredients',''),
 ('171186','Sriracha',6,'1 tsp','Ingredients',''),
+('172233','Dill, fresh',1,'1 tbsp','Ingredients',''),
+('173473','Rosemary, fresh',1.7,'1 tbsp','Ingredients',''),
+('173470','Thyme, fresh',0.8,'1 tsp','Ingredients',''),
+('171400','Beef tallow',13,'1 tbsp','Ingredients',''),
+('173412','Ghee',13,'1 tbsp','Ingredients',''),
+('173472','Horseradish, prepared',15,'1 tbsp','Ingredients',''),
+('169994','Chives',3,'1 tbsp','Ingredients',''),
+('170459','Tomato paste',16,'1 tbsp','Ingredients',''),
+('168561','Sweet relish',15,'1 tbsp','Ingredients',''),
+('169698','Cornstarch',8,'1 tbsp','Ingredients',''),
+('171016','Sesame oil',4.5,'1 tsp','Ingredients',''),
+('170150','Sesame seeds',9,'1 tbsp','Ingredients',''),
+]
+
+# Ingredients USDA doesn't have, as weighted mixes of SR foods (same format as RECIPES).
+# Output goes to INGREDIENTS. All values are estimates.
+INGREDIENT_MIXES = [
+    dict(id='mix-avocado-mayo', n='Avocado oil mayo', g=14, p='1 tbsp', c='Ingredients', f='est',
+         parts={'173573': 79, '172184': 8, '172237': 10, '173468': 1.5},
+         src='Estimate: avocado oil 79%, egg yolk 8%, vinegar 10%, salt 1.5% (typical avocado-oil mayo).'),
+    dict(id='mix-mirin', n='Mirin', g=18, p='1 tbsp', c='Ingredients', f='est',
+         parts={'167723': 55, '169655': 40},
+         src='Estimate: sake 55%, sugar 40% (mirin is a sweet rice wine, ~40% sugar).'),
+    dict(id='mix-gochujang', n='Gochujang', g=17, p='1 tbsp', c='Ingredients', f='est',
+         parts={'169655': 35, '174277': 30, '170932': 10, '169698': 10},
+         src='Estimate: sugar 35%, soy sauce 30%, cayenne 10%, cornstarch 10% (fermented chili paste; '
+             'USDA has no entry).'),
 ]
 
 
@@ -371,7 +405,7 @@ def main():
     assert len(ids) == len(FOODS), 'duplicate fdc_id in FOODS'
     assert not ids & {f[0] for f in INGREDIENTS}, 'fdc_id in both FOODS and INGREDIENTS'
     ids |= {f[0] for f in INGREDIENTS}
-    ids |= {i for r in RECIPES for i in r['parts']} | {i for l in LABEL_FOODS for i in l.get('model', {})}
+    ids |= {i for r in RECIPES + INGREDIENT_MIXES for i in r['parts']} | {i for l in LABEL_FOODS for i in l.get('model', {})}
     ids |= {p for p, _ in PROXIES.values()}
     desc = {r['fdc_id']: r['description'] for r in rows(z, 'food.csv') if r['fdc_id'] in ids}
     missing_ids = ids - desc.keys()
@@ -398,7 +432,7 @@ def main():
             food['nd'] = nd
         out.append(food)
 
-    for r in RECIPES:
+    for r in RECIPES + INGREDIENT_MIXES:
         v = {}
         for k in KEYS:
             if all(k in val[i] for i in r['parts']):
@@ -433,7 +467,7 @@ def main():
     fill_gaps(out, val, desc)
 
     assert len({f['id'] for f in out}) == len(out) and len({f['n'] for f in out}) == len(out), 'duplicate id/name'
-    ing_ids = {f[0] for f in INGREDIENTS}
+    ing_ids = {f[0] for f in INGREDIENTS} | {r['id'] for r in INGREDIENT_MIXES}
     ingredients = [f for f in out if f['id'] in ing_ids]
     out = [f for f in out if f['id'] not in ing_ids]
 

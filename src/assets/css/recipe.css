@@ -62,3 +62,6 @@ section.marinade h2 .num { flex: none; width: 1.8rem; height: 1.8rem; border-rad
 table.summary td:first-child { font-weight: 600; }
 .sugar-dot { display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--caution); margin-left: 0.4rem; vertical-align: middle; }
 #pick { font: inherit; font-size: 0.88rem; padding: 0.2rem 0.4rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); }
+@media (max-width: 600px) { table.serving-col th:nth-child(2), table.serving-col td:nth-child(2) { display: none; } }
+@media (max-width: 600px) { table.summary { font-size: 0.8rem; } table.summary th, table.summary td { padding: 0.35rem 0.4rem; } }
+@media (max-width: 600px) { .glance { padding-left: 0.8rem; padding-right: 0.8rem; } }

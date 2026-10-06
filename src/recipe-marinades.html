@@ -349,57 +349,42 @@
 
 <script src="assets/js/foods-data.js"></script>
 <script src="assets/js/nutrient-targets.js"></script>
+<script src="assets/js/recipe-nutrition.js"></script>
 <script>
 (function () {
   // [fdc_id, grams] per batch; cooked = oz of cooked meat the batch covers; eaten = my estimate of the
-  // share of the marinade that ends up on the plate. Generated from the recipe lists above.
+  // share of the marinade that ends up on the plate. Matches the recipe lists above.
   const MARINADES = [{"slug": "honey-mustard", "name": "Honey mustard chicken", "meats": ["172388", "171477"], "cooked": 24, "eaten": 0.5, "ing": [["172234", 80], ["169640", 84], ["173469", 30], ["171413", 13.5], ["173468", 6], ["170931", 2.3], ["171329", 2.3], ["171325", 3.1], ["170932", 0.2]]}, {"slug": "chipotle", "name": "Chipotle copycat", "meats": ["172388", "171477", "171788"], "cooked": 24, "eaten": 0.5, "ing": [["170000", 55], ["169230", 12], ["171413", 27], ["170107", 52], ["171319", 8], ["170923", 3.2], ["171328", 1], ["170931", 2.3], ["173468", 12]]}, {"slug": "chimichurri", "name": "Chimichurri shrimp", "meats": ["171971"], "cooked": 26, "eaten": 0.5, "ing": [["171413", 108], ["172240", 30], ["170416", 45], ["169230", 12], ["171328", 2], ["173468", 6], ["170932", 0.9]]}, {"slug": "peruvian", "name": "Peruvian chicken", "meats": ["171450"], "cooked": 22, "eaten": 1, "ing": [["171413", 40.5], ["168156", 62], ["169230", 12], ["173468", 18], ["171329", 4.6], ["170931", 2.3], ["170923", 6], ["171328", 1], ["169655", 8.4]]}, {"slug": "mediterranean-salmon", "name": "Mediterranean salmon", "meats": ["173692", "173719"], "cooked": 19, "eaten": 1, "ing": [["167749", 6], ["167747", 94], ["171413", 40.5], ["169230", 15], ["171328", 2], ["171329", 2.3], ["170931", 1.2], ["173468", 6]]}, {"slug": "sticky-garlic", "name": "Sticky garlic pork chops", "meats": ["167827", "172388"], "cooked": 19, "eaten": 1, "ing": [["169640", 112], ["169230", 21], ["172237", 60], ["174531", 36], ["174277", 16], ["168556", 17], ["170931", 1.2], ["171186", 12]]}, {"slug": "maple-dijon", "name": "Maple dijon salmon", "meats": ["173692", "173719"], "cooked": 19, "eaten": 0.75, "ing": [["172234", 60], ["169661", 80], ["169230", 10.5], ["171413", 13.5], ["173468", 3], ["170931", 0.6]]}, {"slug": "mexican", "name": "Mexican chicken", "meats": ["172388", "171477"], "cooked": 30, "eaten": 0.35, "ing": [["168156", 123], ["169230", 18], ["169997", 50], ["173573", 109], ["168576", 28], ["170000", 55], ["170923", 4.2], ["171328", 2], ["173468", 18], ["170931", 2.3]]}, {"slug": "stir-fry", "name": "Stir fry", "meats": ["172388", "171971", "168733"], "cooked": 18, "eaten": 0.6, "ing": [["174277", 64], ["174531", 12], ["169230", 6], ["169231", 6], ["171186", 34], ["169640", 63], ["173468", 0.4]]}, {"slug": "carne-asada", "name": "Carne asada", "meats": ["171788", "168733"], "cooked": 24, "eaten": 0.35, "ing": [["169997", 50], ["169230", 12], ["173573", 109], ["170923", 6], ["168833", 9.2], ["173468", 6], ["168156", 31], ["174277", 32]]}];
   const SWEET = new Set(['honey-mustard', 'sticky-garlic', 'maple-dijon', 'stir-fry']);
-  const byId = Object.fromEntries([...FOODS, ...(window.INGREDIENTS || [])].map(f => [f.id, f]));
   const bySlug = Object.fromEntries(MARINADES.map(m => [m.slug, m]));
   const state = { slug: MARINADES[0].slug, meat: MARINADES[0].meats[0], oz: 4, all: 0 };
 
   function totals(m, meat, oz, all) {
     const share = (all ? 1 : m.eaten) * oz / m.cooked;   // fraction of the batch in one serving
-    const items = [[meat, oz * 28.35], ...m.ing.map(([id, g]) => [id, g * share])];
-    const t = {}, estPart = {};
-    for (const [id, g] of items) {
-      const f = byId[id];
-      for (const [k, x] of Object.entries(f.v)) {
-        const amt = x * g / 100;
-        t[k] = (t[k] || 0) + amt;
-        if ((f.est || []).includes(k)) estPart[k] = (estPart[k] || 0) + amt;
-      }
-    }
-    t.carb = Math.max(0, (t.kcal - 4 * t.prot - 9 * t.fat) / 4);
-    const est = new Set(Object.keys(estPart).filter(k => t[k] > 0 && estPart[k] / t[k] > 0.25));
-    // the marinade share is itself an estimate: flag what the marinade mostly drives
-    if (!all) for (const k of ['carb', 'na', 'fat', 'kcal']) {
-      const meatOnly = (byId[meat].v[k] || 0) * oz * 28.35 / 100;
-      if (k === 'carb' ? t.carb > 1 : (t[k] - meatOnly) / t[k] > 0.25) est.add(k);
+    const meatG = oz * 28.35;
+    const { t, est } = RN.totals([[meat, meatG], ...m.ing.map(([id, g]) => [id, g * share])]);
+    // the eaten share is itself a guess: mark what the marinade mostly drives
+    if (!all) for (const k of ['na', 'fat', 'kcal']) {
+      const meatOnly = (RN.byId[meat].v[k] || 0) * meatG / 100;
+      if (t[k] > 0 && (t[k] - meatOnly) / t[k] > 0.25) est.add(k);
     }
     return { t, est, share };
   }
 
-  const fmt = x => x >= 100 ? Math.round(x).toLocaleString() : x >= 10 ? x.toFixed(0) : x >= 1 ? x.toFixed(1) : x.toFixed(2);
-  const tilde = (k, est) => est.has(k) ? '<span class="est" title="Estimate">~</span>' : '';
-  const v = (t, est, k, u) => `${tilde(k, est)}${fmt(t[k])}${u}`;
-
-  // glance table and the one-liners under each recipe: default meat, 4 oz, estimated share
+  const v = RN.val;
   let rows = '<tr><th>Marinade</th><th class="num">kcal</th><th class="num">Protein</th><th class="num">Sodium</th><th class="num">Carbs</th></tr>';
   for (const m of MARINADES) {
     const { t, est } = totals(m, m.meats[0], 4, 0);
     const dot = SWEET.has(m.slug) ? '<span class="sugar-dot" title="Sweet: glaze late"></span>' : '';
     rows += `<tr><td><a href="#${m.slug}">${m.name}</a>${dot}</td><td class="num">${v(t, est, 'kcal', '')}</td><td class="num">${v(t, est, 'prot', ' g')}</td><td class="num">${v(t, est, 'na', ' mg')}</td><td class="num">${v(t, est, 'carb', ' g')}</td></tr>`;
     document.querySelector(`.mar-nut[data-slug="${m.slug}"]`).innerHTML =
-      `<b>Per 4 oz ${byId[m.meats[0]].n.toLowerCase()}:</b> ${v(t, est, 'kcal', ' kcal')} · ${v(t, est, 'prot', ' g protein')} · ${v(t, est, 'na', ' mg sodium')} · ${v(t, est, 'carb', ' g carbs')}`;
+      `<b>Per 4 oz ${RN.byId[m.meats[0]].n.toLowerCase()}:</b> ${v(t, est, 'kcal', ' kcal')} · ${v(t, est, 'prot', ' g protein')} · ${v(t, est, 'na', ' mg sodium')} · ${v(t, est, 'carb', ' g carbs')}`;
   }
   document.getElementById('summary').innerHTML = rows;
 
   function renderMeatSeg() {
-    const m = bySlug[state.slug];
-    document.getElementById('meat-seg').innerHTML = m.meats.map(id =>
-      `<button data-v="${id}" aria-pressed="${id === state.meat}">${byId[id].n}</button>`).join('');
+    document.getElementById('meat-seg').innerHTML = bySlug[state.slug].meats.map(id =>
+      `<button data-v="${id}" aria-pressed="${id === state.meat}">${RN.byId[id].n}</button>`).join('');
   }
 
   function render() {
@@ -407,23 +392,7 @@
     const { t, est, share } = totals(m, state.meat, state.oz, state.all);
     document.getElementById('share-note').textContent =
       `This serving counts ${Math.round(share * 100)}% of the batch (${state.all ? 'all' : Math.round(m.eaten * 100) + '%'} of the marinade eaten, spread over ${m.cooked} oz of cooked meat).`;
-    let rows = '<tr><th>Nutrient</th><th class="num">Amount</th><th class="num">% target</th><th style="width:30%"></th></tr>';
-    rows += '<tr class="grp"><td colspan="4">Macros</td></tr>';
-    for (const [k, label, u] of [['kcal', 'Calories', ''], ['prot', 'Protein', 'g'], ['fat', 'Fat', 'g'], ['carb', 'Carbohydrate (mostly sugar)', 'g']])
-      rows += `<tr><td>${label}</td><td class="num">${tilde(k, est)}${fmt(t[k])} ${u}</td><td></td><td></td></tr>`;
-    let grp = '';
-    for (const [k, label, unit, target, page, group, , , kind] of NUTRIENTS) {
-      if (group !== grp) { grp = group; rows += `<tr class="grp"><td colspan="4">${group}</td></tr>`; }
-      const amt = t[k] || 0, name = `<a href="${page}">${label}</a>`;
-      if (kind === 'limit') {
-        rows += `<tr><td>${name}</td><td class="num">${tilde(k, est)}${fmt(amt)} ${unit}</td><td class="num">${(amt * 9 / t.kcal * 100).toFixed(1)}% of kcal</td><td></td></tr>`;
-        continue;
-      }
-      const pct = amt / target[0] * 100, cls = pct >= 25 ? '' : pct >= 10 ? 'mid' : 'low';
-      const bar = kind === 'info' ? '' : `<div class="bar"><i class="${cls}" style="width:${Math.min(pct, 100)}%"></i></div>`;
-      rows += `<tr><td>${name}</td><td class="num">${tilde(k, est)}${fmt(amt)} ${unit}</td><td class="num">${kind === 'info' ? '' : Math.round(pct) + '%'}</td><td>${bar}</td></tr>`;
-    }
-    document.getElementById('nut-table').innerHTML = rows;
+    document.getElementById('nut-table').innerHTML = RN.table(t, est, 'Carbohydrate (mostly sugar)');
   }
 
   function pick(slug) {
@@ -433,13 +402,7 @@
   }
   document.getElementById('pick').addEventListener('change', e => pick(e.target.value));
   document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => pick(a.dataset.pick)));
-  document.querySelectorAll('.seg').forEach(seg => seg.addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    seg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
-    const ctl = seg.dataset.ctl;
-    state[ctl] = ctl === 'meat' ? b.dataset.v : Number(b.dataset.v);
-    render();
-  }));
+  RN.wireSegs(document, state, render);
   renderMeatSeg(); render();
 })();
 </script>
