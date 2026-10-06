@@ -1,0 +1,64 @@
+/* ===================================================================
+   recipe.css — recipe pages. Loaded after entry.css, which supplies
+   the base type, .crumbs/.tags/.lede, .glance card, .callout/.caution,
+   tables and .refs. Page shape: header → .glance (times, yield, per-bowl
+   headline numbers) → Ingredients → Method → Nutrition (live, from
+   foods-data.js) → Nutrition notes (claims checked) → refs.
+   =================================================================== */
+
+.credit { font-size: 0.88rem; color: var(--sub); margin: -0.8rem 0 1.2rem; }
+
+/* ---------- glance: times + headline numbers ---------- */
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin: 0.2rem 0 0.9rem; }
+@media (max-width: 600px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+.fact { background: var(--tag-bg); border-radius: 6px; padding: 0.5rem 0.7rem; }
+.fact b { display: block; font-size: 1.15rem; line-height: 1.25; }
+.fact span { font-size: 0.75rem; color: var(--sub); letter-spacing: 0.04em; text-transform: uppercase; }
+.fact.hl b { color: var(--accent); }
+
+/* ---------- ingredients ---------- */
+.ingr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+@media (max-width: 600px) { .ingr-grid { grid-template-columns: 1fr; } }
+ul.ingr { list-style: none; padding: 0; }
+ul.ingr li { padding: 0.3rem 0; border-bottom: 1px dotted var(--line); }
+ul.ingr .amt { font-weight: 600; display: inline-block; min-width: 6.5rem; }
+.note { color: var(--sub); font-size: 0.88rem; }
+
+/* ---------- method ---------- */
+ol.steps { counter-reset: step; list-style: none; padding: 0; }
+ol.steps > li { counter-increment: step; position: relative; padding: 0.2rem 0 0.9rem 2.6rem; margin: 0; }
+ol.steps > li::before { content: counter(step); position: absolute; left: 0; top: 0.15rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+ol.steps > li > b:first-child { display: block; }
+.tip { display: block; margin-top: 0.3rem; font-size: 0.9rem; color: var(--sub); }
+.tip::before { content: "Tip — "; font-weight: 600; color: var(--accent); }
+
+/* ---------- live nutrition panel ---------- */
+.controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin: 0.6rem 0 1rem; font-size: 0.9rem; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.seg button { font: inherit; font-size: 0.85rem; background: var(--card); color: var(--ink); border: none; padding: 0.25rem 0.8rem; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.ctl-label { color: var(--sub); margin-right: 0.4rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+table.nut td:first-child { font-weight: 400; }
+table.nut td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.nut tr.grp td { background: var(--tag-bg); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sub); }
+.bar { position: relative; height: 0.55rem; background: var(--tag-bg); border-radius: 999px; min-width: 6rem; }
+.bar i { position: absolute; inset: 0 auto 0 0; border-radius: 999px; background: var(--ev-strong); max-width: 100%; }
+.bar i.low { background: var(--ev-early); }
+.bar i.mid { background: var(--ev-moderate); }
+.est { color: var(--caution); cursor: help; }
+.nut-foot { font-size: 0.82rem; color: var(--sub); }
+@media (max-width: 600px) { table.nut:not(.summary) th:nth-child(4), table.nut:not(.summary) td:nth-child(4) { display: none; } }
+
+/* ---------- multi-recipe pages (recipe-marinades.html) ---------- */
+section.marinade { border-top: 1px solid var(--line); margin-top: 2rem; scroll-margin-top: 1rem; }
+section.marinade h2 { border: none; margin-top: 1.2rem; display: flex; align-items: center; gap: 0.6rem; }
+section.marinade h2 .num { flex: none; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--accent); color: #fff; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+.meta { color: var(--sub); font-size: 0.85rem; margin: -0.3rem 0 0.6rem; }
+.mar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+@media (max-width: 600px) { .mar-grid { grid-template-columns: 1fr; } }
+.mar-nut { font-size: 0.88rem; background: var(--tag-bg); border-radius: 6px; padding: 0.45rem 0.7rem; }
+.mar-grid .why { font-size: 0.85rem; border-bottom: none; }
+table.summary td:first-child { font-weight: 600; }
+.sugar-dot { display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--caution); margin-left: 0.4rem; vertical-align: middle; }
+#pick { font: inherit; font-size: 0.88rem; padding: 0.2rem 0.4rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); }
