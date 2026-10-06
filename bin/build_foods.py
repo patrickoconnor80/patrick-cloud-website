@@ -208,6 +208,8 @@ INGREDIENTS = [
 ('169698','Cornstarch',8,'1 tbsp','Ingredients',''),
 ('171016','Sesame oil',4.5,'1 tsp','Ingredients',''),
 ('170150','Sesame seeds',9,'1 tbsp','Ingredients',''),
+('171192','Marinara sauce',125,'½ cup','Ingredients',''),   # stands in for jarred seafood tomato sauces
+('174837','White wine',118,'½ cup','Ingredients',''),
 ]
 
 # Ingredients USDA doesn't have, as weighted mixes of SR foods (same format as RECIPES).
