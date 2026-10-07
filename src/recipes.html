@@ -78,6 +78,19 @@
   .ben i.early { color: #8a8a8a; }
   .table-wrap { overflow-x: auto; }
   @media (max-width: 600px) { .table-wrap th:nth-child(2), .table-wrap td:nth-child(2) { display: none; } .bens { min-width: 0; } .ben { white-space: normal; border-radius: 6px; } .table-wrap th:nth-child(5), .table-wrap td:nth-child(5) { display: none; } }
+  .jump { font-size: 0.85rem; color: var(--sub); margin: 1.2rem 0 0.5rem; }
+  .jump a { border-bottom: none; }
+  .picks { background: var(--tag-bg); border: 1px solid var(--line); border-radius: 8px; padding: 0.2rem 1.2rem 0.8rem; margin: 1.5rem 0 1rem; }
+  .picks h2 { margin-top: 1rem; border-bottom: none; }
+  .rgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.8rem; margin: 0.8rem 0 1rem; }
+  a.rcard { display: flex; flex-direction: column; gap: 0.3rem; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 0.8rem 0.9rem; color: var(--ink); border-bottom: 1px solid var(--line); transition: border-color 0.15s ease, transform 0.15s ease; }
+  a.rcard:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .rc-name { font-weight: 600; color: var(--accent); line-height: 1.3; }
+  .rc-hook { font-size: 0.9rem; color: var(--sub); line-height: 1.4; }
+  .rc-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin-top: auto; padding-top: 0.3rem; font-size: 0.78rem; color: var(--sub); }
+  .rc-time { margin-right: 0.3rem; }
+  h2[id], .picks { scroll-margin-top: 110px; }
+  .dn { display: inline-block; white-space: nowrap; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; background: var(--accent); border-radius: 999px; padding: 0.05rem 0.45rem; margin-left: 0.45rem; vertical-align: 0.1rem; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -106,26 +119,65 @@
 
 <p>Each recipe has the method up top and a nutrition panel below it, calculated from the same USDA data as <a href="build-a-day.html">Build a Day</a> and the <a href="foods.html">Food Database</a>. Change the protein or portion and the numbers update. Where a recipe makes a health claim, it's checked against the literature the same way the <a href="supplements.html">Supplements</a> entries are.</p>
 
-<h2>Index</h2>
-<div class="table-wrap"><table>
-<thead>
-<tr><th>Recipe</th><th>Type</th><th>Time</th><th>Per serving</th><th>Why it's here</th></tr>
-</thead>
-<tbody>
-<tr><td><a href="recipe-pho.html">Pho Bone Broth</a></td><td>Broth / Soup</td><td>1½ h active, 8–24 h simmer</td><td class="bens"><span class="ben">~57 g protein</span><span class="ben">~6.6 g glycine</span></td><td>Gelatin broth plus steak: the glycine offsets the methionine in the meat</td></tr>
-<tr><td><a href="recipe-marinades.html">10 Marinades</a></td><td>Marinade / Grill</td><td>5 min prep, 30 min–8 h</td><td class="bens"><span class="ben">~30 g protein</span><span class="ben">no seed oils</span></td><td>Marinating cuts the carcinogens that form when meat is grilled. Sweet marinades go on late.</td></tr>
-<tr><td><a href="recipe-chicken-soup.html">Gelatin Chicken Soup</a></td><td>Soup</td><td>3–4 h broth (pressure), 1 h soup</td><td class="bens"><span class="ben">~53 g protein</span><span class="ben">~4 g glycine</span></td><td>A broth from chicken feet and necks that sets firm, plus 6 oz of chicken per bowl</td></tr>
-<tr><td><a href="recipe-tenderloin.html">Reverse-Sear Tenderloin</a></td><td>Roast</td><td>12–24 h brine, ~1½ h cook</td><td class="bens"><span class="ben">~50 g protein</span><span class="ben">no seed oils</span></td><td>Low roast and a short sear: hard to overcook, and low in HCAs</td></tr>
-<tr><td><a href="recipe-weeknight.html">Weeknight Skillet Dinners</a></td><td>Stir fry / Skillet</td><td>20–25 min</td><td class="bens"><span class="ben">3 recipes</span></td><td>Teriyaki, steak stir fry, honey chipotle chicken</td></tr>
-<tr><td><a href="recipe-sauces.html">Sauces &amp; Seasonings</a></td><td>Condiments</td><td>5–20 min</td><td class="bens"><span class="ben">12 recipes</span></td><td>Avocado-oil mayo sauces have about a quarter of the omega-6 of store versions</td></tr>
-<tr><td><a href="recipe-seafood-chowder.html">Sea Bass &amp; Scallops in Chowder</a></td><td>Seafood</td><td>20 min</td><td class="bens"><span class="ben">~51 g protein</span><span class="ben">~1,000 mg EPA+DHA</span></td><td>Wild sea bass and scallops on clam chowder. All three are FDA "Best Choices" for mercury.</td></tr>
-<tr><td><a href="recipe-carnitas.html">Slow-Cooker Carnitas</a></td><td>Slow cooker</td><td>15 min prep, 4–8 h cook</td><td class="bens"><span class="ben">~42 g protein</span><span class="ben">½ day of B1</span></td><td>Pork brisket braised in citrus, then broiled crisp. Pork is a top source of thiamine.</td></tr>
-<tr><td><a href="recipe-fra-diavolo.html">Shrimp &amp; Clams Fra Diavolo</a></td><td>Seafood pasta</td><td>30 min</td><td class="bens"><span class="ben">~43 g protein</span><span class="ben">~15 days of B12</span></td><td>Shrimp and littlenecks in spicy lobster tomato sauce. Clams are the most B12-dense food there is.</td></tr>
-<tr><td><a href="recipe-scallop-scampi.html">Scallop Scampi Linguine</a></td><td>Seafood pasta</td><td>25 min</td><td class="bens"><span class="ben">~41 g protein</span><span class="ben">no seed oils</span></td><td>Seared scallops and asparagus in lemon-garlic butter. No tomato, so the scallops stay the star.</td></tr>
-</tbody>
-</table></div>
+<nav class="jump"><a href="#date-night">Date night</a> · <a href="#seafood">Seafood</a> · <a href="#beef-pork">Beef &amp; pork</a> · <a href="#soups">Soups &amp; broths</a> · <a href="#weeknight">Weeknight</a> · <a href="#sauces">Sauces &amp; marinades</a> · <a href="#desserts">Desserts</a> · <a href="#drinks">Drinks</a></nav>
 
-<p class="legend">Per-serving numbers are for the default bowl or plate on each page. Meat and fish portions are 4&nbsp;oz cooked, and each page has a toggle for 8&nbsp;oz.</p>
+<div class="picks" id="date-night">
+<h2>Date night</h2>
+<p>Six dishes that look and taste like a restaurant plate, and that you can pull off without stress. Practice once first, prep everything before she arrives, and make one thing ahead. The <a href="recipe-desserts.html">desserts</a> and <a href="recipe-drinks.html">drinks</a> finish the night.</p>
+<ul>
+  <li><a href="recipe-scallop-scampi.html">Scallop Scampi Linguine</a>: 25 minutes, and fun to watch you sear</li>
+  <li><a href="recipe-sea-bass.html">Crispy-Skin Sea Bass</a>: crackling skin on French butter sauce</li>
+  <li><a href="recipe-ribeye.html">Cast-Iron Ribeye</a>: the steakhouse dinner, sliced at the table</li>
+  <li><a href="recipe-fra-diavolo.html">Shrimp &amp; Clams Fra Diavolo</a>: a big shared skillet, served in the pan</li>
+  <li><a href="recipe-short-ribs.html">Red Wine Braised Short Ribs</a>: made the day before, so you're relaxed when she arrives</li>
+  <li><a href="recipe-tenderloin.html">Reverse-Sear Tenderloin</a>: for when you want to go big</li>
+</ul>
+</div>
+
+<h2 id="seafood">Seafood</h2>
+<div class="rgrid">
+  <a class="rcard" href="recipe-scallop-scampi.html"><span class="rc-name">Scallop Scampi Linguine<span class="dn" title="Date night pick">date night</span></span><span class="rc-hook">Seared scallops and asparagus in lemon-garlic butter</span><span class="rc-meta"><span class="rc-time">25 min</span><span class="ben">~41 g protein</span></span></a>
+  <a class="rcard" href="recipe-sea-bass.html"><span class="rc-name">Crispy-Skin Sea Bass<span class="dn" title="Date night pick">date night</span></span><span class="rc-hook">Wild sea bass on lemon beurre blanc</span><span class="rc-meta"><span class="rc-time">30 min</span><span class="ben">~1,100 mg EPA+DHA</span></span></a>
+  <a class="rcard" href="recipe-fra-diavolo.html"><span class="rc-name">Shrimp &amp; Clams Fra Diavolo<span class="dn" title="Date night pick">date night</span></span><span class="rc-hook">Spicy lobster tomato sauce over linguine</span><span class="rc-meta"><span class="rc-time">30 min</span><span class="ben">~15 days of B12</span></span></a>
+  <a class="rcard" href="recipe-seafood-chowder.html"><span class="rc-name">Sea Bass &amp; Scallops in Chowder</span><span class="rc-hook">Seared seafood on warm clam chowder</span><span class="rc-meta"><span class="rc-time">20 min</span><span class="ben">~51 g protein</span></span></a>
+</div>
+
+<h2 id="beef-pork">Beef &amp; pork</h2>
+<div class="rgrid">
+  <a class="rcard" href="recipe-ribeye.html"><span class="rc-name">Cast-Iron Ribeye<span class="dn" title="Date night pick">date night</span></span><span class="rc-hook">With crispy russets and asparagus</span><span class="rc-meta"><span class="rc-time">45 min + overnight brine</span><span class="ben">~67 g protein</span></span></a>
+  <a class="rcard" href="recipe-tenderloin.html"><span class="rc-name">Reverse-Sear Tenderloin<span class="dn" title="Date night pick">date night</span></span><span class="rc-hook">Low roast, hard sear, horseradish sauce</span><span class="rc-meta"><span class="rc-time">~1½ h + brine</span><span class="ben">~50 g protein</span></span></a>
+  <a class="rcard" href="recipe-short-ribs.html"><span class="rc-name">Red Wine Braised Short Ribs<span class="dn" title="Date night pick">date night</span></span><span class="rc-hook">Over mashed potatoes. Best made the day before.</span><span class="rc-meta"><span class="rc-time">8 h slow cooker</span><span class="ben">~55 g protein</span></span></a>
+  <a class="rcard" href="recipe-carnitas.html"><span class="rc-name">Slow-Cooker Carnitas</span><span class="rc-hook">Pork brisket braised in citrus, broiled crisp</span><span class="rc-meta"><span class="rc-time">4–8 h slow cooker</span><span class="ben">½ day of B1</span></span></a>
+</div>
+
+<h2 id="soups">Soups &amp; broths</h2>
+<div class="rgrid">
+  <a class="rcard" href="recipe-pho.html"><span class="rc-name">Pho Bone Broth</span><span class="rc-hook">Spiced gelatin broth, steak and noodles</span><span class="rc-meta"><span class="rc-time">8–24 h simmer</span><span class="ben">~6.6 g glycine</span></span></a>
+  <a class="rcard" href="recipe-chicken-soup.html"><span class="rc-name">Gelatin Chicken Soup</span><span class="rc-hook">Broth from feet and necks that sets firm</span><span class="rc-meta"><span class="rc-time">3–4 h + 1 h</span><span class="ben">~53 g protein</span></span></a>
+</div>
+
+<h2 id="weeknight">Weeknight</h2>
+<div class="rgrid">
+  <a class="rcard" href="recipe-weeknight.html"><span class="rc-name">Weeknight Skillet Dinners</span><span class="rc-hook">Teriyaki, steak stir fry, honey chipotle chicken</span><span class="rc-meta"><span class="rc-time">20–25 min</span><span class="ben">3 recipes</span></span></a>
+</div>
+
+<h2 id="sauces">Sauces &amp; marinades</h2>
+<div class="rgrid">
+  <a class="rcard" href="recipe-sauces.html"><span class="rc-name">Sauces &amp; Seasonings</span><span class="rc-hook">Aioli, chimichurri, salsa, guacamole, taco seasoning and more</span><span class="rc-meta"><span class="rc-time">5–20 min</span><span class="ben">12 recipes</span></span></a>
+  <a class="rcard" href="recipe-marinades.html"><span class="rc-name">10 Marinades</span><span class="rc-hook">For chicken, steak, pork and seafood. Marinating also cuts grilling carcinogens.</span><span class="rc-meta"><span class="rc-time">30 min–8 h</span><span class="ben">10 recipes</span></span></a>
+</div>
+
+<h2 id="desserts">Desserts</h2>
+<div class="rgrid">
+  <a class="rcard" href="recipe-desserts.html"><span class="rc-name">Desserts</span><span class="rc-hook">Panna cotta, dark chocolate mousse, affogato</span><span class="rc-meta"><span class="rc-time">2 min–4 h</span><span class="ben">3 recipes</span></span></a>
+</div>
+
+<h2 id="drinks">Drinks</h2>
+<div class="rgrid">
+  <a class="rcard" href="recipe-drinks.html"><span class="rc-name">Drinks</span><span class="rc-hook">Fresh-lime margarita, paloma, and a non-alcoholic sparkler</span><span class="rc-meta"><span class="rc-time">5 min</span><span class="ben">3 recipes</span></span></a>
+</div>
+
+<p class="legend">Per-serving numbers are for the default bowl or plate on each page. Each page has toggles for portion and protein.</p>
 
 </div>
 </body>

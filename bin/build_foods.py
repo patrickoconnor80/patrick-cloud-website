@@ -20,7 +20,7 @@ OUT = os.path.join(HERE, '..', 'src', 'assets', 'js', 'foods-data.js')
 N = {'kcal': 1008, 'prot': 1003, 'ca': 1087, 'fe': 1089, 'mg': 1090, 'p': 1091, 'k': 1092,
      'na': 1093, 'zn': 1095, 'cu': 1098, 'se': 1103, 'a': 1106, 'e': 1109, 'd': 1114,
      'c': 1162, 'b1': 1165, 'b2': 1166, 'b3': 1167, 'b5': 1170, 'b6': 1175, 'b12': 1178,
-     'k1': 1185, 'b9': 1190, 'gly': 1225, 'fat': 1004}
+     'k1': 1185, 'b9': 1190, 'gly': 1225, 'fat': 1004, 'alc': 1018}   # alc: ethyl alcohol, g
 
 # Fatty acids: read raw USDA fields, then derive the keys the site uses (see derive_fats)
 FA_RAW = {'_la_nc': 1316, '_la': 1269, '_ala_n3': 1404, '_ala': 1270, '_epa': 1278, '_dha': 1272,
@@ -169,6 +169,9 @@ FOODS = [
 ('167854','Pork spareribs, braised',113,'4 oz cooked','Meat',''),   # stands in for pork brisket
 ('168256','Pork shoulder, braised',113,'4 oz cooked','Meat',''),
 ('175036','Corn tortillas',52,'2 tortillas','Starches',''),
+# date night: ribeye, short ribs
+('173390','Ribeye steak',113,'4 oz cooked','Meat',''),
+('171222','Short ribs, braised',113,'4 oz cooked','Meat',''),
 ]
 
 # Cooking ingredients used by the recipe pages (recipe-*.html). Same shape and processing as FOODS,
@@ -210,6 +213,17 @@ INGREDIENTS = [
 ('170150','Sesame seeds',9,'1 tbsp','Ingredients',''),
 ('171192','Marinara sauce',125,'½ cup','Ingredients',''),   # stands in for jarred seafood tomato sauces
 ('174837','White wine',118,'½ cup','Ingredients',''),
+('173190','Red wine',118,'½ cup','Ingredients',''),
+('170499','Shallot',10,'1 tbsp minced','Ingredients',''),
+('170859','Heavy cream',15,'1 tbsp','Ingredients',''),
+# desserts and drinks
+('173471','Vanilla extract',4.2,'1 tsp','Ingredients',''),
+('172183','Egg white, raw',33,'1 large','Ingredients',''),
+('171891','Espresso',30,'1 shot','Ingredients',''),
+('174815','Spirits, 80 proof',42,'1½ oz','Ingredients',''),   # tequila, vodka, gin, rum, whiskey
+('170277','Agave syrup',21,'1 tbsp','Ingredients',''),
+('173039','Grapefruit juice',62,'2 oz','Ingredients',''),
+('174842','Club soda',118,'4 oz','Ingredients',''),
 ]
 
 # Ingredients USDA doesn't have, as weighted mixes of SR foods (same format as RECIPES).

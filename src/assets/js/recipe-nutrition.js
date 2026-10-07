@@ -17,7 +17,8 @@ window.RN = (function () {
         if ((f.est || []).includes(k)) estPart[k] = (estPart[k] || 0) + amt;
       }
     }
-    t.carb = Math.max(0, (t.kcal - 4 * t.prot - 9 * t.fat) / 4);
+    // alcohol supplies 7 kcal/g; leave it out so it doesn't show up as carbohydrate
+    t.carb = Math.max(0, (t.kcal - 4 * t.prot - 9 * t.fat - 7 * (t.alc || 0)) / 4);
     const est = new Set(Object.keys(estPart).filter(k => t[k] > 0 && estPart[k] / t[k] > 0.25));
     est.add('carb');
     return { t, est };
