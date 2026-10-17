@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLP-1 Drugs</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1f1a;
+  --ink-soft:#3d453c;
+  --paper:#f7f5ee;
+  --paper-deep:#efece1;
+  --rule:#d9d4c4;
+  --moss:#4a5d3a;
+  --moss-deep:#33421f;
+  --rust:#a8562f;
+  --gold:#b78a2e;
+  --sky:#3d6a7a;
+  --card:#fffefb;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 28px;}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+}
+.site-header-inner{
+  max-width:1000px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+}
+.site-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:18px;
+  color:var(--moss-deep);border-bottom:none;text-decoration:none;
+}
+.site-logo:hover{border-bottom:none;color:var(--moss);}
+.tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+.tabs a{color:var(--ink-soft);border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+.tabs a:hover{color:var(--ink);background:var(--paper-deep);}
+.tabs a.active{color:var(--card);background:var(--moss);font-weight:600;}
+.subnav{border-bottom:1px solid var(--rule);}
+.subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+.subnav a{color:var(--ink-soft);border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+.subnav a:hover{color:var(--moss);border-bottom-color:var(--rule);}
+.subnav a.active{color:var(--moss-deep);border-bottom-color:var(--moss);font-weight:600;}
+
+/* ---- Masthead ---- */
+header.top{
+  border-bottom:2px solid var(--ink);
+  padding:36px 0 34px;
+  margin-bottom:8px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 22px;
+  font-weight:600;
+}
+h1.title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--moss-deep);font-weight:500;}
+.sub{
+  font-size:21px;
+  color:var(--ink-soft);
+  font-style:italic;
+  max-width:46em;
+  margin:0 0 28px;
+}
+.byline{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  color:var(--ink-soft);
+  letter-spacing:.02em;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+}
+.byline b{color:var(--moss);font-weight:600;}
+
+/* ---- Abstract ---- */
+.abstract{
+  background:var(--paper-deep);
+  border-left:3px solid var(--moss);
+  padding:26px 30px;
+  margin:40px 0 12px;
+  font-size:18px;
+}
+.abstract .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--moss);font-weight:600;margin-bottom:10px;
+}
+
+/* ---- Argument in brief ---- */
+.brief{
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:26px 30px 22px;
+  margin:22px 0 12px;
+  background:var(--card);
+}
+.brief .lbl{
+  font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+  color:var(--ink);margin-bottom:4px;
+}
+.brief .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 18px;font-weight:600;font-style:normal;
+}
+ol.spine{list-style:none;counter-reset:s;padding:0;margin:0;}
+ol.spine>li{
+  counter-increment:s;position:relative;
+  padding:11px 0 11px 44px;font-size:17px;line-height:1.5;
+  border-top:1px solid var(--rule);
+}
+ol.spine>li:first-child{border-top:none;}
+ol.spine>li::before{
+  content:counter(s);position:absolute;left:0;top:11px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+  color:#fff;background:var(--moss);width:24px;height:24px;
+  border-radius:50%;text-align:center;line-height:24px;
+}
+ol.spine>li b{color:var(--moss-deep);font-weight:600;}
+.spine-part{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--rust);
+  margin-right:9px;white-space:nowrap;
+}
+.spine-part a{color:inherit;border-bottom:none;}
+.spine-part a:hover{border-bottom:1px solid currentColor;}
+.brief .bottom{
+  margin:18px 0 0;padding-top:16px;border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  color:var(--moss-deep);
+}
+
+/* ---- Section scaffolding ---- */
+section{padding:18px 0;}
+.part-head{
+  display:flex;align-items:baseline;gap:16px;
+  margin:54px 0 6px;padding-top:20px;
+  border-top:2px solid var(--ink);
+}
+.part-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:13px;letter-spacing:.1em;
+  color:var(--rust);white-space:nowrap;padding-top:6px;
+}
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:clamp(25px,4vw,34px);
+  line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);
+}
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;line-height:1.2;
+  margin:38px 0 4px;color:var(--moss-deep);
+}
+h3 .h3num{color:var(--rust);font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:8px;font-weight:600;}
+p{margin:14px 0;}
+a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(61,106,122,.35);}
+a:hover{border-bottom-color:var(--sky);}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+sup.cite{font-size:11px;line-height:0;vertical-align:super;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+sup.cite a{color:var(--rust);text-decoration:none;padding:0 1px;border-bottom:none;}
+sup.cite a:hover{text-decoration:underline;}
+
+/* ---- Evidence chips ---- */
+.ev{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:4px 11px;border-radius:2px;margin-right:6px;
+}
+.ev::before{content:"";width:7px;height:7px;border-radius:50%;}
+.ev-strong{background:rgba(74,93,58,.13);color:var(--moss-deep);}
+.ev-strong::before{background:var(--moss);}
+.ev-mod{background:rgba(61,106,122,.13);color:#2c4f5c;}
+.ev-mod::before{background:var(--sky);}
+.ev-animal{background:rgba(183,138,46,.15);color:#7a5c14;}
+.ev-animal::before{background:var(--gold);}
+.ev-inf{background:rgba(183,138,46,.09);color:#7a5c14;}
+.ev-inf::before{background:var(--gold);opacity:.55;}
+.ev-cont{background:rgba(168,86,47,.13);color:#7d3d1c;}
+.ev-cont::before{background:var(--rust);}
+.ev-spec{background:rgba(61,69,60,.1);color:var(--ink-soft);}
+.ev-spec::before{background:var(--ink-soft);opacity:.6;}
+.evline{margin:16px 0 6px;font-size:15px;}
+.evline .txt{color:var(--ink-soft);font-style:italic;}
+
+/* ---- Callout / mechanism boxes ---- */
+.mech{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:22px 26px;
+  margin:26px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.mech .mech-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin-bottom:12px;
+}
+.chain{
+  font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.75;
+  background:var(--paper-deep);border-radius:4px;padding:16px 20px;margin:18px 0;
+  color:var(--ink);white-space:pre-wrap;overflow-x:auto;
+}
+.takeaway{
+  border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin:18px 0;
+  font-size:15.5px;color:var(--ink);
+}
+.takeaway b{color:var(--moss-deep);}
+
+/* ---- Flag / caveat ---- */
+.flag{
+  border-left:3px solid var(--gold);
+  background:rgba(183,138,46,.06);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.flag .flag-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7a5c14;font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Pushback ---- */
+.pushback{
+  border-left:3px solid var(--rust);
+  background:rgba(168,86,47,.05);
+  padding:16px 22px;margin:22px 0;font-size:17px;
+}
+.pushback .pb-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+
+/* ---- Safety ---- */
+.safety{
+  border:2px solid var(--rust);border-radius:4px;
+  background:rgba(168,86,47,.04);
+  padding:18px 24px;margin:26px 0;font-size:17px;
+}
+.safety .sf-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:6px;
+}
+.safety ul{margin:8px 0 0;padding-left:20px;}
+.safety li{margin:6px 0;}
+
+/* ---- Deep dive ---- */
+.deepdive{
+  border-left:3px solid var(--sky);
+  background:linear-gradient(90deg,rgba(61,106,122,.045),rgba(61,106,122,0) 60%);
+  border-radius:0 4px 4px 0;
+  padding:6px 24px 14px 22px;
+  margin:26px 0;
+}
+.deepdive-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--sky);
+  font-weight:600;margin:16px 0 8px;
+}
+.dd-skip{color:var(--ink-soft);text-transform:none;letter-spacing:0;font-weight:500;font-style:italic;font-size:12px;margin-left:8px;}
+
+/* ---- Tables ---- */
+.table-wrap{overflow-x:auto;margin:26px 0;}
+table.matrix{
+  width:100%;border-collapse:collapse;
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+}
+table.matrix th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--moss);
+  font-weight:600;padding:14px 16px;border-bottom:2px solid var(--ink);
+  vertical-align:bottom;
+}
+table.matrix td{
+  padding:14px 16px;border-top:1px solid var(--rule);
+  vertical-align:top;font-size:15.5px;line-height:1.5;color:var(--ink-soft);
+}
+table.matrix td:first-child{color:var(--ink);width:34%;}
+table.matrix td:last-child{width:20%;}
+table.matrix td ul{margin:6px 0 0;padding-left:18px;}
+table.matrix tr.who td{
+  background:var(--paper-deep);font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--moss-deep);font-weight:600;
+  padding:10px 16px;
+}
+.yes,.mid,.no{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+.yes{color:var(--moss-deep);}
+.mid{color:#7a5c14;}
+.no{color:var(--rust);}
+@media (max-width:640px){
+  table.matrix,table.matrix tbody,table.matrix tr,table.matrix td{display:block;width:100% !important;}
+  table.matrix thead{display:none;}
+  table.matrix tr{border-top:1px solid var(--rule);padding:6px 0;}
+  table.matrix td{border-top:none;padding:4px 16px;}
+  table.matrix td:first-child{padding-top:14px;}
+}
+
+/* ---- Ladder ---- */
+.ladder{margin:26px 0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--card);}
+.rung{display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--rule);}
+.rung:first-child{border-top:none;}
+.rung-lbl{padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;line-height:1.35;color:#fff;}
+.rung-lbl small{display:block;font-weight:500;opacity:.85;font-size:10.5px;margin-top:4px;letter-spacing:.04em;}
+.rung-body{padding:12px 18px;font-size:15.5px;line-height:1.5;}
+.rung-body p{margin:4px 0;}
+.r1{background:var(--moss-deep);}
+.r2{background:var(--moss);}
+.r3{background:var(--sky);}
+.r4{background:var(--gold);}
+.r5{background:var(--rust);}
+.r6{background:#6b6f68;}
+
+/* ---- Limitations / references ---- */
+.limits{background:var(--paper-deep);border-radius:4px;padding:8px 30px 20px;margin:14px 0 24px;}
+.limits ul{padding-left:20px;margin:8px 0;}
+.limits li{margin:12px 0;}
+.limits li b{color:var(--moss-deep);}
+.lim-close{
+  font-style:italic;color:var(--ink-soft);border-top:1px solid var(--rule);
+  padding-top:20px;margin-top:28px;
+}
+ol.refs{
+  list-style:none;padding:0;margin:24px 0 0;
+  font-family:'Newsreader',Georgia,serif;
+}
+ol.refs li{
+  counter-increment:ref;position:relative;padding:0 0 14px 3.2em;
+  font-size:15px;line-height:1.55;color:var(--ink);
+}
+.refwrap{counter-reset:ref;}
+ol.refs li:target{background:#fbf6ea;outline:2px solid #b78a2e;outline-offset:3px;border-radius:4px;}
+ol.refs li::before{
+  content:"["counter(ref)"]";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
+  color:var(--rust);
+}
+ol.refs li .j{font-style:italic;}
+ol.refs li .note{color:var(--ink-soft);font-size:13.5px;}
+.ref-group{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--moss);font-weight:600;
+  margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);
+}
+.ref-group:first-of-type{margin-top:8px;}
+footer.end{
+  border-top:2px solid var(--ink);margin-top:56px;padding:30px 0 80px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  letter-spacing:.02em;line-height:1.7;
+}
+footer.end b{color:var(--moss);}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;margin:3px 4px 3px 0;
+}
+
+@media (max-width:560px){
+  body{font-size:17.5px;}
+  .wrap{padding:0 16px;}
+  .byline{flex-direction:column;gap:6px;}
+  .rung{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion:no-preference){
+  section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html" class="active">Papers</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="nutrients.html">Nutrients</a>
+  <a href="supplements.html">Supplements</a>
+  <a href="healthfoods.html">Health Foods</a>
+  <a href="recipes.html">Recipes</a>
+</div></div>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Working Paper &middot; Metabolic Pharmacology</p>
+  <h1 class="title">GLP-1 Drugs: <em>What They Fix and What They Don't</em></h1>
+  <p class="sub">Your gut makes GLP-1 after every meal, and it lasts about two minutes. Semaglutide and tirzepatide are re-engineered versions that last a week and reach parts of the brain the natural hormone barely touches. They take off visceral fat, improve insulin sensitivity and cut heart attacks. They don't change why the fat was there, and losing it fast has costs of its own.</p>
+  <div class="byline">
+    <span><b>Draft</b> v1</span>
+    <span><b>Scope</b> the natural hormone, how the drugs were modified, what they're good for, what they leave untouched, muscle and bone loss, and what comes out of fat when it's lost quickly</span>
+    <span><b>Standard</b> every cited paper checked against its PubMed abstract</span>
+  </div>
+</header>
+
+<div class="abstract">
+  <div class="lbl">Abstract</div>
+  <p style="margin-top:0;"><strong>The hormone.</strong> GLP-1 is released by cells in the lower small intestine and colon when food reaches them. An enzyme in the blood vessel walls right next to those cells, DPP-4, starts cutting it before it even leaves the gut, and its half-life in blood is one to two minutes.<sup class="cite"><a href="#r2">2</a>,<a href="#r3">3</a></sup> Only about 10&ndash;15% reaches the general circulation intact.<sup class="cite"><a href="#r4">4</a></sup> Most of what it does, it does locally, through nerve endings in the gut wall that signal the brainstem.<sup class="cite"><a href="#r5">5</a></sup></p>
+  <p><strong>The drug.</strong> Semaglutide swaps one amino acid so DPP-4 can't cut it, and hangs a fatty-acid tail on it so it rides on albumin in the blood and escapes the kidney. That turns two minutes into about a week.<sup class="cite"><a href="#r8">8</a></sup> At those steady, high levels it reaches the appetite centres of the hypothalamus and brainstem directly.<sup class="cite"><a href="#r9">9</a>,<a href="#r10">10</a></sup> In trials it took off 15&ndash;21% of body weight, more from visceral fat than elsewhere, cleared fatty-liver inflammation in nearly two thirds of patients, and cut heart attacks, strokes and cardiovascular death by 20%.<sup class="cite"><a href="#r11">11</a>,<a href="#r12">12</a>,<a href="#r14">14</a>,<a href="#r15">15</a></sup> Most of the heart benefit wasn't explained by the weight lost.<sup class="cite"><a href="#r16">16</a></sup></p>
+  <p style="margin-bottom:0;"><strong>The limits.</strong> The drug lowers how much you eat. It doesn't change what made the fat accumulate. A year after stopping, people regained two thirds of the weight and their blood markers went back toward where they started.<sup class="cite"><a href="#r20">20</a></sup> A quarter to two fifths of the weight lost is lean tissue, and bone thins unless you exercise.<sup class="cite"><a href="#r24">24</a>,<a href="#r28">28</a></sup> Fat stores years of dietary linoleic acid and fat-soluble pollutants. Losing it fast pushes both into the blood, and pollutant levels in blood rise with every kilo lost.<sup class="cite"><a href="#r29">29</a>,<a href="#r33">33</a></sup> Heavy metals are a different story: they're stored mainly in bone, not fat, and come out when bone is lost.<sup class="cite"><a href="#r35">35</a></sup></p>
+</div>
+
+<div class="brief">
+  <div class="lbl">The argument in brief</div>
+  <p class="sub">Seven parts</p>
+  <ol class="spine">
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span><b>The natural hormone.</b> A two-minute gut signal that works mostly through the vagus nerve, released alongside GLP-2, which guards the gut lining.</li>
+    <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span><b>How the drug was built.</b> One amino acid swap blocks the enzyme, a fatty-acid tail binds albumin, and the result lasts a week and reaches the brain's appetite centres.</li>
+    <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span><b>Why it works so well.</b> Visceral fat, insulin sensitivity, liver, heart, kidney, and cravings beyond food.</li>
+    <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span><b>What it doesn't fix.</b> Fat is the result of something upstream. The drug turns down appetite, and the upstream causes keep running. Fasting has the same problem.</li>
+    <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span><b>Muscle and bone.</b> How much lean tissue is lost, how much of it is really muscle, and why lifting decides the outcome.</li>
+    <li><span class="spine-part"><a href="#part-vi">Part&nbsp;VI</a></span><b>What comes out of fat when you lose it fast.</b> Pollutants, linoleic acid, lead from bone, gallstones, and the other side effects.</li>
+    <li><span class="spine-part"><a href="#part-vii">Part&nbsp;VII</a></span><b>Using it well, and raising your own.</b> Lift, eat protein, lose slowly, lower linoleic acid, and the foods that make your gut release more GLP-1.</li>
+  </ol>
+  <p class="bottom">A GLP-1 drug is a strong tool for getting the fat off. Whether you keep the muscle, and whether the fat stays off, depends on fixing what put it there.</p>
+</div>
+
+<div class="mech">
+  <div class="mech-lbl">Reader's guide</div>
+  <p style="margin-top:0;">Part&nbsp;II.3 has the natural-versus-drug table. Part&nbsp;VII is the practical list. This paper leans on <a href="linoleic-acid.html">Linoleic Acid</a> for why fat tissue goes wrong and what it stores, on <a href="exercise.html">Exercise</a> for building muscle and bone, and on <a href="fiber.html">Fiber</a> for raising your own GLP-1.</p>
+  <p style="margin-bottom:0;">
+    <span class="ev ev-strong">Strong</span>
+    <span class="ev ev-mod">Moderate</span>
+    <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span>
+    <span class="ev ev-inf">Inferred</span>
+    <span class="ev ev-cont">Contested</span>
+    <span class="ev ev-spec">Speculative</span>
+  </p>
+</div>
+
+<!-- ============================ PART I ============================ -->
+<section>
+<div class="part-head" id="part-i">
+  <div class="part-num">PART&nbsp;I</div>
+  <h2>The Natural Hormone</h2>
+</div>
+
+<h3 id="i-1"><span class="h3num">I.1</span>Where it comes from</h3>
+<p>GLP-1 (glucagon-like peptide-1) is a 30-amino-acid peptide made by <strong>L-cells</strong>, hormone-releasing cells scattered through the lining of the lower small intestine (the ileum) and the colon. They sense nutrients in the gut: fat, protein, glucose, and the short-chain fatty acids that gut bacteria make from fibre. When food arrives, they release GLP-1 into the tissue fluid around them.<sup class="cite"><a href="#r1">1</a></sup></p>
+<p>The same gene, proglucagon, is cut differently in different tissues. In the pancreas it becomes glucagon. In L-cells it becomes GLP-1 and <strong>GLP-2</strong>, released together in equal amounts. A small group of neurons in the brainstem (the nucleus of the solitary tract) also makes GLP-1, so the brain has its own supply separate from the gut.<sup class="cite"><a href="#r1">1</a></sup></p>
+
+<h3 id="i-2"><span class="h3num">I.2</span>Why it only lasts two minutes</h3>
+<p>GLP-1's second amino acid is alanine, which is exactly what the enzyme <strong>DPP-4</strong> (dipeptidyl peptidase-4) recognises. DPP-4 snips off the first two amino acids, and the shortened peptide no longer activates the receptor. The enzyme is everywhere in the blood, but it's concentrated in the lining of the tiny blood vessels that drain the gut. In pigs, GLP-1 stored inside L-cells was 95% intact, while GLP-1 that had just entered the gut's blood vessels was only 33% intact. The authors found DPP-4 in the capillaries sitting right against the L-cells.<sup class="cite"><a href="#r2">2</a></sup></p>
+<p>In people, intact GLP-1 injected into a vein or under the skin is cut within minutes. Thirty minutes after an injection under the skin, nearly 90% of what was circulating in diabetic patients was already the inactive fragment.<sup class="cite"><a href="#r3">3</a></sup> The liver removes much of what's left, so only about <strong>10&ndash;15% of the GLP-1 your gut releases reaches the general circulation still active</strong>.<sup class="cite"><a href="#r4">4</a></sup></p>
+
+<h3 id="i-3"><span class="h3num">I.3</span>So it works mostly where it's made</h3>
+<p>A hormone that's mostly destroyed before it reaches the rest of the body has to act nearby. The gut wall is full of nerve endings from the vagus nerve, which carries signals from the gut to the brainstem, and those endings carry GLP-1 receptors. In rats with those receptors knocked down, meals got bigger, the stomach emptied faster, blood glucose after meals rose higher and insulin release was weaker.<sup class="cite"><a href="#r5">5</a></sup> Natural GLP-1 works like a local alarm: food has reached the lower gut, so slow the stomach, release insulin, and stop eating soon.</p>
+<div class="chain">Food reaches ileum / colon
+  └▶ L-cells release GLP-1 + GLP-2
+       ├▶ DPP-4 in nearby capillaries cuts most GLP-1 within minutes
+       ├▶ vagal nerve endings in gut wall ──▶ brainstem ──▶ fullness, slower stomach
+       └▶ ~10–15% reaches the body intact ──▶ pancreas: more insulin, less glucagon
+                                               (only when glucose is high)</div>
+<p>Two features matter for what follows. First, its insulin effect is <strong>glucose-dependent</strong>: GLP-1 boosts insulin only when blood glucose is raised, which is why it rarely causes low blood sugar on its own. Second, the slowing of the stomach (the "ileal brake") is a big part of why people feel full.<sup class="cite"><a href="#r1">1</a></sup></p>
+
+<h3 id="i-4"><span class="h3num">I.4</span>GLP-2, the half the drugs leave out</h3>
+<p>The L-cell releases GLP-2 alongside every pulse of GLP-1, and GLP-2's job is the gut lining. In mice, ten days of GLP-2 injections tightened the intestinal barrier, cutting the leak of both small molecules between cells and large proteins through them. The functional change appeared within four hours, before any change in the structure of the lining.<sup class="cite"><a href="#r6">6</a></sup> GLP-2 also makes the lining grow, and a GLP-2 drug (teduglutide) is used for short bowel syndrome.</p>
+<p>GLP-1 drugs activate only the GLP-1 receptor. Someone who eats in a way that triggers their own L-cells gets both signals. Someone on semaglutide gets a large, constant GLP-1 signal and no extra GLP-2. Nothing in the drug repairs a leaky gut.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for GLP-1's breakdown and half-life (measured directly in people);</span> <span class="ev ev-animal">Animal</span><span class="txt">for vagal signalling and GLP-2's barrier effect.</span></p>
+</section>
+
+<!-- ============================ PART II ============================ -->
+<section>
+<div class="part-head" id="part-ii">
+  <div class="part-num">PART&nbsp;II</div>
+  <h2>How the Drug Was Built</h2>
+</div>
+
+<h3 id="ii-1"><span class="h3num">II.1</span>From lizard venom to a once-a-week shot</h3>
+<p>The first GLP-1 drug came from the venom of the Gila monster. In 1992 a researcher isolated <strong>exendin-4</strong>, a peptide about half identical to human GLP-1 that activates the same receptor. Its second amino acid is glycine instead of alanine, so DPP-4 can't cut it.<sup class="cite"><a href="#r7">7</a></sup> Synthetic exendin-4 became exenatide (Byetta, 2005), injected twice a day. Liraglutide (Victoza, Saxenda) came next, with a fatty acid attached, and lasted long enough for one shot a day.</p>
+
+<h3 id="ii-2"><span class="h3num">II.2</span>The three changes in semaglutide</h3>
+<p>Semaglutide (Ozempic, Wegovy, and Rybelsus as a pill) is human GLP-1 with three changes.<sup class="cite"><a href="#r8">8</a></sup></p>
+<p><strong>1. The enzyme can't cut it.</strong> The alanine at position 8 is replaced with Aib (aminoisobutyric acid), an amino acid that isn't in normal proteins. DPP-4 doesn't recognise it.</p>
+<p><strong>2. A fatty-acid tail.</strong> At position 26, a lysine carries a linker and an 18-carbon fatty diacid. Albumin, the most common protein in blood, normally carries fatty acids, so it grabs this tail. Most of the drug in your blood is riding on albumin at any moment. Bound to something that big, it's too large for the kidney to filter out, and it's shielded from enzymes. It comes off albumin slowly, a little at a time.</p>
+<p><strong>3. One more swap</strong> at position 34 (lysine to arginine) so the fatty acid only attaches where it's meant to.</p>
+<p>The result had a half-life of 46 hours in mini-pigs.<sup class="cite"><a href="#r8">8</a></sup> In people it's about a week, which is why it's injected once a week and takes four to five weeks to reach steady levels. <strong>Tirzepatide</strong> (Mounjaro, Zepbound) uses the same fatty-acid trick on a peptide that activates both the GLP-1 receptor and the receptor for GIP, the other gut hormone that boosts insulin. Its half-life is about five days.</p>
+
+<h3 id="ii-3"><span class="h3num">II.3</span>Why lasting longer means reaching more places</h3>
+<p>Natural GLP-1 comes in short bursts, mostly confined to the gut and the blood leaving it. The drug sits in the blood at high, steady levels all day and night, so it reaches tissues the natural hormone barely touches.</p>
+<p>The most important of these is the brain. Neither drug crosses the blood-brain barrier in general. They get in at the <strong>circumventricular organs</strong>, small areas around the brain's fluid spaces where the barrier is leaky by design so the brain can sample the blood. In mice given labelled liraglutide, the drug showed up in those areas and bound neurons in the <strong>arcuate nucleus</strong> of the hypothalamus, the main appetite centre. In rats, its weight loss didn't depend on GLP-1 receptors in the vagus nerve, which is the route natural GLP-1 uses.<sup class="cite"><a href="#r9">9</a></sup> Semaglutide reached the brainstem, hypothalamus and septal nucleus the same way, changed which foods mice chose, and cut food intake without lowering energy expenditure.<sup class="cite"><a href="#r10">10</a></sup></p>
+
+<div class="table-wrap">
+<table class="matrix">
+<thead><tr><th>&nbsp;</th><th>Natural GLP-1</th><th>Semaglutide / tirzepatide</th></tr></thead>
+<tbody>
+<tr><td>Half-life</td><td>1&ndash;2 minutes</td><td>About 7 days / about 5 days</td></tr>
+<tr><td>Pattern</td><td>Short pulses after meals</td><td>Constant, day and night</td></tr>
+<tr><td>Where it acts</td><td>Mostly the gut wall and vagus nerve; 10&ndash;15% reaches the body</td><td>Whole body, including the hypothalamus and brainstem directly</td></tr>
+<tr><td>Strength of signal</td><td>Physiological</td><td>Far above anything the gut produces</td></tr>
+<tr><td>Comes with GLP-2</td><td>Yes, equal amounts</td><td>No</td></tr>
+<tr><td>Comes with GIP</td><td>Released separately from other gut cells</td><td>Tirzepatide activates the GIP receptor too</td></tr>
+</tbody>
+</table>
+</div>
+<p>The strength-of-signal row is the whole story. The drug isn't "more of your own GLP-1." It's a signal your body never makes, held at a level it never reaches, in places it doesn't normally go. That's why it works so much better than anything that raises natural GLP-1, and it's also why its side effects don't look like anything natural GLP-1 does.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the structure and half-life;</span> <span class="ev ev-animal">Animal</span><span class="txt">for where in the brain it acts (rodents; human brain access is inferred from that and from imaging).</span></p>
+</section>
+
+<!-- ============================ PART III ============================ -->
+<section>
+<div class="part-head" id="part-iii">
+  <div class="part-num">PART&nbsp;III</div>
+  <h2>Why It Works So Well</h2>
+</div>
+
+<h3 id="iii-1"><span class="h3num">III.1</span>Weight, and where it comes from</h3>
+<p>In STEP&nbsp;1 (1,961 adults with obesity, no diabetes), weekly semaglutide 2.4&nbsp;mg for 68 weeks took off <strong>14.9% of body weight</strong> against 2.4% on placebo; half the semaglutide group lost 15% or more.<sup class="cite"><a href="#r11">11</a></sup> In SURMOUNT-1, tirzepatide 15&nbsp;mg took off <strong>20.9%</strong> over 72 weeks, and more than half on the top dose lost a fifth of their body weight.<sup class="cite"><a href="#r12">12</a></sup> Those numbers approach weight-loss surgery.</p>
+<p>The fat that goes is disproportionately the dangerous kind. In the STEP&nbsp;1 body-scan subgroup, total fat fell about 19% while <strong>visceral fat</strong>, the fat packed around the organs, fell about 27%.<sup class="cite"><a href="#r11">11</a></sup> In an MRI analysis of a later semaglutide trial, visceral fat fell 1.5&nbsp;litres more than on placebo.<sup class="cite"><a href="#r26">26</a></sup> Visceral fat drains straight into the liver through the portal vein and is the fat most tied to insulin resistance, fatty liver and heart disease.</p>
+
+<h3 id="iii-2"><span class="h3num">III.2</span>Insulin sensitivity</h3>
+<p>Part of the glucose benefit is GLP-1's direct effect on the pancreas (more insulin, less glucagon, only when glucose is high). Part of it is the body actually responding to insulin better. In a 28-week trial in type 2 diabetes using the clamp method (the gold-standard measure of insulin sensitivity), both tirzepatide and semaglutide improved insulin sensitivity, tirzepatide more so. On tirzepatide, a combined measure of how much insulin the pancreas puts out for a given level of insulin resistance rose about sevenfold.<sup class="cite"><a href="#r13">13</a></sup> Losing visceral and liver fat is the likely main route: less fat spilling into the liver means the liver stops pumping out glucose it shouldn't.</p>
+
+<h3 id="iii-3"><span class="h3num">III.3</span>Liver</h3>
+<p>In ESSENCE, 800 people with inflamed fatty liver (MASH, formerly NASH) and moderate or advanced scarring took semaglutide or placebo for 72 weeks. Liver inflammation cleared without worsening scarring in <strong>62.9% versus 34.3%</strong>, and scarring improved in 36.8% versus 22.4%.<sup class="cite"><a href="#r14">14</a></sup> Fatty liver is the condition the <a href="linoleic-acid.html">Linoleic Acid</a> paper ties most directly to diet.</p>
+
+<h3 id="iii-4"><span class="h3num">III.4</span>Heart, and why it isn't just weight</h3>
+<p>In SELECT, 17,604 people with heart disease and overweight but no diabetes took semaglutide or placebo for an average of about 40 months. Heart attack, stroke or cardiovascular death fell from 8.0% to 6.5%, a <strong>20% relative reduction</strong> (HR 0.80).<sup class="cite"><a href="#r15">15</a></sup> In people with diabetes and kidney disease (FLOW), semaglutide cut major kidney events 24% and cardiovascular death 29%.<sup class="cite"><a href="#r17">17</a></sup> In heart failure with a stiff heart (STEP-HFpEF), symptoms and walking distance improved and CRP, the main blood marker of inflammation, fell 44%.<sup class="cite"><a href="#r18">18</a></sup></p>
+<p>The follow-up analysis of SELECT is the most interesting part. The heart benefit was the same whatever people weighed at the start, and <strong>how much weight people lost in the first 20 weeks didn't predict their later risk</strong>. Shrinking waistlines did: about a third of the benefit ran through waist reduction. The other two thirds wasn't explained by fat loss at all.<sup class="cite"><a href="#r16">16</a></sup> On placebo, people who lost weight actually had more heart events, which is what you'd expect when weight loss comes from getting sick.</p>
+<p>So the drug is doing something to blood vessels and inflammation beyond shrinking fat, and the fat it does shrink that matters is the fat around the middle. This is the strongest argument that the drug is good for people, not just their scales.</p>
+
+<h3 id="iii-5"><span class="h3num">III.5</span>Cravings beyond food</h3>
+<p>The appetite centres the drug reaches also handle reward. In a small trial in 48 adults with alcohol use disorder, low-dose semaglutide cut the amount people drank in a lab drinking session, drinks on days they drank and weekly craving. In smokers, it cut cigarettes per day.<sup class="cite"><a href="#r19">19</a></sup> Many patients describe the same thing as "food noise" going quiet.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for weight, visceral fat, liver, heart and kidney (large randomised trials);</span> <span class="ev ev-mod">Moderate</span><span class="txt">for insulin sensitivity by clamp (one 28-week trial) and alcohol (one small trial).</span></p>
+<div class="flag">
+  <div class="flag-lbl">Who paid</div>
+  <p style="margin:0;">STEP, SELECT, FLOW, ESSENCE, STEP-HFpEF and the MRI analysis were run and funded by Novo Nordisk, which makes semaglutide. SURMOUNT and the clamp trial were run by Eli Lilly, which makes tirzepatide. Large outcome trials of a patented drug are almost always sponsored this way, and the hard endpoints (deaths, heart attacks, biopsies) are hard to fake. The softer framing in industry reviews, such as calling muscle loss "adaptive," deserves more scepticism (V.1).</p>
+</div>
+</section>
+
+<!-- ============================ PART IV ============================ -->
+<section>
+<div class="part-head" id="part-iv">
+  <div class="part-num">PART&nbsp;IV</div>
+  <h2>What It Doesn't Fix</h2>
+</div>
+
+<h3 id="iv-1"><span class="h3num">IV.1</span>Fat is a result, not the cause</h3>
+<p>Nobody becomes obese by accident of willpower alone. Fat accumulates because something upstream is pushing it there: a diet high in linoleic acid that changes how fat cells grow and signal (<a href="linoleic-acid.html#part-ii">Linoleic Acid</a>), too little muscle to dispose of glucose, too little movement, poor sleep, chronic inflammation, a damaged gut lining, and food engineered to override fullness. Appetite is high because the body is responding to those inputs.</p>
+<p>A GLP-1 drug works at the end of that chain. It turns down appetite, so less food comes in, so stored fat is used. It doesn't lower the linoleic acid in the fat that remains, build muscle, repair the gut lining (I.4), or change what you eat, only how much. Someone who started with low muscle, a leaky gut, chronic inflammation and seed-oil-heavy fat stores, and changes nothing else, ends up a smaller person with low muscle, a leaky gut, chronic inflammation and seed-oil-heavy fat stores.</p>
+<div class="chain">UPSTREAM                                   DOWNSTREAM
+high-LA diet ─┐
+low muscle ───┤
+inactivity ───┼──▶ fat-cell dysfunction ──▶ high appetite ──▶ fat gain
+poor sleep ───┤    insulin resistance                          ▲
+gut damage ───┘    inflammation                                │
+                                               GLP-1 drug acts here</div>
+
+<h3 id="iv-2"><span class="h3num">IV.2</span>Stopping shows what was underneath</h3>
+<p>If the drug fixed the cause, the weight would stay off when it stopped. It doesn't. In STEP&nbsp;4, everyone took semaglutide for 20 weeks and lost 10.6%, then half switched to placebo. Over the next 48 weeks the ones who stayed on lost another 7.9%; the ones switched to placebo <strong>gained 6.9%</strong>.<sup class="cite"><a href="#r21">21</a></sup> In the STEP&nbsp;1 extension, people who had lost 17.3% regained <strong>two thirds of it within a year</strong> of stopping, and their blood pressure, blood sugar and lipid improvements drifted back toward baseline with it.<sup class="cite"><a href="#r20">20</a></sup></p>
+<p>The trial authors read this as proof that obesity is chronic and the drug has to be taken for life. The other reading is that the drug was holding down a drive that nothing else had changed.</p>
+
+<h3 id="iv-3"><span class="h3num">IV.3</span>Fasting and dieting have the same problem</h3>
+<p>Losing weight by not eating, whether by drug, fasting or a hard diet, works on the same end of the chain. The body defends its weight. Fourteen contestants from <em>The Biggest Loser</em> lost an average of 58&nbsp;kg in 30 weeks of extreme diet and exercise. Six years later they had regained 41&nbsp;kg, and their resting metabolism was still about 700 calories a day below where it started, about 500 calories lower than their body size predicted.<sup class="cite"><a href="#r22">22</a></sup> The people who kept more weight off had the most metabolic slowing, so the body was still pushing back.</p>
+<p>Fasting has its own benefits (see <a href="metabolic-health.html">Metabolic Health</a>), but as a way to lose weight it's still a cut in intake. It doesn't change the linoleic acid in your fat, build muscle or fix the gut, and the drive to eat comes back when the fast ends.</p>
+
+<h3 id="iv-4"><span class="h3num">IV.4</span>The drug plus a change in inputs</h3>
+<p>The best trial of what happens when you add something upstream is Danish. After an 8-week low-calorie diet (13.1&nbsp;kg lost), 195 adults were randomised for a year to placebo, exercise, liraglutide, or liraglutide plus exercise. The combination kept off the most weight and lost <strong>twice as much body-fat percentage</strong> as either alone. It was also the only group whose insulin sensitivity, long-term blood sugar (HbA1c) and fitness improved.<sup class="cite"><a href="#r23">23</a></sup> The drug alone kept weight off; only adding exercise changed the metabolism underneath. Gallstones and a raised heart rate were more common on liraglutide alone than in the combination.</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for weight regain after stopping (randomised withdrawal);</span> <span class="ev ev-strong">Strong</span><span class="txt">that exercise adds metabolic benefit on top of the drug;</span> <span class="ev ev-inf">Inferred</span><span class="txt">that the drug leaves gut barrier, adipose LA and inflammation drivers untouched (from how it works; not measured as outcomes).</span></p>
+</section>
+
+<!-- ============================ PART V ============================ -->
+<section>
+<div class="part-head" id="part-v">
+  <div class="part-num">PART&nbsp;V</div>
+  <h2>Muscle and Bone</h2>
+</div>
+
+<h3 id="v-1"><span class="h3num">V.1</span>How much of the weight is muscle</h3>
+<p>Body scans split weight into fat, bone and "lean mass," which includes muscle but also organs, water, glycogen and the water inside fat tissue. In the STEP&nbsp;1 scan subgroup, lean mass fell about 10% while fat fell 19%, so <strong>roughly two fifths of the weight lost was lean</strong>.<sup class="cite"><a href="#r11">11</a></sup> In SURMOUNT-1 it was closer to a quarter. Across trials the share ranges from about 15% to as much as 40&ndash;60%.<sup class="cite"><a href="#r24">24</a></sup></p>
+<p>Two things soften that. First, lean mass isn't the same as muscle. Some of it is liver shrinking as fat leaves it, water lost with glycogen, and the support tissue of fat that's no longer needed. Second, any weight loss costs some muscle; dieting alone typically loses about a quarter of the weight as lean. In an MRI analysis of 55 people from the STEP&nbsp;UP trial, semaglutide took off 11&nbsp;litres of fat. Thigh muscle volume fell about 1.1&nbsp;litres (not statistically clear), fat marbled inside the muscle fell, and people could still do the same number of sit-to-stands as before.<sup class="cite"><a href="#r26">26</a></sup></p>
+<p>Two things harden it. The absolute amount is large because the total loss is large: losing 15&nbsp;kg with a third of it lean is 5&nbsp;kg of lean tissue. And the people most likely to be prescribed these drugs, older adults and people with diabetes, are the ones who can least afford it. Muscle is where most of the glucose from a meal goes (<a href="exercise.html#part-i">Exercise</a>, I.2), so losing it works against the very insulin sensitivity the drug is improving.<sup class="cite"><a href="#r25">25</a></sup></p>
+<div class="pushback">
+  <div class="pb-lbl">Pushback: "the muscle loss is adaptive"</div>
+  <p style="margin:0;">The review that calls GLP-1 muscle loss "adaptive" (proportionate to the weight lost, with better muscle quality) was written with authors from AMRA, the company whose MRI method is used in the trials, and its key data are the Novo-funded MRI studies.<sup class="cite"><a href="#r24">24</a></sup> The STEP&nbsp;UP MRI analysis had six people on placebo.<sup class="cite"><a href="#r26">26</a></sup> Less fat inside muscle is a real improvement. But "the muscle that's left is better quality" isn't the same as "you didn't lose muscle," and a sit-to-stand count is a coarse test of strength.</p>
+</div>
+
+<h3 id="v-2"><span class="h3num">V.2</span>Why appetite suppression hits muscle harder</h3>
+<p>The drug cuts appetite for everything, including protein. People on high doses commonly eat a third to half of what they used to, and meat is often the first thing that stops appealing because it's filling and slow to digest. Muscle is built and kept by two signals, protein intake and loading. A drug that removes most of the first, in someone who wasn't doing the second, is set up to lose muscle. No human trial has measured protein intake on these drugs carefully enough to separate the drug's effect from the diet's.</p>
+
+<h3 id="v-3"><span class="h3num">V.3</span>Lifting decides the outcome</h3>
+<p>The clearest trial isn't of a drug. In 160 obese adults over 65 who dieted off about 9% of their weight, the aerobic-only group lost 5% of their lean mass; the lifting groups lost 2&ndash;3%. Hip bone density fell 3% with aerobic exercise alone and only 0.5&ndash;1% with lifting. Strength rose 18&ndash;19% in the groups that lifted and 4% in the group that didn't.<sup class="cite"><a href="#r27">27</a></sup> Losing weight while lifting kept most of the muscle and nearly all the bone.</p>
+
+<h3 id="v-4"><span class="h3num">V.4</span>Bone</h3>
+<p>Weight loss thins bone, partly because bone responds to the load it carries. In the Danish liraglutide trial (IV.4), people on liraglutide alone lost more bone density at the hip and spine than people who exercised, <strong>despite similar weight loss</strong>. The combination of liraglutide and exercise lost the most weight and kept bone density the same as placebo.<sup class="cite"><a href="#r28">28</a></sup> Bone loss matters beyond fractures, because bone is where the body stores lead (VI.3).</p>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">that a quarter or more of GLP-1 weight loss is lean tissue, and that lifting protects muscle and bone during weight loss;</span> <span class="ev ev-cont">Contested</span><span class="txt">how much of the lean loss is real muscle and whether it matters for function.</span></p>
+</section>
+
+<!-- ============================ PART VI ============================ -->
+<section>
+<div class="part-head" id="part-vi">
+  <div class="part-num">PART&nbsp;VI</div>
+  <h2>What Comes Out of Fat When You Lose It Fast</h2>
+</div>
+<p>Fat isn't inert storage. It holds whatever fat-soluble things you've eaten or breathed for years, and it releases them when it's broken down. Slow weight loss releases them slowly. A drug that takes off 15&ndash;20% of body weight in a year releases them fast.</p>
+
+<h3 id="vi-1"><span class="h3num">VI.1</span>Fat-soluble pollutants</h3>
+<p>Persistent organic pollutants (POPs) are man-made chemicals that dissolve in fat and resist breakdown: PCBs, dioxins, and old pesticides like DDT and its breakdown product DDE. Everyone carries them, and they're stored mainly in fat. People with obesity carry two to three times the total body burden of lean people.<sup class="cite"><a href="#r31">31</a></sup></p>
+<p>When fat shrinks, they come out. In 39 obese adults on a 15-week diet who lost an average of 9.5&nbsp;kg, <strong>every one of the 19 organochlorines detected rose in the blood</strong>, 15 significantly. The more weight people lost, the more they rose, and levels in the remaining fat rose too, because the same amount of chemical was now packed into less fat.<sup class="cite"><a href="#r29">29</a></sup> In 16 men on a similar diet, the rise in blood pollutants tracked a fall in active thyroid hormone (T3) and a drop in resting metabolism beyond what the weight loss explained.<sup class="cite"><a href="#r30">30</a></sup> That's a correlation, but it points at one possible reason metabolism slows after weight loss (IV.3).</p>
+<p>The release is also the way out. After bariatric surgery, blood POP levels rose, and within 6&ndash;12 months total body PCBs had <strong>fallen 15%</strong>. Higher blood POP levels went with worse liver markers, independent of age and weight.<sup class="cite"><a href="#r31">31</a></sup> So releasing these chemicals isn't the problem; it's how they leave. The problem is how much is in the blood at once, and whether it's excreted or just moved to the liver and brain.</p>
+<p>Most of what the liver excretes into bile gets reabsorbed lower in the gut and goes back around. Breaking that loop speeds removal. In a year-long pilot trial in Anniston, Alabama, a town contaminated by a PCB factory, eating 15&nbsp;g a day of olestra, a fat that can't be absorbed, made PCBs leave the body about ten times faster than in the years before. Vegetable oil didn't.<sup class="cite"><a href="#r32">32</a></sup> No trial has tested fibre for this in people, but the mechanism is the same one fibre uses on bile acids (<a href="fiber.html">Fiber</a>).</p>
+
+<h3 id="vi-2"><span class="h3num">VI.2</span>Linoleic acid</h3>
+<p>Fat tissue records your diet over years. Its linoleic acid content reflects intake over the past one to several years, which is why it's the standard long-term marker of how much seed oil someone eats.<sup class="cite"><a href="#r33">33</a></sup> In US adults it rose 136% in fifty years (<a href="linoleic-acid.html">Linoleic Acid</a>). When fat cells break down their stores, they don't release all fatty acids equally: the more double bonds a fatty acid has, the more readily it's released, in animals and in people.<sup class="cite"><a href="#r34">34</a></sup> Linoleic acid, with two double bonds, comes out faster than the saturated and monounsaturated fats around it.</p>
+<p>So rapid fat loss sends a large flow of free linoleic acid to the liver and other tissues, at a rate set by how fast the fat is shrinking rather than by what you're eating that day. Linoleic acid is the fat most prone to oxidation, and its oxidised products (OXLAMs and 4-HNE) are the damage the Linoleic Acid paper is about. Part of that flow is simply burned for energy, which is the point of losing fat. <strong>There are no human studies</strong> measuring whether OXLAMs or other oxidation markers rise during fast GLP-1 weight loss. The physiology says the exposure is there, and that it's larger the more linoleic acid your fat stored and the faster you lose it.</p>
+<p>A related point: losing fat removes linoleic acid from the body, but it doesn't change the <em>percentage</em> of linoleic acid in the fat that's left. Only diet does that, slowly. Someone who loses 20&nbsp;kg on a drug while still eating seed oils keeps fat that's just as high in linoleic acid, and if they regain, the new fat is built from the same diet.</p>
+
+<h3 id="vi-3"><span class="h3num">VI.3</span>Heavy metals come from bone, not fat</h3>
+<p>Heavy metals mostly don't dissolve in fat, so fat loss doesn't release much of them. About 90% of the body's lead is stored in bone; cadmium builds up in the kidney and liver; mercury is spread through blood, kidney and brain. The way weight loss releases lead is by thinning bone (V.4).</p>
+<p>One study measured it. In 73 women followed for six months, those who lost 37&nbsp;kg on a severe diet had higher bone turnover and blood lead rose by about 2&nbsp;&micro;g/dL. Women who lost 5&ndash;6&nbsp;kg had no change. The more weight lost, the more lead rose, though levels stayed well below what's defined as overexposure.<sup class="cite"><a href="#r35">35</a></sup> The fix is the one for bone: lift, and don't lose weight faster than you need to. Calcium intake was linked to lower blood lead at the start of the study.</p>
+
+<h3 id="vi-4"><span class="h3num">VI.4</span>Gallstones</h3>
+<p>Rapid weight loss makes bile more saturated with cholesterol, and GLP-1 drugs also slow how often the gallbladder empties. Across 76 randomised trials (103,371 people), GLP-1 drugs raised gallbladder and bile duct disease 37%. In the weight-loss trials the risk more than doubled (RR 2.29), and it was highest at high doses and with longer use.<sup class="cite"><a href="#r36">36</a></sup> The gallbladder contracts when fat reaches the gut, so very low-fat eating during weight loss leaves bile sitting longer. Eating some fat at each meal keeps it moving.</p>
+
+<h3 id="vi-5"><span class="h3num">VI.5</span>The other side effects</h3>
+<p><strong>Gut.</strong> Nausea, vomiting, diarrhoea and constipation are the most common side effects and usually ease after the dose stops rising.<sup class="cite"><a href="#r11">11</a></sup> In a large insurance-claims database, people prescribed GLP-1 drugs for weight loss had about nine times the rate of pancreatitis, four times the rate of bowel obstruction and nearly four times the rate of gastroparesis (a stomach that barely empties) compared with people on bupropion-naltrexone, another weight-loss drug.<sup class="cite"><a href="#r37">37</a></sup> These are rare events in absolute terms, and the randomised trials haven't shown a clear pancreatitis signal. Because the stomach empties slowly, people on these drugs can still have food in their stomach after a normal fast, which is a risk under anaesthesia. Tell the anaesthetist.</p>
+<p><strong>Eyes.</strong> At one Boston eye hospital, patients prescribed semaglutide had four to seven times the rate of NAION, a sudden loss of vision from poor blood flow to the optic nerve.<sup class="cite"><a href="#r38">38</a></sup> That's observational and from one centre, but it's a large effect, and sudden vision loss on the drug needs urgent attention.</p>
+<p><strong>Hair.</strong> Fast weight loss and low protein intake can push many hair follicles into the resting phase at once, causing shedding a few months later (telogen effluvium). It's usually temporary. See <a href="hair.html">Hair</a>.</p>
+<p><strong>Face and skin.</strong> Fat loss from the face and loose skin elsewhere ("Ozempic face") is what any large fast weight loss does; the drug just makes large, fast loss common.</p>
+<div class="safety">
+  <div class="sf-lbl">Safety</div>
+  <ul>
+    <li>Not for anyone with a personal or family history of medullary thyroid cancer or MEN2. The drugs caused thyroid C-cell tumours in rodents; whether they do in people isn't settled.</li>
+    <li>Not in pregnancy, and stop well before trying to conceive.</li>
+    <li>Combined with insulin or sulfonylureas they can cause low blood sugar.</li>
+    <li>Severe abdominal pain, persistent vomiting, or sudden vision loss need urgent care.</li>
+    <li>Compounded and "research peptide" versions aren't the approved product; dose and purity aren't checked the same way.</li>
+  </ul>
+</div>
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">that weight loss raises blood POPs and that GLP-1 drugs raise gallbladder disease;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for lead from bone (one study) and the bowel and eye signals (observational);</span> <span class="ev ev-inf">Inferred</span><span class="txt">for oxidation from released linoleic acid (physiology; no human studies).</span></p>
+</section>
+
+<!-- ============================ PART VII ============================ -->
+<section>
+<div class="part-head" id="part-vii">
+  <div class="part-num">PART&nbsp;VII</div>
+  <h2>Using It Well, and Raising Your Own</h2>
+</div>
+
+<h3 id="vii-1"><span class="h3num">VII.1</span>If you take it</h3>
+<div class="ladder">
+  <div class="rung"><div class="rung-lbl r1">Lift<small>2&ndash;3&times; a week</small></div><div class="rung-body"><p>The single biggest factor in keeping muscle and bone (V.3, V.4). Start before or with the first dose. See <a href="exercise.html#part-v">Exercise, Part&nbsp;V</a>.</p></div></div>
+  <div class="rung"><div class="rung-lbl r2">Protein first<small>every meal</small></div><div class="rung-body"><p>When appetite is small, eat the protein before anything else on the plate. Aim for about 0.7&nbsp;g per pound of goal body weight a day (1.6&nbsp;g/kg). Meat, wild-caught fish, eggs, dairy, and a scoop of whey (about 25&nbsp;g protein) when you can't face a meal. <a href="creatine.html">Creatine</a>, 1 level tsp (5&nbsp;g) a day, helps muscle hold up during the deficit.</p></div></div>
+  <div class="rung"><div class="rung-lbl r3">Go slower<small>lowest dose that works</small></div><div class="rung-body"><p>The pollutant, linoleic acid, lead and gallstone problems all scale with how fast you lose (VI). There's no prize for climbing to the top dose. About 0.5&ndash;1% of body weight a week is a reasonable pace.</p></div></div>
+  <div class="rung"><div class="rung-lbl r4">Change the inputs<small>while it's easy</small></div><div class="rung-body"><p>The drug makes it easy to eat differently, so use the window. Cut seed oils so the fat you keep and any fat you regain carries less linoleic acid. Cook with butter, tallow or olive oil. Salt your food; eating less means less sodium, and home cooking is already low in it.</p></div></div>
+  <div class="rung"><div class="rung-lbl r5">Help clearance<small>fibre, fat at meals</small></div><div class="rung-body"><p>Fibre and some fat at each meal keep bile moving, which helps carry released pollutants out and lowers gallstone risk. Psyllium, 1 heaping tsp (about 5&nbsp;g) in water, if constipation sets in.</p></div></div>
+  <div class="rung"><div class="rung-lbl r6">Plan the exit<small>before you start</small></div><div class="rung-body"><p>Two thirds of the weight comes back within a year of stopping if nothing else changed (IV.2). Muscle, habits and a lower-LA diet are what you keep.</p></div></div>
+</div>
+
+<h3 id="vii-2"><span class="h3num">VII.2</span>Raising your own GLP-1</h3>
+<p>Nothing you eat comes close to the drug's signal (II.3). But your own GLP-1 comes with GLP-2, works through the normal gut-to-brain route, and has none of the side effects.</p>
+<p><strong>Protein before carbohydrate.</strong> In people with type 2 diabetes, 55&nbsp;g of whey taken 30 minutes before a carbohydrate meal slowed the stomach, raised GLP-1 the most of the conditions tested, and sharply flattened the glucose spike.<sup class="cite"><a href="#r39">39</a></sup> Eating the meat and vegetables on your plate before the bread or rice does a smaller version of the same thing.</p>
+<p><strong>Fermentable fibre.</strong> Gut bacteria turn fibre into short-chain fatty acids, and L-cells carry receptors for them; mice lacking those receptors released less GLP-1 and handled glucose worse.<sup class="cite"><a href="#r40">40</a></sup> In overweight adults, 10&nbsp;g a day of a fibre built to deliver propionate to the colon raised GLP-1 after meals, cut how much people ate, and over 24 weeks reduced weight gain, visceral fat and liver fat.<sup class="cite"><a href="#r41">41</a></sup> Foods that feed the same bacteria include cooked-and-cooled potatoes and rice, green bananas, onions, garlic and beans (<a href="fiber.html">Fiber</a>).</p>
+<p><strong>Reach the lower gut.</strong> L-cells are densest at the far end of the small intestine and in the colon. Whole foods that digest slowly get nutrients down there; refined food is absorbed before it arrives.</p>
+<p class="evline"><span class="ev ev-mod">Moderate</span><span class="txt">for whey and propionate-fibre raising GLP-1 (small human trials);</span> <span class="ev ev-animal">Animal</span><span class="txt">for the short-chain fatty acid receptor mechanism.</span></p>
+</section>
+
+<!-- ============================ LIMITATIONS ============================ -->
+<section>
+<div class="part-head" id="limits">
+  <div class="part-num">LIMITS</div>
+  <h2>What This Paper Can't Say</h2>
+</div>
+<div class="limits">
+<ul>
+  <li><b>Long-term data are short.</b> The big trials run two to four years. Most people prescribed these drugs will take them far longer, or cycle on and off.</li>
+  <li><b>Linoleic acid release is physiology only.</b> Nobody has measured oxidation markers during fast GLP-1 weight loss. It's an open question, not a finding.</li>
+  <li><b>The pollutant data come from diets and surgery,</b> not GLP-1 drugs specifically. The mechanism (fat shrinking) is the same, so the result should carry over.</li>
+  <li><b>Muscle versus lean mass.</b> Most trials measured lean mass by DXA, which can't separate muscle from water and organs. The MRI data are small and industry-run.</li>
+  <li><b>Upstream causes are argued from mechanism.</b> No trial has given the drug with and without a low-linoleic-acid diet.</li>
+</ul>
+<p class="lim-close">The drugs are among the most effective medicines ever made for visceral fat, fatty liver and heart risk. They treat the result. The work of fixing the cause, and keeping the muscle, is the same as it was before they existed.</p>
+</div>
+</section>
+
+<!-- ============================ REFERENCES ============================ -->
+<section class="refwrap">
+<div class="part-head" id="refs">
+  <div class="part-num">REFS</div>
+  <h2>References</h2>
+</div>
+
+<div class="ref-group">The natural hormone</div>
+<ol class="refs">
+<li id="r1">Holst JJ. The physiology of glucagon-like peptide 1. <span class="j">Physiol Rev</span> 2007;87(4):1409&ndash;1439. PMID 17928588.</li>
+<li id="r2">Hansen L, Deacon CF, Orskov C, Holst JJ. Glucagon-like peptide-1-(7-36)amide is transformed to glucagon-like peptide-1-(9-36)amide by dipeptidyl peptidase IV in the capillaries supplying the L cells of the porcine intestine. <span class="j">Endocrinology</span> 1999;140(11):5356&ndash;5363. PMID 10537167.</li>
+<li id="r3">Deacon CF, Nauck MA, Toft-Nielsen M, et al. Both subcutaneously and intravenously administered glucagon-like peptide I are rapidly degraded from the NH2-terminus in type II diabetic patients and in healthy subjects. <span class="j">Diabetes</span> 1995;44(9):1126&ndash;1131. PMID 7657039.</li>
+<li id="r4">Holst JJ, Deacon CF. Glucagon-like peptide-1 mediates the therapeutic actions of DPP-IV inhibitors. <span class="j">Diabetologia</span> 2005;48(4):612&ndash;615. PMID 15759106. <span class="note">Commentary; source of the 10&ndash;15% figure.</span></li>
+<li id="r5">Krieger JP, Arnold M, Pettersen KG, et al. Knockdown of GLP-1 receptors in vagal afferents affects normal food intake and glycemia. <span class="j">Diabetes</span> 2016;65(1):34&ndash;43. PMID 26470787. <span class="note">Rats.</span></li>
+<li id="r6">Benjamin MA, McKay DM, Yang PC, Cameron H, Perdue MH. Glucagon-like peptide-2 enhances intestinal epithelial barrier function of both transcellular and paracellular pathways in the mouse. <span class="j">Gut</span> 2000;47(1):112&ndash;119. PMID 10861272.</li>
+</ol>
+
+<div class="ref-group">The drug</div>
+<ol class="refs">
+<li id="r7">Eng J, Kleinman WA, Singh L, Singh G, Raufman JP. Isolation and characterization of exendin-4, an exendin-3 analogue, from Heloderma suspectum venom. <span class="j">J Biol Chem</span> 1992;267(11):7402&ndash;7405. PMID 1313797.</li>
+<li id="r8">Lau J, Bloch P, Sch&auml;ffer L, et al. Discovery of the once-weekly glucagon-like peptide-1 (GLP-1) analogue semaglutide. <span class="j">J Med Chem</span> 2015;58(18):7370&ndash;7380. PMID 26308095. <span class="note">Novo Nordisk.</span></li>
+<li id="r9">Secher A, Jelsing J, Baquero AF, et al. The arcuate nucleus mediates GLP-1 receptor agonist liraglutide-dependent weight loss. <span class="j">J Clin Invest</span> 2014;124(10):4473&ndash;4488. PMID 25202980. <span class="note">Rats and mice.</span></li>
+<li id="r10">Gabery S, Salinas CG, Paulsen SJ, et al. Semaglutide lowers body weight in rodents via distributed neural pathways. <span class="j">JCI Insight</span> 2020;5(6):e133429. PMID 32213703.</li>
+</ol>
+
+<div class="ref-group">What it's good for</div>
+<ol class="refs">
+<li id="r11">Wilding JPH, Batterham RL, Calanna S, et al. Once-weekly semaglutide in adults with overweight or obesity (STEP 1). <span class="j">N Engl J Med</span> 2021;384(11):989&ndash;1002. PMID 33567185. <span class="note">Body-composition figures from the DXA subgroup.</span></li>
+<li id="r12">Jastreboff AM, Aronne LJ, Ahmad NN, et al. Tirzepatide once weekly for the treatment of obesity (SURMOUNT-1). <span class="j">N Engl J Med</span> 2022;387(3):205&ndash;216. PMID 35658024.</li>
+<li id="r13">Heise T, Mari A, DeVries JH, et al. Effects of subcutaneous tirzepatide versus placebo or semaglutide on pancreatic islet function and insulin sensitivity in adults with type 2 diabetes. <span class="j">Lancet Diabetes Endocrinol</span> 2022;10(6):418&ndash;429. PMID 35468322.</li>
+<li id="r14">Sanyal AJ, Newsome PN, Kliers I, et al. Phase 3 trial of semaglutide in metabolic dysfunction-associated steatohepatitis (ESSENCE). <span class="j">N Engl J Med</span> 2025;392(21):2089&ndash;2099. PMID 40305708.</li>
+<li id="r15">Lincoff AM, Brown-Frandsen K, Colhoun HM, et al. Semaglutide and cardiovascular outcomes in obesity without diabetes (SELECT). <span class="j">N Engl J Med</span> 2023;389(24):2221&ndash;2232. PMID 37952131.</li>
+<li id="r16">Deanfield J, Lincoff AM, Kahn SE, et al. Semaglutide and cardiovascular outcomes by baseline and changes in adiposity measurements: a prespecified analysis of the SELECT trial. <span class="j">Lancet</span> 2025;406(10516):2257&ndash;2268. PMID 41138739.</li>
+<li id="r17">Perkovic V, Tuttle KR, Rossing P, et al. Effects of semaglutide on chronic kidney disease in patients with type 2 diabetes (FLOW). <span class="j">N Engl J Med</span> 2024;391(2):109&ndash;121. PMID 38785209.</li>
+<li id="r18">Kosiborod MN, Abildstr&oslash;m SZ, Borlaug BA, et al. Semaglutide in patients with heart failure with preserved ejection fraction and obesity (STEP-HFpEF). <span class="j">N Engl J Med</span> 2023;389(12):1069&ndash;1084. PMID 37622681.</li>
+<li id="r19">Hendershot CS, Bremmer MP, Paladino MB, et al. Once-weekly semaglutide in adults with alcohol use disorder: a randomized clinical trial. <span class="j">JAMA Psychiatry</span> 2025;82(4):395&ndash;405. PMID 39937469.</li>
+</ol>
+
+<div class="ref-group">What it doesn't fix</div>
+<ol class="refs">
+<li id="r20">Wilding JPH, Batterham RL, Davies M, et al. Weight regain and cardiometabolic effects after withdrawal of semaglutide: the STEP 1 trial extension. <span class="j">Diabetes Obes Metab</span> 2022;24(8):1553&ndash;1564. PMID 35441470.</li>
+<li id="r21">Rubino D, Abrahamsson N, Davies M, et al. Effect of continued weekly subcutaneous semaglutide vs placebo on weight loss maintenance in adults with overweight or obesity: the STEP 4 randomized clinical trial. <span class="j">JAMA</span> 2021;325(14):1414&ndash;1425. PMID 33755728.</li>
+<li id="r22">Fothergill E, Guo J, Howard L, et al. Persistent metabolic adaptation 6 years after "The Biggest Loser" competition. <span class="j">Obesity</span> 2016;24(8):1612&ndash;1619. PMID 27136388.</li>
+<li id="r23">Lundgren JR, Janus C, Jensen SBK, et al. Healthy weight loss maintenance with exercise, liraglutide, or both combined. <span class="j">N Engl J Med</span> 2021;384(18):1719&ndash;1730. PMID 33951361.</li>
+</ol>
+
+<div class="ref-group">Muscle and bone</div>
+<ol class="refs">
+<li id="r24">Neeland IJ, Linge J, Birkenfeld AL. Changes in lean body mass with glucagon-like peptide-1-based therapies and mitigation strategies. <span class="j">Diabetes Obes Metab</span> 2024;26(Suppl 4):16&ndash;27. PMID 38937282. <span class="note">Co-author affiliated with AMRA Medical.</span></li>
+<li id="r25">Conte C, Hall KD, Klein S. Is weight loss-induced muscle mass loss clinically relevant? <span class="j">JAMA</span> 2024;332(1):9&ndash;10. PMID 38829659.</li>
+<li id="r26">Hjelmes&aelig;th J, Bhat S, Garvey WT, et al. Effect of semaglutide on thigh skeletal muscle volume, fat infiltration and physical function in people with obesity: secondary analysis of STEP UP. <span class="j">Diabetes Obes Metab</span> 2026 (online ahead of print). PMID 42764399. <span class="note">55 participants, 6 on placebo; Novo Nordisk and AMRA co-authors.</span></li>
+<li id="r27">Villareal DT, Aguirre L, Gurney AB, et al. Aerobic or resistance exercise, or both, in dieting obese older adults. <span class="j">N Engl J Med</span> 2017;376(20):1943&ndash;1955. PMID 28514618.</li>
+<li id="r28">Jensen SBK, S&oslash;rensen V, Sandsdal RM, et al. Bone health after exercise alone, GLP-1 receptor agonist treatment, or combination treatment: a secondary analysis of a randomized clinical trial. <span class="j">JAMA Netw Open</span> 2024;7(6):e2416775. PMID 38916894.</li>
+</ol>
+
+<div class="ref-group">What comes out of fat</div>
+<ol class="refs">
+<li id="r29">Chevrier J, Dewailly E, Ayotte P, et al. Body weight loss increases plasma and adipose tissue concentrations of potentially toxic pollutants in obese individuals. <span class="j">Int J Obes Relat Metab Disord</span> 2000;24(10):1272&ndash;1278. PMID 11093288.</li>
+<li id="r30">Pelletier C, Doucet E, Imbeault P, Tremblay A. Associations between weight loss-induced changes in plasma organochlorine concentrations, serum T3 concentration, and resting metabolic rate. <span class="j">Toxicol Sci</span> 2002;67(1):46&ndash;51. PMID 11961215.</li>
+<li id="r31">Kim MJ, Marchand P, Henegar C, et al. Fate and complex pathogenic effects of dioxins and polychlorinated biphenyls in obese subjects before and after drastic weight loss. <span class="j">Environ Health Perspect</span> 2011;119(3):377&ndash;383. PMID 21156398.</li>
+<li id="r32">Jandacek RJ, Heubi JE, Buckley DD, et al. Reduction of the body burden of PCBs and DDE by dietary intervention in a randomized trial. <span class="j">J Nutr Biochem</span> 2014;25(4):483&ndash;488. PMID 24629911. <span class="note">Pilot; between-group difference not significant, within-group elimination rate faster on olestra.</span></li>
+<li id="r33">Hodson L, Skeaff CM, Fielding BA. Fatty acid composition of adipose tissue and blood in humans and its use as a biomarker of dietary intake. <span class="j">Prog Lipid Res</span> 2008;47(5):348&ndash;380. PMID 18435934.</li>
+<li id="r34">Raclot T. Selective mobilization of fatty acids from adipose tissue triacylglycerols. <span class="j">Prog Lipid Res</span> 2003;42(4):257&ndash;288. PMID 12689620.</li>
+<li id="r35">Riedt CS, Buckley BT, Brolin RE, et al. Blood lead levels and bone turnover with weight reduction in women. <span class="j">J Expo Sci Environ Epidemiol</span> 2009;19(1):90&ndash;96. PMID 18322449.</li>
+</ol>
+
+<div class="ref-group">Other side effects</div>
+<ol class="refs">
+<li id="r36">He L, Wang J, Ping F, et al. Association of glucagon-like peptide-1 receptor agonist use with risk of gallbladder and biliary diseases: a systematic review and meta-analysis of randomized clinical trials. <span class="j">JAMA Intern Med</span> 2022;182(5):513&ndash;519. PMID 35344001.</li>
+<li id="r37">Sodhi M, Rezaeianzadeh R, Kezouh A, Etminan M. Risk of gastrointestinal adverse events associated with glucagon-like peptide-1 receptor agonists for weight loss. <span class="j">JAMA</span> 2023;330(18):1795&ndash;1797. PMID 37796527.</li>
+<li id="r38">Hathaway JT, Shah MP, Hathaway DB, et al. Risk of nonarteritic anterior ischemic optic neuropathy in patients prescribed semaglutide. <span class="j">JAMA Ophthalmol</span> 2024;142(8):732&ndash;739. PMID 38958939.</li>
+</ol>
+
+<div class="ref-group">Raising your own</div>
+<ol class="refs">
+<li id="r39">Ma J, Stevens JE, Cukier K, et al. Effects of a protein preload on gastric emptying, glycemia, and gut hormones after a carbohydrate meal in diet-controlled type 2 diabetes. <span class="j">Diabetes Care</span> 2009;32(9):1600&ndash;1602. PMID 19542012.</li>
+<li id="r40">Tolhurst G, Heffron H, Lam YS, et al. Short-chain fatty acids stimulate glucagon-like peptide-1 secretion via the G-protein-coupled receptor FFAR2. <span class="j">Diabetes</span> 2012;61(2):364&ndash;371. PMID 22190648.</li>
+<li id="r41">Chambers ES, Viardot A, Psichas A, et al. Effects of targeted delivery of propionate to the human colon on appetite regulation, body weight maintenance and adiposity in overweight adults. <span class="j">Gut</span> 2015;64(11):1744&ndash;1754. PMID 25500202.</li>
+</ol>
+</section>
+
+<footer class="end">
+  <b>GLP-1 Drugs: What They Fix and What They Don't</b> &middot; Working paper, Draft v1 &middot; October 2026<br>
+  Not medical advice. These are prescription drugs; dose changes and stopping should go through the prescriber.
+</footer>
+
+</div>
+</body>
+</html>
