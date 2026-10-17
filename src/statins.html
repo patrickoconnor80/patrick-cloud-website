@@ -558,14 +558,14 @@ footer.end b{color:var(--moss);}
   <div class="lbl">The argument in brief</div>
   <p class="sub">Eight steps, one per part</p>
   <ol class="spine">
-    <li><span class="spine-part"><a href="#primer">Primer</a></span><b>&ldquo;LDL cholesterol&rdquo; is neither LDL nor cholesterol</b> in the sense people assume &mdash; it is a cargo measurement standing in for a particle count, and that substitution is where most of the confusion starts.</li>
-    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span><b>Ancel Keys was not a fraud</b> &mdash; the &ldquo;he cherry-picked 7 of 22 countries&rdquo; story is itself a myth. But he measured <em>total</em> cholesterol, and the framework he left behind was genuinely incomplete.</li>
+    <li><span class="spine-part"><a href="#primer">Primer</a></span><b>LDL is the residue of a delivery, and apoB counts the boats</b> &mdash; where cholesterol comes from, why &ldquo;LDL-C&rdquo; measures cargo rather than particles, and why the artery lesion needs an oxidative environment as well as arriving particles.</li>
+    <li><span class="spine-part"><a href="#part-i">Part&nbsp;I</a></span><b>Keys ran the definitive test of his own hypothesis and left it unreported for forty years</b> &mdash; the Minnesota Coronary Experiment lowered cholesterol exactly as designed and did not save lives. The cherry-picking story everyone repeats is the weak card; this is the strong one.</li>
     <li><span class="spine-part"><a href="#part-ii">Part&nbsp;II</a></span>The <b>causal case for apoB is strong</b> and is conceded here in full: Mendelian randomization, familial hypercholesterolaemia, and dose-duration trial data all point the same way.</li>
     <li><span class="spine-part"><a href="#part-iii">Part&nbsp;III</a></span>But <b>causal is not the same as actionable</b>. Absolute risk reductions are small, the total-cholesterol mortality curve is U-shaped, and the same LDL number means different things in different bodies.</li>
     <li><span class="spine-part"><a href="#part-iv">Part&nbsp;IV</a></span>Statins don't block cholesterol &mdash; they <b>clamp the mevalonate pathway</b>, upstream of CoQ10, dolichol, and protein prenylation. That is the source of both the pleiotropic benefits and the characteristic harms.</li>
     <li><span class="spine-part"><a href="#part-v">Part&nbsp;V</a></span>The <b>harms, graded honestly</b>: new-onset diabetes is real and on-target; muscle symptoms are mostly nocebo, and pretending otherwise discredits the rest of the case.</li>
     <li><span class="spine-part"><a href="#part-vi">Part&nbsp;VI</a></span><b>Cholesterol is not a waste product</b> &mdash; it is the substrate for every steroid hormone, all bile acids, and vitamin&nbsp;D &mdash; and because synthesis runs under negative feedback, a high number has at least <b>four different causes</b> that mean different things.</li>
-    <li><span class="spine-part"><a href="#part-vii">Part&nbsp;VII</a></span>So the lever is <b>terrain, not the number</b> &mdash; with an explicit account of where that reasoning stops and the drug still wins.</li>
+    <li><span class="spine-part"><a href="#part-vii">Part&nbsp;VII</a></span>So the lever is <b>terrain, not the number</b> &mdash; how much risk comes out without a prescription, and the honest account of where that is not sufficient on its own.</li>
   </ol>
   <p class="bottom">Not &ldquo;LDL doesn't matter&rdquo; &mdash; that LDL-C is a <em>real cause</em> and a <em>bad dashboard</em>, and that treating the dashboard has costs the dashboard doesn't show.</p>
 </div>
@@ -580,7 +580,7 @@ footer.end b{color:var(--moss);}
 
 <div class="flag">
   <div class="flag-lbl">A note on sourcing</div>
-  <p style="margin:0;">The heterodox side of this literature is a small, interconnected, and commercially interested network, and it is named rather than laundered. The immediate prompt for this paper was a post by <strong>Ashley Armstrong</strong> (<em>@farmer_ash_</em>), who farms and sells low-PUFA animal foods and who cited two real papers accurately: the CTT Collaboration's 2024 individual-participant analysis of statins and new-onset diabetes,<sup class="cite"><a href="#r17">17</a></sup> and a NHANES analysis finding a U-shaped total-cholesterol/mortality curve.<sup class="cite"><a href="#r6">6</a></sup> Both are engaged directly below. <strong>Uffe Ravnskov</strong> and THINCS, <strong>Malcolm Kendrick</strong>, <strong>Aseem Malhotra</strong>, and <strong>Nicholas Norwitz</strong> supply much of the rest of the sceptical case; Norwitz's KETO-CTA work is funded through the low-carb research ecosystem and one of its papers has been <em>retracted</em>, which is stated at point of use rather than buried. On the other side, the CTT Collaboration holds the trial-level data and has been criticised &mdash; fairly, in my view &mdash; for not releasing individual participant data for independent re-analysis, and most large statin trials were industry-funded. <strong>Neither side here is disinterested.</strong> Where a claim rests on advocacy synthesis rather than a study that demonstrates it end-to-end, it is flagged.</p>
+  <p style="margin:0;">Neither side of this argument is disinterested, and both are named rather than laundered. The sceptical case draws on <strong>Uffe Ravnskov</strong> and THINCS, <strong>Malcolm Kendrick</strong>, <strong>Aseem Malhotra</strong> and <strong>Nicholas Norwitz</strong>; Norwitz&rsquo;s KETO-CTA work is funded through the low-carb research ecosystem and one of its papers has been retracted, noted at point of use. On the other side, most large statin trials were industry-funded, and the CTT Collaboration holds the trial-level data without releasing it for independent re-analysis. Where a claim rests on synthesis rather than a study demonstrating it end to end, that is flagged.</p>
 </div>
 
 <div class="flag" style="margin-top:14px;">
@@ -605,10 +605,39 @@ footer.end b{color:var(--moss);}
 <section>
 <p>Almost every argument in this field goes wrong in the first ten seconds, because the phrase &ldquo;LDL cholesterol&rdquo; is doing three jobs at once and none of them well. Ten minutes here makes the rest of the paper follow almost mechanically.</p>
 
-<h3 id="p-1"><span class="h3num">P.1</span>Cholesterol is a molecule; LDL is a boat</h3>
+<h3 id="p-1"><span class="h3num">P.1</span>Where cholesterol comes from, and how it moves</h3>
+<p>Two facts first, because most of what follows is downstream of them.</p>
+<p><strong>Most of the cholesterol in you was made by you.</strong> Roughly 70&ndash;80% is synthesised by your own cells, chiefly the liver, built up from acetyl-CoA through the mevalonate pathway that <a href="#part-iv">Part&nbsp;IV</a> returns to. Diet supplies the minority, and the body compensates for what arrives &mdash; eat more and synthesis falls. That compensation is why dietary cholesterol was eventually dropped from the guidelines as a target.</p>
+<p><strong>Cholesterol does not dissolve in blood.</strong> It is a rigid four-ring lipid and blood is water. To move it anywhere, the liver has to package it &mdash; with triglycerides, phospholipids and one large structural protein &mdash; into a lipoprotein particle. A boat, carrying cargo.</p>
+<p>The crucial thing, and the part usually skipped: <em>the boats are not separate vessels.</em> They are one boat photographed at successive stages of being unloaded.</p>
+
+<div class="mech">
+  <div class="mech-lbl">The lipoprotein lifecycle</div>
+  <div class="chain">
+Liver packages triglyceride + cholesterol <span class="arrow">&rarr;</span> <b>VLDL</b><br>
+&nbsp;&nbsp;<span style="font-size:12px;">large, mostly triglyceride &mdash; fuel being shipped out</span><br>
+&nbsp;&nbsp;&#9500;&#9472; lipoprotein lipase strips triglyceride off into muscle and fat<br>
+&nbsp;&nbsp;&#9492;&#9472;<span class="arrow">&rarr;</span> <b>IDL</b> &nbsp;<span style="font-size:12px;">partly unloaded, short-lived</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472;<span class="arrow">&rarr;</span> <b>LDL</b> &nbsp;<span style="font-size:12px;">small, cargo now mostly cholesterol &mdash; the thing the lab measures</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472;<span class="arrow">&rarr;</span> cleared by the <b>LDL receptor</b>, mostly back into the liver
+  </div>
+  <p style="margin:12px 0 0;font-size:15.5px;"><b>The liver never secretes LDL.</b> LDL is the <em>residue</em> of a VLDL that has delivered its fuel. This single fact reframes the whole question: a high LDL count can mean more boats were launched, or that each boat spent longer in circulation before retrieval, or that retrieval itself is impaired. Those are three different conditions with the same number, and <a href="#vi-2">VI.2</a> takes them apart.</p>
+</div>
+
+<h3 id="p-2"><span class="h3num">P.2</span>Why this paper says &ldquo;apoB&rdquo; and not &ldquo;LDL&rdquo;</h3>
+
 <p>Cholesterol is a rigid four-ring lipid that the body <em>makes</em> &mdash; roughly 70&ndash;80% of the cholesterol in your body was synthesised by your own cells, mostly the liver, and only the remainder came from food. It is not soluble in blood. To move it, the liver packages it with triglycerides, phospholipids, and a structural protein into a lipoprotein particle: a boat.</p>
 
-<p>Each such boat carries exactly <strong>one</strong> molecule of <strong>apolipoprotein B</strong> (apoB), and that protein stays with the particle from the moment it leaves the liver until it is cleared. VLDL, IDL, LDL and Lp(a) are all apoB particles &mdash; different stages and variants of the same vessel. So a measurement of apoB is a <em>count of particles</em>. A measurement of LDL-C is a measure of <em>how much cholesterol those particles happen to be carrying</em>.</p>
+<p>A fair objection: isn&rsquo;t apoB just a protein sitting on LDL? Why not say LDL and be done with it?</p>
+<p>Because apoB is not a decoration on the particle &mdash; it is the hull. <strong>Apolipoprotein&nbsp;B is the structural backbone the whole boat is built around, one molecule per particle, and it is fixed there from the moment the liver releases it until the particle is cleared.</strong> It is not shed, not exchanged, not shared. And because every stage in the lifecycle above is the same boat, that one apoB travels the whole way: VLDL, IDL, LDL and Lp(a) all carry exactly one.</p>
+<p>So the three words mean genuinely different things, and the difference is the reason the distinction is worth the friction:</p>
+<ul style="margin:8px 0 14px;padding-left:20px;">
+  <li style="margin:7px 0;"><strong>LDL</strong> &mdash; one <em>stage</em> of the particle&rsquo;s life, the late one.</li>
+  <li style="margin:7px 0;"><strong>LDL-C</strong> &mdash; the <em>cargo</em>: how much cholesterol happens to be sitting inside the LDL-stage boats. Not a count of anything.</li>
+  <li style="margin:7px 0;"><strong>apoB</strong> &mdash; a <em>headcount of every atherogenic boat in circulation</em>, at every stage, because each has exactly one.</li>
+</ul>
+<p>This matters for a specific reason that <a href="#part-ii">Part&nbsp;II</a> depends on. When the genetic evidence is described as showing &ldquo;LDL is causal,&rdquo; what it actually shows is that the <em>number of particles</em> is causal. That is not the same claim as &ldquo;the cholesterol inside them is causal&rdquo; &mdash; the cholesterol is the cargo you happen to be counting the boats by. Keeping the two apart is what makes it possible to accept the genetic evidence in full and still argue that LDL-C is a poor thing to manage.</p>
+
 
 <div class="defrow">
   <div class="term">LDL-C</div>
@@ -625,7 +654,7 @@ footer.end b{color:var(--moss);}
 
 <div class="takeaway"><b>Why this matters:</b> two people can have identical LDL-C and quite different particle counts. If the particles are large and cholesterol-rich, it takes few of them to carry that cholesterol. If they are small and depleted, it takes many. The artery wall is penetrated by <em>particles</em>, not by dissolved cholesterol &mdash; so of the two people, the one with more particles is at higher risk, at the same LDL-C.</div>
 
-<h3 id="p-2"><span class="h3num">P.2</span>The lesion is a retention event, not a plumbing problem</h3>
+<h3 id="p-3"><span class="h3num">P.3</span>The lesion is a retention event, not a plumbing problem</h3>
 <p>The mental model most people carry &mdash; cholesterol as grease coating the inside of a pipe &mdash; is wrong in a way that matters. Atherosclerosis begins <em>inside the arterial wall</em>, not on its surface. An apoB particle crosses the endothelium, and if it binds to the proteoglycan matrix underneath it is retained there. Retained particles are chemically modified, principally by oxidation. Modified particles are recognised by macrophages through scavenger receptors that &mdash; crucially &mdash; are <strong>not</strong> down-regulated by intracellular cholesterol load, so the macrophage keeps eating until it becomes a foam cell and dies. That debris is the plaque core.</p>
 
 <div class="mech">
@@ -637,7 +666,8 @@ footer.end b{color:var(--moss);}
 <span class="arrow">&rarr;</span> taken up via <b>scavenger receptors</b> (no feedback shutoff)<br>
 <span class="arrow">&rarr;</span> <b>foam cell</b> <span class="arrow">&rarr;</span> apoptosis <span class="arrow">&rarr;</span> necrotic core <span class="arrow">&rarr;</span> <b>plaque</b>
   </div>
-  <p style="margin:12px 0 0;font-size:15.5px;">Two independent things govern the rate of this chain: <em>how many particles arrive</em>, and <em>how readily they are modified once retained</em>. The mainstream model optimises the first term. The argument in the <a href="linoleic-acid.html">linoleic acid paper</a> is that the second term is modifiable too &mdash; the oxidisability of a particle is set by the fatty acids esterified into it, and those come from the diet.</p>
+  <p style="margin:12px 0 0;font-size:15.5px;"><b>Three things govern the rate of this chain, not one.</b> <em>How many particles arrive</em> (the apoB count). <em>How oxidisable their cargo is</em> &mdash; set by the fatty acids esterified into them, which come from the diet. And <em>how much oxidative pressure is acting on them</em> once retained, which is what chronic inflammation supplies. The mainstream model optimises the first term alone and treats the other two as fixed background.</p>
+  <p style="margin:10px 0 0;font-size:15.5px;">The second and third terms are not additive &mdash; they <strong>multiply</strong>. Peroxidation is a reaction, and a reaction needs both a substrate and an initiator. A membrane loaded with linoleic acid sitting in quiet tissue is a fuel tank with no spark; an inflamed vessel wall with little oxidisable substrate has a spark and nothing to catch. You need the oxidisable cargo <em>and</em> the oxidative environment, which is why the same LDL number behaves so differently in different bodies &mdash; and why lowering either term lowers the product. The substrate side is the subject of the <a href="linoleic-acid.html">linoleic acid paper</a>, where the 4-HNE and cardiolipin work traces what happens once that reaction runs.</p>
 </div>
 
 <p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">Retention of apoB particles in the subendothelial matrix is the initiating step in atherogenesis; this is not in dispute in either camp.</span></p>
@@ -649,28 +679,60 @@ footer.end b{color:var(--moss);}
 <!-- ============ PART I ============ -->
 <div class="part-head" id="part-i">
   <span class="part-num">Part I</span>
-  <h2>Ancel Keys, Fairly</h2>
+  <h2>Ancel Keys and the Trial He Did Not Report</h2>
 </div>
 <section>
-<p>No figure in nutrition is more caricatured, in both directions. Getting him right matters here for a specific reason: the modern LDL hypothesis is routinely attacked <em>through</em> Keys, and if that attack is factually wrong &mdash; which it largely is &mdash; then leaning on it damages the credibility of the better arguments that follow.</p>
+<p>The modern LDL hypothesis is routinely attacked through Keys, and the attack is usually made with the wrong evidence. There is a genuinely damning fact about his conduct, and it is not the one that circulates. Leading with the weak charge has let the strong one go comparatively unremarked for years.</p>
 
 <h3 id="i-1"><span class="h3num">I.1</span>What he actually claimed</h3>
-<p>Keys's position, built through the 1950s and formalised in the Seven Countries Study, was a chain: dietary saturated fat raises <strong>serum total cholesterol</strong>, and populations with higher mean serum cholesterol have higher coronary mortality. Note what is and is not in that sentence. It is a claim about <em>total</em> cholesterol, at the level of <em>populations</em>, and it predates the ability to measure LDL at all &mdash; the Friedewald equation that made routine LDL-C estimation possible was not published until 1972, by which time Keys was near the end of his career.</p>
+<p>Keys&rsquo;s position, built through the 1950s and formalised in the Seven Countries Study, was a chain: dietary saturated fat raises <strong>serum total cholesterol</strong>, and populations with higher mean cholesterol have higher coronary mortality. It is a claim about <em>total</em> cholesterol, at the level of <em>populations</em>, and it predates the ability to measure LDL at all &mdash; the Friedewald equation that made routine LDL-C estimation possible was not published until 1972.</p>
+<div class="takeaway"><b>Worth noting before the defence of LDL in <a href="#part-ii">Part&nbsp;II</a>:</b> the modern LDL-C target is not Keys&rsquo;s claim and cannot inherit his evidence. Whatever the Seven Countries Study showed about population mean total cholesterol in the 1950s, it did not show that an individual&rsquo;s LDL-C is the right thing to drive downward. Those are separate propositions that got welded together after the fact.</div>
 
-<div class="takeaway"><b>The honest correction:</b> Keys did not think &ldquo;low LDL is good.&rdquo; He thought low <em>population mean total cholesterol</em> tracked low coronary mortality, which &mdash; for the populations and the range he studied &mdash; it did. Attributing the modern LDL-C target to him is an anachronism, and one the sceptical literature repeats constantly.</div>
+<h3 id="i-2"><span class="h3num">I.2</span>The Minnesota Coronary Experiment</h3>
+<p>This is the fact that matters, and it is worth stating slowly.</p>
+<p>Between 1968 and 1973, Keys and Ivan Frantz ran the <strong>largest and most rigorous test of the diet-heart hypothesis ever conducted</strong> &mdash; a <em>double-blind, randomised, controlled</em> feeding trial in institutional populations where the investigators controlled the food supply directly, which is close to unachievable in free-living subjects. The intervention was precisely the recommendation the hypothesis implied: replace saturated fat with vegetable oil rich in linoleic acid. The question was whether doing so lowers coronary disease and death by lowering serum cholesterol.</p>
 
-<h3 id="i-2"><span class="h3num">I.2</span>The &ldquo;he cherry-picked 7 of 22 countries&rdquo; story is false</h3>
-<p>This is the single most-repeated claim in the anti-Keys literature, and it does not survive contact with the primary sources. The 22-country graph comes from <strong>Yerushalmy and Hilleboe's 1957 critique</strong> of an <em>earlier</em> Keys paper &mdash; it is the critics' graph, built from UN food-balance-sheet data, not Keys's.<sup class="cite"><a href="#r11">11</a></sup> The Seven Countries Study never had 22 countries to discard: it was a prospective cohort study, designed from the outset around seven countries chosen for feasibility and for spread along the exposure gradient, with investigators on the ground and actual blood draws in sixteen cohorts.<sup class="cite"><a href="#r10">10</a></sup><sup class="cite"><a href="#r12">12</a></sup> You cannot drop what you never enrolled.</p>
-
-<div class="pushback">
-  <div class="pb-lbl">Where the criticism does land</div>
-  <p style="margin:0;">Three real problems remain, and they are enough. <strong>(1)</strong> Seven Countries was ecological in its headline correlations &mdash; comparing population means &mdash; and ecological correlations do not establish individual-level causation. <strong>(2)</strong> Keys attributed the Cretan advantage to fat composition, but the Cretan cohort was examined partly <em>during Lent</em>, when a substantial share of the population was fasting from animal foods; the dietary characterisation is on weaker ground than the mortality data. <strong>(3)</strong> Most importantly, the framework confounded saturated fat with everything else that distinguished mid-century Finland from mid-century Crete &mdash; and the diet-heart hypothesis it launched was operationalised as <em>replace saturated fat with polyunsaturated vegetable oil</em>, a recommendation whose own controlled trials &mdash; the Minnesota Coronary Experiment and the Sydney Diet Heart Study &mdash; lowered cholesterol and did <em>not</em> reduce mortality, with recovered data suggesting the opposite.<sup class="cite"><a href="#r13">13</a></sup></p>
+<div class="mech">
+  <div class="mech-lbl">What it found</div>
+  <div class="chain">
+Serum cholesterol, intervention arm &nbsp;<span class="arrow">&rarr;</span>&nbsp; <b>&minus;13.8%</b><br>
+Serum cholesterol, control arm &nbsp;<span class="arrow">&rarr;</span>&nbsp; <b>&minus;1.0%</b><br>
+<span style="font-size:13px;">&nbsp;&nbsp;&nbsp;the mechanism worked exactly as designed</span><br><br>
+Mortality benefit &nbsp;<span class="arrow">&rarr;</span>&nbsp; <b style="color:#a8562f;">none</b><br>
+Per 30 mg/dL of cholesterol lowering &nbsp;<span class="arrow">&rarr;</span>&nbsp; <b style="color:#a8562f;">22% higher risk of death</b> <span style="font-size:13px;">(HR 1.22)</span>
+  </div>
+  <p style="margin:12px 0 0;font-size:15.5px;">The intervention did what it was supposed to do to the marker, and the people it was done to did not live longer. In the covariate-adjusted analysis the relationship ran the wrong way.<sup class="cite"><a href="#r13">13</a></sup></p>
 </div>
 
-<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">The 22-countries cherry-picking story is a misattribution; the graph is Yerushalmy &amp; Hilleboe's.</span></p>
-<p class="evline"><span class="ev ev-mixed">Moderate</span><span class="txt">That the recovered MCE and Sydney data undermine the specific saturated-fat&rarr;PUFA substitution recommendation. The trials are real and the recovered analyses are published, but both were conducted with hydrogenated-oil-era formulations and have their own methodological critics.</span></p>
+<p><strong>And then it was not reported.</strong> The trial finished in 1973. A partial account appeared in 1989 &mdash; sixteen years later, abbreviated, without the full dataset. The complete participant-level data did not reach the literature until <strong>2016</strong>, when Ramsden&rsquo;s group recovered the raw records and analysed them <em>according to the hypotheses the original investigators had themselves prespecified</em>.<sup class="cite"><a href="#r13">13</a></sup> Recovery meant physically retrieving magnetic tapes and paper from the home of the lead investigator&rsquo;s son. Autopsy data existed for 295 participants; it had never been analysed.</p>
 
-<div class="takeaway"><b>Carry forward:</b> the correct lesson from Keys is not &ldquo;cholesterol doesn't matter.&rdquo; It is that <em>lowering a marker is not the same as improving an outcome</em> &mdash; the exact failure mode the MCE demonstrated, and the one Part&nbsp;III generalises.</div>
+<p>The same pattern holds for the <strong>Sydney Diet Heart Study</strong>, recovered by the same group: safflower oil replacing saturated fat lowered cholesterol and produced <em>higher</em> all-cause, cardiovascular and coronary mortality, and that too sat unreported for decades.<sup class="cite"><a href="#r13">13</a></sup></p>
+
+<div class="pull">The men who built the diet-heart hypothesis ran the definitive test of it, watched the marker move and the deaths not follow, and left the result in a basement for forty years.</div>
+
+<p>Two honest qualifications, because the argument is stronger when it does not overreach. The trial has real methodological problems: high participant turnover, with only a minority remaining a year or more, and control-arm fats that were high in trans isomers by modern standards. And &ldquo;fraud&rdquo; in the strict sense &mdash; fabricating or falsifying data &mdash; is not what the record shows. What it shows is a null result on one&rsquo;s own hypothesis going unpublished for a generation while the recommendation it failed to support was taken up worldwide. Those limitations were equally present in 1973; they are reasons the trial is imperfect, not reasons it was unpublishable. Publication bias is usually an abstraction about file drawers. This is the most consequential concrete instance of it in nutrition science.</p>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">The MCE was double-blind and randomised; cholesterol fell as designed; no mortality benefit appeared; greater cholesterol reduction was associated with higher mortality in the recovered analysis; the data went essentially unreported from 1973 to 2016.</span></p>
+
+<h3 id="i-3"><span class="h3num">I.3</span>The cherry-picking story is the weak card &mdash; stop leading with it</h3>
+<p>The most-repeated charge is that Keys began with 22 countries and discarded the fifteen that disagreed with him. It does not survive the primary sources. The 22-country graph is from <strong>Yerushalmy and Hilleboe&rsquo;s 1957 critique</strong> of an earlier Keys paper, built from UN food-balance data &mdash; it is the critics&rsquo; graph, not his.<sup class="cite"><a href="#r11">11</a></sup> Seven Countries never enrolled 22: it was a prospective cohort designed around seven countries chosen for feasibility and for spread along the exposure gradient, with investigators on the ground and blood drawn in sixteen cohorts.<sup class="cite"><a href="#r10">10</a></sup><sup class="cite"><a href="#r12">12</a></sup> You cannot drop what you never enrolled.</p>
+<div class="takeaway"><b>This is a tactical point, not a defence of him.</b> Anyone arguing the sceptical case who opens with the 22 countries hands the other side a free, correct rebuttal and loses the room before reaching <a href="#i-2">I.2</a> &mdash; which is unanswerable. The weak charge crowds out the strong one. Drop it and lead with the trial.</div>
+
+<p>Two further criticisms of Seven Countries do hold. Its headline correlations were <em>ecological</em>, comparing population means, which cannot establish individual-level causation. And the Cretan cohort &mdash; the one carrying the most interpretive weight &mdash; was surveyed partly during <em>Lent</em>, when much of the population was abstaining from animal foods, so the dietary characterisation is on weaker ground than the mortality data.</p>
+
+<h3 id="i-4"><span class="h3num">I.4</span>But seven countries <em>is</em> a small sample &mdash; and France is the obvious test</h3>
+<p>Dropping the cherry-picking charge does not mean dropping the methodological one underneath it, and the two get conflated by both sides. Seven countries, fourteen villages, chosen purposively rather than at random, is a small and non-random sample by any standard. The defenders&rsquo; answer is that the regions were selected for feasibility &mdash; funding, standardised mortality coding, and the ability to commit to decades of follow-up &mdash; and that several additional regions, <strong>France among them</strong>, were invited and could not participate on those grounds. That is a real methods answer rather than an ideological one. It is also not a reason to stop asking what the excluded countries would have shown.</p>
+
+<p><strong>France is the case everyone reaches for, and it deserves a straight answer.</strong> High saturated-fat intake, high dairy consumption, serum cholesterol in the same range as its neighbours, and markedly lower coronary mortality. If the diet&ndash;cholesterol&ndash;heart chain were the whole story, France should not look like that.</p>
+
+<div class="pushback">
+  <div class="pb-lbl">What actually explains it &mdash; and what doesn&rsquo;t</div>
+  <p style="margin:0;">The wine-and-polyphenols explanation is the popular one and the weakest; Law and Wald judged that alcohol accounts for little of the gap.<sup class="cite"><a href="#r42">42</a></sup> Their own explanation is a <strong>time lag</strong>: French animal-fat intake and serum cholesterol rose substantially <em>later</em> than Britain&rsquo;s, and coronary mortality tracks <em>past</em> exposure far better than current exposure &mdash; the same lag structure as smoking and lung cancer. On top of that they estimated roughly <strong>20% of the gap is under-certification</strong>, with French death certificates coding fewer deaths as coronary than their neighbours&rsquo; do.<br><br>There is an irony worth sitting with. One stated reason France was excluded from Seven Countries was the absence of standardised mortality coding &mdash; and under-certification is precisely what a fifth of the French anomaly is now attributed to. The country most often used to refute the study was left out for the very measurement problem that makes it look anomalous.</p>
+</div>
+
+<div class="takeaway"><b>The conclusion that survives, and it cuts both ways:</b> cross-country ecological comparison is a weak instrument in <em>either</em> direction. It is confounded by death certification, diagnostic fashion, competing mortality, healthcare access, smoking history and decades-long exposure lags &mdash; none of which it can adjust for. Seven countries is too few to establish the diet&ndash;heart hypothesis, and France is too confounded to refute it. Neither side should be leaning on this kind of data as hard as both do. The evidence that actually decides things is <a href="#i-2">the trial Keys ran</a>, the genetic work in <a href="#part-ii">Part&nbsp;II</a>, and the imaging endpoints in <a href="#part-vii">Part&nbsp;VII</a> &mdash; and it is worth noticing that the strongest card in the sceptical hand is a <em>randomised trial</em>, not a map.</div>
+
+<div class="takeaway"><b>Carry forward:</b> the lesson is not that cholesterol is irrelevant. It is that <em>moving a marker is not the same as improving an outcome</em> &mdash; demonstrated, in a double-blind trial, by the hypothesis&rsquo;s own authors. <a href="#part-iii">Part&nbsp;III</a> generalises that failure mode to statins, and <a href="#vii-3">VII.3</a> shows what it looks like when an intervention moves the disease instead.</div>
 </section>
 
 <!-- ============ PART II ============ -->
@@ -691,12 +753,37 @@ footer.end b{color:var(--moss);}
   <p style="margin-top:0;">The strength of the design is that it is a <em>naturally randomised instrument with a known mechanism</em>. The standard objections to MR are pleiotropy (the variant affects the outcome through some other path) and linkage (the variant is a marker for a nearby causal one). Both are addressed here by the convergence across unlinked loci acting through different proteins: <em>PCSK9</em> governs LDL-receptor recycling, <em>NPC1L1</em> governs intestinal sterol absorption, <em>HMGCR</em> governs synthesis. They share nothing except the downstream particle concentration, and they give the same answer. That convergence is the reason this evidence is hard to dismiss, and it is why the strong form of &ldquo;LDL is a bystander&rdquo; is untenable.</p>
 </div>
 
-<h3 id="ii-2"><span class="h3num">II.2</span>Familial hypercholesterolaemia is the dose-response experiment nature already ran</h3>
-<p>Heterozygous FH &mdash; roughly 1 in 250 people &mdash; means a lifetime of LDL-C around 200&ndash;400&nbsp;mg/dL from a single defective LDL-receptor allele, with no accompanying insulin resistance, hypertension or inflammation. Untreated, it produces coronary disease decades early. Homozygous FH, with LDL-C above 500&nbsp;mg/dL, produces it in childhood. This is isolated apoB elevation without metabolic confounding, and it is unambiguously atherogenic.</p>
+<div class="pushback">
+  <div class="pb-lbl">The limitation nobody states: causal <em>in which environment?</em></div>
+  <p style="margin:0;">Mendelian randomization randomises the <em>exposure</em>. It does not randomise the <em>era</em>. Every outcome dataset feeding these estimates was collected from people living after roughly 1950 &mdash; which is to say, in an environment of historically unprecedented linoleic-acid intake, tobacco exposure, and chronic metabolic inflammation. The genotype is lifelong; the environment it was measured in is not.<br><br>That matters because of the multiplication in <a href="#p-3">P.3</a>. If atherogenesis requires both <em>particles arriving</em> and <em>an oxidative environment to modify them</em>, then an instrument that varies only the first term, measured in a population where the second term is uniformly high, will correctly report that the first term is causal &mdash; and will say nothing whatever about how large that effect would be if the second term were low. <strong>MR establishes causality within the sampled environment. It cannot establish environment-independence, and it is almost always read as though it had.</strong><br><br>Run the same genetic analysis on a population with low LA intake, no tobacco and low inflammatory burden, and the honest answer is that nobody knows what the coefficient would be. That study has not been done and arguably cannot be. This is <em>effect modification</em>, it is a standard epidemiological concern, and its near-total absence from the lipid literature is a real gap rather than a fringe complaint. <span class="ev ev-mixed" style="display:inline">Inferred</span></p>
+</div>
+
+<div class="flag">
+  <div class="flag-lbl">Where that argument overreaches</div>
+  <p style="margin:0;">Two things keep it from going all the way. First, atherosclerosis is not a modern disease. CT scanning of 137 mummies across four pre-industrial cultures &mdash; ancient Egyptians, Peruvians, Ancestral Puebloans and Unangan hunter-gatherers &mdash; found probable or definite atherosclerosis in 34% overall, in populations with no seed oils and no tobacco.<sup class="cite"><a href="#r41">41</a></sup> Whatever drives the lesion, it predates the industrial food supply.<br><br>But read that finding carefully, because it cuts both ways: those populations carried enormous <em>chronic inflammatory burden</em> from endemic infection, parasites and constant indoor smoke exposure. On a substrate-times-oxidant model that is exactly where you would expect atherosclerosis despite a clean diet &mdash; the mummy data is better evidence that the oxidative term matters than that it doesn&rsquo;t. What it does rule out is the strong claim that seed oils are a <em>necessary</em> cause.</p>
+</div>
+
+<h3 id="ii-2"><span class="h3num">II.2</span>Familial hypercholesterolaemia &mdash; and where the confounding objection runs out</h3>
+<p>Heterozygous FH &mdash; roughly 1 in 250 people &mdash; means a lifetime of LDL-C around 200&ndash;400&nbsp;mg/dL from a single defective LDL-receptor allele. Untreated, it produces coronary disease decades early.</p>
+
+<div class="pushback">
+  <div class="pb-lbl">The confounding objection, which is partly right</div>
+  <p style="margin:0;">Calling heterozygous FH &ldquo;isolated apoB elevation with no metabolic confounding&rdquo; overstates it, and this paper previously did. The people in those cohorts smoked, ate the same industrial seed-oil supply as everyone else, and carried the same background inflammatory load. Their <em>lipids</em> are isolated; their <em>environment</em> is not. The same era objection from <a href="#ii-1">II.1</a> applies with full force &mdash; we observe what a lifetime of high apoB does in a modern oxidative environment, not what it does as such.</p>
+</div>
+
+<p><strong>Homozygous FH is where that reply runs out.</strong> Two defective alleles, LDL-C above 500&nbsp;mg/dL, and coronary disease in <em>childhood</em> &mdash; xanthomas before school age, aortic stenosis and myocardial infarction in the first and second decades. An eight-year-old has not accumulated forty years of tobacco, seed oil or metabolic syndrome. At that dose the environment cannot be doing the work, and the strong form of &ldquo;LDL only matters because of what else is going on&rdquo; has no account of it.</p>
+
+<div class="takeaway"><b>So the honest shape is a dose-response with a threshold, not a binary.</b> At extreme apoB, particle number alone is sufficient &mdash; homozygous FH proves it. At the ordinary range most people occupy, the oxidative term plausibly carries much of the weight, and the environment it was measured in may be doing more work than the lipid literature admits. Those two statements are compatible, and holding both is what the rest of this paper requires.</div>
+
+<div class="flag">
+  <div class="flag-lbl">The live counterexample: lean mass hyper-responders</div>
+  <p style="margin:0;">If the oxidative environment is what converts high apoB into disease, there should exist people with very high LDL-C and very little disease &mdash; and there do. The <strong>lean mass hyper-responder</strong> phenotype &mdash; LDL-C &ge;&nbsp;200, HDL-C &ge;&nbsp;80, triglycerides &le;&nbsp;70, typically lean, insulin-sensitive, low-inflammation and carbohydrate-restricted &mdash; is the cleanest naturally occurring test of exactly this question. A year of serial coronary CT in that population found neither apoB nor cumulative LDL-C predicted plaque progression; <em>baseline plaque</em> did. That is treated at full length, with its substantial limitations, in <a href="#iii-3">III.3</a> &mdash; it is weaker evidence than its advocates claim and more interesting than its critics allow. It belongs here because it is the observation a particle-count-only model is least able to absorb.</p>
+</div>
+
 
 <div class="safety" style="border-color:var(--moss);background:rgba(74,93,58,.07);">
   <div class="s-lbl" style="color:var(--moss-deep);">The concession, stated plainly</div>
-  <p style="margin:0;">Any model in which LDL/apoB is merely a passive marker has to explain FH, and none of them do. <strong>ApoB is causal.</strong> The rest of this paper is written on that assumption, not against it.</p>
+  <p style="margin:0;">Any model in which LDL/apoB is merely a passive marker has to explain homozygous FH, and none of them do. <strong>ApoB is causal.</strong> The rest of this paper is written on that assumption, not against it. What remains genuinely open &mdash; and what <a href="#part-iii">Part&nbsp;III</a> is about &mdash; is how large that causal effect is at ordinary exposures, in a body that is not also inflamed.</p>
 </div>
 
 <h3 id="ii-3"><span class="h3num">II.3</span>And the trials do work &mdash; where the baseline risk is high</h3>
@@ -938,7 +1025,7 @@ Acetyl-CoA <span class="arrow">&rarr;</span> HMG-CoA<br>
 <!-- ============ PART VII ============ -->
 <div class="part-head" id="part-vii">
   <span class="part-num">Part VII</span>
-  <h2>Terrain, and What Actually Moves It</h2>
+  <h2>Cardioprotection Without a Prescription</h2>
 </div>
 <section>
 <p>The positive claim of this paper: for most people outside FH and secondary prevention, <strong>serum lipids are substantially a readout of metabolic state</strong>, and the readout moves when the state moves. Most of this part is the most speculative material in the paper and is labelled accordingly &mdash; with one exception, <a href="#vii-3">VII.3</a>, which carries the only direct anatomical evidence anywhere in it.</p>
@@ -1044,10 +1131,43 @@ Dietary <b>nitrate</b> (NO&#8323;&#8315;) <span class="arrow">&rarr;</span> abso
   <p style="margin:0;">The claim now circulating widely &mdash; that <em>sodium alone does not cause high blood pressure, and only a lack of potassium and magnesium does</em> &mdash; is an overcorrection of a real insight, and it is worth separating the two. <strong>What is right:</strong> the sodium/potassium <em>ratio</em> does predict blood pressure and cardiovascular mortality better than sodium in isolation; potassium intake in the modern diet is genuinely poor; and the mechanisms usually given (potassium promoting natriuresis and vascular relaxation, magnesium supporting vasodilation) are broadly correct. <strong>What is wrong:</strong> the strong form is refuted by controlled feeding data. DASH-Sodium fed 412 people three sodium levels &mdash; 50, 100 and 150&nbsp;mmol/day &mdash; in random sequence, <em>within</em> each diet arm, so potassium was held constant while sodium moved. Blood pressure fell stepwise as sodium fell, on both the high-potassium DASH diet and the control diet, and the two effects were <strong>additive and independent</strong>.<sup class="cite"><a href="#r31">31</a></sup> Sodium reduction works <em>even when potassium is already high</em>. The honest statement is that both matter, the ratio captures them jointly, and potassium is the more neglected half &mdash; not that sodium is exonerated. The magnesium claim is also oversold at the popular level: the measured effect is about 2&nbsp;mmHg, not a fix for hypertension, and the blanket assertion that supplementation is &ldquo;usually necessary&rdquo; has no support in the trial data.</p>
 </div>
 
-<h3 id="vii-6"><span class="h3num">VII.6</span>Where this reasoning stops</h3>
+<h3 id="vii-6"><span class="h3num">VII.6</span>The axis this paper has ignored: thrombosis</h3>
+<p>Everything in Part&nbsp;VII so far works on two variables &mdash; what the particle is made of, and what the vessel is doing. There is a third, and this paper has been silent on it, which is an omission worth correcting because it sits closest to the event you are actually trying to avoid.</p>
+
+<p><strong>Plaque is rarely what kills people. The clot on top of it is.</strong> The proximate mechanism of most myocardial infarctions is rupture or erosion of a plaque, followed by thrombus forming on the exposed surface and occluding the vessel. A large stable plaque that never ruptures is survivable; a modest one that ruptures onto thrombogenic blood is not. That makes the clotting side of blood a target in its own right &mdash; independent of apoB, and independent of blood pressure.</p>
+
+<p>The paper has already conceded this in passing without developing it. <a href="#part-iv">Part&nbsp;IV</a>'s ledger credits statins with antithrombotic effects among their pleiotropic benefits. Part of what the drug does for you, in other words, is act on an axis the terrain argument never thinks to address directly.</p>
+
+<div class="mech">
+  <div class="mech-lbl">Three targets, not two</div>
+  <div class="chain">
+<b>apoB particles</b> <span class="arrow">&rarr;</span> retention, oxidation <span class="arrow">&rarr;</span> <b>plaque</b> &nbsp;<span style="font-size:12px;">&larr; Parts I&ndash;III, VII.1</span><br>
+<b>vascular tone</b> <span class="arrow">&rarr;</span> pressure, shear <span class="arrow">&rarr;</span> endothelial injury &nbsp;<span style="font-size:12px;">&larr; VII.4&ndash;VII.5</span><br>
+<b>fibrin and clotting</b> <span class="arrow">&rarr;</span> thrombus on a ruptured plaque <span class="arrow">&rarr;</span> <b>infarct</b> &nbsp;<span style="font-size:12px;">&larr; unaddressed until here</span>
+  </div>
+  <p style="margin:12px 0 0;font-size:15.5px;">Fibrinogen is the obvious handle, and it is an established independent predictor of cardiovascular events &mdash; it is also what makes red cells aggregate and raises whole-blood viscosity, so it sits at the junction of the clotting and flow arguments.</p>
+</div>
+
+<h4 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:var(--moss-deep);margin:30px 0 4px;">The dietary handle, and why it is only half-convincing</h4>
+<p><strong>Nattokinase</strong>, an enzyme from fermented soybeans, is the best-studied food-derived intervention on this axis. It cleaves fibrin directly, inactivates PAI-1 (the brake on endogenous fibrinolysis), and in humans lowers plasma fibrinogen, factor&nbsp;VII and factor&nbsp;VIII. Those are measured human changes on exactly the variable this section is about.</p>
+
+<p>The outcome evidence splits on dose, and both halves matter. The most rigorous trial &mdash; double-blind, 265 participants, serial carotid ultrasound every six months for a median of <em>three years</em>, run by an academic imaging group with no product interest &mdash; used <strong>2,000&nbsp;FU/day</strong> and was flatly null on carotid thickness, arterial stiffness, blood pressure and every laboratory measure.<sup class="cite"><a href="#r38">38</a></sup> Against that, a 1,062-participant trial at <strong>10,800&nbsp;FU/day</strong> for twelve months reported significant reductions in carotid intima-media thickness and plaque size, and separately found 3,600&nbsp;FU/day ineffective.<sup class="cite"><a href="#r39">39</a></sup> The null trial used a dose the positive trial explicitly identifies as sub-therapeutic, which is the most economical reading of the disagreement &mdash; though five of that paper's ten authors were employed by a nattokinase manufacturer and it carries a published corrigendum, so the effect size should be read as a ceiling.</p>
+
+<div class="takeaway"><b>Why this belongs in <em>this</em> paper rather than only in a supplement entry:</b> a 26-week trial comparing 6,000&nbsp;FU/day against simvastatin 20&nbsp;mg found greater reduction in carotid thickness and plaque size on the <em>enzyme</em>, even though the statin lowered LDL-C further &mdash; and the change in plaque did not track the change in lipids.<sup class="cite"><a href="#r40">40</a></sup> That is the same shape as <a href="#vii-3">VII.3</a>: an intervention with no lipid target moving the anatomical endpoint, with the lipid change failing to explain it. Two independent instances of plaque responding to something other than cholesterol lowering is the strongest form the argument of <a href="#part-iii">Part&nbsp;III</a> takes.</div>
+
+<div class="pushback">
+  <div class="pb-lbl">What this is not</div>
+  <p style="margin:0;">It is not a recommendation, and the trial that most resembles a clean test was negative. The positive trials are small or industry-adjacent, single-centre, and short; the simvastatin comparison enrolled 76 completers and used a moderate statin dose. More importantly, fibrinolysis is not a free lunch &mdash; the same property that degrades fibrin on a plaque degrades it everywhere, and the case literature includes intracranial haemorrhage on nattokinase plus aspirin and a fatal bleed in someone on no other blood thinner. Anyone on an anticoagulant or antiplatelet, or heading for surgery, is in a different risk category entirely. Dose, sourcing and the full safety picture are in the <a href="nattokinase.html">nattokinase entry</a>.</p>
+</div>
+
+<p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">That thrombosis on a ruptured plaque, not plaque volume alone, is the proximate cause of most infarcts; and that fibrinogen independently predicts events.</span></p>
+<p class="evline"><span class="ev ev-weak">Contested</span><span class="txt">That nattokinase reduces carotid plaque. Large positive trials at high dose against a rigorous three-year null at low dose, with funding asymmetry favouring the positive side.</span></p>
+
+<h3 id="vii-7"><span class="h3num">VII.7</span>Where this is not enough on its own</h3>
+
 <div class="safety">
   <div class="s-lbl">The limits of the terrain argument</div>
-  <p style="margin:0 0 10px;">Intellectual honesty requires naming the cases where the argument of this paper does not apply, and where the drug simply wins:</p>
+  <p style="margin:0 0 10px;">Nothing in this part is a contest with the drug, and framing it as one gets the biology wrong. CERT (<a href="#vii-3">VII.3</a>) regressed plaque in people who were <em>already on guideline therapy</em> &mdash; the training was additive, not alternative. The honest question is never &ldquo;which one wins&rdquo; but &ldquo;how much risk can be taken out without a prescription, and where does that stop being sufficient on its own?&rdquo; These are the cases where it stops:</p>
   <ul style="margin:0;padding-left:18px;">
     <li style="margin:8px 0;"><b>Familial hypercholesterolaemia.</b> Lifetime apoB elevation with no metabolic confounding. Diet does not fix a broken LDL receptor. Treat it.</li>
     <li style="margin:8px 0;"><b>Established coronary disease.</b> Secondary prevention has large absolute benefit and a demonstrated mortality reduction. The ARR critique in <a href="#iii-1">III.1</a> loses most of its force when baseline risk is high &mdash; that is arithmetic, not opinion. Note that CERT (<a href="#vii-3">VII.3</a>) is <em>not</em> a counterexample here: it showed plaque regression from training layered <em>on top of</em> guideline therapy in exactly this population, which is an argument for adding exercise, not for dropping the drug.</li>
@@ -1166,6 +1286,23 @@ Dietary <b>nitrate</b> (NO&#8323;&#8315;) <span class="arrow">&rarr;</span> abso
 <div class="ref-group">Nitric oxide and vascular tone</div>
 <ol class="refs">
 <li id="r37">Kimberly B, Nejadnik B, Giraud GD, Holden WE. Nasal contribution to exhaled nitric oxide at rest and during breathholding in humans. <span class="j">Am J Respir Crit Care Med</span> 1996;153(2):829&ndash;836. PMID 8564139. <span class="note">(n=8. Exhaled NO 141&plusmn;17 nl/min/m&sup2; nose-breathing vs 68&plusmn;6 mouth-breathing, p&lt;0.001, falling to 30&plusmn;4 after voluntary soft-palate closure. The finding that matters, and the one popular summaries drop: NO released <em>into</em> the nasal passages (217&plusmn;19) exceeded exhaled NO during nasal breathing (141&plusmn;17), indicating uptake by the respiratory tract rather than simple exhalation. Supports local pulmonary vasodilation and ventilation&ndash;perfusion matching; does <b>not</b> establish a systemic blood-pressure effect, and is cited in <a href="#vii-5">VII.5</a> with that limit stated.)</span></li>
+</ol>
+
+<div class="ref-group">Thrombosis and fibrinolysis</div>
+<ol class="refs">
+<li id="r38">Hodis HN, Mack WJ, Meiselman HJ, et al. Nattokinase atherothrombotic prevention study: a randomized controlled trial. <span class="j">Clin Hemorheol Microcirc</span> 2021;78(4):339&ndash;353. PMID 33843667. <span class="note">(Double-blind, n=265, median age 65, no clinical CVD, randomised to 2,000 FU/day or placebo, serial carotid ultrasound every 6 months, median 3 years. Null on CIMT and carotid arterial stiffness, and on blood pressure and every laboratory measure. Independent academic atherosclerosis-imaging group. The most rigorous trial on this axis, and negative &mdash; at a dose <a href="#r39">39</a> identifies as sub-therapeutic.)</span></li>
+<li id="r39">Chen H, Chen J, Zhang F, et al. Effective management of atherosclerosis progress and hyperlipidemia with nattokinase: a clinical study with 1,062 participants. <span class="j">Front Cardiovasc Med</span> 2022;9:964977. PMID 36072877; corrigendum PMID 36545015. <span class="note">(10,800 FU/day for 12 months; significant reduction in carotid intima-media thickness and plaque size. 3,600 FU/day explicitly ineffective. <b>Five of ten authors were employed by Sungen Bioscience, a nattokinase manufacturer</b>, and one by Sinopharm; the paper carries a published corrigendum. Read the effect size as a ceiling.)</span></li>
+<li id="r40">Ren NN, Chen HJ, Li Y, McGowan GW, Lin YG. A clinical study on the effect of nattokinase on carotid artery atherosclerosis and hyperlipidaemia. <span class="j">Zhonghua Yi Xue Za Zhi</span> 2017;97(26):2038&ndash;2042. PMID 28763875. <span class="note">(26 weeks, 76 completers, 6,000 FU/day vs simvastatin 20 mg. Greater reduction in carotid thickness and plaque size on nattokinase despite simvastatin lowering LDL-C further; plaque change did not track lipid change. Single-centre. The lipid-independence result is what <a href="#vii-6">VII.6</a> uses it for, not the head-to-head claim.)</span></li>
+</ol>
+
+<div class="ref-group">Atherosclerosis before the modern diet</div>
+<ol class="refs">
+<li id="r41">Thompson RC, Allam AH, Lombardi GP, et al. Atherosclerosis across 4000 years of human history: the Horus study of four ancient populations. <span class="j">Lancet</span> 2013;381(9873):1211&ndash;1222. <span class="note">(Whole-body CT of 137 mummies: ancient Egyptian (n=76), Peruvian (n=51), Ancestral Puebloan (n=5) and Unangan hunter-gatherer (n=5). Probable or definite atherosclerosis in 34% overall. Affected mummies were older at death (~43 vs 32 years). Cited in <a href="#ii-1">II.1</a> against the strong claim that atherosclerosis is an artefact of the industrial food supply &mdash; with the caveat that these populations carried heavy infectious, parasitic and smoke-related inflammatory burden, which makes the finding at least as consistent with an oxidative-environment model as against one. Small samples outside Egypt and Peru; mummified individuals were generally of higher status and better fed than their populations.)</span></li>
+</ol>
+
+<div class="ref-group">Cross-country comparison</div>
+<ol class="refs">
+<li id="r42">Law M, Wald N. Why heart disease mortality is low in France: the time lag explanation. <span class="j">BMJ</span> 1999;318(7196):1471&ndash;1480. <span class="note">(Attributes most of the French anomaly to the later rise in French animal-fat intake and serum cholesterol, with coronary mortality tracking past rather than current exposure; estimates ~20% of the gap from under-certification of coronary deaths on French death certificates; finds alcohol and wine explain little. Cited in <a href="#i-4">I.4</a>. Contested &mdash; Barker proposed earlier improvement in French prenatal and early-childhood nutrition as an alternative, and continued decline in French cardiovascular mortality has been argued against the lag prediction.)</span></li>
 </ol>
 
 </div>
