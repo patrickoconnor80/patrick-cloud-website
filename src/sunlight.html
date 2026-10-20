@@ -356,6 +356,12 @@ footer.end b{color:var(--moss);}
   section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
   @keyframes rise{to{opacity:1;transform:none;}}
 }
+
+/* ---- Publication status ---- */
+.status{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:2px;line-height:1.5;}
+.status-pub{color:#fffefb;background:var(--moss);}
+.status-draft{color:#7a5c14;border:1px solid var(--gold);background:rgba(183,138,46,.10);}
+.draft-note{border-left:3px solid var(--gold);background:rgba(183,138,46,.06);padding:12px 18px;margin:18px 0 0;font-size:16px;}
 </style>
 </head>
 <body>
@@ -384,10 +390,11 @@ footer.end b{color:var(--moss);}
   <h1 class="title">Sunlight &amp; <em>Metabolic Health</em></h1>
   <p class="sub">Sunlight is not one exposure but eight, stacked in a single beam &mdash; infrared, red, green, blue, and three bands of ultraviolet, each driving a different pathway on a different tissue. The UVB that raises skin cancer risk through direct DNA damage is the same UVB that drives vitamin D synthesis and immune modulation linked to lower rates of over a dozen other cancers. Untangling which claim rests on which band, and on what kind of evidence, is the point of this paper.</p>
   <div class="byline">
-    <span><b>Draft</b> v1</span>
+    <span><span class="status status-draft">Draft</span> v1</span>
     <span><b>Scope</b> mechanism, by wavelength band, with human cohort evidence and protocol implications</span>
     <span><b>Standard</b> evidence graded &amp; caveats collected in Limitations</span>
   </div>
+<div class="draft-note"><b>Draft.</b> This paper is still being reviewed. Claims, evidence grades and citations may change before it is marked published.</div>
 </header>
 
 <div class="abstract">

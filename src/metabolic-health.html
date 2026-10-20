@@ -443,6 +443,12 @@ ol.q-list>li::before{
   body{font-size:17.5px;}
   .byline{flex-direction:column;gap:6px;}
 }
+
+/* ---- Publication status ---- */
+.status{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:2px;line-height:1.5;}
+.status-pub{color:#fffefb;background:var(--moss);}
+.status-draft{color:#7a5c14;border:1px solid var(--gold);background:rgba(183,138,46,.10);}
+.draft-note{border-left:3px solid var(--gold);background:rgba(183,138,46,.06);padding:12px 18px;margin:18px 0 0;font-size:16px;}
 </style>
 </head>
 <body>
@@ -471,10 +477,11 @@ ol.q-list>li::before{
   <h1 class="title">Metabolic <em>Health</em></h1>
   <p class="sub">What metabolic health actually is, what breaks it, and the order in which to fix it &mdash; the hub paper the mechanism deep-dives link back to.</p>
   <div class="byline">
-    <span><b>Draft</b> v2 &mdash; adds the short list; folds in the statins, blood-pressure and supplement work</span>
+    <span><span class="status status-draft">Draft</span> v2 &mdash; adds the short list; folds in the statins, blood-pressure and supplement work</span>
     <span><b>Scope</b> framework &amp; protocol</span>
     <span><b>Standard</b> evidence graded where grades are used</span>
   </div>
+<div class="draft-note"><b>Draft.</b> This paper is still being reviewed. Claims, evidence grades and citations may change before it is marked published.</div>
 </header>
 
 <section class="quick" id="start-here">

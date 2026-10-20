@@ -397,6 +397,12 @@ footer.end b{color:var(--moss);}
   section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
   @keyframes rise{to{opacity:1;transform:none;}}
 }
+
+/* ---- Publication status ---- */
+.status{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:2px;line-height:1.5;}
+.status-pub{color:#fffefb;background:var(--moss);}
+.status-draft{color:#7a5c14;border:1px solid var(--gold);background:rgba(183,138,46,.10);}
+.draft-note{border-left:3px solid var(--gold);background:rgba(183,138,46,.06);padding:12px 18px;margin:18px 0 0;font-size:16px;}
 </style>
 </head>
 <body>
@@ -425,10 +431,11 @@ footer.end b{color:var(--moss);}
   <h1 class="title">Lifting, Running, Walking <em>&amp; HIIT</em></h1>
   <p class="sub">Exercise trains two separate things: the engine (heart, blood and mitochondria, measured as VO<sub>2</sub>max) and the chassis (muscle, strength and bone). Both predict how long you live, and no single kind of exercise builds both well. Walking is the base, intervals build the engine fastest, and lifting is the only one that reliably builds the chassis.</p>
   <div class="byline">
-    <span><b>Draft</b> v1</span>
+    <span><span class="status status-draft">Draft</span> v1</span>
     <span><b>Scope</b> four kinds of exercise compared on fitness, muscle, glucose, bone and mortality, plus a Siim Land post on HIIT vs lifting checked against its study</span>
     <span><b>Standard</b> every cited paper checked against its abstract; the post's study also checked against the full text of its parent trial</span>
   </div>
+<div class="draft-note"><b>Draft.</b> This paper is still being reviewed. Claims, evidence grades and citations may change before it is marked published.</div>
 </header>
 
 <div class="abstract">

@@ -474,6 +474,12 @@ footer.end b{color:var(--moss);}
   section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
   @keyframes rise{to{opacity:1;transform:none;}}
 }
+
+/* ---- Publication status ---- */
+.status{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:2px;line-height:1.5;}
+.status-pub{color:#fffefb;background:var(--moss);}
+.status-draft{color:#7a5c14;border:1px solid var(--gold);background:rgba(183,138,46,.10);}
+.draft-note{border-left:3px solid var(--gold);background:rgba(183,138,46,.06);padding:12px 18px;margin:18px 0 0;font-size:16px;}
 </style>
 <style>
 /* ---- Pushback box (series convention, cf. cancer.html / sunlight.html) ---- */
@@ -541,10 +547,11 @@ footer.end b{color:var(--moss);}
   <h1 class="title">Statins, LDL &amp; <em>Cardiovascular Disease</em></h1>
   <p class="sub">Where the LDL hypothesis holds, where it fails as a decision rule, and what else HMG-CoA reductase inhibition switches off.</p>
   <div class="byline">
-    <span><b>Draft</b> v1</span>
+    <span><span class="status status-draft">Draft</span> v1</span>
     <span><b>Scope</b> mechanism and decision-making, not prescribing</span>
     <span><b>Standard</b> evidence graded &amp; conflicts disclosed</span>
   </div>
+<div class="draft-note"><b>Draft.</b> This paper is still being reviewed. Claims, evidence grades and citations may change before it is marked published.</div>
 </header>
 
 <div class="abstract">

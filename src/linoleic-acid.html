@@ -474,6 +474,12 @@ footer.end b{color:var(--moss);}
   section{opacity:0;transform:translateY(12px);animation:rise .6s ease forwards;}
   @keyframes rise{to{opacity:1;transform:none;}}
 }
+
+/* ---- Publication status ---- */
+.status{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:2px;line-height:1.5;}
+.status-pub{color:#fffefb;background:var(--moss);}
+.status-draft{color:#7a5c14;border:1px solid var(--gold);background:rgba(183,138,46,.10);}
+.draft-note{border-left:3px solid var(--gold);background:rgba(183,138,46,.06);padding:12px 18px;margin:18px 0 0;font-size:16px;}
 </style>
 </head>
 <body>
@@ -502,7 +508,7 @@ footer.end b{color:var(--moss);}
   <h1 class="title">Linoleic Acid &amp; <em>Metabolic Disease</em></h1>
   <p class="sub">Oxidative mechanisms linking excess seed-oil linoleic acid to cardiovascular disease, insulin resistance, obesity, and cancer risk.</p>
   <div class="byline">
-    <span><b>Draft</b> v2</span>
+    <span><span class="status status-pub">Published</span> v2 &middot; October 2026</span>
     <span><b>Scope</b> mechanism, not epidemiology</span>
     <span><b>Standard</b> evidence graded &amp; conflicts disclosed</span>
   </div>
@@ -2006,7 +2012,7 @@ ectopic fat <span class="arrow">&rarr;</span> lipotoxicity + OXLAM oxidative loa
 <footer class="end">
   <p><b>References:</b> see the numbered reference list above. Evidence grades appear inline throughout; conflicts of interest and contested citations are flagged at point of use.</p>
   <div style="margin-top:16px;">
-    <span class="tag">Draft v2</span>
+    <span class="tag">Published</span>
     <span class="tag">Evidence graded</span>
     <span class="tag">COI disclosed</span>
     <span class="tag">Not medical advice</span>

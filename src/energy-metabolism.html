@@ -298,6 +298,12 @@ footer.end b{color:var(--moss);}
   body{font-size:17.5px;}
   .byline{flex-direction:column;gap:6px;}
 }
+
+/* ---- Publication status ---- */
+.status{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:2px;line-height:1.5;}
+.status-pub{color:#fffefb;background:var(--moss);}
+.status-draft{color:#7a5c14;border:1px solid var(--gold);background:rgba(183,138,46,.10);}
+.draft-note{border-left:3px solid var(--gold);background:rgba(183,138,46,.06);padding:12px 18px;margin:18px 0 0;font-size:16px;}
 </style>
 </head>
 <body>
@@ -326,10 +332,11 @@ footer.end b{color:var(--moss);}
   <h1 class="title">Energy <em>Metabolism</em></h1>
   <p class="sub">How glucose, fat, and protein all become ATP &mdash; and how the body runs the same machinery in reverse to build fat, build glucose, and make ketones &mdash; mapped against the B vitamins that make every step run.</p>
   <div class="byline">
-    <span><b>Draft</b> v2</span>
+    <span><span class="status status-draft">Draft</span> v2</span>
     <span><b>Scope</b> mechanism primer, not a supplement protocol</span>
     <span><b>Standard</b> textbook biochemistry throughout</span>
   </div>
+<div class="draft-note"><b>Draft.</b> This paper is still being reviewed. Claims, evidence grades and citations may change before it is marked published.</div>
 </header>
 
 <div class="abstract">
