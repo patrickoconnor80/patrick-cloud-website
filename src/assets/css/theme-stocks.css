@@ -47,3 +47,41 @@
 body{font-variant-numeric:tabular-nums;}
 .hero h1 em{font-style:normal;}
 .stats .big{letter-spacing:-.02em;}
+
+/* Price vs. market cap chart (assets/js/mktcap-chart.js) */
+.mcap{padding:16px 16px 4px;}
+.mcap-top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.mcap-legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.04em;}
+.mcap-legend i{display:inline-block;width:18px;height:0;border-top:2.5px solid;vertical-align:middle;margin-right:6px;}
+.mcap-legend i.k-price{border-color:var(--ink-strong);}
+.mcap-legend i.k-cap{border-color:var(--accent);}
+.mcap-legend i.k-gap{width:14px;height:10px;border:0;background:var(--warn);opacity:.4;vertical-align:-1px;}
+.mcap-btns{display:flex;gap:4px;}
+.mcap-btns button{font:600 11px var(--font-mono);letter-spacing:.06em;padding:5px 10px;border:1px solid var(--rule);background:var(--surface);color:var(--muted);border-radius:6px;cursor:pointer;}
+.mcap-btns button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+.mcap-plot{position:relative;}
+.mcap-svg{display:block;width:100%;height:auto;overflow:visible;}
+.mcap-grid{stroke:var(--rule);stroke-width:1;}
+.mcap-base{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;opacity:.6;}
+.mcap-tick{font:10.5px var(--font-mono);fill:var(--muted);}
+.mcap-axis-title{font:600 10.5px var(--font-mono);fill:var(--muted);letter-spacing:.05em;text-transform:uppercase;}
+.mcap-price{stroke:var(--ink-strong);stroke-width:1.8;stroke-linejoin:round;}
+.mcap-cap{stroke:var(--accent);stroke-width:2.2;stroke-linejoin:round;}
+.mcap-gap{fill:var(--warn);opacity:.22;}
+.mcap-end{font:600 11px var(--font-mono);}
+.mcap-end.k-price{fill:var(--ink-strong);}
+.mcap-end.k-cap{fill:var(--accent);}
+.mcap-sh{stroke:var(--accent-3);stroke-width:1.6;}
+.mcap-sh-fill{fill:var(--accent-3);opacity:.12;}
+.mcap-dot{fill:var(--surface);stroke:var(--accent-3);stroke-width:1.5;}
+.mcap-vline{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;}
+.mcap-hp{fill:var(--ink-strong);}
+.mcap-hc{fill:var(--accent);}
+.mcap-hit{touch-action:pan-y;cursor:crosshair;}
+.mcap-tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:8px 10px;box-shadow:0 6px 18px rgba(15,23,42,.12);font:12px var(--font-mono);color:var(--ink);display:flex;flex-direction:column;gap:2px;min-width:170px;z-index:2;}
+.mcap-tip[hidden]{display:none;}
+.mcap-tip b{color:var(--ink-strong);}
+.mcap-tip em{font-style:normal;color:var(--muted);}
+.mcap-stats{margin:10px 0 0;border:0;border-top:1px solid var(--rule);border-radius:0;}
+.mcap-note{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 0 12px;}
+.mcap-stats div div{border:0;padding:0;min-width:0;flex:none;}
