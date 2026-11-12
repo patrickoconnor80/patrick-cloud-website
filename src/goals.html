@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Goals</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c; --sub: #5a5a5a; --line: #e2ddd3; --bg: #fdfcf9;
+    --accent: #7a3b2e; --tag-bg: #f1ede4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.6; margin: 0; padding: 0 0 6rem;
+  }
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 0; }
+
+  /* ---- Site header / subnav (shared chrome, matches the other Nutrition pages) ---- */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,245,238,.92);backdrop-filter:blur(6px);
+    border-bottom:2px solid #1a1f1a;margin-bottom:0;
+  }
+  .site-header-inner{
+    max-width:1000px;margin:0 auto;padding:14px 28px;
+    display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;
+  }
+  .site-logo{
+    font-family:'Fraunces',Georgia,serif;font-weight:600;font-style:italic;font-size:18px;
+    color:#33421f;border-bottom:none;text-decoration:none;
+  }
+  .site-logo:hover{border-bottom:none;color:#4a5d3a;}
+  .tabs{display:flex;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .tabs a{color:#3d453c;border-bottom:none;padding:7px 14px;border-radius:5px;font-weight:500;text-decoration:none;transition:background .12s ease,color .12s ease;}
+  .tabs a:hover{color:#1a1f1a;background:#efece1;}
+  .tabs a.active{color:#fffefb;background:#4a5d3a;font-weight:600;}
+  .subnav{border-bottom:1px solid #d9d4c4;background:#f7f5ee;}
+  .subnav-inner{max-width:1000px;margin:0 auto;padding:11px 28px;display:flex;flex-wrap:wrap;gap:2px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;}
+  .subnav a{color:#3d453c;border-bottom:1.5px solid transparent;padding-bottom:3px;font-weight:500;text-decoration:none;}
+  .subnav a:hover{color:#4a5d3a;border-bottom-color:#d9d4c4;}
+  .subnav a.active{color:#33421f;border-bottom-color:#4a5d3a;font-weight:600;}
+  h1 { font-size: 2rem; margin-bottom: 0.2rem; }
+  .subtitle { color: var(--sub); font-style: italic; margin-top: 0; margin-bottom: 2rem; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(122, 59, 46, 0.35); transition: border-color 0.15s ease, color 0.15s ease; }
+  a:hover { border-bottom-color: var(--accent); }
+  .crumbs { font-size: 0.85rem; color: var(--sub); margin-bottom: 0.5rem; }
+  .crumbs a { border-bottom: none; }
+  h2 { border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; margin-top: 3rem; }
+  p { margin: 0.7rem 0; }
+  .goals { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.2rem 0; }
+  @media (max-width: 640px) { .goals { grid-template-columns: 1fr; } }
+  .goal { display: block; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.15rem 1.05rem; color: var(--ink); border-bottom: 1px solid var(--line); transition: border-color .15s ease, transform .15s ease; }
+  a.goal:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .goal .kind { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sub); }
+  .goal .kind.new { color: #3f6b3a; font-weight: 600; }
+  .goal h3 { margin: 0.2rem 0 0.35rem; font-size: 1.3rem; }
+  .goal p { margin: 0; font-size: 0.93rem; color: var(--sub); line-height: 1.5; }
+  .goal .levers { margin-top: 0.6rem; font-size: 0.8rem; color: var(--accent); }
+  .goal.soon { background: transparent; border-style: dashed; }
+  .goal.soon h3 { color: var(--sub); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html" class="active">Nutrition</a>
+      <a href="stocks.html">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="nutrition.html">Papers</a>
+  <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="goals.html" class="active">Health Goals</a>
+  <a href="nutrients.html">Nutrients</a>
+  <a href="supplements.html">Supplements</a>
+  <a href="healthfoods.html">Health Foods</a>
+  <a href="recipes.html">Recipes</a>
+</div></div>
+<div class="page-wrap">
+
+<div class="crumbs"><a href="nutrition.html">← Papers</a> · <a href="nutrients.html">Nutrients</a> · <a href="healthfoods.html">Health Foods</a></div>
+<h1>Health Goals</h1>
+<p class="subtitle">Start from what you want to fix. Each guide ranks what to do, shows how it works, and links to the research.</p>
+
+<p>The rest of the site is sorted by nutrient, food or paper. These pages are sorted by outcome: a short list ranked by how much each habit moves, one picture of the mechanism, and a few paragraphs on each lever. They're meant to read in about five minutes. The evidence, doses and references live on the entry and paper each guide links to, with the same grading as everywhere else.</p>
+
+<h2>Quick guides</h2>
+<div class="goals">
+  <a class="goal" href="heart.html">
+    <span class="kind">Quick guide</span>
+    <h3>Heart Health</h3>
+    <p>Plaque, blood pressure and clotting. Hard intervals, insulin sensitivity, fewer seed oils, potassium, arugula and beets, magnesium, wild fish and sun, and what to skip.</p>
+    <div class="levers">9 levers · links to the statins paper</div>
+  </a>
+  <a class="goal" href="skin.html">
+    <span class="kind">Quick guide</span>
+    <h3>Skin Health</h3>
+    <p>The barrier, the collagen scaffold and what sunlight does to both. Sun without burning, vitamin A, collagen building blocks, tomato paste, wild fish, fewer seed oils, steady blood sugar and zinc.</p>
+    <div class="levers">8 levers · links to the sunlight and linoleic acid papers</div>
+  </a>
+  <div class="goal soon">
+    <span class="kind">Coming</span>
+    <h3>Thyroid</h3>
+    <p>Making and activating thyroid hormone. Iodine, selenium, iron, vitamin A, tyrosine, and enough food.</p>
+  </div>
+  <a class="goal" href="stress.html">
+    <span class="kind new">Quick guide · new</span>
+    <h3>Stress &amp; Cortisol</h3>
+    <p>Why "adrenal fatigue" is really a flattened daily rhythm. Morning light, sleep, salt, enough food, vitamin C, magnesium, hard training with recovery, and coffee before noon.</p>
+    <div class="levers">8 levers · what to check if you still feel burned out</div>
+  </a>
+  <div class="goal soon">
+    <span class="kind">Coming</span>
+    <h3>Gut</h3>
+    <p>The gut lining and the bacteria that feed it. Butyrate, fiber, glutamine, bone broth, mastic.</p>
+  </div>
+</div>
+
+<h2>Longer reads by goal</h2>
+<p>These came first and go deeper. They're full papers, not quick guides.</p>
+<div class="goals">
+  <a class="goal" href="metabolic-health.html">
+    <span class="kind">Paper</span>
+    <h3>Metabolic Health</h3>
+    <p>Insulin resistance as the upstream problem, and the short list that fixes it.</p>
+  </a>
+  <a class="goal" href="alcohol-liver.html">
+    <span class="kind">Paper</span>
+    <h3>Liver &amp; Alcohol Recovery</h3>
+    <p>What helps a liver recover after drinking, and what doesn't.</p>
+  </a>
+  <a class="goal" href="hair.html">
+    <span class="kind">Paper</span>
+    <h3>Grey Hair &amp; Hair Loss</h3>
+    <p>Which deficiencies reverse greying, and what actually regrows hair.</p>
+  </a>
+  <a class="goal" href="exercise.html">
+    <span class="kind">Paper</span>
+    <h3>Fitness</h3>
+    <p>Lifting, running, walking and intervals compared.</p>
+  </a>
+</div>
+
+<p style="color:var(--sub);font-size:0.9rem;margin-top:2rem">Not medical advice. If you take a prescription drug for the thing a guide covers, talk to your doctor before you change it.</p>
+
+</div>
+</body>
+</html>
