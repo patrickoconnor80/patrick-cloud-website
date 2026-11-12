@@ -333,6 +333,13 @@ em{font-style:italic;}
   letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
   font-weight:600;margin-bottom:12px;
 }
+.fig{margin:18px 0;}
+.fig svg{display:block;width:100%;height:auto;}
+.fig-wide{max-width:560px;margin:18px auto;}
+.fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fig-panel{border:1px solid var(--rule);background:var(--card);border-radius:4px;padding:8px;}
+.fig-cap{font-size:15px;color:var(--ink-soft);font-style:italic;margin-top:10px;line-height:1.5;}
+@media (max-width:560px){.fig-pair{grid-template-columns:1fr;}}
 .chain{
   font-family:'IBM Plex Mono',monospace;font-size:14px;
   line-height:1.9;color:var(--ink-soft);
@@ -620,14 +627,41 @@ footer.end b{color:var(--moss);}
 
 <div class="mech">
   <div class="mech-lbl">The lipoprotein lifecycle</div>
-  <div class="chain">
-Liver packages triglyceride + cholesterol <span class="arrow">&rarr;</span> <b>VLDL</b><br>
-&nbsp;&nbsp;<span style="font-size:12px;">large, mostly triglyceride &mdash; fuel being shipped out</span><br>
-&nbsp;&nbsp;&#9500;&#9472; lipoprotein lipase strips triglyceride off into muscle and fat<br>
-&nbsp;&nbsp;&#9492;&#9472;<span class="arrow">&rarr;</span> <b>IDL</b> &nbsp;<span style="font-size:12px;">partly unloaded, short-lived</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472;<span class="arrow">&rarr;</span> <b>LDL</b> &nbsp;<span style="font-size:12px;">small, cargo now mostly cholesterol &mdash; the thing the lab measures</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472;<span class="arrow">&rarr;</span> cleared by the <b>LDL receptor</b>, mostly back into the liver
-  </div>
+  <figure class="fig fig-wide">
+    <svg viewBox="0 0 560 222" role="img" aria-label="The liver ships out VLDL, a large particle that is mostly triglyceride. Lipase strips triglyceride into muscle and fat, leaving IDL and then small LDL, which is mostly cholesterol. LDL receptors return it to the liver.">
+      <defs>
+        <marker id="s1-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d453c"/></marker>
+        <marker id="s1-moss" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#4a5d3a"/></marker>
+      </defs>
+      <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#3d453c">
+        <circle cx="16" cy="18" r="6" fill="rgba(183,138,46,.45)" stroke="#b78a2e"/><text x="28" y="22">triglyceride (fuel)</text>
+        <circle cx="186" cy="18" r="6" fill="rgba(61,106,122,.65)"/><text x="198" y="22">cholesterol</text>
+      </g>
+      <rect x="10" y="60" width="70" height="80" rx="8" fill="rgba(74,93,58,.12)" stroke="#4a5d3a"/>
+      <text x="45" y="105" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="15" fill="#33421f">Liver</text>
+      <path d="M80,100 L118,100" stroke="#3d453c" stroke-width="1.8" marker-end="url(#s1-ink)"/>
+      <circle cx="170" cy="100" r="46" fill="rgba(183,138,46,.35)" stroke="#b78a2e" stroke-width="1.5"/>
+      <circle cx="170" cy="100" r="16" fill="rgba(61,106,122,.65)"/>
+      <path d="M218,100 L272,100" stroke="#3d453c" stroke-width="1.8" marker-end="url(#s1-ink)"/>
+      <g fill="#b78a2e"><circle cx="236" cy="116" r="4"/><circle cx="246" cy="127" r="4"/><circle cx="256" cy="138" r="4"/></g>
+      <circle cx="310" cy="100" r="30" fill="rgba(183,138,46,.35)" stroke="#b78a2e" stroke-width="1.5"/>
+      <circle cx="310" cy="100" r="16" fill="rgba(61,106,122,.65)"/>
+      <path d="M340,100 L392,100" stroke="#3d453c" stroke-width="1.8" marker-end="url(#s1-ink)"/>
+      <circle cx="420" cy="100" r="22" fill="rgba(183,138,46,.35)" stroke="#b78a2e" stroke-width="1.5"/>
+      <circle cx="420" cy="100" r="17" fill="rgba(61,106,122,.65)"/>
+      <g font-family="Newsreader, Georgia, serif" font-size="15" font-weight="600" fill="#1a1f1a" text-anchor="middle">
+        <text x="170" y="164">VLDL</text><text x="310" y="150">IDL</text><text x="420" y="140">LDL</text>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle">
+        <text x="170" y="178" fill="#3d453c">fuel shipped out</text>
+        <text x="245" y="90" fill="#3d453c">lipase</text>
+        <text x="246" y="156" fill="#7a5c14">to muscle, fat</text>
+        <text x="420" y="154" fill="#3d453c">what the lab measures</text>
+        <text x="282" y="193" font-size="11" fill="#4a5d3a">LDL receptor: back into the liver</text>
+      </g>
+      <path d="M442,100 L520,100 L520,200 L45,200 L45,144" stroke="#4a5d3a" stroke-width="2" fill="none" marker-end="url(#s1-moss)"/>
+    </svg>
+  </figure>
   <p style="margin:12px 0 0;font-size:15.5px;"><b>The liver never secretes LDL.</b> LDL is the <em>residue</em> of a VLDL that has delivered its fuel. This single fact reframes the whole question: a high LDL count can mean more boats were launched, or that each boat spent longer in circulation before retrieval, or that retrieval itself is impaired. Those are three different conditions with the same number, and <a href="#vi-2">VI.2</a> takes them apart.</p>
 </div>
 
@@ -666,13 +700,46 @@ Liver packages triglyceride + cholesterol <span class="arrow">&rarr;</span> <b>V
 
 <div class="mech">
   <div class="mech-lbl">The response-to-retention chain</div>
-  <div class="chain">
-<b>apoB particle</b> <span class="arrow">&rarr;</span> crosses endothelium<br>
-<span class="arrow">&rarr;</span> <b>retained</b> by subendothelial proteoglycans<br>
-<span class="arrow">&rarr;</span> <b>oxidatively modified</b> (the PUFA cargo is the substrate)<br>
-<span class="arrow">&rarr;</span> taken up via <b>scavenger receptors</b> (no feedback shutoff)<br>
-<span class="arrow">&rarr;</span> <b>foam cell</b> <span class="arrow">&rarr;</span> apoptosis <span class="arrow">&rarr;</span> necrotic core <span class="arrow">&rarr;</span> <b>plaque</b>
-  </div>
+  <figure class="fig fig-wide">
+    <svg viewBox="0 0 560 258" role="img" aria-label="Artery wall cross-section in five steps: an apoB particle crosses the lining, is trapped by proteoglycans, is oxidised, is taken up by a macrophage through scavenger receptors, and the macrophage becomes a foam cell that forms a core under a plaque.">
+      <defs>
+        <marker id="s2-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d453c"/></marker>
+      </defs>
+      <rect x="0" y="0" width="560" height="68" fill="rgba(61,106,122,.06)"/>
+      <rect x="0" y="78" width="560" height="142" fill="rgba(183,138,46,.06)"/>
+      <text x="10" y="18" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1" fill="#3d453c">BLOOD</text>
+      <text x="550" y="214" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1" fill="#3d453c">ARTERY WALL</text>
+      <g fill="rgba(74,93,58,.25)" stroke="#4a5d3a">
+        <rect x="2" y="68" width="52" height="10" rx="3"/><rect x="78" y="68" width="52" height="10" rx="3"/><rect x="134" y="68" width="52" height="10" rx="3"/><rect x="190" y="68" width="52" height="10" rx="3"/><rect x="246" y="68" width="52" height="10" rx="3"/><rect x="302" y="68" width="52" height="10" rx="3"/><rect x="358" y="68" width="52" height="10" rx="3"/><rect x="414" y="68" width="52" height="10" rx="3"/><rect x="470" y="68" width="52" height="10" rx="3"/><rect x="526" y="68" width="32" height="10" rx="3"/>
+      </g>
+      <path d="M410,68 Q475,22 540,68 Z" fill="rgba(168,86,47,.15)" stroke="#a8562f"/>
+      <text x="475" y="58" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#a8562f">plaque</text>
+      <g fill="rgba(183,138,46,.4)" stroke="#b78a2e"><circle cx="40" cy="36" r="7"/><circle cx="130" cy="30" r="7"/><circle cx="210" cy="44" r="7"/><circle cx="300" cy="32" r="7"/><circle cx="370" cy="46" r="7"/></g>
+      <path d="M46,42 L64,100" stroke="#3d453c" stroke-width="1.6" marker-end="url(#s2-ink)"/>
+      <circle cx="68" cy="112" r="7" fill="rgba(183,138,46,.4)" stroke="#b78a2e"/>
+      <path d="M78,114 L152,116" stroke="#3d453c" stroke-width="1.6" marker-end="url(#s2-ink)"/>
+      <g stroke="#b78a2e" stroke-width="1.5" fill="none"><path d="M140,108 q15,8 30,0 t30,0"/><path d="M140,126 q15,8 30,0 t30,0"/><path d="M168,94 q8,12 0,24 t0,24"/></g>
+      <circle cx="170" cy="117" r="7" fill="rgba(183,138,46,.4)" stroke="#b78a2e"/>
+      <path d="M186,118 L256,118" stroke="#3d453c" stroke-width="1.6" marker-end="url(#s2-ink)"/>
+      <circle cx="270" cy="118" r="7" fill="rgba(168,86,47,.35)" stroke="#a8562f"/>
+      <path d="M284,98 l3,6 l6,3 l-6,3 l-3,6 l-3,-6 l-6,-3 l6,-3 z" fill="#b78a2e" stroke="#a8562f" stroke-width="1"/>
+      <path d="M280,120 L312,120" stroke="#3d453c" stroke-width="1.6" marker-end="url(#s2-ink)"/>
+      <ellipse cx="370" cy="122" rx="36" ry="27" fill="rgba(61,106,122,.14)" stroke="#3d6a7a" stroke-width="1.5"/>
+      <path transform="translate(334,120) rotate(270)" d="M0,0 v-10 M0,-10 l-5,-6 M0,-10 l5,-6" stroke="#3d6a7a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="378" cy="124" r="6" fill="rgba(168,86,47,.35)" stroke="#a8562f"/>
+      <path d="M408,120 L430,120" stroke="#3d453c" stroke-width="1.6" marker-end="url(#s2-ink)"/>
+      <ellipse cx="470" cy="118" rx="36" ry="27" fill="rgba(183,138,46,.22)" stroke="#b78a2e" stroke-width="1.5"/>
+      <g fill="#b78a2e"><circle cx="456" cy="108" r="4"/><circle cx="470" cy="103" r="4"/><circle cx="484" cy="110" r="4"/><circle cx="460" cy="124" r="4"/><circle cx="478" cy="127" r="4"/><circle cx="470" cy="115" r="4"/></g>
+      <path d="M470,146 L470,160" stroke="#3d453c" stroke-width="1.6" marker-end="url(#s2-ink)"/>
+      <path d="M442,176 q8,-14 28,-12 q26,2 30,14 q-2,16 -28,18 q-28,0 -30,-20 z" fill="rgba(60,40,30,.55)"/>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle" fill="#1a1f1a">
+        <text x="68" y="238">1 crosses</text><text x="170" y="238">2 retained</text><text x="270" y="238">3 oxidised</text><text x="370" y="238">4 scavenger</text><text x="470" y="238">5 foam cell</text>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="middle" fill="#3d453c">
+        <text x="170" y="252">proteoglycans</text><text x="270" y="252">PUFA cargo</text><text x="370" y="252">no shut-off</text><text x="470" y="252">core forms</text>
+      </g>
+    </svg>
+  </figure>
   <p style="margin:12px 0 0;font-size:15.5px;"><b>Three things govern the rate of this chain, not one.</b> <em>How many particles arrive</em> (the apoB count). <em>How oxidisable their cargo is</em> &mdash; set by the fatty acids esterified into them, which come from the diet. And <em>how much oxidative pressure is acting on them</em> once retained, which is what chronic inflammation supplies. The mainstream model optimises the first term alone and treats the other two as fixed background.</p>
   <p style="margin:10px 0 0;font-size:15.5px;">The second and third terms are not additive &mdash; they <strong>multiply</strong>. Peroxidation is a reaction, and a reaction needs both a substrate and an initiator. A membrane loaded with linoleic acid sitting in quiet tissue is a fuel tank with no spark; an inflamed vessel wall with little oxidisable substrate has a spark and nothing to catch. You need the oxidisable cargo <em>and</em> the oxidative environment, which is why the same LDL number behaves so differently in different bodies &mdash; and why lowering either term lowers the product. The substrate side is the subject of the <a href="linoleic-acid.html">linoleic acid paper</a>, where the 4-HNE and cardiolipin work traces what happens once that reaction runs.</p>
 </div>
@@ -701,13 +768,36 @@ Liver packages triglyceride + cholesterol <span class="arrow">&rarr;</span> <b>V
 
 <div class="mech">
   <div class="mech-lbl">What it found</div>
-  <div class="chain">
-Serum cholesterol, intervention arm &nbsp;<span class="arrow">&rarr;</span>&nbsp; <b>&minus;13.8%</b><br>
-Serum cholesterol, control arm &nbsp;<span class="arrow">&rarr;</span>&nbsp; <b>&minus;1.0%</b><br>
-<span style="font-size:13px;">&nbsp;&nbsp;&nbsp;the mechanism worked exactly as designed</span><br><br>
-Mortality benefit &nbsp;<span class="arrow">&rarr;</span>&nbsp; <b style="color:#a8562f;">none</b><br>
-Per 30 mg/dL of cholesterol lowering &nbsp;<span class="arrow">&rarr;</span>&nbsp; <b style="color:#a8562f;">22% higher risk of death</b> <span style="font-size:13px;">(HR 1.22)</span>
-  </div>
+  <figure class="fig fig-wide">
+    <svg viewBox="0 0 560 206" role="img" aria-label="Serum cholesterol fell 13.8% in the intervention arm versus 1.0% in control, but there was no mortality benefit: each 30 mg/dL of lowering carried a hazard ratio for death of 1.22.">
+      <g font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" letter-spacing="1">
+        <text x="10" y="18" fill="#4a5d3a">CHOLESTEROL CHANGE</text>
+        <text x="300" y="18" fill="#a8562f">DEATH RISK PER 30 MG/DL LOWER</text>
+      </g>
+      <path d="M30,46 L250,46" stroke="#3d453c" stroke-width="1.2"/>
+      <rect x="60" y="46" width="60" height="110" fill="#4a5d3a"/>
+      <rect x="160" y="46" width="60" height="8" fill="#a9a99c"/>
+      <g font-family="Newsreader, Georgia, serif" font-size="16" font-weight="600" text-anchor="middle" fill="#33421f">
+        <text x="90" y="176">&#8722;13.8%</text><text x="190" y="76">&#8722;1.0%</text>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle" fill="#3d453c">
+        <text x="90" y="192">diet arm</text><text x="190" y="92">control</text>
+      </g>
+      <path d="M320,120 L540,120" stroke="#3d453c" stroke-width="1.2"/>
+      <g stroke="#3d453c"><path d="M320,120 v6"/><path d="M393,120 v6"/><path d="M467,120 v6"/><path d="M540,120 v6"/></g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle" fill="#3d453c">
+        <text x="320" y="140">0.8</text><text x="393" y="140">1.0</text><text x="467" y="140">1.2</text><text x="536" y="140">1.4</text>
+        <text x="393" y="38" fill="#8a8a7d">no effect</text>
+        <text x="430" y="188" fill="#8a8a7d">mortality benefit: none</text>
+      </g>
+      <path d="M393,44 L393,120" stroke="#a9a99c" stroke-dasharray="4 3"/>
+      <rect x="393" y="84" width="81" height="12" fill="rgba(168,86,47,.35)"/>
+      <circle cx="474" cy="90" r="7" fill="#a8562f"/>
+      <text x="474" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#a8562f">HR 1.22</text>
+      <text x="430" y="170" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="15" fill="#7d3d1c">22% higher risk of death</text>
+    </svg>
+    <figcaption class="fig-cap">The mechanism worked exactly as designed. The outcome went the wrong way.</figcaption>
+  </figure>
   <p style="margin:12px 0 0;font-size:15.5px;">The intervention did what it was supposed to do to the marker, and the people it was done to did not live longer. In the covariate-adjusted analysis the relationship ran the wrong way.<sup class="cite"><a href="#r13">13</a></sup></p>
 </div>
 
@@ -864,17 +954,46 @@ Per 30 mg/dL of cholesterol lowering &nbsp;<span class="arrow">&rarr;</span>&nbs
 
 <div class="mech">
   <div class="mech-lbl">The mevalonate pathway, and what a statin clamps</div>
-  <div class="chain">
-Acetyl-CoA <span class="arrow">&rarr;</span> HMG-CoA<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#8595; <b>HMG-CoA reductase</b> &nbsp;&#9668;&#9472;&#9472; <b style="color:#a8562f;">STATIN BLOCKS HERE</b><br>
-<b>Mevalonate</b> <span class="arrow">&rarr;</span> IPP/DMAPP <span class="arrow">&rarr;</span> <b>Farnesyl-PP</b><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> Squalene <span class="arrow">&rarr;</span> <b>CHOLESTEROL</b> &nbsp;<span style="font-size:12px;">&larr; the intended target</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> <b>Coenzyme Q10</b> &nbsp;<span style="font-size:12px;">&larr; mitochondrial electron transport</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> <b>Dolichol</b> &nbsp;<span style="font-size:12px;">&larr; N-glycosylation of proteins</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> <b>Geranylgeranyl-PP</b> &nbsp;<span style="font-size:12px;">&larr; prenylation: Rho, Rac, Rab</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <span class="arrow">&rarr;</span> <b>Heme A</b> &nbsp;<span style="font-size:12px;">&larr; cytochrome c oxidase</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472; <span class="arrow">&rarr;</span> <b>Isopentenyl-tRNA</b> &nbsp;<span style="font-size:12px;">&larr; selenocysteine incorporation</span>
-  </div>
+  <figure class="fig fig-wide">
+    <svg viewBox="0 0 560 352" role="img" aria-label="Mevalonate pathway: acetyl-CoA to HMG-CoA, then HMG-CoA reductase, which the statin blocks, to mevalonate, IPP/DMAPP and farnesyl-PP. Farnesyl-PP branches to cholesterol, the intended target, and to coenzyme Q10, dolichol, geranylgeranyl-PP and heme A; IPP also feeds isopentenyl-tRNA.">
+      <defs>
+        <marker id="s4-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d453c"/></marker>
+      </defs>
+      <g font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle">
+        <rect x="20" y="10" width="140" height="28" rx="4" fill="#fffefb" stroke="#d9d4c4"/><text x="90" y="29" fill="#1a1f1a">Acetyl-CoA</text>
+        <rect x="20" y="62" width="140" height="28" rx="4" fill="#fffefb" stroke="#d9d4c4"/><text x="90" y="81" fill="#1a1f1a">HMG-CoA</text>
+        <rect x="20" y="150" width="140" height="28" rx="4" fill="#fffefb" stroke="#3d453c"/><text x="90" y="169" font-weight="600" fill="#1a1f1a">Mevalonate</text>
+        <rect x="20" y="206" width="140" height="28" rx="4" fill="#fffefb" stroke="#d9d4c4"/><text x="90" y="225" fill="#1a1f1a">IPP / DMAPP</text>
+        <rect x="20" y="262" width="140" height="28" rx="4" fill="#fffefb" stroke="#3d453c"/><text x="90" y="281" font-weight="600" fill="#1a1f1a">Farnesyl-PP</text>
+      </g>
+      <g stroke="#3d453c" stroke-width="1.8">
+        <path d="M90,38 L90,58" marker-end="url(#s4-ink)"/><path d="M90,90 L90,146" marker-end="url(#s4-ink)"/><path d="M90,178 L90,202" marker-end="url(#s4-ink)"/><path d="M90,234 L90,258" marker-end="url(#s4-ink)"/>
+      </g>
+      <text x="100" y="110" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#3d453c">HMG-CoA reductase</text>
+      <path d="M72,126 L108,126" stroke="#a8562f" stroke-width="4.5" stroke-linecap="round"/>
+      <text x="114" y="131" font-family="IBM Plex Mono, monospace" font-size="11.5" font-weight="600" letter-spacing="1" fill="#a8562f">STATIN</text>
+      <path d="M160,276 L222,276 L222,28" stroke="#3d453c" stroke-width="1.6" fill="none"/>
+      <g stroke="#3d453c" stroke-width="1.6"><path d="M222,28 L244,28" marker-end="url(#s4-ink)"/><path d="M222,78 L244,78" marker-end="url(#s4-ink)"/><path d="M222,128 L244,128" marker-end="url(#s4-ink)"/><path d="M222,178 L244,178" marker-end="url(#s4-ink)"/><path d="M222,228 L244,228" marker-end="url(#s4-ink)"/></g>
+      <path d="M20,220 L10,220 L10,330 L244,330" stroke="#3d453c" stroke-width="1.6" fill="none" marker-end="url(#s4-ink)"/>
+      <g font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle">
+        <rect x="250" y="14" width="134" height="28" rx="14" fill="rgba(74,93,58,.16)" stroke="#4a5d3a" stroke-width="1.6"/><text x="317" y="33" font-weight="600" fill="#33421f">Cholesterol</text>
+        <rect x="250" y="64" width="134" height="28" rx="14" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="317" y="83" fill="#7a5c14">Coenzyme Q10</text>
+        <rect x="250" y="114" width="134" height="28" rx="14" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="317" y="133" fill="#7a5c14">Dolichol</text>
+        <rect x="250" y="164" width="134" height="28" rx="14" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="317" y="183" fill="#7a5c14">Geranylgeranyl-PP</text>
+        <rect x="250" y="214" width="134" height="28" rx="14" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="317" y="233" fill="#7a5c14">Heme A</text>
+        <rect x="250" y="316" width="134" height="28" rx="14" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="317" y="335" fill="#7a5c14">Isopentenyl-tRNA</text>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#3d453c">
+        <text x="394" y="32" fill="#4a5d3a">the intended target</text>
+        <text x="394" y="82">electron transport chain</text>
+        <text x="394" y="132">protein glycosylation</text>
+        <text x="394" y="182">prenylation: Rho, Rac, Rab</text>
+        <text x="394" y="232">cytochrome c oxidase</text>
+        <text x="394" y="334">selenoprotein synthesis</text>
+      </g>
+    </svg>
+    <figcaption class="fig-cap">One clamp, six products. Everything downstream of the block is cut along with cholesterol.</figcaption>
+  </figure>
   <p style="margin:12px 0 0;font-size:15.5px;">Every branch below mevalonate is reduced by the same inhibition.<sup class="cite"><a href="#r14">14</a></sup> This is not a fringe claim &mdash; it is standard pharmacology, and it is also the accepted explanation for statins' <em>beneficial</em> pleiotropic effects. Reduced geranylgeranylation of Rho and Rac is why statins lower CRP and stabilise endothelium independently of lipid lowering. The same mechanism produces both columns of the ledger.</p>
 </div>
 
@@ -1001,14 +1120,43 @@ Acetyl-CoA <span class="arrow">&rarr;</span> HMG-CoA<br>
 
 <div class="mech">
   <div class="mech-lbl">The SREBP-2 feedback loop &mdash; and where the drugs act</div>
-  <div class="chain">
-<b>ER cholesterol LOW</b><br>
-&nbsp;&nbsp;<span class="arrow">&rarr;</span> Insig releases <b>SCAP&ndash;SREBP-2</b> <span class="arrow">&rarr;</span> Golgi <span class="arrow">&rarr;</span> S1P/S2P cleavage<br>
-&nbsp;&nbsp;<span class="arrow">&rarr;</span> nuclear <b>SREBP-2</b> <span class="arrow">&rarr;</span> transcribes:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472; <b>HMGCR</b> &nbsp;<span style="font-size:12px;">&larr; synthesise more &nbsp;(statin blocks the enzyme)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472; <b>LDLR</b> &nbsp;<span style="font-size:12px;">&larr; import more from blood &nbsp;(this is what lowers serum LDL)</span><br>
-<b>ER cholesterol HIGH</b> <span class="arrow">&rarr;</span> Insig retains complex <span class="arrow">&rarr;</span> programme off
-  </div>
+  <figure class="fig fig-wide">
+    <svg viewBox="0 0 560 280" role="img" aria-label="Inside a cell with low ER cholesterol, SCAP-SREBP-2 leaves the ER, is cut free in the Golgi, enters the nucleus and switches on HMGCR, which the statin blocks, and LDL receptors, which pull LDL out of the blood.">
+      <defs>
+        <marker id="s5-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d453c"/></marker>
+        <marker id="s5-moss" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#4a5d3a"/></marker>
+      </defs>
+      <rect x="10" y="30" width="440" height="236" rx="28" fill="#fffefb" stroke="#3d453c" stroke-width="1.5"/>
+      <text x="30" y="56" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" letter-spacing="1" fill="#3d6a7a">ER: CHOLESTEROL LOW</text>
+      <g stroke="#3d6a7a" stroke-width="2" fill="none"><path d="M30,80 q12,-10 24,0 t24,0 t24,0 t24,0"/><path d="M30,100 q12,-10 24,0 t24,0 t24,0 t24,0"/><path d="M30,120 q12,-10 24,0 t24,0 t24,0 t24,0"/><path d="M30,140 q12,-10 24,0 t24,0 t24,0 t24,0"/></g>
+      <text x="140" y="84" font-family="IBM Plex Mono, monospace" font-size="10" fill="#3d453c">Insig lets go</text>
+      <rect x="140" y="92" width="112" height="26" rx="13" fill="rgba(74,93,58,.16)" stroke="#4a5d3a"/>
+      <text x="196" y="109" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#33421f">SCAP&#8211;SREBP-2</text>
+      <path d="M252,105 L266,105" stroke="#3d453c" stroke-width="1.8" marker-end="url(#s5-ink)"/>
+      <g stroke="#b78a2e" stroke-width="3" fill="none" stroke-linecap="round"><path d="M276,95 q24,-14 48,0"/><path d="M272,106 q28,-16 56,0"/><path d="M268,117 q32,-18 64,0"/></g>
+      <text x="300" y="136" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#7a5c14">Golgi: cut free</text>
+      <path d="M296,142 L268,168" stroke="#3d453c" stroke-width="1.8" marker-end="url(#s5-ink)"/>
+      <circle cx="250" cy="205" r="40" fill="rgba(74,93,58,.10)" stroke="#4a5d3a" stroke-width="1.5"/>
+      <text x="250" y="202" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" fill="#1a1f1a">nucleus</text>
+      <text x="250" y="218" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#4a5d3a">SREBP-2 on</text>
+      <path d="M289,194 L316,180" stroke="#3d453c" stroke-width="1.8" marker-end="url(#s5-ink)"/>
+      <rect x="320" y="160" width="110" height="28" rx="14" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+      <text x="375" y="179" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7a5c14">HMGCR &#8593;</text>
+      <text x="375" y="202" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#a8562f">statin blocks it</text>
+      <path d="M290,214 L434,216" stroke="#4a5d3a" stroke-width="1.8" marker-end="url(#s5-moss)"/>
+      <g stroke="#3d6a7a" stroke-width="2.2" fill="none" stroke-linecap="round">
+        <path transform="translate(450,200) rotate(90)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+        <path transform="translate(450,228) rotate(90)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+      </g>
+      <text x="436" y="248" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#4a5d3a">LDLR &#8593;</text>
+      <g fill="rgba(183,138,46,.4)" stroke="#b78a2e"><circle cx="502" cy="200" r="8"/><circle cx="514" cy="228" r="8"/><circle cx="530" cy="176" r="8"/></g>
+      <g stroke="#3d453c" stroke-width="1.5"><path d="M492,200 L476,200" marker-end="url(#s5-ink)"/><path d="M504,228 L476,228" marker-end="url(#s5-ink)"/></g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle" fill="#3d453c">
+        <text x="505" y="56" letter-spacing="1">BLOOD</text><text x="505" y="136">LDL pulled</text><text x="505" y="150">out of blood</text>
+      </g>
+    </svg>
+    <figcaption class="fig-cap">On a statin the cell runs short of cholesterol, so SREBP-2 switches on both genes. The statin blocks the enzyme; the extra LDL receptors are what lower blood LDL. When ER cholesterol is high, Insig holds the complex in the ER and the programme stays off.</figcaption>
+  </figure>
   <p style="margin:12px 0 0;font-size:15.5px;"><b>Why this explains the drug:</b> a statin lowers serum LDL only <em>indirectly</em>. By blocking HMG-CoA reductase it depletes hepatocyte cholesterol, which trips this very sensor, which upregulates LDL receptors, which pull LDL out of the blood. The drug works <em>through</em> the feedback loop, not around it &mdash; which is also why the effect plateaus, and why adding ezetimibe or a PCSK9 inhibitor (both of which act on other points in the same loop) stacks on top of it.</p>
 </div>
 
@@ -1066,16 +1214,59 @@ Acetyl-CoA <span class="arrow">&rarr;</span> HMG-CoA<br>
 
 <div class="mech">
   <div class="mech-lbl">Why over-supplying reductant generates the thing it was meant to prevent</div>
-  <div class="chain">
-Excess antioxidant / reducing equivalents<br>
-&nbsp;&nbsp;<span class="arrow">&rarr;</span> <b>NADH:NAD&plus; ratio rises</b><br>
-&nbsp;&nbsp;<span class="arrow">&rarr;</span> electrons back up in the transport chain<br>
-&nbsp;&nbsp;<span class="arrow">&rarr;</span> <b>reverse electron transport</b><br>
-&nbsp;&nbsp;<span class="arrow">&rarr;</span> <b style="color:#a8562f;">superoxide</b> &nbsp;<span style="font-size:12px;">&larr; oxidative stress, produced by the antioxidant</span><br>
-<br>
-Separately: the ER needs an <em>oxidising</em> interior to form disulfide bonds<br>
-&nbsp;&nbsp;<span class="arrow">&rarr;</span> reductive shift <span class="arrow">&rarr;</span> misfolding <span class="arrow">&rarr;</span> <b>unresolved ER stress</b> <span class="arrow">&rarr;</span> proteotoxicity
-  </div>
+  <figure class="fig">
+    <div class="fig-pair">
+      <div class="fig-panel">
+        <svg viewBox="0 0 340 230" role="img" aria-label="Mitochondria: excess NADH crowds electrons at complex I; they back up and flow in reverse, producing superoxide.">
+          <defs>
+            <marker id="s6-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#b78a2e"/></marker>
+            <marker id="s6-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#a8562f"/></marker>
+          </defs>
+          <text x="14" y="22" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" letter-spacing="1.5" fill="#a8562f">MITOCHONDRIA</text>
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle" fill="#7a5c14">
+            <rect x="14" y="36" width="46" height="20" rx="10" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="37" y="50">NADH</text>
+            <rect x="66" y="36" width="46" height="20" rx="10" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="89" y="50">NADH</text>
+            <rect x="118" y="36" width="46" height="20" rx="10" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="141" y="50">NADH</text>
+          </g>
+          <text x="174" y="50" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#a8562f">excess reductant</text>
+          <g stroke="#b78a2e" stroke-width="1.4"><path d="M37,56 L54,98" marker-end="url(#s6-gold)"/><path d="M89,56 L66,98" marker-end="url(#s6-gold)"/><path d="M141,56 L76,100" marker-end="url(#s6-gold)"/></g>
+          <rect x="10" y="118" width="320" height="24" fill="rgba(183,138,46,.15)"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" text-anchor="middle" fill="#1a1f1a">
+            <rect x="40" y="106" width="40" height="48" rx="6" fill="#fffefb" stroke="#3d453c"/><text x="60" y="134">I</text>
+            <rect x="150" y="106" width="40" height="48" rx="6" fill="#fffefb" stroke="#3d453c"/><text x="170" y="134">III</text>
+            <rect x="250" y="106" width="40" height="48" rx="6" fill="#fffefb" stroke="#3d453c"/><text x="270" y="134">IV</text>
+          </g>
+          <path d="M80,100 L250,100" stroke="#3d6a7a" stroke-width="1" stroke-dasharray="3 3"/>
+          <g fill="#3d6a7a"><circle cx="84" cy="96" r="3.5"/><circle cx="92" cy="90" r="3.5"/><circle cx="88" cy="102" r="3.5"/><circle cx="98" cy="97" r="3.5"/><circle cx="102" cy="89" r="3.5"/><circle cx="94" cy="84" r="3.5"/><circle cx="108" cy="95" r="3.5"/><circle cx="200" cy="100" r="3.5"/><circle cx="232" cy="100" r="3.5"/></g>
+          <path d="M60,154 L60,172" stroke="#a8562f" stroke-width="2" marker-end="url(#s6-rust)"/>
+          <path d="M60,176 l4,8 l9,4 l-9,4 l-4,8 l-4,-8 l-9,-4 l9,-4 z" fill="#b78a2e" stroke="#a8562f" stroke-width="1"/>
+          <text x="60" y="218" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#a8562f">superoxide</text>
+          <text x="96" y="182" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#7d3d1c">electrons back up,</text>
+          <text x="96" y="196" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#7d3d1c">flow reverses at complex I</text>
+        </svg>
+      </div>
+      <div class="fig-panel">
+        <svg viewBox="0 0 340 230" role="img" aria-label="Endoplasmic reticulum: in an oxidising interior, disulfide bonds form and the protein folds; when too reducing, the bonds do not form and the protein misfolds, causing ER stress.">
+          <text x="14" y="22" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" letter-spacing="1.5" fill="#3d6a7a">ENDOPLASMIC RETICULUM</text>
+          <g font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">
+            <text x="90" y="50" fill="#4a5d3a">oxidising</text>
+            <text x="250" y="50" fill="#a8562f">too reducing</text>
+          </g>
+          <path d="M40,150 C40,70 140,70 140,150" stroke="#4a5d3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M62,128 L118,128" stroke="#b78a2e" stroke-width="2"/>
+          <g fill="rgba(183,138,46,.3)" stroke="#b78a2e"><circle cx="62" cy="128" r="8"/><circle cx="118" cy="128" r="8"/></g>
+          <g font-family="IBM Plex Mono, monospace" font-size="9.5" font-weight="600" text-anchor="middle" fill="#7a5c14"><text x="62" y="132">S</text><text x="118" y="132">S</text></g>
+          <path d="M200,150 c10,-40 30,10 40,-30 s30,40 20,10 s-30,-30 -10,-50 s40,20 20,60" stroke="#a8562f" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600" fill="#a8562f"><text x="186" y="164">SH</text><text x="282" y="150">SH</text></g>
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle">
+            <text x="90" y="190" fill="#4a5d3a">S&#8211;S bonds form,</text><text x="90" y="204" fill="#4a5d3a">protein folds</text>
+            <text x="250" y="190" fill="#a8562f">no S&#8211;S bonds:</text><text x="250" y="204" fill="#a8562f">misfolding, ER stress</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <figcaption class="fig-cap">Too much reducing power backs electrons up in the transport chain until they flow in reverse at complex I and make superoxide, the oxidative stress the antioxidant was meant to prevent. Separately, the ER needs an oxidising interior to form disulfide bonds; push it toward reduction and proteins misfold, leaving unresolved ER stress.</figcaption>
+  </figure>
   <p style="margin:12px 0 0;font-size:15.5px;">An over-reduced electron transport chain cannot pass electrons forward in an orderly way, so they run backwards through the upstream complexes and reduce oxygen directly to superoxide.<sup class="cite"><a href="#r47">47</a></sup> The clean experimental case is Nrf2, the master antioxidant-response switch: <em>transient</em> activation is protective, while <em>constitutive</em> activation in transgenic mice produces a pro-reductive state, diastolic dysfunction, unresolved ER stress and a proteotoxic cardiomyopathy.<sup class="cite"><a href="#r48">48</a></sup> The antioxidant programme is protective as a response and pathological as a setting. <span class="ev ev-mixed" style="display:inline">Animal</span> &mdash; mostly mouse and cell work, and the reductive-stress framing is still argued against the classical oxidative-stress model.</p>
 </div>
 
@@ -1122,12 +1313,32 @@ Separately: the ER needs an <em>oxidising</em> interior to form disulfide bonds<
 
 <div class="mech">
   <div class="mech-lbl">The enterosalivary nitrate pathway</div>
-  <div class="chain">
-Dietary <b>nitrate</b> (NO&#8323;&#8315;) <span class="arrow">&rarr;</span> absorbed <span class="arrow">&rarr;</span> concentrated in <b>salivary glands</b><br>
-<span class="arrow">&rarr;</span> oral bacteria reduce to <b>nitrite</b> (NO&#8322;&#8315;)<br>
-<span class="arrow">&rarr;</span> swallowed <span class="arrow">&rarr;</span> reduced to <b>nitric oxide</b> in acidic/hypoxic tissue<br>
-<span class="arrow">&rarr;</span> <b>vasodilation</b> <span class="arrow">&rarr;</span> lower blood pressure
-  </div>
+  <figure class="fig fig-wide">
+    <svg viewBox="0 0 560 262" role="img" aria-label="Nitrate from beets and arugula is absorbed into blood, concentrated by the salivary glands, turned into nitrite by tongue bacteria, swallowed, and converted to nitric oxide in acidic or low-oxygen tissue, where it relaxes and widens the blood vessel.">
+      <defs>
+        <marker id="s7-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d453c"/></marker>
+        <marker id="s7-sky" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d6a7a"/></marker>
+      </defs>
+      <g fill="#fffefb" stroke="#d9d4c4">
+        <rect x="10" y="108" width="140" height="44" rx="8"/><rect x="100" y="18" width="150" height="44" rx="8"/><rect x="310" y="18" width="150" height="44" rx="8"/><rect x="410" y="108" width="140" height="44" rx="8"/><rect x="180" y="208" width="200" height="44" rx="8"/>
+      </g>
+      <g font-family="Newsreader, Georgia, serif" font-size="14" text-anchor="middle" fill="#1a1f1a">
+        <text x="80" y="127">Nitrate in food</text><text x="175" y="37">Absorbed</text><text x="385" y="37">Salivary glands</text><text x="480" y="127">Tongue bacteria</text><text x="280" y="227">Swallowed</text>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle" fill="#3d453c">
+        <text x="80" y="143" fill="#4a5d3a">beets, arugula</text><text x="175" y="53">gut &#8594; blood</text><text x="385" y="53">concentrate it</text><text x="480" y="143">nitrate &#8594; nitrite</text><text x="280" y="243">nitrite &#8594; NO (acid, low O&#8322;)</text>
+      </g>
+      <g stroke="#3d453c" stroke-width="1.8" fill="none">
+        <path d="M90,108 L138,66" marker-end="url(#s7-ink)"/><path d="M250,40 L306,40" marker-end="url(#s7-ink)"/><path d="M440,62 L472,104" marker-end="url(#s7-ink)"/><path d="M470,152 L386,214" marker-end="url(#s7-ink)"/><path d="M280,208 L280,166" marker-end="url(#s7-ink)"/>
+      </g>
+      <g stroke="#a8562f" stroke-width="2.5" fill="none">
+        <path d="M210,118 L250,118 C270,118 280,108 300,108 L350,108"/>
+        <path d="M210,142 L250,142 C270,142 280,152 300,152 L350,152"/>
+      </g>
+      <path d="M220,130 L340,130" stroke="#3d6a7a" stroke-width="1.5" marker-end="url(#s7-sky)"/>
+      <text x="280" y="96" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#4a5d3a">NO relaxes the vessel</text>
+    </svg>
+  </figure>
   <p style="margin:12px 0 0;font-size:15.5px;"><b>The practical corollary:</b> antibacterial mouthwash abolishes the effect by killing the nitrate-reducing commensals. This is one of the cleanest demonstrations that an oral-microbiome function has a direct cardiovascular readout.</p>
 </div>
 
@@ -1137,15 +1348,37 @@ Dietary <b>nitrate</b> (NO&#8323;&#8315;) <span class="arrow">&rarr;</span> abso
 
 <div class="mech">
   <div class="mech-lbl">Two juices, one axis</div>
-  <div class="chain">
-<b>BEETROOT</b> &mdash; adds substrate to the dilator arm<br>
-&nbsp;&nbsp;nitrate <span class="arrow">&rarr;</span> <i>oral bacteria</i> <span class="arrow">&rarr;</span> nitrite <span class="arrow">&rarr;</span> <b>NO</b> <span class="arrow">&rarr;</span> vasodilation<br>
-<br>
-<b>POMEGRANATE</b> &mdash; restrains the constrictor arm, and boosts NO synthesis<br>
-&nbsp;&nbsp;ellagitannins <span class="arrow">&dashv;</span> <b>ACE</b> <span class="arrow">&rarr;</span> less angiotensin&nbsp;II <span class="arrow">&rarr;</span> less vasoconstriction<br>
-&nbsp;&nbsp;punicalagin <span class="arrow">&rarr;</span> <b>eNOS</b> activation <span class="arrow">&rarr;</span> more NO<br>
-&nbsp;&nbsp;ellagitannins <span class="arrow">&rarr;</span> <i>gut bacteria</i> <span class="arrow">&rarr;</span> <b>urolithins</b> <span class="arrow">&rarr;</span> systemic effects
-  </div>
+  <figure class="fig fig-wide">
+    <svg viewBox="0 0 560 250" role="img" aria-label="Vessel tone as a seesaw between the dilator arm, nitric oxide, and the constrictor arm, angiotensin II. Beetroot feeds the NO side; pomegranate boosts eNOS on the NO side and blocks ACE on the angiotensin side, so the seesaw tips toward dilation.">
+      <defs>
+        <marker id="s8-moss" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#4a5d3a"/></marker>
+      </defs>
+      <g fill="#fffefb" stroke="#d9d4c4"><rect x="20" y="14" width="150" height="46" rx="8"/><rect x="300" y="14" width="200" height="46" rx="8"/></g>
+      <g font-family="IBM Plex Mono, monospace" text-anchor="middle">
+        <text x="95" y="32" font-size="11" font-weight="600" letter-spacing="1" fill="#1a1f1a">BEETROOT</text>
+        <text x="95" y="50" font-size="10.5" fill="#3d453c">nitrate &#8594; nitrite &#8594; NO</text>
+        <text x="400" y="32" font-size="11" font-weight="600" letter-spacing="1" fill="#1a1f1a">POMEGRANATE</text>
+        <text x="400" y="50" font-size="10.5" fill="#3d453c">punicalagin, ellagitannins</text>
+      </g>
+      <path d="M60,214 L500,166" stroke="#3d453c" stroke-width="3" stroke-linecap="round"/>
+      <path d="M262,222 L298,222 L280,192 Z" fill="#3d453c"/>
+      <path d="M240,222 L320,222" stroke="#3d453c" stroke-width="2"/>
+      <rect x="50" y="180" width="110" height="26" rx="13" fill="rgba(74,93,58,.18)" stroke="#4a5d3a"/>
+      <text x="105" y="197" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#33421f">NO: dilate</text>
+      <text x="105" y="172" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4a5d3a">dilator arm</text>
+      <rect x="400" y="140" width="124" height="26" rx="13" fill="rgba(168,86,47,.12)" stroke="#a8562f"/>
+      <text x="462" y="157" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7d3d1c">angiotensin II</text>
+      <text x="462" y="135" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#a8562f">constrictor arm</text>
+      <path d="M95,60 L100,160" stroke="#4a5d3a" stroke-width="2" marker-end="url(#s8-moss)"/>
+      <path d="M330,60 L166,176" stroke="#4a5d3a" stroke-width="2" marker-end="url(#s8-moss)"/>
+      <text x="226" y="118" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#4a5d3a">eNOS &#8593;</text>
+      <path d="M460,60 L461,118" stroke="#a8562f" stroke-width="2"/>
+      <path d="M449,120 L473,120" stroke="#a8562f" stroke-width="3"/>
+      <text x="470" y="96" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#a8562f">blocks ACE</text>
+      <text x="280" y="244" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#3d453c">vessel tone tips toward dilation</text>
+    </svg>
+    <figcaption class="fig-cap">Beetroot adds substrate to the dilator side. Pomegranate works both sides: punicalagin boosts eNOS (more NO) and ellagitannins inhibit ACE (less angiotensin&nbsp;II). Gut bacteria also turn ellagitannins into urolithins, with wider effects.</figcaption>
+  </figure>
   <p style="margin:12px 0 0;font-size:15.5px;">Because they act on opposite arms of the same control loop, there is a reasonable mechanistic case that the two are <em>additive</em> rather than redundant. <span class="ev ev-weak" style="display:inline">Speculative</span> &mdash; I could find no trial that tested them in combination, so this is an inference from mechanism, not a result.</p>
 </div>
 
@@ -1189,11 +1422,31 @@ Dietary <b>nitrate</b> (NO&#8323;&#8315;) <span class="arrow">&rarr;</span> abso
 
 <div class="mech">
   <div class="mech-lbl">Three targets, not two</div>
-  <div class="chain">
-<b>apoB particles</b> <span class="arrow">&rarr;</span> retention, oxidation <span class="arrow">&rarr;</span> <b>plaque</b> &nbsp;<span style="font-size:12px;">&larr; Parts I&ndash;III, VII.1</span><br>
-<b>vascular tone</b> <span class="arrow">&rarr;</span> pressure, shear <span class="arrow">&rarr;</span> endothelial injury &nbsp;<span style="font-size:12px;">&larr; VII.4&ndash;VII.5</span><br>
-<b>fibrin and clotting</b> <span class="arrow">&rarr;</span> thrombus on a ruptured plaque <span class="arrow">&rarr;</span> <b>infarct</b> &nbsp;<span style="font-size:12px;">&larr; unaddressed until here</span>
-  </div>
+  <figure class="fig fig-wide">
+    <svg viewBox="0 0 560 232" role="img" aria-label="An artery in long section with three numbered problems: 1, an apoB plaque on the wall; 2, the wall narrowing from vascular tone, pressure and shear; 3, a clot forming on the ruptured plaque, causing the infarct.">
+      <defs>
+        <marker id="s9-sky" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d6a7a"/></marker>
+      </defs>
+      <path d="M10,30 L550,30 L550,50 L370,50 C345,50 340,66 320,66 C300,66 295,50 270,50 L10,50 Z" fill="rgba(168,86,47,.12)" stroke="#a8562f"/>
+      <path d="M10,170 L550,170 L550,190 L10,190 Z" fill="rgba(168,86,47,.12)" stroke="#a8562f"/>
+      <path d="M250,170 C280,170 290,112 320,112 C350,112 360,170 390,170 Z" fill="rgba(183,138,46,.45)" stroke="#b78a2e"/>
+      <path d="M298,116 q10,-24 28,-18 q16,6 12,22 q-16,6 -40,-4 z" fill="rgba(139,42,30,.75)"/>
+      <path d="M30,110 L120,110" stroke="#3d6a7a" stroke-width="2" marker-end="url(#s9-sky)"/>
+      <text x="30" y="100" font-family="IBM Plex Mono, monospace" font-size="10" fill="#3d6a7a">blood flow</text>
+      <g fill="#3d453c"><circle cx="170" cy="212" r="8"/><circle cx="170" cy="14" r="8"/><circle cx="404" cy="98" r="8"/></g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#fffefb" text-anchor="middle"><text x="170" y="216">1</text><text x="170" y="18">2</text><text x="404" y="102">3</text></g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10.5">
+        <text x="182" y="216" fill="#7a5c14">apoB particles &#8594; plaque &#183; Parts I&#8211;III, VII.1</text>
+        <text x="182" y="18" fill="#a8562f">tone: pressure, shear &#183; VII.4&#8211;VII.5</text>
+        <text x="416" y="92" fill="#7d3d1c">clot on ruptured</text>
+        <text x="416" y="106" fill="#7d3d1c">plaque &#8594; infarct</text>
+        <text x="416" y="122" fill="#8a8a7d">unaddressed till here</text>
+      </g>
+      <path d="M396,100 L344,108" stroke="#3d453c" stroke-width="1"/>
+      <path d="M320,22 L320,44" stroke="#3d453c" stroke-width="1"/>
+      <path d="M320,204 L320,192" stroke="#3d453c" stroke-width="1"/>
+    </svg>
+  </figure>
   <p style="margin:12px 0 0;font-size:15.5px;">Fibrinogen is the obvious handle, and it is an established independent predictor of cardiovascular events &mdash; it is also what makes red cells aggregate and raises whole-blood viscosity, so it sits at the junction of the clotting and flow arguments.</p>
 </div>
 
