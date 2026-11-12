@@ -36,7 +36,7 @@
     <li class="benefit">
       <span class="ev moderate" title="Some human evidence"></span>
       <span class="what">Improves blood flow</span>
-      <span class="how">Thinner, less sticky blood moves more easily through small vessels.</span>
+      <span class="how">Lowers fibrinogen, the protein that stacks red cells and thickens slow-moving blood.</span>
       <a class="why" href="#flow">why ↓</a>
     </li>
     <li class="benefit">
@@ -92,7 +92,11 @@
 <h2 id="fibrinolysis"><span class="ev moderate" title="Moderate"></span>Fibrin and clotting</h2>
 <p>Fibrin is the protein mesh that turns a platelet plug into a stable clot. Nattokinase attacks it from several directions at once, which is unusual for a dietary enzyme.</p>
 <p>It <strong>cleaves fibrin directly</strong>, degrading all three chains of fibrinogen without needing any activation step. Separately it <strong>inactivates PAI-1</strong>, the inhibitor that normally restrains the body's own clot-dissolving machinery &mdash; removing that brake lets more plasmin form. It also promotes release of tissue plasminogen activator and can convert prourokinase to urokinase. The net effect is a push toward fibrinolysis from both the enzymatic and regulatory side.</p>
-<p>In people, this shows up as measurable falls in plasma fibrinogen, factor&nbsp;VII and factor&nbsp;VIII. Those are real human measurements rather than cell-culture inference, which is why this section carries a filled dot while the downstream claims do not.</p>
+<p>In people, this shows up as measurable falls in plasma fibrinogen, factor&nbsp;VII and factor&nbsp;VIII &mdash; roughly 7&ndash;19% over two months at 4,000&nbsp;FU/day, and to a similar extent in healthy subjects, people with cardiovascular risk factors, and dialysis patients alike.<sup><a href="#ref9">9</a></sup> Those are real human measurements rather than cell-culture inference, which is why this section carries a filled dot while the downstream claims do not. Two caveats on that trial: it was <em>open-label and self-controlled</em> rather than placebo-controlled, and it found blood lipids unaffected.</p>
+
+<p>A cleaner design tested a single dose. Twelve healthy men, double-blind, placebo-controlled crossover, one 2,000&nbsp;FU capsule: fibrin and fibrinogen degradation products rose at 4 hours, D-dimer at 6 and 8 hours, factor&nbsp;VIII activity fell, antithrombin rose, and activated partial thromboplastin time lengthened &mdash; several fibrinolytic and anticoagulant pathways moving at once from one ordinary dose.<sup><a href="#ref8">8</a></sup> The authors add the qualifier that gets dropped in every popular retelling: <strong>all of those changes stayed within the normal reference range.</strong> The enzyme does something measurable within hours; it does not produce a pharmacological anticoagulant state.</p>
+
+<div class="callout"><strong>This resolves the apparent contradiction in the dose evidence below.</strong> It is not that 2,000&nbsp;FU is inert &mdash; a single 2,000&nbsp;FU dose demonstrably moves fibrinolytic markers. It is that moving those markers <em>within the normal range</em>, daily for three years, did not change the rate at which carotid atherosclerosis progressed.<sup><a href="#ref1">1</a></sup> Acute biochemical activity and long-term disease modification are separate claims, and the enzyme has far better evidence for the first than the second.</div>
 <p>One honest limit: nattokinase is a protein, and proteins are what the stomach is built to destroy. How much intact enzyme reaches the bloodstream is genuinely unsettled. Proposed routes &mdash; limited transcytosis, paracellular passage of active fragments, indirect signalling by peptides &mdash; are hypotheses rather than established pathways, and the clotting-factor changes are currently better evidence that something crosses than any pharmacokinetic study is.</p>
 <a class="back" href="#glance">↑ back to summary</a>
 </section>
@@ -109,8 +113,49 @@
 
 <section>
 <h2 id="flow"><span class="ev moderate" title="Moderate"></span>Blood flow and pressure</h2>
-<p>The blood-pressure literature on nattokinase is a set of small trials reporting modest reductions, and the three-year trial above found none. Chasing a few points of blood pressure is the wrong reason to take this.</p>
-<p>The mechanism is the more interesting claim. Lower circulating fibrinogen means less of the protein that makes red cells aggregate and raises whole-blood viscosity. Thinner, less sticky blood moves more easily through small vessels, which matters for perfusion independently of what a cuff reads at the brachial artery. That is the effect worth caring about, and it follows from the fibrin chemistry rather than from a pressure endpoint.</p>
+<p>The blood-pressure literature on nattokinase is a set of small trials reporting modest reductions, and the three-year trial above found none.<sup><a href="#ref1">1</a></sup> Chasing a few points of blood pressure is the wrong reason to take this. The more interesting claim is about how easily blood moves, and it starts with fibrinogen.</p>
+
+<p><strong>Why fibrinogen makes blood sticky.</strong> Fibrinogen is the raw material for the fibrin mesh in a clot, but it also circulates at high levels all the time, about 2&ndash;4&nbsp;g per litre of plasma. It is a long, rod-shaped molecule, and it is the main protein that sets how thick plasma is. It also has a second effect. Each end can loosely attach to a red blood cell, so one fibrinogen molecule can bridge two cells. When blood is moving slowly, those bridges pull red cells face to face into stacks like piles of coins, called <em>rouleaux</em>. A stack is much harder to push through a vessel than single cells. In fast-flowing arteries the force of the flow breaks the stacks apart, so the effect is small there. In venules and the slow parts of the microcirculation, where flow is gentle, the stacks hold together, so blood is thickest exactly where tissue gets its oxygen. More fibrinogen means more bridges, bigger stacks and thicker blood at slow flow.</p>
+
+<figure style="margin:1.4rem 0;">
+  <svg viewBox="0 0 640 230" role="img" aria-label="Left: with high fibrinogen, red cells are bridged into coin-like stacks that crowd a small vessel. Right: with lower fibrinogen, red cells travel separately and pass easily." style="width:100%;height:auto;display:block;background:var(--card);border:1px solid var(--line);border-radius:6px;">
+    <text x="160" y="26" text-anchor="middle" font-size="14" font-weight="600" fill="#1c1c1c">High fibrinogen: stacks</text>
+    <text x="480" y="26" text-anchor="middle" font-size="14" font-weight="600" fill="#1c1c1c">Lower fibrinogen: single cells</text>
+    <line x1="320" y1="40" x2="320" y2="215" stroke="#e2ddd3"/>
+    <!-- vessel walls -->
+    <g stroke="#a9a99c" stroke-width="3">
+      <line x1="20" y1="70" x2="300" y2="70"/><line x1="20" y1="170" x2="300" y2="170"/>
+      <line x1="340" y1="70" x2="620" y2="70"/><line x1="340" y1="170" x2="620" y2="170"/>
+    </g>
+    <!-- rouleaux: stacked discs seen edge-on -->
+    <g fill="#b5503a" stroke="#7a3b2e" stroke-width="1">
+      <rect x="50" y="88" width="9" height="40" rx="4"/><rect x="61" y="88" width="9" height="40" rx="4"/><rect x="72" y="88" width="9" height="40" rx="4"/><rect x="83" y="88" width="9" height="40" rx="4"/><rect x="94" y="88" width="9" height="40" rx="4"/><rect x="105" y="88" width="9" height="40" rx="4"/>
+      <rect x="150" y="112" width="9" height="40" rx="4"/><rect x="161" y="112" width="9" height="40" rx="4"/><rect x="172" y="112" width="9" height="40" rx="4"/><rect x="183" y="112" width="9" height="40" rx="4"/><rect x="194" y="112" width="9" height="40" rx="4"/><rect x="205" y="112" width="9" height="40" rx="4"/><rect x="216" y="112" width="9" height="40" rx="4"/>
+      <rect x="245" y="84" width="9" height="40" rx="4"/><rect x="256" y="84" width="9" height="40" rx="4"/><rect x="267" y="84" width="9" height="40" rx="4"/>
+    </g>
+    <!-- fibrinogen bridges -->
+    <g stroke="#a07a1f" stroke-width="2">
+      <line x1="59" y1="96" x2="61" y2="96"/><line x1="70" y1="120" x2="72" y2="120"/><line x1="81" y1="96" x2="83" y2="96"/><line x1="92" y1="120" x2="94" y2="120"/><line x1="103" y1="96" x2="105" y2="96"/>
+      <line x1="159" y1="120" x2="161" y2="120"/><line x1="170" y1="144" x2="172" y2="144"/><line x1="181" y1="120" x2="183" y2="120"/><line x1="192" y1="144" x2="194" y2="144"/><line x1="203" y1="120" x2="205" y2="120"/><line x1="214" y1="144" x2="216" y2="144"/>
+    </g>
+    <text x="160" y="200" text-anchor="middle" font-size="11" fill="#5a5a5a">fibrinogen bridges cells into "rouleaux"</text>
+    <!-- dispersed cells -->
+    <g fill="#b5503a" stroke="#7a3b2e" stroke-width="1">
+      <rect x="365" y="90" width="9" height="40" rx="4" transform="rotate(15 369 110)"/>
+      <rect x="410" y="115" width="9" height="40" rx="4" transform="rotate(-10 414 135)"/>
+      <rect x="450" y="85" width="9" height="40" rx="4" transform="rotate(25 454 105)"/>
+      <rect x="495" y="118" width="9" height="40" rx="4" transform="rotate(5 499 138)"/>
+      <rect x="535" y="88" width="9" height="40" rx="4" transform="rotate(-20 539 108)"/>
+      <rect x="580" y="112" width="9" height="40" rx="4" transform="rotate(12 584 132)"/>
+    </g>
+    <text x="480" y="200" text-anchor="middle" font-size="11" fill="#5a5a5a">cells pass separately and bend through capillaries</text>
+  </svg>
+  <figcaption style="font-size:0.88rem;color:var(--sub);margin-top:0.5rem;">Red cells seen edge-on in a small, slow-flowing vessel. Fibrinogen bridges between cells (gold) build stacks that raise blood viscosity at low flow.</figcaption>
+</figure>
+
+<p><strong>Why that would matter.</strong> In a large pooled analysis of 154,211 people across 31 prospective studies, each extra 1&nbsp;g/L of fibrinogen went with about 2.4 times the risk of coronary heart disease and 2.1 times the risk of stroke. Those ratios fell to about 1.8 after adjusting for other risk factors.<sup><a href="#ref10">10</a></sup> Higher fibrinogen means a clot forms more easily if a plaque ruptures and blood flows less freely through small vessels. Both effects point the same way. The same analysis also linked fibrinogen to deaths that had nothing to do with blood vessels. That suggests part of the association is fibrinogen marking inflammation, because the liver makes more of it when inflammation is high. The authors said causation is still unproven.</p>
+
+<p><strong>What nattokinase actually does to that chain.</strong> The first step is shown in people: two months at 4,000&nbsp;FU/day lowered fibrinogen by roughly 7&ndash;19%.<sup><a href="#ref9">9</a></sup> The step after that, to thinner blood and better flow in small vessels, is inferred from what fibrinogen does in general. It hasn't been shown in a nattokinase trial. The one long trial that measured blood flow properties directly (blood rheology) is the three-year study at 2,000&nbsp;FU/day, and it found <strong>no change</strong> in them, or in any other lab value.<sup><a href="#ref1">1</a></sup> That fits the dose pattern elsewhere on this page. 2,000&nbsp;FU is enough to move clotting markers for a few hours, but not enough to change the blood's resting state. Whether 4,000&nbsp;FU and above lowers viscosity in practice hasn't been tested.</p>
 <a class="back" href="#glance">↑ back to summary</a>
 </section>
 
@@ -118,6 +163,8 @@
 <h2 id="lipids"><span class="ev early" title="Early — confounded or industry-run"></span>Cholesterol</h2>
 <p>The high-dose trials report improved lipid profiles alongside the plaque changes, with the effect larger in smokers, drinkers and people with higher BMI. The three-year independent trial found no change in any laboratory value, including lipids.</p>
 <p>One frequently cited trial tested nattokinase combined with <em>monascus</em> &mdash; red yeast rice &mdash; and found lipid improvements. That combination cannot speak to the enzyme, because red yeast rice contains monacolin&nbsp;K, which is chemically lovastatin. A lipid effect in that trial is the expected result of giving people a statin.</p>
+<p>A third trial points the same way: two months at 4,000&nbsp;FU/day moved all three coagulation factors and left blood lipids unchanged.<sup><a href="#ref9">9</a></sup> Whatever the enzyme is doing, it is doing it to the clotting system rather than to cholesterol.</p>
+
 <p>On present evidence, lipid lowering is not a reason to take nattokinase. If plaque does move at high doses, the trial that measured both suggests it moves for reasons other than cholesterol.</p>
 <a class="back" href="#glance">↑ back to summary</a>
 </section>
@@ -156,6 +203,9 @@
 <li id="ref5">Liu X, Zeng X, Mahe J, et al. The effect of nattokinase-monascus supplements on dyslipidemia: a four-month randomized, double-blind, placebo-controlled clinical trial. <span class="j">Nutrients.</span> 2023;15(19):4239. <a href="https://pubmed.ncbi.nlm.nih.gov/37836525/" target="_blank">PMID 37836525</a></li>
 <li id="ref6">Dobre MZ, Virgolici B, Doicin IC, Virgolici H, Stanescu-Spinu II. Navigating the effects of anti-atherosclerotic supplements and acknowledging associated bleeding risks. <span class="j">Int J Mol Sci.</span> 2025;26(20):10183. <a href="https://pubmed.ncbi.nlm.nih.gov/41155474/" target="_blank">PMID 41155474</a></li>
 <li id="ref7">Zhang K, Zhang X, Wang A, et al. Nattokinase supplementation for cognitive enhancement in asymptomatic intracranial/carotid stenosis: a randomized controlled trial. <span class="j">J Stroke Cerebrovasc Dis.</span> 2026;35(1):108511. <a href="https://pubmed.ncbi.nlm.nih.gov/41325794/" target="_blank">PMID 41325794</a></li>
+<li id="ref8">Kurosawa Y, Nirengi S, Homma T, et al. A single-dose of oral nattokinase potentiates thrombolysis and anti-coagulation profiles. <span class="j">Sci Rep.</span> 2015;5:11601. <a href="https://pubmed.ncbi.nlm.nih.gov/26109079/" target="_blank">PMID 26109079</a></li>
+<li id="ref9">Hsia CH, Shen MC, Lin JS, et al. Nattokinase decreases plasma levels of fibrinogen, factor VII, and factor VIII in human subjects. <span class="j">Nutr Res.</span> 2009;29(3):190&ndash;196. <a href="https://pubmed.ncbi.nlm.nih.gov/19358933/" target="_blank">PMID 19358933</a></li>
+<li id="ref10">Fibrinogen Studies Collaboration; Danesh J, Lewington S, Thompson SG, et al. Plasma fibrinogen level and the risk of major cardiovascular diseases and nonvascular mortality: an individual participant meta-analysis. <span class="j">JAMA.</span> 2005;294(14):1799&ndash;1809. <a href="https://pubmed.ncbi.nlm.nih.gov/16219884/" target="_blank">PMID 16219884</a></li>
 </ol>
 </div>
 </section>
