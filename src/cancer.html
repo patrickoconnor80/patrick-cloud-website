@@ -220,6 +220,7 @@ em{font-style:italic;}
 .fig{margin:26px 0;}
 .fig svg{display:block;width:100%;height:auto;}
 .fig-pdh{max-width:520px;margin:26px auto;}
+.fig-wide{max-width:560px;margin:26px auto;}
 .fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .fig-panel{border:1px solid var(--rule);background:var(--card);border-radius:4px;padding:8px;}
 .fig-top{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:10px;}
@@ -673,14 +674,51 @@ footer.end b{color:var(--moss);}
 
 <p>The answer is that a cell with damaged mitochondria cannot use oxidative phosphorylation efficiently, regardless of substrate or oxygen availability. Glycolysis becomes the default not by choice but by necessity. Additionally, glycolysis is not only an ATP source &mdash; it supplies carbon skeletons for biosynthesis (ribose for nucleotides via the pentose phosphate pathway, pyruvate for amino acids, glycolytic intermediates for lipid synthesis) that a rapidly dividing cell requires. From this perspective, the Warburg shift is metabolically coherent for a cell that can no longer run oxidative phosphorylation.</p>
 
-<div class="chain">
-<b>Warburg pathway</b><br>
-Glucose <span class="arrow">&rarr;</span> [glucose transporters GLUT1/3] <span class="arrow">&rarr;</span> intracellular glucose<br>
-<span class="arrow">&rarr;</span> glycolysis (10 steps) <span class="arrow">&rarr;</span> pyruvate (net 2 ATP/glucose)<br>
-<span class="arrow">&rarr;</span> [lactate dehydrogenase] <span class="arrow">&rarr;</span> lactate + H<sup>+</sup><br>
-Lactate secreted via MCT4 <span class="arrow">&rarr;</span> acidified tumor microenvironment<br>
-<b>GAPDH</b> (step 6 of glycolysis) is elevated in cancer cells, reflecting pathway upregulation
-</div>
+<figure class="fig fig-wide">
+  <svg viewBox="0 0 560 395" role="img" aria-label="Glucose enters a cancer cell through extra GLUT transporters, runs through glycolysis to pyruvate, and leaves as lactate through MCT4, acidifying the surroundings; damaged mitochondria get little pyruvate. Fermentation yields 2 ATP per glucose versus about 30 from full oxidation.">
+    <defs>
+      <marker id="wa-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d453c"/></marker>
+      <marker id="wa-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#a8562f"/></marker>
+      <marker id="wa-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#a9a99c"/></marker>
+    </defs>
+    <rect x="90" y="14" width="360" height="290" rx="36" fill="#fffefb" stroke="#3d453c" stroke-width="1.5"/>
+    <text x="436" y="38" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" letter-spacing="1.5" fill="#a8562f">CANCER CELL</text>
+    <rect x="8" y="56" width="70" height="28" rx="14" fill="#fffefb" stroke="#d9d4c4"/>
+    <text x="43" y="75" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" fill="#1a1f1a">Glucose</text>
+    <rect x="84" y="56" width="12" height="28" rx="3" fill="rgba(61,106,122,.25)" stroke="#3d6a7a"/>
+    <text x="46" y="106" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#3d6a7a">GLUT1/3</text>
+    <text x="46" y="120" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#3d6a7a">more of them</text>
+    <path d="M78,70 L146,70" stroke="#3d453c" stroke-width="1.8" marker-end="url(#wa-ink)"/>
+    <rect x="150" y="50" width="130" height="40" rx="4" fill="#fffefb" stroke="#d9d4c4"/>
+    <text x="215" y="67" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" fill="#1a1f1a">glycolysis</text>
+    <text x="215" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#3d453c">10 steps</text>
+    <rect x="290" y="59" width="86" height="22" rx="11" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+    <text x="333" y="74" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7a5c14">GAPDH &#8593;</text>
+    <path d="M215,90 L215,146" stroke="#3d453c" stroke-width="1.8" marker-end="url(#wa-ink)"/>
+    <rect x="150" y="150" width="130" height="36" rx="4" fill="#fffefb" stroke="#d9d4c4"/>
+    <text x="215" y="173" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" fill="#1a1f1a">Pyruvate</text>
+    <path d="M215,186 L215,232" stroke="#a8562f" stroke-width="3" marker-end="url(#wa-rust)"/>
+    <text x="225" y="214" font-family="IBM Plex Mono, monospace" font-size="11" fill="#a8562f">LDH</text>
+    <rect x="150" y="236" width="130" height="36" rx="4" fill="rgba(168,86,47,.08)" stroke="#a8562f"/>
+    <text x="215" y="259" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" fill="#7d3d1c">Lactate + H&#8314;</text>
+    <path d="M280,254 L486,254" stroke="#a8562f" stroke-width="3" marker-end="url(#wa-rust)"/>
+    <rect x="444" y="240" width="12" height="28" rx="3" fill="rgba(168,86,47,.2)" stroke="#a8562f"/>
+    <text x="464" y="244" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#a8562f">MCT4</text>
+    <text x="514" y="282" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#a8562f">acid outside</text>
+    <text x="514" y="296" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#a8562f">pH 6.5&#8211;6.9</text>
+    <path d="M280,168 L310,164" stroke="#a9a99c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#wa-soft)"/>
+    <ellipse cx="372" cy="160" rx="56" ry="30" fill="rgba(168,86,47,.05)" stroke="#a8562f" stroke-width="2" stroke-dasharray="6 4"/>
+    <path d="M330,160 q7,-16 14,0 m10,0 q7,-16 14,0 m12,0 q7,-16 14,0" stroke="#a8562f" stroke-width="1.5" fill="none"/>
+    <text x="372" y="210" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="13.5" fill="#3d453c">damaged mitochondria</text>
+    <text x="10" y="339" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#3d453c">Fermentation</text>
+    <rect x="130" y="327" width="28" height="15" rx="3" fill="#a8562f"/>
+    <text x="166" y="339" font-family="Newsreader, Georgia, serif" font-size="14" fill="#1a1f1a">2 ATP per glucose</text>
+    <text x="10" y="371" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#3d453c">Full oxidation</text>
+    <rect x="130" y="359" width="420" height="15" rx="3" fill="#4a5d3a"/>
+    <text x="140" y="371" font-family="IBM Plex Mono, monospace" font-size="11" fill="#fffefb">~30 ATP per glucose, if mitochondria worked</text>
+  </svg>
+  <figcaption class="fig-cap">With damaged mitochondria, pyruvate&rsquo;s main exit is lactate. That yields 2 ATP per glucose instead of ~30, so the cell pulls in far more glucose through extra GLUT transporters. The exported acid helps tumours invade and blunts immune cells. GAPDH, a glycolysis enzyme, is consistently raised.</figcaption>
+</figure>
 
 <div class="flag">
   <div class="flag-lbl">Cross-link: a second NAD&#8314;-salvage route besides LDH</div>
@@ -691,16 +729,66 @@ Lactate secreted via MCT4 <span class="arrow">&rarr;</span> acidified tumor micr
 
 <p>Glucose alone cannot sustain cancer cell proliferation. Most cancer cells are also addicted to <strong>glutamine</strong> &mdash; the most abundant amino acid in plasma &mdash; which they consume at rates far exceeding their protein synthesis needs. Glutamine fermentation in cancer proceeds through a specific pathway first characterized in detail by Moreadith and Lehninger:<sup class="cite"><a href="#r11">11</a></sup></p>
 
-<div class="chain">
-<b>Glutamine fermentation pathway</b><br>
-Glutamine <span class="arrow">&rarr;</span> [glutaminase] <span class="arrow">&rarr;</span> glutamate + NH<sub>3</sub><br>
-Glutamate <span class="arrow">&rarr;</span> [glutamate dehydrogenase] <span class="arrow">&rarr;</span> &alpha;-ketoglutarate (&alpha;-KG)<br>
-&alpha;-KG enters TCA cycle as an anaplerotic substrate<br>
-<b>Preferred route:</b> &alpha;-KG <span class="arrow">&rarr;</span> succinate <span class="arrow">&rarr;</span> fumarate <span class="arrow">&rarr;</span> malate <span class="arrow">&rarr;</span> oxaloacetate<br>
-Oxaloacetate <span class="arrow">&rarr;</span> [citrate synthase] <span class="arrow">&rarr;</span> TCA cycle continues, generating ATP<br>
-<b>Alternative routes:</b> pyruvate <span class="arrow">&rarr;</span> alanine; oxaloacetate <span class="arrow">&rarr;</span> aspartate<br>
-<em>Oxaloacetate route is preferred (Moreadith &amp; Lehninger) to keep TCA cycle running</em>
-</div>
+<figure class="fig fig-pdh">
+  <svg viewBox="0 0 520 436" role="img" aria-label="Glutamine becomes glutamate, releasing ammonia nitrogen for DNA bases, then alpha-ketoglutarate, which enters the TCA cycle and runs through succinate, fumarate, malate and oxaloacetate. The succinate-fumarate step runs backward, and succinate switches on HIF-1 alpha. The citrate half of the cycle is faded because it needs acetyl-CoA.">
+    <defs>
+      <marker id="gm-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d453c"/></marker>
+      <marker id="gm-moss" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#4a5d3a"/></marker>
+      <marker id="gm-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#a8562f"/></marker>
+      <marker id="gm-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#a9a99c"/></marker>
+    </defs>
+    <g font-family="Newsreader, Georgia, serif" font-size="14" text-anchor="middle" fill="#1a1f1a">
+      <rect x="30" y="14" width="120" height="30" rx="4" fill="#fffefb" stroke="#d9d4c4"/>
+      <text x="90" y="34">Glutamine</text>
+      <rect x="30" y="86" width="120" height="30" rx="4" fill="#fffefb" stroke="#d9d4c4"/>
+      <text x="90" y="106">Glutamate</text>
+    </g>
+    <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#3d453c">
+      <path d="M90,44 L90,82" stroke="#3d453c" stroke-width="1.8" marker-end="url(#gm-ink)"/>
+      <text x="100" y="67">glutaminase</text>
+      <path d="M60,116 L60,148" stroke="#3d6a7a" stroke-width="1.8"/>
+      <rect x="8" y="152" width="124" height="40" rx="6" fill="rgba(61,106,122,.12)" stroke="#3d6a7a"/>
+      <text x="70" y="169" text-anchor="middle" fill="#3d6a7a">NH&#8323;: nitrogen</text>
+      <text x="70" y="184" text-anchor="middle" fill="#3d6a7a">for DNA bases</text>
+      <path d="M120,116 L176,228" stroke="#3d453c" stroke-width="1.8" marker-end="url(#gm-ink)"/>
+      <text x="154" y="160">GDH</text>
+    </g>
+    <circle cx="300" cy="300" r="110" fill="none" stroke="#d9d4c4"/>
+    <text x="300" y="296" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="15" font-weight="600" fill="#33421f">TCA cycle</text>
+    <text x="300" y="314" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#3d453c">fed from &#945;-KG</text>
+    <g font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle">
+      <rect x="153" y="231" width="104" height="28" rx="14" fill="rgba(74,93,58,.14)" stroke="#4a5d3a" stroke-width="1.6"/>
+      <text x="205" y="250" fill="#33421f">&#945;-KG</text>
+      <rect x="248" y="176" width="104" height="28" rx="14" fill="#fffefb" stroke="#4a5d3a"/>
+      <text x="300" y="195" fill="#33421f">succinate</text>
+      <rect x="343" y="231" width="104" height="28" rx="14" fill="#fffefb" stroke="#4a5d3a"/>
+      <text x="395" y="250" fill="#33421f">fumarate</text>
+      <rect x="343" y="341" width="104" height="28" rx="14" fill="#fffefb" stroke="#4a5d3a"/>
+      <text x="395" y="360" fill="#33421f">malate</text>
+      <rect x="248" y="396" width="104" height="28" rx="14" fill="#fffefb" stroke="#4a5d3a"/>
+      <text x="300" y="415" fill="#33421f">oxaloacetate</text>
+      <rect x="153" y="341" width="104" height="28" rx="14" fill="#fffefb" stroke="#a9a99c" stroke-dasharray="4 3"/>
+      <text x="205" y="360" fill="#8a8a7d">citrate</text>
+    </g>
+    <path d="M232,229 L268,206" stroke="#4a5d3a" stroke-width="2.2" marker-end="url(#gm-moss)"/>
+    <path d="M370,229 L334,206" stroke="#a8562f" stroke-width="2.6" marker-end="url(#gm-rust)"/>
+    <path d="M395,259 L395,337" stroke="#4a5d3a" stroke-width="2.2" marker-end="url(#gm-moss)"/>
+    <path d="M370,369 L332,393" stroke="#4a5d3a" stroke-width="2.2" marker-end="url(#gm-moss)"/>
+    <path d="M268,394 L234,372" stroke="#a9a99c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#gm-soft)"/>
+    <path d="M205,341 L205,263" stroke="#a9a99c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#gm-soft)"/>
+    <g font-family="IBM Plex Mono, monospace" font-size="11">
+      <text x="440" y="192" text-anchor="middle" fill="#a8562f">fumarate reductase:</text>
+      <text x="440" y="206" text-anchor="middle" fill="#a8562f">runs backward</text>
+      <text x="80" y="300" text-anchor="middle" fill="#8a8a7d">this half needs</text>
+      <text x="80" y="314" text-anchor="middle" fill="#8a8a7d">acetyl-CoA (PDH shut)</text>
+      <path d="M300,176 L300,142" stroke="#a8562f" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#gm-rust)"/>
+      <rect x="228" y="110" width="144" height="28" rx="14" fill="rgba(168,86,47,.08)" stroke="#a8562f"/>
+      <text x="300" y="129" text-anchor="middle" font-size="11.5" fill="#7d3d1c">HIF-1&#945; on</text>
+      <text x="380" y="129" font-size="10.5" fill="#a8562f">(new vessels)</text>
+    </g>
+  </svg>
+  <figcaption class="fig-cap">Glutamine enters the TCA cycle at &alpha;-KG and keeps that side of the cycle turning, which yields some ATP even with damaged mitochondria; its nitrogen goes into DNA bases. In cancer cells the succinate&ndash;fumarate step often runs backward, and the succinate that builds up switches on HIF-1&alpha;, which drives new blood vessels.</figcaption>
+</figure>
 
 <p>Tomitsuka and colleagues provided direct evidence that cancer cells have an <strong>active fumarate reductase reaction</strong> &mdash; running the succinate-to-fumarate step in reverse compared to the normal TCA cycle direction.<sup class="cite"><a href="#r12">12</a></sup> This reductive TCA activity is consistent with a partially dysfunctional ETC that cannot fully oxidize substrates in the forward direction, but can still extract energy from partial reductive cycling. It also generates succinate, which has signaling properties (activating HIF-1&alpha;, suppressing prolyl hydroxylases) that promote the angiogenic and inflammatory phenotype of tumors.</p>
 
@@ -729,15 +817,37 @@ Oxaloacetate <span class="arrow">&rarr;</span> [citrate synthase] <span class="a
 
 <p>A cell in chronic energy deficit, compensating for mitochondrial dysfunction through glycolysis and glutamine fermentation, operates under a different ATP budget. Fermentation provides enough ATP to survive and replicate, but the total yield is dramatically lower than oxidative phosphorylation would provide. Under this constraint, ATP is rationed to the processes most essential for immediate survival, and genomic maintenance is a long-term investment that a stressed cell will deprioritize.<sup class="cite"><a href="#r14">14</a></sup></p>
 
-<div class="chain">
-<b>Mutation accumulation through energy rationing</b><br>
-Mitochondrial damage <span class="arrow">&rarr;</span> impaired OxPhos <span class="arrow">&rarr;</span> reduced ATP yield<br>
-<span class="arrow">&rarr;</span> compensatory glycolysis + glutamine fermentation (inadequate substitute)<br>
-<span class="arrow">&rarr;</span> chronic energy deficit <span class="arrow">&rarr;</span> ATP rationed toward survival processes<br>
-<span class="arrow">&rarr;</span> reduced investment in DNA repair, proofreading, chromatin fidelity<br>
-<span class="arrow">&rarr;</span> <b>mutation accumulation as downstream consequence</b><br>
-<em>Selection then favors mutations that further upregulate fermentation (e.g., upregulating glycolytic enzymes, losing p53-mediated apoptosis of energetically compromised cells)</em>
-</div>
+<figure class="fig fig-wide">
+  <svg viewBox="0 0 560 240" role="img" aria-label="ATP budget bars: a healthy cell spends on survival, growth, DNA repair and chromatin upkeep; a fermenting cell has less margin, spends mostly on survival and growth, and DNA repair is squeezed to a sliver. Below, a healthy DNA strand has one mutation and a fermenting cell's strand has many.">
+    <g font-family="IBM Plex Mono, monospace" font-size="11.5" font-weight="600" letter-spacing="1">
+      <text x="10" y="22" fill="#4a5d3a">HEALTHY CELL: FULL ATP BUDGET</text>
+      <text x="10" y="100" fill="#a8562f">FERMENTING CELL: LESS MARGIN, RATIONED</text>
+    </g>
+    <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#fffefb" text-anchor="middle">
+      <rect x="10" y="32" width="170" height="32" fill="#6b7366"/><text x="95" y="52">survival</text>
+      <rect x="180" y="32" width="120" height="32" fill="#4a5d3a"/><text x="240" y="52">growth</text>
+      <rect x="300" y="32" width="150" height="32" fill="#3d6a7a"/><text x="375" y="52">DNA repair</text>
+      <rect x="450" y="32" width="100" height="32" fill="#b78a2e"/><text x="500" y="52">chromatin</text>
+      <rect x="10" y="110" width="540" height="32" fill="none" stroke="#a9a99c" stroke-dasharray="4 3"/>
+      <rect x="10" y="110" width="230" height="32" fill="#6b7366"/><text x="125" y="130">survival</text>
+      <rect x="240" y="110" width="150" height="32" fill="#4a5d3a"/><text x="315" y="130">growth</text>
+      <rect x="390" y="110" width="14" height="32" fill="#3d6a7a"/>
+    </g>
+    <path d="M397,142 L397,156" stroke="#3d6a7a" stroke-width="1.5"/>
+    <text x="397" y="170" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#3d6a7a">DNA repair squeezed</text>
+    <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#3d453c">
+      <text x="10" y="200">DNA, healthy</text>
+      <text x="10" y="230">DNA, fermenting</text>
+    </g>
+    <path d="M124,196 L550,196" stroke="#4a5d3a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="330" cy="196" r="5" fill="#a8562f"/>
+    <path d="M124,226 L550,226" stroke="#6b7366" stroke-width="3" stroke-linecap="round"/>
+    <g fill="#a8562f">
+      <circle cx="146" cy="226" r="5"/><circle cx="180" cy="226" r="5"/><circle cx="208" cy="226" r="5"/><circle cx="252" cy="226" r="5"/><circle cx="290" cy="226" r="5"/><circle cx="322" cy="226" r="5"/><circle cx="370" cy="226" r="5"/><circle cx="410" cy="226" r="5"/><circle cx="455" cy="226" r="5"/><circle cx="500" cy="226" r="5"/><circle cx="532" cy="226" r="5"/>
+    </g>
+  </svg>
+  <figcaption class="fig-cap">Same jobs, less to spend. Once fermentation takes over, ATP goes first to staying alive and building new cells, and DNA repair gets what is left. Mutations pile up with each division, and selection keeps the ones that push fermentation further: more glycolytic enzymes, loss of p53.</figcaption>
+</figure>
 
 <p>This model explains something that the purely genetic model struggles with: <em>why so many different cancers end up with mutations in the same pathways</em>. If the initial event were a random mutation in any of hundreds of possible driver genes, the subsequent evolution of the cancer would depend on the specific mutation &mdash; and we would expect the signaling pathway profiles to be diverse. Instead, they converge on RTK/RAS/PI3K (which drives glucose uptake and glycolysis), p53 (which would eliminate energetically compromised cells), and RB (which would restrain replication in energetically stressed cells). These are exactly the mutations that a glycolytic, energy-deprived cell would be selected for.</p>
 
@@ -854,16 +964,53 @@ Mitochondrial damage <span class="arrow">&rarr;</span> impaired OxPhos <span cla
 
 <p>The Zacharski FeAST trial (VA Cooperative Study 410) randomized 1,277 patients with peripheral arterial disease to phlebotomy-induced iron reduction (targeting serum ferritin ~25 ng/mL) or control.<sup class="cite"><a href="#r18">18</a></sup> Cancer was a secondary endpoint. The results were striking: iron reduction was associated with a <strong>35% reduction in new cancer diagnoses</strong> (hazard ratio &asymp; 0.65, 95% CI 0.43&ndash;0.97) and a <strong>&gt;60% reduction in cancer-specific mortality</strong> (HR &asymp; 0.39, P = .003). These are effect sizes larger than most oncology interventions achieve in randomized trials against established disease.</p>
 
-<div class="mech">
-  <div class="mech-lbl">Why iron restriction hits cancer cells harder than normal cells</div>
-  <div class="chain">
-Cancer cells: elevated TfR1 <span class="arrow">&rarr;</span> aggressive iron import<br>
-Iron <span class="arrow">&rarr;</span> ribonucleotide reductase (RNR) <span class="arrow">&rarr;</span> deoxyribonucleotide synthesis <span class="arrow">&rarr;</span> <b>DNA replication</b><br>
-Elevated H<sub>2</sub>O<sub>2</sub> (from impaired ETC) + Fe<sup>2+</sup> <span class="arrow">&rarr;</span> Fenton chemistry <span class="arrow">&rarr;</span> &middot;OH radicals <span class="arrow">&rarr;</span> further cardiolipin &amp; ETC damage<br>
-Iron restriction <span class="arrow">&rarr;</span> preferentially limits RNR in high-turnover cancer cells<br>
-Normal cells: lower iron demand, greater iron-regulatory flexibility
+<figure class="fig" style="margin-left:0;margin-right:0;">
+  <div class="fig-top"><span style="color:#7a3b1e;">&#9679;</span> iron &nbsp;&middot;&nbsp; <span style="color:#3d6a7a;font-weight:600;">Y</span> transferrin receptor 1 (TfR1), the iron importer</div>
+  <div class="fig-pair">
+    <div class="fig-panel">
+      <svg viewBox="0 0 340 288" role="img" aria-label="Normal cell with three iron receptors, a few iron particles and working mitochondria">
+        <text x="14" y="22" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" letter-spacing="1.5" fill="#4a5d3a">NORMAL CELL</text>
+        <circle cx="170" cy="140" r="85" fill="rgba(74,93,58,.04)" stroke="#3d453c" stroke-width="1.5"/>
+        <ellipse cx="170" cy="140" rx="40" ry="20" fill="rgba(74,93,58,.10)" stroke="#4a5d3a" stroke-width="1.8"/>
+        <path d="M138,140 q6,-12 12,0 t12,0 t12,0 t12,0 t12,0" stroke="#4a5d3a" stroke-width="1.3" fill="none"/>
+        <g stroke="#3d6a7a" stroke-width="2.2" fill="none" stroke-linecap="round">
+          <path transform="translate(90.1,110.9) rotate(290)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(235.1,85.4) rotate(50)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(184.8,223.7) rotate(170)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+        </g>
+        <g fill="#7a3b1e"><circle cx="118" cy="108" r="4.5"/><circle cx="222" cy="178" r="4.5"/><circle cx="132" cy="182" r="4.5"/><circle cx="214" cy="104" r="4.5"/></g>
+        <text x="170" y="258" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#3d453c">Few receptors, little iron.</text>
+        <text x="170" y="276" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#3d453c">Steady DNA copying.</text>
+      </svg>
+    </div>
+    <div class="fig-panel">
+      <svg viewBox="0 0 340 288" role="img" aria-label="Cancer cell with ten iron receptors, many iron particles, and a damaged mitochondrion where iron produces hydroxyl radicals">
+        <text x="14" y="22" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" letter-spacing="1.5" fill="#a8562f">CANCER CELL</text>
+        <circle cx="170" cy="140" r="85" fill="rgba(168,86,47,.04)" stroke="#3d453c" stroke-width="1.5"/>
+        <ellipse cx="170" cy="140" rx="40" ry="20" fill="rgba(168,86,47,.05)" stroke="#a8562f" stroke-width="1.8" stroke-dasharray="5 3"/>
+        <path d="M140,140 q5,-11 10,0 m8,0 q5,-11 10,0 m10,0 q5,-11 10,0" stroke="#a8562f" stroke-width="1.3" fill="none"/>
+        <g stroke="#3d6a7a" stroke-width="2.2" fill="none" stroke-linecap="round">
+          <path transform="translate(255,140) rotate(90)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(238.8,190) rotate(126)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(196.3,220.8) rotate(162)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(143.7,220.8) rotate(198)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(101.2,190) rotate(234)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(85,140) rotate(270)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(101.2,90) rotate(306)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(143.7,59.2) rotate(342)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(196.3,59.2) rotate(18)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+          <path transform="translate(238.8,90) rotate(54)" d="M0,0 v-12 M0,-12 l-6,-7 M0,-12 l6,-7"/>
+        </g>
+        <g fill="#7a3b1e"><circle cx="110" cy="120" r="4.5"/><circle cx="122" cy="160" r="4.5"/><circle cx="135" cy="95" r="4.5"/><circle cx="150" cy="185" r="4.5"/><circle cx="175" cy="195" r="4.5"/><circle cx="200" cy="182" r="4.5"/><circle cx="226" cy="166" r="4.5"/><circle cx="236" cy="142" r="4.5"/><circle cx="215" cy="90" r="4.5"/><circle cx="160" cy="100" r="4.5"/><circle cx="190" cy="212" r="4.5"/><circle cx="118" cy="140" r="4.5"/><circle cx="140" cy="202" r="4.5"/><circle cx="190" cy="88" r="4.5"/></g>
+        <path d="M204,114 L207,121 L214,124 L207,127 L204,134 L201,127 L194,124 L201,121 Z" fill="#b78a2e" stroke="#a8562f" stroke-width="1"/>
+        <text x="216" y="120" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#a8562f">&#183;OH</text>
+        <text x="170" y="258" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#3d453c">Many receptors, iron piles up.</text>
+        <text x="170" y="276" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#3d453c">Fast DNA copying; &#183;OH at damaged mitochondria.</text>
+      </svg>
+    </div>
   </div>
-</div>
+  <figcaption class="fig-cap">Cancer cells import iron to feed ribonucleotide reductase (RNR), the iron enzyme that makes DNA building blocks, and their damaged mitochondria turn iron plus H<sub>2</sub>O<sub>2</sub> into hydroxyl radicals (&middot;OH) that attack cardiolipin. Lowering body iron takes the most from the cell that needs it most.</figcaption>
+</figure>
 
 <p>There is also a direct connection to the mitochondrial dysfunction model developed in <a href="#part-iii">Part&nbsp;III</a>: cancer cells with impaired ETC already generate elevated H<sub>2</sub>O<sub>2</sub>. Elevated iron converts this hydrogen peroxide into the hydroxyl radical (the most reactive oxygen species) via Fenton chemistry &mdash; which then oxidizes cardiolipin, further impairing the ETC. This creates a self-amplifying loop: mitochondrial damage raises ROS, excess iron converts that ROS into radical species, which damage cardiolipin and deepen the ETC defect. Reducing iron load interrupts this cycle at the catalyst step.</p>
 
