@@ -231,6 +231,13 @@ sup.cite a:hover{text-decoration:underline;}
   letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
   font-weight:600;margin-bottom:12px;
 }
+.fig{margin:18px 0;}
+.fig svg{display:block;width:100%;height:auto;}
+.fig-wide{max-width:560px;margin:18px auto;}
+.fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fig-panel{border:1px solid var(--rule);background:var(--card);border-radius:4px;padding:8px;}
+.fig-cap{font-size:15px;color:var(--ink-soft);font-style:italic;margin-top:10px;line-height:1.5;}
+@media (max-width:560px){.fig-pair{grid-template-columns:1fr;}}
 .chain{
   font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.75;
   background:var(--paper-deep);border-radius:4px;padding:16px 20px;margin:18px 0;
@@ -419,6 +426,7 @@ footer.end b{color:var(--moss);}
 <div class="subnav"><div class="subnav-inner">
   <a href="nutrition.html" class="active">Papers</a>
   <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="goals.html">Health Goals</a>
   <a href="nutrients.html">Nutrients</a>
   <a href="supplements.html">Supplements</a>
   <a href="healthfoods.html">Health Foods</a>
@@ -488,13 +496,48 @@ footer.end b{color:var(--moss);}
 <p>Muscle also matters as a place to put glucose. Skeletal muscle takes up most of the glucose from a meal. In NHANES&nbsp;III (13,644 people), each 10% increase in muscle mass relative to body weight went with 11% lower insulin resistance and 12% lower odds of prediabetes, after adjusting for obesity.<sup class="cite"><a href="#r5">5</a></sup></p>
 <p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">as a predictor;</span> <span class="ev ev-mod">Moderate</span><span class="txt">for muscle mass and insulin resistance, which is cross-sectional.</span></p>
 
-<div class="chain">ENGINE   heart stroke volume + mitochondrial capacity ──▶ VO₂max
-         trained by: intervals &gt; running &gt; brisk walking
-
-CHASSIS  muscle mass + strength + bone ──▶ grip, leg press, BMD
-         trained by: lifting (walking and cycling barely touch it)
-
-both ──▶ glucose disposal, insulin sensitivity ──▶ lower mortality</div>
+<div class="fig">
+<div class="fig-pair">
+<div class="fig-panel"><svg viewBox="0 0 260 210" role="img" aria-label="Engine: heart stroke volume plus mitochondrial capacity set VO2max; intervals train it most, then running, then brisk walking">
+<text x="14" y="24" font-family="IBM Plex Mono" font-size="10.5" font-weight="600" letter-spacing="2" fill="#3d6a7a">ENGINE</text>
+<text x="14" y="50" font-family="Newsreader" font-size="15" fill="#1a1f1a">heart stroke volume</text>
+<text x="14" y="68" font-family="Newsreader" font-size="15" fill="#1a1f1a">+ mitochondrial capacity</text>
+<rect x="14" y="82" width="110" height="26" rx="13" fill="rgba(61,106,122,.12)" stroke="#3d6a7a"/>
+<text x="69" y="99" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#3d6a7a">VO₂max</text>
+<text x="14" y="136" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#3d453c">TRAINED BY</text>
+<g font-family="IBM Plex Mono" font-size="10.5" fill="#1a1f1a">
+<text x="14" y="157">intervals</text><rect x="96" y="147" width="150" height="12" rx="2" fill="#3d6a7a"/>
+<text x="14" y="179">running</text><rect x="96" y="169" width="106" height="12" rx="2" fill="#3d6a7a" fill-opacity=".72"/>
+<text x="14" y="201">brisk walk</text><rect x="96" y="191" width="58" height="12" rx="2" fill="#3d6a7a" fill-opacity=".45"/>
+</g>
+</svg></div>
+<div class="fig-panel"><svg viewBox="0 0 260 210" role="img" aria-label="Chassis: muscle mass, strength and bone show up as grip, leg press and bone density; lifting trains it, cycling and walking barely touch it">
+<text x="14" y="24" font-family="IBM Plex Mono" font-size="10.5" font-weight="600" letter-spacing="2" fill="#4a5d3a">CHASSIS</text>
+<text x="14" y="50" font-family="Newsreader" font-size="15" fill="#1a1f1a">muscle mass + strength</text>
+<text x="14" y="68" font-family="Newsreader" font-size="15" fill="#1a1f1a">+ bone</text>
+<rect x="14" y="82" width="176" height="26" rx="13" fill="rgba(74,93,58,.12)" stroke="#4a5d3a"/>
+<text x="102" y="99" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#33421f">grip · leg press · BMD</text>
+<text x="14" y="136" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#3d453c">TRAINED BY</text>
+<g font-family="IBM Plex Mono" font-size="10.5" fill="#1a1f1a">
+<text x="14" y="157">lifting</text><rect x="96" y="147" width="150" height="12" rx="2" fill="#4a5d3a"/>
+<text x="14" y="179">cycling</text><rect x="96" y="169" width="18" height="12" rx="2" fill="#4a5d3a" fill-opacity=".45"/>
+<text x="14" y="201">walking</text><rect x="96" y="191" width="12" height="12" rx="2" fill="#4a5d3a" fill-opacity=".45"/>
+</g>
+<text x="124" y="190" font-family="IBM Plex Mono" font-size="9" fill="#a8562f">barely touch it</text>
+</svg></div>
+</div>
+<svg viewBox="0 0 560 60" style="margin-top:12px" role="img" aria-label="Engine and chassis together raise glucose disposal and lower mortality">
+<defs><marker id="e1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3d453c"/></marker></defs>
+<rect x="16" y="14" width="150" height="32" rx="16" fill="#efece1" stroke="#d9d4c4"/>
+<text x="91" y="35" text-anchor="middle" font-family="Newsreader" font-size="15" fill="#1a1f1a">engine + chassis</text>
+<path d="M166,30 L196,30" stroke="#3d453c" stroke-width="1.5" marker-end="url(#e1a)"/>
+<rect x="198" y="14" width="170" height="32" rx="16" fill="#fffefb" stroke="#4a5d3a"/>
+<text x="283" y="35" text-anchor="middle" font-family="Newsreader" font-size="15" fill="#1a1f1a">glucose disposal ↑</text>
+<path d="M368,30 L398,30" stroke="#3d453c" stroke-width="1.5" marker-end="url(#e1a)"/>
+<rect x="400" y="14" width="144" height="32" rx="16" fill="#33421f"/>
+<text x="472" y="35" text-anchor="middle" font-family="Newsreader" font-size="15" fill="#f7f5ee">lower mortality</text>
+</svg>
+</div>
 
 <div class="pushback">
   <div class="pb-lbl">Pushback: fitness isn't exercise</div>

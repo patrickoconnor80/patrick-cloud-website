@@ -231,6 +231,13 @@ sup.cite a:hover{text-decoration:underline;}
   letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
   font-weight:600;margin-bottom:12px;
 }
+.fig{margin:18px 0;}
+.fig svg{display:block;width:100%;height:auto;}
+.fig-wide{max-width:560px;margin:18px auto;}
+.fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fig-panel{border:1px solid var(--rule);background:var(--card);border-radius:4px;padding:8px;}
+.fig-cap{font-size:15px;color:var(--ink-soft);font-style:italic;margin-top:10px;line-height:1.5;}
+@media (max-width:560px){.fig-pair{grid-template-columns:1fr;}}
 .chain{
   font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.75;
   background:var(--paper-deep);border-radius:4px;padding:16px 20px;margin:18px 0;
@@ -419,6 +426,7 @@ footer.end b{color:var(--moss);}
 <div class="subnav"><div class="subnav-inner">
   <a href="nutrition.html" class="active">Papers</a>
   <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="goals.html">Health Goals</a>
   <a href="nutrients.html">Nutrients</a>
   <a href="supplements.html">Supplements</a>
   <a href="healthfoods.html">Health Foods</a>
@@ -481,8 +489,35 @@ footer.end b{color:var(--moss);}
 
 <h3><span class="h3num">I.1</span>The pigment line</h3>
 <p>Melanin is made from the amino acid tyrosine by tyrosinase, a copper enzyme, inside melanocytes that sit at the base of each growing hair. The melanocytes hand the pigment to the keratin cells building the shaft. Tyrosinase gets its copper from a copper pump (ATP7A, the Menkes protein) inside the cell. Without the pump, tyrosinase is made but stays inactive, which is why Menkes disease, a genetic copper-transport failure, produces pale, steely hair.<sup class="cite"><a href="#r3">3</a></sup></p>
-<div class="chain">tyrosine ──tyrosinase (Cu)──▶ DOPA ──▶ dopaquinone ──▶ eumelanin (brown/black)
-                                              └──(+ cysteine)──▶ pheomelanin (red/yellow)</div>
+<div class="fig fig-wide">
+<svg viewBox="0 0 560 200" role="img" aria-label="Tyrosinase, a copper enzyme, turns tyrosine into DOPA and dopaquinone, which becomes brown-black eumelanin, or red-yellow pheomelanin when cysteine is added">
+<defs>
+<marker id="h1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3d453c"/></marker>
+</defs>
+<rect x="108" y="50" width="128" height="22" rx="11" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+<text x="172" y="65" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" fill="#7a5c14">tyrosinase · Cu</text>
+<path d="M110,88 L110,80 L234,80 L234,88" stroke="#b78a2e" stroke-width="1.5" fill="none"/>
+<path d="M172,72 L172,80" stroke="#b78a2e" stroke-width="1.5"/>
+<g font-family="Newsreader" font-size="15" fill="#1a1f1a" text-anchor="middle">
+<rect x="16" y="92" width="88" height="36" rx="6" fill="#fffefb" stroke="#d9d4c4"/><text x="60" y="115">tyrosine</text>
+<rect x="140" y="92" width="64" height="36" rx="6" fill="#fffefb" stroke="#d9d4c4"/><text x="172" y="115">DOPA</text>
+<rect x="240" y="92" width="108" height="36" rx="6" fill="#fffefb" stroke="#d9d4c4"/><text x="294" y="115">dopaquinone</text>
+</g>
+<path d="M104,110 L138,110" stroke="#3d453c" stroke-width="1.5" marker-end="url(#h1a)"/>
+<path d="M204,110 L238,110" stroke="#3d453c" stroke-width="1.5" marker-end="url(#h1a)"/>
+<text x="172" y="152" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" fill="#3d453c">copper loaded by ATP7A</text>
+<path d="M348,104 C386,104 386,60 420,60" stroke="#3d453c" stroke-width="1.5" fill="none" marker-end="url(#h1a)"/>
+<path d="M348,116 C386,116 386,160 420,160" stroke="#3d453c" stroke-width="1.5" fill="none" marker-end="url(#h1a)"/>
+<rect x="424" y="36" width="124" height="48" rx="6" fill="#4a3426"/>
+<text x="486" y="57" text-anchor="middle" font-family="Newsreader" font-size="15" fill="#f7f5ee">eumelanin</text>
+<text x="486" y="74" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#e0d6c8">brown / black</text>
+<rect x="424" y="136" width="124" height="48" rx="6" fill="#c0763c"/>
+<text x="486" y="157" text-anchor="middle" font-family="Newsreader" font-size="15" fill="#fffaf2">pheomelanin</text>
+<text x="486" y="174" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#fbefe2">red / yellow</text>
+<rect x="318" y="168" width="78" height="20" rx="10" fill="#efece1" stroke="#d9d4c4"/>
+<text x="357" y="182" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#3d453c">+ cysteine</text>
+</svg>
+</div>
 <p>Pigment is only made while the hair is growing (anagen). When the follicle rests and restarts, it needs a fresh set of melanocytes, and those come from <strong>melanocyte stem cells</strong> parked higher up the follicle.</p>
 <p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">textbook pigment biology; the copper-pump requirement is shown directly in cells.</span></p>
 
@@ -636,8 +671,54 @@ footer.end b{color:var(--moss);}
   <li>red light<sup class="cite"><a href="#r61">61</a></sup></li>
   <li>a melon-leaf compound, meloside A (tested by the company developing it)<sup class="cite"><a href="#r59">59</a></sup></li>
 </ul>
-<div class="chain">DHT ──androgen receptor (dermal papilla)──▶ ROS ↑ · mitochondria ↓
-     └──▶ TGF-β1 · DKK-1 · IL-6 ──▶ matrix cells stop dividing ──▶ shorter growth phase ──▶ thinner hair</div>
+<div class="fig">
+<svg viewBox="0 0 560 264" role="img" aria-label="DHT binds the androgen receptor in the dermal papilla, raising ROS and releasing TGF-beta1, DKK-1 and IL-6, which stop matrix cells dividing, shorten the growth phase and thin the hair; MitoQ and red light block the ROS step">
+<defs>
+<marker id="h2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3d453c"/></marker>
+</defs>
+<ellipse cx="140" cy="120" rx="124" ry="96" fill="#efece1" stroke="#d9d4c4"/>
+<text x="140" y="46" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.5" fill="#3d6a7a">DERMAL PAPILLA CELL</text>
+<rect x="34" y="104" width="56" height="28" rx="14" fill="rgba(168,86,47,.12)" stroke="#a8562f"/>
+<text x="62" y="123" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" font-weight="600" fill="#a8562f">DHT</text>
+<path d="M90,118 L108,118" stroke="#3d453c" stroke-width="1.5" marker-end="url(#h2a)"/>
+<rect x="110" y="104" width="48" height="28" rx="4" fill="#fffefb" stroke="#4a5d3a"/>
+<text x="134" y="123" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="#33421f">AR</text>
+<text x="134" y="148" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" fill="#3d453c">androgen receptor</text>
+<path d="M152,104 L176,88" stroke="#3d453c" stroke-width="1.5" marker-end="url(#h2a)"/>
+<rect x="178" y="62" width="70" height="40" rx="6" fill="rgba(168,86,47,.12)" stroke="#a8562f"/>
+<text x="213" y="79" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#a8562f">ROS ↑</text>
+<text x="213" y="95" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#a8562f">mito ↓</text>
+<path d="M213,200 L213,110" stroke="#b78a2e" stroke-width="2.5"/>
+<path d="M200,109 L226,109" stroke="#b78a2e" stroke-width="3.5" stroke-linecap="round"/>
+<rect x="158" y="200" width="110" height="24" rx="12" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+<text x="213" y="216" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#7a5c14">MitoQ · red light</text>
+<g stroke="#3d453c" stroke-width="1.5" fill="none">
+<path d="M262,120 C278,120 278,78 294,78" marker-end="url(#h2a)"/>
+<path d="M262,120 L294,118" marker-end="url(#h2a)"/>
+<path d="M262,120 C278,120 278,158 294,158" marker-end="url(#h2a)"/>
+</g>
+<g font-family="IBM Plex Mono" font-size="11" fill="#a8562f" text-anchor="middle">
+<rect x="296" y="66" width="78" height="24" rx="12" fill="#fffefb" stroke="#a8562f"/><text x="335" y="82">TGF-β1</text>
+<rect x="296" y="106" width="78" height="24" rx="12" fill="#fffefb" stroke="#a8562f"/><text x="335" y="122">DKK-1</text>
+<rect x="296" y="146" width="78" height="24" rx="12" fill="#fffefb" stroke="#a8562f"/><text x="335" y="162">IL-6</text>
+</g>
+<g stroke="#9aa08f" stroke-width="1.5" fill="none">
+<path d="M374,78 C390,78 388,118 402,118"/><path d="M374,158 C390,158 388,118 402,118"/>
+<path d="M374,118 L402,118" stroke="#3d453c" marker-end="url(#h2a)"/>
+</g>
+<rect x="404" y="94" width="144" height="48" rx="6" fill="#fffefb" stroke="#4a5d3a"/>
+<text x="476" y="114" text-anchor="middle" font-family="Newsreader" font-size="15" fill="#1a1f1a">matrix cells</text>
+<text x="476" y="131" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#3d453c">stop dividing</text>
+<path d="M476,142 L476,158" stroke="#3d453c" stroke-width="1.5" marker-end="url(#h2a)"/>
+<rect x="404" y="160" width="144" height="28" rx="6" fill="#fffefb" stroke="#d9d4c4"/>
+<text x="476" y="178" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" fill="#1a1f1a">shorter growth phase</text>
+<path d="M476,188 L476,200" stroke="#3d453c" stroke-width="1.5" marker-end="url(#h2a)"/>
+<path d="M446,208 L446,240" stroke="#4a3426" stroke-width="7" stroke-linecap="round"/>
+<path d="M458,224 L482,224" stroke="#3d453c" stroke-width="1.5" marker-end="url(#h2a)"/>
+<path d="M496,208 L496,240" stroke="#4a3426" stroke-width="2" stroke-linecap="round"/>
+<text x="471" y="258" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#3d453c">thinner hair</text>
+</svg>
+</div>
 <p>So DHT is the trigger and oxidative stress and inflammation carry its signal. DHT is still upstream of all of it in genetically sensitive follicles, which is why lowering it with finasteride regrows hair.<sup class="cite"><a href="#r38">38</a></sup> The downstream steps explain why red light, which has placebo-controlled trials, works, and why antioxidant and anti-inflammatory approaches are reasonable additions to the drugs rather than replacements.</p>
 <p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for DHT acting through dermal papilla signals, replicated in human balding papilla cells;</span> <span class="ev ev-animal">Animal&ndash;in&nbsp;vitro</span><span class="txt">for antioxidants blocking those signals. No human studies yet, apart from red light.</span></p>
 

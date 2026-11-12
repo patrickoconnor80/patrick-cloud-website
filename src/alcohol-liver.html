@@ -231,6 +231,13 @@ sup.cite a:hover{text-decoration:underline;}
   letter-spacing:.2em;text-transform:uppercase;color:var(--sky);
   font-weight:600;margin-bottom:12px;
 }
+.fig{margin:18px 0;}
+.fig svg{display:block;width:100%;height:auto;}
+.fig-wide{max-width:560px;margin:18px auto;}
+.fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fig-panel{border:1px solid var(--rule);background:var(--card);border-radius:4px;padding:8px;}
+.fig-cap{font-size:15px;color:var(--ink-soft);font-style:italic;margin-top:10px;line-height:1.5;}
+@media (max-width:560px){.fig-pair{grid-template-columns:1fr;}}
 .chain{
   font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.75;
   background:var(--paper-deep);border-radius:4px;padding:16px 20px;margin:18px 0;
@@ -419,6 +426,7 @@ footer.end b{color:var(--moss);}
 <div class="subnav"><div class="subnav-inner">
   <a href="nutrition.html" class="active">Papers</a>
   <a href="metabolic-health.html">Metabolic Health</a>
+  <a href="goals.html">Health Goals</a>
   <a href="nutrients.html">Nutrients</a>
   <a href="supplements.html">Supplements</a>
   <a href="healthfoods.html">Health Foods</a>
@@ -480,12 +488,58 @@ footer.end b{color:var(--moss);}
 
 <h3><span class="h3num">I.1</span>The breakdown line</h3>
 <p>The body has no way to store alcohol, so the liver clears it first, ahead of other fuels. Most goes through alcohol dehydrogenase (ADH) to acetaldehyde, then through aldehyde dehydrogenase (ALDH2) to acetate. Both steps turn NAD<sup>+</sup> into NADH. Heavy or chronic drinking also switches on a second enzyme, CYP2E1, which oxidises alcohol while leaking reactive oxygen species.</p>
-<div class="chain">ethanol ──ADH (NAD⁺→NADH)──▶ acetaldehyde ──ALDH2 (NAD⁺→NADH)──▶ acetate
-   └──CYP2E1 (induced by heavy drinking)──▶ acetaldehyde + reactive oxygen species
-
-high NADH/NAD⁺ ──▶ fat burning stalls, fat synthesis rises ──▶ fatty liver
-acetaldehyde ──▶ binds proteins and DNA ──▶ toxicity, inflammation
-alcohol ──▶ leaky gut wall ──▶ endotoxin to the liver ──▶ Kupffer-cell inflammation</div>
+<div class="fig">
+<svg viewBox="0 0 560 304" role="img" aria-label="Ethanol is broken down by ADH and ALDH2 to acetate, each step turning NAD+ into NADH; CYP2E1 adds a route that leaks ROS. Damage comes from high NADH causing fatty liver, acetaldehyde binding proteins and DNA, and gut endotoxin inflaming Kupffer cells">
+<defs>
+<marker id="a1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3d453c"/></marker>
+<marker id="a1r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#a8562f"/></marker>
+</defs>
+<g font-family="Newsreader" font-size="15" fill="#1a1f1a" text-anchor="middle">
+<rect x="16" y="34" width="84" height="34" rx="6" fill="#fffefb" stroke="#d9d4c4"/><text x="58" y="56">ethanol</text>
+<rect x="214" y="34" width="120" height="34" rx="6" fill="#fffefb" stroke="#a8562f"/><text x="274" y="56">acetaldehyde</text>
+<rect x="452" y="34" width="92" height="34" rx="6" fill="#fffefb" stroke="#d9d4c4"/><text x="498" y="56">acetate</text>
+</g>
+<path d="M100,51 L212,51" stroke="#3d453c" stroke-width="1.5" marker-end="url(#a1a)"/>
+<path d="M334,51 L450,51" stroke="#3d453c" stroke-width="1.5" marker-end="url(#a1a)"/>
+<g font-family="IBM Plex Mono" text-anchor="middle">
+<rect x="126" y="22" width="60" height="20" rx="10" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="156" y="36" font-size="10.5" fill="#7a5c14">ADH</text>
+<rect x="362" y="22" width="60" height="20" rx="10" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/><text x="392" y="36" font-size="10.5" fill="#7a5c14">ALDH2</text>
+<text x="156" y="67" font-size="9.5" fill="#3d6a7a">NAD⁺ → NADH</text>
+<text x="392" y="67" font-size="9.5" fill="#3d6a7a">NAD⁺ → NADH</text>
+</g>
+<path d="M58,68 L58,112 L84,112" stroke="#a8562f" stroke-width="1.5" fill="none" marker-end="url(#a1r)"/>
+<rect x="86" y="98" width="180" height="28" rx="14" fill="rgba(168,86,47,.1)" stroke="#a8562f"/>
+<text x="176" y="116" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" fill="#a8562f">CYP2E1 · heavy drinking</text>
+<path d="M244,98 L244,70" stroke="#a8562f" stroke-width="1.5" marker-end="url(#a1r)"/>
+<path d="M266,112 L292,112" stroke="#a8562f" stroke-width="1.5" marker-end="url(#a1r)"/>
+<rect x="294" y="100" width="72" height="24" rx="12" fill="rgba(168,86,47,.1)" stroke="#a8562f"/>
+<text x="330" y="116" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" fill="#a8562f">ROS ↑</text>
+<path d="M16,146 L544,146" stroke="#d9d4c4"/>
+<text x="280" y="164" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" letter-spacing="2" fill="#3d6a7a">THREE ROUTES TO DAMAGE</text>
+<g text-anchor="middle">
+<rect x="16" y="174" width="168" height="120" rx="6" fill="#fffefb" stroke="#d9d4c4"/>
+<rect x="196" y="174" width="168" height="120" rx="6" fill="#fffefb" stroke="#d9d4c4"/>
+<rect x="376" y="174" width="168" height="120" rx="6" fill="#fffefb" stroke="#d9d4c4"/>
+<g font-family="IBM Plex Mono" font-size="10" letter-spacing="1" fill="#a8562f">
+<text x="100" y="196">NADH / NAD⁺ ↑</text><text x="280" y="196">ACETALDEHYDE</text><text x="460" y="196">ALCOHOL IN GUT</text>
+</g>
+<g font-family="Newsreader" font-size="14" fill="#1a1f1a">
+<text x="100" y="222">fat burning stalls,</text><text x="100" y="240">fat synthesis rises</text>
+<text x="280" y="222">binds proteins</text><text x="280" y="240">and DNA</text>
+<text x="460" y="222">leaky gut wall lets</text><text x="460" y="240">endotoxin reach liver</text>
+</g>
+<g stroke="#3d453c" stroke-width="1.5">
+<path d="M100,248 L100,262" marker-end="url(#a1a)"/><path d="M280,248 L280,262" marker-end="url(#a1a)"/><path d="M460,248 L460,262" marker-end="url(#a1a)"/>
+</g>
+<rect x="44" y="266" width="112" height="22" rx="11" fill="rgba(74,93,58,.12)" stroke="#4a5d3a"/>
+<rect x="206" y="266" width="148" height="22" rx="11" fill="rgba(74,93,58,.12)" stroke="#4a5d3a"/>
+<rect x="380" y="266" width="160" height="22" rx="11" fill="rgba(74,93,58,.12)" stroke="#4a5d3a"/>
+<g font-family="IBM Plex Mono" font-size="10" fill="#33421f">
+<text x="100" y="281">fatty liver</text><text x="280" y="281">toxicity · inflammation</text><text x="460" y="281" font-size="9.5">Kupffer-cell inflammation</text>
+</g>
+</g>
+</svg>
+</div>
 <p>The Nature Reviews primer summarises the damage as steatosis, oxidative stress, acetaldehyde toxicity and cytokine-driven inflammation.<sup class="cite"><a href="#r1">1</a></sup> The gut-endotoxin route matters for this paper because several items on the list (glycine, taurine) act on it, and so does the type of dietary fat (I.3).</p>
 <p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">textbook biochemistry and decades of human and animal work.</span></p>
 
