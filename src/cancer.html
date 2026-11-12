@@ -213,6 +213,18 @@ em{font-style:italic;}
 .ev-mixed::before{background:var(--gold);}
 .ev-weak{background:rgba(168,86,47,.13);color:#7d3d1c;}
 .ev-weak::before{background:var(--rust);}
+.ev-animal{background:rgba(61,106,122,.12);color:var(--sky);}
+.ev-animal::before{background:var(--sky);}
+.ev-inferred{background:rgba(61,69,60,.08);color:var(--ink-soft);}
+.ev-inferred::before{background:transparent;border:1.5px solid var(--ink-soft);width:5px;height:5px;}
+.fig{margin:26px 0;}
+.fig svg{display:block;width:100%;height:auto;}
+.fig-pdh{max-width:520px;margin:26px auto;}
+.fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fig-panel{border:1px solid var(--rule);background:var(--card);border-radius:4px;padding:8px;}
+.fig-top{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:10px;}
+.fig-cap{font-size:15px;color:var(--ink-soft);font-style:italic;margin-top:10px;line-height:1.5;}
+@media (max-width:560px){.fig-pair{grid-template-columns:1fr;}}
 .evline{margin:16px 0 6px;font-size:15px;}
 .evline .txt{color:var(--ink-soft);font-style:italic;}
 
@@ -581,7 +593,7 @@ footer.end b{color:var(--moss);}
 <div class="mech">
   <div class="mech-lbl">Standard Models and Their Limitations</div>
   <ul style="margin:0;padding-left:20px;font-size:16px;line-height:1.7;">
-    <li><strong>Cell culture models:</strong> cancer cells grown in two-dimensional culture in high-glucose, high-oxygen media are metabolically very different from tumors in vivo. Standard culture conditions (typically 20% O&sub;2;, 25 mM glucose) bear little resemblance to the hypoxic, nutrient-deprived tumor microenvironment. Many metabolic phenotypes &mdash; including aspects of the Warburg effect &mdash; are artifacts of culture conditions.</li>
+    <li><strong>Cell culture models:</strong> cancer cells grown in two-dimensional culture in high-glucose, high-oxygen media are metabolically very different from tumors in vivo. Standard culture conditions (typically 20% O<sub>2</sub>, 25 mM glucose) bear little resemblance to the hypoxic, nutrient-deprived tumor microenvironment. Many metabolic phenotypes &mdash; including aspects of the Warburg effect &mdash; are artifacts of culture conditions.</li>
     <li><strong>Xenograft models:</strong> implanting human cancer cells into immunocompromised mice is the workhorse of preclinical drug testing. But human cells in a mouse metabolic environment, without a competent immune system, in a species whose metabolic rate, telomere length, glucose regulation, and body temperature all differ substantially from humans, produce findings that translate poorly. Thousands of compounds that &ldquo;work&rdquo; in xenograft models have failed in clinical trials.</li>
     <li><strong>Genetic/transgenic models:</strong> driving cancer by engineering specific genetic mutations in mice creates reproducible tumor development but not necessarily the same disease. Mice rarely develop spontaneous epithelial cancers (carcinomas), which constitute most human cancer deaths. Their short lifespan, small body size, and different carcinogen exposure history mean the models are inherently imperfect.</li>
     <li><strong>Metastatic models:</strong> the majority of cancer deaths come not from primary tumors but from metastasis, yet most experimental models poorly recapitulate the metastatic cascade &mdash; particularly the early steps of intravasation, circulation, and extravasation in an intact immune environment. Not all cancers metastasize, and why some do while others do not remains poorly understood in either the genetic or metabolic framework.</li>
@@ -665,7 +677,7 @@ footer.end b{color:var(--moss);}
 <b>Warburg pathway</b><br>
 Glucose <span class="arrow">&rarr;</span> [glucose transporters GLUT1/3] <span class="arrow">&rarr;</span> intracellular glucose<br>
 <span class="arrow">&rarr;</span> glycolysis (10 steps) <span class="arrow">&rarr;</span> pyruvate (net 2 ATP/glucose)<br>
-<span class="arrow">&rarr;</span> [lactate dehydrogenase] <span class="arrow">&rarr;</span> lactate + H&sup1;<br>
+<span class="arrow">&rarr;</span> [lactate dehydrogenase] <span class="arrow">&rarr;</span> lactate + H<sup>+</sup><br>
 Lactate secreted via MCT4 <span class="arrow">&rarr;</span> acidified tumor microenvironment<br>
 <b>GAPDH</b> (step 6 of glycolysis) is elevated in cancer cells, reflecting pathway upregulation
 </div>
@@ -681,7 +693,7 @@ Lactate secreted via MCT4 <span class="arrow">&rarr;</span> acidified tumor micr
 
 <div class="chain">
 <b>Glutamine fermentation pathway</b><br>
-Glutamine <span class="arrow">&rarr;</span> [glutaminase] <span class="arrow">&rarr;</span> glutamate + NH&sub;3;<br>
+Glutamine <span class="arrow">&rarr;</span> [glutaminase] <span class="arrow">&rarr;</span> glutamate + NH<sub>3</sub><br>
 Glutamate <span class="arrow">&rarr;</span> [glutamate dehydrogenase] <span class="arrow">&rarr;</span> &alpha;-ketoglutarate (&alpha;-KG)<br>
 &alpha;-KG enters TCA cycle as an anaplerotic substrate<br>
 <b>Preferred route:</b> &alpha;-KG <span class="arrow">&rarr;</span> succinate <span class="arrow">&rarr;</span> fumarate <span class="arrow">&rarr;</span> malate <span class="arrow">&rarr;</span> oxaloacetate<br>
@@ -741,6 +753,35 @@ Mitochondrial damage <span class="arrow">&rarr;</span> impaired OxPhos <span cla
   <div class="pb-lbl">Pushback: the causal direction is debated</div>
   <p style="margin:0 0 8px;">The argument that mutations are downstream of metabolic dysfunction requires accepting a specific causal chain that is difficult to establish experimentally &mdash; partly because mitochondrial dysfunction and mutation accumulation are likely to be mutually reinforcing rather than purely sequential. Some oncogenic mutations (Myc amplification, certain Ras mutations, IDH1/2 mutations) demonstrably alter mitochondrial function &mdash; they are upstream of the metabolic shift in those specific contexts, not downstream of it. IDH1/2 mutations, for example, produce the oncometabolite 2-hydroxyglutarate, which inhibits &alpha;-ketoglutarate-dependent dioxygenases and directly alters the mitochondrial metabolic environment. In these cases, the genetic event is clearly driving the metabolic change. The metabolic model does not need to claim this never happens; it claims only that it is not the dominant pattern across most cancers.</p>
 </div>
+
+<h3 id="v-3"><span class="h3num">V.3</span>Why cancer cells keep dividing</h3>
+
+<p>Cancer is usually described as fast-growing, but speed is not really the defect. The gut lining replaces itself every few days and bone marrow makes billions of blood cells an hour &mdash; faster than most solid tumours divide. Many breast and prostate tumours take months to double in size. What cancer cells lack is not speed but the ability to stop. Normal cells have three brakes on division, and mitochondria are involved in each. A fourth requirement, building materials, is supplied by the fermentation itself.</p>
+
+<div class="hallmark-grid">
+  <div class="hallmark-card">
+    <div class="hm-num">Brake 1</div>
+    <div class="hm-name">Specialization</div>
+    <p>Mature cells leave the cell cycle when they specialize. Dividing cells (embryos, stem cells, activated immune cells) run mainly on glycolysis; specialized cells run on oxidative phosphorylation. A cell forced back onto fermentation is, metabolically, back in the dividing state.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Brake 2</div>
+    <div class="hm-name">Self-destruction</div>
+    <p>A damaged cell normally kills itself (apoptosis), and mitochondria run the process by releasing cytochrome c from the inner membrane. Cancer cells with abnormal mitochondria and lost p53 commonly fail to trigger it, so damaged cells survive instead of being removed.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Brake 3</div>
+    <div class="hm-name">Permission to divide</div>
+    <p>Normal cells divide only when an outside growth signal tells them to. The oncogenes from <a href="#v-2">V.2</a> (RAS, PI3K/AKT, MYC) hold that signal on permanently &mdash; and they are the same genes keeping glycolysis running, so the cell cannot switch off one without the other.</p>
+  </div>
+  <div class="hallmark-card">
+    <div class="hm-num">Supply</div>
+    <div class="hm-name">Building materials</div>
+    <p>Dividing means copying the whole cell: DNA, membranes, protein. Side branches of glycolysis make the parts &mdash; ribose and NADPH (pentose phosphate pathway), serine and glycine for nucleotides, glycerol for membranes &mdash; and glutamine supplies the nitrogen.<sup class="cite"><a href="#r19">19</a></sup></p>
+  </div>
+</div>
+
+<p>Put together: fermentation supplies both the parts and the signal to keep building, and damaged mitochondria remove the self-destruct switch. This is why the metabolic model treats uncontrolled division as a consequence of the energy shift rather than a separate defect &mdash; and why restricting glucose and glutamine (<a href="#viii-1">VIII.1</a>) attacks proliferation directly, by taking away the raw material as well as the fuel.<sup class="cite"><a href="#r5">5</a></sup></p>
 
 </section>
 
@@ -818,13 +859,13 @@ Mitochondrial damage <span class="arrow">&rarr;</span> impaired OxPhos <span cla
   <div class="chain">
 Cancer cells: elevated TfR1 <span class="arrow">&rarr;</span> aggressive iron import<br>
 Iron <span class="arrow">&rarr;</span> ribonucleotide reductase (RNR) <span class="arrow">&rarr;</span> deoxyribonucleotide synthesis <span class="arrow">&rarr;</span> <b>DNA replication</b><br>
-Elevated H&sub;2;O&sub;2; (from impaired ETC) + Fe&sup2;&sup; <span class="arrow">&rarr;</span> Fenton chemistry <span class="arrow">&rarr;</span> &middot;OH radicals <span class="arrow">&rarr;</span> further cardiolipin &amp; ETC damage<br>
+Elevated H<sub>2</sub>O<sub>2</sub> (from impaired ETC) + Fe<sup>2+</sup> <span class="arrow">&rarr;</span> Fenton chemistry <span class="arrow">&rarr;</span> &middot;OH radicals <span class="arrow">&rarr;</span> further cardiolipin &amp; ETC damage<br>
 Iron restriction <span class="arrow">&rarr;</span> preferentially limits RNR in high-turnover cancer cells<br>
 Normal cells: lower iron demand, greater iron-regulatory flexibility
   </div>
 </div>
 
-<p>There is also a direct connection to the mitochondrial dysfunction model developed in <a href="#part-iii">Part&nbsp;III</a>: cancer cells with impaired ETC already generate elevated H&sub;2;O&sub;2;. Elevated iron converts this hydrogen peroxide into the hydroxyl radical (the most reactive oxygen species) via Fenton chemistry &mdash; which then oxidizes cardiolipin, further impairing the ETC. This creates a self-amplifying loop: mitochondrial damage raises ROS, excess iron converts that ROS into radical species, which damage cardiolipin and deepen the ETC defect. Reducing iron load interrupts this cycle at the catalyst step.</p>
+<p>There is also a direct connection to the mitochondrial dysfunction model developed in <a href="#part-iii">Part&nbsp;III</a>: cancer cells with impaired ETC already generate elevated H<sub>2</sub>O<sub>2</sub>. Elevated iron converts this hydrogen peroxide into the hydroxyl radical (the most reactive oxygen species) via Fenton chemistry &mdash; which then oxidizes cardiolipin, further impairing the ETC. This creates a self-amplifying loop: mitochondrial damage raises ROS, excess iron converts that ROS into radical species, which damage cardiolipin and deepen the ETC defect. Reducing iron load interrupts this cycle at the catalyst step.</p>
 
 <p class="evline"><span class="ev ev-strong">Strong</span><span class="txt">for the mechanistic rationale (TfR1 upregulation, RNR iron dependence, Fenton chemistry at damaged ETC) and the randomized trial signal.</span> <span class="ev ev-mixed">Mixed</span><span class="txt">for the cancer endpoint specifically &mdash; it was a secondary analysis in a PAD population; replication in a cancer-prevention design is needed before this can be treated as established.</span></p>
 
@@ -852,15 +893,65 @@ Normal cells: lower iron demand, greater iron-regulatory flexibility
 
 <p>Glutamine is harder to restrict through diet alone because it is non-essential and synthesized endogenously. Fasting suppresses both glucose and glutamine availability simultaneously &mdash; which is one reason fasting outperforms simple carbohydrate restriction in the preclinical literature. Glutamine pharmacological targeting (DON analogs, glutaminase inhibitors) is active clinically but outside a dietary protocol.</p>
 
-<div class="mech">
-  <div class="mech-lbl">The metabolic selectivity of fuel restriction</div>
-  <div class="chain">
-Low glucose <span class="arrow">&rarr;</span> low glycolytic flux <span class="arrow">&rarr;</span> cancer cells cannot compensate via OXPHOS<br>
-Elevated ketones <span class="arrow">&rarr;</span> fuel for normal cells via OXPHOS <span class="arrow">&rarr;</span> cancer cells excluded by dysfunctional ETC<br>
-Low insulin/IGF-1 <span class="arrow">&rarr;</span> reduced PI3K/AKT/mTOR signaling <span class="arrow">&rarr;</span> reduced anabolic drive<br>
-Fasting reduces glutamine <span class="arrow">&rarr;</span> <b>attacks both fermentable fuels simultaneously</b>
+<figure class="fig" style="margin-left:0;margin-right:0;">
+  <div class="fig-top">After a fast: glucose &darr; &middot; glutamine &darr; &middot; ketones &uarr; &middot; insulin &amp; IGF-1 &darr;</div>
+  <div class="fig-pair">
+    <div class="fig-panel">
+      <svg viewBox="0 0 340 250" role="img" aria-label="Normal cell: ketones and fat feed working mitochondria, ATP stays full">
+        <defs>
+          <marker id="fm-moss" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#4a5d3a"/></marker>
+          <marker id="fm-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#a9a99c"/></marker>
+        </defs>
+        <text x="14" y="24" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" letter-spacing="1.5" fill="#4a5d3a">NORMAL CELL</text>
+        <rect x="14" y="48" width="104" height="28" rx="14" fill="rgba(74,93,58,.14)" stroke="#4a5d3a"/>
+        <text x="66" y="67" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#33421f">Ketones &#8593;</text>
+        <rect x="14" y="88" width="104" height="28" rx="14" fill="rgba(74,93,58,.14)" stroke="#4a5d3a"/>
+        <text x="66" y="107" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#33421f">Fat &#8593;</text>
+        <rect x="14" y="128" width="104" height="28" rx="14" fill="#fffefb" stroke="#a9a99c" stroke-dasharray="4 3"/>
+        <text x="66" y="147" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#8a8a7d">Glucose &#8595;</text>
+        <path d="M120,62 L182,90" stroke="#4a5d3a" stroke-width="2.2" fill="none" marker-end="url(#fm-moss)"/>
+        <path d="M120,102 L178,102" stroke="#4a5d3a" stroke-width="2.2" fill="none" marker-end="url(#fm-moss)"/>
+        <path d="M120,142 L182,116" stroke="#a9a99c" stroke-width="1.6" stroke-dasharray="4 3" fill="none" marker-end="url(#fm-soft)"/>
+        <ellipse cx="254" cy="102" rx="70" ry="42" fill="rgba(74,93,58,.10)" stroke="#4a5d3a" stroke-width="2"/>
+        <path d="M200,102 q9,-24 18,0 t18,0 t18,0 t18,0 t18,0" stroke="#4a5d3a" stroke-width="1.5" fill="none"/>
+        <text x="254" y="166" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" fill="#3d453c">working mitochondria</text>
+        <text x="14" y="211" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#3d453c">ATP</text>
+        <rect x="50" y="199" width="276" height="16" rx="3" fill="#efece1"/>
+        <rect x="50" y="199" width="250" height="16" rx="3" fill="#4a5d3a"/>
+        <text x="14" y="240" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#3d453c">Switches to ketones and fat.</text>
+      </svg>
+    </div>
+    <div class="fig-panel">
+      <svg viewBox="0 0 340 250" role="img" aria-label="Cancer cell: both fermentation fuels are low and damaged mitochondria cannot burn ketones, so ATP runs short">
+        <defs>
+          <marker id="fc-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#a8562f"/></marker>
+          <marker id="fc-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#a9a99c"/></marker>
+        </defs>
+        <text x="14" y="24" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" letter-spacing="1.5" fill="#a8562f">CANCER CELL</text>
+        <rect x="14" y="48" width="104" height="28" rx="14" fill="#fffefb" stroke="#a9a99c" stroke-dasharray="4 3"/>
+        <text x="66" y="67" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#8a8a7d">Glucose &#8595;</text>
+        <rect x="14" y="88" width="104" height="28" rx="14" fill="#fffefb" stroke="#a9a99c" stroke-dasharray="4 3"/>
+        <text x="66" y="107" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#8a8a7d">Glutamine &#8595;</text>
+        <rect x="14" y="128" width="104" height="28" rx="14" fill="rgba(74,93,58,.14)" stroke="#4a5d3a"/>
+        <text x="66" y="147" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#33421f">Ketones &#8593;</text>
+        <rect x="184" y="40" width="140" height="38" rx="4" fill="rgba(168,86,47,.08)" stroke="#a8562f"/>
+        <text x="254" y="64" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" fill="#7d3d1c">fermentation</text>
+        <path d="M120,62 L180,60" stroke="#a9a99c" stroke-width="1.6" stroke-dasharray="4 3" fill="none" marker-end="url(#fc-soft)"/>
+        <path d="M120,100 L180,72" stroke="#a9a99c" stroke-width="1.6" stroke-dasharray="4 3" fill="none" marker-end="url(#fc-soft)"/>
+        <path d="M120,142 L176,140" stroke="#4a5d3a" stroke-width="2.2" fill="none"/>
+        <path d="M172,132 l12,16 M184,132 l-12,16" stroke="#a8562f" stroke-width="2.6"/>
+        <ellipse cx="256" cy="138" rx="64" ry="32" fill="rgba(168,86,47,.05)" stroke="#a8562f" stroke-width="2" stroke-dasharray="6 4"/>
+        <path d="M208,138 q8,-18 16,0 m10,0 q8,-18 16,0 m12,0 q8,-18 16,0" stroke="#a8562f" stroke-width="1.5" fill="none"/>
+        <text x="256" y="188" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="14" fill="#3d453c">damaged mitochondria</text>
+        <text x="14" y="211" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="#3d453c">ATP</text>
+        <rect x="50" y="199" width="276" height="16" rx="3" fill="#efece1"/>
+        <rect x="50" y="199" width="70" height="16" rx="3" fill="#a8562f"/>
+        <text x="14" y="240" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#3d453c">Can&#8217;t burn ketones; both fuels it can use are low.</text>
+      </svg>
+    </div>
   </div>
-</div>
+  <figcaption class="fig-cap">Same blood, different outcome. Low insulin and IGF-1 also turn down the PI3K/AKT/mTOR growth signal from <a href="#v-2">V.2</a>.</figcaption>
+</figure>
 
 <p>Practical monitoring: the Glucose-Ketone Index (GKI = fasting blood glucose in mmol/L &divide; blood ketones in mmol/L) is a single-number measure of metabolic state. Seyfried places the therapeutic zone below GKI&nbsp;1.0; nutritional ketosis typically runs 1&ndash;3. A standard glucometer and ketone strips provide this without clinical intervention.</p>
 
@@ -868,16 +959,88 @@ Fasting reduces glutamine <span class="arrow">&rarr;</span> <b>attacks both ferm
 
 <h3 id="viii-2"><span class="h3num">VIII.2</span>Restoring the PDH gate: thiamine and alpha-lipoic acid</h3>
 
-<p>Pyruvate dehydrogenase (PDH) is the gateway between glycolysis and the TCA cycle. When it is active, pyruvate enters the mitochondria as acetyl-CoA; when it is suppressed &mdash; by PDH kinase (PDK) overexpression, by nutrient deficiency, or by the Warburg phenotype&rsquo;s own feedback &mdash; pyruvate is shunted to lactate and the cell runs on fermentation. Cancer cells actively suppress PDH by overexpressing PDK. Two cofactors are required for PDH function:</p>
+<p>Pyruvate dehydrogenase (PDH) is the gate between glycolysis and the TCA cycle. When it is open, pyruvate enters the mitochondria as acetyl-CoA and is burned for ATP. When it is shut, pyruvate is turned into lactate and the cell runs on fermentation. Cancer cells keep it shut by overexpressing PDH kinase (PDK), the enzyme that switches PDH off. PDH is a complex of three enzymes needing five cofactors, four of them made from B vitamins.</p>
 
-<ul style="font-size:16.5px;line-height:1.7;">
-  <li><strong>Thiamine (B1) as thiamine pyrophosphate (TPP)</strong> &mdash; cofactor for the PDH E1 subunit (pyruvate decarboxylation). Deficiency reduces PDH activity regardless of PDK status. B1 is also the cofactor for transketolase in the pentose phosphate pathway; adequacy reduces excess PPP flux, which cancer cells require heavily for nucleotide synthesis and NADPH production.</li>
-  <li><strong>Alpha-lipoic acid</strong> &mdash; cofactor for the PDH E2 subunit (dihydrolipoyl acetyltransferase). Without it, the complex cannot complete the acetyl group transfer to CoA. Alpha-lipoic acid is synthesized endogenously but is also a mitochondria-targeted antioxidant and a mild PDK inhibitor in its own right.</li>
-</ul>
+<figure class="fig fig-pdh">
+  <svg viewBox="0 0 520 640" role="img" aria-label="Glucose to pyruvate, with side exits to the pentose phosphate pathway and lactate; pyruvate through the PDH complex and its five cofactors to acetyl-CoA, the TCA cycle and ATP">
+    <defs>
+      <marker id="pm-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#3d453c"/></marker>
+      <marker id="pm-moss" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#4a5d3a"/></marker>
+      <marker id="pm-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#a8562f"/></marker>
+    </defs>
+    <g font-family="Newsreader, Georgia, serif" font-size="15" fill="#1a1f1a" text-anchor="middle">
+      <rect x="185" y="10" width="150" height="38" rx="4" fill="#fffefb" stroke="#d9d4c4"/>
+      <text x="260" y="34">Glucose</text>
+      <rect x="185" y="80" width="150" height="38" rx="4" fill="#fffefb" stroke="#d9d4c4"/>
+      <text x="260" y="104">Glucose-6-P</text>
+      <rect x="185" y="170" width="150" height="38" rx="4" fill="#fffefb" stroke="#d9d4c4"/>
+      <text x="260" y="194">Pyruvate</text>
+      <rect x="8" y="72" width="150" height="54" rx="4" fill="rgba(168,86,47,.07)" stroke="#a8562f"/>
+      <text x="83" y="95" fill="#7d3d1c">Pentose phosphate</text>
+      <text x="83" y="114" fill="#7d3d1c">pathway</text>
+      <rect x="372" y="170" width="140" height="38" rx="4" fill="rgba(168,86,47,.07)" stroke="#a8562f"/>
+      <text x="442" y="194" fill="#7d3d1c">Lactate</text>
+      <rect x="185" y="462" width="150" height="38" rx="4" fill="rgba(74,93,58,.10)" stroke="#4a5d3a"/>
+      <text x="260" y="486">Acetyl-CoA</text>
+      <circle cx="260" cy="572" r="46" fill="rgba(74,93,58,.10)" stroke="#4a5d3a" stroke-width="1.5"/>
+      <text x="260" y="577">TCA cycle</text>
+      <rect x="352" y="552" width="160" height="40" rx="4" fill="rgba(74,93,58,.10)" stroke="#4a5d3a"/>
+      <text x="432" y="577">ETC &#8594; ATP</text>
+    </g>
+    <g font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#3d453c">
+      <path d="M260,48 L260,76" stroke="#3d453c" stroke-width="1.8" marker-end="url(#pm-ink)"/>
+      <text x="270" y="67">glycolysis begins</text>
+      <path d="M260,118 L260,166" stroke="#3d453c" stroke-width="1.8" marker-end="url(#pm-ink)"/>
+      <text x="270" y="146">glycolysis</text>
+      <path d="M185,99 L162,99" stroke="#a8562f" stroke-width="1.8" marker-end="url(#pm-rust)"/>
+      <rect x="18" y="136" width="130" height="24" rx="12" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+      <text x="83" y="152" text-anchor="middle" fill="#7a5c14">transketolase: B1</text>
+      <text x="83" y="180" text-anchor="middle" fill="#7d3d1c">ribose + NADPH</text>
+      <text x="83" y="196" text-anchor="middle" fill="#7d3d1c">for new DNA</text>
+      <path d="M335,189 L368,189" stroke="#a8562f" stroke-width="1.8" marker-end="url(#pm-rust)"/>
+      <text x="351" y="181" text-anchor="middle" fill="#7d3d1c">LDH</text>
+      <text x="442" y="226" text-anchor="middle" fill="#7d3d1c">fermentation:</text>
+      <text x="442" y="241" text-anchor="middle" fill="#7d3d1c">the Warburg exit</text>
+      <path d="M260,208 L260,246" stroke="#4a5d3a" stroke-width="2.2" marker-end="url(#pm-moss)"/>
+    </g>
+    <rect x="40" y="250" width="410" height="160" rx="6" fill="#fffefb" stroke="#4a5d3a" stroke-width="1.8"/>
+    <text x="245" y="276" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="16" font-weight="600" fill="#33421f">PDH complex</text>
+    <g font-family="IBM Plex Mono, monospace" font-size="12">
+      <text x="62" y="314" font-weight="600" fill="#3d6a7a">E1</text>
+      <rect x="100" y="296" width="230" height="26" rx="13" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+      <text x="215" y="313" text-anchor="middle" fill="#7a5c14">TPP &#8592; B1 thiamine</text>
+      <text x="62" y="350" font-weight="600" fill="#3d6a7a">E2</text>
+      <rect x="100" y="332" width="140" height="26" rx="13" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+      <text x="170" y="349" text-anchor="middle" fill="#7a5c14">lipoic acid</text>
+      <rect x="250" y="332" width="150" height="26" rx="13" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+      <text x="325" y="349" text-anchor="middle" fill="#7a5c14">CoA &#8592; B5</text>
+      <text x="62" y="386" font-weight="600" fill="#3d6a7a">E3</text>
+      <rect x="100" y="368" width="140" height="26" rx="13" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+      <text x="170" y="385" text-anchor="middle" fill="#7a5c14">FAD &#8592; B2</text>
+      <rect x="250" y="368" width="150" height="26" rx="13" fill="rgba(183,138,46,.16)" stroke="#b78a2e"/>
+      <text x="325" y="385" text-anchor="middle" fill="#7a5c14">NAD&#8314; &#8592; B3</text>
+      <rect x="462" y="296" width="52" height="28" rx="4" fill="rgba(168,86,47,.10)" stroke="#a8562f"/>
+      <text x="488" y="315" text-anchor="middle" font-weight="600" fill="#7d3d1c">PDK</text>
+      <path d="M462,310 L454,310" stroke="#a8562f" stroke-width="2.4"/>
+      <path d="M452,300 L452,320" stroke="#a8562f" stroke-width="3"/>
+      <text x="488" y="342" text-anchor="middle" font-size="10.5" fill="#7d3d1c">shuts</text>
+      <text x="488" y="356" text-anchor="middle" font-size="10.5" fill="#7d3d1c">the gate;</text>
+      <text x="488" y="370" text-anchor="middle" font-size="10.5" fill="#7d3d1c">cancer</text>
+      <text x="488" y="384" text-anchor="middle" font-size="10.5" fill="#7d3d1c">has extra</text>
+      <path d="M260,410 L260,456" stroke="#4a5d3a" stroke-width="2.2" marker-end="url(#pm-moss)"/>
+      <path d="M260,500 L260,522" stroke="#4a5d3a" stroke-width="2.2" marker-end="url(#pm-moss)"/>
+      <path d="M306,572 L348,572" stroke="#4a5d3a" stroke-width="2.2" marker-end="url(#pm-moss)"/>
+      <text x="432" y="610" text-anchor="middle" fill="#3d453c">NADH, FADH&#8322; feed the ETC</text>
+    </g>
+  </svg>
+  <figcaption class="fig-cap">Glucose has two exits cancer cells lean on: the pentose phosphate pathway (parts for new DNA) and lactate (fermentation). PDH is the exit to full oxidation. Note that B1 shows up twice, at PDH and at transketolase.</figcaption>
+</figure>
 
-<p>Together B1 and alpha-lipoic acid cover the cofactor requirements at the E1 and E2 steps of PDH. Neither overrides PDK overexpression, but they ensure PDH is not additionally limited by nutrient deficit &mdash; and in normal mitochondria they support the full oxidative metabolism that cancer cells are working to avoid.</p>
+<p><strong>Why B1 alone is the wrong frame.</strong> Thiamine is a PDH cofactor, but it is also the cofactor for transketolase, the enzyme that lets cancer cells pull ribose out of glucose to build DNA. Extra thiamine feeds both exits. In mice with ascites tumours, thiamine at 25 times the RDA increased tumour growth by 164% &mdash; the authors attributed this to correcting the thiamine deficiency the tumour-bearing mice already had &mdash; and only much higher doses slowed growth, by about 10%.<sup class="cite"><a href="#r20">20</a></sup> In two cancer cell lines, high-dose thiamine did slow proliferation by the PDH route, lowering PDH phosphorylation, glucose use and lactate output much like the PDK inhibitor dichloroacetate &mdash; but at millimolar concentrations, far above what oral supplements reach.<sup class="cite"><a href="#r21">21</a></sup> The practical reading: avoid B1 deficiency, which shuts PDH in normal cells, but don&rsquo;t megadose thiamine expecting it to starve a tumour.</p>
 
-<p class="evline"><span class="ev ev-inferred">Inferred</span><span class="txt">from established PDH biochemistry and the roles of thiamine and lipoic acid as required cofactors. No clinical trials have tested these specifically as anti-cancer interventions.</span></p>
+<p><strong>Alpha-lipoic acid</strong> is the E2 cofactor and has no second job in the pentose phosphate pathway. It also inhibits PDK directly, so it opens the gate from two sides. And it is a redox molecule: the body reduces it to dihydrolipoic acid (DHLA), a strong reducing agent that regenerates glutathione, vitamin C and vitamin E. Making DHLA uses up NADH and NADPH, so lipoic acid also soaks up surplus reducing equivalents &mdash; it works as both an electron donor and an electron sink. B2, B3 and B5 cover the remaining PDH cofactors and overlap with the ETC support in <a href="#viii-3">VIII.3</a>.</p>
+
+<p class="evline"><span class="ev ev-inferred">Inferred</span><span class="txt">for lipoic acid and B-vitamin adequacy, from textbook PDH biochemistry; no trials test them as anti-cancer interventions.</span> <span class="ev ev-animal">Animal / early</span><span class="txt">for the thiamine dose effects: one mouse study and two cell lines, pointing in opposite directions by dose.</span></p>
 
 <h3 id="viii-3"><span class="h3num">VIII.3</span>ETC support: riboflavin, niacin, and CoQ10</h3>
 
@@ -903,7 +1066,9 @@ Fasting reduces glutamine <span class="arrow">&rarr;</span> <b>attacks both ferm
 
 <p>Two minerals with direct mechanistic roles in the cancer metabolic model:</p>
 
-<p><strong>Iron restriction.</strong> Cancer cells upregulate TfR1 and are more exposed to iron depletion than normal cells because of their high RNR demand for DNA replication and their elevated Fenton chemistry risk from impaired ETC (see <a href="#vii-4">VII.4</a>). The FeAST randomized trial showed a 35% reduction in new cancer diagnoses and &gt;60% reduction in cancer mortality with phlebotomy-induced iron reduction. Practical levers: regular blood donation achieves a similar effect on ferritin; minimizing processed red meat limits haem iron intake without restricting the iron available from whole-food sources subject to normal absorption regulation.</p>
+<p><strong>Iron restriction.</strong> Cancer cells upregulate TfR1 and are more exposed to iron depletion than normal cells because of their high RNR demand for DNA replication and their elevated Fenton chemistry risk from impaired ETC (see <a href="#vii-4">VII.4</a>). The FeAST randomized trial showed a 35% reduction in new cancer diagnoses and &gt;60% reduction in cancer mortality with phlebotomy-induced iron reduction.</p>
+
+<p>The practical lever is blood donation (or therapeutic phlebotomy), guided by ferritin. It is the only way to lower stored iron, because the body has no regulated route to excrete it. Diet moves ferritin slowly, and the type of iron matters less than is often claimed. Non-haem iron &mdash; including the reduced iron powder added to fortified flour &mdash; is absorbed through a pathway the hormone hepcidin shuts down when stores are full. Haem iron from meat is absorbed by a separate route that hepcidin restrains less, so per milligram it adds more to stores in someone already replete. Fortified bread is therefore not a worse source of iron load than red meat. The link between processed meat and colorectal cancer runs through a different mechanism: haem catalysing N-nitroso compounds and lipid peroxides inside the gut, not body iron stores. See <a href="iron.html">Iron</a>.</p>
 
 <p><strong>Zinc sufficiency.</strong> Zinc is a structural component of SOD1 and SOD2 &mdash; the antioxidant enzymes at the cytosolic and mitochondrial sites respectively &mdash; and is required for the zinc finger domains in p53 and several DNA-repair nucleases. In animal models, zinc deficiency combined with a chemical carcinogen produced oesophageal cancer in 67% of subjects; zinc-sufficient animals exposed to the same carcinogen developed cancer in 0%. Best dietary sources are oysters, beef, and shellfish; phytate in grains and legumes blocks absorption unless soaked or sprouted. See <a href="zinc.html">Zinc</a> for the full mechanism and animal-model caveat.</p>
 
@@ -963,7 +1128,7 @@ Fasting reduces glutamine <span class="arrow">&rarr;</span> <b>attacks both ferm
 <ol class="refs">
 <li id="r6">Warburg O. On the origin of cancer cells. <span class="j">Science</span> 1956;123(3191):309&ndash;314. <span class="note">(Warburg&rsquo;s mature statement of the mitochondrial hypothesis of cancer; predates molecular biology but correctly identifies the metabolic phenotype.)</span></li>
 <li id="r7">Roskelley RC, Mayer N, Horwitt BN, Salter WT. Studies in cancer. VII. Enzyme deficiency in human and experimental cancer. <span class="j">J Clin Invest</span> 1943;22(5):743&ndash;751. <span class="note">(Cytochrome oxidase deficiency in malignant cancers; foundational observation.)</span></li>
-<li id="r8">S&aacute;nchez-Cenizo L, Formentini L, Aldea M, et al. Up-regulation of the ATPase inhibitory factor 1 (IF1) of the mitochondrial H&sup1;-ATP synthase in human tumors mediates the metabolic shift of cancer cells to a Warburg phenotype. <span class="j">J Biol Chem</span> 2010;285(33):25308&ndash;25313. <span class="note">(&beta;-F1-ATPase reduction and IF1 upregulation; direct connection between ATP synthase downregulation and cancer glycolytic switch.)</span></li>
+<li id="r8">S&aacute;nchez-Cenizo L, Formentini L, Aldea M, et al. Up-regulation of the ATPase inhibitory factor 1 (IF1) of the mitochondrial H<sup>+</sup>-ATP synthase in human tumors mediates the metabolic shift of cancer cells to a Warburg phenotype. <span class="j">J Biol Chem</span> 2010;285(33):25308&ndash;25313. <span class="note">(&beta;-F1-ATPase reduction and IF1 upregulation; direct connection between ATP synthase downregulation and cancer glycolytic switch.)</span></li>
 </ol>
 
 <div class="ref-group">Cardiolipin in cancer</div>
@@ -978,7 +1143,7 @@ Fasting reduces glutamine <span class="arrow">&rarr;</span> <b>attacks both ferm
 
 <div class="ref-group">Glutamine fermentation in cancer</div>
 <ol class="refs">
-<li id="r11">Moreadith RW, Lehninger AL. The pathways of glutamate and glutamine oxidation by tumor cell mitochondria: role of mitochondrial NAD(P)&sup1;-dependent malic enzyme. <span class="j">J Biol Chem</span> 1984;259(10):6215&ndash;6221. <span class="note">(Direct dehydrogenation vs. oxidative decarboxylation; oxaloacetate route preferred to sustain TCA cycling; foundational characterization of cancer glutamine metabolism.)</span></li>
+<li id="r11">Moreadith RW, Lehninger AL. The pathways of glutamate and glutamine oxidation by tumor cell mitochondria: role of mitochondrial NAD(P)<sup>+</sup>-dependent malic enzyme. <span class="j">J Biol Chem</span> 1984;259(10):6215&ndash;6221. <span class="note">(Direct dehydrogenation vs. oxidative decarboxylation; oxaloacetate route preferred to sustain TCA cycling; foundational characterization of cancer glutamine metabolism.)</span></li>
 <li id="r12">Tomitsuka E, Kita K, Esumi H. Regulation of succinate-ubiquinone reductase and fumarate reductase activities in human complex II by phosphorylation of its flavoprotein subunit. <span class="j">Proc Jpn Acad Ser B Phys Biol Sci</span> 2009;85(7):258&ndash;265. <span class="note">(Evidence for active fumarate reductase reaction in cancer cells; reductive TCA cycling consistent with partial ETC dysfunction.)</span></li>
 </ol>
 
@@ -1010,6 +1175,17 @@ Fasting reduces glutamine <span class="arrow">&rarr;</span> <b>attacks both ferm
 <div class="ref-group">Iron restriction &amp; phlebotomy</div>
 <ol class="refs">
 <li id="r18">Zacharski LR, Chow BK, Howes PS, et al. Decreased cancer risk after iron reduction in patients with peripheral arterial disease: results from a randomized trial. <span class="j">J Natl Cancer Inst</span> 2008;100(14):996&ndash;1002. PMID 18612136. <span class="note">(FeAST trial, VA Cooperative Study 410; n=1,277 PAD patients randomized to phlebotomy vs. control; secondary cancer endpoint: 35% reduction in new cancer diagnoses (HR 0.65, 95% CI 0.43&ndash;0.97) and &gt;60% reduction in cancer mortality (HR 0.39, P=.003). Dr. Leo Zacharski, lead author, wrote the preface to P.D. Mangan&rsquo;s <em>Dumping Iron</em>. Cancer was a secondary endpoint; replication in a primary cancer-prevention design is needed.)</span></li>
+</ol>
+
+<div class="ref-group">Proliferation metabolism</div>
+<ol class="refs">
+<li id="r19">Vander Heiden MG, Cantley LC, Thompson CB. Understanding the Warburg effect: the metabolic requirements of cell proliferation. <span class="j">Science</span> 2009;324(5930):1029&ndash;1033. <span class="note">(Glycolytic side branches supply ribose, NADPH, serine/glycine and glycerol for biomass; why dividing cells of all kinds favour aerobic glycolysis.)</span></li>
+</ol>
+
+<div class="ref-group">Thiamine and tumour growth</div>
+<ol class="refs">
+<li id="r20">Com&iacute;n-Anduix B, Boren J, Martinez S, et al. The effect of thiamine supplementation on tumour proliferation: a metabolic control analysis study. <span class="j">Eur J Biochem</span> 2001;268(15):4177&ndash;4182. <span class="note">(Ehrlich ascites mice; thiamine at 25&times; RDA increased tumour growth 164% via transketolase-driven ribose synthesis; very high doses inhibited growth ~10%.)</span></li>
+<li id="r21">Hanberry BS, Berger R, Zastre JA. High-dose vitamin B1 reduces proliferation in cancer cell lines analogous to dichloroacetate. <span class="j">Cancer Chemother Pharmacol</span> 2014;73(3):585&ndash;594. <span class="note">(SK-N-BE and Panc-1 cells; reduced PDH phosphorylation, glucose consumption and lactate output; effective concentrations in the millimolar range.)</span></li>
 </ol>
 
 </div>
