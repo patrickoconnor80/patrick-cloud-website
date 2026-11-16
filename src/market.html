@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Status</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-stocks.css">
+<style>
+  .pe-fig{margin:8px 0 18px;background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:16px 14px 10px;}
+  .pe-fig svg{width:100%;height:auto;display:block;}
+  .pe-fig .lbl{font:500 13px var(--font-body);fill:var(--ink-strong);}
+  .pe-fig .val{font:600 12px var(--font-mono);fill:var(--ink);}
+  .pe-fig .ax{font:11px var(--font-mono);fill:var(--muted);}
+  .pe-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-top:6px;}
+  .pe-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;}
+  .pe-cap{font-size:12px;color:var(--muted);margin:6px 0 0;}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html" class="active">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="stocks.html">Overview</a>
+  <a href="market.html" class="active">Market</a>
+  <a href="vcx.html">VCX</a>
+  <a href="tsla.html">TSLA</a>
+  <a href="spcx.html">SPCX</a>
+  <a href="onds.html">ONDS</a>
+  <a href="ionq.html">IONQ</a>
+  <a href="bfly.html">BFLY</a>
+  <a href="prme.html">PRME</a>
+  <a href="dna.html">DNA</a>
+  <a href="nbis.html">NBIS</a>
+</div></div>
+<div class="shell">
+<div class="hero">
+  <p class="eyebrow">Market Status</p>
+  <h1>Growth &amp; AI <em>&mdash; The November Drawdown</em></h1>
+  <p class="sub">The Nasdaq-100 is in a correction, Nvidia lost its founder-CEO, and the AI leaders now trade at lower multiples than Walmart and Costco. Is this a bubble deflating, or growth stocks priced like value stocks?</p>
+  <div class="meta"><span><b>Focus</b> QQQ, semis, high-beta growth</span><span><b>Updated</b> Nov 15, 2026</span></div>
+</div>
+<section class="section">
+  <div class="flag">
+    <div class="flag-lbl">Not investment advice</div>
+    <p style="margin:0;">Personal notes published for reference. Figures are sourced from press coverage and data providers as of the date above; providers disagree on valuation multiples, so treat them as approximate. The interpretation is mine and may be wrong.</p>
+  </div>
+
+  <div class="section-head"><span class="section-num">01</span><h2>Where We Are</h2></div>
+  <div class="stats">
+    <div><div class="big down">&minus;10.5%</div><div class="cap">QQQ from Oct 6 peak<br>Nov 13 close</div></div>
+    <div><div class="big down">&minus;30%</div><div class="cap">Nvidia from Oct 6 high<br>~$1.7T of value</div></div>
+    <div><div class="big down">&minus;5.5%</div><div class="cap">Nasdaq on Nov 5<br>worst day since Apr 2025</div></div>
+    <div><div class="big">~18&ndash;19x</div><div class="cap">Nasdaq-100 fwd P/E<br>10-yr avg ~23x</div></div>
+  </div>
+  <div class="defrow"><div class="term">The setup</div><p class="def">QQQ peaked on Oct 6 and is about 10.5% below that peak as of Nov 13, which meets the usual definition of a correction. It's still up about 12% for the year, so this is a sharp pullback inside a strong year, not a bear market yet. The damage is concentrated in semis, neoclouds, and the speculative AI names: Nvidia is down about 30% from its high, and data-center operators like IREN, Applied Digital, and Cipher fell more than 14% on Nov 5 alone.</p></div>
+  <div class="defrow"><div class="term">The rare pattern</div><p class="def">QQQ fell 6.5% on Nov 5 and recovered almost all of it within four sessions. That sequence (a 5%+ drop, then three sessions with 1%+ gains and no 1% down days) has happened only four times since QQQ launched in 1999: twice in 2000 and twice in 2001. All four came before drawdowns of at least 59%. That's the scariest chart going around. It's also four data points from a single bubble, when QQQ traded at about 82x earnings. It trades at about 28x trailing today. A pattern with that small a sample says more about volatility than about what happens next.</p></div>
+
+  <div class="section-head"><span class="section-num">02</span><h2>What Caused It</h2></div>
+  <p class="lead">Three separate shocks in eight days, each hitting the same part of the market.</p>
+  <div class="defrow"><div class="term">1 &middot; The midterms (Nov 5)</div><p class="def">A Democratic sweep set off fears that Congress and the states would restrict AI and data-center construction. Some governors-elect campaigned on pausing new data centers. The Nasdaq fell 5.5%, wiping out about $2&ndash;2.5T. These are fears about future policy, not enacted rules, and that's why most of the drop reversed within days.</p></div>
+  <div class="defrow"><div class="term">2 &middot; The financing chain (Nov 6 onward)</div><p class="def">This is the part you flagged, and it's the real one. ING is reportedly trying to sell about $500M of data-center loans, part of a wider move by banks to offload data-center credit risk. Hyperscalers are issuing debt to fund capex. Nebius raised $5.75B of debt in Q3 alone and guided to $40&ndash;45B of capex for 2027. Nobody significant is defaulting. The worry is the chain: neoclouds borrow against GPU contracts, the contracts depend on AI labs keeping their spending going, and the labs depend on capital markets staying open.</p></div>
+  <div class="defrow"><div class="term">3 &middot; Nvidia loses its CEO (Nov 12)</div><p class="def">Jensen Huang resigned as CEO and director after reports of extramarital affairs, one of them with a woman described as a suspected Chinese intelligence asset who also worked with Megaspeed, a Singapore customer the DOJ is investigating for diverting restricted chips to China. CFO Colette Kress is interim CEO. NVDA fell as much as 14% intraday and closed down 4.3%. At least ten analysts downgraded it, and Bernstein halved its target to $200.</p></div>
+
+  <div class="section-head"><span class="section-num">03</span><h2>Growth Priced Below the Grocery Store</h2></div>
+  <p class="lead">You're right on this one, and it's the strongest point in the bull case. The AI leaders now trade at lower forward multiples than the defensive staples that usually anchor portfolios in a sell-off.</p>
+  <div class="pe-fig">
+    <svg viewBox="0 0 640 300" role="img" aria-label="Forward P/E: Costco 40.3, Walmart 38.0, Coca-Cola 25.3, Microsoft 24.5, Meta 22.1, Nasdaq-100 about 19, S&amp;P 500 18.7, Nvidia about 13">
+      <g class="ax">
+        <line x1="150" y1="10" x2="150" y2="270" stroke="var(--rule)"/>
+        <line x1="248" y1="10" x2="248" y2="270" stroke="var(--rule)" stroke-dasharray="2 3"/>
+        <line x1="346" y1="10" x2="346" y2="270" stroke="var(--rule)" stroke-dasharray="2 3"/>
+        <line x1="444" y1="10" x2="444" y2="270" stroke="var(--rule)" stroke-dasharray="2 3"/>
+        <line x1="542" y1="10" x2="542" y2="270" stroke="var(--rule)" stroke-dasharray="2 3"/>
+        <text x="150" y="288" text-anchor="middle">0</text>
+        <text x="248" y="288" text-anchor="middle">10x</text>
+        <text x="346" y="288" text-anchor="middle">20x</text>
+        <text x="444" y="288" text-anchor="middle">30x</text>
+        <text x="542" y="288" text-anchor="middle">40x</text>
+      </g>
+      <!-- scale: 9.8px per 1x -->
+      <g>
+        <text class="lbl" x="140" y="31" text-anchor="end">Costco</text>
+        <rect x="150" y="16" width="395" height="22" rx="3" fill="var(--warn)"/>
+        <text class="val" x="551" y="31">40.3x</text>
+
+        <text class="lbl" x="140" y="63" text-anchor="end">Walmart</text>
+        <rect x="150" y="48" width="372" height="22" rx="3" fill="var(--warn)"/>
+        <text class="val" x="528" y="63">38.0x</text>
+
+        <text class="lbl" x="140" y="95" text-anchor="end">Coca-Cola</text>
+        <rect x="150" y="80" width="248" height="22" rx="3" fill="var(--warn)"/>
+        <text class="val" x="404" y="95">25.3x</text>
+
+        <text class="lbl" x="140" y="127" text-anchor="end">Microsoft</text>
+        <rect x="150" y="112" width="240" height="22" rx="3" fill="var(--accent)"/>
+        <text class="val" x="396" y="127">24.5x</text>
+
+        <text class="lbl" x="140" y="159" text-anchor="end">Meta</text>
+        <rect x="150" y="144" width="217" height="22" rx="3" fill="var(--accent)"/>
+        <text class="val" x="373" y="159">22.1x</text>
+
+        <text class="lbl" x="140" y="191" text-anchor="end">Nasdaq-100</text>
+        <rect x="150" y="176" width="188" height="22" rx="3" fill="var(--muted)"/>
+        <text class="val" x="344" y="191">~19x</text>
+
+        <text class="lbl" x="140" y="223" text-anchor="end">S&amp;P 500</text>
+        <rect x="150" y="208" width="183" height="22" rx="3" fill="var(--muted)"/>
+        <text class="val" x="339" y="223">18.7x</text>
+
+        <text class="lbl" x="140" y="255" text-anchor="end">Nvidia</text>
+        <rect x="150" y="240" width="126" height="22" rx="3" fill="var(--accent)"/>
+        <text class="val" x="282" y="255">~13x</text>
+      </g>
+    </svg>
+    <div class="pe-legend"><span><i style="background:var(--warn)"></i>Staples / retail</span><span><i style="background:var(--accent)"></i>AI / big tech</span><span><i style="background:var(--muted)"></i>Index</span></div>
+    <p class="pe-cap">Forward P/E. Company figures are from a Nov 5 snapshot (StockTi); S&amp;P 500 is FactSet's 18.7x (Oct 30); Nasdaq-100 is a ~18&ndash;19x range across providers; Nvidia is 12.9x per Yahoo (Nov 2), with other providers between ~10x and 15x after the latest drop. Some sources put Walmart and Costco at 44x and 41x.</p>
+  </div>
+  <div class="defrow"><div class="term">How cheap, historically</div><p class="def">Close to your &ldquo;since 2022&rdquo; framing, and possibly cheaper. Bloomberg data via TheStreet has the Nasdaq-100's forward P/E at 18x for the first time since the Covid crash in March 2020, after a 25% de-rating this year. A separate read of FactSet's weekly data puts the tech sector at its cheapest since January 2023, the bottom of the 2022 bear market. Nvidia's forward multiple has briefly dropped below Kimberly-Clark's, a toilet-paper company. The trailing numbers show the same thing: on Nov 5, seven of nine top AI stocks had lower trailing P/Es than Costco (51x) and Walmart (46x), while growing revenue several times faster.</p></div>
+  <div class="defrow"><div class="term">The catch: cyclical P/Es lie</div><p class="def">A low forward P/E is only cheap if the &ldquo;E&rdquo; holds up. Micron at ~9x trailing on 379% revenue growth is the classic example: the market prices memory as a cycle, and it puts the low multiple at the peak of earnings. Nvidia at ~13x forward is the market saying the same thing about AI capex: it doubts fiscal 2028 earnings will look like fiscal 2027's. Walmart at 38x is the market paying for earnings it's confident about. So the gap isn't a mispricing you can just collect. It's a bet on whether AI capex is a durable new spending layer or a cycle that peaks. That said, the gap is the widest it has been in this cycle, and starting multiples this low have historically been good entry points for anyone with a multi-year horizon.</p></div>
+
+  <div class="section-head"><span class="section-num">04</span><h2>Is It a Bubble?</h2></div>
+  <p class="lead">Your test is the right one: it's only a bubble if the demand isn't real and the loans fold. I'd split that into two questions, because the answers differ.</p>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-eyebrow">Is the demand real?</div>
+      <h3 style="font-size:19px;">Yes, and the evidence is in revenue</h3>
+      <p>This isn't 2000, when the leaders were unprofitable and QQQ traded at 82x. Nvidia guided its October quarter to <b>$108B</b> in revenue. Nebius's run-rate went from $3.0B to $6.4B in one quarter, and it says it's supply-constrained. Anthropic is going public near a $1T valuation, and the IPO is reportedly heavily oversubscribed. IonQ says Superion 256 is sold out for 2027. Your point from inside the industry matches the data: enterprise agent adoption is early, inference demand grows with usage rather than with one-off training runs, and robotics hasn't started buying compute at scale.</p>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">Can the financing outrun it?</div>
+      <h3 style="font-size:19px;">Yes, and that's the actual risk</h3>
+      <p>Real demand and overbuilt capacity aren't mutually exclusive. Railroads in the 1840s and fiber in the late 1990s were both real technologies whose buildouts were financed faster than revenue arrived. The internet worked, and Global Crossing still went bankrupt. The thing to watch isn't whether AI is useful. It's whether capex funded by debt (Nebius's $40&ndash;45B 2027 plan, hyperscaler bond issuance, banks offloading data-center loans) runs ahead of what end customers pay for. If that gap shows up, the leveraged middle layer (neoclouds, colocation, smaller data-center operators) breaks first, and the selling spreads up to the chipmakers.</p>
+    </div>
+  </div>
+  <div class="defrow"><div class="term">My read</div><p class="def">This looks more like a valuation reset inside a real buildout than a 2000-style top. The leaders are profitable, multiples have already compressed 25%, and the drop was driven by policy fear and one CEO scandal, not a collapse in orders. What would change my mind is the credit side failing: a neocloud missing a debt payment, a large AI lab cutting compute commitments, or hyperscalers guiding capex down. None of those has happened. The other risk isn't an AI bust at all: it's the 2022 scenario, where growth stocks fall because rates rise, even with fine fundamentals. Treasury yields rose on Nov 13 as semis sold off.</p></div>
+  <div class="defrow"><div class="term">What beta means for the watchlist</div><p class="def">On Nov 13, QQQ fell about 2% and IonQ fell 6.4%. That's the ratio to plan around: the speculative names on my list (IONQ, ONDS, NBIS, DNA) move two to four times the index in both directions. If the bottom is close, they'll rebound hardest. If it isn't, they'll fall hardest. With beta like that, position size matters more than how confident I am.</p></div>
+
+  <div class="section-head"><span class="section-num">05</span><h2>The Nvidia Leadership Question</h2></div>
+  <div class="defrow"><div class="term">Will shareholders vote him back?</div><p class="def">Not directly. Shareholders don't vote on who is CEO. The board decides, and Huang owns only about 3.6% of Nvidia with no super-voting shares, unlike Zuckerberg at Meta. He also resigned from the board. What exists is pressure: a reinstatement petition with 135,000+ signatures (Musk signed it, and it claims thousands of Nvidia employees), a letter from Altimeter's Brad Gerstner and Atreides' Gavin Baker asking the board to consider &ldquo;the potential return of Jensen Huang&rdquo; through a slow, deliberate process, and the Kobeissi Letter calling for a special meeting with an advisory vote. A return is possible, but it would be a board decision after its investigation, not a shareholder vote.</p></div>
+  <div class="defrow"><div class="term">&ldquo;Not criminal, or he'd be arrested&rdquo;</div><p class="def">No charges have been reported, and an affair isn't a crime. But the absence of an arrest doesn't settle it. The risk isn't the affair. It's the national-security overlap: the DOJ's Megaspeed chip-diversion probe, a House Intelligence Committee letter, Huang being asked to testify, and Commerce Secretary Lutnick due before the Senate Banking Committee on Dec 10. Nvidia says it has no reason to believe secrets were compromised, and the board has hired Wachtell Lipton. Investigations like this take months. Until they finish, the board can't credibly bring him back, so expect the overhang to last through at least December.</p></div>
+  <div class="defrow"><div class="term">Does it change the business?</div><p class="def">Near term, very little. Kress has been CFO for 13 years, the roadmap is set through Rubin, and customers buy Nvidia because nothing else matches it. Long term, Huang was the strategist who saw CUDA and AI years early, and that's hard to replace. Musk says &ldquo;critical deals will be lost&rdquo; without him. The Nov 17 earnings call, Kress's first as interim CEO, is the first real test.</p></div>
+
+  <div class="section-head"><span class="section-num">06</span><h2>Dates That Matter</h2></div>
+  <ol class="timeline">
+    <li><span class="t-date">Tue, Nov 17</span><br><span class="t-title">Nvidia Q3 FY27 earnings</span> &mdash; guide was $108B &plusmn;2% revenue, ~74% gross margin; first call under Kress. The single biggest event for the whole AI complex.</li>
+    <li><span class="t-date">Tue, Nov 17</span><br><span class="t-title">IonQ at SC26 (Chicago)</span> &mdash; Superion 256 HPC-integration session; see the <a href="ionq.html">IONQ</a> page.</li>
+    <li><span class="t-date">Nov 18&ndash;19</span><br><span class="t-title">Anthropic IPO</span> &mdash; $70&ndash;78 range, possibly the largest IPO ever; a strong debut would be the clearest sign that appetite for AI risk is still there. See <a href="vcx.html">VCX</a>.</li>
+    <li><span class="t-date">Dec 3</span><br><span class="t-title">Tesla annual meeting</span> &mdash; with a SpaceX merger announcement reportedly possible as soon as December.</li>
+    <li><span class="t-date">Dec 10</span><br><span class="t-title">Lutnick before Senate Banking</span> &mdash; on Megaspeed and chip export controls; the next round of Nvidia headlines.</li>
+    <li><span class="t-date">Mid-December</span><br><span class="t-title">Fed meeting and Nasdaq-100 reshuffle</span> &mdash; rates are the 2022-style risk; the annual rebalance forces QQQ flows.</li>
+  </ol>
+</section>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
