@@ -125,15 +125,17 @@
   </div>
   <div class="table-wrap">
     <table class="simple">
-      <thead><tr><th>Dealer position</th><th>Dealer gamma</th><th>Hedging behavior</th></tr></thead>
+      <thead><tr><th>Dealer position</th><th>Other side (typical customer)</th><th>Dealer gamma</th><th>Starting hedge</th><th>Price rises</th><th>Price falls</th><th>Effect</th></tr></thead>
       <tbody>
-        <tr><td>Sold a call</td><td class="neg">Short</td><td>Buys as price rises, sells as it falls (adds to the move)</td></tr>
-        <tr><td>Sold a put</td><td class="neg">Short</td><td>Same: adds to the move</td></tr>
-        <tr><td>Bought a call</td><td class="pos">Long</td><td>Sells rallies, buys dips (dampens the move)</td></tr>
-        <tr><td>Bought a put</td><td class="pos">Long</td><td>Same: dampens the move</td></tr>
+        <tr><td>Sold a call</td><td>Bought a call: retail chasing upside, often short-dated single-stock and 0DTE calls; speculators</td><td class="neg">Short</td><td>Long stock</td><td>Call delta grows, so the dealer <b>buys more stock</b></td><td>Call delta shrinks, so the dealer <b>sells stock</b></td><td class="neg">Adds to the move</td></tr>
+        <tr><td>Sold a put</td><td>Bought a put: institutions and pensions hedging portfolios; bearish bets</td><td class="neg">Short</td><td>Short stock</td><td>Put delta shrinks, so the dealer <b>buys back</b> part of its short</td><td>Put delta grows, so the dealer <b>shorts more stock</b></td><td class="neg">Adds to the move</td></tr>
+        <tr><td>Bought a call</td><td>Sold a call: covered-call funds (JEPI, JEPQ, QYLD) and investors writing calls against stock they own</td><td class="pos">Long</td><td>Short stock</td><td>Call delta grows, so the dealer <b>shorts more stock</b></td><td>Call delta shrinks, so the dealer <b>buys back</b> part of its short</td><td class="pos">Dampens the move</td></tr>
+        <tr><td>Bought a put</td><td>Sold a put: premium sellers, cash-secured put writers, put-write and volatility-selling funds</td><td class="pos">Long</td><td>Long stock</td><td>Put delta shrinks, so the dealer <b>sells stock</b></td><td>Put delta grows, so the dealer <b>buys more stock</b></td><td class="pos">Dampens the move</td></tr>
       </tbody>
     </table>
   </div>
+  <div class="defrow"><div class="term">The customer side is the mirror image</div><p class="def">Every option has a buyer and a seller, so customer gamma is dealer gamma with the sign flipped. When retail piles into calls and institutions buy puts, customers are long gamma and dealers are short it, and the market gets jumpier. When covered-call funds and put writers dominate, customers are short gamma, dealers are long it, and the market calms down. The heatmap's colors are the dealer view: magenta means customers own the gamma, teal means customers sold it.</p></div>
+  <div class="defrow"><div class="term">Who usually sits where</div><p class="def">In index options (SPX, SPY, QQQ), the steady flows are institutions buying puts for protection and income funds selling calls, which is where the usual dealer short-puts, long-calls convention comes from. In single stocks, retail call buying dominates, so dealers are often short calls too. That's how heavy call buying in names like TSLA or NVDA can force dealers to buy stock into a rally (a &ldquo;gamma squeeze&rdquo;).</p></div>
 
   <div class="section-head"><span class="section-num">04</span><h2>Calls or Puts: The Push Is the Same</h2></div>
   <p class="lead">If dealers are <b>short</b> options at a strike, it doesn't matter whether those options are calls or puts. Near that strike, their hedging pushes price further in whichever direction it is already moving. Take a strike of 730 with SPY trading just above it.</p>
