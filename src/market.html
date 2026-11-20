@@ -188,7 +188,16 @@
   </div>
 </section>
 <style>
-  .gex-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 18px;}
+  .gex-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:8px 0 18px;}
+  .heat-wrap{overflow-x:auto;max-height:560px;overflow-y:auto;border:1px solid var(--rule);border-radius:6px;}
+  .heat{border-collapse:collapse;width:100%;font:11.5px var(--font-mono);font-variant-numeric:tabular-nums;}
+  .heat th,.heat td{padding:4px 8px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--rule);}
+  .heat thead th{position:sticky;top:0;background:var(--surface);z-index:1;color:var(--muted);font-weight:600;}
+  .heat thead th:first-child{text-align:left;left:0;z-index:2;}
+  .heat tbody th{text-align:left;color:var(--ink-strong);font-weight:600;background:var(--surface);position:sticky;left:0;}
+  .heat td.net{border-left:2px solid var(--rule);font-weight:600;}
+  .heat tr.spot th,.heat tr.spot td{border-top:2px solid var(--ink-strong);}
+  .heat-spot{font-weight:400;color:var(--muted);}
   @media (max-width:760px){.gex-grid{grid-template-columns:1fr;}}
   .gex-card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;}
   .gex-card h3{margin:0 0 4px;font-size:17px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
@@ -210,32 +219,33 @@
   var money = function (n) { var a = Math.abs(n); var s = a >= 1e9 ? (a / 1e9).toFixed(2) + 'B' : (a / 1e6).toFixed(0) + 'M'; return (n < 0 ? '−$' : '+$') + s; };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
 
-  function chart(t) {
-    var rows = (t.profile || []).filter(function (r) { return r.strike % 1 === 0; });
-    if (!rows.length) return '';
-    var max = Math.max.apply(null, rows.map(function (r) { return Math.abs(r.book); })) || 1;
-    var W = 600, rowH = 11, top = 6, mid = 330, half = 230, H = top + rows.length * rowH + 22;
-    var y = function (strike) { // interpolate a price onto the strike rows (rows are descending)
-      for (var i = 0; i < rows.length - 1; i++) {
-        var a = rows[i].strike, b = rows[i + 1].strike;
-        if (strike <= a && strike >= b) return top + (i + (a - strike) / (a - b)) * rowH + rowH / 2;
-      }
-      return null;
+  function heat(t) {
+    var g = t.grid;
+    if (!g || !g.strikes.length) return '';
+    var cell = function (n) { var a = Math.abs(n); var v = a >= 1e9 ? (a / 1e9).toFixed(1) + 'B' : a >= 1e6 ? (a / 1e6).toFixed(0) + 'M' : (a / 1e3).toFixed(0) + 'K'; return (n < 0 ? '−' : '+') + v; };
+    var nets = g.values.map(function (row) { return row.reduce(function (s, v) { return s + v; }, 0); });
+    var max = 1, kr = -1, kc = -1;
+    g.values.forEach(function (row, i) { row.forEach(function (v, j) { if (Math.abs(v) > max) { max = Math.abs(v); kr = i; kc = j; } }); });
+    var netMax = Math.max.apply(null, nets.map(Math.abs)) || 1;
+    var paint = function (v, m) {
+      var a = Math.min(1, Math.abs(v) / m), alpha = (0.08 + 0.85 * Math.sqrt(a)).toFixed(2);
+      return 'background:rgba(' + (v >= 0 ? '20,184,166,' : '217,70,239,') + alpha + ');' + (alpha > 0.55 ? 'color:#fff;' : '');
     };
-    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(t.ticker) + ' net gamma by strike">';
-    s += '<line x1="' + mid + '" y1="' + top + '" x2="' + mid + '" y2="' + (H - 18) + '" stroke="var(--rule)"/>';
-    rows.forEach(function (r, i) {
-      var w = Math.abs(r.book) / max * half, yy = top + i * rowH;
-      var x = r.book >= 0 ? mid : mid - w;
-      s += '<rect x="' + x.toFixed(1) + '" y="' + (yy + 1) + '" width="' + Math.max(w, 0.5).toFixed(1) + '" height="' + (rowH - 2) + '" rx="1.5" fill="var(' + (r.book >= 0 ? '--up' : '--down') + ')"><title>' + r.strike + ': ' + money(r.book) + ' (calls ' + r.call_oi.toLocaleString() + ' / puts ' + r.put_oi.toLocaleString() + ' OI)</title></rect>';
-      if (i % 2 === 0) s += '<text x="40" y="' + (yy + rowH - 2) + '" text-anchor="end">' + r.strike + '</text>';
+    var spotRow = -1;
+    g.strikes.forEach(function (k, i) { if (spotRow < 0 && k <= t.spot) spotRow = i; });
+    var h = '<div class="heat-wrap"><table class="heat"><thead><tr><th>Strike</th>';
+    g.expiries.forEach(function (e) { h += '<th>' + e.slice(5).replace('-', '/') + '</th>'; });
+    h += '<th>Net</th></tr></thead><tbody>';
+    g.strikes.forEach(function (k, i) {
+      var cls = (i === spotRow ? ' class="spot"' : '');
+      h += '<tr' + cls + '><th>' + k + (i === spotRow ? ' <span class="heat-spot">◀ ' + t.spot.toFixed(2) + '</span>' : '') + '</th>';
+      g.values[i].forEach(function (v, j) {
+        var king = (i === kr && j === kc);
+        h += '<td style="' + (king ? 'background:#eab308;color:#111;font-weight:700;' : paint(v, max)) + '" title="' + k + ' exp ' + g.expiries[j] + ': ' + money(v) + '">' + cell(v) + '</td>';
+      });
+      h += '<td class="net" style="' + paint(nets[i], netMax) + '">' + cell(nets[i]) + '</td></tr>';
     });
-    var ys = y(t.spot);
-    if (ys) s += '<line x1="46" x2="' + (W - 10) + '" y1="' + ys + '" y2="' + ys + '" stroke="var(--ink-strong)" stroke-width="1.2"/><text x="' + (W - 10) + '" y="' + (ys - 3) + '" text-anchor="end" style="fill:var(--ink-strong)">spot ' + t.spot + '</text>';
-    var yf = t.flip ? y(t.flip) : null;
-    if (yf) s += '<line x1="46" x2="' + (W - 10) + '" y1="' + yf + '" y2="' + yf + '" stroke="var(--warn)" stroke-width="1.2" stroke-dasharray="5 4"/><text x="' + (W - 10) + '" y="' + (yf - 3) + '" text-anchor="end" style="fill:var(--warn-ink)">flip ' + t.flip + '</text>';
-    s += '<text x="' + (mid - 6) + '" y="' + (H - 4) + '" text-anchor="end">← short gamma</text><text x="' + (mid + 6) + '" y="' + (H - 4) + '">long gamma →</text></svg>';
-    return s;
+    return h + '</tbody></table></div>';
   }
 
   function card(t) {
@@ -244,7 +254,7 @@
     var h = '<div class="gex-card"><h3><span>' + esc(t.ticker) + ' <span style="font-weight:400;color:var(--muted);">$' + t.spot.toFixed(2) + '</span></span>'
       + '<span class="gex-tag ' + t.regime + '">' + (t.regime === 'long' ? 'Long gamma · dampening' : 'Short gamma · amplifying') + '</span></h3>'
       + '<div class="gex-kv"><span>Flip <b>' + flipTxt + '</b></span><span>Net within 2% <b>' + money(t.net_gex_2pct) + '</b></span>'
-      + (t.king ? '<span>Largest node <b>' + t.king.strike + ' ' + money(t.king.gex) + '</b></span>' : '') + '</div>' + chart(t);
+      + (t.king ? '<span>Largest node <b>' + t.king.strike + ' ' + money(t.king.gex) + '</b></span>' : '') + '</div>' + heat(t);
     var pin = t.pin || {};
     if (pin.node) {
       h += '<div class="gex-pin">' + (pin.ready ? '✅ Pin setup active at ' + pin.node + ' (exp ' + pin.expiry + ')' : 'Pin candidate ' + pin.node + ' (exp ' + pin.expiry + ', ' + money(pin.node_gex) + ')') + '</div><ul class="gex-checks">';
