@@ -176,10 +176,19 @@
     return h + '</div>';
   }
 
-  fetch('/stock-screener/gex.json', {cache: 'no-store'})
+  // Auto-refresh: the Lambda rewrites gex.json every 15 min in market hours, so poll
+  // every 3 min while the tab is visible (and on return to it), re-rendering only
+  // when the snapshot actually changed. Heatmap scroll positions survive a refresh.
+  var lastStamp = null, loaded = false;
+  function load() {
+    fetch('/stock-screener/gex.json', {cache: 'no-store'})
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function (d) {
+      if (d.generated_at && d.generated_at === lastStamp) return;
+      lastStamp = d.generated_at; loaded = true;
+      var scrolls = [].map.call(root.querySelectorAll('.heat-wrap'), function (w) { return [w.scrollTop, w.scrollLeft]; });
       root.innerHTML = '<div class="gex-grid">' + (d.tickers || []).map(card).join('') + '</div>';
+      [].forEach.call(root.querySelectorAll('.heat-wrap'), function (w, i) { if (scrolls[i]) { w.scrollTop = scrolls[i][0]; w.scrollLeft = scrolls[i][1]; } });
       var evs = d.events || [];
       evBody.innerHTML = evs.length ? evs.map(function (e) {
         var dt = new Date(e.date + 'T12:00:00');
@@ -188,12 +197,17 @@
         }).join('<br>') || '<span style="color:var(--muted);">&mdash;</span>';
         return '<tr><td style="white-space:nowrap;">' + dt.toLocaleDateString(undefined, {weekday: 'short', month: 'short', day: 'numeric'}) + (e.time ? ' &middot; ' + esc(e.time) + ' ET' : '') + '</td><td>' + esc(e.name) + '</td><td>' + imp + '</td></tr>';
       }).join('') : '<tr><td colspan="3" style="color:var(--muted);">No scheduled events in the next three weeks.</td></tr>';
-      if (d.generated_at) updated.textContent = 'Last updated: ' + new Date(d.generated_at).toLocaleString() + (d.source ? ' \u00b7 ' + d.source : '');
+      if (d.generated_at) updated.textContent = 'Last updated: ' + new Date(d.generated_at).toLocaleString() + (d.source ? ' \u00b7 ' + d.source : '') + ' \u00b7 page refreshes automatically';
     })
     .catch(function (err) {
+      if (loaded) return;   // keep showing the last good snapshot on a transient failure
       root.innerHTML = '<p style="color:var(--down);">Could not load the gamma snapshot: ' + esc(err.message) + '</p>';
       document.getElementById('gex-events').style.display = 'none';
     });
+  }
+  load();
+  setInterval(function () { if (!document.hidden) load(); }, 3 * 60 * 1000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) load(); });
 })();
 </script>
 </div>
