@@ -353,11 +353,11 @@
       data: c.history, H: 270, axis: {key: 'm', lo: -100, hi: 100, ticks: [-100, -60, 0, 60, 100]},
       bands: [[60, 100, '#dc2626'], [-100, -60, '#2563eb']], bg: {key: 'spy', label: 'SPY'}, sw: 1.3,
       colorFn: function (a, b) { return col((a + b) / 2); }, ann: ann,
-      marks: (c.signals || []).filter(function (g) { return g.kind === 'turn_up' || g.kind === 'roll_over'; })
-        .map(function (g) { return {d: g.d, up: g.kind === 'turn_up', c: g.kind === 'turn_up' ? '#2563eb' : '#dc2626'}; }),
+      marks: (c.signals || []).filter(function (g) { return g.kind === 'turn_up' || g.kind === 'roll_over' || g.kind === 'trend_break'; })
+        .map(function (g) { return {d: g.d, up: g.kind === 'turn_up', c: g.kind === 'turn_up' ? '#2563eb' : g.kind === 'trend_break' ? '#ea580c' : '#dc2626'}; }),
       tip: function (p) { return p.d + ' &middot; score ' + sgn(Math.round(p.s)) + ' (5d avg ' + sgn(Math.round(p.m)) + ') &middot; SPY ' + p.spy.toFixed(2); }
     }));
-    if (c.signals) wc.insertAdjacentHTML('beforeend', '<p class="cy-note">Triangles: <b style="color:#2563eb;">&#9650;</b> turning up after a washout, <b style="color:#dc2626;">&#9660;</b> rolling over after overheating, as the email alerts would have fired. See the <a href="#alert-replay">alert replay</a> for what followed each one.</p>');
+    if (c.signals) wc.insertAdjacentHTML('beforeend', '<p class="cy-note">Triangles: <b style="color:#2563eb;">&#9650;</b> turning up after a washout, <b style="color:#dc2626;">&#9660;</b> rolling over after overheating, <b style="color:#ea580c;">&#9660;</b> high-beta trend break (SPHB trailing stop), as the email alerts would have fired. See the <a href="#alert-replay">alert replay</a> for what followed each one.</p>');
     root.appendChild(wc);
 
     // Nasdaq 200-day breadth, Perruna style
@@ -489,10 +489,10 @@
     // alert replay: every alert the current rules would have sent, and what high beta did next
     if (c.signals && c.signals.length) {
       var KIND = {washout: ['Washout', '#2563eb'], turn_up: ['Turning up after a washout', '#2563eb'],
-                  overheated: ['Overheated', '#dc2626'], roll_over: ['Rolling over after overheating', '#dc2626']};
+                  overheated: ['Overheated', '#dc2626'], roll_over: ['Rolling over after overheating', '#dc2626'], trend_break: ['High-beta trend break', '#ea580c']};
       var avg = function (a) { a = a.filter(function (v) { return v != null; }); return a.length ? a.reduce(function (s, v) { return s + v; }, 0) / a.length : null; };
       var sc = document.createElement('div'); sc.className = 'cy-card'; sc.id = 'alert-replay';
-      var rows = ['washout', 'turn_up', 'overheated', 'roll_over'].map(function (k) {
+      var rows = ['washout', 'turn_up', 'overheated', 'roll_over', 'trend_break'].filter(function (k) { return c.signals.some(function (s) { return s.kind === k; }); }).map(function (k) {
         var g = c.signals.filter(function (s) { return s.kind === k; }), done = g.filter(function (s) { return s.sphb60 != null; });
         var up = done.length ? Math.round(100 * done.filter(function (s) { return s.sphb60 > 0; }).length / done.length) : null;
         return '<tr><td><span style="color:' + KIND[k][1] + ';">&#9679;</span> ' + KIND[k][0] + '</td><td>' + g.length + '</td><td>' + pct(avg(g.map(function (s) { return s.sphb20; }))) + '</td><td>' + pct(avg(g.map(function (s) { return s.sphb60; }))) +
@@ -504,7 +504,7 @@
       sc.innerHTML = '<div class="cy-h3"><span>Alert replay: every alert the current rules would have sent since ' + first + '</span><span>SPHB = high beta</span></div>' +
         '<div class="table-wrap"><table class="simple"><thead><tr><th>Alert</th><th>Times</th><th>SPHB 1 mo</th><th>SPHB 3 mo</th><th>Worst dip in 3 mo</th><th>Best rally in 3 mo</th><th>SPHB up after 3 mo</th></tr></thead><tbody>' + rows +
         '<tr><td style="color:var(--muted);">All days</td><td>&mdash;</td><td>' + pct(b.sphb20) + '</td><td>' + pct(b.sphb60) + '</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr></tbody></table></div>' +
-        '<p class="cy-note"><b>What the replay shows.</b> The bottom side works: washout and turning-up alerts came near the March 2020, April 2025 and March 2026 lows, and SPHB has averaged well above its normal return in the three months after them. The caveat is a bear market: in 2022 a washout fired every month or two on the way down, each followed by a bounce, and the first washout of 2020 came four weeks before the low. The top side does not work: overheated and rolling-over alerts fire often during strong advances and SPHB has kept rising after most of them. In 2026 none fired ahead of the February, June or October high-beta selloffs (the score peaked at only +19 in February and +38 in October). Treat top alerts as a cue to tighten stops, not as a sell signal.</p>' +
+        '<p class="cy-note"><b>What the replay shows.</b> The bottom side works: washout and turning-up alerts came near the March 2020, April 2025 and March 2026 lows, and SPHB has averaged well above its normal return in the three months after them. The caveat is a bear market: in 2022 a washout fired every month or two on the way down, each followed by a bounce, and the first washout of 2020 came four weeks before the low. The top side does not work: overheated and rolling-over alerts fire often during strong advances and SPHB has kept rising after most of them. In 2026 none fired ahead of the February, June or October high-beta selloffs (the score peaked at only +19 in February and +38 in October). Treat top alerts as a cue to tighten stops, not as a sell signal. The high-beta trend break is that stop: SPHB closes more than 2% under its 20-day EMA within a few weeks of a 52-week high, once per peak. It fires after the top, usually 5&ndash;8% off the high, and SPHB has often recovered afterwards; its value is in the few large declines it sidestepped (early 2020, late 2018, February 2025, October 2026).</p>' +
         '<div class="cy-h3" style="margin-top:14px;"><span>Alerts since January 2025</span><span>SPHB move over the next 3 months</span></div>' +
         '<div class="table-wrap"><table class="simple"><thead><tr><th>Date</th><th>Alert</th><th>Score</th><th>SPHB</th><th>1 mo</th><th>3 mo</th><th>Worst dip</th><th>Best rally</th></tr></thead><tbody>' +
         recent.map(function (s) {
