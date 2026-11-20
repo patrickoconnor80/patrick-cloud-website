@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Learn: Dealer Gamma</title>
-<meta name="description" content="How options market makers hedge, what gamma is, and how to read a GEX heatmap for SPY and QQQ.">
+<meta name="description" content="How options market makers hedge, the Greeks that drive their flows (gamma, vanna, charm), the opex unwind, how to tell whether dealers are long or short, and how to read a GEX heatmap for SPY and QQQ.">
 <link rel="shortcut icon" href="images/favicon.ico" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,13 @@
   .fig-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;}
   .pos{color:var(--up);font-weight:600;}
   .neg{color:var(--down);font-weight:600;}
+  .cases{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0 18px;}
+  .case{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;}
+  .case h3{margin:0 0 8px;font-size:15px;}
+  .case ul{margin:0;padding-left:18px;font-size:14px;line-height:1.55;}
+  .case li{margin-bottom:6px;}
+  .case .res{margin:8px 0 0;font-size:13px;font-weight:600;color:var(--down);}
+  @media (max-width:640px){.cases{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -53,7 +60,7 @@
 <div class="hero">
   <p class="eyebrow">Learn &middot; Options Mechanics</p>
   <h1>Dealer Gamma <em>&mdash; Reading a GEX Heatmap</em></h1>
-  <p class="sub">Options market makers hedge every contract they trade, and that hedging is real buying and selling in the underlying. Gamma decides whether their hedging calms a move down or makes it bigger. GEX heatmaps try to map where each happens, strike by strike.</p>
+  <p class="sub">Options market makers hedge every contract they trade, and that hedging is real buying and selling in the underlying. Gamma decides whether their hedging calms a move down or makes it bigger; vanna and charm move their hedges even when price stands still. GEX heatmaps try to map where each happens, strike by strike.</p>
   <div class="meta"><span><b>Applies to</b> SPY, QQQ, SPX, NDX, single stocks</span><span><b>Updated</b> Nov 19, 2026</span></div>
 </div>
 <section class="section">
@@ -127,9 +134,92 @@
       </tbody>
     </table>
   </div>
-  <div class="defrow"><div class="term">Short-put example</div><p class="def">A dealer sells a 730 put with SPY at $738 and a delta of &minus;0.30. Being short that put acts like owning 30 shares, so the dealer sells 30 shares to get neutral. If SPY drops to $732 and the put's delta goes to &minus;0.60, the dealer now acts like it owns 60 shares and has to sell 30 more, into a falling market. Calls and puts differ only in the starting hedge (long stock versus short stock). Once price moves, a short-gamma dealer trades with the move either way.</p></div>
 
-  <div class="section-head"><span class="section-num">04</span><h2>Reading the Heatmap</h2></div>
+  <div class="section-head"><span class="section-num">04</span><h2>Calls or Puts: The Push Is the Same</h2></div>
+  <p class="lead">If dealers are <b>short</b> options at a strike, it doesn't matter whether those options are calls or puts. Near that strike, their hedging pushes price further in whichever direction it is already moving. Take a strike of 730 with SPY trading just above it.</p>
+  <div class="cases">
+    <div class="case">
+      <h3>Dealers sold 730 calls</h3>
+      <ul>
+        <li><b>SPY drops toward 730.</b> The calls are less likely to pay off, so the dealer needs fewer shares. It <b>sells</b> stock, pushing price lower.</li>
+        <li><b>SPY rises away from 730.</b> The calls are more likely to pay off, so the dealer needs more shares. It <b>buys</b> stock, pushing price higher.</li>
+      </ul>
+      <p class="res">Sells falls, buys rises</p>
+    </div>
+    <div class="case">
+      <h3>Dealers sold 730 puts</h3>
+      <ul>
+        <li><b>SPY drops toward 730.</b> The puts are more likely to pay off, so the dealer needs a bigger short. It <b>sells</b> stock, pushing price lower.</li>
+        <li><b>SPY rises away from 730.</b> The puts are less likely to pay off, so the dealer needs a smaller short. It <b>buys back</b> stock, pushing price higher.</li>
+      </ul>
+      <p class="res">Sells falls, buys rises</p>
+    </div>
+  </div>
+  <p>Both cases produce the same flow. That is all &ldquo;short gamma&rdquo; means, and it is the only thing a negative (magenta) cell is telling you. Calls versus puts change only the <b>starting hedge</b> (a short call is hedged with long stock, a short put with short stock), and that matters later, when the options expire and the hedge is unwound (see section 06).</p>
+  <div class="defrow"><div class="term">It amplifies; it doesn't start</div><p class="def">Price can sit near a short-gamma strike and nothing happens. Something else (news, a large seller, a macro print) has to push it, and then dealer hedging adds fuel.</p></div>
+  <div class="defrow"><div class="term">Strongest near the strike and near expiry</div><p class="def">With SPY at $738, the 730 options matter only modestly. With SPY at $731 on expiration morning, they matter a great deal.</p></div>
+  <div class="defrow"><div class="term">Only if dealers really are short</div><p class="def">The heatmap assumes it. If dealers are actually long the 730 options, the effect reverses: they buy dips and sell rips, and 730 acts as a floor. Section 07 covers how to check.</p></div>
+
+  <div class="section-head"><span class="section-num">05</span><h2>The Other Greeks</h2></div>
+  <p class="lead">Each Greek measures how an option's value or delta responds to one input. For dealer flows, what matters is anything that changes <b>delta</b>, because every change in delta is a hedge trade. Gamma does that through price; vanna through volatility; charm through time.</p>
+  <div class="table-wrap">
+    <table class="simple">
+      <thead><tr><th>Greek</th><th>Measures</th><th>Why it matters for dealer flow</th></tr></thead>
+      <tbody>
+        <tr><td><b>Delta</b></td><td>Option value per $1 move in the underlying</td><td>The share-equivalent position the dealer hedges.</td></tr>
+        <tr><td><b>Gamma</b></td><td>Change in delta per $1 move</td><td>Forces re-hedging as price moves. The sign decides whether hedging dampens or amplifies.</td></tr>
+        <tr><td><b>Theta</b></td><td>Value lost per day of time decay</td><td>The price of gamma. Option buyers pay theta for the right to profit from big moves; a short-gamma dealer collects it as compensation for chasing moves.</td></tr>
+        <tr><td><b>Vega</b></td><td>Value change per 1-point change in implied volatility</td><td>Drives option prices around events (CPI, Fed, earnings). Doesn't itself force share trades.</td></tr>
+        <tr><td><b>Rho</b></td><td>Value change per 1-point change in interest rates</td><td>Minor for short-dated options. Matters for LEAPS.</td></tr>
+        <tr><td><b>Vanna</b></td><td>Change in delta when implied volatility changes</td><td>When implied vol falls, out-of-the-money options lose delta, and dealers unwind hedges even though price hasn't moved.</td></tr>
+        <tr><td><b>Charm</b></td><td>Change in delta as time passes</td><td>Out-of-the-money options lose delta every day toward expiration, so dealers unwind hedges steadily into expiry.</td></tr>
+        <tr><td><b>Vomma, speed, color</b></td><td>Third-order effects (vega's sensitivity to vol; gamma's sensitivity to price and time)</td><td>Mostly for pricing desks. Color explains why a 0DTE strike's gamma spikes in the final hours.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="defrow"><div class="term">Vanna in practice</div><p class="def">Index puts are the most heavily bought options in the market, so the usual assumption is that dealers are short them and hold short stock (or short futures) as the hedge. When a feared event passes and implied volatility collapses, those puts lose delta, and dealers buy back their short hedge. That buying is the &ldquo;vanna rally&rdquo; often seen after a CPI print or Fed decision that turns out less bad than priced. It runs the other way too: a vol spike raises put deltas and forces more dealer selling, which is part of why selloffs feed on themselves.</p></div>
+  <div class="defrow"><div class="term">Charm in practice</div><p class="def">Each day, out-of-the-money options lose a bit of delta with no change in price or volatility. With dealers assumed short puts and long calls, both effects lead to dealer <b>buying</b> as expiration approaches: short-stock hedges on the puts get covered, and short-stock hedges against long calls shrink. Practitioners credit this steady bid for the tendency of index markets to drift higher into a monthly expiration.</p></div>
+
+  <div class="section-head"><span class="section-num">06</span><h2>Opex and the Hedge Unwind</h2></div>
+  <p class="lead">Monthly options expiration (opex, the third Friday) concentrates months of open interest on one day. Two things happen to the hedges built around it: they decay into the date, then they disappear.</p>
+  <div class="fig">
+    <svg viewBox="0 0 640 230" role="img" aria-label="Dealer hedge size on an out-of-the-money put position shrinks gradually from five days before expiration (charm), then drops to zero at expiration (unwind).">
+      <line x1="60" y1="190" x2="610" y2="190" stroke="var(--rule)"/>
+      <line x1="60" y1="20" x2="60" y2="190" stroke="var(--rule)"/>
+      <text class="ax" x="54" y="40" text-anchor="end">large</text>
+      <text class="ax" x="54" y="188" text-anchor="end">0</text>
+      <g class="ax" text-anchor="middle">
+        <text x="90" y="208">Mon</text><text x="190" y="208">Tue</text><text x="290" y="208">Wed</text><text x="390" y="208">Thu</text><text x="490" y="208">Fri</text><text x="580" y="208">Mon</text>
+      </g>
+      <path d="M90,40 C190,50 290,66 390,96 S470,140 495,152" fill="none" stroke="var(--accent, var(--ink-strong))" stroke-width="2.5"/>
+      <line x1="495" y1="152" x2="505" y2="190" stroke="var(--down)" stroke-width="2.5"/>
+      <line x1="505" y1="190" x2="600" y2="190" stroke="var(--down)" stroke-width="2.5"/>
+      <line x1="500" y1="20" x2="500" y2="190" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="val" x="506" y="34" style="fill:var(--warn-ink)">expiration</text>
+      <text class="val" x="210" y="44">charm: hedge shrinks daily</text>
+      <text class="val" x="515" y="176" style="fill:var(--down)">unwind</text>
+      <text class="ax" x="330" y="225" text-anchor="middle">Dealer hedge held against an out-of-the-money option, opex week</text>
+    </svg>
+    <p class="fig-cap">Illustrative. Price held constant; the hedge shrinks from time alone, then goes to zero when the contracts expire.</p>
+  </div>
+  <div class="defrow"><div class="term">Into expiration: pin</div><p class="def">Where dealers are long gamma at a big strike, their hedging pulls price toward it on expiration day. This is the effect with the strongest academic support (Ni, Pearson &amp; Poteshman, 2005).</p></div>
+  <div class="defrow"><div class="term">At expiration: unwind</div><p class="def">Expired options need no hedge, so dealers close it. What they trade depends on what the hedge was. If the strike was <b>put-heavy</b> and dealers were short the puts, they held short stock and now <b>buy it back</b>. If it was <b>call-heavy</b> and dealers were short the calls, they held long stock and now <b>sell it</b>. This is where the call-versus-put split from section 04 finally matters.</p></div>
+  <div class="defrow"><div class="term">After expiration: the window opens</div><p class="def">Opex removes a large block of gamma at once. If that gamma was dampening moves, the market loses its stabilizer, and the week after a monthly opex often sees larger moves in either direction. Traders call it the &ldquo;window of weakness,&rdquo; because charm and vanna support that propped the market up into expiry stop with it.</p></div>
+  <div class="defrow"><div class="term">Quarterly opex</div><p class="def">March, June, September, and December expirations also roll index futures and settle large institutional hedges (the &ldquo;quad witching&rdquo; days). The unwind is larger and the aftermath is usually more volatile.</p></div>
+
+  <div class="section-head"><span class="section-num">07</span><h2>Long or Short? Figuring Out Dealer Positioning</h2></div>
+  <p class="lead">Open interest says how many contracts exist at a strike, not who is long and who is short. No public source shows dealer books directly, so every estimate stacks several weaker clues.</p>
+  <ol class="timeline">
+    <li><span class="t-title">Fixed convention (most heatmaps)</span> &mdash; assume customers buy puts for protection and sell calls against stock they own, so dealers are short puts and long calls. Call gamma is counted as positive, put gamma as negative. Simple, and roughly right for index options, but wrong at any strike where customers are doing the opposite.</li>
+    <li><span class="t-title">Trade direction (flow)</span> &mdash; a fill at or above the ask usually means a customer bought, so the dealer sold. A fill at or below the bid usually means the dealer bought. Most &ldquo;Flow&rdquo; tabs are built this way. Spreads, multi-leg orders, and mid-market fills blur it.</li>
+    <li><span class="t-title">Opening versus closing</span> &mdash; pair the flow with the next morning's change in open interest. Open interest up after ask-side buying means new customer longs, so dealers are newly short. Open interest down means positions were closed, and the hedge is coming off.</li>
+    <li><span class="t-title">Participant data</span> &mdash; the OCC publishes volume by account type (customer, firm, market maker), and Cboe sells open/close data split by customer type. These are the closest thing to ground truth, but they are delayed, aggregated, or paid.</li>
+    <li><span class="t-title">Known structural players</span> &mdash; covered-call ETFs (JEPI, JEPQ, QYLD and similar) sell index calls on a schedule, so dealers are long those calls. Pension and institutional hedgers buy index puts, so dealers are short those. Retail flow skews toward buying short-dated calls on single stocks, leaving dealers short them.</li>
+    <li><span class="t-title">Price behavior</span> &mdash; the market's own reaction is a live check. If price keeps snapping back toward a strike, dealers are probably long gamma there. If it slices through and keeps going, they are probably short, whatever the map's color says.</li>
+  </ol>
+  <p>For a single strike, check the raw call and put open interest for that expiration on any options chain. A strike dominated by puts under the usual convention reads as dealer short gamma with a short-stock hedge. A strike that is mostly calls, or roughly even, deserves skepticism about whatever sign the map assigns.</p>
+
+  <div class="section-head"><span class="section-num">08</span><h2>Reading the Heatmap</h2></div>
   <p class="lead">A GEX heatmap has strikes on the rows and expiration dates on the columns. Each cell estimates dealer gamma exposure at that strike, in dollars of hedging per 1% move.</p>
   <div class="fig">
     <svg viewBox="0 0 640 330" role="img" aria-label="Stylized GEX profile: positive gamma bars above the flip level near 731, negative bars below it, with the largest positive node at 740 and the largest negative node at 725.">
@@ -164,26 +254,52 @@
       <text class="val" x="74" y="226" style="fill:var(--down)">largest negative node</text>
     </svg>
     <div class="fig-legend"><span><i style="background:var(--up)"></i>Positive: dealers dampen moves</span><span><i style="background:var(--down)"></i>Negative: dealers amplify moves</span><span><i style="background:var(--warn)"></i>Flip level</span></div>
-    <p class="fig-cap">Stylized from a SPY heatmap on Nov 19, 2026 (SPY ~$738). Bar lengths are illustrative, not to scale.</p>
+    <p class="fig-cap">Stylized from the 0DTE column of a SPY heatmap on Nov 19, 2026 (SPY ~$738). Bar lengths are illustrative, not to scale.</p>
   </div>
   <div class="defrow"><div class="term">Gamma flip</div><p class="def">The strike where net gamma switches sign. Above it, dealer hedging tends to absorb moves and the session chops. Below it, hedging adds to the selling, so a break through the flip can turn a dip into a fast slide.</p></div>
   <div class="defrow"><div class="term">Large positive nodes</div><p class="def">Read as magnets or walls. Dealers sell as price approaches from below and buy as it approaches from above, which tends to pin price nearby, especially on expiration day.</p></div>
   <div class="defrow"><div class="term">Large negative nodes</div><p class="def">Read as acceleration zones. If price reaches one, hedging flows add to the move instead of absorbing it. Some traders also treat the biggest negative node as a target into expiration.</p></div>
-  <div class="defrow"><div class="term">Columns</div><p class="def">Today's column (0DTE) drives intraday behavior. The monthly expiration (the third Friday) usually carries the largest open interest and the biggest nodes. Columns weeks out matter little, because their gamma is spread thin.</p></div>
-  <div class="defrow"><div class="term">Worked example: Nov 19</div><p class="def">SPY's 0DTE column was positive from about 731 to 742, with the largest nodes at 740 (+$111M) and 736 (+$104M), and negative below 730. Friday's opex column was negative at every strike, with its largest node at 725 (&minus;$548M). The read was a 736&ndash;740 range with a cushion down to ~731, and acceleration toward 725 if that cushion broke. SPY sold off sharply that day. The map explains why a break would accelerate. It couldn't say in advance that the break would happen: something else (news, a large seller, a macro move) has to push price into the negative zone first.</p></div>
+  <div class="defrow"><div class="term">Columns: add them up</div><p class="def">Today's column (0DTE) has the most gamma <i>per contract</i>, but the monthly expiration usually has far more <i>contracts</i>, and the dollar figures in each cell already combine both. Dealers hedge their whole book, so what moves the market is the <b>sum across columns</b> at each strike. Columns weeks out matter little, because their gamma is spread thin.</p></div>
 
-  <div class="section-head"><span class="section-num">05</span><h2>What the Map Can't Know</h2></div>
+  <div class="fig">
+    <svg viewBox="0 0 640 220" role="img" aria-label="Summed gamma by expiration on Nov 19, 2026. Strikes 731 to 742: Nov 19 plus 0.61 billion, Nov 20 minus 2.36 billion. Strikes 720 to 730: Nov 19 minus 0.26 billion, Nov 20 minus 2.61 billion.">
+      <line x1="440" y1="20" x2="440" y2="190" stroke="var(--rule)"/>
+      <text class="ax" x="440" y="208" text-anchor="middle">0</text>
+      <text class="hd" x="20" y="34">Strikes 731&ndash;742 (around price)</text>
+      <text class="lbl" x="20" y="64">11/19 (0DTE)</text>
+      <rect x="440" y="50" width="56" height="20" rx="2" fill="var(--up)"/>
+      <text class="val" x="502" y="65">+$0.61B</text>
+      <text class="lbl" x="20" y="92">11/20 (opex)</text>
+      <rect x="223" y="78" width="217" height="20" rx="2" fill="var(--down)"/>
+      <text class="val" x="231" y="93" style="fill:#fff">&minus;$2.36B</text>
+      <text class="hd" x="20" y="128">Strikes 720&ndash;730 (below the flip)</text>
+      <text class="lbl" x="20" y="158">11/19 (0DTE)</text>
+      <rect x="416" y="144" width="24" height="20" rx="2" fill="var(--down)"/>
+      <text class="val" x="410" y="159" text-anchor="end">&minus;$0.26B</text>
+      <text class="lbl" x="20" y="186">11/20 (opex)</text>
+      <rect x="200" y="172" width="240" height="20" rx="2" fill="var(--down)"/>
+      <text class="val" x="208" y="187" style="fill:#fff">&minus;$2.61B</text>
+    </svg>
+    <p class="fig-cap">Cells summed from the Nov 19, 2026 SPY heatmap (several values were truncated on screen, so the 11/20 totals are lower bounds). Even inside today's teal range, the opex column's short gamma outweighs it roughly four to one.</p>
+  </div>
+
+  <div class="defrow"><div class="term">Worked example: Nov 19</div><p class="def">Read alone, SPY's 0DTE column looked calm: positive from about 731 to 742, with the largest nodes at 740 (+$111M) and 736 (+$104M). But Friday's opex column was negative at every strike, with nodes of &minus;$445M at 736, &minus;$405M at 730, and &minus;$548M at 725. Netted together, dealers were short gamma across the whole range, so the 0DTE &ldquo;cushion&rdquo; was much thinner than it looked. SPY sold off sharply that day. The map explains why a selloff would run once it started. It couldn't say in advance that one would start.</p></div>
+  <div class="defrow"><div class="term">Tomorrow the opex column gets stronger</div><p class="def">Once the 11/19 contracts expire, 11/20 becomes the 0DTE column. Gamma on at-the-money options rises as expiration nears, so whatever short gamma sits near price on Friday morning hits hardest that day, then disappears at the close.</p></div>
+  <div class="defrow"><div class="term">A drop through 730 is dealer selling, not short covering</div><p class="def">Short covering means buying back a short, which pushes price <i>up</i>. A short-gamma slide is the opposite: dealers <b>sell</b> to keep up with their growing delta exposure as price falls. At 730, the map's &minus;$405M implies roughly $405M of extra selling for every further 1% (about $7) drop near that strike, with more from 728, 726, and 725 below it. That is real fuel, but SPY alone trades tens of billions of dollars a day, and SPX options and S&amp;P futures dwarf it, so it adds to a move rather than guaranteeing a crash. Short covering does show up later: after Friday's expiration, dealers who were short puts buy back their short-stock hedges (section 06).</p></div>
+
+  <div class="section-head"><span class="section-num">09</span><h2>What the Map Can't Know</h2></div>
   <p class="lead">GEX is a useful model with real limits. It's best used as context about how the market will react to a move, not as a forecast of direction.</p>
-  <div class="defrow"><div class="term">Dealer positions are assumed</div><p class="def">Open interest says how many contracts exist at a strike, not who is long and who is short. Most vendors assume dealers are long calls (customers sell covered calls) and short puts (customers buy protection), so call gamma counts as positive and put gamma as negative. That's why maps are usually teal above price and magenta below. Some tools instead classify each trade by whether it filled at the bid or the ask, which is better but still an estimate. If customers were heavily selling puts at a strike, dealers would actually be long gamma there, and the map would show the wrong color.</p></div>
+  <div class="defrow"><div class="term">Dealer positions are assumed</div><p class="def">Every sign on the map rests on assumptions about who bought and who sold (section 07). If customers were heavily selling puts at a strike, dealers would actually be long gamma there, and the map would show the wrong color.</p></div>
   <div class="defrow"><div class="term">Stale inputs</div><p class="def">Open interest updates once a day, overnight. Same-day 0DTE trading, now a large share of index options volume, mostly doesn't appear until the next morning.</p></div>
   <div class="defrow"><div class="term">Missing markets</div><p class="def">A SPY-only map ignores SPX index options, which are far larger in notional. QQQ has the same problem with NDX. The Nasdaq-100 is also concentrated enough that gamma in single names like NVDA, AAPL, and MSFT can move QQQ more than QQQ's own options do.</p></div>
   <div class="defrow"><div class="term">What the evidence supports</div><p class="def">Dealer gamma lines up better with <b>volatility</b> than with direction. Research finds that positive aggregate gamma tends to come with lower intraday volatility and negative gamma with larger, trending moves (Baltussen et&nbsp;al., 2021). Stocks with heavy open interest also tend to close near those strikes on expiration day (Ni, Pearson &amp; Poteshman, 2005). Specific price targets are a much weaker claim, and the charts that get shared are the ones that worked.</p></div>
 
-  <div class="section-head"><span class="section-num">06</span><h2>Applying It to QQQ</h2></div>
+  <div class="section-head"><span class="section-num">10</span><h2>Applying It to QQQ</h2></div>
   <ol class="timeline">
     <li><span class="t-title">Find the flip in today's column</span> &mdash; where it switches from positive to negative. Positive above means expect chop and dips getting bought. Negative below means expect momentum.</li>
+    <li><span class="t-title">Net it against the monthly opex column</span> &mdash; during opex week, the third-Friday column often outweighs today's. Add them at each strike before deciding which regime you're in.</li>
     <li><span class="t-title">Mark the two or three largest nodes</span> &mdash; treat them as a likely range for the session, not as targets.</li>
-    <li><span class="t-title">Check the monthly opex column</span> &mdash; its largest node often matters into the third Friday, then fades once those contracts expire.</li>
+    <li><span class="t-title">Check the call/put split at the big nodes</span> &mdash; it tells you whether the sign is believable and which way the unwind goes after expiration.</li>
     <li><span class="t-title">Cross-check NDX and the megacaps</span> &mdash; if the app shows NDX or NVDA gamma, the bigger book usually wins.</li>
     <li><span class="t-title">Keep score</span> &mdash; screenshot the map each morning, write down the call it implies, and compare it with the close. A few weeks of records beats a handful of memorable hits.</li>
   </ol>
