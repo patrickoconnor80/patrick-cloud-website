@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Data</title>
-<meta name="description" content="Market thermometer for short-term tops and bottoms, live SPY/QQQ dealer gamma heatmaps, key levels, and the scheduled economic and market calendar.">
+<meta name="description" content="Market cycle readout for short-term tops and bottoms (washout chart, Nasdaq 200-day breadth, high-beta leadership, macro backdrop), live SPY/QQQ dealer gamma heatmaps, key levels, and the scheduled economic and market calendar.">
 <link rel="shortcut icon" href="images/favicon.ico" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,18 +35,19 @@
 <div class="shell">
 <div class="hero">
   <p class="eyebrow">Market Data</p>
-  <h1>Thermometer, Dealer Gamma <em>&amp; Event Calendar</em></h1>
-  <p class="sub">A daily overbought/oversold thermometer for the broad market, live options-dealer positioning for SPY and QQQ, refreshed every 15 minutes during market hours, and the schedule of economic releases and market events ahead. Data and dates only; interpretation lives on the <a href="market.html">Market</a> page, and the mechanics on <a href="learn.html">Learn</a>.</p>
-  <div class="meta"><span><b>Covers</b> SPY, QQQ (levels also in SPX, NDX points)</span><span><b>Calendar updated</b> Nov 19, 2026</span></div>
+  <h1>Market Cycle, Dealer Gamma <em>&amp; Event Calendar</em></h1>
+  <p class="sub">A daily read on where the market sits between a washout and a blow-off, with beta and macro panels, live options-dealer positioning for SPY and QQQ, refreshed every 15 minutes during market hours, and the schedule of economic releases and market events ahead. Data and dates only; interpretation lives on the <a href="market.html">Market</a> page, and the mechanics on <a href="learn.html">Learn</a>.</p>
+  <div class="meta"><span><b>Covers</b> S&amp;P 1500, Nasdaq, SPY, QQQ, SPHB (gamma levels also in SPX, NDX points)</span><span><b>Calendar updated</b> Nov 19, 2026</span></div>
 </div>
 <section class="section">
-  <div class="section-head"><span class="section-num">01</span><h2>Market Thermometer</h2></div>
-  <p class="lead">One score from &minus;100 (washed out) to +100 (overheated), built from the readings traders use to spot short-term extremes: the VIX against its multi-year range and its weekly RSI, VIX term structure, McClellan breadth oscillators, the share of stocks above their 50-day average, and SPY/QQQ momentum and extension. Updated each trading day near the close.</p>
-  <div id="th-root"><p style="color:var(--muted);">Loading&hellip;</p></div>
+  <div class="section-head"><span class="section-num">01</span><h2>Market Cycle</h2></div>
+  <p class="lead">Where the broad market sits between a washout and a blow-off, and which way it is moving. The score (&minus;100 to +100) combines fear (VIX level, VIX weekly RSI, VIX term structure), breadth (McClellan oscillators, the share of stocks above their 50- and 200-day averages) and momentum (SPY/QQQ RSI and extension). Its direction sets the phase: <b>Decline</b>, <b>Bottoming</b>, <b>Advance</b>, <b>Topping</b>. High-beta leadership and the macro backdrop sit alongside, kept out of the score. Updated each weekday evening after the close.</p>
+  <div id="cy-root"><p style="color:var(--muted);">Loading&hellip;</p></div>
   <div class="flag">
     <div class="flag-lbl">How to read it</div>
-    <p style="margin:0 0 8px;">The two ends do not carry equal weight. Cold readings cluster near tradeable lows: fear, breadth and momentum all wash out together and snap back fast. Hot readings are a warning, not a sell signal; overbought markets can stay overbought for months, and the backtest below shows forward returns at the hot end were still positive, just smaller. Tops tend to be processes (breadth thinning while the index holds up), while bottoms tend to be events.</p>
-    <p style="margin:0;">Each reading is scored against fixed bands (VIX 14&ndash;28, VIX weekly RSI 35&ndash;70, VIX/VIX3M 0.82&ndash;1.02, RSI 30&ndash;70) or, for breadth and extension, its percentile over the prior three years. The McClellan oscillators are computed from S&amp;P 1500 and Nasdaq-100 members, stand-ins for the exchange-wide $NYMO and $NAMO, and history uses today&rsquo;s index members, so older breadth readings carry some survivorship bias. Not a recommendation to trade.</p>
+    <p style="margin:0 0 8px;">The two ends do not carry equal weight. Washouts cluster near tradeable lows: fear, breadth and momentum break together and snap back fast, and the better entries have come on the turn (Bottoming) rather than the first dip. Overheated readings are a warning, not a sell signal: the index has usually kept grinding higher, but high-beta stocks (SPHB) have gone roughly nowhere over the following three months. Tops tend to be processes, with beta leadership and breadth fading while the index holds up; bottoms tend to be events.</p>
+    <p style="margin:0 0 8px;">The macro panel is about the tide, not the timing. Rates, inflation expectations, credit and the dollar move over months and do not mark tops and bottoms, but they decide how hard high-beta stocks can run once a bottom is in.</p>
+    <p style="margin:0;">Scoring: fixed bands for VIX (14&ndash;28), VIX weekly RSI (35&ndash;70), VIX/VIX3M (0.82&ndash;1.02), Nasdaq % above 200-day (15&ndash;75%) and RSI (30&ndash;70); the McClellan oscillators, % above 50-day and SPY extension are scored by percentile over the prior three years. Breadth is computed from today&rsquo;s S&amp;P 1500, Nasdaq-100 and Nasdaq-listed members (stand-ins for $NYMO, $NAMO and $NAA200R), so it carries survivorship bias: delisted losers drop out, and the Nasdaq 200-day series runs several points above StockCharts&rsquo; version. Not a recommendation to trade.</p>
   </div>
 
   <div class="section-head"><span class="section-num">02</span><h2>Dealer Gamma Now</h2></div>
@@ -87,94 +88,277 @@
   <p style="font-size:13px;color:var(--muted);">Release dates from the BLS, BEA, and Federal Reserve schedules and company announcements. For what these releases mean for growth stocks, see <a href="market.html">Market</a>.</p>
 </section>
 <style>
-  .th-top{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:16px 18px;margin:8px 0 16px;}
-  .th-score{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
-  .th-num{font:700 46px/1 var(--font-stat, var(--font-mono));font-variant-numeric:tabular-nums;color:var(--ink-strong);}
-  .th-bucket{font:600 12px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:999px;color:#fff;}
-  .th-asof{font:12px var(--font-mono);color:var(--muted);}
-  .th-scale{position:relative;height:16px;border-radius:999px;background:linear-gradient(90deg,#2563eb 0%,#60a5fa 20%,#9ca3af 50%,#f97316 80%,#dc2626 100%);}
-  .th-mark{position:absolute;top:-5px;width:4px;height:26px;margin-left:-2px;background:var(--ink-strong);border-radius:2px;box-shadow:0 0 0 2px var(--surface);}
-  .th-ticks{display:flex;justify-content:space-between;font:10.5px var(--font-mono);color:var(--muted);margin-top:4px;}
-  .th-rows{width:100%;border-collapse:collapse;font-size:13.5px;}
-  .th-rows td{padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:middle;}
-  .th-rows td.v{font:12.5px var(--font-mono);text-align:right;white-space:nowrap;color:var(--ink-strong);}
-  .th-rows .n{display:block;font-size:12px;color:var(--muted);}
-  .th-bar{position:relative;height:8px;background:var(--rule);border-radius:4px;min-width:90px;}
-  .th-bar i{position:absolute;top:0;bottom:0;border-radius:4px;}
-  .th-bar:after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted);}
-  .th-t{font:12px var(--font-mono);text-align:right;width:44px;}
-  .th-chart svg{width:100%;height:auto;display:block;}
-  .th-chart text{font:10px var(--font-mono);fill:var(--muted);}
-  .th-h3{font:600 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px;}
-  .simple tr.th-now td{background:var(--surface-hover);font-weight:600;}
-  @media (max-width:600px){.th-num{font-size:38px;}.th-rows .n{display:none;}.th-bar{min-width:60px;}}
+  :root{--cold:#2563eb;--hot:#dc2626;--zone-corr:#ea580c;--zone-acc:#dc2626;}
+  .cy-card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:16px 18px;margin:8px 0 16px;}
+  .cy-top{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:22px;align-items:center;}
+  .cy-score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .cy-num{font:700 46px/1 var(--font-stat, var(--font-mono));font-variant-numeric:tabular-nums;color:var(--ink-strong);}
+  .cy-pill{font:600 12px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:999px;color:#fff;white-space:nowrap;}
+  .cy-asof{font:12px var(--font-mono);color:var(--muted);}
+  .cy-phase{font-size:22px;font-weight:600;color:var(--ink-strong);margin:12px 0 4px;}
+  .cy-say{font-size:14px;line-height:1.55;margin:4px 0 12px;}
+  .cy-scale{position:relative;height:14px;border-radius:999px;background:linear-gradient(90deg,#2563eb 0%,#60a5fa 20%,#9ca3af 50%,#f97316 80%,#dc2626 100%);margin-top:6px;}
+  .cy-mark{position:absolute;top:-5px;width:4px;height:24px;margin-left:-2px;background:var(--ink-strong);border-radius:2px;box-shadow:0 0 0 2px var(--surface);}
+  .cy-ticks{display:flex;justify-content:space-between;font:10.5px var(--font-mono);color:var(--muted);margin-top:4px;}
+  .cy-card svg{width:100%;height:auto;display:block;}
+  .cy-card svg text{font:10px var(--font-mono);fill:var(--muted);}
+  .cy-card svg text.q{font:600 11px var(--font-mono);letter-spacing:.05em;text-transform:uppercase;}
+  .cy-card svg text.ann{fill:var(--ink-strong);font-weight:600;}
+  .cy-h3{font:600 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+  .cy-h3 b{color:var(--ink-strong);}
+  .cy-tip{position:absolute;pointer-events:none;background:var(--ink-strong);color:var(--surface);font:11px var(--font-mono);padding:5px 8px;border-radius:4px;white-space:nowrap;transform:translate(-50%,-110%);display:none;}
+  .cy-plot{position:relative;}
+  .cy-rows{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .cy-rows td{padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:middle;}
+  .cy-rows td.v{font:12.5px var(--font-mono);text-align:right;white-space:nowrap;color:var(--ink-strong);}
+  .cy-rows .n{display:block;font-size:12px;color:var(--muted);}
+  .cy-bar{position:relative;height:8px;background:var(--rule);border-radius:4px;min-width:80px;}
+  .cy-bar i{position:absolute;top:0;bottom:0;border-radius:4px;}
+  .cy-bar:after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted);}
+  .cy-t{font:12px var(--font-mono);text-align:right;width:44px;}
+  .cy-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;}
+  .cy-macro{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
+  .cy-m{border:1px solid var(--rule);border-radius:6px;padding:10px 12px;}
+  .cy-m .l{font-size:13px;font-weight:600;color:var(--ink-strong);display:flex;justify-content:space-between;gap:6px;align-items:center;}
+  .cy-m .v{font:600 18px var(--font-mono);color:var(--ink-strong);margin:4px 0 0;}
+  .cy-m .c{font:11.5px var(--font-mono);color:var(--muted);}
+  .cy-m .d{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4;}
+  .cy-chip{font:600 10px var(--font-mono);letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:999px;color:#fff;white-space:nowrap;}
+  .cy-chip.tailwind{background:var(--up);} .cy-chip.headwind{background:var(--down);} .cy-chip.neutral{background:#9ca3af;}
+  .cy-kv{list-style:none;padding:0;margin:0;font-size:13.5px;}
+  .cy-kv li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--rule);}
+  .cy-kv li b{font:600 13px var(--font-mono);color:var(--ink-strong);white-space:nowrap;}
+  .simple tr.cy-now td{background:var(--surface-hover);font-weight:600;}
+  .cy-note{font-size:12px;color:var(--muted);margin:6px 0 0;}
+  @media (max-width:760px){.cy-top,.cy-two{grid-template-columns:minmax(0,1fr);}.cy-top svg.clock{max-width:300px;margin:0 auto;}}
+  @media (max-width:600px){.cy-num{font-size:38px;}.cy-rows .n{display:none;}.cy-bar{min-width:50px;}.cy-card{padding:14px 12px;}}
 </style>
 <script>
 (function () {
-  var root = document.getElementById('th-root');
+  var root = document.getElementById('cy-root');
+  var COLD = [37, 99, 235], HOT = [220, 38, 38], MID = [156, 163, 175];
+  var PH = {
+    Decline:   {c: '#60a5fa', say: 'Fear is building and the score is still falling. Historically early: the washout tends to finish before the turn.'},
+    Bottoming: {c: '#2563eb', say: 'The score is cold but rising: selling pressure is exhausting. The turn out of a washout is the setup that has marked tradeable lows.'},
+    Advance:   {c: '#f97316', say: 'Breadth and momentum are improving together. The trend is the friend; watch for overheated readings.'},
+    Topping:   {c: '#dc2626', say: 'Still warm but losing momentum. Tops are processes: watch beta leadership and Nasdaq breadth for confirmation.'}
+  };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  function col(t) {   // -100 blue .. 0 gray .. +100 red
+  function col(t) {
     if (t == null) return 'var(--muted)';
-    var a = Math.min(Math.abs(t) / 100, 1);
-    var c0 = [156, 163, 175], c1 = t < 0 ? [37, 99, 235] : [220, 38, 38];
-    return 'rgb(' + c0.map(function (v, i) { return Math.round(v + (c1[i] - v) * a); }).join(',') + ')';
+    var a = Math.min(Math.abs(t) / 100, 1), c1 = t < 0 ? COLD : HOT;
+    return 'rgb(' + MID.map(function (v, i) { return Math.round(v + (c1[i] - v) * a); }).join(',') + ')';
   }
-  function pct(v, signed) { return v == null ? '&mdash;' : (signed && v > 0 ? '+' : '') + v.toFixed(signed ? 2 : 0) + '%'; }
-  function chart(h) {
-    if (!h || h.length < 2) return '';
-    var W = 720, H = 200, L = 34, R = 44, T = 10, B = 22, n = h.length;
+  function pct(v, d) { return v == null ? '&mdash;' : (v > 0 ? '+' : '') + v.toFixed(d == null ? 1 : d) + '%'; }
+  function sgn(v) { return (v > 0 ? '+' : '') + v; }
+
+  // ---------- cycle clock: x = direction (5-day change), y = smoothed level
+  function clock(h, cur) {
+    var S = 300, c = S / 2, R = 128, tail = h.slice(-30);
+    var sx = function (v) { return c + Math.max(-1, Math.min(1, v / 40)) * R; };
+    var sy = function (v) { return c - Math.max(-1, Math.min(1, v / 100)) * R; };
+    var o = '<svg class="clock" viewBox="0 0 ' + S + ' ' + S + '" role="img" aria-label="Market cycle clock">';
+    var quads = [['Topping', c - R, c - R], ['Advance', c, c - R], ['Decline', c - R, c], ['Bottoming', c, c]];
+    quads.forEach(function (q) {
+      o += '<rect x="' + q[1] + '" y="' + q[2] + '" width="' + R + '" height="' + R + '" fill="' + PH[q[0]].c + '" opacity="' + (q[0] === cur ? .2 : .07) + '"/>';
+    });
+    o += '<circle cx="' + c + '" cy="' + c + '" r="' + R + '" fill="none" stroke="var(--rule)" stroke-dasharray="2 4"/>';
+    o += '<line x1="' + (c - R) + '" x2="' + (c + R) + '" y1="' + c + '" y2="' + c + '" stroke="var(--muted)" stroke-width=".6"/>';
+    o += '<line y1="' + (c - R) + '" y2="' + (c + R) + '" x1="' + c + '" x2="' + c + '" stroke="var(--muted)" stroke-width=".6"/>';
+    [['Topping', c - R + 8, c - R + 16, 'start'], ['Advance', c + R - 8, c - R + 16, 'end'],
+     ['Decline', c - R + 8, c + R - 8, 'start'], ['Bottoming', c + R - 8, c + R - 8, 'end']].forEach(function (q) {
+      o += '<text class="q" x="' + q[1] + '" y="' + q[2] + '" text-anchor="' + q[3] + '" style="fill:' + PH[q[0]].c + ';">' + q[0] + '</text>';
+    });
+    // rotation arrows (the cycle runs counter-clockwise on this layout)
+    o += '<defs><marker id="cyarr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>';
+    var arc = function (a0, a1) {
+      var r = R + 9, p = function (a) { return [c + r * Math.cos(a), c - r * Math.sin(a)]; }, s = p(a0), e = p(a1);
+      return '<path d="M' + s[0].toFixed(1) + ',' + s[1].toFixed(1) + ' A' + r + ',' + r + ' 0 0 0 ' + e[0].toFixed(1) + ',' + e[1].toFixed(1) + '" fill="none" stroke="var(--muted)" stroke-width="1" marker-end="url(#cyarr)"/>';
+    };
+    o += arc(-1.75, -1.4) + arc(-0.17, 0.17) + arc(1.4, 1.75) + arc(2.97, 3.31);
+    o += '<text x="' + c + '" y="' + (S - 2) + '" text-anchor="middle">falling &larr; direction &rarr; rising</text>';
+    o += '<text x="8" y="' + c + '" transform="rotate(-90 8 ' + c + ')" text-anchor="middle">cold &larr; level &rarr; hot</text>';
+    var pts = tail.map(function (p) { return [sx(p.sl), sy(p.m)]; });
+    o += '<polyline fill="none" stroke="var(--ink-strong)" stroke-opacity=".35" stroke-width="1.4" points="' + pts.map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '"/>';
+    pts.forEach(function (p, i) {
+      var last = i === pts.length - 1;
+      o += '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="' + (last ? 7 : 2.2) + '" fill="' + (last ? 'var(--ink-strong)' : col(tail[i].m)) + '" opacity="' + (last ? 1 : .35 + .65 * i / pts.length) + '"' + (last ? ' stroke="var(--surface)" stroke-width="2"' : '') + '/>';
+    });
+    return o + '<text x="' + (pts[0][0] + 4).toFixed(1) + '" y="' + (pts[0][1] - 4).toFixed(1) + '">30d ago</text></svg>';
+  }
+
+  // ---------- generic time chart with hover
+  function timeChart(opts) {
+    // opts: data [{d,...}], W,H, left axis {key, lo, hi, ticks, fmt}, right series {key, log}, bands, lines, colorFn, annotations, tip
+    var d = opts.data, n = d.length, W = opts.W || 760, H = opts.H || 240, L = 36, R = 52, T = 12, B = 24;
     var x = function (i) { return L + (W - L - R) * i / (n - 1); };
-    var y = function (s) { return T + (H - T - B) * (100 - s) / 200; };
-    var sp = h.map(function (p) { return p.spy; }), lo = Math.min.apply(null, sp), hi = Math.max.apply(null, sp);
-    var ys = function (v) { return T + (H - T - B) * (1 - (v - lo) / ((hi - lo) || 1)); };
-    var out = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Thermometer score and SPY over the past year">';
-    out += '<rect x="' + L + '" y="' + y(100) + '" width="' + (W - L - R) + '" height="' + (y(60) - y(100)) + '" fill="#dc2626" opacity=".08"/>';
-    out += '<rect x="' + L + '" y="' + y(-60) + '" width="' + (W - L - R) + '" height="' + (y(-100) - y(-60)) + '" fill="#2563eb" opacity=".08"/>';
-    [-100, -60, 0, 60, 100].forEach(function (g) {
-      out += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(g) + '" y2="' + y(g) + '" stroke="var(--rule)"/>' +
-             '<text x="' + (L - 6) + '" y="' + (y(g) + 3) + '" text-anchor="end">' + g + '</text>';
-    });
-    out += '<polyline fill="none" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="3 3" points="' + h.map(function (p, i) { return x(i).toFixed(1) + ',' + ys(p.spy).toFixed(1); }).join(' ') + '"/>';
-    for (var i = 1; i < n; i++) {
-      out += '<line x1="' + x(i - 1).toFixed(1) + '" y1="' + y(h[i - 1].s).toFixed(1) + '" x2="' + x(i).toFixed(1) + '" y2="' + y(h[i].s).toFixed(1) + '" stroke="' + col((h[i - 1].s + h[i].s) / 2) + '" stroke-width="2"/>';
+    var A = opts.axis, y = function (v) { return T + (H - T - B) * (A.hi - v) / (A.hi - A.lo); };
+    var bg = opts.bg, ylog;
+    if (bg) {
+      var vals = d.map(function (p) { return Math.log(p[bg.key]); }), lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+      ylog = function (v) { return T + (H - T - B) * (1 - (Math.log(v) - lo) / ((hi - lo) || 1)); };
     }
-    out += '<text x="' + (W - R + 4) + '" y="' + (ys(h[n - 1].spy) + 3) + '">SPY</text>';
-    [0, Math.floor(n / 2), n - 1].forEach(function (i) {
-      out += '<text x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="' + (i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle') + '">' + h[i].d + '</text>';
+    var o = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet">';
+    (opts.bands || []).forEach(function (b) {
+      o += '<rect x="' + L + '" y="' + y(b[1]) + '" width="' + (W - L - R) + '" height="' + (y(b[0]) - y(b[1])) + '" fill="' + b[2] + '" opacity="' + (b[3] || .08) + '"/>';
     });
-    return out + '</svg>';
+    if (bg && bg.area) {
+      o += '<path d="M' + x(0) + ',' + (H - B) + ' ' + d.map(function (p, i) { return 'L' + x(i).toFixed(1) + ',' + ylog(p[bg.key]).toFixed(1); }).join(' ') + ' L' + x(n - 1) + ',' + (H - B) + ' Z" fill="#94a3b8" opacity=".28"/>';
+    }
+    A.ticks.forEach(function (g) {
+      o += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(g) + '" y2="' + y(g) + '" stroke="var(--rule)"/><text x="' + (L - 6) + '" y="' + (y(g) + 3) + '" text-anchor="end">' + (A.fmt ? A.fmt(g) : g) + '</text>';
+    });
+    (opts.lines || []).forEach(function (l) {
+      o += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(l.v) + '" y2="' + y(l.v) + '" stroke="' + l.c + '" stroke-width="1.6" stroke-dasharray="5 4"/>' +
+           '<text x="' + (W - R - 4) + '" y="' + (y(l.v) - 4) + '" text-anchor="end" style="fill:' + l.c + ';font-weight:600;">' + l.label + '</text>';
+    });
+    if (bg && !bg.area) {
+      o += '<polyline fill="none" stroke="var(--muted)" stroke-width="1.1" stroke-dasharray="3 3" points="' + d.map(function (p, i) { return x(i).toFixed(1) + ',' + ylog(p[bg.key]).toFixed(1); }).join(' ') + '"/>';
+    }
+    if (opts.overlay) {
+      var ok = opts.overlay.key;
+      o += '<polyline fill="none" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="4 3" points="' + d.map(function (p, i) { return x(i).toFixed(1) + ',' + y(p[ok]).toFixed(1); }).join(' ') + '"/>' +
+           '<text x="' + (W - R + 4) + '" y="' + (y(d[n - 1][ok]) + 3) + '">' + opts.overlay.label + '</text>';
+    }
+    if (bg) o += '<text x="' + (W - R + 4) + '" y="' + (ylog(d[n - 1][bg.key]) + 3) + '">' + bg.label + '</text>';
+    for (var i = 1; i < n; i++) {
+      o += '<line x1="' + x(i - 1).toFixed(1) + '" y1="' + y(d[i - 1][A.key]).toFixed(1) + '" x2="' + x(i).toFixed(1) + '" y2="' + y(d[i][A.key]).toFixed(1) + '" stroke="' + opts.colorFn(d[i - 1][A.key], d[i][A.key]) + '" stroke-width="' + (opts.sw || 1.6) + '"/>';
+    }
+    var yr = '';
+    d.forEach(function (p, i) {
+      var y4 = p.d.slice(0, 4);
+      if (y4 !== yr && (i > 0 || p.d.slice(5, 7) === '01')) { o += '<line x1="' + x(i) + '" x2="' + x(i) + '" y1="' + (H - B) + '" y2="' + (H - B + 4) + '" stroke="var(--muted)"/><text x="' + (x(i) + 3) + '" y="' + (H - 6) + '">' + y4 + '</text>'; }
+      yr = y4;
+    });
+    (opts.ann || []).forEach(function (a) {
+      var i = d.findIndex(function (p) { return p.d >= a.d; }); if (i < 0) return;
+      var py = y(d[i][A.key]);
+      o += '<circle cx="' + x(i).toFixed(1) + '" cy="' + py.toFixed(1) + '" r="3.5" fill="none" stroke="var(--ink-strong)" stroke-width="1.2"/><text class="ann" x="' + (x(i) + 7).toFixed(1) + '" y="' + Math.min(py + 4, H - B - 4).toFixed(1) + '">' + a.t + '</text>';
+    });
+    o += '<line class="hv" x1="0" x2="0" y1="' + T + '" y2="' + (H - B) + '" stroke="var(--ink-strong)" stroke-width=".7" style="display:none"/>';
+    o += '<rect class="hit" x="' + L + '" y="' + T + '" width="' + (W - L - R) + '" height="' + (H - T - B) + '" fill="transparent"/>';
+    o += '</svg>';
+    var wrap = document.createElement('div'); wrap.className = 'cy-plot';
+    wrap.innerHTML = o + '<div class="cy-tip"></div>';
+    var svg = wrap.querySelector('svg'), tip = wrap.querySelector('.cy-tip'), hv = wrap.querySelector('.hv');
+    function move(ev) {
+      var r = svg.getBoundingClientRect(), cx = (ev.touches ? ev.touches[0].clientX : ev.clientX);
+      var vx = (cx - r.left) / r.width * W, i = Math.round((vx - L) / (W - L - R) * (n - 1));
+      if (i < 0 || i >= n) return;
+      hv.setAttribute('x1', x(i)); hv.setAttribute('x2', x(i)); hv.style.display = '';
+      tip.innerHTML = opts.tip(d[i]); tip.style.display = 'block';
+      tip.style.left = (x(i) / W * r.width) + 'px'; tip.style.top = (y(d[i][A.key]) / H * r.height) + 'px';
+    }
+    svg.addEventListener('mousemove', move); svg.addEventListener('touchmove', move, {passive: true});
+    svg.addEventListener('mouseleave', function () { tip.style.display = 'none'; hv.style.display = 'none'; });
+    return wrap;
   }
-  fetch('/stock-screener/results.json', {cache: 'no-store'})
+
+  function spark(vals, signal) {
+    var v = vals.filter(function (z) { return z != null; }); if (v.length < 2) return '';
+    var lo = Math.min.apply(null, v), hi = Math.max.apply(null, v), W = 200, H = 34;
+    var c = signal === 'headwind' ? 'var(--down)' : signal === 'tailwind' ? 'var(--up)' : '#9ca3af';
+    return '<svg viewBox="0 0 ' + W + ' ' + H + '" style="margin-top:6px;"><polyline fill="none" stroke="' + c + '" stroke-width="1.6" points="' +
+      v.map(function (z, i) { return (W * i / (v.length - 1)).toFixed(1) + ',' + (3 + (H - 6) * (1 - (z - lo) / ((hi - lo) || 1))).toFixed(1); }).join(' ') + '"/></svg>';
+  }
+
+  function btTable(rows, base, now, first) {
+    return '<div class="table-wrap"><table class="simple"><thead><tr><th>' + first + '</th><th>Days</th><th>SPY 1 mo</th><th>SPY 3 mo</th><th>SPHB 1 mo</th><th>SPHB 3 mo</th><th>SPY up after 3 mo</th></tr></thead><tbody>' +
+      rows.concat([base]).map(function (r) {
+        var dot = r.lo != null ? col((r.lo + r.hi) / 2) : PH[r.name] ? PH[r.name].c : null;
+        return '<tr' + (r.name === now ? ' class="cy-now"' : '') + '><td>' + (dot ? '<span style="color:' + dot + ';">&#9679;</span> ' : '') + esc(r.name) +
+          (r.lo != null ? ' <span style="color:var(--muted);font-size:12px;">(' + r.lo + ' to ' + r.hi + ')</span>' : '') + '</td><td>' + r.days + '</td><td>' + pct(r.spy20) + '</td><td>' + pct(r.spy60) +
+          '</td><td>' + pct(r.sphb20) + '</td><td>' + pct(r.sphb60) + '</td><td>' + (r.spywin60 == null ? '&mdash;' : r.spywin60 + '%') + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+  }
+
+  function render(c) {
+    var s = c.score, ph = PH[c.phase] || {c: '#9ca3af', say: ''};
+    var phRow = c.backtest.phases.filter(function (r) { return r.name === c.phase; })[0];
+    var top = document.createElement('div'); top.className = 'cy-card';
+    top.innerHTML = '<div class="cy-top">' + clock(c.history, c.phase) + '<div>' +
+      '<div class="cy-score"><span class="cy-num">' + sgn(Math.round(s)) + '</span><span class="cy-pill" style="background:' + col(s) + ';">' + esc(c.bucket) + '</span><span class="cy-asof">as of close ' + esc(c.as_of) + '</span></div>' +
+      '<div class="cy-scale"><div class="cy-mark" style="left:' + ((s + 100) / 2) + '%;"></div></div>' +
+      '<div class="cy-ticks"><span>&minus;100 washout</span><span>&minus;60</span><span>0</span><span>+60</span><span>overheated +100</span></div>' +
+      '<div class="cy-phase">Phase: <span style="color:' + ph.c + ';">' + esc(c.phase) + '</span></div>' +
+      '<p class="cy-say">' + ph.say + (phRow ? ' Past days in this phase: SPY ' + pct(phRow.spy60) + ', high-beta SPHB ' + pct(phRow.sphb60) + ' over the next 3 months (all days ' + pct(c.backtest.baseline.spy60) + ' / ' + pct(c.backtest.baseline.sphb60) + ').' : '') + '</p>' +
+      '<div class="cy-asof">Beta: <b style="color:var(--ink-strong);">' + esc(c.beta.status) + '</b> &middot; Macro for beta: <b style="color:var(--ink-strong);">' + esc(c.macro.overall) + '</b></div>' +
+      '</div></div>';
+    root.innerHTML = ''; root.appendChild(top);
+
+    // washout chart since 2019
+    var wc = document.createElement('div'); wc.className = 'cy-card';
+    wc.innerHTML = '<div class="cy-h3"><span>Washout chart: cycle score (5-day average) since 2019 vs SPY (dashed, log)</span><span>hover for values</span></div>';
+    var lowOf = function (a, b) { var r = null; c.history.forEach(function (p) { if (p.d >= a && p.d <= b && (!r || p.m < r.m)) r = p; }); return r; };
+    var ann = [['2020-01-01', '2020-06-30', 'COVID crash'], ['2022-01-01', '2022-12-31', '2022 bear low'], ['2025-03-01', '2025-05-31', '2025 tariff low']]
+      .map(function (a) { var p = lowOf(a[0], a[1]); return p && p.m <= -60 ? {d: p.d, t: a[2]} : null; }).filter(Boolean);
+    wc.appendChild(timeChart({
+      data: c.history, H: 270, axis: {key: 'm', lo: -100, hi: 100, ticks: [-100, -60, 0, 60, 100]},
+      bands: [[60, 100, '#dc2626'], [-100, -60, '#2563eb']], bg: {key: 'spy', label: 'SPY'}, sw: 1.3,
+      colorFn: function (a, b) { return col((a + b) / 2); }, ann: ann,
+      tip: function (p) { return p.d + ' &middot; score ' + sgn(Math.round(p.s)) + ' (5d avg ' + sgn(Math.round(p.m)) + ') &middot; SPY ' + p.spy.toFixed(2); }
+    }));
+    root.appendChild(wc);
+
+    // Nasdaq 200-day breadth, Perruna style
+    var b2 = c.breadth200, bc = document.createElement('div'); bc.className = 'cy-card';
+    bc.innerHTML = '<div class="cy-h3"><span>Nasdaq: % of stocks above their 200-day average (weekly) vs Nasdaq Composite</span><span>now <b>' + b2.now.toFixed(0) + '%</b></span></div>';
+    bc.appendChild(timeChart({
+      data: b2.weekly, H: 280, axis: {key: 'b', lo: 0, hi: 90, ticks: [0, 15, 25, 50, 75, 90], fmt: function (g) { return g + '%'; }},
+      lines: [{v: 25, c: 'var(--zone-corr)', label: 'Correction zone 25%'}, {v: 15, c: 'var(--zone-acc)', label: 'Accumulate zone 15%: stocks base'}],
+      bg: {key: 'ix', label: 'COMPQ', area: true}, sw: 1.6,
+      colorFn: function (a, b) { return b < a ? '#be123c' : '#111827'; },
+      tip: function (p) { return p.d + ' &middot; ' + p.b.toFixed(1) + '% above 200d &middot; COMPQ ' + p.ix.toLocaleString(); }
+    }));
+    bc.insertAdjacentHTML('beforeend', '<p class="cy-note">Black = rising week, red = falling week. ' + b2.members.toLocaleString() + ' Nasdaq-listed common stocks (today&rsquo;s list, so the line runs above StockCharts&rsquo; $NAA200R). Readings under 25% have marked corrections; under 15% is where bases have formed.</p>');
+    root.appendChild(bc);
+
+    // components
+    var cc = document.createElement('div'); cc.className = 'cy-card';
+    cc.innerHTML = '<div class="cy-h3"><span>What is in the score</span><span>&minus;100 cold &middot; +100 hot</span></div><table class="cy-rows"><tbody>' + c.components.map(function (k) {
+      var v = k.temp, w = v == null ? 0 : Math.abs(v) / 2, l = v == null ? 50 : (v < 0 ? 50 - w : 50);
+      return '<tr><td>' + esc(k.label) + '<span class="n">' + esc(k.note) + '</span></td><td class="v">' + (k.value == null ? '&mdash;' : esc(k.value)) + '</td>' +
+        '<td style="width:32%;"><div class="cy-bar"><i style="left:' + l + '%;width:' + w + '%;background:' + col(v) + ';"></i></div></td>' +
+        '<td class="cy-t" style="color:' + col(v) + ';">' + (v == null ? '&mdash;' : sgn(v)) + '</td></tr>';
+    }).join('') + '</tbody></table>';
+    root.appendChild(cc);
+
+    // beta + macro
+    var bt = c.beta, two = document.createElement('div'); two.className = 'cy-card';
+    var good = /leading|turning up/i.test(bt.status);
+    two.innerHTML = '<div class="cy-h3"><span>High-beta leadership: SPHB / SPLV, past year, with 50-day average</span><span class="cy-chip ' + (good ? 'tailwind' : 'headwind') + '">' + esc(bt.status) + '</span></div><div class="cy-two"><div class="bt-plot"></div><ul class="cy-kv">' +
+      bt.stats.map(function (k) { return '<li><span>' + esc(k.label) + '</span><b>' + esc(k.value) + '</b></li>'; }).join('') +
+      '</ul></div><p class="cy-note">SPHB holds the 100 highest-beta S&amp;P 500 stocks, SPLV the 100 lowest-volatility. When the ratio rolls over while the index holds up, speculative demand is leaving first; that has tended to come before index tops.</p>';
+    var rr = bt.ratio.map(function (p) { return p.r; }), rlo = Math.min.apply(null, rr), rhi = Math.max.apply(null, rr), pad = (rhi - rlo) * .08;
+    var rc = timeChart({
+      data: bt.ratio.filter(function (p) { return p.m != null; }), W: 420, H: 200, axis: {key: 'r', lo: rlo - pad, hi: rhi + pad, ticks: [rlo, (rlo + rhi) / 2, rhi], fmt: function (g) { return g.toFixed(2); }},
+      overlay: {key: 'm', label: '50d'}, sw: 1.8,
+      colorFn: function (a, b) { return b >= a ? 'var(--up)' : 'var(--down)'; },
+      tip: function (p) { return p.d + ' &middot; ratio ' + p.r.toFixed(3) + ' &middot; 50d ' + p.m.toFixed(3); }
+    });
+    two.querySelector('.bt-plot').appendChild(rc);
+    root.appendChild(two);
+
+    var m = c.macro, mc = document.createElement('div'); mc.className = 'cy-card';
+    mc.innerHTML = '<div class="cy-h3"><span>Macro backdrop for high-beta stocks (not in the score)</span><span class="cy-chip ' + (m.overall === 'Tailwind' ? 'tailwind' : m.overall === 'Headwind' ? 'headwind' : 'neutral') + '">' + esc(m.overall) + ' &middot; ' + m.tailwinds + ' up / ' + m.headwinds + ' down</span></div><div class="cy-macro">' +
+      m.items.map(function (i) {
+        return '<div class="cy-m"><div class="l"><span>' + esc(i.label) + '</span><span class="cy-chip ' + i.signal + '">' + i.signal + '</span></div><div class="v">' + esc(i.value) + '</div><div class="c">' + esc(i.change) + '</div>' + spark(i.spark, i.signal) + '<div class="d">' + esc(i.detail) + '</div></div>';
+      }).join('') + '</div><p class="cy-note">Sparklines: past year, weekly. Rate cuts priced, falling yields and inflation expectations, tighter credit spreads and a softer dollar are tailwinds; the reverse are headwinds.</p>';
+    root.appendChild(mc);
+
+    // backtests
+    var B = c.backtest, bk = document.createElement('div');
+    bk.innerHTML = '<div class="cy-h3" style="margin-top:6px;"><span>What happened next, ' + B.from.slice(0, 4) + '&ndash;' + B.to.slice(0, 4) + ': by score</span></div>' + btTable(B.buckets, B.baseline, c.bucket, 'Reading') +
+      '<div class="cy-h3"><span>By phase</span></div>' + btTable(B.phases, B.baseline, c.phase, 'Phase') +
+      '<div class="cy-h3"><span>The two setups</span></div>' + btTable(B.setups, B.baseline, null, 'Setup') +
+      '<p class="mono" style="font-size:12px;color:var(--muted);margin-top:-6px;">Average total return over the next 20 and 60 trading days. Windows overlap, so day counts overstate the number of independent signals. Breadth from ' + c.universe.broad + ' S&amp;P 1500, ' + c.universe.ndx + ' Nasdaq-100 and ' + c.universe.nasdaq.toLocaleString() + ' Nasdaq-listed members. Last updated: ' + new Date(c.generated_at).toLocaleString() + '</p>';
+    root.appendChild(bk);
+  }
+
+  fetch('/stock-screener/cycle.json', {cache: 'no-store'})
   .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  .then(function (d) {
-    var t = d.thermometer;
-    if (!t) { root.innerHTML = '<p style="color:var(--muted);">The thermometer has not been computed yet; it updates with the daily run near the close.</p>'; return; }
-    var s = t.score, pos = (s + 100) / 2;
-    var html = '<div class="th-top"><div class="th-score"><span class="th-num">' + (s > 0 ? '+' : '') + s.toFixed(0) + '</span>' +
-      '<span class="th-bucket" style="background:' + col(s) + ';">' + esc(t.bucket) + '</span>' +
-      '<span class="th-asof">as of close ' + esc(t.as_of) + '</span></div>' +
-      '<div><div class="th-scale"><div class="th-mark" style="left:' + pos + '%;"></div></div>' +
-      '<div class="th-ticks"><span>&minus;100 washout</span><span>&minus;60</span><span>0</span><span>+60</span><span>overheated +100</span></div></div>' +
-      '<table class="th-rows"><tbody>' + t.components.map(function (c) {
-        var v = c.temp, w = v == null ? 0 : Math.abs(v) / 2, l = v == null ? 50 : (v < 0 ? 50 - w : 50);
-        return '<tr><td>' + esc(c.label) + '<span class="n">' + esc(c.note) + '</span></td><td class="v">' + (c.value == null ? '&mdash;' : esc(c.value)) + '</td>' +
-          '<td style="width:34%;"><div class="th-bar"><i style="left:' + l + '%;width:' + w + '%;background:' + col(v) + ';"></i></div></td>' +
-          '<td class="th-t" style="color:' + col(v) + ';">' + (v == null ? '&mdash;' : (v > 0 ? '+' : '') + v) + '</td></tr>';
-      }).join('') + '</tbody></table>' +
-      '<div class="th-chart"><div class="th-h3">Past year: score (colored) vs SPY (dashed)</div>' + chart(t.history) + '</div></div>';
-    var b = t.backtest, base = b.baseline;
-    html += '<div class="th-h3">What happened next: SPY forward returns by thermometer reading, ' + esc(b.from.slice(0, 4)) + '&ndash;' + esc(b.to.slice(0, 4)) + '</div>' +
-      '<div class="table-wrap"><table class="simple"><thead><tr><th>Reading</th><th>Days</th><th>1 week</th><th>1 month</th><th>3 months</th><th>Up after 3 mo</th></tr></thead><tbody>' +
-      b.buckets.map(function (r) {
-        return '<tr' + (r.bucket === t.bucket ? ' class="th-now"' : '') + '><td><span style="color:' + col((r.lo + r.hi) / 2) + ';">&#9679;</span> ' + esc(r.bucket) + ' <span style="color:var(--muted);font-size:12px;">(' + Math.max(r.lo, -100) + ' to ' + Math.min(r.hi, 100) + ')</span></td><td>' + r.days +
-          '</td><td>' + pct(r.avg5, 1) + '</td><td>' + pct(r.avg20, 1) + '</td><td>' + pct(r.avg60, 1) + '</td><td>' + pct(r.win60) + '</td></tr>';
-      }).join('') +
-      '<tr><td style="color:var(--muted);">All days</td><td></td><td>' + pct(base.avg5, 1) + '</td><td>' + pct(base.avg20, 1) + '</td><td>' + pct(base.avg60, 1) + '</td><td>' + pct(base.win60) + '</td></tr>' +
-      '</tbody></table></div>' +
-      '<p class="mono" style="font-size:12px;color:var(--muted);margin-top:-6px;">Average SPY total return over the next 5, 20 and 60 trading days. Overlapping windows, so the day counts overstate the number of independent signals. Breadth from ' + t.universe.broad + ' S&amp;P 1500 and ' + t.universe.ndx + ' Nasdaq-100 members. Last updated: ' + new Date(t.generated_at).toLocaleString() + '</p>';
-    root.innerHTML = html;
-  })
-  .catch(function (err) { root.innerHTML = '<p style="color:var(--down);">Could not load the thermometer: ' + esc(err.message) + '</p>'; });
+  .then(render)
+  .catch(function (err) { root.innerHTML = '<p style="color:var(--down);">Could not load the market cycle: ' + esc(err.message) + '</p>'; console.error(err); });
 })();
 </script>
 <style>
