@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Data</title>
-<meta name="description" content="Live SPY/QQQ dealer gamma heatmaps, key levels, and the scheduled economic and market calendar.">
+<meta name="description" content="Market thermometer for short-term tops and bottoms, live SPY/QQQ dealer gamma heatmaps, key levels, and the scheduled economic and market calendar.">
 <link rel="shortcut icon" href="images/favicon.ico" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,12 +35,21 @@
 <div class="shell">
 <div class="hero">
   <p class="eyebrow">Market Data</p>
-  <h1>Dealer Gamma <em>&amp; Event Calendar</em></h1>
-  <p class="sub">Live options-dealer positioning for SPY and QQQ, refreshed every 15 minutes during market hours, and the schedule of economic releases and market events ahead. Data and dates only; interpretation lives on the <a href="market.html">Market</a> page, and the mechanics on <a href="learn.html">Learn</a>.</p>
+  <h1>Thermometer, Dealer Gamma <em>&amp; Event Calendar</em></h1>
+  <p class="sub">A daily overbought/oversold thermometer for the broad market, live options-dealer positioning for SPY and QQQ, refreshed every 15 minutes during market hours, and the schedule of economic releases and market events ahead. Data and dates only; interpretation lives on the <a href="market.html">Market</a> page, and the mechanics on <a href="learn.html">Learn</a>.</p>
   <div class="meta"><span><b>Covers</b> SPY, QQQ (levels also in SPX, NDX points)</span><span><b>Calendar updated</b> Nov 19, 2026</span></div>
 </div>
 <section class="section">
-  <div class="section-head"><span class="section-num">01</span><h2>Dealer Gamma Now</h2></div>
+  <div class="section-head"><span class="section-num">01</span><h2>Market Thermometer</h2></div>
+  <p class="lead">One score from &minus;100 (washed out) to +100 (overheated), built from the readings traders use to spot short-term extremes: the VIX against its multi-year range and its weekly RSI, VIX term structure, McClellan breadth oscillators, the share of stocks above their 50-day average, and SPY/QQQ momentum and extension. Updated each trading day near the close.</p>
+  <div id="th-root"><p style="color:var(--muted);">Loading&hellip;</p></div>
+  <div class="flag">
+    <div class="flag-lbl">How to read it</div>
+    <p style="margin:0 0 8px;">The two ends do not carry equal weight. Cold readings cluster near tradeable lows: fear, breadth and momentum all wash out together and snap back fast. Hot readings are a warning, not a sell signal; overbought markets can stay overbought for months, and the backtest below shows forward returns at the hot end were still positive, just smaller. Tops tend to be processes (breadth thinning while the index holds up), while bottoms tend to be events.</p>
+    <p style="margin:0;">Each reading is scored against fixed bands (VIX 14&ndash;28, VIX weekly RSI 35&ndash;70, VIX/VIX3M 0.82&ndash;1.02, RSI 30&ndash;70) or, for breadth and extension, its percentile over the prior three years. The McClellan oscillators are computed from S&amp;P 1500 and Nasdaq-100 members, stand-ins for the exchange-wide $NYMO and $NAMO, and history uses today&rsquo;s index members, so older breadth readings carry some survivorship bias. Not a recommendation to trade.</p>
+  </div>
+
+  <div class="section-head"><span class="section-num">02</span><h2>Dealer Gamma Now</h2></div>
   <p class="lead">A live estimate of options-dealer positioning in SPY and QQQ, with key levels also quoted in S&amp;P 500 (SPX) and Nasdaq-100 (NDX) points, refreshed every 15 minutes during market hours. Free data covers only the ETF options; SPX and NDX index options carry more of the dealer gamma, so treat this as a partial view. Positive gamma means dealer hedging tends to dampen moves; negative means it tends to amplify them. See <a href="learn.html">Learn</a> for how to read it.</p>
   <div id="gex-root"><p style="color:var(--muted);">Loading&hellip;</p></div>
   <div class="table-wrap"><table class="simple" id="gex-events">
@@ -53,8 +62,8 @@
     <p style="margin:0;">Computed from delayed option chains (open interest as of the prior close; the data source is named under the tables) using Black-Scholes gamma and the usual convention that dealers are long calls and short puts. Expirations within the next week are included. Dealer books are not public, so the signs are an assumption, not an observation. Not a recommendation to trade.</p>
   </div>
 
-  <div class="section-head"><span class="section-num">02</span><h2>Event Calendar</h2></div>
-  <p class="lead">Scheduled releases and market events. Times are Eastern. The table in section 01 adds the options-implied move for the nearest events.</p>
+  <div class="section-head"><span class="section-num">03</span><h2>Event Calendar</h2></div>
+  <p class="lead">Scheduled releases and market events. Times are Eastern. The table in section 02 adds the options-implied move for the nearest events.</p>
   <div class="table-wrap"><table class="simple">
     <thead><tr><th>Date</th><th>Time (ET)</th><th>Event</th><th>Details</th></tr></thead>
     <tbody>
@@ -77,6 +86,97 @@
   </table></div>
   <p style="font-size:13px;color:var(--muted);">Release dates from the BLS, BEA, and Federal Reserve schedules and company announcements. For what these releases mean for growth stocks, see <a href="market.html">Market</a>.</p>
 </section>
+<style>
+  .th-top{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:16px 18px;margin:8px 0 16px;}
+  .th-score{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .th-num{font:700 46px/1 var(--font-stat, var(--font-mono));font-variant-numeric:tabular-nums;color:var(--ink-strong);}
+  .th-bucket{font:600 12px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:999px;color:#fff;}
+  .th-asof{font:12px var(--font-mono);color:var(--muted);}
+  .th-scale{position:relative;height:16px;border-radius:999px;background:linear-gradient(90deg,#2563eb 0%,#60a5fa 20%,#9ca3af 50%,#f97316 80%,#dc2626 100%);}
+  .th-mark{position:absolute;top:-5px;width:4px;height:26px;margin-left:-2px;background:var(--ink-strong);border-radius:2px;box-shadow:0 0 0 2px var(--surface);}
+  .th-ticks{display:flex;justify-content:space-between;font:10.5px var(--font-mono);color:var(--muted);margin-top:4px;}
+  .th-rows{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .th-rows td{padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:middle;}
+  .th-rows td.v{font:12.5px var(--font-mono);text-align:right;white-space:nowrap;color:var(--ink-strong);}
+  .th-rows .n{display:block;font-size:12px;color:var(--muted);}
+  .th-bar{position:relative;height:8px;background:var(--rule);border-radius:4px;min-width:90px;}
+  .th-bar i{position:absolute;top:0;bottom:0;border-radius:4px;}
+  .th-bar:after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted);}
+  .th-t{font:12px var(--font-mono);text-align:right;width:44px;}
+  .th-chart svg{width:100%;height:auto;display:block;}
+  .th-chart text{font:10px var(--font-mono);fill:var(--muted);}
+  .th-h3{font:600 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px;}
+  .simple tr.th-now td{background:var(--surface-hover);font-weight:600;}
+  @media (max-width:600px){.th-num{font-size:38px;}.th-rows .n{display:none;}.th-bar{min-width:60px;}}
+</style>
+<script>
+(function () {
+  var root = document.getElementById('th-root');
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function col(t) {   // -100 blue .. 0 gray .. +100 red
+    if (t == null) return 'var(--muted)';
+    var a = Math.min(Math.abs(t) / 100, 1);
+    var c0 = [156, 163, 175], c1 = t < 0 ? [37, 99, 235] : [220, 38, 38];
+    return 'rgb(' + c0.map(function (v, i) { return Math.round(v + (c1[i] - v) * a); }).join(',') + ')';
+  }
+  function pct(v, signed) { return v == null ? '&mdash;' : (signed && v > 0 ? '+' : '') + v.toFixed(signed ? 2 : 0) + '%'; }
+  function chart(h) {
+    if (!h || h.length < 2) return '';
+    var W = 720, H = 200, L = 34, R = 44, T = 10, B = 22, n = h.length;
+    var x = function (i) { return L + (W - L - R) * i / (n - 1); };
+    var y = function (s) { return T + (H - T - B) * (100 - s) / 200; };
+    var sp = h.map(function (p) { return p.spy; }), lo = Math.min.apply(null, sp), hi = Math.max.apply(null, sp);
+    var ys = function (v) { return T + (H - T - B) * (1 - (v - lo) / ((hi - lo) || 1)); };
+    var out = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Thermometer score and SPY over the past year">';
+    out += '<rect x="' + L + '" y="' + y(100) + '" width="' + (W - L - R) + '" height="' + (y(60) - y(100)) + '" fill="#dc2626" opacity=".08"/>';
+    out += '<rect x="' + L + '" y="' + y(-60) + '" width="' + (W - L - R) + '" height="' + (y(-100) - y(-60)) + '" fill="#2563eb" opacity=".08"/>';
+    [-100, -60, 0, 60, 100].forEach(function (g) {
+      out += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(g) + '" y2="' + y(g) + '" stroke="var(--rule)"/>' +
+             '<text x="' + (L - 6) + '" y="' + (y(g) + 3) + '" text-anchor="end">' + g + '</text>';
+    });
+    out += '<polyline fill="none" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="3 3" points="' + h.map(function (p, i) { return x(i).toFixed(1) + ',' + ys(p.spy).toFixed(1); }).join(' ') + '"/>';
+    for (var i = 1; i < n; i++) {
+      out += '<line x1="' + x(i - 1).toFixed(1) + '" y1="' + y(h[i - 1].s).toFixed(1) + '" x2="' + x(i).toFixed(1) + '" y2="' + y(h[i].s).toFixed(1) + '" stroke="' + col((h[i - 1].s + h[i].s) / 2) + '" stroke-width="2"/>';
+    }
+    out += '<text x="' + (W - R + 4) + '" y="' + (ys(h[n - 1].spy) + 3) + '">SPY</text>';
+    [0, Math.floor(n / 2), n - 1].forEach(function (i) {
+      out += '<text x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="' + (i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle') + '">' + h[i].d + '</text>';
+    });
+    return out + '</svg>';
+  }
+  fetch('/stock-screener/results.json', {cache: 'no-store'})
+  .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then(function (d) {
+    var t = d.thermometer;
+    if (!t) { root.innerHTML = '<p style="color:var(--muted);">The thermometer has not been computed yet; it updates with the daily run near the close.</p>'; return; }
+    var s = t.score, pos = (s + 100) / 2;
+    var html = '<div class="th-top"><div class="th-score"><span class="th-num">' + (s > 0 ? '+' : '') + s.toFixed(0) + '</span>' +
+      '<span class="th-bucket" style="background:' + col(s) + ';">' + esc(t.bucket) + '</span>' +
+      '<span class="th-asof">as of close ' + esc(t.as_of) + '</span></div>' +
+      '<div><div class="th-scale"><div class="th-mark" style="left:' + pos + '%;"></div></div>' +
+      '<div class="th-ticks"><span>&minus;100 washout</span><span>&minus;60</span><span>0</span><span>+60</span><span>overheated +100</span></div></div>' +
+      '<table class="th-rows"><tbody>' + t.components.map(function (c) {
+        var v = c.temp, w = v == null ? 0 : Math.abs(v) / 2, l = v == null ? 50 : (v < 0 ? 50 - w : 50);
+        return '<tr><td>' + esc(c.label) + '<span class="n">' + esc(c.note) + '</span></td><td class="v">' + (c.value == null ? '&mdash;' : esc(c.value)) + '</td>' +
+          '<td style="width:34%;"><div class="th-bar"><i style="left:' + l + '%;width:' + w + '%;background:' + col(v) + ';"></i></div></td>' +
+          '<td class="th-t" style="color:' + col(v) + ';">' + (v == null ? '&mdash;' : (v > 0 ? '+' : '') + v) + '</td></tr>';
+      }).join('') + '</tbody></table>' +
+      '<div class="th-chart"><div class="th-h3">Past year: score (colored) vs SPY (dashed)</div>' + chart(t.history) + '</div></div>';
+    var b = t.backtest, base = b.baseline;
+    html += '<div class="th-h3">What happened next: SPY forward returns by thermometer reading, ' + esc(b.from.slice(0, 4)) + '&ndash;' + esc(b.to.slice(0, 4)) + '</div>' +
+      '<div class="table-wrap"><table class="simple"><thead><tr><th>Reading</th><th>Days</th><th>1 week</th><th>1 month</th><th>3 months</th><th>Up after 3 mo</th></tr></thead><tbody>' +
+      b.buckets.map(function (r) {
+        return '<tr' + (r.bucket === t.bucket ? ' class="th-now"' : '') + '><td><span style="color:' + col((r.lo + r.hi) / 2) + ';">&#9679;</span> ' + esc(r.bucket) + ' <span style="color:var(--muted);font-size:12px;">(' + Math.max(r.lo, -100) + ' to ' + Math.min(r.hi, 100) + ')</span></td><td>' + r.days +
+          '</td><td>' + pct(r.avg5, 1) + '</td><td>' + pct(r.avg20, 1) + '</td><td>' + pct(r.avg60, 1) + '</td><td>' + pct(r.win60) + '</td></tr>';
+      }).join('') +
+      '<tr><td style="color:var(--muted);">All days</td><td></td><td>' + pct(base.avg5, 1) + '</td><td>' + pct(base.avg20, 1) + '</td><td>' + pct(base.avg60, 1) + '</td><td>' + pct(base.win60) + '</td></tr>' +
+      '</tbody></table></div>' +
+      '<p class="mono" style="font-size:12px;color:var(--muted);margin-top:-6px;">Average SPY total return over the next 5, 20 and 60 trading days. Overlapping windows, so the day counts overstate the number of independent signals. Breadth from ' + t.universe.broad + ' S&amp;P 1500 and ' + t.universe.ndx + ' Nasdaq-100 members. Last updated: ' + new Date(t.generated_at).toLocaleString() + '</p>';
+    root.innerHTML = html;
+  })
+  .catch(function (err) { root.innerHTML = '<p style="color:var(--down);">Could not load the thermometer: ' + esc(err.message) + '</p>'; });
+})();
+</script>
 <style>
   .gex-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:8px 0 18px;}
   .heat-wrap{overflow-x:auto;max-height:560px;overflow-y:auto;border:1px solid var(--rule);border-radius:6px;}
