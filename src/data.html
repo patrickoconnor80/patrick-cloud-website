@@ -131,7 +131,17 @@
   .cy-kv li b{font:600 13px var(--font-mono);color:var(--ink-strong);white-space:nowrap;}
   .simple tr.cy-now td{background:var(--surface-hover);font-weight:600;}
   .cy-note{font-size:12px;color:var(--muted);margin:6px 0 0;}
-  @media (max-width:760px){.cy-top,.cy-two{grid-template-columns:minmax(0,1fr);}.cy-top svg.clock{max-width:300px;margin:0 auto;}}
+  .ind-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:16px;}
+  .cy-card.ind{margin:0;scroll-margin-top:84px;}
+  .ind-hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+  .ind-name{font-weight:600;font-size:15px;color:var(--ink-strong);}
+  .ind-val{font:600 14px var(--font-mono);color:var(--ink-strong);display:flex;align-items:center;gap:8px;}
+  .ind p{margin:8px 0 0;font-size:13.5px;line-height:1.55;}
+  .ind p.ind-rare{padding:6px 10px;border-radius:6px;background:var(--surface-hover);font-size:13px;}
+  .ind p.ind-rare.rare{border-left:3px solid #dc2626;} .ind p.ind-rare.uncommon{border-left:3px solid #f59e0b;} .ind p.ind-rare.common{border-left:3px solid #9ca3af;}
+  .ind p.ind-read{color:var(--muted);}
+  .cy-rows td a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--muted);}
+  @media (max-width:760px){.cy-top,.cy-two,.ind-grid{grid-template-columns:minmax(0,1fr);}.cy-top svg.clock{max-width:300px;margin:0 auto;}}
   @media (max-width:600px){.cy-num{font-size:38px;}.cy-rows .n{display:none;}.cy-bar{min-width:50px;}.cy-card{padding:14px 12px;}}
 </style>
 <script>
@@ -144,6 +154,30 @@
     Advance:   {c: '#f97316', say: 'Breadth and momentum are improving together. The trend is the friend; watch for overheated readings.'},
     Topping:   {c: '#dc2626', say: 'Still warm but losing momentum. Tops are processes: watch beta leadership and Nasdaq breadth for confirmation.'}
   };
+  var HIGH_COLD = {vix: 1, vix_wrsi: 1, vix_term: 1};
+  var EXPLAIN = {
+    vix: {what: 'The VIX is the 30-day volatility the options market is pricing into the S&amp;P 500: the market&rsquo;s fear gauge. It rises when investors rush to buy protection.',
+          read: 'On a multi-year chart it trades in a range. Weekly closes near 28 and above have come during panics, which is where stocks have historically been bought; readings near 14 signal complacency. It is scored on that fixed 14&ndash;28 range.'},
+    vix_wrsi: {what: 'The 14-week RSI of the VIX itself: how fast fear has risen, not just how high it is.',
+          read: 'Above 70, the VIX is &ldquo;overbought&rdquo;: fear has spiked faster than it usually can sustain, so stocks are oversold. Spikes like that tend to exhaust within weeks. Low readings mean fear has drained out of the market.'},
+    vix_term: {what: 'One-month implied volatility (VIX) divided by three-month (VIX3M). Normally near-term volatility is cheaper, so the ratio sits around 0.85&ndash;0.90.',
+          read: 'Above 1.0 is backwardation: traders pay more for protection this month than for the next three. That only happens in acute panic, and it has clustered at or near capitulation lows. It flips back below 1.0 as the panic ends.'},
+    mco_broad: {what: 'The McClellan Oscillator measures breadth momentum. Each day it takes advancing minus declining stocks as a share of all stocks (&ldquo;ratio-adjusted&rdquo;), then subtracts a 39-day average of that from a 19-day average. Here it runs on the S&amp;P 1500, a stand-in for StockCharts&rsquo; $NYMO (all NYSE stocks).',
+          read: 'Zero is neutral. Deep negative readings mean selling has been broad and accelerating: most stocks falling, day after day. On $NYMO, readings below about &minus;60 to &minus;70 are rare and have preceded multi-week bounces; the turn back up from there is the signal. The chart lines mark this series&rsquo; own bottom and top 10%.'},
+    mco_ndx: {what: 'The same McClellan Oscillator computed on the Nasdaq-100 members: breadth momentum for large-cap tech and growth, a stand-in for $NAMO (all Nasdaq stocks).',
+          read: 'This is the one closest to high-beta stocks. Deeply negative = tech selling is broad and stretched; a turn up from the bottom 10% has tended to start the relief rally in growth names.'},
+    above50: {what: 'The share of S&amp;P 1500 stocks trading above their own 50-day moving average: short-term participation.',
+          read: 'Below 20% means nearly everything is in a short-term downtrend, a washout that usually snaps back. Above 80% means nearly everything has already run; rallies from there tend to slow.'},
+    nas200: {what: 'The share of Nasdaq-listed stocks above their 200-day moving average: the long-term health of the broad market, including the small and speculative names. This is the series on the Perruna chart above.',
+          read: 'Under 25% is the correction zone. Under 15% is where bases have formed and stocks have been accumulated (2018, 2020, 2022). It is computed from today&rsquo;s Nasdaq list, so it runs several points above StockCharts&rsquo; $NAA200R.'},
+    spy_rsi: {what: 'The 14-day Relative Strength Index of SPY: average up-day gains vs average down-day losses, scaled 0&ndash;100.',
+          read: 'Below 30 is oversold and above 70 overbought. In a bull market SPY rarely reaches 30, so even the high 30s are a meaningful dip; in bear markets it can stay under 30 for days.'},
+    qqq_rsi: {what: 'The same 14-day RSI on QQQ (Nasdaq-100).',
+          read: 'Tech moves faster than the S&amp;P, so QQQ hits the extremes more often. When QQQ is oversold before SPY, growth is leading the selling.'},
+    spy_ext: {what: 'How far SPY is from its 50-day average, measured in ATRs (the average daily range). It is a volatility-adjusted rubber band.',
+          read: 'More than about 2 ATRs below the 50-day is stretched to the downside and tends to snap back; far above it, the rally is extended. The chart lines mark this series&rsquo; own bottom and top 10%.'}
+  };
+  function fmtDate(iso) { var d = new Date(iso + 'T12:00:00'); return d.toLocaleDateString(undefined, {month: 'short', day: 'numeric', year: 'numeric'}); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function col(t) {
     if (t == null) return 'var(--muted)';
@@ -318,11 +352,55 @@
     var cc = document.createElement('div'); cc.className = 'cy-card';
     cc.innerHTML = '<div class="cy-h3"><span>What is in the score</span><span>&minus;100 cold &middot; +100 hot</span></div><table class="cy-rows"><tbody>' + c.components.map(function (k) {
       var v = k.temp, w = v == null ? 0 : Math.abs(v) / 2, l = v == null ? 50 : (v < 0 ? 50 - w : 50);
-      return '<tr><td>' + esc(k.label) + '<span class="n">' + esc(k.note) + '</span></td><td class="v">' + (k.value == null ? '&mdash;' : esc(k.value)) + '</td>' +
+      return '<tr><td><a href="#ind-' + k.key + '">' + esc(k.label) + '</a><span class="n">' + esc(k.note) + '</span></td><td class="v">' + (k.value == null ? '&mdash;' : esc(k.value)) + '</td>' +
         '<td style="width:32%;"><div class="cy-bar"><i style="left:' + l + '%;width:' + w + '%;background:' + col(v) + ';"></i></div></td>' +
         '<td class="cy-t" style="color:' + col(v) + ';">' + (v == null ? '&mdash;' : sgn(v)) + '</td></tr>';
-    }).join('') + '</tbody></table>';
+    }).join('') + '</tbody></table><p class="cy-note">Each indicator is charted and explained below; click a name to jump to it.</p>';
     root.appendChild(cc);
+
+    // one card per indicator: chart since 2019, rarity, explanation
+    var ic = document.createElement('div');
+    ic.innerHTML = '<div class="cy-h3" style="margin-top:4px;"><span>The indicators, one by one (since 2019)</span><span>shaded = cold (blue) / hot (red) zone</span></div><div class="ind-grid"></div>';
+    var grid = ic.querySelector('.ind-grid');
+    (c.comp_dates ? c.components : []).forEach(function (k) {
+      var ex = EXPLAIN[k.key] || {}, r = k.rarity;
+      var card = document.createElement('div'); card.className = 'cy-card ind'; card.id = 'ind-' + k.key;
+      var rare = '';
+      if (r) {
+        var word = r.dir === 'low' ? 'this low or lower' : 'this high or higher';
+        var tone = r.pct <= 10 ? 'rare' : r.pct <= 25 ? 'uncommon' : 'common';
+        rare = '<p class="ind-rare ' + tone + '"><b>' + (tone === 'rare' ? 'Rare' : tone === 'uncommon' ? 'Uncommon' : 'Common') + ':</b> ' + word +
+          ' on ' + r.pct.toFixed(r.pct < 10 ? 1 : 0) + '% of trading days since ' + r.since + '.' +
+          (r.last ? ' Last seen before this run: ' + fmtDate(r.last) + '.' : ' Not seen before this run in the data.') + '</p>';
+      }
+      card.innerHTML = '<div class="ind-hd"><span class="ind-name">' + esc(k.label) + '</span><span class="ind-val">' + (k.value == null ? '&mdash;' : esc(k.value)) +
+        ' <span class="cy-pill" style="background:' + col(k.temp) + ';">' + (k.temp == null ? '&mdash;' : sgn(k.temp)) + '</span></span></div>' +
+        '<div class="ind-plot"></div>' + rare +
+        '<p class="ind-what">' + (ex.what || '') + '</p>' +
+        (ex.read ? '<p class="ind-read"><b>How to read it:</b> ' + ex.read + '</p>' : '');
+      var data = [];
+      c.comp_dates.forEach(function (d, i) { if (k.hist[i] != null) data.push({d: d, v: k.hist[i]}); });
+      if (data.length > 2) {
+        var vs = data.map(function (p) { return p.v; }).concat(k.lines.map(function (l) { return l.v; }));
+        var lo = Math.min.apply(null, vs), hi = Math.max.apply(null, vs), pad = (hi - lo) * .06;
+        lo -= pad; hi += pad;
+        var hc = HIGH_COLD[k.key];
+        var bands = k.lines.map(function (l) {
+          var up = (l.side === 'cold') === !!hc;          // zone lies above the line?
+          return [up ? l.v : lo, up ? hi : l.v, l.side === 'cold' ? '#2563eb' : '#dc2626', .09];
+        });
+        var dec = Math.abs(hi - lo) < 3 ? 2 : Math.abs(hi - lo) < 30 ? 1 : 0;
+        card.querySelector('.ind-plot').appendChild(timeChart({
+          data: data, W: 520, H: 190, axis: {key: 'v', lo: lo, hi: hi, ticks: k.lines.map(function (l) { return l.v; }), fmt: function (g) { return g.toFixed(dec); }},
+          bands: bands, sw: 1.2,
+          lines: k.lines.map(function (l) { return {v: l.v, c: l.side === 'cold' ? '#2563eb' : '#dc2626', label: l.label}; }),
+          colorFn: function () { return 'var(--ink-strong)'; },
+          tip: function (p) { return p.d + ' &middot; ' + p.v.toFixed(dec + 1); }
+        }));
+      }
+      grid.appendChild(card);
+    });
+    if (c.comp_dates) root.appendChild(ic);
 
     // beta + macro
     var bt = c.beta, two = document.createElement('div'); two.className = 'cy-card';
@@ -500,6 +578,6 @@
     </span>
   </div>
 </footer>
-<script src="assets/js/section-links.js"></script>
+<script src="assets/js/section-links.js?v=2"></script>
 </body>
 </html>

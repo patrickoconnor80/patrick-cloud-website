@@ -53,9 +53,15 @@
   // section pinned while charts above it load and change the page height
   // (data.html renders its market-cycle panels after a fetch). Stops as soon
   // as the reader scrolls, or after a few seconds.
-  if (location.hash) {
-    var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-    if (target) {
+  var findTarget = function (tries) {   // the target may be rendered later by page scripts
+    var el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (el) return follow(el);
+    if (tries > 0) setTimeout(function () { findTarget(tries - 1); }, 200);
+  };
+  if (location.hash) setTimeout(function () { findTarget(30); }, 0);
+
+  function follow(target) {
+    {
       if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
       var pin = function () { target.scrollIntoView({block: 'start'}); };
       pin();
