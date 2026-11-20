@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Alerts</title>
+<meta name="description" content="The email alerts behind the Data page: daily gamma map, event heads-ups, pin setups and market-cycle turns, with schedule, triggers and samples.">
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-stocks.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html" class="active">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="stocks.html">Overview</a>
+  <a href="watchlist.html">Stocks</a>
+  <a href="market.html" class="active">Macro</a>
+</div></div>
+<div class="subnav subnav-2"><div class="subnav-inner">
+  <a href="market.html">Market</a>
+  <a href="data.html">Data</a>
+  <a href="learn.html">Learn</a>
+  <a href="alerts.html" class="active">Alerts</a>
+</div></div>
+<div class="shell">
+<div class="hero">
+  <p class="eyebrow">Market Alerts</p>
+  <h1>The Email <em>Alerts</em></h1>
+  <p class="sub">The models on the <a href="data.html">Data</a> page also run as email alerts: a morning gamma map every trading day, heads-ups before scheduled events, pin setups when dealers are long gamma, and market-cycle signals at washouts, overheated readings and the turns out of each. This page lists when each one goes out and shows a sample of every email.</p>
+  <div class="meta"><span><b>Emails</b> ~30 a month, most of them the daily map</span><span><b>Samples rendered</b> Nov 19, 2026</span></div>
+</div>
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2>Schedule</h2></div>
+  <p class="lead">All times Eastern. The gamma model runs every 15 minutes from 9:30am to 4:15pm on weekdays; the market-cycle model runs once each weekday at 5:30pm, after the day&rsquo;s closes are in.</p>
+  <div class="table-wrap"><table class="simple">
+    <thead><tr><th>Email</th><th>When it goes out</th><th>How often</th></tr></thead>
+    <tbody><tr><td><a href="#daily-gamma-map">Daily gamma map</a></td><td>Every trading day, 9:45am ET</td><td style="white-space:nowrap;">~21 a month</td></tr><tr><td><a href="#event-heads-up">Event heads-up</a></td><td>3:30pm ET the trading day before each calendar event (Monday events: 9:30am that morning)</td><td style="white-space:nowrap;">~6 a month</td></tr><tr><td><a href="#pin-alert">Pin alert</a></td><td>Any 15-minute run in market hours, once per ticker, strike and expiration</td><td style="white-space:nowrap;">0 in short-gamma markets; a few a week in calm ones</td></tr><tr><td><a href="#cycle-washout">Market cycle: Washout</a></td><td>After the close (5:30pm ET), when the score first drops to &minus;60 or below</td><td style="white-space:nowrap;">~3&ndash;4 a year</td></tr><tr><td><a href="#cycle-turning-up">Market cycle: Turning up after a washout</a></td><td>After the close, when the phase turns to Bottoming within 20 sessions of a washout</td><td style="white-space:nowrap;">~4 a year</td></tr><tr><td><a href="#cycle-overheated">Market cycle: Overheated</a></td><td>After the close, when the score first reaches +60 or above</td><td style="white-space:nowrap;">~5 a year</td></tr><tr><td><a href="#cycle-rolling-over">Market cycle: Rolling over after overheating</a></td><td>After the close, when the phase turns to Topping within 20 sessions of an overheated reading</td><td style="white-space:nowrap;">~7 a year</td></tr>
+      <tr><td><b>Total</b></td><td></td><td><b>~30 a month</b></td></tr>
+    </tbody>
+  </table></div>
+  <div class="flag">
+    <div class="flag-lbl">No repeats</div>
+    <p style="margin:0;">Each alert fires once per setup. Pin alerts remember the ticker, strike and expiration already sent; event heads-ups go out in a single 15-minute slot; market-cycle alerts keep their state between runs, and the washout and overheated alerts re-arm only after the score returns inside &plusmn;40. Frequencies for the market-cycle alerts come from replaying the rules over 2019&ndash;2026; pin frequency is an estimate, since it depends on how often dealers sit long gamma.</p>
+  </div>
+
+  <div class="section-head"><span class="section-num">02</span><h2>Sample Emails</h2></div>
+  <p class="lead">Rendered from the Nov 19 data. The live emails use the same layout with that day&rsquo;s numbers.</p>
+  
+  <div class="al-sample" id="daily-gamma-map">
+    <h3>Daily gamma map</h3>
+    <div class="al-meta"><span><b>When</b> Every trading day, 9:45am ET</span><span><b>How often</b> ~21 a month</span></div>
+    <p>The morning briefing. Dealer regime for SPY and QQQ, the gamma flip, call and put walls and acceleration levels (with S&amp;P 500 and Nasdaq-100 equivalents), the outlook for the next two sessions, both strike &times; expiration heatmaps, any events today or tomorrow, and the market-cycle readout.</p>
+    <p class="al-note">Sent from the 9:45 run so prices reflect the open; open interest is as of the prior close.</p>
+    <iframe src="alerts/daily-gamma-map.html" title="Daily gamma map sample email" loading="lazy"></iframe>
+    <p class="al-open"><a href="alerts/daily-gamma-map.html" target="_blank" rel="noopener">Open the sample full size &rarr;</a></p>
+  </div>
+  <div class="al-sample" id="event-heads-up">
+    <h3>Event heads-up</h3>
+    <div class="al-meta"><span><b>When</b> 3:30pm ET the trading day before each calendar event (Monday events: 9:30am that morning)</span><span><b>How often</b> ~6 a month</span></div>
+    <p>The options-implied move for the event (ATM straddle through the first expiration after it), the dealer regime going in, and the heatmaps.</p>
+    <p class="al-note">Events come from the calendar on the <a href="data.html">Data</a> page.</p>
+    <iframe src="alerts/event-heads-up.html" title="Event heads-up sample email" loading="lazy"></iframe>
+    <p class="al-open"><a href="alerts/event-heads-up.html" target="_blank" rel="noopener">Open the sample full size &rarr;</a></p>
+  </div>
+  <div class="al-sample" id="pin-alert">
+    <h3>Pin alert</h3>
+    <div class="al-meta"><span><b>When</b> Any 15-minute run in market hours, once per ticker, strike and expiration</span><span><b>How often</b> 0 in short-gamma markets; a few a week in calm ones</span></div>
+    <p>Fires when dealers are net long gamma and a large call-heavy node sits within 0.6% of spot on expiration day: the setup for a long call butterfly or short iron butterfly centered on the node.</p>
+    <p class="al-note">Sample is illustrative: today&rsquo;s SPY data with the pin checks forced to pass (dealers are short gamma right now, so no pin qualifies).</p>
+    <iframe src="alerts/pin-alert.html" title="Pin alert sample email" loading="lazy"></iframe>
+    <p class="al-open"><a href="alerts/pin-alert.html" target="_blank" rel="noopener">Open the sample full size &rarr;</a></p>
+  </div>
+  <div class="al-sample" id="cycle-washout">
+    <h3>Market cycle: Washout</h3>
+    <div class="al-meta"><span><b>When</b> After the close (5:30pm ET), when the score first drops to &minus;60 or below</span><span><b>How often</b> ~3&ndash;4 a year</span></div>
+    <p>Fear, breadth and momentum washed out together. Fires once per episode; it re-arms only after the score recovers inside &plusmn;40.</p>
+    <p class="al-note">Real readout from the Nov 18 close.</p>
+    <iframe src="alerts/cycle-washout.html" title="Market cycle: Washout sample email" loading="lazy"></iframe>
+    <p class="al-open"><a href="alerts/cycle-washout.html" target="_blank" rel="noopener">Open the sample full size &rarr;</a></p>
+  </div>
+  <div class="al-sample" id="cycle-turning-up">
+    <h3>Market cycle: Turning up after a washout</h3>
+    <div class="al-meta"><span><b>When</b> After the close, when the phase turns to Bottoming within 20 sessions of a washout</span><span><b>How often</b> ~4 a year</span></div>
+    <p>The entry signal: the score is still cold but rising. Historically SPHB averaged about +11% over the next three months from here.</p>
+    <p class="al-note">Illustrative trigger on real data.</p>
+    <iframe src="alerts/cycle-turning-up.html" title="Market cycle: Turning up after a washout sample email" loading="lazy"></iframe>
+    <p class="al-open"><a href="alerts/cycle-turning-up.html" target="_blank" rel="noopener">Open the sample full size &rarr;</a></p>
+  </div>
+  <div class="al-sample" id="cycle-overheated">
+    <h3>Market cycle: Overheated</h3>
+    <div class="al-meta"><span><b>When</b> After the close, when the score first reaches +60 or above</span><span><b>How often</b> ~5 a year</span></div>
+    <p>Momentum and breadth stretched. The index has tended to keep grinding higher, but high-beta stocks have gone roughly nowhere over the following three months.</p>
+    <p class="al-note">Illustrative trigger on real data.</p>
+    <iframe src="alerts/cycle-overheated.html" title="Market cycle: Overheated sample email" loading="lazy"></iframe>
+    <p class="al-open"><a href="alerts/cycle-overheated.html" target="_blank" rel="noopener">Open the sample full size &rarr;</a></p>
+  </div>
+  <div class="al-sample" id="cycle-rolling-over">
+    <h3>Market cycle: Rolling over after overheating</h3>
+    <div class="al-meta"><span><b>When</b> After the close, when the phase turns to Topping within 20 sessions of an overheated reading</span><span><b>How often</b> ~7 a year</span></div>
+    <p>The trim signal: still warm but losing momentum. Confirm with beta leadership and Nasdaq breadth on the Data page.</p>
+    <p class="al-note">Illustrative trigger on real data.</p>
+    <iframe src="alerts/cycle-rolling-over.html" title="Market cycle: Rolling over after overheating sample email" loading="lazy"></iframe>
+    <p class="al-open"><a href="alerts/cycle-rolling-over.html" target="_blank" rel="noopener">Open the sample full size &rarr;</a></p>
+  </div>
+</section>
+<style>
+  .al-sample{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:16px 18px;margin:0 0 22px;}
+  .al-sample h3{margin:0 0 6px;font-size:19px;color:var(--ink-strong);}
+  .al-meta{display:flex;flex-wrap:wrap;gap:4px 18px;font:12px var(--font-mono);color:var(--muted);margin:0 0 8px;}
+  .al-meta b{color:var(--ink-strong);font-weight:600;}
+  .al-sample p{margin:0 0 8px;font-size:14.5px;line-height:1.55;}
+  .al-sample p.al-note{font-size:12.5px;color:var(--muted);}
+  .al-sample iframe{display:block;width:100%;height:640px;border:1px solid var(--rule);border-radius:6px;background:#f3f4f6;}
+  .al-open{margin:8px 0 0 !important;font-size:13px !important;}
+  @media (max-width:600px){.al-sample{padding:14px 12px;}.al-sample iframe{height:520px;}}
+</style>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
