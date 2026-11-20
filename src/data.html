@@ -177,6 +177,23 @@
     spy_ext: {what: 'How far SPY is from its 50-day average, measured in ATRs (the average daily range). It is a volatility-adjusted rubber band.',
           read: 'More than about 2 ATRs below the 50-day is stretched to the downside and tends to snap back; far above it, the rally is extended. The chart lines mark this series&rsquo; own bottom and top 10%.'}
   };
+  var MACRO_EXPLAIN = {
+    path: {what: 'The 2-year Treasury yield minus the 3-month T-bill rate. The 2-year tracks where the Fed funds rate is expected to average over two years, the T-bill where it is now, so the gap is the rate path the bond market is pricing.',
+           read: 'Below zero, cuts are priced: easier money ahead, which long-duration and speculative stocks benefit from most. Above zero, the market is pricing hikes, or at least no cuts. It is the cleanest read on &ldquo;are rate cuts coming&rdquo;.',
+           rule: 'Tailwind below &minus;25 bp, headwind above +25 bp.'},
+    tnx: {what: 'The 10-year Treasury yield: the discount rate for long-term cash flows and the benchmark for mortgages and corporate borrowing.',
+          read: 'High-beta and growth stocks earn most of their value far in the future, so a fast rise in long yields reprices them hardest. The level matters less than the speed: the signal is the 3-month change.',
+          rule: 'Tailwind when it has fallen more than 25 bp over 3 months, headwind when it has risen more than 25 bp.'},
+    infl: {what: 'TIP (inflation-protected Treasuries) divided by IEF (regular Treasuries of similar maturity). When the market expects more inflation, TIPS outperform and the ratio rises. A stand-in for breakeven inflation, which is not available from Yahoo.',
+           read: 'Rising inflation expectations mean fewer rate cuts and higher yields, a headwind for beta; falling expectations open the door to easing. The chart shows the 3-month change, which sets the signal.',
+           rule: 'Tailwind when the ratio has fallen more than 1% in 3 months, headwind when it has risen more than 1%.'},
+    credit: {what: 'HYG (high-yield, &ldquo;junk&rdquo; corporate bonds) divided by IEF (Treasuries). It rises when investors are willing to lend to weaker companies, and falls when credit spreads widen.',
+             read: 'Credit tends to crack before stocks do: a falling ratio means lenders are pulling back from risk, which speculative stocks feel first. A rising ratio is a risk-on backdrop. The chart shows the 3-month change.',
+             rule: 'Tailwind when the ratio has risen more than 1.5% in 3 months, headwind when it has fallen more than 1.5%.'},
+    dxy: {what: 'The US dollar index (DXY): the dollar against a basket of major currencies, mostly the euro.',
+          read: 'A rising dollar tightens global financial conditions (dollar debt gets more expensive abroad) and tends to drain liquidity from speculative assets. A falling dollar loosens them. The signal is the 3-month change.',
+          rule: 'Tailwind when the dollar has fallen more than 2.5% in 3 months, headwind when it has risen more than 2.5%.'}
+  };
   function fmtDate(iso) { var d = new Date(iso + 'T12:00:00'); return d.toLocaleDateString(undefined, {month: 'short', day: 'numeric', year: 'numeric'}); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function col(t) {
@@ -257,8 +274,13 @@
     }
     if (bg) o += '<text x="' + (W - R + 4) + '" y="' + (ylog(d[n - 1][bg.key]) + 3) + '">' + bg.label + '</text>';
     for (var i = 1; i < n; i++) {
-      o += '<line x1="' + x(i - 1).toFixed(1) + '" y1="' + y(d[i - 1][A.key]).toFixed(1) + '" x2="' + x(i).toFixed(1) + '" y2="' + y(d[i][A.key]).toFixed(1) + '" stroke="' + opts.colorFn(d[i - 1][A.key], d[i][A.key]) + '" stroke-width="' + (opts.sw || 1.6) + '"/>';
+      o += '<line x1="' + x(i - 1).toFixed(1) + '" y1="' + y(d[i - 1][A.key]).toFixed(1) + '" x2="' + x(i).toFixed(1) + '" y2="' + y(d[i][A.key]).toFixed(1) + '" stroke="' + opts.colorFn(d[i - 1][A.key], d[i][A.key], i) + '" stroke-width="' + (opts.sw || 1.6) + '"/>';
     }
+    (opts.marks || []).forEach(function (mk) {   // alert markers: triangles on the top or bottom edge
+      var i = d.findIndex(function (p) { return p.d >= mk.d; }); if (i < 0) return;
+      var mx = x(i), my = mk.up ? H - B - 2 : T + 2, s = 5;
+      o += '<path d="M' + (mx - s).toFixed(1) + ',' + (mk.up ? my : my) + ' L' + (mx + s).toFixed(1) + ',' + my + ' L' + mx.toFixed(1) + ',' + (mk.up ? my - 8 : my + 8) + ' Z" fill="' + mk.c + '" opacity=".85"/>';
+    });
     var yr = '';
     d.forEach(function (p, i) {
       var y4 = p.d.slice(0, 4);
@@ -331,8 +353,11 @@
       data: c.history, H: 270, axis: {key: 'm', lo: -100, hi: 100, ticks: [-100, -60, 0, 60, 100]},
       bands: [[60, 100, '#dc2626'], [-100, -60, '#2563eb']], bg: {key: 'spy', label: 'SPY'}, sw: 1.3,
       colorFn: function (a, b) { return col((a + b) / 2); }, ann: ann,
+      marks: (c.signals || []).filter(function (g) { return g.kind === 'turn_up' || g.kind === 'roll_over'; })
+        .map(function (g) { return {d: g.d, up: g.kind === 'turn_up', c: g.kind === 'turn_up' ? '#2563eb' : '#dc2626'}; }),
       tip: function (p) { return p.d + ' &middot; score ' + sgn(Math.round(p.s)) + ' (5d avg ' + sgn(Math.round(p.m)) + ') &middot; SPY ' + p.spy.toFixed(2); }
     }));
+    if (c.signals) wc.insertAdjacentHTML('beforeend', '<p class="cy-note">Triangles: <b style="color:#2563eb;">&#9650;</b> turning up after a washout, <b style="color:#dc2626;">&#9660;</b> rolling over after overheating, as the email alerts would have fired. See the <a href="#alert-replay">alert replay</a> for what followed each one.</p>');
     root.appendChild(wc);
 
     // Nasdaq 200-day breadth, Perruna style
@@ -421,9 +446,75 @@
     var m = c.macro, mc = document.createElement('div'); mc.className = 'cy-card';
     mc.innerHTML = '<div class="cy-h3"><span>Macro backdrop for high-beta stocks (not in the score)</span><span class="cy-chip ' + (m.overall === 'Tailwind' ? 'tailwind' : m.overall === 'Headwind' ? 'headwind' : 'neutral') + '">' + esc(m.overall) + ' &middot; ' + m.tailwinds + ' up / ' + m.headwinds + ' down</span></div><div class="cy-macro">' +
       m.items.map(function (i) {
-        return '<div class="cy-m"><div class="l"><span>' + esc(i.label) + '</span><span class="cy-chip ' + i.signal + '">' + i.signal + '</span></div><div class="v">' + esc(i.value) + '</div><div class="c">' + esc(i.change) + '</div>' + spark(i.spark, i.signal) + '<div class="d">' + esc(i.detail) + '</div></div>';
-      }).join('') + '</div><p class="cy-note">Sparklines: past year, weekly. Rate cuts priced, falling yields and inflation expectations, tighter credit spreads and a softer dollar are tailwinds; the reverse are headwinds.</p>';
+        return '<div class="cy-m"><div class="l"><span>' + (i.hist ? '<a href="#mac-' + i.key + '">' + esc(i.label) + '</a>' : esc(i.label)) + '</span><span class="cy-chip ' + i.signal + '">' + i.signal + '</span></div><div class="v">' + esc(i.value) + '</div><div class="c">' + esc(i.change) + '</div>' + spark(i.spark, i.signal) + '<div class="d">' + esc(i.detail) + '</div></div>';
+      }).join('') + '</div><p class="cy-note">Sparklines: past year, weekly. Rate cuts priced, falling yields and inflation expectations, tighter credit spreads and a softer dollar are tailwinds; the reverse are headwinds. Overall: Tailwind or Headwind when one side leads by two or more, otherwise Mixed.</p>';
     root.appendChild(mc);
+
+    // one card per macro indicator: weekly history colored by the signal it gave, share of time in each regime
+    if (m.items[0] && m.items[0].hist) {
+      var mg = document.createElement('div');
+      mg.innerHTML = '<div class="cy-h3" style="margin-top:4px;"><span>The macro indicators, one by one (weekly)</span><span><b style="color:var(--up);">green</b> tailwind &middot; <b style="color:#9ca3af;">gray</b> neutral &middot; <b style="color:var(--down);">red</b> headwind</span></div><div class="ind-grid"></div>';
+      var mgrid = mg.querySelector('.ind-grid');
+      var GC = {tailwind: 'var(--up)', headwind: 'var(--down)', neutral: '#9ca3af'};
+      m.items.forEach(function (it) {
+        var ex = MACRO_EXPLAIN[it.key] || {}, pl = it.plot || {key: 'v', label: '', lines: []}, pk = pl.key;
+        var card = document.createElement('div'); card.className = 'cy-card ind'; card.id = 'mac-' + it.key;
+        var sh = it.share || {};
+        card.innerHTML = '<div class="ind-hd"><span class="ind-name">' + esc(it.label) + '</span><span class="ind-val">' + esc(it.value) +
+          ' <span class="cy-chip ' + it.signal + '">' + it.signal + '</span></span></div>' +
+          '<div class="ind-plot"></div>' +
+          '<p class="ind-rare common"><b>Since ' + esc(it.since) + ':</b> tailwind ' + sh.tailwind + '% of the time, neutral ' + sh.neutral + '%, headwind ' + sh.headwind + '%.' + (ex.rule ? ' ' + ex.rule : '') + '</p>' +
+          '<p class="ind-what">' + (ex.what || esc(it.detail)) + '</p>' +
+          (ex.read ? '<p class="ind-read"><b>How to read it:</b> ' + ex.read + '</p>' : '');
+        var data = it.hist.filter(function (h) { return h[pk] != null; });
+        if (data.length > 2) {
+          var vs = data.map(function (h) { return h[pk]; }).concat(pl.lines);
+          var lo = Math.min.apply(null, vs), hi = Math.max.apply(null, vs), pad = (hi - lo) * .06;
+          lo -= pad; hi += pad;
+          var dec = Math.abs(hi - lo) < 3 ? 2 : Math.abs(hi - lo) < 30 ? 1 : 0;
+          var ticks = pl.lines.length ? pl.lines.concat([lo + (hi - lo) * .05, hi - (hi - lo) * .05]) : [lo + (hi - lo) * .1, (lo + hi) / 2, hi - (hi - lo) * .1];
+          card.querySelector('.ind-plot').appendChild(timeChart({
+            data: data, W: 520, H: 190, axis: {key: pk, lo: lo, hi: hi, ticks: ticks, fmt: function (g) { return g.toFixed(dec); }},
+            lines: pl.lines.map(function (v) { return {v: v, c: 'var(--muted)', label: ''}; }),
+            sw: 1.6,
+            colorFn: function (a, b, i) { return GC[data[i].g] || '#9ca3af'; },
+            tip: function (h) { return h.d + ' &middot; ' + h[pk].toFixed(dec + 1) + ' ' + esc(pl.label) + ' &middot; ' + (h.g || '&mdash;'); }
+          }));
+        }
+        mgrid.appendChild(card);
+      });
+      root.appendChild(mg);
+    }
+
+    // alert replay: every alert the current rules would have sent, and what high beta did next
+    if (c.signals && c.signals.length) {
+      var KIND = {washout: ['Washout', '#2563eb'], turn_up: ['Turning up after a washout', '#2563eb'],
+                  overheated: ['Overheated', '#dc2626'], roll_over: ['Rolling over after overheating', '#dc2626']};
+      var avg = function (a) { a = a.filter(function (v) { return v != null; }); return a.length ? a.reduce(function (s, v) { return s + v; }, 0) / a.length : null; };
+      var sc = document.createElement('div'); sc.className = 'cy-card'; sc.id = 'alert-replay';
+      var rows = ['washout', 'turn_up', 'overheated', 'roll_over'].map(function (k) {
+        var g = c.signals.filter(function (s) { return s.kind === k; }), done = g.filter(function (s) { return s.sphb60 != null; });
+        var up = done.length ? Math.round(100 * done.filter(function (s) { return s.sphb60 > 0; }).length / done.length) : null;
+        return '<tr><td><span style="color:' + KIND[k][1] + ';">&#9679;</span> ' + KIND[k][0] + '</td><td>' + g.length + '</td><td>' + pct(avg(g.map(function (s) { return s.sphb20; }))) + '</td><td>' + pct(avg(g.map(function (s) { return s.sphb60; }))) +
+          '</td><td>' + pct(avg(g.map(function (s) { return s.sphb_low60; }))) + '</td><td>' + pct(avg(g.map(function (s) { return s.sphb_high60; }))) + '</td><td>' + (up == null ? '&mdash;' : up + '%') + '</td></tr>';
+      }).join('');
+      var b = c.backtest.baseline;
+      var first = c.signals[0].d.slice(0, 4);
+      var recent = c.signals.filter(function (s) { return s.d >= '2025-01-01'; }).reverse();
+      sc.innerHTML = '<div class="cy-h3"><span>Alert replay: every alert the current rules would have sent since ' + first + '</span><span>SPHB = high beta</span></div>' +
+        '<div class="table-wrap"><table class="simple"><thead><tr><th>Alert</th><th>Times</th><th>SPHB 1 mo</th><th>SPHB 3 mo</th><th>Worst dip in 3 mo</th><th>Best rally in 3 mo</th><th>SPHB up after 3 mo</th></tr></thead><tbody>' + rows +
+        '<tr><td style="color:var(--muted);">All days</td><td>&mdash;</td><td>' + pct(b.sphb20) + '</td><td>' + pct(b.sphb60) + '</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr></tbody></table></div>' +
+        '<p class="cy-note"><b>What the replay shows.</b> The bottom side works: washout and turning-up alerts came near the March 2020, April 2025 and March 2026 lows, and SPHB has averaged well above its normal return in the three months after them. The caveat is a bear market: in 2022 a washout fired every month or two on the way down, each followed by a bounce, and the first washout of 2020 came four weeks before the low. The top side does not work: overheated and rolling-over alerts fire often during strong advances and SPHB has kept rising after most of them. In 2026 none fired ahead of the February, June or October high-beta selloffs (the score peaked at only +19 in February and +38 in October). Treat top alerts as a cue to tighten stops, not as a sell signal.</p>' +
+        '<div class="cy-h3" style="margin-top:14px;"><span>Alerts since January 2025</span><span>SPHB move over the next 3 months</span></div>' +
+        '<div class="table-wrap"><table class="simple"><thead><tr><th>Date</th><th>Alert</th><th>Score</th><th>SPHB</th><th>1 mo</th><th>3 mo</th><th>Worst dip</th><th>Best rally</th></tr></thead><tbody>' +
+        recent.map(function (s) {
+          var open = s.sphb60 == null;
+          return '<tr><td>' + fmtDate(s.d) + '</td><td><span style="color:' + KIND[s.kind][1] + ';">&#9679;</span> ' + KIND[s.kind][0] + '</td><td>' + sgn(Math.round(s.score)) + '</td><td>' + s.sphb.toFixed(2) +
+            '</td><td>' + pct(s.sphb20) + '</td><td>' + pct(s.sphb60) + '</td><td>' + pct(s.sphb_low60) + (open ? '*' : '') + '</td><td>' + pct(s.sphb_high60) + (open ? '*' : '') + '</td></tr>';
+        }).join('') + '</tbody></table></div>' +
+        '<p class="cy-note">Replayed with the same rules the daily email uses (enter &plusmn;60, reset inside &plusmn;40; turn alerts within 20 sessions of an extreme). Worst dip and best rally: lowest and highest SPHB close over the next 60 sessions vs the alert-day close. * = window still open. Breadth inputs use today&rsquo;s index members, so older readings carry some survivorship bias.</p>';
+      root.appendChild(sc);
+    }
 
     // backtests
     var B = c.backtest, bk = document.createElement('div');
