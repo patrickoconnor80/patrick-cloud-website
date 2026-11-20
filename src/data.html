@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Data</title>
+<meta name="description" content="Live SPY/QQQ dealer gamma heatmaps, key levels, and the scheduled economic and market calendar.">
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-stocks.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html" class="active">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="stocks.html">Overview</a>
+  <a href="market.html">Market</a>
+  <a href="data.html" class="active">Data</a>
+  <a href="learn.html">Learn</a>
+  <a href="vcx.html">VCX</a>
+  <a href="tsla.html">TSLA</a>
+  <a href="spcx.html">SPCX</a>
+  <a href="onds.html">ONDS</a>
+  <a href="ionq.html">IONQ</a>
+  <a href="bfly.html">BFLY</a>
+  <a href="prme.html">PRME</a>
+  <a href="dna.html">DNA</a>
+  <a href="nbis.html">NBIS</a>
+</div></div>
+<div class="shell">
+<div class="hero">
+  <p class="eyebrow">Market Data</p>
+  <h1>Dealer Gamma <em>&amp; Event Calendar</em></h1>
+  <p class="sub">Live options-dealer positioning for SPY and QQQ, refreshed every 15 minutes during market hours, and the schedule of economic releases and market events ahead. Data and dates only; interpretation lives on the <a href="market.html">Market</a> page, and the mechanics on <a href="learn.html">Learn</a>.</p>
+  <div class="meta"><span><b>Covers</b> SPY, QQQ (levels also in SPX, NDX points)</span><span><b>Calendar updated</b> Nov 19, 2026</span></div>
+</div>
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2>Dealer Gamma Now</h2></div>
+  <p class="lead">A live estimate of options-dealer positioning in SPY and QQQ, with key levels also quoted in S&amp;P 500 (SPX) and Nasdaq-100 (NDX) points, refreshed every 15 minutes during market hours. Free data covers only the ETF options; SPX and NDX index options carry more of the dealer gamma, so treat this as a partial view. Positive gamma means dealer hedging tends to dampen moves; negative means it tends to amplify them. See <a href="learn.html">Learn</a> for how to read it.</p>
+  <div id="gex-root"><p style="color:var(--muted);">Loading&hellip;</p></div>
+  <div class="table-wrap"><table class="simple" id="gex-events">
+    <thead><tr><th>Date</th><th>Event</th><th>Implied move (ATM straddle)</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="mono" id="gex-updated" style="font-size:12px;color:var(--muted);margin-top:-6px;"></p>
+  <div class="flag">
+    <div class="flag-lbl">Model estimate</div>
+    <p style="margin:0;">Computed from delayed option chains (open interest as of the prior close; the data source is named under the tables) using Black-Scholes gamma and the usual convention that dealers are long calls and short puts. Expirations within the next week are included. Dealer books are not public, so the signs are an assumption, not an observation. Not a recommendation to trade.</p>
+  </div>
+
+  <div class="section-head"><span class="section-num">02</span><h2>Event Calendar</h2></div>
+  <p class="lead">Scheduled releases and market events. Times are Eastern. The table in section 01 adds the options-implied move for the nearest events.</p>
+  <div class="table-wrap"><table class="simple">
+    <thead><tr><th>Date</th><th>Time (ET)</th><th>Event</th><th>Details</th></tr></thead>
+    <tbody>
+      <tr><td>Wed Nov 25</td><td>8:30</td><td>Q3 GDP (second estimate); October PCE</td><td>BEA. PCE is the Fed's preferred inflation gauge.</td></tr>
+      <tr><td>Thu Nov 26</td><td>&mdash;</td><td>Thanksgiving</td><td>U.S. markets closed.</td></tr>
+      <tr><td>Fri Nov 27</td><td>13:00</td><td>Early close</td><td>Stocks close at 1:00 ET.</td></tr>
+      <tr><td>Tue Dec 1</td><td>10:00</td><td>JOLTS job openings (October)</td><td>BLS.</td></tr>
+      <tr><td>Thu Dec 3</td><td>&mdash;</td><td>Tesla annual shareholder meeting</td><td>See <a href="tsla.html">TSLA</a>.</td></tr>
+      <tr><td>Fri Dec 4</td><td>8:30</td><td>November employment report</td><td>BLS. Last payrolls release before the December FOMC.</td></tr>
+      <tr><td>Tue&ndash;Wed Dec 8&ndash;9</td><td>14:00 Dec 9</td><td>FOMC meeting and rate decision</td><td>Includes the Summary of Economic Projections (dot plot). Fed funds target 3.75&ndash;4.00%; CME FedWatch priced ~95% odds of a 25 bp hike as of Nov 17.</td></tr>
+      <tr><td>Wed Dec 9</td><td>After close</td><td>Broadcom (AVGO) fiscal Q4 earnings</td><td>Call at 17:00 ET.</td></tr>
+      <tr><td>Thu Dec 10</td><td>8:30</td><td>November CPI</td><td>BLS. Commerce Secretary Lutnick also testifies before the Senate Banking Committee.</td></tr>
+      <tr><td>Tue Dec 15</td><td>8:30</td><td>November PPI</td><td>BLS.</td></tr>
+      <tr><td>Wed Dec 16</td><td>8:30</td><td>November retail sales</td><td>Census Bureau.</td></tr>
+      <tr><td>Fri Dec 18</td><td>Close</td><td>Quarterly options and futures expiration (quad witching); Nasdaq-100 annual reconstitution</td><td>Index changes take effect after the close. See <a href="learn.html">Learn</a>, section 06, on expiration hedge unwinds.</td></tr>
+      <tr><td>Wed Dec 23</td><td>8:30</td><td>Q3 GDP (third estimate); November PCE</td><td>BEA.</td></tr>
+      <tr><td>Fri Jan 8, 2027</td><td>8:30</td><td>December employment report</td><td>BLS.</td></tr>
+      <tr><td>Wed Jan 13, 2027</td><td>8:30</td><td>December CPI</td><td>BLS.</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:13px;color:var(--muted);">Release dates from the BLS, BEA, and Federal Reserve schedules and company announcements. For what these releases mean for growth stocks, see <a href="market.html">Market</a>.</p>
+</section>
+<style>
+  .gex-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:8px 0 18px;}
+  .heat-wrap{overflow-x:auto;max-height:560px;overflow-y:auto;border:1px solid var(--rule);border-radius:6px;}
+  .heat{border-collapse:collapse;width:100%;font:11.5px var(--font-mono);font-variant-numeric:tabular-nums;}
+  .heat th,.heat td{padding:4px 8px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--rule);}
+  .heat thead th{position:sticky;top:0;background:var(--surface);z-index:1;color:var(--muted);font-weight:600;}
+  .heat thead th:first-child{text-align:left;left:0;z-index:2;}
+  .heat tbody th{text-align:left;color:var(--ink-strong);font-weight:600;background:var(--surface);position:sticky;left:0;}
+  .heat td.net{border-left:2px solid var(--rule);font-weight:600;}
+  .heat tr.spot th,.heat tr.spot td{border-top:2px solid var(--ink-strong);}
+  .heat-spot{font-weight:400;color:var(--muted);}
+  @media (max-width:760px){.gex-grid{grid-template-columns:1fr;}}
+  .gex-card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;}
+  .gex-card h3{margin:0 0 4px;font-size:17px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .gex-tag{font:600 11px var(--font-mono);letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;color:#fff;}
+  .gex-tag.long{background:var(--up);} .gex-tag.short{background:var(--down);}
+  .gex-kv{display:flex;flex-wrap:wrap;gap:4px 16px;font:12px var(--font-mono);color:var(--muted);margin:6px 0 10px;}
+  .gex-kv b{color:var(--ink-strong);font-weight:600;}
+  .gex-card svg{width:100%;height:auto;display:block;}
+  .gex-card svg text{font:10px var(--font-mono);fill:var(--muted);}
+  .gex-checks{list-style:none;padding:0;margin:10px 0 0;font-size:13px;}
+  .gex-checks li{margin:2px 0;} .gex-checks .ok{color:var(--up);} .gex-checks .no{color:var(--muted);}
+  .gex-pin{font-size:13px;font-weight:600;margin-top:6px;}
+  .gex-outlook{margin-top:14px;border-top:1px solid var(--rule);padding-top:10px;}
+  .gex-outlook-hd{font:600 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .gex-ol{padding:8px 0;border-bottom:1px solid var(--rule);}
+  .gex-ol:last-child{border-bottom:none;}
+  .gex-ol-h{font-weight:600;font-size:14px;color:var(--ink-strong);margin-bottom:2px;}
+  .gex-ol p{margin:2px 0;font-size:13.5px;line-height:1.5;}
+  .gex-ol-s{color:var(--ink);}
+</style>
+<script>
+(function () {
+  var root = document.getElementById('gex-root');
+  var evBody = document.querySelector('#gex-events tbody');
+  var updated = document.getElementById('gex-updated');
+  var money = function (n) { var a = Math.abs(n); var s = a >= 1e9 ? (a / 1e9).toFixed(2) + 'B' : (a / 1e6).toFixed(0) + 'M'; return (n < 0 ? '−$' : '+$') + s; };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  function heat(t) {
+    var g = t.grid;
+    if (!g || !g.strikes.length) return '';
+    var cell = function (n) { var a = Math.abs(n); var v = a >= 1e9 ? (a / 1e9).toFixed(1) + 'B' : a >= 1e6 ? (a / 1e6).toFixed(0) + 'M' : (a / 1e3).toFixed(0) + 'K'; return (n < 0 ? '−' : '+') + v; };
+    var nets = g.values.map(function (row) { return row.reduce(function (s, v) { return s + v; }, 0); });
+    var max = 1, kr = -1, kc = -1;
+    g.values.forEach(function (row, i) { row.forEach(function (v, j) { if (Math.abs(v) > max) { max = Math.abs(v); kr = i; kc = j; } }); });
+    var netMax = Math.max.apply(null, nets.map(Math.abs)) || 1;
+    var paint = function (v, m) {
+      var a = Math.min(1, Math.abs(v) / m), alpha = (0.08 + 0.85 * Math.sqrt(a)).toFixed(2);
+      return 'background:rgba(' + (v >= 0 ? '20,184,166,' : '217,70,239,') + alpha + ');' + (alpha > 0.55 ? 'color:#fff;' : '');
+    };
+    var spotRow = -1;
+    g.strikes.forEach(function (k, i) { if (spotRow < 0 && k <= t.spot) spotRow = i; });
+    var h = '<div class="heat-wrap"><table class="heat"><thead><tr><th>Strike</th>';
+    g.expiries.forEach(function (e) { h += '<th>' + e.slice(5).replace('-', '/') + '</th>'; });
+    h += '<th>Net</th></tr></thead><tbody>';
+    g.strikes.forEach(function (k, i) {
+      var cls = (i === spotRow ? ' class="spot"' : '');
+      h += '<tr' + cls + '><th>' + k + (i === spotRow ? ' <span class="heat-spot">◀ ' + t.spot.toFixed(2) + '</span>' : '') + '</th>';
+      g.values[i].forEach(function (v, j) {
+        var king = (i === kr && j === kc);
+        h += '<td style="' + (king ? 'background:#eab308;color:#111;font-weight:700;' : paint(v, max)) + '" title="' + k + ' exp ' + g.expiries[j] + ': ' + money(v) + '">' + cell(v) + '</td>';
+      });
+      h += '<td class="net" style="' + paint(nets[i], netMax) + '">' + cell(nets[i]) + '</td></tr>';
+    });
+    return h + '</tbody></table></div>';
+  }
+
+  function card(t) {
+    if (t.error) return '<div class="gex-card"><h3>' + esc(t.ticker) + '</h3><p style="color:var(--muted);">' + esc(t.error) + '</p></div>';
+    var flipTxt = t.flip ? t.flip.toFixed(2) + (t.flip > t.spot ? ' (above spot)' : ' (below spot)') : 'none within ±5%';
+    var h = '<div class="gex-card"><h3><span>' + esc(t.ticker) + ' <span style="font-weight:400;color:var(--muted);">$' + t.spot.toFixed(2) + '</span></span>'
+      + '<span class="gex-tag ' + t.regime + '">' + (t.regime === 'long' ? 'Long gamma · dampening' : 'Short gamma · amplifying') + '</span></h3>'
+      + '<div class="gex-kv"><span>Flip <b>' + flipTxt + '</b></span><span>Net within 2% <b>' + money(t.net_gex_2pct) + '</b></span>'
+      + (t.king ? '<span>Largest node <b>' + t.king.strike + ' ' + money(t.king.gex) + '</b></span>' : '')
+      + (t.index ? '<span>' + esc(t.index.name) + ' <b>' + Number(t.index.spot).toLocaleString(undefined, {maximumFractionDigits: 0}) + '</b> (\u00d7' + t.index.ratio.toFixed(2) + ')</span>' : '') + '</div>' + heat(t);
+    var pin = t.pin || {};
+    if (pin.node) {
+      h += '<div class="gex-pin">' + (pin.ready ? '✅ Pin setup active at ' + pin.node + ' (exp ' + pin.expiry + ')' : 'Pin candidate ' + pin.node + ' (exp ' + pin.expiry + ', ' + money(pin.node_gex) + ')') + '</div><ul class="gex-checks">';
+      Object.keys(pin.checks).forEach(function (k) { h += '<li class="' + (pin.checks[k] ? 'ok' : 'no') + '">' + (pin.checks[k] ? '✓ ' : '✗ ') + esc(k) + '</li>'; });
+      h += '</ul>';
+    } else {
+      h += '<div class="gex-pin" style="color:var(--muted);">No positive node near spot: no pin setup.</div>';
+    }
+    if (t.outlook && t.outlook.length) {
+      h += '<div class="gex-outlook"><div class="gex-outlook-hd">Outlook</div>';
+      t.outlook.forEach(function (o) {
+        h += '<div class="gex-ol"><div class="gex-ol-h">' + esc(o.horizon) + '</div><p>' + esc(o.read) + '</p><p class="gex-ol-s"><b>Setup:</b> ' + esc(o.setup) + '</p></div>';
+      });
+      h += '</div>';
+    }
+    return h + '</div>';
+  }
+
+  fetch('/stock-screener/gex.json', {cache: 'no-store'})
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (d) {
+      root.innerHTML = '<div class="gex-grid">' + (d.tickers || []).map(card).join('') + '</div>';
+      var evs = d.events || [];
+      evBody.innerHTML = evs.length ? evs.map(function (e) {
+        var dt = new Date(e.date + 'T12:00:00');
+        var imp = (e.implied || []).filter(function (x) { return x.move_pct; }).map(function (x) {
+          return x.ticker + ' ±' + x.move_pct.toFixed(2) + '% <span style="color:var(--muted);">(through ' + x.expiry.slice(5) + ')</span>';
+        }).join('<br>') || '<span style="color:var(--muted);">&mdash;</span>';
+        return '<tr><td style="white-space:nowrap;">' + dt.toLocaleDateString(undefined, {weekday: 'short', month: 'short', day: 'numeric'}) + (e.time ? ' &middot; ' + esc(e.time) + ' ET' : '') + '</td><td>' + esc(e.name) + '</td><td>' + imp + '</td></tr>';
+      }).join('') : '<tr><td colspan="3" style="color:var(--muted);">No scheduled events in the next three weeks.</td></tr>';
+      if (d.generated_at) updated.textContent = 'Last updated: ' + new Date(d.generated_at).toLocaleString() + (d.source ? ' \u00b7 ' + d.source : '');
+    })
+    .catch(function (err) {
+      root.innerHTML = '<p style="color:var(--down);">Could not load the gamma snapshot: ' + esc(err.message) + '</p>';
+      document.getElementById('gex-events').style.display = 'none';
+    });
+})();
+</script>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
