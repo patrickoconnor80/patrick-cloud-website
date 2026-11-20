@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn: Dealer Gamma</title>
+<meta name="description" content="How options market makers hedge, what gamma is, and how to read a GEX heatmap for SPY and QQQ.">
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-stocks.css">
+<style>
+  .fig{margin:8px 0 18px;background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:16px 14px 10px;}
+  .fig svg{width:100%;height:auto;display:block;}
+  .fig .lbl{font:500 13px var(--font-body);fill:var(--ink-strong);}
+  .fig .val{font:600 12px var(--font-mono);fill:var(--ink);}
+  .fig .ax{font:11px var(--font-mono);fill:var(--muted);}
+  .fig .hd{font:600 14px var(--font-body);fill:var(--ink-strong);}
+  .fig-cap{font-size:12px;color:var(--muted);margin:6px 0 0;}
+  .fig-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-top:6px;}
+  .fig-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;}
+  .pos{color:var(--up);font-weight:600;}
+  .neg{color:var(--down);font-weight:600;}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Patrick O'Connor</a>
+    <nav class="tabs">
+      <a href="tech.html">Tech</a>
+      <a href="nutrition.html">Nutrition</a>
+      <a href="stocks.html" class="active">Stocks</a>
+    </nav>
+  </div>
+</header>
+<div class="subnav"><div class="subnav-inner">
+  <a href="stocks.html">Overview</a>
+  <a href="market.html">Market</a>
+  <a href="learn.html" class="active">Learn</a>
+  <a href="vcx.html">VCX</a>
+  <a href="tsla.html">TSLA</a>
+  <a href="spcx.html">SPCX</a>
+  <a href="onds.html">ONDS</a>
+  <a href="ionq.html">IONQ</a>
+  <a href="bfly.html">BFLY</a>
+  <a href="prme.html">PRME</a>
+  <a href="dna.html">DNA</a>
+  <a href="nbis.html">NBIS</a>
+</div></div>
+<div class="shell">
+<div class="hero">
+  <p class="eyebrow">Learn &middot; Options Mechanics</p>
+  <h1>Dealer Gamma <em>&mdash; Reading a GEX Heatmap</em></h1>
+  <p class="sub">Options market makers hedge every contract they trade, and that hedging is real buying and selling in the underlying. Gamma decides whether their hedging calms a move down or makes it bigger. GEX heatmaps try to map where each happens, strike by strike.</p>
+  <div class="meta"><span><b>Applies to</b> SPY, QQQ, SPX, NDX, single stocks</span><span><b>Updated</b> Nov 19, 2026</span></div>
+</div>
+<section class="section">
+  <div class="flag">
+    <div class="flag-lbl">Not investment advice</div>
+    <p style="margin:0;">An educational explainer. GEX figures from any vendor are model estimates, not observed dealer positions.</p>
+  </div>
+
+  <div class="section-head"><span class="section-num">01</span><h2>Delta: An Option Acts Like Shares</h2></div>
+  <p class="lead">Every option has a <b>delta</b>: how much its price moves when the underlying moves $1. One contract covers 100 shares, so delta tells you how many shares the option behaves like.</p>
+  <div class="defrow"><div class="term">Example</div><p class="def">With SPY at $738, a 740 call might have a delta of <b>0.45</b>. If SPY rises $1, the call gains about $0.45 per share, so one contract behaves like owning <b>45 shares</b>. A 730 put might have a delta of &minus;0.30, so it behaves like being short 30 shares.</p></div>
+  <div class="defrow"><div class="term">Why dealers hedge</div><p class="def">When a customer buys that call, a market maker (the &ldquo;dealer&rdquo;) sells it. The dealer earns the bid-ask spread and doesn't want a directional bet, so it buys 45 shares to offset the short call. That leaves it <b>delta-neutral</b>: price moves no longer affect its book in the first instance.</p></div>
+
+  <div class="section-head"><span class="section-num">02</span><h2>Gamma: How Fast Delta Changes</h2></div>
+  <p class="lead">Delta doesn't stay fixed. As price moves toward a call's strike and past it, the call becomes more likely to pay off and its delta rises. <b>Gamma</b> is the rate of that change, and every change forces the dealer to trade more shares to stay neutral.</p>
+  <div class="table-wrap">
+    <table class="simple">
+      <thead><tr><th>SPY price</th><th>740 call delta</th><th>Shares the dealer must hold</th><th>Trade to re-hedge</th></tr></thead>
+      <tbody>
+        <tr><td>$734</td><td>0.25</td><td>25</td><td>&mdash;</td></tr>
+        <tr><td>$738</td><td>0.45</td><td>45</td><td>buy 20</td></tr>
+        <tr><td>$742</td><td>0.60</td><td>60</td><td>buy 15</td></tr>
+        <tr><td>$746</td><td>0.80</td><td>80</td><td>buy 20</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="defrow"><div class="term">Where gamma is largest</div><p class="def">At strikes near the current price, and on options close to expiration. A same-day (0DTE) option at the money can swing from a delta near 0.5 to near 0 or 1 within minutes. That's why the expiring-today and monthly-expiration columns of a heatmap carry most of the size, and later dates barely register.</p></div>
+
+  <div class="section-head"><span class="section-num">03</span><h2>Long Gamma vs. Short Gamma</h2></div>
+  <p class="lead">Calls and puts both have positive gamma for whoever <b>owns</b> them. So the dealer's gamma doesn't depend on calls versus puts. It depends on whether the dealer bought or sold the option.</p>
+  <div class="fig">
+    <svg viewBox="0 0 640 250" role="img" aria-label="Short gamma: price rises, dealer buys, price rises further (amplifies). Long gamma: price rises, dealer sells, price is pushed back (dampens).">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+      </defs>
+      <!-- short gamma -->
+      <rect x="10" y="10" width="300" height="230" rx="6" fill="none" stroke="var(--down)" stroke-width="1.5"/>
+      <text class="hd" x="160" y="36" text-anchor="middle">Dealer short gamma</text>
+      <text class="ax" x="160" y="54" text-anchor="middle">sold options &middot; magenta on most maps</text>
+      <rect x="40" y="76" width="240" height="34" rx="4" fill="var(--surface-hover)"/>
+      <text class="lbl" x="160" y="98" text-anchor="middle">Price rises</text>
+      <rect x="40" y="136" width="240" height="34" rx="4" fill="var(--surface-hover)"/>
+      <text class="lbl" x="160" y="158" text-anchor="middle">Dealer must BUY more shares</text>
+      <line x1="120" y1="112" x2="120" y2="132" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah)"/>
+      <path d="M200,134 L200,114" stroke="var(--down)" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+      <text class="val" x="160" y="200" text-anchor="middle" style="fill:var(--down)">Pushes price further</text>
+      <text class="ax" x="160" y="220" text-anchor="middle">feedback loop &rarr; bigger, faster moves</text>
+      <!-- long gamma -->
+      <rect x="330" y="10" width="300" height="230" rx="6" fill="none" stroke="var(--up)" stroke-width="1.5"/>
+      <text class="hd" x="480" y="36" text-anchor="middle">Dealer long gamma</text>
+      <text class="ax" x="480" y="54" text-anchor="middle">bought options &middot; teal on most maps</text>
+      <rect x="360" y="76" width="240" height="34" rx="4" fill="var(--surface-hover)"/>
+      <text class="lbl" x="480" y="98" text-anchor="middle">Price rises</text>
+      <rect x="360" y="136" width="240" height="34" rx="4" fill="var(--surface-hover)"/>
+      <text class="lbl" x="480" y="158" text-anchor="middle">Dealer must SELL shares</text>
+      <line x1="440" y1="112" x2="440" y2="132" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah)"/>
+      <path d="M520,134 L520,114" stroke="var(--up)" stroke-width="1.5" fill="none" marker-end="url(#ah)" stroke-dasharray="4 3"/>
+      <text class="val" x="480" y="200" text-anchor="middle" style="fill:var(--up)">Leans against the move</text>
+      <text class="ax" x="480" y="220" text-anchor="middle">thermostat &rarr; calm, range-bound tape</text>
+    </svg>
+    <p class="fig-cap">The same logic runs in reverse on the way down: a short-gamma dealer sells into falling prices, and a long-gamma dealer buys the dip.</p>
+  </div>
+  <div class="table-wrap">
+    <table class="simple">
+      <thead><tr><th>Dealer position</th><th>Dealer gamma</th><th>Hedging behavior</th></tr></thead>
+      <tbody>
+        <tr><td>Sold a call</td><td class="neg">Short</td><td>Buys as price rises, sells as it falls (adds to the move)</td></tr>
+        <tr><td>Sold a put</td><td class="neg">Short</td><td>Same: adds to the move</td></tr>
+        <tr><td>Bought a call</td><td class="pos">Long</td><td>Sells rallies, buys dips (dampens the move)</td></tr>
+        <tr><td>Bought a put</td><td class="pos">Long</td><td>Same: dampens the move</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="defrow"><div class="term">Short-put example</div><p class="def">A dealer sells a 730 put with SPY at $738 and a delta of &minus;0.30. Being short that put acts like owning 30 shares, so the dealer sells 30 shares to get neutral. If SPY drops to $732 and the put's delta goes to &minus;0.60, the dealer now acts like it owns 60 shares and has to sell 30 more, into a falling market. Calls and puts differ only in the starting hedge (long stock versus short stock). Once price moves, a short-gamma dealer trades with the move either way.</p></div>
+
+  <div class="section-head"><span class="section-num">04</span><h2>Reading the Heatmap</h2></div>
+  <p class="lead">A GEX heatmap has strikes on the rows and expiration dates on the columns. Each cell estimates dealer gamma exposure at that strike, in dollars of hedging per 1% move.</p>
+  <div class="fig">
+    <svg viewBox="0 0 640 330" role="img" aria-label="Stylized GEX profile: positive gamma bars above the flip level near 731, negative bars below it, with the largest positive node at 740 and the largest negative node at 725.">
+      <line x1="320" y1="10" x2="320" y2="300" stroke="var(--rule)"/>
+      <text class="ax" x="320" y="320" text-anchor="middle">0</text>
+      <text class="ax" x="470" y="320" text-anchor="middle">+ long gamma &rarr;</text>
+      <text class="ax" x="170" y="320" text-anchor="middle">&larr; short gamma &minus;</text>
+      <g class="ax" text-anchor="end">
+        <text x="60" y="27">742</text><text x="60" y="51">740</text><text x="60" y="75">738</text><text x="60" y="99">736</text>
+        <text x="60" y="123">734</text><text x="60" y="147">732</text><text x="60" y="171">730</text><text x="60" y="195">728</text>
+        <text x="60" y="219">726</text><text x="60" y="243">725</text><text x="60" y="267">724</text><text x="60" y="291">722</text>
+      </g>
+      <g fill="var(--up)">
+        <rect x="320" y="14" width="90" height="16" rx="2"/>
+        <rect x="320" y="38" width="180" height="16" rx="2"/>
+        <rect x="320" y="62" width="105" height="16" rx="2"/>
+        <rect x="320" y="86" width="165" height="16" rx="2"/>
+        <rect x="320" y="110" width="60" height="16" rx="2"/>
+        <rect x="320" y="134" width="50" height="16" rx="2"/>
+      </g>
+      <g fill="var(--down)">
+        <rect x="230" y="158" width="90" height="16" rx="2"/>
+        <rect x="270" y="182" width="50" height="16" rx="2"/>
+        <rect x="245" y="206" width="75" height="16" rx="2"/>
+        <rect x="80" y="230" width="240" height="16" rx="2"/>
+        <rect x="215" y="254" width="105" height="16" rx="2"/>
+        <rect x="200" y="278" width="120" height="16" rx="2"/>
+      </g>
+      <line x1="70" y1="154" x2="620" y2="154" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="val" x="620" y="168" text-anchor="end" style="fill:var(--warn-ink)">gamma flip &asymp; 731</text>
+      <text class="val" x="508" y="51">magnet / ceiling</text>
+      <text class="val" x="74" y="226" style="fill:var(--down)">largest negative node</text>
+    </svg>
+    <div class="fig-legend"><span><i style="background:var(--up)"></i>Positive: dealers dampen moves</span><span><i style="background:var(--down)"></i>Negative: dealers amplify moves</span><span><i style="background:var(--warn)"></i>Flip level</span></div>
+    <p class="fig-cap">Stylized from a SPY heatmap on Nov 19, 2026 (SPY ~$738). Bar lengths are illustrative, not to scale.</p>
+  </div>
+  <div class="defrow"><div class="term">Gamma flip</div><p class="def">The strike where net gamma switches sign. Above it, dealer hedging tends to absorb moves and the session chops. Below it, hedging adds to the selling, so a break through the flip can turn a dip into a fast slide.</p></div>
+  <div class="defrow"><div class="term">Large positive nodes</div><p class="def">Read as magnets or walls. Dealers sell as price approaches from below and buy as it approaches from above, which tends to pin price nearby, especially on expiration day.</p></div>
+  <div class="defrow"><div class="term">Large negative nodes</div><p class="def">Read as acceleration zones. If price reaches one, hedging flows add to the move instead of absorbing it. Some traders also treat the biggest negative node as a target into expiration.</p></div>
+  <div class="defrow"><div class="term">Columns</div><p class="def">Today's column (0DTE) drives intraday behavior. The monthly expiration (the third Friday) usually carries the largest open interest and the biggest nodes. Columns weeks out matter little, because their gamma is spread thin.</p></div>
+  <div class="defrow"><div class="term">Worked example: Nov 19</div><p class="def">SPY's 0DTE column was positive from about 731 to 742, with the largest nodes at 740 (+$111M) and 736 (+$104M), and negative below 730. Friday's opex column was negative at every strike, with its largest node at 725 (&minus;$548M). The read was a 736&ndash;740 range with a cushion down to ~731, and acceleration toward 725 if that cushion broke. SPY sold off sharply that day. The map explains why a break would accelerate. It couldn't say in advance that the break would happen: something else (news, a large seller, a macro move) has to push price into the negative zone first.</p></div>
+
+  <div class="section-head"><span class="section-num">05</span><h2>What the Map Can't Know</h2></div>
+  <p class="lead">GEX is a useful model with real limits. It's best used as context about how the market will react to a move, not as a forecast of direction.</p>
+  <div class="defrow"><div class="term">Dealer positions are assumed</div><p class="def">Open interest says how many contracts exist at a strike, not who is long and who is short. Most vendors assume dealers are long calls (customers sell covered calls) and short puts (customers buy protection), so call gamma counts as positive and put gamma as negative. That's why maps are usually teal above price and magenta below. Some tools instead classify each trade by whether it filled at the bid or the ask, which is better but still an estimate. If customers were heavily selling puts at a strike, dealers would actually be long gamma there, and the map would show the wrong color.</p></div>
+  <div class="defrow"><div class="term">Stale inputs</div><p class="def">Open interest updates once a day, overnight. Same-day 0DTE trading, now a large share of index options volume, mostly doesn't appear until the next morning.</p></div>
+  <div class="defrow"><div class="term">Missing markets</div><p class="def">A SPY-only map ignores SPX index options, which are far larger in notional. QQQ has the same problem with NDX. The Nasdaq-100 is also concentrated enough that gamma in single names like NVDA, AAPL, and MSFT can move QQQ more than QQQ's own options do.</p></div>
+  <div class="defrow"><div class="term">What the evidence supports</div><p class="def">Dealer gamma lines up better with <b>volatility</b> than with direction. Research finds that positive aggregate gamma tends to come with lower intraday volatility and negative gamma with larger, trending moves (Baltussen et&nbsp;al., 2021). Stocks with heavy open interest also tend to close near those strikes on expiration day (Ni, Pearson &amp; Poteshman, 2005). Specific price targets are a much weaker claim, and the charts that get shared are the ones that worked.</p></div>
+
+  <div class="section-head"><span class="section-num">06</span><h2>Applying It to QQQ</h2></div>
+  <ol class="timeline">
+    <li><span class="t-title">Find the flip in today's column</span> &mdash; where it switches from positive to negative. Positive above means expect chop and dips getting bought. Negative below means expect momentum.</li>
+    <li><span class="t-title">Mark the two or three largest nodes</span> &mdash; treat them as a likely range for the session, not as targets.</li>
+    <li><span class="t-title">Check the monthly opex column</span> &mdash; its largest node often matters into the third Friday, then fades once those contracts expire.</li>
+    <li><span class="t-title">Cross-check NDX and the megacaps</span> &mdash; if the app shows NDX or NVDA gamma, the bigger book usually wins.</li>
+    <li><span class="t-title">Keep score</span> &mdash; screenshot the map each morning, write down the call it implies, and compare it with the close. A few weeks of records beats a handful of memorable hits.</li>
+  </ol>
+  <p style="font-size:14px;color:var(--muted);">See <a href="market.html">Market</a> for current QQQ conditions.</p>
+</section>
+</div>
+<footer class="site-footer">
+  <div class="shell foot-row">
+    <span>&copy; Patrick O'Connor</span>
+    <span>
+      <a href="https://www.linkedin.com/in/patrick-o-connor-cpa-29103781/">LinkedIn</a> &middot;
+      <a href="https://github.com/patrickoconnor80">GitHub</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
