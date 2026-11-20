@@ -175,7 +175,7 @@
   </ol>
 
   <div class="section-head"><span class="section-num">07</span><h2>Dealer Gamma Now</h2></div>
-  <p class="lead">A live estimate of options-dealer positioning in SPY and QQQ, refreshed every 15 minutes during market hours. Positive gamma means dealer hedging tends to dampen moves; negative means it tends to amplify them. See <a href="learn.html">Learn</a> for how to read it.</p>
+  <p class="lead">A live estimate of options-dealer positioning in SPY and QQQ, with key levels also quoted in S&amp;P 500 (SPX) and Nasdaq-100 (NDX) points, refreshed every 15 minutes during market hours. Free data covers only the ETF options; SPX and NDX index options carry more of the dealer gamma, so treat this as a partial view. Positive gamma means dealer hedging tends to dampen moves; negative means it tends to amplify them. See <a href="learn.html">Learn</a> for how to read it.</p>
   <div id="gex-root"><p style="color:var(--muted);">Loading&hellip;</p></div>
   <div class="table-wrap"><table class="simple" id="gex-events">
     <thead><tr><th>Date</th><th>Event</th><th>Implied move (ATM straddle)</th></tr></thead>
@@ -184,7 +184,7 @@
   <p class="mono" id="gex-updated" style="font-size:12px;color:var(--muted);margin-top:-6px;"></p>
   <div class="flag">
     <div class="flag-lbl">Model estimate</div>
-    <p style="margin:0;">Computed from Yahoo Finance option chains (about 15 minutes delayed; open interest as of the prior close) using Black-Scholes gamma and the usual convention that dealers are long calls and short puts. Expirations within the next week are included. Dealer books are not public, so the signs are an assumption, not an observation. Not a recommendation to trade.</p>
+    <p style="margin:0;">Computed from delayed option chains (open interest as of the prior close; the data source is named under the tables) using Black-Scholes gamma and the usual convention that dealers are long calls and short puts. Expirations within the next week are included. Dealer books are not public, so the signs are an assumption, not an observation. Not a recommendation to trade.</p>
   </div>
 </section>
 <style>
@@ -210,6 +210,13 @@
   .gex-checks{list-style:none;padding:0;margin:10px 0 0;font-size:13px;}
   .gex-checks li{margin:2px 0;} .gex-checks .ok{color:var(--up);} .gex-checks .no{color:var(--muted);}
   .gex-pin{font-size:13px;font-weight:600;margin-top:6px;}
+  .gex-outlook{margin-top:14px;border-top:1px solid var(--rule);padding-top:10px;}
+  .gex-outlook-hd{font:600 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .gex-ol{padding:8px 0;border-bottom:1px solid var(--rule);}
+  .gex-ol:last-child{border-bottom:none;}
+  .gex-ol-h{font-weight:600;font-size:14px;color:var(--ink-strong);margin-bottom:2px;}
+  .gex-ol p{margin:2px 0;font-size:13.5px;line-height:1.5;}
+  .gex-ol-s{color:var(--ink);}
 </style>
 <script>
 (function () {
@@ -254,7 +261,8 @@
     var h = '<div class="gex-card"><h3><span>' + esc(t.ticker) + ' <span style="font-weight:400;color:var(--muted);">$' + t.spot.toFixed(2) + '</span></span>'
       + '<span class="gex-tag ' + t.regime + '">' + (t.regime === 'long' ? 'Long gamma · dampening' : 'Short gamma · amplifying') + '</span></h3>'
       + '<div class="gex-kv"><span>Flip <b>' + flipTxt + '</b></span><span>Net within 2% <b>' + money(t.net_gex_2pct) + '</b></span>'
-      + (t.king ? '<span>Largest node <b>' + t.king.strike + ' ' + money(t.king.gex) + '</b></span>' : '') + '</div>' + heat(t);
+      + (t.king ? '<span>Largest node <b>' + t.king.strike + ' ' + money(t.king.gex) + '</b></span>' : '')
+      + (t.index ? '<span>' + esc(t.index.name) + ' <b>' + Number(t.index.spot).toLocaleString(undefined, {maximumFractionDigits: 0}) + '</b> (\u00d7' + t.index.ratio.toFixed(2) + ')</span>' : '') + '</div>' + heat(t);
     var pin = t.pin || {};
     if (pin.node) {
       h += '<div class="gex-pin">' + (pin.ready ? '✅ Pin setup active at ' + pin.node + ' (exp ' + pin.expiry + ')' : 'Pin candidate ' + pin.node + ' (exp ' + pin.expiry + ', ' + money(pin.node_gex) + ')') + '</div><ul class="gex-checks">';
@@ -262,6 +270,13 @@
       h += '</ul>';
     } else {
       h += '<div class="gex-pin" style="color:var(--muted);">No positive node near spot: no pin setup.</div>';
+    }
+    if (t.outlook && t.outlook.length) {
+      h += '<div class="gex-outlook"><div class="gex-outlook-hd">Outlook</div>';
+      t.outlook.forEach(function (o) {
+        h += '<div class="gex-ol"><div class="gex-ol-h">' + esc(o.horizon) + '</div><p>' + esc(o.read) + '</p><p class="gex-ol-s"><b>Setup:</b> ' + esc(o.setup) + '</p></div>';
+      });
+      h += '</div>';
     }
     return h + '</div>';
   }
@@ -278,7 +293,7 @@
         }).join('<br>') || '<span style="color:var(--muted);">&mdash;</span>';
         return '<tr><td style="white-space:nowrap;">' + dt.toLocaleDateString(undefined, {weekday: 'short', month: 'short', day: 'numeric'}) + (e.time ? ' &middot; ' + esc(e.time) + ' ET' : '') + '</td><td>' + esc(e.name) + '</td><td>' + imp + '</td></tr>';
       }).join('') : '<tr><td colspan="3" style="color:var(--muted);">No scheduled events in the next three weeks.</td></tr>';
-      if (d.generated_at) updated.textContent = 'Last updated: ' + new Date(d.generated_at).toLocaleString();
+      if (d.generated_at) updated.textContent = 'Last updated: ' + new Date(d.generated_at).toLocaleString() + (d.source ? ' \u00b7 ' + d.source : '');
     })
     .catch(function (err) {
       root.innerHTML = '<p style="color:var(--down);">Could not load the gamma snapshot: ' + esc(err.message) + '</p>';
