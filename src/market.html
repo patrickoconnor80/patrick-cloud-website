@@ -173,7 +173,109 @@
     <li><span class="t-date">Dec 23 &middot; 8:30 ET</span><br><span class="t-title">Q3 GDP (third estimate) and November PCE</span></li>
     <li><span class="t-date">Jan 8 &middot; Jan 13, 2027</span><br><span class="t-title">December jobs report, then December CPI</span></li>
   </ol>
+
+  <div class="section-head"><span class="section-num">07</span><h2>Dealer Gamma Now</h2></div>
+  <p class="lead">A live estimate of options-dealer positioning in SPY and QQQ, refreshed every 15 minutes during market hours. Positive gamma means dealer hedging tends to dampen moves; negative means it tends to amplify them. See <a href="learn.html">Learn</a> for how to read it.</p>
+  <div id="gex-root"><p style="color:var(--muted);">Loading&hellip;</p></div>
+  <div class="table-wrap"><table class="simple" id="gex-events">
+    <thead><tr><th>Date</th><th>Event</th><th>Implied move (ATM straddle)</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="mono" id="gex-updated" style="font-size:12px;color:var(--muted);margin-top:-6px;"></p>
+  <div class="flag">
+    <div class="flag-lbl">Model estimate</div>
+    <p style="margin:0;">Computed from Yahoo Finance option chains (about 15 minutes delayed; open interest as of the prior close) using Black-Scholes gamma and the usual convention that dealers are long calls and short puts. Expirations within the next week are included. Dealer books are not public, so the signs are an assumption, not an observation. Not a recommendation to trade.</p>
+  </div>
 </section>
+<style>
+  .gex-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 18px;}
+  @media (max-width:760px){.gex-grid{grid-template-columns:1fr;}}
+  .gex-card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;}
+  .gex-card h3{margin:0 0 4px;font-size:17px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .gex-tag{font:600 11px var(--font-mono);letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;color:#fff;}
+  .gex-tag.long{background:var(--up);} .gex-tag.short{background:var(--down);}
+  .gex-kv{display:flex;flex-wrap:wrap;gap:4px 16px;font:12px var(--font-mono);color:var(--muted);margin:6px 0 10px;}
+  .gex-kv b{color:var(--ink-strong);font-weight:600;}
+  .gex-card svg{width:100%;height:auto;display:block;}
+  .gex-card svg text{font:10px var(--font-mono);fill:var(--muted);}
+  .gex-checks{list-style:none;padding:0;margin:10px 0 0;font-size:13px;}
+  .gex-checks li{margin:2px 0;} .gex-checks .ok{color:var(--up);} .gex-checks .no{color:var(--muted);}
+  .gex-pin{font-size:13px;font-weight:600;margin-top:6px;}
+</style>
+<script>
+(function () {
+  var root = document.getElementById('gex-root');
+  var evBody = document.querySelector('#gex-events tbody');
+  var updated = document.getElementById('gex-updated');
+  var money = function (n) { var a = Math.abs(n); var s = a >= 1e9 ? (a / 1e9).toFixed(2) + 'B' : (a / 1e6).toFixed(0) + 'M'; return (n < 0 ? '−$' : '+$') + s; };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  function chart(t) {
+    var rows = (t.profile || []).filter(function (r) { return r.strike % 1 === 0; });
+    if (!rows.length) return '';
+    var max = Math.max.apply(null, rows.map(function (r) { return Math.abs(r.book); })) || 1;
+    var W = 600, rowH = 11, top = 6, mid = 330, half = 230, H = top + rows.length * rowH + 22;
+    var y = function (strike) { // interpolate a price onto the strike rows (rows are descending)
+      for (var i = 0; i < rows.length - 1; i++) {
+        var a = rows[i].strike, b = rows[i + 1].strike;
+        if (strike <= a && strike >= b) return top + (i + (a - strike) / (a - b)) * rowH + rowH / 2;
+      }
+      return null;
+    };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(t.ticker) + ' net gamma by strike">';
+    s += '<line x1="' + mid + '" y1="' + top + '" x2="' + mid + '" y2="' + (H - 18) + '" stroke="var(--rule)"/>';
+    rows.forEach(function (r, i) {
+      var w = Math.abs(r.book) / max * half, yy = top + i * rowH;
+      var x = r.book >= 0 ? mid : mid - w;
+      s += '<rect x="' + x.toFixed(1) + '" y="' + (yy + 1) + '" width="' + Math.max(w, 0.5).toFixed(1) + '" height="' + (rowH - 2) + '" rx="1.5" fill="var(' + (r.book >= 0 ? '--up' : '--down') + ')"><title>' + r.strike + ': ' + money(r.book) + ' (calls ' + r.call_oi.toLocaleString() + ' / puts ' + r.put_oi.toLocaleString() + ' OI)</title></rect>';
+      if (i % 2 === 0) s += '<text x="40" y="' + (yy + rowH - 2) + '" text-anchor="end">' + r.strike + '</text>';
+    });
+    var ys = y(t.spot);
+    if (ys) s += '<line x1="46" x2="' + (W - 10) + '" y1="' + ys + '" y2="' + ys + '" stroke="var(--ink-strong)" stroke-width="1.2"/><text x="' + (W - 10) + '" y="' + (ys - 3) + '" text-anchor="end" style="fill:var(--ink-strong)">spot ' + t.spot + '</text>';
+    var yf = t.flip ? y(t.flip) : null;
+    if (yf) s += '<line x1="46" x2="' + (W - 10) + '" y1="' + yf + '" y2="' + yf + '" stroke="var(--warn)" stroke-width="1.2" stroke-dasharray="5 4"/><text x="' + (W - 10) + '" y="' + (yf - 3) + '" text-anchor="end" style="fill:var(--warn-ink)">flip ' + t.flip + '</text>';
+    s += '<text x="' + (mid - 6) + '" y="' + (H - 4) + '" text-anchor="end">← short gamma</text><text x="' + (mid + 6) + '" y="' + (H - 4) + '">long gamma →</text></svg>';
+    return s;
+  }
+
+  function card(t) {
+    if (t.error) return '<div class="gex-card"><h3>' + esc(t.ticker) + '</h3><p style="color:var(--muted);">' + esc(t.error) + '</p></div>';
+    var flipTxt = t.flip ? t.flip.toFixed(2) + (t.flip > t.spot ? ' (above spot)' : ' (below spot)') : 'none within ±5%';
+    var h = '<div class="gex-card"><h3><span>' + esc(t.ticker) + ' <span style="font-weight:400;color:var(--muted);">$' + t.spot.toFixed(2) + '</span></span>'
+      + '<span class="gex-tag ' + t.regime + '">' + (t.regime === 'long' ? 'Long gamma · dampening' : 'Short gamma · amplifying') + '</span></h3>'
+      + '<div class="gex-kv"><span>Flip <b>' + flipTxt + '</b></span><span>Net within 2% <b>' + money(t.net_gex_2pct) + '</b></span>'
+      + (t.king ? '<span>Largest node <b>' + t.king.strike + ' ' + money(t.king.gex) + '</b></span>' : '') + '</div>' + chart(t);
+    var pin = t.pin || {};
+    if (pin.node) {
+      h += '<div class="gex-pin">' + (pin.ready ? '✅ Pin setup active at ' + pin.node + ' (exp ' + pin.expiry + ')' : 'Pin candidate ' + pin.node + ' (exp ' + pin.expiry + ', ' + money(pin.node_gex) + ')') + '</div><ul class="gex-checks">';
+      Object.keys(pin.checks).forEach(function (k) { h += '<li class="' + (pin.checks[k] ? 'ok' : 'no') + '">' + (pin.checks[k] ? '✓ ' : '✗ ') + esc(k) + '</li>'; });
+      h += '</ul>';
+    } else {
+      h += '<div class="gex-pin" style="color:var(--muted);">No positive node near spot: no pin setup.</div>';
+    }
+    return h + '</div>';
+  }
+
+  fetch('/stock-screener/gex.json', {cache: 'no-store'})
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (d) {
+      root.innerHTML = '<div class="gex-grid">' + (d.tickers || []).map(card).join('') + '</div>';
+      var evs = d.events || [];
+      evBody.innerHTML = evs.length ? evs.map(function (e) {
+        var dt = new Date(e.date + 'T12:00:00');
+        var imp = (e.implied || []).filter(function (x) { return x.move_pct; }).map(function (x) {
+          return x.ticker + ' ±' + x.move_pct.toFixed(2) + '% <span style="color:var(--muted);">(through ' + x.expiry.slice(5) + ')</span>';
+        }).join('<br>') || '<span style="color:var(--muted);">&mdash;</span>';
+        return '<tr><td style="white-space:nowrap;">' + dt.toLocaleDateString(undefined, {weekday: 'short', month: 'short', day: 'numeric'}) + (e.time ? ' &middot; ' + esc(e.time) + ' ET' : '') + '</td><td>' + esc(e.name) + '</td><td>' + imp + '</td></tr>';
+      }).join('') : '<tr><td colspan="3" style="color:var(--muted);">No scheduled events in the next three weeks.</td></tr>';
+      if (d.generated_at) updated.textContent = 'Last updated: ' + new Date(d.generated_at).toLocaleString();
+    })
+    .catch(function (err) {
+      root.innerHTML = '<p style="color:var(--down);">Could not load the gamma snapshot: ' + esc(err.message) + '</p>';
+      document.getElementById('gex-events').style.display = 'none';
+    });
+})();
+</script>
 </div>
 <footer class="site-footer">
   <div class="shell foot-row">
