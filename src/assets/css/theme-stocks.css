@@ -85,3 +85,9 @@ body{font-variant-numeric:tabular-nums;}
 .mcap-stats{margin:10px 0 0;border:0;border-top:1px solid var(--rule);border-radius:0;}
 .mcap-note{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 0 12px;}
 .mcap-stats div div{border:0;padding:0;min-width:0;flex:none;}
+
+/* Two-level Stocks nav: Overview / Stocks / Macro, then the pages in that group */
+.subnav-2{background:var(--surface);}
+.subnav-2 .subnav-inner{padding:8px 28px;font-size:10.5px;gap:2px 16px;}
+.subnav-2 a{font-weight:500;}
+@media (max-width:640px){.subnav-2 .subnav-inner{padding:8px 16px;}}
