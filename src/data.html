@@ -109,6 +109,8 @@
   .cy-h3 b{color:var(--ink-strong);}
   .cy-tip{position:absolute;pointer-events:none;background:var(--ink-strong);color:var(--surface);font:11px var(--font-mono);padding:5px 8px;border-radius:4px;white-space:nowrap;transform:translate(-50%,-110%);display:none;}
   .cy-plot{position:relative;}
+  .dl-bar{display:inline-block;width:56px;height:8px;border-radius:4px;background:var(--rule);vertical-align:middle;overflow:hidden;}
+  .dl-bar span{display:block;height:100%;}
   .cy-rows{width:100%;border-collapse:collapse;font-size:13.5px;}
   .cy-rows td{padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:middle;}
   .cy-rows td.v{font:12.5px var(--font-mono);text-align:right;white-space:nowrap;color:var(--ink-strong);}
@@ -353,11 +355,19 @@
       data: c.history, H: 270, axis: {key: 'm', lo: -100, hi: 100, ticks: [-100, -60, 0, 60, 100]},
       bands: [[60, 100, '#dc2626'], [-100, -60, '#2563eb']], bg: {key: 'spy', label: 'SPY'}, sw: 1.3,
       colorFn: function (a, b) { return col((a + b) / 2); }, ann: ann,
-      marks: (c.signals || []).filter(function (g) { return g.kind === 'turn_up' || g.kind === 'roll_over' || g.kind === 'trend_break' || g.kind === 'top_watch'; })
-        .map(function (g) { return {d: g.d, up: g.kind === 'turn_up', c: g.kind === 'turn_up' ? '#2563eb' : g.kind === 'trend_break' ? '#ea580c' : g.kind === 'top_watch' ? '#9333ea' : '#dc2626'}; }),
+      // one triangle per kind per 30 days: repeat fires inside a cooldown are dropped (the alert replay still lists them all)
+      marks: (function () {
+        var last = {}, COOL = 30 * 864e5;
+        return (c.signals || []).filter(function (g) {
+          if (['turn_up', 'roll_over', 'trend_break', 'top_watch'].indexOf(g.kind) < 0) return false;
+          var t = Date.parse(g.d);
+          if (last[g.kind] != null && t - last[g.kind] < COOL) return false;
+          last[g.kind] = t; return true;
+        });
+      })().map(function (g) { return {d: g.d, up: g.kind === 'turn_up', c: g.kind === 'turn_up' ? '#2563eb' : g.kind === 'trend_break' ? '#ea580c' : g.kind === 'top_watch' ? '#9333ea' : '#dc2626'}; }),
       tip: function (p) { return p.d + ' &middot; score ' + sgn(Math.round(p.s)) + ' (5d avg ' + sgn(Math.round(p.m)) + ') &middot; SPY ' + p.spy.toFixed(2); }
     }));
-    if (c.signals) wc.insertAdjacentHTML('beforeend', '<p class="cy-note">Triangles: <b style="color:#2563eb;">&#9650;</b> turning up after a washout, <b style="color:#dc2626;">&#9660;</b> rolling over after overheating, <b style="color:#9333ea;">&#9660;</b> top watch (VIX waking up near the highs while high beta lags), <b style="color:#ea580c;">&#9660;</b> high-beta trend break (SPHB trailing stop), as the email alerts would have fired. See the <a href="#alert-replay">alert replay</a> for what followed each one.</p>');
+    if (c.signals) wc.insertAdjacentHTML('beforeend', '<p class="cy-note">Triangles: <b style="color:#2563eb;">&#9650;</b> turning up after a washout, <b style="color:#dc2626;">&#9660;</b> rolling over after overheating, <b style="color:#9333ea;">&#9660;</b> top watch (VIX waking up near the highs while high beta lags), <b style="color:#ea580c;">&#9660;</b> high-beta trend break (SPHB trailing stop), as the email alerts would have fired, showing at most one of each kind per 30 days. See the <a href="#alert-replay">alert replay</a> for what followed each one.</p>');
     root.appendChild(wc);
 
     // Nasdaq 200-day breadth, Perruna style
@@ -514,6 +524,52 @@
         }).join('') + '</tbody></table></div>' +
         '<p class="cy-note">Replayed with the same rules the daily email uses (enter &plusmn;60, reset inside &plusmn;40; turn alerts within 20 sessions of an extreme). Worst dip and best rally: lowest and highest SPHB close over the next 60 sessions vs the alert-day close. * = window still open. Breadth inputs use today&rsquo;s index members, so older readings carry some survivorship bias.</p>';
       root.appendChild(sc);
+    }
+
+    // de-risk dial: per-stock exposure, stepped down after runs and warnings, back up on recovery
+    if (c.dial && c.dial.stocks && c.dial.stocks.length) {
+      var D = c.dial, WC = function (w) { return w >= 85 ? 'var(--up)' : w >= 55 ? '#ca8a04' : 'var(--down)'; };
+      var dc = document.createElement('div'); dc.className = 'cy-card'; dc.id = 'dial';
+      var bh = D.basket.hold || {}, bd = D.basket.dial || {};
+      dc.innerHTML = '<div class="cy-h3"><span>De-risk dial: high-beta watchlist</span><span>' + D.stocks.map(function (s) { return esc(s.t); }).join(' &middot; ') + '</span></div>' +
+        '<p class="cy-say" style="margin-top:0;">Selling in steps instead of all at once. Each position moves ' + D.step + '% at a time between a ' + D.floor + '% core and full size: trimmed after big runs and on market warnings, added back on recovery. No single move has to be right.</p>' +
+        '<div class="table-wrap"><table class="simple"><thead><tr><th>Stock</th><th>Dial</th><th>Last move</th><th>Why</th><th>Off 52w high</th><th>This year: held</th><th>With dial</th></tr></thead><tbody>' +
+        D.stocks.map(function (s) {
+          var l = s.last;
+          return '<tr' + (s.moved_today ? ' class="cy-now"' : '') + '><td><a href="#dial-' + esc(s.t) + '"><b>' + esc(s.t) + '</b></a></td>' +
+            '<td><span class="dl-bar"><span style="width:' + s.w + '%;background:' + WC(s.w) + ';"></span></span> <b>' + s.w + '%</b></td>' +
+            '<td>' + (l ? (l.to < l.from ? '<span style="color:var(--down);">&#9660;</span> ' : '<span style="color:var(--up);">&#9650;</span> ') + l.from + '&rarr;' + l.to + '% ' + fmtDate(l.d) : '&mdash;') + '</td>' +
+            '<td style="white-space:normal;">' + (l ? esc(l.why) : '&mdash;') + '</td><td>' + pct(s.off_high) + '</td><td>' + pct(s.ytd.hold) + '</td><td>' + pct(s.ytd.dial) + '</td></tr>';
+        }).join('') + '</tbody></table></div>' +
+        (bd.ytd != null ? '<p class="cy-note"><b>Equal-weight basket this year:</b> ' + pct(bd.ytd) + ' with the dial (worst drop ' + pct(bd.ytd_dd) + ') vs ' + pct(bh.ytd) + ' held (' + pct(bh.ytd_dd) + '). Worst drop over three years: ' + pct(bd.dd_3y) + ' vs ' + pct(bh.dd_3y) + '.</p>' : '') +
+        '<p class="cy-note"><b>Trim one step</b> when a stock is stretched 40%+ above its 50-day average (again only after another 20% rise), when it cracks 5% under its 20-day EMA after a big run (once per peak), or on a market <a href="#alert-replay">top watch or trend break</a>. <b>Add one step</b> on a market washout or turning-up alert, a new 52-week high, or a close back over a rising 20-day EMA while above the 50-day (at most every 10 sessions). Moves are decided at the close and replayed at the next close; cash earns T-bills. The dial cuts drawdowns in fast selloffs but cannot save a stock in a long collapse: the 35% core still falls with it. Rules were tuned on the same history they are scored on, and taxes and costs are ignored. Not a recommendation to trade.</p>' +
+        '<div class="ind-grid"></div>' +
+        '<div class="cy-h3" style="margin-top:14px;"><span>Full replay since each stock&rsquo;s start (or mid-2016)</span><span>CAGR &middot; worst drop</span></div>' +
+        '<div class="table-wrap"><table class="simple"><thead><tr><th>Stock</th><th>From</th><th>Held</th><th>With dial</th><th>Worst drop held</th><th>With dial</th><th>Avg dial</th><th>Moves / yr</th></tr></thead><tbody>' +
+        D.stocks.map(function (s) {
+          var f = s.full;
+          return '<tr><td>' + esc(s.t) + '</td><td>' + fmtDate(f.from) + '</td><td>' + pct(f.hold_cagr) + '</td><td>' + pct(f.dial_cagr) + '</td><td>' + pct(f.hold_dd) + '</td><td>' + pct(f.dial_dd) + '</td><td>' + f.avg_w + '%</td><td>' + f.moves_per_yr.toFixed(1) + '</td></tr>';
+        }).join('') + '</tbody></table></div>';
+      var dg = dc.querySelector('.ind-grid');
+      D.stocks.forEach(function (s) {
+        if (!s.hist || s.hist.length < 3) return;
+        var card = document.createElement('div'); card.className = 'cy-card ind'; card.id = 'dial-' + s.t;
+        card.innerHTML = '<div class="ind-hd"><span class="ind-name">' + esc(s.t) + ' $' + s.price.toFixed(2) + '</span><span class="ind-val">dial <b style="color:' + WC(s.w) + ';">' + s.w + '%</b></span></div><div class="ind-plot"></div>' +
+          '<p class="ind-what">' + (s.moves.length ? s.moves.slice(-4).reverse().map(function (mv) { return fmtDate(mv.d) + ': ' + mv.from + '&rarr;' + mv.to + '% (' + esc(mv.why) + ')'; }).join('<br>') : 'No moves this year.') + '</p>';
+        var ps = s.hist.map(function (h) { return h.p; }), lo = Math.min.apply(null, ps), hi = Math.max.apply(null, ps), pad = (hi - lo) * .06;
+        lo -= pad; hi += pad;
+        var dec = hi < 20 ? 2 : hi < 200 ? 1 : 0;
+        card.querySelector('.ind-plot').appendChild(timeChart({
+          data: s.hist, W: 520, H: 190, sw: 1.8,
+          axis: {key: 'p', lo: lo, hi: hi, ticks: [lo + (hi - lo) * .1, (lo + hi) / 2, hi - (hi - lo) * .1], fmt: function (g) { return g.toFixed(dec); }},
+          colorFn: function (a, b, i) { return WC(s.hist[i - 1].w); },
+          marks: s.moves.map(function (mv) { return {d: mv.d, up: mv.to > mv.from, c: mv.to > mv.from ? 'var(--up)' : 'var(--down)'}; }),
+          tip: function (h) { return h.d + ' &middot; $' + h.p.toFixed(dec) + ' &middot; dial ' + h.w + '%'; }
+        }));
+        dg.appendChild(card);
+      });
+      dc.insertAdjacentHTML('beforeend', '<p class="cy-note">Charts: this year&rsquo;s price, colored by the dial held into each day (<b style="color:var(--up);">green</b> 85&ndash;100%, <b style="color:#ca8a04;">amber</b> 55&ndash;70%, <b style="color:var(--down);">red</b> 35&ndash;50%). <b style="color:var(--down);">&#9660;</b> trim, <b style="color:var(--up);">&#9650;</b> add.</p>');
+      root.appendChild(dc);
     }
 
     // backtests
